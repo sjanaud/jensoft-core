@@ -108,31 +108,31 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jarsigner-plugin</artifactId>
-				<version>1.2</version>
-				<executions>
-					<execution>
-						<id>sign</id>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>verify</id>
-						<goals>
-							<goal>verify</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<keystore>${project.basedir}\jensoft.keystore</keystore>
-					<alias>jensoft</alias>
-					<storepass>password</storepass>
-					<keypass>password</keypass>
-				</configuration>
-			</plugin>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-jarsigner-plugin</artifactId> -->
+<!-- 				<version>1.2</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>sign</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>sign</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 					<execution> -->
+<!-- 						<id>verify</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>verify</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 				<configuration> -->
+<!-- 					<keystore>${project.basedir}\jensoft.keystore</keystore> -->
+<!-- 					<alias>jensoft</alias> -->
+<!-- 					<storepass>password</storepass> -->
+<!-- 					<keypass>password</keypass> -->
+<!-- 				</configuration> -->
+<!-- 			</plugin> -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.7</version>
@@ -147,6 +147,31 @@
 							<target>
 								<echo>JenSoft API - Generate Sources</echo>
 								<!-- action here if needed source generation -->
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.7</version>
+				<executions>
+					<execution>
+						<id>jensoft-core-resources</id>
+						<phase>prepare-package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<echo>JenSoft API - Prepare Package</echo>
+								<echo>JenSoft API - Copy Core Fonts to classes</echo>
+								<echo>JenSoft API - Copy Core Templates to classes</echo>
+								<echo>JenSoft API - Copy Core Images to classes</echo>
+								<echo>JenSoft API - Copy Core X2D to classes</echo>
+								
+								
+								<!-- action here if needed resources -->
 							</target>
 						</configuration>
 					</execution>

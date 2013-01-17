@@ -221,7 +221,7 @@
 		</copy>
 
 		<!-- copy properties  to build-->
-		<echo message="Copy XML file to build package" level="info" />
+		<echo message="Copy properties to build package" level="info" />
 		<copy todir="${build}">
 			<fileset dir="${src}" includes="**/*.properties" />
 		</copy>
