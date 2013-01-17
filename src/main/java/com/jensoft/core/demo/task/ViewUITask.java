@@ -65,7 +65,7 @@ public class ViewUITask extends Task {
 			br.close();
 			return sb.toString();
 		} catch (IOException e) {
-			throw new BuildException("load template failed with exception " + e.getMessage());
+			throw new BuildException("load template failed with exception " + e.getMessage(),e);
 		}
 
 	}
