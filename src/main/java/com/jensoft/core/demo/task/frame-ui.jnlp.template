@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp codebase="${jnlp-codebase}"
+			href="${jnlp-href}">
+
+	<information>
+		<title>Jensoft API</title>
+		<vendor>JenSoft</vendor>
+		<homepage href="http://www.jensoft.org"/>
+		<icon href="http://www.jensoft.org/jensoft/images/demosplash.png" kind="splash"/>
+		<description>JenSoft API</description> 
+		<description kind="short">An application showing a variety of charts that can be generated with Jensoft chart</description>
+		<description kind="tooltip">JenSoft API</description>
+		<offline-allowed/>
+	</information>
+
+	<resources>
+		<j2se version="1.6+" initial-heap-size="12m" max-heap-size="256m" />
+${ui-jar-resources}
+	</resources>
+
+	<application-desc main-class="${frame-ui-class}"/>
+ </jnlp>

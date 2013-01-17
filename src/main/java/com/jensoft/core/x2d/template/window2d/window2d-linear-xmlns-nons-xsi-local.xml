@@ -1,0 +1,51 @@
+<view2d xmlns="http://www.jensoft.org/jensoft/schema/x2d"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jensoft.org/jensoft/schema/x2d 
+							../../lang/x2d.xsd">
+	<view-key>pie effect radial</view-key>
+	<api-key>a996d69d-97b9-4dc6-9815-405dbba71f3b</api-key>
+	<width>600</width>
+	<height>400</height>
+	<west>10</west>
+	<east>10</east>
+	<north>10</north>
+	<south>10</south>
+	<background>
+		<outline-round>6</outline-round>
+		<background-shader>
+			<shaderEntry>
+				<f>0</f>
+				<c>
+					<r>32</r>
+					<g>39</g>
+					<b>55</b>
+					<a>200</a>
+				</c>
+			</shaderEntry>
+			<shaderEntry>
+				<f>1</f>
+				<c>
+					<r>0</r>
+					<g>0</g>
+					<b>0</b>
+					<a>255</a>
+				</c>
+			</shaderEntry>
+		</background-shader>
+	</background>
+	<window2d xsi:type="Window2DLinear">
+		<id>id</id>
+		<name>donut2d window</name>
+		<theme-color>
+			<r>0</r>
+			<g>0</g>
+			<b>0</b>
+			<a>255</a>
+		</theme-color>
+		<min-x>-1</min-x>
+		<max-x>1</max-x>
+		<min-y>-1</min-y>
+		<max-y>1</max-y>
+	</window2d>
+	
+</view2d>

@@ -1,0 +1,42 @@
+/*
+ * JenSoft API - Charting Framework
+ * http://www.jensoft.org
+ * Copyright (c) JenSoft. All rights reserved.
+ * See JenSoft Software License Agreement
+ */
+package ${package};
+
+import com.jensoft.sw2d.core.demo.nature.Generated;
+import com.jensoft.sw2d.core.demo.nature.AppletUI;
+import com.jensoft.sw2d.core.demo.nature.JenSoftAPIDemo;
+import com.jensoft.sw2d.core.demo.ui.X2DAppletUI;
+import com.jensoft.sw2d.core.x2d.X2D;
+import com.jensoft.sw2d.core.x2d.X2DException;
+
+/**
+ * <code>${ui-class}</code>
+ * 
+ * @author JenSoft API
+ */
+@Generated
+@AppletUI
+@JenSoftAPIDemo
+public class ${ui-class} extends X2DAppletUI {
+
+    private static final long serialVersionUID = 1L;
+
+	/**
+     * Create {@link X2D} demo
+     */
+    public ${ui-class}() {
+    }
+
+    /*
+     * (non-Javadoc)
+     * @see com.jensoft.sw2d.core.democomponent.X2DDemo#getX2DResourcePath()
+     */
+    @Override
+    public String getX2DResourcePath() throws X2DException{
+    	return "${x2d-resource-path}";
+    }
+}

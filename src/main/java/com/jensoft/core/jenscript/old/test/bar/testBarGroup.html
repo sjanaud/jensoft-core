@@ -1,0 +1,252 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>JENSCRIPT - BAR GROUP</title>
+<script type="text/javascript" src="http://localhost:8888/js/jenscript.js"></script>
+</head>
+<body>
+
+
+<img alt="" src="" id="barView"><br>
+
+<script type="text/javascript">
+	
+
+setJenscriptAPIKey('1A345-ER2345-1345Y-TY42U');
+
+var colorutil = new com.jensoft.jenscript.ColorUtil();
+var black 	= colorutil.getColor(0, 0, 0, 255);
+var black2 	= colorutil.getColor(0, 0, 0, 80);
+var darkgray= colorutil.getColor(60, 60, 60, 255);
+var white 	= colorutil.getColor(220, 255, 255, 255);
+var whiteAlpha40 	= colorutil.getColor(220, 255, 255, 0);
+var redwood = colorutil.getColor(203,71,52,255);
+var lime 	= colorutil.getColor(197,208,89,255);
+var cobalt 	= colorutil.getColor(35,56,158,255);
+var emerald = colorutil.getColor(62,142,78,255);
+var emeraldAlpha100 = colorutil.getColor(62,142,78,100);
+var emeraldAlpha40 = colorutil.getColor(62,142,78,40);
+var night 	= colorutil.getColor(32,39,55,200);
+var orange 	= colorutil.getColor(191, 118, 41,255);
+var orangeAlpha40 	= colorutil.getColor(191, 118, 41,40);
+var petal1 	= colorutil.getColor(61,166,244,255);
+var petal1Alpha 	= colorutil.getColor(61,166,244,100);
+var petal2 	= colorutil.getColor(172,227,123,255);
+var petal2Alpha 	= colorutil.getColor(172,227,123,100);
+var petal3 	= colorutil.getColor(255,246,77,255);
+var petal3Alpha 	= colorutil.getColor(255,246,77,100);
+var stroke2 = new com.jensoft.jenscript.graphics.Stroke(2);
+
+var view = new com.jensoft.jenscript.View2D(420,280,"barView");
+ 
+var fractions = [0,1];
+var colors = [night,black];
+var shader = new com.jensoft.jenscript.graphics.Shader(fractions, colors);
+var vb = new com.jensoft.jenscript.ViewBackground(shader,emerald);
+vb.setOutlineStroke(stroke2)
+view.setBackgroundPainter(vb);
+
+var window2D = new com.jensoft.jenscript.Window2D("bar group", 0,0, -10, 120);
+window2D.setThemeColor(emerald);
+view.registerWindow2D(window2D);
+ 
+//window outline
+var outline = new com.jensoft.jenscript.plugin.outline.OutlinePlugin();
+outline.setOutlineColor(emerald);
+window2D.registerPlugin(outline);
+
+//band decorator
+var bp = new com.jensoft.jenscript.plugin.band.BandPlugin();
+window2D.registerPlugin(bp);
+
+var palette1 = new com.jensoft.jenscript.plugin.band.BandPalette();
+palette1.addColor(whiteAlpha40);
+palette1.addColor(emeraldAlpha40);
+
+var dynManager = new com.jensoft.jenscript.plugin.band.DynamicBandManager('horizontal',0,20);
+dynManager.setPalette(palette1);
+bp.addManager(dynManager);
+
+//grid decorator plugin
+var gp = new com.jensoft.jenscript.plugin.grid.GridPlugin();
+window2D.registerPlugin(gp);
+
+var dynManager = new com.jensoft.jenscript.plugin.grid.DynamicGridManager('horizontal',emerald,0,20);
+gp.addManager(dynManager);
+
+
+//legend
+var legend = new com.jensoft.jenscript.plugin.legend.LegendPlugin('bar group');
+legend.setAlignment('right');
+legend.setPosition('east');
+legend.setDepth(0.3);
+legend.setStartColor(white);
+legend.setEndColor(emerald);
+window2D.registerPlugin(legend);
+
+
+var mm2 = new com.jensoft.jenscript.plugin.metrics.MilliMetrics();
+mm2.setRef(0);
+mm2.setAxis('axisWest');
+mm2.setMajor(20);
+mm2.setMedian(5);
+mm2.setMinor(1);
+mm2.setPaintAxisBaseLine(true);
+window2D.registerPlugin(mm2);
+
+var symbolPlugin = new com.jensoft.jenscript.plugin.symbol.SymbolPlugin();
+symbolPlugin.setNature('vertical');
+window2D.registerPlugin(symbolPlugin);
+
+var glue = new com.jensoft.jenscript.plugin.symbol.Glue();
+var strut4 = new com.jensoft.jenscript.plugin.symbol.Strut(4);
+var strut80 = new com.jensoft.jenscript.plugin.symbol.Strut(60);
+
+
+var group1 = new com.jensoft.jenscript.plugin.symbol.BarGroup();
+group1.setSymbolBase(0);
+group1.setThickness(25);
+group1.setMorpheRound(8);
+group1.setBarEffect('fx2');
+group1.setBarDraw(white);
+
+var group2 = new com.jensoft.jenscript.plugin.symbol.BarGroup();
+group2.setSymbolBase(0);
+group2.setThickness(25);
+group2.setMorpheRound(8);
+group2.setBarEffect('fx2');
+group2.setBarDraw(white);
+
+//bar symbols
+var bar1 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar1.setThemeColor(petal1);
+bar1.setAscentValue(34);
+var bar2 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar2.setThemeColor(petal2);
+bar2.setAscentValue(82);
+var bar3 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar3.setThemeColor(petal3);
+bar3.setAscentValue(58);
+
+var bar4 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar4.setThemeColor(petal1);
+bar4.setAscentValue(23);
+var bar5 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar5.setThemeColor(petal2);
+bar5.setAscentValue(77);
+var bar6 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar6.setThemeColor(petal3);
+bar6.setAscentValue(34);
+
+
+group1.addSymbol(bar1);
+group1.addSymbol(strut4);
+group1.addSymbol(bar2);
+group1.addSymbol(strut4);
+group1.addSymbol(bar3);
+
+
+group2.addSymbol(bar4);
+group2.addSymbol(strut4);
+group2.addSymbol(bar5);
+group2.addSymbol(strut4);
+group2.addSymbol(bar6);
+
+
+var barLayer = new com.jensoft.jenscript.plugin.symbol.BarSymbolLayer();
+symbolPlugin.addLayer(barLayer);
+
+barLayer.addSymbol(glue);
+barLayer.addSymbol(group1);
+barLayer.addSymbol(strut80);
+barLayer.addSymbol(group2);
+barLayer.addSymbol(glue);
+
+//bar labels
+
+
+var fractions = [0,1];
+var colors  = [darkgray,black];
+var colors2 = [emeraldAlpha100,black];
+var colorsPetal1 = [petal1Alpha,black];
+var colorsPetal2 = [petal2Alpha,black];
+var colorsPetal3 = [petal3Alpha,black];
+var shader  = new com.jensoft.jenscript.graphics.Shader(fractions, colors);
+var shader2 = new com.jensoft.jenscript.graphics.Shader(fractions, colors2);
+var shaderPetal1 = new com.jensoft.jenscript.graphics.Shader(fractions, colorsPetal1);
+var shaderPetal2 = new com.jensoft.jenscript.graphics.Shader(fractions, colorsPetal2);
+var shaderPetal3 = new com.jensoft.jenscript.graphics.Shader(fractions, colorsPetal3);
+
+
+var bar1Label = new  com.jensoft.jenscript.plugin.symbol.label.RelativeLabel("label");
+bar1Label.setVerticalAlign('NorthBottom');
+bar1Label.setHorizontalAlign('WestLeft');
+bar1Label.setText('Bar 1');
+bar1Label.setTextColor(petal1);
+bar1Label.setDrawColor(petal1);
+bar1Label.setFillColor(black);
+bar1Label.setOutlineRound(14);
+bar1Label.setOutlineStroke(stroke2);
+bar1Label.setShader(shaderPetal1);
+bar1.setLabel(bar1Label);
+
+
+var bar2Label = new  com.jensoft.jenscript.plugin.symbol.label.RelativeLabel("label");
+bar2Label.setVerticalAlign('NorthTop');
+bar2Label.setHorizontalAlign('Middle');
+bar2Label.setText('Bar 2');
+bar2Label.setTextColor(petal2);
+bar2Label.setDrawColor(petal2);
+bar2Label.setFillColor(black);
+bar2Label.setOutlineRound(14);
+bar2Label.setOutlineStroke(stroke2);
+bar2Label.setShader(shaderPetal2);
+bar2.setLabel(bar2Label);
+
+
+var bar3Label = new  com.jensoft.jenscript.plugin.symbol.label.RelativeLabel("label");
+bar3Label.setVerticalAlign('NorthBottom');
+bar3Label.setHorizontalAlign('EastRight');
+bar3Label.setText('Bar 3');
+bar3Label.setTextColor(petal3);
+bar3Label.setDrawColor(petal3);
+bar3Label.setFillColor(black);
+bar3Label.setOutlineRound(14);
+bar3Label.setOutlineStroke(stroke2);
+bar3Label.setShader(shaderPetal3);
+bar3.setLabel(bar3Label);
+
+
+//axis label
+var group1Label = new com.jensoft.jenscript.plugin.symbol.label.AxisLabel("Group1");
+group1Label.setText('Group 1');
+group1Label.setTextColor(white);
+group1Label.setDrawColor(white);
+group1Label.setFillColor(black);
+group1Label.setOutlineRound(14);
+group1Label.setOffsetY(5);
+group1Label.setShader(shader);
+group1.setAxisLabel(group1Label);
+
+var group2Label = new com.jensoft.jenscript.plugin.symbol.label.AxisLabel("Group1");
+group2Label.setText('Group 2');
+group2Label.setTextColor(white);
+group2Label.setDrawColor(white);
+group2Label.setFillColor(black);
+group2Label.setOutlineRound(14);
+group2Label.setOffsetY(5);
+group2Label.setShader(shader2);
+group2.setAxisLabel(group2Label);
+
+
+
+//alert(view.getViewXML());
+view.requestView();
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+/*
+ * JenSoft API - Charting Framework
+ * http://www.jensoft.org
+ * Copyright (c) JenSoft. All rights reserved.
+ * See JenSoft Software License Agreement
+ */
+package ${ui-package};
+
+
+import ${view-import};
+import com.jensoft.sw2d.core.demo.nature.Generated;
+import com.jensoft.sw2d.core.demo.nature.FrameUI;
+import com.jensoft.sw2d.core.demo.nature.JenSoftAPIDemo;
+import com.jensoft.sw2d.core.demo.ui.ViewFrameUI;
+
+/**
+ * <code>${ui-class}</code>
+ * 
+ * @author JenSoft API
+ */
+@Generated
+@FrameUI
+@JenSoftAPIDemo
+public class ${ui-class} extends ViewFrameUI {
+
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * create <code>${ui-class}</code>
+	 */
+	public ${ui-class}(){
+		super(new ${view-class}());	
+	}
+   
+	/**
+	 * main demo  FRAME UI
+	 * @param args
+	 */
+	public static void main(String[] args) throws Exception {
+	    final ${ui-class} ui = new ${ui-class}();
+	}
+
+}

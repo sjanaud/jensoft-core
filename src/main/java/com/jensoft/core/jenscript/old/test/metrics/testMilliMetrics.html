@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://localhost:8888/js/jenscript.js"></script>
+</head>
+<body>
+
+
+<img alt="" src="" id="milliMetricsView"><br>
+
+<script type="text/javascript">
+
+var colorutil = new com.jensoft.jenscript.ColorUtil();
+var black = colorutil.getColor(0, 0, 0, 255);
+var black2 = colorutil.getColor(0, 0, 0, 80);
+var white = colorutil.getColor(255, 255, 255, 255);
+var redwood 	= colorutil.getColor(203,71,52,255);
+var lime 		= colorutil.getColor(197,208,89,255);
+var cobalt 		= colorutil.getColor(35,56,158,255);
+var emerald 	= colorutil.getColor(62,142,78,255);
+
+var view = new com.jensoft.jenscript.View2D(800,500,"milliMetricsView");
+view.setBackground(new com.jensoft.jenscript.Color(255, 255, 255, 255));
+
+var w2d1 = new com.jensoft.jenscript.Window2D("jen", -1000, 1000, -1000, 1000);
+w2d1.setThemeColor(emerald);
+
+//w2d1.registerPlugin(new com.jensoft.jenscript.plugin.outline.OutlinePlugin());
+
+var mm1 = new com.jensoft.jenscript.plugin.metrics.MilliMetrics();
+mm1.setRef(0);
+mm1.setAxis('axisSouth');
+mm1.setMajor(100);
+mm1.setMedian(50);
+mm1.setMinor(5);
+w2d1.registerPlugin(mm1);
+
+var mm2 = new com.jensoft.jenscript.plugin.metrics.MilliMetrics();
+mm2.setRef(0);
+mm2.setAxis('axisWest');
+mm2.setMajor(100);
+mm2.setMedian(50);
+mm2.setMinor(5);
+mm2.setPaintAxisBaseLine(false);
+w2d1.registerPlugin(mm2);
+
+
+
+view.registerWindow2D(w2d1);
+
+view.requestView();
+
+</script>
+
+
+
+</body>
+</html>

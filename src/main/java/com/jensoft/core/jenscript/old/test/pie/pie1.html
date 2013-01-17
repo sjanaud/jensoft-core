@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Test Pie</title>
+<script type="text/javascript" src="http://localhost:8888/js/jenscript.js"></script>
+</head>
+<body>
+
+
+<img alt="" src="" id="pieView"><br>
+
+<script type="text/javascript">
+
+var colorutil = new com.jensoft.jenscript.ColorUtil();
+var black 		= colorutil.getColor(0, 0, 0, 255);
+var black2 		= colorutil.getColor(0, 0, 0, 80);
+var white 		= colorutil.getColor(255, 255, 255, 255);
+var redwood 	= colorutil.getColor(203,71,52,255);
+var lime 		= colorutil.getColor(197,208,89,255);
+var cobalt 		= colorutil.getColor(35,56,158,255);
+var emerald 	= colorutil.getColor(62,142,78,255);
+
+var view = new com.jensoft.jenscript.View2D(800,500,"pieView");
+view.setBackground(new com.jensoft.jenscript.Color(255, 255, 255, 255));
+
+var pieWindow = new com.jensoft.jenscript.Window2D("pie window", -1000, 1000, -1000, 1000);
+pieWindow.setThemeColor(emerald);
+
+
+
+var piePlugin = new com.jensoft.jenscript.plugin.pie.PiePlugin();
+piePlugin.setRadius(80);
+piePlugin.setStartAngleDegree(40);
+pieWindow.registerPlugin(piePlugin);
+
+//effect
+var effect = new com.jensoft.jenscript.plugin.pie.effect.Fx1();
+effect.setIncidence(230);
+piePlugin.setEffect(effect);
+
+
+var s1 = new com.jensoft.jenscript.plugin.pie.Slice(45, colorutil.getColor(240,240,240,255));
+var s2 = new com.jensoft.jenscript.plugin.pie.Slice(5, colorutil.getColor(249,235,113,255));
+var s3 = new com.jensoft.jenscript.plugin.pie.Slice(30, colorutil.getColor(176,224,88,255));
+var s4 = new com.jensoft.jenscript.plugin.pie.Slice(20, colorutil.getColor(143,177,214,255));
+
+s1.setDivergence(20);
+
+var label1 = new  com.jensoft.jenscript.plugin.pie.label.BorderLabel("Vinz");
+label1.setTextColor(white);
+label1.setMargin(40);
+label1.setLinkColor(black);
+label1.setStrokeColor(redwood);
+label1.setFillColor(black);
+label1.setOutlineRound(20);
+
+var label2 = new  com.jensoft.jenscript.plugin.pie.label.BorderLabel("Amore");
+label2.setTextColor(white);
+label2.setMargin(40);
+label2.setLinkColor(black);
+label2.setStrokeColor(lime);
+label2.setFillColor(white);
+label2.setOutlineRound(20);
+
+var label3 = new  com.jensoft.jenscript.plugin.pie.label.BorderLabel("Linusque");
+label3.setTextColor(white);
+label3.setMargin(40);
+label3.setLinkColor(black);
+label3.setStrokeColor(emerald);
+label3.setFillColor(white);
+label3.setOutlineRound(20);
+
+var label4 = new  com.jensoft.jenscript.plugin.pie.label.BorderLabel("1109");
+label4.setTextColor(white);
+label4.setMargin(40);
+label4.setLinkColor(black);
+label4.setStrokeColor(cobalt);
+label4.setFillColor(white);
+label4.setOutlineRound(20);
+
+var stroke = new com.jensoft.jenscript.graphics.Stroke(2);
+label1.setStroke(stroke);
+label2.setStroke(stroke);
+label3.setStroke(stroke);
+label4.setStroke(stroke);
+
+
+s1.setSliceLabel(label1);
+s2.setSliceLabel(label2);
+s3.setSliceLabel(label3);
+s4.setSliceLabel(label4);
+
+
+var fractions = [0,0.5,1];
+var colors = [black,black,black2];
+var shader = new com.jensoft.jenscript.graphics.Shader(fractions, colors);
+label1.setShader(shader);
+label2.setShader(shader);
+label3.setShader(shader);
+label4.setShader(shader);
+
+piePlugin.addSlice(s1);
+piePlugin.addSlice(s2);
+piePlugin.addSlice(s3);
+piePlugin.addSlice(s4);
+
+
+view.registerWindow2D(pieWindow);
+
+view.requestView();
+
+</script>
+
+
+
+</body>
+</html>
