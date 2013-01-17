@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://localhost:8888/js/jenscript.js"></script>
+</head>
+<body>
+
+
+<img alt="" src="" id="gridView"><br>
+
+<script type="text/javascript">
+ 
+
+var colorutil = new com.jensoft.jenscript.ColorUtil();
+var black = colorutil.getColor(0, 0, 0, 255);
+var black2 = colorutil.getColor(0, 0, 0, 80);
+var white = colorutil.getColor(220, 255, 255, 255);
+var redwood 	= colorutil.getColor(203,71,52,255);
+var lime 		= colorutil.getColor(197,208,89,255);
+var cobalt 		= colorutil.getColor(35,56,158,255);
+var emerald 	= colorutil.getColor(62,142,78,255);
+ 
+
+ var view = new com.jensoft.jenscript.View2D(800,500,"gridView");
+ view.setBackground(new com.jensoft.jenscript.Color(255, 255, 255, 255));
+
+var window2D = new com.jensoft.jenscript.Window2D("jen", -1000,1000, -1000, 1000);
+
+window2D.setThemeColor(emerald);
+view.registerWindow2D(window2D);
+
+var gp = new com.jensoft.jenscript.plugin.grid.GridPlugin();
+window2D.registerPlugin(gp);
+
+var staticManager = new com.jensoft.jenscript.plugin.grid.StaticGridManager('vertical',emerald,3);
+gp.addManager(staticManager);
+
+var dynManager = new com.jensoft.jenscript.plugin.grid.DynamicGridManager('horizontal',cobalt,0,500);
+gp.addManager(dynManager);
+
+var flowManager = new com.jensoft.jenscript.plugin.grid.FlowGridManager('horizontal',redwood,-500,500,90);
+gp.addManager(flowManager);
+
+var freeManager = new com.jensoft.jenscript.plugin.grid.FreeGridManager('vertical',lime);
+gp.addManager(freeManager);
+
+var grid1 = new com.jensoft.jenscript.plugin.grid.Grid(234);
+freeManager.addGrid(grid1);
+
+var grid2 = new com.jensoft.jenscript.plugin.grid.Grid(300);
+freeManager.addGrid(grid2);
+
+var stroke1 = new com.jensoft.jenscript.graphics.Stroke(2);
+stroke1.setCap('mitter');
+stroke1.setJoin('round');
+stroke1.setMiterLimit(2.7);
+var dash = [2.5,7,2.9];
+stroke1.setDash(dash);
+stroke1.setDashPhase(7.8);
+grid2.setStroke(stroke1);
+
+
+// var fractions = [0.1,0.5,1];
+// var colors = [black,black,black2];
+// var shader = new com.jensoft.jsw2d.graphics.Shader(fractions, colors);
+
+//alert(view.getViewXML());
+view.requestView();
+
+</script>
+
+
+
+</body>
+</html>

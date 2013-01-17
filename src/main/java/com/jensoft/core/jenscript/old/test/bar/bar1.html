@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://localhost:8888/js/jenscript.js"></script>
+</head>
+<body>
+
+
+<img alt="" src="" id="barView"><br>
+
+<script type="text/javascript">
+	
+setJenscriptAPIKey('12345-ER2345-1345Y-TY42U');
+
+var colorutil = new com.jensoft.jenscript.ColorUtil();
+var black = colorutil.getColor(0, 0, 0, 255);
+var black2 = colorutil.getColor(0, 0, 0, 80);
+var white = colorutil.getColor(220, 255, 255, 255);
+var redwood 	= colorutil.getColor(203,71,52,255);
+var lime 		= colorutil.getColor(197,208,89,255);
+var cobalt 		= colorutil.getColor(35,56,158,255);
+var emerald 	= colorutil.getColor(62,142,78,255);
+
+var petal1 	= colorutil.getColor(61,166,244,255);
+var petal2 	= colorutil.getColor(172,227,123,255);
+var petal3 	= colorutil.getColor(255,246,77,255);
+
+var view = new com.jensoft.jenscript.View2D(380,280,"barView");
+view.setBackground(new com.jensoft.jenscript.Color(255, 255, 255, 255));
+var c1 = new com.jensoft.jenscript.Color(32,39,55,200);
+var orange = colorutil.getColor(191, 118, 41,255);
+var fractions = [0,1];
+var colors = [c1,black];
+var shader = new com.jensoft.jenscript.graphics.Shader(fractions, colors);
+var vb = new com.jensoft.jenscript.ViewBackground(shader,orange);
+view.setBackgroundPainter(vb);
+
+
+
+var window2D = new com.jensoft.jenscript.Window2D("bar", 0,0, -10, 120);
+
+window2D.setThemeColor(emerald);
+view.registerWindow2D(window2D);
+
+
+var mm2 = new com.jensoft.jenscript.plugin.metrics.MilliMetrics();
+mm2.setRef(0);
+mm2.setAxis('axisWest');
+mm2.setMajor(20);
+mm2.setMedian(5);
+mm2.setMinor(1);
+mm2.setPaintAxisBaseLine(true);
+window2D.registerPlugin(mm2);
+
+
+var symbolPlugin = new com.jensoft.jenscript.plugin.symbol.SymbolPlugin();
+symbolPlugin.setNature('vertical');
+window2D.registerPlugin(symbolPlugin);
+
+var bar1 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar1.setSymbolBase(0);
+bar1.setThickness(25);
+bar1.setThemeColor(petal1);
+bar1.setAscentValue(50);
+bar1.setMorpheRound(8);
+bar1.setBarEffect('fx1');
+bar1.setBarDraw(white);
+
+
+var bar1Label = new  com.jensoft.jenscript.plugin.symbol.label.RelativeLabel("label");
+bar1Label.setVerticalAlign('NorthBottom');
+bar1Label.setHorizontalAlign('EastAcross');
+bar1Label.setText('MyLabel');
+bar1Label.setTextColor(orange);
+bar1Label.setDrawColor(orange);
+bar1Label.setFillColor(black);
+bar1Label.setOutlineRound(10);
+//bar1.setLabel(bar1Label);
+
+
+var bar2 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar2.setSymbolBase(0);
+bar2.setThickness(25);
+bar2.setThemeColor(petal2);
+bar2.setAscentValue(80);
+bar2.setMorpheRound(8);
+bar2.setBarEffect('fx1');
+bar2.setBarDraw(white);
+
+
+var bar3 = new  com.jensoft.jenscript.plugin.symbol.Bar();
+bar3.setSymbolBase(0);
+bar3.setThickness(25);
+bar3.setThemeColor(petal3);
+bar3.setAscentValue(58);
+bar3.setMorpheRound(8);
+bar3.setBarEffect('fx1');
+bar3.setBarDraw(white);
+
+
+var glue = new com.jensoft.jenscript.plugin.symbol.Glue();
+var strut = new com.jensoft.jenscript.plugin.symbol.Strut(4);
+
+
+var barLayer = new com.jensoft.jenscript.plugin.symbol.BarSymbolLayer();
+
+
+barLayer.addSymbol(glue);
+barLayer.addSymbol(bar1);
+barLayer.addSymbol(strut);
+barLayer.addSymbol(bar2);
+barLayer.addSymbol(strut);
+barLayer.addSymbol(bar3);
+barLayer.addSymbol(glue);
+
+symbolPlugin.addLayer(barLayer);
+
+//alert(view.getViewXML());
+view.requestView();
+
+</script>
+
+
+
+</body>
+</html>

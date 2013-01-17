@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript" src="http://localhost:8888/js/jenscript.js"></script>
+</head>
+<body>
+
+
+<img alt="" src="" id="donut3DView"><br>
+
+<script type="text/javascript">
+
+var colorutil = new com.jensoft.jenscript.ColorUtil();
+var black = colorutil.getColor(0, 0, 0, 255);
+var black2 = colorutil.getColor(0, 0, 0, 80);
+var white = colorutil.getColor(255, 255, 255, 255);
+var redwood 	= colorutil.getColor(203,71,52,255);
+var lime 		= colorutil.getColor(197,208,89,255);
+var cobalt 		= colorutil.getColor(35,56,158,255);
+var emerald 	= colorutil.getColor(62,142,78,255);
+
+var view = new com.jensoft.jenscript.View2D(800,500,"donut3DView");
+view.setBackground(new com.jensoft.jenscript.Color(255, 255, 255, 255));
+
+var w2d1 = new com.jensoft.jenscript.Window2D("jen", -1000, 1000, -1000, 1000);
+w2d1.setThemeColor(emerald);
+
+
+
+var donut3DPlugin = new com.jensoft.jenscript.plugin.donut3d.Donut3DPlugin();
+donut3DPlugin.setInnerRadius(0);
+donut3DPlugin.setOuterRadius(120);
+donut3DPlugin.setThickness(30);
+donut3DPlugin.setTilt(60);
+donut3DPlugin.setStartAngleDegree(40);
+w2d1.registerPlugin(donut3DPlugin);
+
+//effect
+var effect = new com.jensoft.jenscript.plugin.donut3d.effect.Fx1();
+effect.setIncidence(180);
+donut3DPlugin.setEffect(effect);
+
+var orange 	= colorutil.getColor(244,145,26,255);
+
+var s1 = new com.jensoft.jenscript.plugin.donut3d.Slice(45, colorutil.getColor(240,240,240,255));
+var s2 = new com.jensoft.jenscript.plugin.donut3d.Slice(5, colorutil.getColor(249,235,113,255));
+var s3 = new com.jensoft.jenscript.plugin.donut3d.Slice(30, colorutil.getColor(176,224,88,255));
+var s4 = new com.jensoft.jenscript.plugin.donut3d.Slice(20, orange);
+
+
+var label1 = new  com.jensoft.jenscript.plugin.donut3d.label.RadialLabel("Label 1");
+label1.setTextColor(white);
+label1.setStrokeColor(cobalt);
+label1.setFillColor(black);
+label1.setOutlineRound(20);
+
+var label2 = new  com.jensoft.jenscript.plugin.donut3d.label.RadialLabel("Label 2");
+label2.setTextColor(white);
+label2.setStrokeColor(redwood);
+label2.setFillColor(white);
+label2.setOutlineRound(20);
+
+var label3 = new  com.jensoft.jenscript.plugin.donut3d.label.RadialLabel("Label 3");
+label3.setTextColor(white);
+label3.setStrokeColor(emerald);
+label3.setFillColor(white);
+label3.setOutlineRound(20);
+
+var label4 = new  com.jensoft.jenscript.plugin.donut3d.label.RadialLabel("Label 4");
+label4.setTextColor(white);
+label4.setStrokeColor(lime);
+label4.setFillColor(white);
+label4.setOutlineRound(20);
+
+
+
+s1.setSliceLabel(label1);
+s2.setSliceLabel(label2);
+s3.setSliceLabel(label3);
+s4.setSliceLabel(label4);
+
+var stroke = new com.jensoft.jenscript.graphics.Stroke(2);
+label1.setStroke(stroke);
+label2.setStroke(stroke);
+label3.setStroke(stroke);
+label4.setStroke(stroke);
+
+var fractions = [0,0.5,1];
+var colors = [black,black,black2];
+var shader = new com.jensoft.jenscript.graphics.Shader(fractions, colors);
+label1.setShader(shader);
+label2.setShader(shader);
+label3.setShader(shader);
+label4.setShader(shader);
+
+donut3DPlugin.addSlice(s1);
+donut3DPlugin.addSlice(s2);
+donut3DPlugin.addSlice(s3);
+donut3DPlugin.addSlice(s4);
+
+
+
+view.registerWindow2D(w2d1);
+
+view.requestView();
+
+</script>
+
+
+
+</body>
+</html>

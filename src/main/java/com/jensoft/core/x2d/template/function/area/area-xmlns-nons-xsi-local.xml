@@ -1,0 +1,190 @@
+<view2d xmlns="http://www.jensoft.org/jensoft/schema/x2d"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jensoft.org/jensoft/schema/x2d 
+							../../../lang/x2d.xsd">
+	<view-key>simple area</view-key>
+	<api-key>a996d69d-97b9-4dc6-9815-405dbba71f3b</api-key>
+	<width>600</width>
+	<height>400</height>
+	<west>10</west>
+	<east>10</east>
+	<north>10</north>
+	<south>10</south>
+	<window2d xsi:type="Window2DLinear">
+		<id>id</id>
+		<name>curve window</name>
+		<theme-color>
+			<r>0</r>
+			<g>0</g>
+			<b>0</b>
+			<a>255</a>
+		</theme-color>
+		<plugin xsi:type="OutlinePlugin">
+			<outline-color>
+				<r>0</r>
+				<g>0</g>
+				<b>0</b>
+				<a>255</a>
+			</outline-color>
+		</plugin>
+		<plugin xsi:type="AreaPlugin">
+
+			<area-function>
+				<name>my area</name>
+				<theme-color>
+					<r>0</r>
+					<g>0</g>
+					<b>0</b>
+					<a>255</a>
+				</theme-color>
+				<source-function xsi:type="AffineSourceFunction">
+					<name>my source 1</name>
+					<id>id1</id>
+					<source-x>1.5 1.8 3.1 4.9 5.6</source-x>
+					<source-y>1.52 1.82 3.13 4.98 5.67</source-y>
+				</source-function>
+				<base>0</base>
+
+
+				<area-draw xsi:type="AreaDefaultDraw">
+					<area-color>
+						<r>0</r>
+						<g>0</g>
+						<b>0</b>
+						<a>255</a>
+					</area-color>
+					<area-stroke>
+						<width>1.2</width>
+					</area-stroke>
+					<base-color>
+						<r>0</r>
+						<g>0</g>
+						<b>0</b>
+						<a>255</a>
+					</base-color>
+					<base-stroke>
+						<width>1.2</width>
+					</base-stroke>
+				</area-draw>
+				<area-fill xsi:type="AreaDefaultFill">
+				</area-fill>
+				<glyph>
+					<x-value>2.6</x-value>
+					<text>myGlyph</text>
+					<divergence>10</divergence>
+					<style>tangent</style>
+					<color-1>
+						<r>0</r>
+						<g>0</g>
+						<b>0</b>
+						<a>255</a>
+					</color-1>
+					<color-2>
+						<r>0</r>
+						<g>0</g>
+						<b>0</b>
+						<a>255</a>
+					</color-2>
+					<marker xsi:type="RoundGlyphMarker">
+						<radius>4</radius>
+						<fill-color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+							<a>255</a>
+						</fill-color>
+						<draw-color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+							<a>255</a>
+						</draw-color>
+					</marker>
+				</glyph>
+			</area-function>
+			<area-function>
+				<name>my area 2</name>
+				<theme-color>
+					<r>240</r>
+					<g>0</g>
+					<b>0</b>
+					<a>255</a>
+				</theme-color>
+				<source-function xsi:type="InterpolateSourceFunction">
+					<name>my source 2</name>
+					<id>id2</id>
+					<source-x>1.5 1.8 3.1 4.9 5.6</source-x>
+					<source-y>4 1 6 2 8</source-y>
+					<delta>0.2</delta>
+				</source-function>
+
+				<base>0</base>
+				<glyph>
+					<x-value>2.6</x-value>
+					<text>myGlyph</text>
+					<divergence>10</divergence>
+					<style>tangent</style>
+					<color-1>
+						<r>0</r>
+						<g>0</g>
+						<b>0</b>
+						<a>255</a>
+					</color-1>
+					<color-2>
+						<r>0</r>
+						<g>0</g>
+						<b>0</b>
+						<a>255</a>
+					</color-2>
+					<marker xsi:type="RoundGlyphMarker">
+						<radius>4</radius>
+						<fill-color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+							<a>255</a>
+						</fill-color>
+						<draw-color>
+							<r>0</r>
+							<g>0</g>
+							<b>0</b>
+							<a>255</a>
+						</draw-color>
+					</marker>
+				</glyph>
+				<glyph>
+					<x-value>4</x-value>
+					<text>myGlyph</text>
+					<divergence>20</divergence>
+					<style>default</style>
+					<color-1>
+						<r>0</r>
+						<g>0</g>
+						<b>255</b>
+						<a>255</a>
+					</color-1>
+					<color-2>
+						<r>0</r>
+						<g>255</g>
+						<b>0</b>
+						<a>255</a>
+					</color-2>
+					<marker xsi:type="TicTacGlyphMarker">
+						<theme-color>
+							<r>0</r>
+							<g>255</g>
+							<b>0</b>
+							<a>255</a>
+						</theme-color>
+						<thickness>4</thickness>
+						<divergence>8</divergence>
+					</marker>
+				</glyph>
+			</area-function>
+		</plugin>
+		<min-x>0</min-x>
+		<max-x>6</max-x>
+		<min-y>0</min-y>
+		<max-y>6</max-y>
+	</window2d>
+</view2d>
