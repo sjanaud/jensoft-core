@@ -8,10 +8,10 @@ package ${ui-package};
 
 
 import ${view-import};
-import com.jensoft.sw2d.core.demo.nature.Generated;
-import com.jensoft.sw2d.core.demo.nature.FrameUI;
-import com.jensoft.sw2d.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.sw2d.core.demo.ui.ViewFrameUI;
+import com.jensoft.core.demo.nature.Generated;
+import com.jensoft.core.demo.nature.FrameUI;
+import com.jensoft.core.demo.nature.JenSoftAPIDemo;
+import com.jensoft.core.demo.ui.ViewFrameUI;
 
 /**
  * <code>${ui-class}</code>

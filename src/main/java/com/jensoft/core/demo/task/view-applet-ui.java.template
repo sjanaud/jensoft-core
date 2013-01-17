@@ -7,10 +7,10 @@
 package ${ui-package};
 
 import ${view-import};
-import com.jensoft.sw2d.core.demo.nature.Generated;
-import com.jensoft.sw2d.core.demo.nature.AppletUI;
-import com.jensoft.sw2d.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.sw2d.core.demo.ui.ViewAppletUI;
+import com.jensoft.core.demo.nature.Generated;
+import com.jensoft.core.demo.nature.AppletUI;
+import com.jensoft.core.demo.nature.JenSoftAPIDemo;
+import com.jensoft.core.demo.ui.ViewAppletUI;
 
 /**
  * <code>${ui-class}</code>

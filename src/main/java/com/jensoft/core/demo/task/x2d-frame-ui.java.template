@@ -6,11 +6,11 @@
  */
 package ${package};
 
-import com.jensoft.sw2d.core.demo.nature.Generated;
-import com.jensoft.sw2d.core.demo.nature.FrameUI;
-import com.jensoft.sw2d.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.sw2d.core.demo.ui.X2DFrameUI;
-import com.jensoft.sw2d.core.x2d.X2D;
+import com.jensoft.core.demo.nature.Generated;
+import com.jensoft.core.demo.nature.FrameUI;
+import com.jensoft.core.demo.nature.JenSoftAPIDemo;
+import com.jensoft.core.demo.ui.X2DFrameUI;
+import com.jensoft.core.x2d.X2D;
 
 
 /**

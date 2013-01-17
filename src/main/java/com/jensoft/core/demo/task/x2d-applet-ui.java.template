@@ -6,12 +6,12 @@
  */
 package ${package};
 
-import com.jensoft.sw2d.core.demo.nature.Generated;
-import com.jensoft.sw2d.core.demo.nature.AppletUI;
-import com.jensoft.sw2d.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.sw2d.core.demo.ui.X2DAppletUI;
-import com.jensoft.sw2d.core.x2d.X2D;
-import com.jensoft.sw2d.core.x2d.X2DException;
+import com.jensoft.core.demo.nature.Generated;
+import com.jensoft.core.demo.nature.AppletUI;
+import com.jensoft.core.demo.nature.JenSoftAPIDemo;
+import com.jensoft.core.demo.ui.X2DAppletUI;
+import com.jensoft.core.x2d.X2D;
+import com.jensoft.core.x2d.X2DException;
 
 /**
  * <code>${ui-class}</code>
