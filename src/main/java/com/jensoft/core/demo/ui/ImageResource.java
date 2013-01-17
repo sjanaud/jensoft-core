@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.demo;
+package com.jensoft.core.demo.ui;
 
 import javax.swing.ImageIcon;
 

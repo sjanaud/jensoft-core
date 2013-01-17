@@ -34,7 +34,6 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-import com.jensoft.core.demo.ImageResource;
 import com.jensoft.core.demo.component.DemoTab;
 import com.jensoft.core.demo.component.DemoTabSet;
 import com.jensoft.core.demo.styles.SectionStyle;
