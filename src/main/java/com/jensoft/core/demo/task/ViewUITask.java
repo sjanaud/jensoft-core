@@ -152,13 +152,15 @@ public class ViewUITask extends Task {
 		}
 		log("Frame UI File absolute path: "+ frameUIAbsolutePath);						
 		log("generate source...");
-		generateSource(frameUI, new File(frameUIAbsolutePath));
 		
-		String frameUIJnlpLocation  = src + File.separator + uiJnlpSegment;
-		File frameUIJnlpLocationDirectory = new File(frameUIJnlpLocation);
-		if(!frameUIJnlpLocationDirectory.exists()){
-			log("Frame UI JNLP File location does not exist ...created!: " + frameUIJnlpLocationDirectory.mkdirs());
-		}	
+		
+		//generateSource(frameUI, new File(frameUIAbsolutePath));
+		
+//		String frameUIJnlpLocation  = src + File.separator + uiJnlpSegment;
+//		File frameUIJnlpLocationDirectory = new File(frameUIJnlpLocation);
+//		if(!frameUIJnlpLocationDirectory.exists()){
+//			log("Frame UI JNLP File location does not exist ...created!: " + frameUIJnlpLocationDirectory.mkdirs());
+//		}	
 		
 	}
 	
@@ -215,7 +217,7 @@ public class ViewUITask extends Task {
 		}
 		log("Applet UI File absolute path: "+ appletUIAbsolutePath);						
 		
-		generateSource(appletUI, new File(appletUIAbsolutePath));
+		//generateSource(appletUI, new File(appletUIAbsolutePath));
 		
 	}
 
@@ -302,6 +304,7 @@ public class ViewUITask extends Task {
 	}
 
 	private void generateSource(String content, File file) throws BuildException {
+		
 		FileOutputStream fop = null;
 		try {
 
