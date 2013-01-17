@@ -14,7 +14,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 
-import com.jensoft.core.demo.ImageResource;
 import com.jensoft.core.demo.component.DemoTab;
 import com.jensoft.core.demo.component.DemoTabSet;
 

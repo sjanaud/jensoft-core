@@ -44,7 +44,6 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-import com.jensoft.core.demo.ImageResource;
 import com.jensoft.core.demo.component.DemoTab;
 import com.jensoft.core.demo.component.DemoTabSet;
 import com.jensoft.core.demo.styles.SectionStyle;
