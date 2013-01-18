@@ -84,8 +84,7 @@ public class ClassSearchUtils {
         String classpath = System.getProperty("java.class.path");
 
         try {
-            Method method =
-                this.classloader.getClass().getMethod("getClassPath", (Class<?>) null);
+            Method method =         this.classloader.getClass().getMethod("getClassPath", (Class<?>) null);
             if (method != null) {
                 classpath = (String) method.invoke(this.classloader, (Object) null);
             }
@@ -173,12 +172,7 @@ public class ClassSearchUtils {
      * @param archive Jar or zip to be searched for classes or other resources.
      */
     private void lookInArchive(File archive) {
-        log.fine(
-            "Looking in archive ["
-                + archive.getName()
-                + "] for extension ["
-                + this.extension
-                + "].");
+       System.out.println("look in archive :"+archive.getName() );
         JarFile jarFile = null;
         try {
             jarFile = new JarFile(archive);
