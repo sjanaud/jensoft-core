@@ -420,7 +420,7 @@ public class ViewFrameUI extends JFrame {
 			String packageName = getClass().getPackage().getName();
 			System.out.println("ui package : " + packageName);
 			inputSourceName = packageName.replace('.', '/') + "/" + getClass().getSimpleName() + ".java";
-
+			System.out.println("inputSourceName : " + inputSourceName);
 			InputStream is = cloader.getResourceAsStream(inputSourceName);
 			InputStreamReader isreader = new InputStreamReader(is);
 			BufferedReader in = new BufferedReader(isreader);
