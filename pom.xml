@@ -10,13 +10,13 @@
 		<jetty.version>6.1.4</jetty.version>
 	</properties>
 	<dependencies>
-	
+
 		<dependency>
 			<groupId>javax.jnlp</groupId>
 			<artifactId>jnlp-api</artifactId>
 			<version>5.0</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/ext-lib/jnlp.jar</systemPath>
+			<systemPath>C:\Program Files\Java\jdk1.6.0_32\jnlp.jar</systemPath>
 		</dependency>
 
 		<dependency>
@@ -108,31 +108,31 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-jarsigner-plugin</artifactId> -->
-<!-- 				<version>1.2</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>sign</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>sign</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 					<execution> -->
-<!-- 						<id>verify</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>verify</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 				<configuration> -->
-<!-- 					<keystore>${project.basedir}\jensoft.keystore</keystore> -->
-<!-- 					<alias>jensoft</alias> -->
-<!-- 					<storepass>password</storepass> -->
-<!-- 					<keypass>password</keypass> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-jarsigner-plugin</artifactId> -->
+			<!-- <version>1.2</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>sign</id> -->
+			<!-- <goals> -->
+			<!-- <goal>sign</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- <execution> -->
+			<!-- <id>verify</id> -->
+			<!-- <goals> -->
+			<!-- <goal>verify</goal> -->
+			<!-- </goals> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- <configuration> -->
+			<!-- <keystore>${project.basedir}\jensoft.keystore</keystore> -->
+			<!-- <alias>jensoft</alias> -->
+			<!-- <storepass>password</storepass> -->
+			<!-- <keypass>password</keypass> -->
+			<!-- </configuration> -->
+			<!-- </plugin> -->
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.7</version>
@@ -169,8 +169,8 @@
 								<echo>JenSoft API - Copy Core Templates to classes</echo>
 								<echo>JenSoft API - Copy Core Images to classes</echo>
 								<echo>JenSoft API - Copy Core X2D to classes</echo>
-								
-								
+
+
 								<!-- action here if needed resources -->
 							</target>
 						</configuration>
