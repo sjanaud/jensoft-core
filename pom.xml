@@ -12,6 +12,12 @@
 	<dependencies>
 
 		<dependency>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-jar-plugin</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+		<dependency>
 			<groupId>javax.jnlp</groupId>
 			<artifactId>jnlp-api</artifactId>
 			<version>5.0</version>
@@ -19,11 +25,11 @@
 			<systemPath>C:\Program Files\Java\jdk1.6.0_32\jnlp.jar</systemPath>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.ant</groupId>
-			<artifactId>ant</artifactId>
-			<version>1.8.4</version>
-		</dependency>
+		<!-- <dependency> -->
+		<!-- <groupId>org.apache.ant</groupId> -->
+		<!-- <artifactId>ant</artifactId> -->
+		<!-- <version>1.8.4</version> -->
+		<!-- </dependency> -->
 
 		<!-- JETTY DEPENDENCIES FOR TESTING -->
 		<dependency>
@@ -104,35 +110,37 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.0</version>
 				<configuration>
+					<fork>true</fork>
 					<source>1.6</source>
 					<target>1.6</target>
+					<executable>C:\usr\Java\jdk1.6.0_38\bin</executable>
 				</configuration>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-jarsigner-plugin</artifactId> -->
-			<!-- <version>1.2</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>sign</id> -->
-			<!-- <goals> -->
-			<!-- <goal>sign</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- <execution> -->
-			<!-- <id>verify</id> -->
-			<!-- <goals> -->
-			<!-- <goal>verify</goal> -->
-			<!-- </goals> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- <configuration> -->
-			<!-- <keystore>${project.basedir}\jensoft.keystore</keystore> -->
-			<!-- <alias>jensoft</alias> -->
-			<!-- <storepass>password</storepass> -->
-			<!-- <keypass>password</keypass> -->
-			<!-- </configuration> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.2</version>
+				<executions>
+					<execution>
+						<id>signing</id>
+						<goals>
+							<goal>sign</goal>
+						</goals>
+						<phase>package</phase>
+						<inherited>true</inherited>
+
+						<configuration>
+							<keystore>${project.basedir}\jensoft.keystore</keystore>	
+							<storepass>password</storepass>
+							<keypass>password</keypass>
+							<alias>jensoft</alias>
+							<verbose>true</verbose>
+							<verify>true</verify>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			
 			<plugin>
 				<artifactId>maven-antrun-plugin</artifactId>
 				<version>1.7</version>
@@ -205,4 +213,5 @@
 	</build>
 
 
+	<url>http://www.jensoft.org</url>
 </project>
