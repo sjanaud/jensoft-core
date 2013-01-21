@@ -118,75 +118,78 @@
 					<executable>C:\usr\Java\jdk1.6.0_38\bin</executable>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-				<version>2.2</version>
-				<executions>
-					<execution>
-						<id>signing</id>
-						<goals>
-							<goal>sign</goal>
-						</goals>
-						<phase>package</phase>
-						<inherited>true</inherited>
+<!-- 			<plugin> -->
+<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
+<!-- 				<version>2.2</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>signing</id> -->
+<!-- 						<goals> -->
+<!-- 							<goal>sign</goal> -->
+<!-- 						</goals> -->
+<!-- 						<phase>package</phase> -->
+<!-- 						<inherited>true</inherited> -->
 
-						<configuration>
-							<keystore>${project.basedir}\jensoft.keystore</keystore>	
-							<storepass>password</storepass>
-							<keypass>password</keypass>
-							<alias>jensoft</alias>
-							<verbose>true</verbose>
-							<verify>true</verify>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 						<configuration> -->
+<!-- 							<keystore>${project.basedir}\jensoft.keystore</keystore>	 -->
+<!-- 							<storepass>password</storepass> -->
+<!-- 							<keypass>password</keypass> -->
+<!-- 							<alias>jensoft</alias> -->
+<!-- 							<verbose>true</verbose> -->
+<!-- 							<verify>true</verify> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
 			
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>jensoftapi-generate-source-execution</id>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo>JenSoft API - Generate Sources</echo>
-								<!-- action here if needed source generation -->
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.7</version>
-				<executions>
-					<execution>
-						<id>jensoft-core-resources</id>
-						<phase>prepare-package</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<echo>JenSoft API - Prepare Package</echo>
-								<echo>JenSoft API - Copy Core Fonts to classes</echo>
-								<echo>JenSoft API - Copy Core Templates to classes</echo>
-								<echo>JenSoft API - Copy Core Images to classes</echo>
-								<echo>JenSoft API - Copy Core X2D to classes</echo>
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
+<!-- 				<version>1.7</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>jensoftapi-generate-source-execution</id> -->
+<!-- 						<phase>generate-sources</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<target> -->
+<!-- 								<echo>JenSoft API - Generate Sources</echo> -->
+<!-- 								action here if needed source generation -->
+<!-- 							</target> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
+			
+			
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
+<!-- 				<version>1.7</version> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>jensoft-core-resources</id> -->
+<!-- 						<phase>prepare-package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>run</goal> -->
+<!-- 						</goals> -->
+<!-- 						<configuration> -->
+<!-- 							<target> -->
+<!-- 								<echo>JenSoft API - Prepare Package</echo> -->
+<!-- 								<echo>JenSoft API - Copy Core Fonts to classes</echo> -->
+<!-- 								<echo>JenSoft API - Copy Core Templates to classes</echo> -->
+<!-- 								<echo>JenSoft API - Copy Core Images to classes</echo> -->
+<!-- 								<echo>JenSoft API - Copy Core X2D to classes</echo> -->
 
 
-								<!-- action here if needed resources -->
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!-- 								action here if needed resources -->
+<!-- 							</target> -->
+<!-- 						</configuration> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
@@ -199,6 +202,7 @@
 					</execution>
 				</executions>
 			</plugin>
+			
 			<!-- <plugin> -->
 			<!-- <groupId>org.apache.maven.plugins</groupId> -->
 			<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
