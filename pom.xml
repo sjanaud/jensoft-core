@@ -17,12 +17,13 @@
 			<version>2.4</version>
 		</dependency>
 
+		<!-- you need to install jnlp.jar in local repository -->
+		<!-- mvn install:install-file  -Dfile=C:\Tools\Java\jdk1.6.0_37\sample\jnlp\servlet\jnlp.jar -DgroupId=javax.jnlp -DartifactId=jnlp-api -Dversion=6.0 -Dpackaging=jar -DlocalRepositoryPath=C:\Tools\Maven\repository  -->
 		<dependency>
 			<groupId>javax.jnlp</groupId>
 			<artifactId>jnlp-api</artifactId>
-			<version>5.0</version>
-			<scope>system</scope>
-			<systemPath>C:\Program Files\Java\jdk1.6.0_32\jnlp.jar</systemPath>
+			<version>6.0</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- <dependency> -->
