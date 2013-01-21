@@ -7,7 +7,6 @@
 	<name>JenSoft API Core</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jetty.version>6.1.4</jetty.version>
 	</properties>
 	<dependencies>
 
@@ -17,60 +16,33 @@
 			<version>2.4</version>
 		</dependency>
 
-		<!-- you need to install jnlp.jar in local repository -->
-		<!-- mvn install:install-file  -Dfile=C:\usr\Java\jdk1.6.0_38\sample\jnlp\servlet\jnlp.jar -DgroupId=javax.jnlp -DartifactId=jnlp-api -Dversion=6.0 -Dpackaging=jar -DlocalRepositoryPath=C:\Users\sebastien\.m2\repository  -->
+		<!-- you need to install system lib jnlp.jar in local repository , can 
+			be found in java jdk sample pack, download separately -->
+		<!-- mvn install:install-file -Dfile=C:\usr\Java\jdk1.6.0_38\sample\jnlp\servlet\jnlp.jar 
+			-DgroupId=javax.jnlp -DartifactId=jnlp-api -Dversion=6.0 -Dpackaging=jar 
+			-DlocalRepositoryPath=C:\Users\sebastien\.m2\repository -->
 		<dependency>
 			<groupId>javax.jnlp</groupId>
 			<artifactId>jnlp-api</artifactId>
 			<version>6.0</version>
 			<scope>provided</scope>
 		</dependency>
-		
-		
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+
 		<!-- <dependency> -->
 		<!-- <groupId>org.apache.ant</groupId> -->
 		<!-- <artifactId>ant</artifactId> -->
 		<!-- <version>1.8.4</version> -->
 		<!-- </dependency> -->
 
-		<!-- JETTY DEPENDENCIES FOR TESTING -->
-		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jetty</artifactId>
-			<version>${jetty.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jetty-util</artifactId>
-			<version>${jetty.version}</version>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jetty-management</artifactId>
-			<version>${jetty.version}</version>
-			<scope>provided</scope>
-		</dependency>
 
-		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jetty-plus</artifactId>
-			<version>${jetty.version}</version>
-			<type>jar</type>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jsp-2.1</artifactId>
-			<version>${jetty.version}</version>
-			<scope>jar</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.mortbay.jetty</groupId>
-			<artifactId>jsp-api-2.1</artifactId>
-			<version>${jetty.version}</version>
-		</dependency>
 	</dependencies>
 
 
@@ -118,81 +90,82 @@
 					<executable>C:\usr\Java\jdk1.6.0_38\bin</executable>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
-<!-- 				<version>2.2</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>signing</id> -->
-<!-- 						<goals> -->
-<!-- 							<goal>sign</goal> -->
-<!-- 						</goals> -->
-<!-- 						<phase>package</phase> -->
-<!-- 						<inherited>true</inherited> -->
+			<!-- <plugin> -->
+			<!-- <groupId>org.apache.maven.plugins</groupId> -->
+			<!-- <artifactId>maven-jar-plugin</artifactId> -->
+			<!-- <version>2.2</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>signing</id> -->
+			<!-- <goals> -->
+			<!-- <goal>sign</goal> -->
+			<!-- </goals> -->
+			<!-- <phase>package</phase> -->
+			<!-- <inherited>true</inherited> -->
 
-<!-- 						<configuration> -->
-<!-- 							<keystore>${project.basedir}\jensoft.keystore</keystore>	 -->
-<!-- 							<storepass>password</storepass> -->
-<!-- 							<keypass>password</keypass> -->
-<!-- 							<alias>jensoft</alias> -->
-<!-- 							<verbose>true</verbose> -->
-<!-- 							<verify>true</verify> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
-			
-<!-- 			<plugin> -->
-<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
-<!-- 				<version>1.7</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>jensoftapi-generate-source-execution</id> -->
-<!-- 						<phase>generate-sources</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>run</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<target> -->
-<!-- 								<echo>JenSoft API - Generate Sources</echo> -->
-<!-- 								action here if needed source generation -->
-<!-- 							</target> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
-			
-			
-<!-- 			<plugin> -->
-<!-- 				<artifactId>maven-antrun-plugin</artifactId> -->
-<!-- 				<version>1.7</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>jensoft-core-resources</id> -->
-<!-- 						<phase>prepare-package</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>run</goal> -->
-<!-- 						</goals> -->
-<!-- 						<configuration> -->
-<!-- 							<target> -->
-<!-- 								<echo>JenSoft API - Prepare Package</echo> -->
-<!-- 								<echo>JenSoft API - Copy Core Fonts to classes</echo> -->
-<!-- 								<echo>JenSoft API - Copy Core Templates to classes</echo> -->
-<!-- 								<echo>JenSoft API - Copy Core Images to classes</echo> -->
-<!-- 								<echo>JenSoft API - Copy Core X2D to classes</echo> -->
+			<!-- <configuration> -->
+			<!-- <keystore>${project.basedir}\jensoft.keystore</keystore> -->
+			<!-- <storepass>password</storepass> -->
+			<!-- <keypass>password</keypass> -->
+			<!-- <alias>jensoft</alias> -->
+			<!-- <verbose>true</verbose> -->
+			<!-- <verify>true</verify> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+
+			<!-- <plugin> -->
+			<!-- <artifactId>maven-antrun-plugin</artifactId> -->
+			<!-- <version>1.7</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>jensoftapi-generate-source-execution</id> -->
+			<!-- <phase>generate-sources</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>run</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <target> -->
+			<!-- <echo>JenSoft API - Generate Sources</echo> -->
+			<!-- action here if needed source generation -->
+			<!-- </target> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
 
 
-<!-- 								action here if needed resources -->
-<!-- 							</target> -->
-<!-- 						</configuration> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 			</plugin> -->
-			
+			<!-- <plugin> -->
+			<!-- <artifactId>maven-antrun-plugin</artifactId> -->
+			<!-- <version>1.7</version> -->
+			<!-- <executions> -->
+			<!-- <execution> -->
+			<!-- <id>jensoft-core-resources</id> -->
+			<!-- <phase>prepare-package</phase> -->
+			<!-- <goals> -->
+			<!-- <goal>run</goal> -->
+			<!-- </goals> -->
+			<!-- <configuration> -->
+			<!-- <target> -->
+			<!-- <echo>JenSoft API - Prepare Package</echo> -->
+			<!-- <echo>JenSoft API - Copy Core Fonts to classes</echo> -->
+			<!-- <echo>JenSoft API - Copy Core Templates to classes</echo> -->
+			<!-- <echo>JenSoft API - Copy Core Images to classes</echo> -->
+			<!-- <echo>JenSoft API - Copy Core X2D to classes</echo> -->
+
+
+			<!-- action here if needed resources -->
+			<!-- </target> -->
+			<!-- </configuration> -->
+			<!-- </execution> -->
+			<!-- </executions> -->
+			<!-- </plugin> -->
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
+				<version>2.2.1</version>
 				<executions>
 					<execution>
 						<id>attach-sources</id>
@@ -202,7 +175,7 @@
 					</execution>
 				</executions>
 			</plugin>
-			
+
 			<!-- <plugin> -->
 			<!-- <groupId>org.apache.maven.plugins</groupId> -->
 			<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
