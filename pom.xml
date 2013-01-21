@@ -18,7 +18,7 @@
 		</dependency>
 
 		<!-- you need to install jnlp.jar in local repository -->
-		<!-- mvn install:install-file  -Dfile=C:\Tools\Java\jdk1.6.0_37\sample\jnlp\servlet\jnlp.jar -DgroupId=javax.jnlp -DartifactId=jnlp-api -Dversion=6.0 -Dpackaging=jar -DlocalRepositoryPath=C:\Tools\Maven\repository  -->
+		<!-- mvn install:install-file  -Dfile=C:\usr\Java\jdk1.6.0_38\sample\jnlp\servlet\jnlp.jar -DgroupId=javax.jnlp -DartifactId=jnlp-api -Dversion=6.0 -Dpackaging=jar -DlocalRepositoryPath=C:\Users\sebastien\.m2\repository  -->
 		<dependency>
 			<groupId>javax.jnlp</groupId>
 			<artifactId>jnlp-api</artifactId>
