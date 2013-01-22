@@ -87,33 +87,14 @@
 					<fork>true</fork>
 					<source>1.6</source>
 					<target>1.6</target>
-					<executable>C:\usr\Java\jdk1.6.0_38\bin</executable>
 				</configuration>
 			</plugin>
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-jar-plugin</artifactId> -->
-			<!-- <version>2.2</version> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <id>signing</id> -->
-			<!-- <goals> -->
-			<!-- <goal>sign</goal> -->
-			<!-- </goals> -->
-			<!-- <phase>package</phase> -->
-			<!-- <inherited>true</inherited> -->
-
-			<!-- <configuration> -->
-			<!-- <keystore>${project.basedir}\jensoft.keystore</keystore> -->
-			<!-- <storepass>password</storepass> -->
-			<!-- <keypass>password</keypass> -->
-			<!-- <alias>jensoft</alias> -->
-			<!-- <verbose>true</verbose> -->
-			<!-- <verify>true</verify> -->
-			<!-- </configuration> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>2.2</version>
+				
+			</plugin>
 
 			<!-- <plugin> -->
 			<!-- <artifactId>maven-antrun-plugin</artifactId> -->
