@@ -468,10 +468,6 @@ public abstract class X2DFrameUI extends JFrame {
 			transformer.transform(new DOMSource(doc), new StreamResult(sw));
 
 			StyledDocument styledDoc = sourceTextPane.getStyledDocument();
-			// styledDoc.insertString(styledDoc.getLength(),"<!-- "+" JenSoft API "+" -->\n",
-			// null);
-			// styledDoc.insertString(0,
-			// "<!-- JenSoft API  -->"+"\n"+sw.toString(), null);
 			styledDoc.insertString(0, sw.toString(), null);
 		} catch (Exception e) {
 			System.err.println("JenSoft API - Load x2d source of demo failed with error "+e.getMessage());
