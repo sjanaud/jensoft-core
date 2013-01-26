@@ -442,7 +442,7 @@ public abstract class X2DFrameUI extends JFrame {
 			}
 
 		} catch (Exception e) {
-			System.err.println("JenSoft API - Load source of demo failed.");
+			System.err.println("JenSoft API - Load source of demo failed with error "+e.getMessage());
 		}
 	}
 
@@ -474,7 +474,7 @@ public abstract class X2DFrameUI extends JFrame {
 			// "<!-- JenSoft API  -->"+"\n"+sw.toString(), null);
 			styledDoc.insertString(0, sw.toString(), null);
 		} catch (Exception e) {
-			System.err.println("JenSoft API - Load x2d source of demo failed.");
+			System.err.println("JenSoft API - Load x2d source of demo failed with error "+e.getMessage());
 		}
 	}
 

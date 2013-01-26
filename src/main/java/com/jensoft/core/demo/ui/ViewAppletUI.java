@@ -415,8 +415,6 @@ public abstract class ViewAppletUI extends JApplet {
 		uiannotationStyle.apply();
 
 		System.out.println("JenSoft API - Styles applied successfully.");
-
-		System.out.println("JenSoft API - Styles applied successfully.");
 	}
 
 	/**
@@ -445,7 +443,7 @@ public abstract class ViewAppletUI extends JApplet {
 			}
 
 		} catch (Exception e) {
-			System.err.println("JenSoft API - Load source of demo failed.");
+			System.err.println("JenSoft API - Load source of demo failed with error "+e.getMessage());
 		}
 	}
 
@@ -474,7 +472,7 @@ public abstract class ViewAppletUI extends JApplet {
 			}
 
 		} catch (Exception e) {
-			System.err.println("JenSoft API - Load source of demo failed.");
+			System.err.println("JenSoft API - Load source of demo failed with error :"+e.getMessage());
 		}
 	}
 
