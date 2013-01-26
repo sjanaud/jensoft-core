@@ -435,7 +435,7 @@ public class ViewFrameUI extends JFrame {
 			}
 
 		} catch (Exception e) {
-			System.err.println("JenSoft API - Load source of demo failed.");
+			System.err.println("JenSoft API - Load source of demo failed with error "+e.getMessage());
 		}
 	}
 
@@ -464,7 +464,7 @@ public class ViewFrameUI extends JFrame {
 			}
 
 		} catch (Exception e) {
-			System.err.println("JenSoft API - Load source of demo failed.");
+			System.err.println("JenSoft API - Load source of demo failed with "+e.getMessage());
 		}
 	}
 
