@@ -157,7 +157,7 @@ public abstract class ViewAppletUI extends JApplet {
 		tabSet.addComandTab(demoTab, view2d);
 
 		DemoTab uisourceTab = new DemoTab("UI");
-		uisourceTab.setTabColor(FilPalette.PINK2);
+		uisourceTab.setTabColor(FilPalette.GREEN5);
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
 		uisourceTab.setTabIcon(icon2);
 
@@ -339,7 +339,7 @@ public abstract class ViewAppletUI extends JApplet {
 		StyleConstants.setFontFamily(wordJavaStyle, "lucida console");
 		StyleConstants.setFontSize(wordJavaStyle, 11);
 		StyleConstants.setForeground(wordJavaStyle, RosePalette.COALBLACK);
-		StyleConstants.setBold(wordJavaStyle, true);
+		//StyleConstants.setBold(wordJavaStyle, true);
 
 		final Style wordJavaComment = styleContext.addStyle("java-comment1", null);
 		StyleConstants.setFontFamily(wordJavaComment, "lucida console");
