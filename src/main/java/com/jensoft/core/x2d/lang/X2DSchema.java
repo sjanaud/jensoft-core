@@ -81,15 +81,18 @@ public class X2DSchema {
      * @throws IOException
      */
     public static void validX2D(File x2dViewFile, X2DSchemaErrorHandler handler) throws X2DException {
-        try {
-            Source source = new StreamSource(x2dViewFile);
-            Validator validator = getInstance().getX2DSchema().newValidator();
-            validator.setErrorHandler(handler);
-            validator.validate(source);
-        }
-        catch (Exception e) {
-            throw new X2DException("X2D Validation Error", e);
-        }
+      
+            try {
+				Source source = new StreamSource(x2dViewFile);
+				Validator validator = getInstance().getX2DSchema().newValidator();
+				validator.setErrorHandler(handler);
+				validator.validate(source);
+			} catch (SAXException e) {
+				throw new X2DException("valid failed with exception : "+e.getMessage());
+			} catch (IOException e) {
+				throw new X2DException("valid failed with exception : "+e.getMessage());
+			}
+      
 
     }
 
@@ -107,10 +110,11 @@ public class X2DSchema {
             Validator validator = getInstance().getX2DSchema().newValidator();
             validator.setErrorHandler(handler);
             validator.validate(source);
-        }
-        catch (Exception e) {
-            throw new X2DException("X2D Validation Error", e);
-        }
+        } catch (SAXException e) {
+			throw new X2DException("valid failed with exception : "+e.getMessage());
+		} catch (IOException e) {
+			throw new X2DException("valid failed with exception : "+e.getMessage());
+		}
 
     }
 
@@ -128,10 +132,11 @@ public class X2DSchema {
             Validator validator = getInstance().getX2DSchema().newValidator();
             validator.setErrorHandler(handler);
             validator.validate(source);
-        }
-        catch (Exception e) {
-            throw new X2DException("X2D Validation Error", e);
-        }
+        } catch (SAXException e) {
+			throw new X2DException("valid failed with exception : "+e.getMessage());
+		} catch (IOException e) {
+			throw new X2DException("valid failed with exception : "+e.getMessage());
+		}
     }
     
     /**
@@ -148,10 +153,11 @@ public class X2DSchema {
             Validator validator = getInstance().getX2DSchema().newValidator();
             validator.setErrorHandler(handler);
             validator.validate(source);
-        }
-        catch (Exception e) {
-            throw new X2DException("X2D Validation Error", e);
-        }
+        } catch (SAXException e) {
+			throw new X2DException("valid failed with exception : "+e.getMessage());
+		} catch (IOException e) {
+			throw new X2DException("valid failed with exception : "+e.getMessage());
+		}
     }
 
     /**
