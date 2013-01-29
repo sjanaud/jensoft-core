@@ -7,6 +7,8 @@
 	<name>JenSoft API Core</name>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<jdkVersion>1.6</jdkVersion>
+		<java.home>${env.JAVA_HOME}</java.home>
 	</properties>
 	<dependencies>
 
@@ -63,14 +65,17 @@
 						</goals>
 					</execution>
 				</executions>
-				<configuration>					
-					<keystore>${basedir}/jensoft.keystore</keystore>
+				<configuration>
+					<archive>
+						<addMavenDescriptor>false</addMavenDescriptor>
+					</archive>
+					<keystore>${basedir}\jensoft.keystore</keystore>
 					<alias>jensoft</alias>
 					<storepass>password</storepass>
 					<keypass>password</keypass>
 				</configuration>
 			</plugin>
-			
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>

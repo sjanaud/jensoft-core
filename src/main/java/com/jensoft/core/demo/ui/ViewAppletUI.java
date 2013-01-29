@@ -14,6 +14,7 @@ import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 import javax.jnlp.ClipboardService;
 import javax.jnlp.ServiceManager;
@@ -82,8 +83,6 @@ public abstract class ViewAppletUI extends JApplet {
 	/** source flag */
 	private boolean showSource = true;
 
-	/** loading source flag */
-	private boolean loading = false;
 
 	/**
 	 * get the view demo class
@@ -92,10 +91,14 @@ public abstract class ViewAppletUI extends JApplet {
 	 */
 	public abstract Class getDemoClass();
 
+	
+	private String inset;
+	
 	/**
 	 * in Applet UI
 	 */
 	public void init() {
+		inset = getParameter("inset");
 		try {
 			javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
@@ -128,7 +131,14 @@ public abstract class ViewAppletUI extends JApplet {
 		JPanel masterPane = new JPanel();
 		masterPane.setBackground(Color.WHITE);
 
-		masterPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+		try {
+			StringTokenizer tokenizer = new StringTokenizer(inset,",");
+			masterPane.setBorder(BorderFactory.createEmptyBorder(Integer.parseInt(tokenizer.nextToken()),Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken())));
+		} catch (Throwable e) {			
+			masterPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+		}
+		
+		
 		masterPane.setLayout(new BorderLayout());
 
 		DemoTabSet tabSet = new DemoTabSet();
