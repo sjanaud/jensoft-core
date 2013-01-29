@@ -49,8 +49,6 @@ import com.jensoft.core.demo.component.DemoTabSet;
 import com.jensoft.core.demo.styles.SectionStyle;
 import com.jensoft.core.demo.styles.SourceStyle;
 import com.jensoft.core.demo.styles.WordStyle;
-import com.jensoft.core.demo.ui.ViewFrameUI.ControlPanel;
-import com.jensoft.core.demo.ui.ViewFrameUI.UISourcePane;
 import com.jensoft.core.demo.xml.XmlTextPane;
 import com.jensoft.core.desktop.viewsbase.SScrollPane;
 import com.jensoft.core.palette.JennyPalette;

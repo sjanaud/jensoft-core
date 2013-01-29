@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.StringWriter;
+import java.util.StringTokenizer;
 
 import javax.jnlp.ClipboardService;
 import javax.jnlp.ServiceManager;
@@ -48,8 +49,6 @@ import com.jensoft.core.demo.component.DemoTabSet;
 import com.jensoft.core.demo.styles.SectionStyle;
 import com.jensoft.core.demo.styles.SourceStyle;
 import com.jensoft.core.demo.styles.WordStyle;
-import com.jensoft.core.demo.ui.X2DFrameUI.ControlPanel;
-import com.jensoft.core.demo.ui.X2DFrameUI.UISourcePane;
 import com.jensoft.core.demo.xml.XmlTextPane;
 import com.jensoft.core.desktop.viewsbase.SScrollPane;
 import com.jensoft.core.palette.JennyPalette;
@@ -92,10 +91,13 @@ public abstract class X2DAppletUI extends JApplet {
 	/** source flag */
 	private boolean showSource = true;
 
+	private String inset;
+	
 	/**
 	 * in Applet UI
 	 */
 	public void init() {
+		inset = getParameter("inset");
 		try {
 			javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
@@ -114,20 +116,23 @@ public abstract class X2DAppletUI extends JApplet {
 	 * 
 	 */
 	private void create() {
-
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		} catch (Exception e) {
 
-		}
-		
+		}		
 		getContentPane().removeAll();
 		getContentPane().setLayout(new BorderLayout());
 
 		JPanel masterPane = new JPanel();
 		masterPane.setBackground(Color.WHITE);
 
-		masterPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+		try {
+			StringTokenizer tokenizer = new StringTokenizer(inset,",");
+			masterPane.setBorder(BorderFactory.createEmptyBorder(Integer.parseInt(tokenizer.nextToken()),Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken())));
+		} catch (Throwable e) {			
+			masterPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+		}
 		masterPane.setLayout(new BorderLayout());
 
 		DemoTabSet tabSet = new DemoTabSet();
