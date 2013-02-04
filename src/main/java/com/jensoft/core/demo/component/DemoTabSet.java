@@ -153,8 +153,42 @@ public class DemoTabSet extends JComponent implements DemoTabListener {
     private int verticalOffset = 50;
     private int offsetStart = 20;
     private int interTab = 5;
+    
+    private int cornerRadius=30;
+    private boolean drawOutline=true;
+    
 
-    private JPanel pSQouche = new JPanel();
+    
+
+	/**
+	 * @return the cornerRadius
+	 */
+	public int getCornerRadius() {
+		return cornerRadius;
+	}
+
+	/**
+	 * @param cornerRadius the cornerRadius to set
+	 */
+	public void setCornerRadius(int cornerRadius) {
+		this.cornerRadius = cornerRadius;
+	}
+
+	/**
+	 * @return the drawOutline
+	 */
+	public boolean isDrawOutline() {
+		return drawOutline;
+	}
+
+	/**
+	 * @param drawOutline the drawOutline to set
+	 */
+	public void setDrawOutline(boolean drawOutline) {
+		this.drawOutline = drawOutline;
+	}
+
+	private JPanel pSQouche = new JPanel();
     private Font f = new Font("lucida console",Font.PLAIN,12);
 
     @Override
@@ -265,7 +299,7 @@ public class DemoTabSet extends JComponent implements DemoTabListener {
         }
 
         RoundRectangle2D roundBaseShape = new RoundRectangle2D.Double(0, 0,
-                                                                      getWidth() - 1, getHeight() - 1, 30, 30);
+                                                                      getWidth() - 1, getHeight() - 1, cornerRadius, cornerRadius);
 
         GradientPaint gpbase = new GradientPaint(getWidth() / 2, 0,
                                                  Color.LIGHT_GRAY, getWidth() / 2, baseLine, Color.GRAY, false);
@@ -273,10 +307,12 @@ public class DemoTabSet extends JComponent implements DemoTabListener {
         g2d.setPaint(gpbase);
         g2d.fill(roundBaseShape);
         g2d.setStroke(new BasicStroke(2));
-        g2d.setColor(Color.WHITE);
-        g2d.draw(roundBaseShape);
-        g2d.setStroke(new BasicStroke());
-
+        
+        if(drawOutline){
+        	g2d.setColor(Color.WHITE);
+        	//g2d.draw(roundBaseShape);
+        	g2d.setStroke(new BasicStroke());
+        }
         g2d.setColor(RosePalette.AEGEANBLUE);
 
         g2d.setFont(f);
