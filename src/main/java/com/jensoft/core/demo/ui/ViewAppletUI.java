@@ -93,12 +93,16 @@ public abstract class ViewAppletUI extends JApplet {
 
 	
 	private String inset;
+	private String drawOutline;
+	private String cornerRadius;
 	
 	/**
 	 * in Applet UI
 	 */
 	public void init() {
 		inset = getParameter("inset");
+		drawOutline = getParameter("drawOutline");
+		cornerRadius = getParameter("cornerRadius");
 		try {
 			javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
@@ -109,6 +113,7 @@ public abstract class ViewAppletUI extends JApplet {
 			System.err.println("Applet UI didn't successfully complete");
 		}
 	}
+	
 
 	/**
 	 * show the given demo in the demo frame
@@ -143,8 +148,16 @@ public abstract class ViewAppletUI extends JApplet {
 
 		DemoTabSet tabSet = new DemoTabSet();
 		tabSet.setTitle("JenSoft - API");
+		if(cornerRadius != null){
+			tabSet.setCornerRadius(Integer.parseInt(cornerRadius));
+		}
+		if(drawOutline != null){
+			tabSet.setDrawOutline(Boolean.parseBoolean(drawOutline));
+		}
+		
 
 		DemoTab demoTab = new DemoTab("Demo");
+		
 
 		demoTab.setTabColor(Color.DARK_GRAY);
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
