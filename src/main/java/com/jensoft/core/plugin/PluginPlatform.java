@@ -161,71 +161,79 @@ public class PluginPlatform {
         createPortfolio(packageName, portfolioDirectory, -1, -1);
     }
 
-    public static void createPortfolio(String packageName, String portfolioDirectory, int imageWidth, int imageHeight) {
+    /**
+     * create portfolio for the given class
+     * @param classPortfolio
+     * @param portfolioDirectory
+     * @param imageWidth
+     * @param imageHeight
+     */
+    public static void createPortfolioClass(Class classPortfolio, String portfolioDirectory, int imageWidth, int imageHeight) {
 
-        List<Class<?>> portofolioClass = scanPortfolio(packageName);
+        for (Method method : classPortfolio.getMethods()) {
+            if (method.isAnnotationPresent(Portfolio.class)) {
 
-        for (Class<?> c : portofolioClass) {
-            System.out.println("portfolio class : " + c.getCanonicalName());
+                if (Modifier.isStatic(method.getModifiers())) {
+                    Portfolio p = method.getAnnotation(Portfolio.class);
+                    Class<?> returnType = method.getReturnType();
+                    if (View2D.class.isAssignableFrom(returnType)) {
+                        String name = p.name();
+                        ImageType imageType = p.imageType();
+                        try {
+                            View2D v = (View2D) method.invoke(null);
 
-            for (Method method : c.getMethods()) {
-                if (method.isAnnotationPresent(Portfolio.class)) {
-
-                    if (Modifier.isStatic(method.getModifiers())) {
-                        Portfolio p = method.getAnnotation(Portfolio.class);
-                        Class<?> returnType = method.getReturnType();
-                        if (View2D.class.isAssignableFrom(returnType)) {
-                            String name = p.name();
-                            ImageType imageType = p.imageType();
-                            try {
-                                View2D v = (View2D) method.invoke(null);
-
-                                int w = 0;
-                                int h = 0;
-                                if (imageWidth > 0 && imageHeight > 0) {
-                                    w = imageWidth;
-                                    h = imageHeight;
-                                }
-                                else {
-                                    w = p.width();
-                                    h = p.height();
-                                }
-
-                                BufferedImage image = v.getImageView(w, h);
-
-                                File portfolioDir = new File(portfolioDirectory);
-                                portfolioDir.mkdirs();
-                                try {
-                                    System.out
-                                            .println(c.getSimpleName() + " generate portfolio : "
-                                                    + c.getCanonicalName() + "#" + method.getName()
-                                                    + " with name :" + name);
-                                    ImageIO.write(image, imageType.name()
-                                            .toLowerCase(), new FileOutputStream(
-                                                                                 portfolioDirectory
-                                                                                         + File.separator
-                                                                                         + name
-                                                                                         + "."
-                                                                                         + imageType.name()
-                                                                                                 .toLowerCase()));
-                                }
-                                catch (Exception e) {
-                                    e.printStackTrace();
-                                }
+                            int w = 0;
+                            int h = 0;
+                            if (imageWidth > 0 && imageHeight > 0) {
+                                w = imageWidth;
+                                h = imageHeight;
                             }
-                            catch (Throwable e) {
-                                // TODO Auto-generated catch block
+                            else {
+                                w = p.width();
+                                h = p.height();
+                            }
+
+                            BufferedImage image = v.getImageView(w, h);
+
+                            File portfolioDir = new File(portfolioDirectory);
+                            portfolioDir.mkdirs();
+                            try {
+                                System.out
+                                        .println(classPortfolio.getSimpleName() + " generate portfolio : "
+                                                + classPortfolio.getCanonicalName() + "#" + method.getName()
+                                                + " with name :" + name);
+                                ImageIO.write(image, imageType.name()
+                                        .toLowerCase(), new FileOutputStream(
+                                                                             portfolioDirectory
+                                                                                     + File.separator
+                                                                                     + name
+                                                                                     + "."
+                                                                                     + imageType.name()
+                                                                                             .toLowerCase()));
+                            }
+                            catch (Exception e) {
                                 e.printStackTrace();
                             }
                         }
+                        catch (Throwable e) {
+                            // TODO Auto-generated catch block
+                            e.printStackTrace();
+                        }
                     }
-                    else {
-                        System.err.println("Portfolio image not processed, portofolio Method " + method.getName()
-                                + " should be 'static'");
-                    }
-
                 }
+                else {
+                    System.err.println("Portfolio image not processed, portofolio Method " + method.getName()
+                            + " should be 'static'");
+                }
+
             }
+        }
+    }
+    
+    public static void createPortfolio(String packageName, String portfolioDirectory, int imageWidth, int imageHeight) {
+        List<Class<?>> portofolioClass = scanPortfolio(packageName);
+        for (Class<?> c : portofolioClass) {
+            createPortfolioClass(c, portfolioDirectory, imageWidth, imageHeight);            
         }
     }
 
