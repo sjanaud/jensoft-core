@@ -128,7 +128,7 @@ public abstract class ViewAppletUI extends JApplet {
 		} catch (Exception e) {
 
 		}
-		ImageIcon iconFrame = ImageResource.getInstance().createImageIcon("jensoft.png", "");
+		//ImageIcon iconFrame = ImageResource.getInstance().createImageIcon("jensoft.png", "");
 
 		getContentPane().removeAll();
 		getContentPane().setLayout(new BorderLayout());
@@ -173,7 +173,6 @@ public abstract class ViewAppletUI extends JApplet {
 		try {
 			view2d = (View2D) getDemoClass().newInstance();
 		} catch (Exception e) {
-
 			e.printStackTrace();
 		}
 		

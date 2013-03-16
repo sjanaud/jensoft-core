@@ -81,11 +81,7 @@ public class ViewFrameUI extends JFrame {
 	private DefaultStyledDocument uistyledDocument;
 	
 	/** rich editor */
-	private JTextPane uisourceTextPane;
-
-	
-
-	
+	private JTextPane uisourceTextPane;	
 
 	/** JNLP clip board service */
 	private ClipboardService cs = null;
