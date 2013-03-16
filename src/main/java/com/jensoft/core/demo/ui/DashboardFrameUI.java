@@ -17,13 +17,13 @@ import javax.swing.UIManager;
 import com.jensoft.core.demo.component.DemoTab;
 import com.jensoft.core.demo.component.DemoTabSet;
 
-public class DashboardDemoUI extends JFrame {
+public class DashboardFrameUI extends JFrame {
 
     private static final long serialVersionUID = 156889765687899L;
 
-    private DashboardDemo demo;
+    private Dashboard demo;
     
-    public void show(DashboardDemo demo) {
+    public void show(Dashboard demo) {
         this.demo = demo;
         try {
 
@@ -49,14 +49,14 @@ public class DashboardDemoUI extends JFrame {
 
         DemoTabSet cbar = new DemoTabSet();
 
-        cbar.setTitle("JenSoft - sw2d");
+        cbar.setTitle("JenSoft");
 
         DemoTab c1 = new DemoTab("Dashboard");
         c1.setTabColor(Color.DARK_GRAY);
         ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
         c1.setTabIcon(icon1);
 
-        cbar.addComandTab(c1, demo.getDashboard());
+        cbar.addComandTab(c1, demo);
         
 
         c1.setSelected(true);
