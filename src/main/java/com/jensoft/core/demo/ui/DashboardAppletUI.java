@@ -12,15 +12,11 @@ import java.util.StringTokenizer;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
 import com.jensoft.core.demo.component.DemoTab;
 import com.jensoft.core.demo.component.DemoTabSet;
-import com.jensoft.core.view.View2D;
 
 public abstract class DashboardAppletUI extends JApplet {
 
@@ -80,11 +76,14 @@ public abstract class DashboardAppletUI extends JApplet {
 		masterPane.setLayout(new BorderLayout());
 
 		DemoTabSet tabSet = new DemoTabSet();
+		System.out.println("prepare shape");
 		tabSet.setTitle("JenSoft - API");
 		if(cornerRadius != null){
+			System.out.println("apply corner");
 			tabSet.setCornerRadius(Integer.parseInt(cornerRadius));
 		}
 		if(drawOutline != null){
+			System.out.println("apply outline");
 			tabSet.setDrawOutline(Boolean.parseBoolean(drawOutline));
 		}
 

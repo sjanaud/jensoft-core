@@ -155,10 +155,7 @@ public class DemoTabSet extends JComponent implements DemoTabListener {
     private int interTab = 5;
     
     private int cornerRadius=30;
-    private boolean drawOutline=true;
-    
-
-    
+    private boolean drawOutline=true;    
 
 	/**
 	 * @return the cornerRadius
