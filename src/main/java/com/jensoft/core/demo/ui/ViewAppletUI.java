@@ -156,18 +156,11 @@ public abstract class ViewAppletUI extends JApplet {
 		}
 		
 
-		DemoTab demoTab = new DemoTab("Demo");
-		
+		DemoTab viewDemoTab = new DemoTab("Demo");		
 
-		demoTab.setTabColor(Color.DARK_GRAY);
+		viewDemoTab.setTabColor(Color.DARK_GRAY);
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
-		demoTab.setTabIcon(icon1);
-
-		DemoTab sourceTab = new DemoTab("View Source");
-		sourceTab.setTabColor(JennyPalette.JENNY6);
-		ImageIcon icon = ImageResource.getInstance().createImageIcon("source.png", "");
-		sourceTab.setTabIcon(icon);
-
+		viewDemoTab.setTabIcon(icon1);
 		
 		View2D view2d = null;
 		try {
@@ -176,7 +169,12 @@ public abstract class ViewAppletUI extends JApplet {
 			e.printStackTrace();
 		}
 		
-		tabSet.addComandTab(demoTab, view2d);
+		tabSet.addComandTab(viewDemoTab, view2d);
+
+		DemoTab sourceTab = new DemoTab("View Source");
+		sourceTab.setTabColor(JennyPalette.JENNY6);
+		ImageIcon icon = ImageResource.getInstance().createImageIcon("source.png", "");
+		sourceTab.setTabIcon(icon);		
 
 		DemoTab uisourceTab = new DemoTab("UI");
 		uisourceTab.setTabColor(FilPalette.GREEN5);
@@ -196,7 +194,7 @@ public abstract class ViewAppletUI extends JApplet {
 			sourceTextPane.setCaretPosition(0);
 		}
 
-		demoTab.setSelected(true);
+		viewDemoTab.setSelected(true);
 
 		masterPane.add(tabSet, BorderLayout.CENTER);
 

@@ -294,7 +294,7 @@ public class DemoTabSet extends JComponent implements DemoTabListener {
             c.setCubicDeco(gpathDeco);
 
         }
-
+       
         RoundRectangle2D roundBaseShape = new RoundRectangle2D.Double(0, 0,
                                                                       getWidth() - 1, getHeight() - 1, cornerRadius, cornerRadius);
 
@@ -306,6 +306,7 @@ public class DemoTabSet extends JComponent implements DemoTabListener {
         g2d.setStroke(new BasicStroke(2));
         
         if(drawOutline){
+        
         	g2d.setColor(Color.WHITE);
         	//g2d.draw(roundBaseShape);
         	g2d.setStroke(new BasicStroke());

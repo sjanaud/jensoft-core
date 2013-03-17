@@ -137,6 +137,8 @@ public class ViewFrameUI extends JFrame {
 		demoTab.setTabColor(Color.DARK_GRAY);
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
 		demoTab.setTabIcon(icon1);
+		
+		tabSet.addComandTab(demoTab, view);
 
 		DemoTab sourceTab = new DemoTab("View Source");
 		sourceTab.setTabColor(JennyPalette.JENNY6);
@@ -146,9 +148,7 @@ public class ViewFrameUI extends JFrame {
 		DemoTab uisourceTab = new DemoTab("UI");
 		uisourceTab.setTabColor(FilPalette.GREEN3);
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
-		uisourceTab.setTabIcon(icon2);
-
-		tabSet.addComandTab(demoTab, view);
+		uisourceTab.setTabIcon(icon2);		
 
 		if (showSource) {
 			styleContext = new StyleContext();
