@@ -200,7 +200,7 @@ public class DashboardFrameUI extends JFrame {
 	/**
 	 * apply attributes style to demo source
 	 */
-	protected void applyStyles(SourcePane sourcePane) {
+	private void applyStyles(SourcePane sourcePane) {
 
 		final SourceStyle uijavaStyle = new SourceStyle(sourcePane.getSourceTextPane(), sourcePane.getStyledDocument().getStyle("java-source"));
 		uijavaStyle.apply();
