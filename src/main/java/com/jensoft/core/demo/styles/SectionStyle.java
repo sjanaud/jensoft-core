@@ -25,9 +25,6 @@ public class SectionStyle {
     }
 
     public void apply() {
-//        System.out.println("start apply style");
-//        System.out.println("pattern start : "+patternStart);
-//        System.out.println("pattern end : "+patternEnd);
         String content = null;
         try {
             Document d = comp.getDocument();
