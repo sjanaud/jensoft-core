@@ -20,8 +20,8 @@ import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.MultiMultiplierMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.MultiplierMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.StaticMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
-import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelRangeCollections;
+import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.inflater.X2DInflater;
 

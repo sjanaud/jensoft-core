@@ -5,8 +5,6 @@
  */
 package com.jensoft.core.gauge.velocity.v2;
 
-import javax.swing.SwingUtilities;
-
 import com.jensoft.core.demo.nature.JenSoftAPIDemo;
 import com.jensoft.core.demo.ui.ViewFrameUI;
 import com.jensoft.core.gauge.RadialGaugePlugin;

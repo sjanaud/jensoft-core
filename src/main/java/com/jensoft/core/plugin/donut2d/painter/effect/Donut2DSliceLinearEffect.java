@@ -14,8 +14,8 @@ import java.awt.geom.Point2D;
 
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.plugin.donut2d.Donut2D;
-import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 import com.jensoft.core.plugin.donut2d.Donut2D.Donut2DNature;
+import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 
 /**
  * <code>Donut2DSliceLinearEffect</code> defines linear shadow effect on donut2D slice.

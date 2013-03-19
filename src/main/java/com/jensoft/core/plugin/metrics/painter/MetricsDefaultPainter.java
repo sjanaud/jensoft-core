@@ -17,10 +17,10 @@ import java.util.List;
 import javax.swing.JComponent;
 
 import com.jensoft.core.plugin.metrics.geom.Metrics;
-import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
+import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.window.WindowPart;
 
 /**

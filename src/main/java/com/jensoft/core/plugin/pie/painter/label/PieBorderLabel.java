@@ -19,10 +19,10 @@ import java.awt.geom.RoundRectangle2D;
 
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.plugin.pie.Pie;
+import com.jensoft.core.plugin.pie.Pie.PieNature;
 import com.jensoft.core.plugin.pie.PiePlugin;
 import com.jensoft.core.plugin.pie.PieSlice;
 import com.jensoft.core.plugin.pie.PieToolkit;
-import com.jensoft.core.plugin.pie.Pie.PieNature;
 import com.jensoft.core.plugin.pie.painter.AbstractPieSlicePainter;
 import com.jensoft.core.plugin.pie.painter.PieSlicePainter;
 

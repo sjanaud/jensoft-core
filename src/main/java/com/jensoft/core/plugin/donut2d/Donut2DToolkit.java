@@ -14,10 +14,10 @@ import com.jensoft.core.drawable.text.TextPath.TextPosition;
 import com.jensoft.core.plugin.Toolkit;
 import com.jensoft.core.plugin.donut2d.Donut2D.Donut2DNature;
 import com.jensoft.core.plugin.donut2d.painter.fill.Donut2DDefaultFill;
+import com.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel.Style;
 import com.jensoft.core.plugin.donut2d.painter.label.Donut2DBorderLabel;
 import com.jensoft.core.plugin.donut2d.painter.label.Donut2DPathLabel;
 import com.jensoft.core.plugin.donut2d.painter.label.Donut2DRadialLabel;
-import com.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel.Style;
 
 /**
  * <code>Donut2DToolkit</code>

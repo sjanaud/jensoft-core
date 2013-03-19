@@ -19,10 +19,10 @@ import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
-import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
+import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 
 /**
  * <code>MetricsTimingPainter<code> takes the responsibility to paint timing metrics

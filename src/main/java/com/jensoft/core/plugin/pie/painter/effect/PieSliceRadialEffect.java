@@ -14,8 +14,8 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.plugin.pie.Pie;
-import com.jensoft.core.plugin.pie.PieSlice;
 import com.jensoft.core.plugin.pie.Pie.PieNature;
+import com.jensoft.core.plugin.pie.PieSlice;
 
 /**
  * <code>PieEffect2Section</code>

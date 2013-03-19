@@ -11,8 +11,8 @@ import java.awt.Stroke;
 
 import com.jensoft.core.palette.RosePalette;
 import com.jensoft.core.plugin.zoom.objectif.ZoomObjectifPlugin.ZoomNature;
-import com.jensoft.core.widget.bar.AbstractPlusMinusBarWidget;
 import com.jensoft.core.widget.bar.AbstractBarGeometry.BarWidgetOrientation;
+import com.jensoft.core.widget.bar.AbstractPlusMinusBarWidget;
 
 /**
  * <code>ObjectifX</code>

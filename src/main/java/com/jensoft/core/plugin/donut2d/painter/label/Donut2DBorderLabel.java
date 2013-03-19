@@ -19,10 +19,10 @@ import java.awt.geom.RoundRectangle2D;
 
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.plugin.donut2d.Donut2D;
+import com.jensoft.core.plugin.donut2d.Donut2D.Donut2DNature;
 import com.jensoft.core.plugin.donut2d.Donut2DPlugin;
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 import com.jensoft.core.plugin.donut2d.Donut2DToolkit;
-import com.jensoft.core.plugin.donut2d.Donut2D.Donut2DNature;
 import com.jensoft.core.plugin.donut2d.painter.Donut2DSlicePainter;
 
 /**

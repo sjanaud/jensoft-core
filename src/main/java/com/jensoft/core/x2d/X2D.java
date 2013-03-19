@@ -18,10 +18,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import com.jensoft.core.plugin.PluginPlatform;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.inflater.X2DInflater;
 import com.jensoft.core.x2d.inflater.X2DViewInflater;
 import com.jensoft.core.x2d.inflater.donut2d.Donut2DInflater;
 import com.jensoft.core.x2d.inflater.donut3d.Donut3DInflater;

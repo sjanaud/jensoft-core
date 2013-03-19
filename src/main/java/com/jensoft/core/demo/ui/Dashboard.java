@@ -10,10 +10,9 @@ import javax.swing.JComponent;
 /**
  * Dashboard
  */
-public class Dashboard extends JComponent{
+public class Dashboard extends JComponent {
 
-    
-    public Dashboard() {
-    }
+	public Dashboard() {
+	}
 
 }

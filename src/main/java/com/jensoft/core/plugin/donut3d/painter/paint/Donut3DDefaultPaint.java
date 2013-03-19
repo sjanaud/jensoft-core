@@ -17,8 +17,8 @@ import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.plugin.donut3d.Donut3D;
-import com.jensoft.core.plugin.donut3d.Donut3DSlice;
 import com.jensoft.core.plugin.donut3d.Donut3D.Donut3DNature;
+import com.jensoft.core.plugin.donut3d.Donut3DSlice;
 import com.jensoft.core.plugin.donut3d.Donut3DSlice.Type;
 
 /**
