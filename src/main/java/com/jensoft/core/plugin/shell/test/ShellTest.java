@@ -9,7 +9,6 @@ import java.awt.Color;
 
 import javax.swing.JComponent;
 import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 
 import com.jensoft.core.demo.nature.JenSoftAPIDemo;
 import com.jensoft.core.demo.ui.ViewFrameUI;

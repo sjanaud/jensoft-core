@@ -17,10 +17,10 @@ import java.text.DecimalFormat;
 
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.donut3d.Donut3D;
+import com.jensoft.core.plugin.donut3d.Donut3D.Donut3DNature;
 import com.jensoft.core.plugin.donut3d.Donut3DPlugin;
 import com.jensoft.core.plugin.donut3d.Donut3DSlice;
 import com.jensoft.core.plugin.donut3d.Donut3DToolkit;
-import com.jensoft.core.plugin.donut3d.Donut3D.Donut3DNature;
 import com.jensoft.core.plugin.donut3d.painter.Donut3DSlicePainter;
 
 /**

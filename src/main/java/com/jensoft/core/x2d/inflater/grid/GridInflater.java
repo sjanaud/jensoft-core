@@ -13,8 +13,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.jensoft.core.plugin.grid.Grid;
-import com.jensoft.core.plugin.grid.GridPlugin;
 import com.jensoft.core.plugin.grid.Grid.GridOrientation;
+import com.jensoft.core.plugin.grid.GridPlugin;
 import com.jensoft.core.plugin.grid.GridPlugin.FlowGrid;
 import com.jensoft.core.plugin.grid.GridPlugin.FreeGrid;
 import com.jensoft.core.plugin.grid.GridPlugin.ModeledGrid;

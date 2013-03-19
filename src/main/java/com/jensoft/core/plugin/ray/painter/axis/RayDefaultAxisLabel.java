@@ -13,9 +13,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.RoundRectangle2D;
 
 import com.jensoft.core.plugin.ray.Ray;
+import com.jensoft.core.plugin.ray.Ray.RayNature;
 import com.jensoft.core.plugin.ray.RayGroup;
 import com.jensoft.core.plugin.ray.RayPlugin;
-import com.jensoft.core.plugin.ray.Ray.RayNature;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 

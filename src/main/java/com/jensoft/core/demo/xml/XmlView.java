@@ -45,7 +45,6 @@ public class XmlView extends PlainView {
     private static String TAG_CDATA_END = ".*(]]>)";
 
     static {
-        // NOTE: the order is important!
         patternColors = new HashMap<Pattern, Color>();
         patternColors.put(Pattern.compile(TAG_CDATA_START), new Color(128, 128, 128));
         patternColors.put(Pattern.compile(TAG_CDATA_END), new Color(128, 128, 128));

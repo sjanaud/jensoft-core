@@ -11,8 +11,8 @@ import java.util.List;
 
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
-import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
+import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 
 /**
  * <code>MetricsManager</code> defines a metrics manager

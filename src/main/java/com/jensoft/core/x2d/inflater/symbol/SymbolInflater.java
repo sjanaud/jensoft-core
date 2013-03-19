@@ -12,15 +12,15 @@ import org.w3c.dom.NodeList;
 
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.plugin.symbol.BarSymbol;
+import com.jensoft.core.plugin.symbol.BarSymbol.MorpheStyle;
 import com.jensoft.core.plugin.symbol.BarSymbolGroup;
 import com.jensoft.core.plugin.symbol.BarSymbolLayer;
 import com.jensoft.core.plugin.symbol.Stack;
 import com.jensoft.core.plugin.symbol.StackedBarSymbol;
 import com.jensoft.core.plugin.symbol.SymbolComponent;
 import com.jensoft.core.plugin.symbol.SymbolPlugin;
-import com.jensoft.core.plugin.symbol.SymbolToolkit;
-import com.jensoft.core.plugin.symbol.BarSymbol.MorpheStyle;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
+import com.jensoft.core.plugin.symbol.SymbolToolkit;
 import com.jensoft.core.plugin.symbol.painter.axis.AbstractBarAxisLabel;
 import com.jensoft.core.plugin.symbol.painter.axis.BarDefaultAxisLabel;
 import com.jensoft.core.plugin.symbol.painter.draw.BarDefaultDraw;

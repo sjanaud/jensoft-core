@@ -15,8 +15,8 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.plugin.pie.Pie;
-import com.jensoft.core.plugin.pie.PieSlice;
 import com.jensoft.core.plugin.pie.Pie.PieNature;
+import com.jensoft.core.plugin.pie.PieSlice;
 
 /**
  * <code>PieSliceCubicEffect</code> create shadowed cubic shape on pie.

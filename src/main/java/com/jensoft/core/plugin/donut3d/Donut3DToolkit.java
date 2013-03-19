@@ -13,10 +13,10 @@ import com.jensoft.core.drawable.text.TextPath.PathSide;
 import com.jensoft.core.drawable.text.TextPath.TextPosition;
 import com.jensoft.core.plugin.Toolkit;
 import com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel;
+import com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel.Style;
 import com.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel;
 import com.jensoft.core.plugin.donut3d.painter.label.Donut3DPathLabel;
 import com.jensoft.core.plugin.donut3d.painter.label.Donut3DRadialLabel;
-import com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel.Style;
 import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 
 /**
