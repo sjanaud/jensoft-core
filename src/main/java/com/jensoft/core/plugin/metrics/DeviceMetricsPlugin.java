@@ -14,6 +14,7 @@ import java.util.List;
 import com.jensoft.core.device.Device2D;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
+import com.jensoft.core.plugin.metrics.DeviceMetricsPlugin.DeviceAxis;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;

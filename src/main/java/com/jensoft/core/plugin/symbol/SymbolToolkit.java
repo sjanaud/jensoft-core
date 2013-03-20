@@ -12,7 +12,6 @@ import java.util.List;
 import com.jensoft.core.plugin.Toolkit;
 import com.jensoft.core.plugin.symbol.BarSymbol.MorpheStyle;
 import com.jensoft.core.plugin.symbol.BarSymbol.SymbolInflate;
-import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 import com.jensoft.core.plugin.symbol.painter.axis.AbstractBarAxisLabel;
 import com.jensoft.core.plugin.symbol.painter.draw.AbstractBarDraw;
 import com.jensoft.core.plugin.symbol.painter.draw.BarDefaultDraw;
