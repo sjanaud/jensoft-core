@@ -108,7 +108,6 @@ import com.jensoft.core.plugin.symbol.SymbolComponent;
 import com.jensoft.core.plugin.symbol.SymbolPlugin;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 import com.jensoft.core.plugin.symbol.SymbolToolkit;
-import com.jensoft.core.plugin.symbol.SymbolView;
 import com.jensoft.core.plugin.symbol.painter.draw.AbstractBarDraw;
 import com.jensoft.core.plugin.symbol.painter.draw.BarDefaultDraw;
 import com.jensoft.core.plugin.symbol.painter.effect.BarEffect3;
@@ -642,9 +641,15 @@ public class ExamplePortfolioViews {
 
     @Portfolio(name = "simpleVerticalBar")
     public static View2D getVerticalBal() {
-        // create compatible bar view
-        SymbolView view = SymbolToolkit.createView(SymbolNature.Vertical, -70,
-                                                   80);
+      
+        View2D view = new View2D();
+    	Window2D w2d = new Window2D.Linear(0,0,-70, 80);
+		view.registerWindow2D(w2d);
+		
+		SymbolPlugin barPlugin = new SymbolPlugin();
+		barPlugin.setNature(SymbolNature.Vertical);
+		w2d.registerPlugin(barPlugin);
+
         view.setPlaceHolder(2);
 
         Font f = InputFonts.getElements(10);
@@ -652,9 +657,7 @@ public class ExamplePortfolioViews {
         // Font fontGroup = InputFonts.getElements(10);
         Font fontGroup = InputFonts.getNoMove(10);
 
-        view.getWindow2D().unregisterPlugin(view.getOutlinePlugin());
-        view.getWindow2D().unregisterPlugin(view.getAxisMiliMetrics());
-
+       
         // Color chameleon = TangoPalette.CHAMELEON2;
         // Color butter = TangoPalette.BUTTER2;
         // Color orange = TangoPalette.ORANGE2;
@@ -817,7 +820,7 @@ public class ExamplePortfolioViews {
         
 
         BarSymbolLayer barLayer = new BarSymbolLayer();
-        view.addLayer(barLayer);
+        barPlugin.addLayer(barLayer);
 
         barLayer.addSymbol(SymbolComponent.createGlue(BarSymbol.class));
         barLayer.addSymbol(group1);
