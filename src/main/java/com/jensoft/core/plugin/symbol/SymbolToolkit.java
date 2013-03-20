@@ -52,22 +52,7 @@ import com.jensoft.core.plugin.symbol.painter.label.AbstractBarLabel;
  */
 public class SymbolToolkit extends Toolkit {
 
-    /**
-     * create compatible bar view.
-     * 
-     * @param symbolNature
-     *            the bar nature to set
-     * @param min
-     *            the minimum coordinate value of the metrics dimension
-     * @param max
-     *            the maximum coordinate value of the metrics dimension
-     */
-    public final static SymbolView createView(SymbolNature symbolNature,
-            double min, double max) {
-        SymbolView symbolView = new SymbolView(symbolNature, min, max);
-        return symbolView;
-    }
-
+   
     /**
      * create a group with specified properties and additional properties like :
      * <ul>
