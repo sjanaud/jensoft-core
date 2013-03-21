@@ -5,6 +5,10 @@
  */
 package com.jensoft.core.demo.source;
 
+import java.awt.AWTError;
+import java.awt.HeadlessException;
+import java.awt.Toolkit;
+import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,14 +24,22 @@ import javax.swing.JTextPane;
 
 public class ControlPanel extends JComponent {
 
-	private ClipboardService cs;
+	private ClipboardService clipboardService;
+
+	private Clipboard clipboardSystem;
 
 	public ControlPanel(final JTextPane textPane) {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
 		setOpaque(false);
 		try {
-			cs = (ClipboardService) ServiceManager.lookup("javax.jnlp.ClipboardService");
+			clipboardService = (ClipboardService) ServiceManager.lookup("javax.jnlp.ClipboardService");
 		} catch (UnavailableServiceException e) {
+		}
+
+		try {
+			clipboardSystem = Toolkit.getDefaultToolkit().getSystemClipboard();
+		} catch (HeadlessException ex) {
+		} catch (AWTError err) {
 		}
 
 		JButton copy = new JButton("copy");
@@ -39,7 +51,14 @@ public class ControlPanel extends JComponent {
 				try {
 					StringSelection data;
 					data = new StringSelection(textPane.getText());
-					cs.setContents(data);
+					if (clipboardService != null) {
+						System.out.println("copy to service clipboard");
+						clipboardService.setContents(data);
+					}
+					if(clipboardSystem != null){
+						System.out.println("copy to system clipboard");
+						clipboardSystem.setContents(data, null);
+					}
 				} catch (Exception e1) {
 				}
 
