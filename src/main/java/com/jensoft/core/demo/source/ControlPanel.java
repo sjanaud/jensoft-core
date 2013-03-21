@@ -42,31 +42,35 @@ public class ControlPanel extends JComponent {
 		} catch (AWTError err) {
 		}
 
-		JButton copy = new JButton("copy");
-		copy.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				try {
-					StringSelection data;
-					data = new StringSelection(textPane.getText());
-					if (clipboardService != null) {
-						System.out.println("copy to service clipboard");
-						clipboardService.setContents(data);
+		if(clipboardService != null || clipboardSystem != null){
+			JButton copy = new JButton("copy");
+			copy.addActionListener(new ActionListener() {
+	
+				@Override
+				public void actionPerformed(ActionEvent e) {
+	
+					try {
+						StringSelection data;
+						data = new StringSelection(textPane.getText());
+						if (clipboardService != null) {
+							System.out.println("copy to service clipboard");
+							clipboardService.setContents(data);
+						}
+						else if(clipboardSystem != null){
+							System.out.println("copy to system clipboard");
+							clipboardSystem.setContents(data, null);
+						}
+					} catch (Exception e1) {
 					}
-					if(clipboardSystem != null){
-						System.out.println("copy to system clipboard");
-						clipboardSystem.setContents(data, null);
-					}
-				} catch (Exception e1) {
+	
 				}
-
-			}
-		});
-		add(Box.createGlue());
-		add(copy);
-		add(Box.createHorizontalStrut(40));
+			});
+			
+			add(Box.createGlue());
+			add(copy);
+			add(Box.createHorizontalStrut(40));
+		}
+		
 	}
 
 	private static final long serialVersionUID = -120338937746225277L;
