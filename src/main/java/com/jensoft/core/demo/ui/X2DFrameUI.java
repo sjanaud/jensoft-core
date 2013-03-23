@@ -81,18 +81,18 @@ public abstract class X2DFrameUI extends JFrame {
 		DemoTabSet tabSet = new DemoTabSet();
 		tabSet.setTitle("JenSoft - API");
 
-		DemoTab demoTab = new DemoTab("X2D View");
+		DemoTab demoTab = new DemoTab("X2D");
 
 		demoTab.setTabColor(Color.DARK_GRAY);
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
 		demoTab.setTabIcon(icon1);
 
-		DemoTab sourceTab = new DemoTab("X2D Source");
+		DemoTab sourceTab = new DemoTab("X2D");
 		sourceTab.setTabColor(JennyPalette.JENNY6);
 		ImageIcon icon = ImageResource.getInstance().createImageIcon("source.png", "");
 		sourceTab.setTabIcon(icon);
 
-		DemoTab uisourceTab = new DemoTab("UI");
+		DemoTab uisourceTab = new DemoTab("Frame UI");
 		uisourceTab.setTabColor(RosePalette.LEMONPEEL.brighter());
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
 		uisourceTab.setTabIcon(icon2);
@@ -110,11 +110,10 @@ public abstract class X2DFrameUI extends JFrame {
 		tabSet.addComandTab(demoTab, view2d);
 		final X2D fx2d = x2d;
 
-		X2DSourcePane x2dSourcePane = new X2DSourcePane();
-		tabSet.addComandTab(sourceTab, x2dSourcePane);
-
 		JavaSourcePane uiSourcePane = new JavaSourcePane();
 		tabSet.addComandTab(uisourceTab, uiSourcePane);
+		X2DSourcePane x2dSourcePane = new X2DSourcePane();
+		tabSet.addComandTab(sourceTab, x2dSourcePane);		
 
 		uiSourcePane.loadSource(this.getClass());
 		x2dSourcePane.loadX2DSource(fx2d);

@@ -7,6 +7,7 @@ package com.jensoft.core.demo.ui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.StringTokenizer;
 
 import javax.jnlp.ClipboardService;
 import javax.jnlp.ServiceManager;
@@ -94,10 +95,25 @@ public abstract class ViewAppletUI extends JApplet {
 
 		masterPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 		masterPane.setLayout(new BorderLayout());
+		
+		try {
+			StringTokenizer tokenizer = new StringTokenizer(inset, ",");
+			masterPane.setBorder(BorderFactory.createEmptyBorder(Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken())));
+		} catch (Throwable e) {
+			masterPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
+		}
 
 		DemoTabSet tabSet = new DemoTabSet();
 		tabSet.setTitle("JenSoft");
 
+		tabSet.setTitle("JenSoft - API");
+		if (cornerRadius != null) {
+			tabSet.setCornerRadius(Integer.parseInt(cornerRadius));
+		}
+		if (drawOutline != null) {
+			tabSet.setDrawOutline(Boolean.parseBoolean(drawOutline));
+		}
+		
 		DemoTab demoTab = new DemoTab("Demo");
 		demoTab.setTabColor(Color.DARK_GRAY);
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
@@ -111,7 +127,7 @@ public abstract class ViewAppletUI extends JApplet {
 		}
 		tabSet.addComandTab(demoTab, view);
 
-		DemoTab appletUITab = new DemoTab("UI");
+		DemoTab appletUITab = new DemoTab("Applet UI");
 		appletUITab.setTabColor(FilPalette.GREEN3);
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
 		appletUITab.setTabIcon(icon2);
@@ -119,7 +135,7 @@ public abstract class ViewAppletUI extends JApplet {
 		tabSet.addComandTab(appletUITab, appletUISourcePane);
 		appletUISourcePane.loadSource(this.getClass());
 
-		DemoTab viewSourceTab = new DemoTab(view.getClass().getSimpleName());
+		DemoTab viewSourceTab = new DemoTab("View");
 		viewSourceTab.setTabColor(JennyPalette.JENNY6);
 		ImageIcon icon = ImageResource.getInstance().createImageIcon("source.png", "");
 		viewSourceTab.setTabIcon(icon);

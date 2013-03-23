@@ -77,7 +77,7 @@ public abstract class DashboardAppletUI extends JApplet {
 
 		JPanel masterPane = new JPanel();
 		masterPane.setBackground(Color.WHITE);
-
+		masterPane.setLayout(new BorderLayout());
 		try {
 			StringTokenizer tokenizer = new StringTokenizer(inset, ",");
 			masterPane.setBorder(BorderFactory.createEmptyBorder(Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken()), Integer.parseInt(tokenizer.nextToken())));
@@ -85,7 +85,7 @@ public abstract class DashboardAppletUI extends JApplet {
 			masterPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 		}
 
-		masterPane.setLayout(new BorderLayout());
+		
 
 		DemoTabSet tabSet = new DemoTabSet();
 
@@ -113,7 +113,7 @@ public abstract class DashboardAppletUI extends JApplet {
 
 		tabSet.addComandTab(demoTab, dashboard);
 
-		DemoTab uiTab = new DemoTab("UI");
+		DemoTab uiTab = new DemoTab("Applet UI");
 		uiTab.setTabColor(FilPalette.GREEN3);
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
 		uiTab.setTabIcon(icon2);
