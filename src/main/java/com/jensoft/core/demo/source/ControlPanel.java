@@ -36,10 +36,12 @@ public class ControlPanel extends JComponent {
 		} catch (UnavailableServiceException e) {
 		}
 
-		try {
-			clipboardSystem = Toolkit.getDefaultToolkit().getSystemClipboard();
-		} catch (HeadlessException ex) {
-		} catch (AWTError err) {
+		if(clipboardService == null){
+			try {
+				clipboardSystem = Toolkit.getDefaultToolkit().getSystemClipboard();
+			} catch (HeadlessException ex) {
+			} catch (AWTError err) {
+			}
 		}
 
 		if(clipboardService != null || clipboardSystem != null){
