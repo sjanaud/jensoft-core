@@ -90,7 +90,7 @@ public class ViewFrameUI extends JFrame {
 		demoTab.setTabIcon(icon1);
 		tabSet.addComandTab(demoTab, view);
 
-		DemoTab frameUITab = new DemoTab("UI");
+		DemoTab frameUITab = new DemoTab("Frame UI");
 		frameUITab.setTabColor(FilPalette.GREEN3);
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
 		frameUITab.setTabIcon(icon2);
@@ -98,7 +98,7 @@ public class ViewFrameUI extends JFrame {
 		tabSet.addComandTab(frameUITab, frameUISourcePane);
 		frameUISourcePane.loadSource(this.getClass());
 
-		DemoTab viewSourceTab = new DemoTab(view.getClass().getSimpleName());
+		DemoTab viewSourceTab = new DemoTab("View");
 		viewSourceTab.setTabColor(JennyPalette.JENNY6);
 		ImageIcon icon = ImageResource.getInstance().createImageIcon("source.png", "");
 		viewSourceTab.setTabIcon(icon);

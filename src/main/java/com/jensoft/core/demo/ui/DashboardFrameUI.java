@@ -79,7 +79,7 @@ public class DashboardFrameUI extends JFrame {
 		demoTab.setTabIcon(icon1);
 		tabSet.addComandTab(demoTab, dashboard);
 
-		DemoTab uiTab = new DemoTab("UI");
+		DemoTab uiTab = new DemoTab("Frame UI");
 		uiTab.setTabColor(FilPalette.GREEN3);
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
 		uiTab.setTabIcon(icon2);

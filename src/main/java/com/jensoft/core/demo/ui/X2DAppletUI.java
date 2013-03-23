@@ -101,12 +101,12 @@ public abstract class X2DAppletUI extends JApplet {
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
 		demoTab.setTabIcon(icon1);
 
-		DemoTab sourceTab = new DemoTab("X2D Source");
+		DemoTab sourceTab = new DemoTab("X2D");
 		sourceTab.setTabColor(JennyPalette.JENNY6);
 		ImageIcon icon = ImageResource.getInstance().createImageIcon("source.png", "");
 		sourceTab.setTabIcon(icon);
 
-		DemoTab uisourceTab = new DemoTab("UI");
+		DemoTab uisourceTab = new DemoTab("Applet UI");
 		uisourceTab.setTabColor(RosePalette.EMERALD);
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
 		uisourceTab.setTabIcon(icon2);
@@ -124,10 +124,11 @@ public abstract class X2DAppletUI extends JApplet {
 		tabSet.addComandTab(demoTab, view2d);
 		final X2D fx2d = x2d;
 
-		X2DSourcePane x2dSourcePane = new X2DSourcePane();
-		tabSet.addComandTab(sourceTab, x2dSourcePane);
 		JavaSourcePane uiSourcePane = new JavaSourcePane();
 		tabSet.addComandTab(uisourceTab, uiSourcePane);
+		X2DSourcePane x2dSourcePane = new X2DSourcePane();
+		tabSet.addComandTab(sourceTab, x2dSourcePane);
+		
 
 		uiSourcePane.loadSource(this.getClass());
 		x2dSourcePane.loadX2DSource(fx2d);
