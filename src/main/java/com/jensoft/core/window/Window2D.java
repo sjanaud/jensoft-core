@@ -1042,6 +1042,42 @@ public abstract class Window2D implements PluginListener {
 
         private static final long serialVersionUID = -7000203845075240349L;
     }
+    
+    /**
+     * The <code>SymbolX</code> class defines a composite semi symbol and linear window with no scalar on x and linear y
+     * projection.
+     */
+    public static class SymbolX extends Linear implements Serializable {		
+		
+    	/**
+    	 * Create a symbol on x dimension and linear on y dimension
+    	 * @param miny
+    	 * @param maxy
+    	 */
+		public SymbolX(double miny, double maxy) {
+			super(0, 0, miny, maxy);
+		}
+    	
+		private static final long serialVersionUID = 5596190230123838729L;
+    }
+    
+    /**
+     * The <code>SymbolX</code> class defines a composite semi symbol and linear window with no scalar on x and linear y
+     * projection.
+     */
+    public static class SymbolY extends Linear implements Serializable {
+    	
+    	/**
+    	 * Create a linear on x and symbol on y dimension
+    	 * @param minx
+    	 * @param maxx
+    	 */
+		public SymbolY(double minx, double maxx) {
+			super(minx, maxx,0, 0);
+		}
+    	
+		private static final long serialVersionUID = 5596190230123838729L;
+    }
 
     /**
      * This is an abstract class that cannot be instantiated directly.
