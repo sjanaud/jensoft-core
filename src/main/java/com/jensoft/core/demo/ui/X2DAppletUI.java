@@ -95,7 +95,7 @@ public abstract class X2DAppletUI extends JApplet {
 		if (drawOutline != null) {
 			tabSet.setDrawOutline(Boolean.parseBoolean(drawOutline));
 		}
-		DemoTab demoTab = new DemoTab("X2D View");
+		DemoTab demoTab = new DemoTab("Demo");
 
 		demoTab.setTabColor(Color.DARK_GRAY);
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
