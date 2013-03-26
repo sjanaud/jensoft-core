@@ -81,7 +81,7 @@ public abstract class X2DFrameUI extends JFrame {
 		DemoTabSet tabSet = new DemoTabSet();
 		tabSet.setTitle("JenSoft - API");
 
-		DemoTab demoTab = new DemoTab("X2D");
+		DemoTab demoTab = new DemoTab("Demo");
 
 		demoTab.setTabColor(Color.DARK_GRAY);
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");

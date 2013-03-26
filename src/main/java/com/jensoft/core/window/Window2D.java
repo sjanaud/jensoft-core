@@ -1044,7 +1044,7 @@ public abstract class Window2D implements PluginListener {
     }
     
     /**
-     * The <code>SymbolX</code> class defines a composite semi symbol and linear window with no scalar on x and linear y
+     * The <code>SymbolX</code> class defines a composite symbol and linear window with no scalar on x and linear y
      * projection.
      */
     public static class SymbolX extends Linear implements Serializable {		
@@ -1062,7 +1062,7 @@ public abstract class Window2D implements PluginListener {
     }
     
     /**
-     * The <code>SymbolX</code> class defines a composite semi symbol and linear window with no scalar on x and linear y
+     * The <code>SymbolX</code> class defines a composite with symbol and linear window with no scalar on x and linear y
      * projection.
      */
     public static class SymbolY extends Linear implements Serializable {
