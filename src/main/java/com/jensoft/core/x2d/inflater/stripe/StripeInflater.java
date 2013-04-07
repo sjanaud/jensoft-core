@@ -12,7 +12,7 @@ import org.w3c.dom.NodeList;
 import com.jensoft.core.plugin.stripe.Stripe;
 import com.jensoft.core.plugin.stripe.StripePlugin;
 import com.jensoft.core.plugin.stripe.StripePlugin.StripeOrientation;
-import com.jensoft.core.plugin.stripe.manager.DynamicStripeManager;
+import com.jensoft.core.plugin.stripe.manager.MultiplierStripeManager;
 import com.jensoft.core.plugin.stripe.manager.FlowStripeManager;
 import com.jensoft.core.plugin.stripe.manager.FreeStripeManager;
 import com.jensoft.core.plugin.stripe.painter.StripePaint;
@@ -89,7 +89,7 @@ public class StripeInflater extends AbstractX2DPluginInflater<StripePlugin> {
     }
 
     /**
-     * inflate a {@link DynamicStripeManager}
+     * inflate a {@link MultiplierStripeManager}
      * 
      * @param managerElement
      *            the manager element to inflate
@@ -221,7 +221,7 @@ public class StripeInflater extends AbstractX2DPluginInflater<StripePlugin> {
                 Stripe b = new Stripe();
                 b.setUserStart(bandStart);
                 b.setUserEnd(bandEnd);
-                b.setBandPaint(new StripePaint(bandColor));
+                b.setStripePaint(new StripePaint(bandColor));
                 freeBandManager.addStripe(b);
             }
         }

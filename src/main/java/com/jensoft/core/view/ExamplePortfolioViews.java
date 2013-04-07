@@ -991,7 +991,7 @@ public class ExamplePortfolioViews {
         night.setAlpha(1f);
         window.registerPlugin(night);
 
-        StripePlugin stripes = new StripePlugin.DynStripe.H(0, 2.5);
+        StripePlugin stripes = new StripePlugin.MultiplierStripe.H(0, 2.5);
         StripePalette bp = new StripePalette();
         bp.addPaint(new Color(255, 255, 255, 40));
         bp.addPaint(new Color(40, 40, 40, 40));
@@ -1098,7 +1098,7 @@ public class ExamplePortfolioViews {
         LegendPlugin legends = new LegendPlugin(legend);
         window.registerPlugin(legends);
 
-        StripePlugin stripes = new StripePlugin.DynStripe.H(0, 2.5);
+        StripePlugin stripes = new StripePlugin.MultiplierStripe.H(0, 2.5);
         StripePalette bp = new StripePalette();
         bp.addPaint(new Color(255, 255, 255, 40));
         bp.addPaint(ColorPalette.alpha(TangoPalette.ORANGE3, 40));
@@ -1268,7 +1268,7 @@ public class ExamplePortfolioViews {
 
        
 
-        StripePlugin stripes = new StripePlugin.DynStripe.H(0, 2.5);
+        StripePlugin stripes = new StripePlugin.MultiplierStripe.H(0, 2.5);
         StripePalette bp = new StripePalette();
         bp.addPaint(new Color(255, 255, 255, 40));
         bp.addPaint(ColorPalette.alpha(TangoPalette.ORANGE3, 40));
@@ -1387,7 +1387,7 @@ public class ExamplePortfolioViews {
         GradientPlugin night = new Night();
         window.registerPlugin(night);
 
-        StripePlugin stripes = new StripePlugin.DynStripe.H(0, 2.5);
+        StripePlugin stripes = new StripePlugin.MultiplierStripe.H(0, 2.5);
         StripePalette bp = new StripePalette();
         bp.addPaint(new Color(255, 255, 255, 40));
         bp.addPaint(new Color(40, 40, 40, 40));
@@ -1737,7 +1737,7 @@ public class ExamplePortfolioViews {
                                                RosePalette.MANDARIN);
         // legendPlugin.addLegend(l1);
 
-        StripePlugin stripes = new StripePlugin.DynStripe.H(0, 2.5);
+        StripePlugin stripes = new StripePlugin.MultiplierStripe.H(0, 2.5);
         StripePalette bp = new StripePalette();
         bp.addPaint(ColorPalette.alpha(RosePalette.LEMONPEEL, 20));
         bp.addPaint(ColorPalette.alpha(RosePalette.MELON, 20));
@@ -1895,7 +1895,7 @@ public class ExamplePortfolioViews {
         Window2D window2D = new Window2D.Linear(0, 9, 0, 18);
         window2D.setThemeColor(Spectral.SPECTRAL_PURPLE1);
 
-        StripePlugin stripes = new StripePlugin.DynStripe.H(0, 2.5);
+        StripePlugin stripes = new StripePlugin.MultiplierStripe.H(0, 2.5);
         StripePalette bp = new StripePalette();
         bp.addPaint(new Color(255, 255, 255, 80));
         // bp.addPaint(new Color(40,40,40,40));

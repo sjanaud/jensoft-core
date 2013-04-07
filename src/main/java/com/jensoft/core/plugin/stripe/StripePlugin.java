@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.stripe.manager.AbstractStripeManager;
-import com.jensoft.core.plugin.stripe.manager.DynamicStripeManager;
+import com.jensoft.core.plugin.stripe.manager.MultiplierStripeManager;
 import com.jensoft.core.plugin.stripe.manager.FlowStripeManager;
 import com.jensoft.core.plugin.stripe.manager.FreeStripeManager;
 import com.jensoft.core.plugin.stripe.manager.StripeManager;
@@ -78,13 +78,13 @@ public abstract class StripePlugin<M extends AbstractStripeManager> extends Abst
     }
 
     /**
-     * <code>DynGridPlugin</code>
+     * <code>MultiplierStripe</code>
      * 
      * @author Sebastien Janaud
      */
-    public static class DynStripe extends StripePlugin<DynamicStripeManager> {
+    public static class MultiplierStripe extends StripePlugin<MultiplierStripeManager> {
 
-        public static class H extends DynStripe {
+        public static class H extends MultiplierStripe {
 
             /**
              * create horizontal Dynamic Stripe
@@ -97,7 +97,7 @@ public abstract class StripePlugin<M extends AbstractStripeManager> extends Abst
             }
         }
 
-        public static class V extends DynStripe {
+        public static class V extends MultiplierStripe {
 
             /**
              * create vertical Dynamic Stripe
@@ -117,8 +117,8 @@ public abstract class StripePlugin<M extends AbstractStripeManager> extends Abst
          * @param interval
          * @param stripeOrientation
          */
-        public DynStripe(double ref, double interval, StripeOrientation stripeOrientation) {
-            super(new DynamicStripeManager(stripeOrientation, ref, interval));
+        public MultiplierStripe(double ref, double interval, StripeOrientation stripeOrientation) {
+            super(new MultiplierStripeManager(stripeOrientation, ref, interval));
         }
 
     }
@@ -276,7 +276,7 @@ public abstract class StripePlugin<M extends AbstractStripeManager> extends Abst
     protected void paintStripes(View2D v2d, Graphics2D g2d) {
         stripeManager.setWindow2D(getWindow2D());
         stripePainter.setBandManager(stripeManager);
-        stripePainter.doPaintBand(g2d);
+        stripePainter.doPaintStripes(g2d);
     }
 
     /*
