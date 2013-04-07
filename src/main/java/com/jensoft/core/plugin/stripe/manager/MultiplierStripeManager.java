@@ -22,7 +22,7 @@ import com.jensoft.core.plugin.stripe.painter.StripePaint;
  * @see StripeOrientation
  * @author Sebastien Janaud
  */
-public class DynamicStripeManager extends AbstractStripeManager {
+public class MultiplierStripeManager extends AbstractStripeManager {
 
     /** stripe reference */
     private double ref = 0;
@@ -38,7 +38,7 @@ public class DynamicStripeManager extends AbstractStripeManager {
      * @param ref
      * @param interval
      */
-    public DynamicStripeManager(StripeOrientation stripeOrientation, double ref,
+    public MultiplierStripeManager(StripeOrientation stripeOrientation, double ref,
             double interval) {
         super.setStripeOrientation(stripeOrientation);
         this.ref = ref;

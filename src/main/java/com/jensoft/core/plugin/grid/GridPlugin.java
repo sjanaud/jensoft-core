@@ -14,8 +14,10 @@ import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.grid.Grid.GridOrientation;
 import com.jensoft.core.plugin.grid.manager.AbstractGridManager;
+import com.jensoft.core.plugin.grid.manager.CompoundGridManager;
 import com.jensoft.core.plugin.grid.manager.FlowGridManager;
 import com.jensoft.core.plugin.grid.manager.FreeGridManager;
+import com.jensoft.core.plugin.grid.manager.GridManager;
 import com.jensoft.core.plugin.grid.manager.ModeledGridManager;
 import com.jensoft.core.plugin.grid.manager.ModeledGridManager.GridModel;
 import com.jensoft.core.plugin.grid.manager.ModeledGridManager.GridModelCollections;
@@ -61,7 +63,6 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
             return;
         }
         paintGrids(v2d, g2d);
-
     }
 
     /**
@@ -169,6 +170,64 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
      */
     public Stroke getGridStroke() {
         return getGridManager().getGridStroke();
+    }
+    
+    /**
+     * <code>CompoundGrid</code> takes the responsibility to manage compound device grids
+     * 
+     * @author Sebastien Janaud
+     */
+    public static class CompoundGrid extends GridPlugin<CompoundGridManager> {
+    	
+    	
+        /**
+         * <code>H</code> creates {@link GridOrientation#Horizontal} {@link Grid} based on {@link CompoundGridManager}
+         */
+        public static class H extends CompoundGrid {
+
+            /**
+             * <code>H</code> creates {@link GridOrientation#Horizontal} {@link Grid} based on {@link CompoundGridManager}
+             * 
+             * @param gridCount
+             */
+            public H(int gridCount) {
+                super(GridOrientation.Horizontal);
+            }
+        }
+        
+    	
+        /**
+         * <code>V</code> creates {@link GridOrientation#Vertical} {@link Grid} based on {@link CompoundGridManager}
+         */
+        public static class V extends CompoundGrid {
+
+            /**
+             * <code>V</code> creates {@link GridOrientation#Vertical} {@link Grid} based on {@link CompoundGridManager}
+             * 
+             * @param gridCount
+             */
+            public V(int gridCount) {
+                super(GridOrientation.Vertical);
+            }
+        }
+        
+        
+    	/**
+         * create compound grid plug in
+         * 
+         * @param gridOrientation
+         */
+        public CompoundGrid(GridOrientation gridOrientation) {
+            super(new CompoundGridManager(gridOrientation));
+        }
+        
+        /**
+         * add manager in this compound
+         * @param gmanagers
+         */
+        public void addManager(GridManager...gmanagers){
+        	getGridManager().addManagers(gmanagers);
+        }
     }
 
     /**

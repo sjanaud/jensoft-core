@@ -17,7 +17,7 @@ import com.jensoft.core.plugin.stripe.StripePlugin.StripeOrientation;
 import com.jensoft.core.plugin.stripe.manager.StripeManager;
 
 /**
- * BandDefaultPainter is the painter for Grid define by the layout manager
+ * <code>StripeDefaultPainter</code>
  * 
  * @author Sebastien Janaud
  */
@@ -36,26 +36,26 @@ public class StripeDefaultPainter extends AbstractStripePainter {
      *            the graphics2D context
      */
     @Override
-    public void doPaintBand(Graphics2D g2d) {
-        StripeManager manager = getLayout();
+    public void doPaintStripes(Graphics2D g2d) {
+        StripeManager manager = getManager();
         if (manager == null) {
-            return;
-        }
-        g2d.setComposite(java.awt.AlphaComposite.getInstance(
-                                                             java.awt.AlphaComposite.SRC_OVER, 1f));
+			return;
+		}
+        g2d.setComposite(java.awt.AlphaComposite.getInstance( java.awt.AlphaComposite.SRC_OVER, 1f));
+                                                            
         if (manager.getStripeOrientation() == StripeOrientation.Vertical) {
 
-            List<Stripe> bands = manager.getStripes();
+            List<Stripe> stripes = manager.getStripes();
 
-            for (int i = 0; i < bands.size(); i++) {
-                Stripe band = bands.get(i);
-                double gd = band.deviceStart;
+            for (int i = 0; i < stripes.size(); i++) {
+                Stripe stripe = stripes.get(i);
+                double gd = stripe.deviceStart;
 
-                Shape bandShape = new Rectangle2D.Double(gd, 0,
-                                                         band.getDeviceInterval(), getLayout().getWindow2D()
+                Shape stripeShape = new Rectangle2D.Double(gd, 0,
+                                                         stripe.getDeviceInterval(), getManager().getWindow2D()
                                                                  .getDevice2D().getDeviceHeight());
 
-                StripePaint bandPaint = band.getPaint();
+                StripePaint bandPaint = stripe.getPaint();
                 if (bandPaint.getStripeColor() != null) {
                     g2d.setColor(bandPaint.getStripeColor());
                 }
@@ -66,11 +66,11 @@ public class StripeDefaultPainter extends AbstractStripePainter {
                         && bandPaint.getShadeColors() != null
                         && bandPaint.getShadeFractions().length == bandPaint
                                 .getShadeColors().length) {
-                    Point2D start = new Point2D.Double(bandShape.getBounds2D()
-                            .getX(), bandShape.getBounds2D().getCenterY());
-                    Point2D end = new Point2D.Double(bandShape.getBounds2D()
-                            .getX() + bandShape.getBounds2D().getWidth(),
-                                                     bandShape.getBounds2D().getCenterY());
+                    Point2D start = new Point2D.Double(stripeShape.getBounds2D()
+                            .getX(), stripeShape.getBounds2D().getCenterY());
+                    Point2D end = new Point2D.Double(stripeShape.getBounds2D()
+                            .getX() + stripeShape.getBounds2D().getWidth(),
+                                                     stripeShape.getBounds2D().getCenterY());
 
                     if (!start.equals(end)) {
                         LinearGradientPaint shader = new LinearGradientPaint(
@@ -85,12 +85,12 @@ public class StripeDefaultPainter extends AbstractStripePainter {
                 g2d.setComposite(java.awt.AlphaComposite.getInstance(
                                                                      java.awt.AlphaComposite.SRC_OVER, getAlpha()));
 
-                g2d.fill(bandShape);
+                g2d.fill(stripeShape);
 
                 g2d.setComposite(java.awt.AlphaComposite.getInstance(
                                                                      java.awt.AlphaComposite.SRC_OVER, 1f));
-                if (band.getAnnotation() != null) {
-                    g2d.drawString(band.getAnnotation(), (int) gd + 2, 10);
+                if (stripe.getAnnotation() != null) {
+                    g2d.drawString(stripe.getAnnotation(), (int) gd + 2, 10);
                 }
             }
 
@@ -98,17 +98,17 @@ public class StripeDefaultPainter extends AbstractStripePainter {
 
         if (manager.getStripeOrientation() == StripeOrientation.Horizontal) {
 
-            List<Stripe> grids = manager.getStripes();
+            List<Stripe> stripes = manager.getStripes();
 
-            for (int i = 0; i < grids.size(); i++) {
-                Stripe band = grids.get(i);
-                double gd = band.deviceStart;
+            for (int i = 0; i < stripes.size(); i++) {
+                Stripe stripe = stripes.get(i);
+                double gd = stripe.deviceStart;
 
-                Shape bandShape = new Rectangle2D.Double(0, gd, getLayout()
+				Shape stripeShape = new Rectangle2D.Double(0, gd, getManager()
                         .getWindow2D().getDevice2D().getDeviceWidth(),
-                                                         Math.abs(band.getDeviceInterval()));
+                                                         Math.abs(stripe.getDeviceInterval()));
 
-                StripePaint bandPaint = band.getPaint();
+                StripePaint bandPaint = stripe.getPaint();
                 if (bandPaint.getStripeColor() != null) {
                     g2d.setColor(bandPaint.getStripeColor());
                 }
@@ -120,11 +120,11 @@ public class StripeDefaultPainter extends AbstractStripePainter {
                         && bandPaint.getShadeColors() != null
                         && bandPaint.getShadeFractions().length == bandPaint
                                 .getShadeColors().length) {
-                    Point2D start = new Point2D.Double(bandShape.getBounds2D()
-                            .getCenterX(), bandShape.getBounds2D().getY());
-                    Point2D end = new Point2D.Double(bandShape.getBounds2D()
-                            .getCenterX(), bandShape.getBounds2D().getY()
-                            + bandShape.getBounds2D().getHeight());
+                    Point2D start = new Point2D.Double(stripeShape.getBounds2D()
+                            .getCenterX(), stripeShape.getBounds2D().getY());
+                    Point2D end = new Point2D.Double(stripeShape.getBounds2D()
+                            .getCenterX(), stripeShape.getBounds2D().getY()
+                            + stripeShape.getBounds2D().getHeight());
 
                     if (!start.equals(end)) {
                         LinearGradientPaint shader = new LinearGradientPaint(
@@ -139,13 +139,13 @@ public class StripeDefaultPainter extends AbstractStripePainter {
                 g2d.setComposite(java.awt.AlphaComposite.getInstance(
                                                                      java.awt.AlphaComposite.SRC_OVER, getAlpha()));
 
-                g2d.fill(bandShape);
+                g2d.fill(stripeShape);
 
                 g2d.setComposite(java.awt.AlphaComposite.getInstance(
                                                                      java.awt.AlphaComposite.SRC_OVER, 1f));
 
-                if (band.getAnnotation() != null) {
-                    g2d.drawString(band.getAnnotation(), 10, (int) gd - 2);
+                if (stripe.getAnnotation() != null) {
+                    g2d.drawString(stripe.getAnnotation(), 10, (int) gd - 2);
                 }
             }
 

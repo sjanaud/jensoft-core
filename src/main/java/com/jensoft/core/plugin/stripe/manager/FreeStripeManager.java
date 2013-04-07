@@ -49,7 +49,7 @@ public class FreeStripeManager extends AbstractStripeManager {
         Stripe band = new Stripe();
         band.setUserStart(stripStart);
         band.setUserEnd(stripEnd);
-        band.setBandPaint(stripePaint);
+        band.setStripePaint(stripePaint);
         stripes.add(band);
     }
 
@@ -88,7 +88,7 @@ public class FreeStripeManager extends AbstractStripeManager {
                 stripe.setUserStart(b.getUserStart());
                 stripe.setUserEnd(b.getUserEnd());
 
-                stripe.setPaint(b.getBandPaint());
+                stripe.setPaint(b.getStripePaint());
                 deviceStripes.add(stripe);
 
             }
@@ -108,7 +108,7 @@ public class FreeStripeManager extends AbstractStripeManager {
                 stripe.setUserStart(b.getUserStart());
                 stripe.setUserEnd(b.getUserEnd());
 
-                stripe.setPaint(b.getBandPaint());
+                stripe.setPaint(b.getStripePaint());
                 deviceStripes.add(stripe);
 
             }

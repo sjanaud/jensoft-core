@@ -10,38 +10,38 @@ import java.awt.Graphics2D;
 import com.jensoft.core.plugin.stripe.manager.StripeManager;
 
 /**
- * AbstractBandPainter defines the abstract base method to paint the Band.
+ * <code>AbstractStripePainter</code> defines the abstract base method to paint stripe.
  * 
  * @author Sebastien Janaud
  */
 public abstract class AbstractStripePainter {
 
-    /** the band layout */
-    private StripeManager layout;
+    /** the stripe manager */
+    private StripeManager manager;
 
-    /** band alpha */
+    /** stripe alpha */
     private float alpha = 1f;
 
     /**
-     * set the band layout for this painter
+     * set the stripe manager for this painter
      * 
-     * @param layout
+     * @param manager
      */
-    public void setBandManager(StripeManager layout) {
-        this.layout = layout;
+    public void setBandManager(StripeManager manager) {
+        this.manager = manager;
     }
 
     /**
      * get the layout manager of this painter
      * 
-     * @return BandLayoutManager
+     * @return StripeManager
      */
-    public StripeManager getLayout() {
-        return layout;
+    public StripeManager getManager() {
+        return manager;
     }
 
     /**
-     * get band alpha
+     * get stripe alpha
      * 
      * @return alpha
      */
@@ -50,7 +50,7 @@ public abstract class AbstractStripePainter {
     }
 
     /**
-     * set band alpha
+     * set stripe alpha
      * 
      * @param alpha
      */
@@ -59,9 +59,9 @@ public abstract class AbstractStripePainter {
     }
 
     /**
-     * implements this method in sub classe and paint the band
+     * implements this method in sub class and paint the stripe
      * 
      * @param g2d
      */
-    public abstract void doPaintBand(Graphics2D g2d);
+    public abstract void doPaintStripes(Graphics2D g2d);
 }

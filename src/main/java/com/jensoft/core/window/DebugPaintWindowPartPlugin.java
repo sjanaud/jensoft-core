@@ -3,6 +3,7 @@
  */
 package com.jensoft.core.window;
 
+import java.awt.AlphaComposite;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
@@ -37,9 +38,12 @@ public class DebugPaintWindowPartPlugin extends AbstractPlugin {
         if (colorMap.get(windowPart) == null) {
             colorMap.put(windowPart, ColorPalette.getRandomColor());
         }
-
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
         g2d.setColor(colorMap.get(windowPart));
         g2d.draw(rect2DPart);
+        
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.2f));
+        g2d.fill(rect2DPart);
     }
 
 }
