@@ -16,7 +16,7 @@ import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FlowMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FreeMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.ModeledMetrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.MultiMultiplierMetrics;
+import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Multiplier3Metrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.MultiplierMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.StaticMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
@@ -150,7 +150,7 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
      * @author sebastien janaud
      */
     @X2DInflater(xsi="AxisMultiMultiplierMetrics")
-    public static class MultiMultiplierMetricsInflater extends AxisMetricsInflater<MultiMultiplierMetrics> {
+    public static class MultiMultiplierMetricsInflater extends AxisMetricsInflater<Multiplier3Metrics> {
 
         /**
          * create multiplier metrics inflater
@@ -170,7 +170,7 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
             Double medianMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MEDIAN_MULTIPLIER);
             Double minorMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MINOR_MULTIPLIER);
 
-            AxisMetricsPlugin.MultiMultiplierMetrics multiMultiplier = new AxisMetricsPlugin.MultiMultiplierMetrics(
+            AxisMetricsPlugin.Multiplier3Metrics multiMultiplier = new AxisMetricsPlugin.Multiplier3Metrics(
                                                                                                                     ref,
                                                                                                                     getAxis(plugin));
             if (majorMultiplier != null) {

@@ -8,6 +8,8 @@ package com.jensoft.core.plugin.stripe.painter;
 import java.awt.Color;
 import java.awt.Paint;
 
+import com.jensoft.core.graphics.Shader;
+
 /**
  * <code>StripePaint</code> define rendering properties to paint a stripe
  * 
@@ -42,6 +44,20 @@ public class StripePaint {
     public StripePaint(Color stripeColor) {
         super();
         this.stripeColor = stripeColor;
+    }
+    
+    /**
+     * create with specified shader
+     * 
+     * @param shader
+     *            the shader
+     */
+    public StripePaint(Shader shader) {
+        if (shader.getFractions().length != shader.getColors().length) {
+            throw new IllegalArgumentException("length array does not match");
+        }
+        this.shadeFractions = shader.getFractions();
+        this.shadeColors = shader.getColors();
     }
 
     /**

@@ -29,7 +29,7 @@ import com.jensoft.core.window.Window2D;
  * <p>
  * @author sebastien janaud
  */
-public class MultiMultiplierMetricsManager extends AbstractMetricsManager {
+public class Multiplier3MetricsManager extends AbstractMetricsManager {
 
     /** the metrics start reference */
     private double metricsRef;
@@ -82,7 +82,7 @@ public class MultiMultiplierMetricsManager extends AbstractMetricsManager {
     /**
      * create empty milli metrics manager
      */
-    public MultiMultiplierMetricsManager() {
+    public Multiplier3MetricsManager() {
         deviceMetrics = new ArrayList<Metrics>();
     }
 
@@ -92,7 +92,7 @@ public class MultiMultiplierMetricsManager extends AbstractMetricsManager {
      * @param metricsRef
      *            the metrics start reference
      */
-    public MultiMultiplierMetricsManager(double metricsRef) {
+    public Multiplier3MetricsManager(double metricsRef) {
         this.metricsRef = metricsRef;
         deviceMetrics = new ArrayList<Metrics>();
     }

@@ -26,7 +26,7 @@ import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelCollections;
-import com.jensoft.core.plugin.metrics.manager.MultiMultiplierMetricsManager;
+import com.jensoft.core.plugin.metrics.manager.Multiplier3MetricsManager;
 import com.jensoft.core.plugin.metrics.manager.MultiplierMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
@@ -520,7 +520,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
      * 
      * @author sebastien janaud
      */
-    public static class DeviceMultiMultiplierMetrics extends DeviceMetricsPlugin<MultiMultiplierMetricsManager> {
+    public static class DeviceMultiMultiplierMetrics extends DeviceMetricsPlugin<Multiplier3MetricsManager> {
 
         /**
          * <code>X</code> manages {@link DeviceMultiMultiplierMetrics} for {@link DeviceAxis#AxisX}
@@ -589,7 +589,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
          *            the x or y axis on device
          */
         public DeviceMultiMultiplierMetrics(double ref, double baseLine, DeviceAxis deviceAxis) {
-            super(new MultiMultiplierMetricsManager(ref), baseLine, deviceAxis);
+            super(new Multiplier3MetricsManager(ref), baseLine, deviceAxis);
         }
 
         /**
@@ -606,7 +606,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
          */
         public DeviceMultiMultiplierMetrics(double ref, double baseLine,
                 MarkerPosition markerPosition, DeviceAxis deviceAxis) {
-            super(new MultiMultiplierMetricsManager(ref), baseLine,
+            super(new Multiplier3MetricsManager(ref), baseLine,
                   markerPosition, deviceAxis);
         }
 
