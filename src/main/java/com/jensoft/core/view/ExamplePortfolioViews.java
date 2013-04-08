@@ -78,7 +78,7 @@ import com.jensoft.core.plugin.legend.painter.fill.LegendGradientFill;
 import com.jensoft.core.plugin.marker.MarkerPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.MultiMultiplierMetrics;
+import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Multiplier3Metrics;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelRangeCollections;
 import com.jensoft.core.plugin.outline.OutlinePlugin;
 import com.jensoft.core.plugin.pie.Pie;
@@ -1590,13 +1590,13 @@ public class ExamplePortfolioViews {
         gridLayout.getGridManager().setGridColor(new Color(59, 89, 152, 100));
         w2d.registerPlugin(gridLayout);
 
-        MultiMultiplierMetrics miliWest = new MultiMultiplierMetrics(0, Axis.AxisWest);
+        Multiplier3Metrics miliWest = new Multiplier3Metrics(0, Axis.AxisWest);
         miliWest.setMajor(40);
         miliWest.setMedian(20);
         miliWest.setMinor(5);
         w2d.registerPlugin(miliWest);
 
-        MultiMultiplierMetrics miliSouth = new MultiMultiplierMetrics(0, Axis.AxisSouth);
+        Multiplier3Metrics miliSouth = new Multiplier3Metrics(0, Axis.AxisSouth);
         miliSouth.setMajor(50);
         miliSouth.setMedian(25);
         miliSouth.setMinor(10);
@@ -1647,14 +1647,14 @@ public class ExamplePortfolioViews {
 
         Window2D w2d3 = new Window2D.Linear(-300, 1200, -300, 80);
 
-        MultiMultiplierMetrics miliWest = new AxisMetricsPlugin.MultiMultiplierMetrics(0, Axis.AxisWest);
+        Multiplier3Metrics miliWest = new AxisMetricsPlugin.Multiplier3Metrics(0, Axis.AxisWest);
         miliWest.setMajor(1000);
         miliWest.setMedian(500);
         miliWest.setMinor(100);
 
         w2d.registerPlugin(miliWest);
 
-        MultiMultiplierMetrics miliSouth = new AxisMetricsPlugin.MultiMultiplierMetrics(0, Axis.AxisSouth);
+        Multiplier3Metrics miliSouth = new AxisMetricsPlugin.Multiplier3Metrics(0, Axis.AxisSouth);
         miliSouth.setMajor(1000);
         miliSouth.setMedian(500);
         miliSouth.setMinor(100);
@@ -1663,7 +1663,7 @@ public class ExamplePortfolioViews {
         miliSouth.setMetricsBaseLineColor(TangoPalette.CHAMELEON3);
         w2d.registerPlugin(miliSouth);
 
-        MultiMultiplierMetrics miliSouth2 = new AxisMetricsPlugin.MultiMultiplierMetrics(0, Axis.AxisSouth);
+        Multiplier3Metrics miliSouth2 = new AxisMetricsPlugin.Multiplier3Metrics(0, Axis.AxisSouth);
         miliSouth2.setAxisSpacing(30);
 
         miliSouth2.setMajor(500);
@@ -1673,7 +1673,7 @@ public class ExamplePortfolioViews {
         miliSouth2.setMetricsBaseLineColor(TangoPalette.BUTTER3);
         w2d2.registerPlugin(miliSouth2);
 
-        MultiMultiplierMetrics miliSouth3 = new AxisMetricsPlugin.MultiMultiplierMetrics(0, Axis.AxisSouth);
+        Multiplier3Metrics miliSouth3 = new AxisMetricsPlugin.Multiplier3Metrics(0, Axis.AxisSouth);
         miliSouth3.setAxisSpacing(60);
 
         miliSouth3.setMajor(200);

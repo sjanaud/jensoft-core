@@ -27,8 +27,8 @@ public class RayView extends View2D {
     private RayPlugin rayPlugin;
 
     /** default axis metrics */
-    private AxisMetricsPlugin.MultiMultiplierMetrics axisMiliMetricsX;
-    private AxisMetricsPlugin.MultiMultiplierMetrics axisMiliMetricsY;
+    private AxisMetricsPlugin.Multiplier3Metrics axisMiliMetricsX;
+    private AxisMetricsPlugin.Multiplier3Metrics axisMiliMetricsY;
 
     /**
      * create compatible view with bar plugin
@@ -102,14 +102,14 @@ public class RayView extends View2D {
         rayPlugin.setPriority(10);
         window2DRay.registerPlugin(rayPlugin);
 
-        axisMiliMetricsY = new AxisMetricsPlugin.MultiMultiplierMetrics(window2DRay.getMinY(),
+        axisMiliMetricsY = new AxisMetricsPlugin.Multiplier3Metrics(window2DRay.getMinY(),
                                                 Axis.AxisWest);
         double height = window2DRay.getUserHeight();
         axisMiliMetricsY.setMajor(height / 10);
         axisMiliMetricsY.setMedian(height / 20);
         axisMiliMetricsY.setMinor(height / 100);
 
-        axisMiliMetricsX = new AxisMetricsPlugin.MultiMultiplierMetrics(window2DRay.getMinX(),
+        axisMiliMetricsX = new AxisMetricsPlugin.Multiplier3Metrics(window2DRay.getMinX(),
                                                 Axis.AxisSouth);
         double width = window2DRay.getUserWidth();
         axisMiliMetricsX.setMajor(width / 10);

@@ -29,7 +29,7 @@ import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelCollections;
-import com.jensoft.core.plugin.metrics.manager.MultiMultiplierMetricsManager;
+import com.jensoft.core.plugin.metrics.manager.Multiplier3MetricsManager;
 import com.jensoft.core.plugin.metrics.manager.MultiplierMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
@@ -512,16 +512,16 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class MultiMultiplierMetrics extends AxisMetricsPlugin<MultiMultiplierMetricsManager> {
+	public static class Multiplier3Metrics extends AxisMetricsPlugin<Multiplier3MetricsManager> {
 
 		/**
-		 * <code>W</code> manages {@link MultiMultiplierMetrics} for
+		 * <code>W</code> manages {@link Multiplier3Metrics} for
 		 * {@link Axis#AxisWest}
 		 */
-		public static class W extends MultiMultiplierMetrics {
+		public static class W extends Multiplier3Metrics {
 
 			/**
-			 * Create {@link MultiMultiplierMetrics} for {@link Axis#AxisWest}
+			 * Create {@link Multiplier3Metrics} for {@link Axis#AxisWest}
 			 * with the given multiplier parameter
 			 * 
 			 * @param ref
@@ -532,13 +532,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>E</code> manages {@link MultiMultiplierMetrics} for
+		 * <code>E</code> manages {@link Multiplier3Metrics} for
 		 * {@link Axis#AxisEast}
 		 */
-		public static class E extends MultiMultiplierMetrics {
+		public static class E extends Multiplier3Metrics {
 
 			/**
-			 * Create {@link MultiMultiplierMetrics} for {@link Axis#AxisEast}
+			 * Create {@link Multiplier3Metrics} for {@link Axis#AxisEast}
 			 * with the given multiplier parameter
 			 * 
 			 * @param ref
@@ -549,13 +549,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>N</code> manages {@link MultiMultiplierMetrics} for
+		 * <code>N</code> manages {@link Multiplier3Metrics} for
 		 * {@link Axis#AxisNorth}
 		 */
-		public static class N extends MultiMultiplierMetrics {
+		public static class N extends Multiplier3Metrics {
 
 			/**
-			 * Create {@link MultiMultiplierMetrics} for {@link Axis#AxisNorth}
+			 * Create {@link Multiplier3Metrics} for {@link Axis#AxisNorth}
 			 * with the given multiplier parameter
 			 * 
 			 * @param ref
@@ -566,13 +566,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>S</code> manages {@link MultiMultiplierMetrics} for
+		 * <code>S</code> manages {@link Multiplier3Metrics} for
 		 * {@link Axis#AxisSouth}
 		 */
-		public static class S extends MultiMultiplierMetrics {
+		public static class S extends Multiplier3Metrics {
 
 			/**
-			 * Create {@link MultiMultiplierMetrics} for {@link Axis#AxisSouth}
+			 * Create {@link Multiplier3Metrics} for {@link Axis#AxisSouth}
 			 * with the given multiplier parameter
 			 * 
 			 * @param ref
@@ -599,9 +599,9 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * @param axis
 		 *            the window axis
 		 */
-		public MultiMultiplierMetrics(double ref, Axis axis) {
-			super(new MultiMultiplierMetricsManager(ref), axis);
-			super.setName(MultiMultiplierMetrics.class.getCanonicalName());
+		public Multiplier3Metrics(double ref, Axis axis) {
+			super(new Multiplier3MetricsManager(ref), axis);
+			super.setName(Multiplier3Metrics.class.getCanonicalName());
 		}
 
 		/***
