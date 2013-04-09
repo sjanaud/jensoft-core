@@ -905,11 +905,11 @@ public class ExamplePortfolioViews {
         double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 5, 7, 9, 2, 4, 1 };
 
         // create a series
-        AffineSourceFunction serie1 = SourceFunctionToolkit.createInterpolateSourceFunction(xValues1,
+        AffineSourceFunction serie1 = SourceFunctionToolkit.createSplineSourceFunction(xValues1,
                                                                                             yValues1, 0.1);
-        AffineSourceFunction serie2 = SourceFunctionToolkit.createInterpolateSourceFunction(xValues2,
+        AffineSourceFunction serie2 = SourceFunctionToolkit.createSplineSourceFunction(xValues2,
                                                                                             yValues2, 0.1);
-        AffineSourceFunction serie3 = SourceFunctionToolkit.createInterpolateSourceFunction(xValues3,
+        AffineSourceFunction serie3 = SourceFunctionToolkit.createSplineSourceFunction(xValues3,
                                                                                             yValues3, 0.1);
 
         // create curves
@@ -1055,7 +1055,7 @@ public class ExamplePortfolioViews {
         // CREATE SERIE
         double[] xValues1 = { 0, 1, 2, 3, 4, 5.2, 6, 7, 8, 9, 10 };
         double[] yValues1 = { 3, 1, 5, 4, 4.8, 7.3, 2, 3, 7, 10, 6 };
-        SourceFunction is = SourceFunctionToolkit.createInterpolateSourceFunction(xValues1,
+        SourceFunction is = SourceFunctionToolkit.createSplineSourceFunction(xValues1,
                                                                                   yValues1, 0.1);
 
         // CREATE CURVE
@@ -1179,17 +1179,17 @@ public class ExamplePortfolioViews {
         double[] yValues1 = { 2, 1.8, 1.9, 15, 0.4, 1.4, 1.2, 0.2, 0.6, 0.4,
                 0.7 };
         SplineSourceFunction serie1 = SourceFunctionToolkit
-                .createInterpolateSourceFunction(xValues1, yValues1, 0.1);
+                .createSplineSourceFunction(xValues1, yValues1, 0.1);
 
         double[] xValues2 = { 0, 1, 2, 3, 4, 5.2, 6, 7, 8, 9, 10 };
         double[] yValues2 = { 3, 1, 5, 4, 4.8, 7.3, 2, 3, 7, 10, 6 };
         SplineSourceFunction serie2 = SourceFunctionToolkit
-                .createInterpolateSourceFunction(xValues2, yValues2, 0.1);
+                .createSplineSourceFunction(xValues2, yValues2, 0.1);
 
         double[] xValues3 = { 0, 1.4, 2, 3, 4, 5, 6, 6.5, 7, 8, 9, 10 };
         double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 1, 4, 7, 9, 2, 4, 1 };
         SplineSourceFunction serie3 = SourceFunctionToolkit
-                .createInterpolateSourceFunction(xValues3, yValues3, 0.1);
+                .createSplineSourceFunction(xValues3, yValues3, 0.1);
 
         // CURVES STROKES
         Stroke sDash1 = new BasicStroke(2f, BasicStroke.CAP_BUTT,
@@ -1352,17 +1352,17 @@ public class ExamplePortfolioViews {
         double[] xValues1 = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         double[] yValues1 = { 6, 1.8, 15, 1.9, 3.4, 6.1, 4.2, 8.5, 9.9, 12, 8 };
         SplineSourceFunction serie1 = SourceFunctionToolkit
-                .createInterpolateSourceFunction(xValues1, yValues1, 0.3);
+                .createSplineSourceFunction(xValues1, yValues1, 0.3);
 
         double[] xValues2 = { 0, 1, 2, 3, 4, 5.2, 6, 7, 8, 9, 10 };
         double[] yValues2 = { 3, 1, 5, 4, 4.8, 7.3, 2, 3, 7, 10, 6 };
         SplineSourceFunction serie2 = SourceFunctionToolkit
-                .createInterpolateSourceFunction(xValues2, yValues2, 0.3);
+                .createSplineSourceFunction(xValues2, yValues2, 0.3);
 
         double[] xValues3 = { 0, 1.4, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 5, 7, 9, 2, 4, 1 };
         SplineSourceFunction serie3 = SourceFunctionToolkit
-                .createInterpolateSourceFunction(xValues3, yValues3, 0.3);
+                .createSplineSourceFunction(xValues3, yValues3, 0.3);
 
         ScatterFunction scatter1 = new ScatterFunction(serie1);
         scatter1.setThemeColor(Spectral.SPECTRAL_GREEN);

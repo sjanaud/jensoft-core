@@ -10,18 +10,18 @@ import java.util.EventListener;
 public interface SourceTrackerListener extends EventListener {
 
     /**
-     * call when a serie just being tracked
+     * call when a source just being tracked
      * 
      * @param event
      */
-    void serieTracked(SourceTrackerEvent event);
+    void sourceTracked(SourceTrackerEvent event);
 
     /**
-     * call when a serie just being registered into tracker plug-in
+     * call when a source just being registered into tracker plug-in
      * 
      * @param event
      */
-    void serieRegistered(SourceTrackerEvent event);
+    void sourceRegistered(SourceTrackerEvent event);
 
     /**
      * call during tracking

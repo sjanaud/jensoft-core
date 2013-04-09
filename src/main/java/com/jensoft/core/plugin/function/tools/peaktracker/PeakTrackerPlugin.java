@@ -114,7 +114,7 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
             for (int i = 0; i < listeners.length; i += 2) {
                 if (listeners[i] == SourceTrackerListener.class) {
                     ((SourceTrackerListener) listeners[i + 1])
-                            .serieRegistered(new SourceTrackerEvent(serie));
+                            .sourceRegistered(new SourceTrackerEvent(serie));
                 }
             }
         }

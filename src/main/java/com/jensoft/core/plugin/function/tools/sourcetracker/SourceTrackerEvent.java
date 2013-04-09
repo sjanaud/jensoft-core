@@ -10,7 +10,7 @@ import java.util.EventObject;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 
 /**
- * <code>SerieTrackerEvent<code>
+ * <code>SourceTrackerEvent<code>
  * 
  * @author sebastien janaud
  */
@@ -20,20 +20,20 @@ public class SourceTrackerEvent extends EventObject {
     private static final long serialVersionUID = 1225330748067264039L;
 
     /**
-     * Create serie tracker event for given serie
+     * Create source tracker event for given source
      * 
-     * @param serie
+     * @param source
      */
-    public SourceTrackerEvent(SourceFunction serie) {
-        super(serie);
+    public SourceTrackerEvent(SourceFunction source) {
+        super(source);
     }
 
     /**
-     * return the serie
+     * return source function
      * 
-     * @return serie
+     * @return source
      */
-    public SourceFunction getSerie() {
+    public SourceFunction getSourceFunction() {
         return (SourceFunction) getSource();
     }
 }
