@@ -41,9 +41,9 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
     private JMenu serieSelecterMenu;
 
     /** map serie item */
-    private Map<SourceFunction, JMenuItem> serieSelectersMap;
+    private Map<SourceFunction, JMenuItem> sourceSelectersMap;
 
-    private List<JMenuItem> serieSelecters;
+    private List<JMenuItem> sourceSelecters;
 
     /** serie tracker icon */
     private ImageIcon trackerrootIcon = SharedIcon.getCommon(Common.TAG_LABEL);
@@ -62,15 +62,15 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
          * .plugin.plottools.serietracker.SerieTrackerEvent)
          */
         @Override
-        public void serieTracked(SourceTrackerEvent event) {
-            System.out.println("serieSelecters size " + serieSelecters.size());
-            for (JMenuItem item : serieSelecters) {
+        public void sourceTracked(SourceTrackerEvent event) {
+            System.out.println("sourceSelecters size " + sourceSelecters.size());
+            for (JMenuItem item : sourceSelecters) {
                 System.out.println("unlock icon set on item " + item.getText());
                 item.setIcon(unlockIcon);
             }
 
-            System.out.println("context serie tracked :" + event.getSerie().getName());
-            JMenuItem item = serieSelectersMap.get(event.getSerie());
+            System.out.println("context source tracked :" + event.getSourceFunction().getName());
+            JMenuItem item = sourceSelectersMap.get(event.getSourceFunction());
             item.setIcon(lockIcon);
 
         }
@@ -82,8 +82,8 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
          * .core.plugin.plottools.serietracker.SerieTrackerEvent)
          */
         @Override
-        public void serieRegistered(SourceTrackerEvent event) {
-            System.out.println("context serie registered :" + event.getSerie().getName());
+        public void sourceRegistered(SourceTrackerEvent event) {
+            System.out.println("context source registered :" + event.getSourceFunction().getName());
         }
 
         @Override
@@ -95,8 +95,8 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
      * create a default device menu context for the capture plugin
      */
     public SourceTrackerDeviceContext() {
-        serieSelecters = new ArrayList<JMenuItem>();
-        serieSelectersMap = new HashMap<SourceFunction, JMenuItem>();
+        sourceSelecters = new ArrayList<JMenuItem>();
+        sourceSelectersMap = new HashMap<SourceFunction, JMenuItem>();
     }
 
     /*
@@ -113,10 +113,10 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
         getHost().removeSerieTrackerListener(listener);
         getHost().addSerieTrackerListener(listener);
 
-        serieSelecters.clear();
-        serieSelectersMap.clear();
+        sourceSelecters.clear();
+        sourceSelectersMap.clear();
 
-        rootMenu = new JMenu("Drag Tracker");
+        rootMenu = new JMenu("Source Tracker");
         rootMenu.setIcon(trackerrootIcon);
 
         trackerLocker = new JMenuItem("Lock");
@@ -147,29 +147,29 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
                     }
                 });
 
-        serieSelecterMenu = new JMenu("Series");
-        List<SourceFunction> series = getHost().getSeries();
+        serieSelecterMenu = new JMenu("Sources");
+        List<SourceFunction> series = getHost().getSources();
         int count = 1;
         for (final SourceFunction iSerie2D : series) {
             String name = iSerie2D.getName();
             if (name == null) {
-                name = "serie-" + count;
+                name = "src-" + count;
                 iSerie2D.setName(name);
             }
             JMenuItem serieSelecter = new JMenuItem(name);
             serieSelecterMenu.add(serieSelecter);
-            serieSelectersMap.put(iSerie2D, serieSelecter);
-            serieSelecters.add(serieSelecter);
+            sourceSelectersMap.put(iSerie2D, serieSelecter);
+            sourceSelecters.add(serieSelecter);
             serieSelecter.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    getHost().trackSerie(iSerie2D);
+                    getHost().trackSource(iSerie2D);
                 }
             });
             count++;
 
-            getHost().trackSerie(iSerie2D);
+            getHost().trackSource(iSerie2D);
         }
         rootMenu.add(serieSelecterMenu);
         setGroup("Tracker");

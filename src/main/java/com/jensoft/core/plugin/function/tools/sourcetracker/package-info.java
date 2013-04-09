@@ -1,5 +1,5 @@
 /**
- * Provides plot serie tracker tool plug-in
+ * Provides function source tracker tool plug-in
  * 
  * @since 1.0
  */

@@ -35,7 +35,7 @@ public class SplineSourceFunction extends AffineSourceFunction {
 	private double delta;
 
 	/**
-	 * create an interpolate serie for specified source and delta
+	 * create an interpolate source for specified super source and delta
 	 * 
 	 * @param userSource
 	 *            the serie to interpolate
@@ -47,7 +47,24 @@ public class SplineSourceFunction extends AffineSourceFunction {
 		interpolator = new SplineInterpolator();
 		this.delta = delta;
 		interpolateSource = new ArrayList<Point2D>();
-		createInterpolateFunction();
+		setNature(FunctionNature.XFunction);
+		//createInterpolateFunction();		
+	}
+	
+	/**
+	 * create an interpolate source for specified super source and delta
+	 * 
+	 * @param userSource
+	 *            the serie to interpolate
+	 * @param delta
+	 *            the delta to make interpolation
+	 */
+	public SplineSourceFunction(List<Point2D> userSource, double delta,FunctionNature nature) {
+		super(userSource);
+		this.interpolator = new SplineInterpolator();
+		this.delta = delta;
+		this.interpolateSource = new ArrayList<Point2D>();
+		setNature(nature);		
 	}
 
 	
@@ -70,10 +87,9 @@ public class SplineSourceFunction extends AffineSourceFunction {
 		createInterpolateFunction();
 	}
 
-	/**
-	 * evaluate point for the specified value
-	 * 
-	 * @return the evaluate point at the given value
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate(double)
 	 */
 	@Override
 	public Point2D evaluate(double value) {
@@ -89,13 +105,17 @@ public class SplineSourceFunction extends AffineSourceFunction {
 		return evaluatePoint;
 	}
 
-	/**
-	 * override method to get interpolate source
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#getSource()
 	 */
 	@Override
 	public List<Point2D> getSource() {
 		sortFunction();
 		List<Point2D> superSource = super.getSource();
+		if (function == null) {
+			createInterpolateFunction();
+		}
 		if (function == null) {
 			return super.getSource();
 		}
@@ -124,7 +144,6 @@ public class SplineSourceFunction extends AffineSourceFunction {
 				try {
 				
 					if(y > pd2Min.getY() && y < pd2Max.getY()){
-						System.out.println("value to interpolate : "+y);
 						interpolateSource.add(new Point2D.Double(function.value(y),y));
 					}
 					
@@ -154,7 +173,7 @@ public class SplineSourceFunction extends AffineSourceFunction {
 			}
 			
 			if(getNature() == FunctionNature.XFunction){
-				function = interpolator.interpolate(xValues, yValues);
+				function = interpolator.interpolate(xValues,yValues);
 			}
 			else{
 				function = interpolator.interpolate(yValues,xValues);

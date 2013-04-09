@@ -246,13 +246,32 @@ public class SourceFunctionToolkit extends Toolkit {
      *            step segment length for evaluate curve
      * @return the interpolate serie
      */
-    public static SplineSourceFunction createInterpolateSourceFunction(
+    public static SplineSourceFunction createSplineSourceFunction(
             double[] xValues, double[] yValues, double delta) {
         if (xValues.length != yValues.length) {
             throw new IllegalArgumentException(
                                                " x and y  array values length does not match");
         }
         return new SplineSourceFunction(createPointsFromArray(xValues, yValues), delta);
+    }
+    
+    /**
+     * create interpolate serie from x and y arrays.
+     * 
+     * @param xValues
+     * @param yValues
+     * @param delta
+     *            step segment length for evaluate curve
+     * @param nature
+     * @return the interpolate serie
+     */
+    public static SplineSourceFunction createSplineSourceFunction(
+            double[] xValues, double[] yValues, double delta,FunctionNature nature) {
+        if (xValues.length != yValues.length) {
+            throw new IllegalArgumentException(
+                                               " x and y  array values length does not match");
+        }
+        return new SplineSourceFunction(createPointsFromArray(xValues, yValues), delta,nature);
     }
 
     /**
