@@ -61,7 +61,7 @@ import com.jensoft.core.plugin.function.scatter.morphe.QInverseMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.QStarMorphe;
 import com.jensoft.core.plugin.function.scatter.painter.fill.ScatterDefaultFill;
 import com.jensoft.core.plugin.function.source.AffineSourceFunction;
-import com.jensoft.core.plugin.function.source.InterpolateSourceFunction;
+import com.jensoft.core.plugin.function.source.SplineSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunctionToolkit;
 import com.jensoft.core.plugin.gradient.GradientPlugin;
@@ -1178,17 +1178,17 @@ public class ExamplePortfolioViews {
         double[] xValues1 = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         double[] yValues1 = { 2, 1.8, 1.9, 15, 0.4, 1.4, 1.2, 0.2, 0.6, 0.4,
                 0.7 };
-        InterpolateSourceFunction serie1 = SourceFunctionToolkit
+        SplineSourceFunction serie1 = SourceFunctionToolkit
                 .createInterpolateSourceFunction(xValues1, yValues1, 0.1);
 
         double[] xValues2 = { 0, 1, 2, 3, 4, 5.2, 6, 7, 8, 9, 10 };
         double[] yValues2 = { 3, 1, 5, 4, 4.8, 7.3, 2, 3, 7, 10, 6 };
-        InterpolateSourceFunction serie2 = SourceFunctionToolkit
+        SplineSourceFunction serie2 = SourceFunctionToolkit
                 .createInterpolateSourceFunction(xValues2, yValues2, 0.1);
 
         double[] xValues3 = { 0, 1.4, 2, 3, 4, 5, 6, 6.5, 7, 8, 9, 10 };
         double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 1, 4, 7, 9, 2, 4, 1 };
-        InterpolateSourceFunction serie3 = SourceFunctionToolkit
+        SplineSourceFunction serie3 = SourceFunctionToolkit
                 .createInterpolateSourceFunction(xValues3, yValues3, 0.1);
 
         // CURVES STROKES
@@ -1351,17 +1351,17 @@ public class ExamplePortfolioViews {
 
         double[] xValues1 = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         double[] yValues1 = { 6, 1.8, 15, 1.9, 3.4, 6.1, 4.2, 8.5, 9.9, 12, 8 };
-        InterpolateSourceFunction serie1 = SourceFunctionToolkit
+        SplineSourceFunction serie1 = SourceFunctionToolkit
                 .createInterpolateSourceFunction(xValues1, yValues1, 0.3);
 
         double[] xValues2 = { 0, 1, 2, 3, 4, 5.2, 6, 7, 8, 9, 10 };
         double[] yValues2 = { 3, 1, 5, 4, 4.8, 7.3, 2, 3, 7, 10, 6 };
-        InterpolateSourceFunction serie2 = SourceFunctionToolkit
+        SplineSourceFunction serie2 = SourceFunctionToolkit
                 .createInterpolateSourceFunction(xValues2, yValues2, 0.3);
 
         double[] xValues3 = { 0, 1.4, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
         double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 5, 7, 9, 2, 4, 1 };
-        InterpolateSourceFunction serie3 = SourceFunctionToolkit
+        SplineSourceFunction serie3 = SourceFunctionToolkit
                 .createInterpolateSourceFunction(xValues3, yValues3, 0.3);
 
         ScatterFunction scatter1 = new ScatterFunction(serie1);

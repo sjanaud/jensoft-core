@@ -19,7 +19,7 @@ import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
 import com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
 import com.jensoft.core.plugin.function.core.Function;
 import com.jensoft.core.plugin.function.source.AffineSourceFunction;
-import com.jensoft.core.plugin.function.source.InterpolateSourceFunction;
+import com.jensoft.core.plugin.function.source.SplineSourceFunction;
 import com.jensoft.core.plugin.function.source.LinearRegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 
@@ -41,7 +41,7 @@ import com.jensoft.core.plugin.function.source.SourceFunction;
  * 
  * @see SourceFunction
  * @see AffineSourceFunction
- * @see InterpolateSourceFunction
+ * @see SplineSourceFunction
  * @see LinearRegressionSourceFunction
  * @see AreaFunctionToolkit
  * @see AreaFunctionPlugin
