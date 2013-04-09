@@ -108,7 +108,7 @@ public class PolynomialSplineFunction implements
     public double value(double v) {
         if (v < knots[0] || v > knots[n]) {
             throw new IllegalArgumentException(
-                                               "value is outside function domain.");
+                                               "value "+v+" is outside function domain.");
         }
         int i = Arrays.binarySearch(knots, v);
         if (i < 0) {

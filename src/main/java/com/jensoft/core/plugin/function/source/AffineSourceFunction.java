@@ -78,6 +78,7 @@ public class AffineSourceFunction implements SourceFunction {
 	 */
 	public void setNature(FunctionNature nature) {
 		this.nature = nature;
+		sortFunction();
 	}
 
 	/**
@@ -127,21 +128,28 @@ public class AffineSourceFunction implements SourceFunction {
 		this.id = id;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#select(double
-	 * , double)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.SourceFunction#select(double, double)
 	 */
 	@Override
-	public List<Point2D> select(double startX, double endX) {
+	public List<Point2D> select(double start, double end) {
 		List<Point2D> select = new ArrayList<Point2D>();
-		for (Point2D p : getSource()) {
-			if (p.getX() >= startX && p.getX() <= endX) {
-				select.add(p);
+		List<Point2D> source = getSource();
+		if (FunctionNature.XFunction == nature) {
+			for (Point2D p : source) {
+				if (p.getX() >= start && p.getX() <= end) {
+					select.add(p);
+				}
+			}
+		} else {
+			for (Point2D p : source) {
+				if (p.getY() >= start && p.getY() <= end) {
+					select.add(p);
+				}
 			}
 		}
+		
 		return select;
 	}
 
@@ -152,12 +160,21 @@ public class AffineSourceFunction implements SourceFunction {
 	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#next(double)
 	 */
 	@Override
-	public Point2D next(double x) {
-		for (Point2D p : getSource()) {
-			if (p.getX() >= x) {
-				return p;
+	public Point2D next(double value) {
+		if (FunctionNature.XFunction == nature) {
+			for (Point2D p : getSource()) {
+				if (p.getX() >= value) {
+					return p;
+				}
 			}
 		}
+		else{
+			for (Point2D p : getSource()) {
+				if (p.getY() >= value) {
+					return p;
+				}
+			}
+		}		
 		return null;
 	}
 
@@ -169,14 +186,21 @@ public class AffineSourceFunction implements SourceFunction {
 	 * double)
 	 */
 	@Override
-	public Point2D previous(double x) {
-		List<Point2D> src = getSource();
-		for (int i = src.size() - 1; i >= 0; i--) {
-			Point2D p = src.get(i);
-			if (p.getX() <= x) {
-				return p;
+	public Point2D previous(double value) {
+		if (FunctionNature.XFunction == nature) {
+			for (Point2D p : getSource()) {
+				if (p.getX() <= value) {
+					return p;
+				}
 			}
 		}
+		else{
+			for (Point2D p : getSource()) {
+				if (p.getY() <= value) {
+					return p;
+				}
+			}
+		}	
 		return null;
 	}
 

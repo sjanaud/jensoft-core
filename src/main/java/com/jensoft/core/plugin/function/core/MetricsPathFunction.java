@@ -219,7 +219,7 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 		}
 
 		/**
-		 * get segment point for the specified x value in user projection
+		 * get segment point for the specified value in user projection
 		 * 
 		 * @param value
 		 *            the user value in user projection to evaluate

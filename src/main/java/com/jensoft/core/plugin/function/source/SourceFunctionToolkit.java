@@ -246,13 +246,13 @@ public class SourceFunctionToolkit extends Toolkit {
      *            step segment length for evaluate curve
      * @return the interpolate serie
      */
-    public static InterpolateSourceFunction createInterpolateSourceFunction(
+    public static SplineSourceFunction createInterpolateSourceFunction(
             double[] xValues, double[] yValues, double delta) {
         if (xValues.length != yValues.length) {
             throw new IllegalArgumentException(
                                                " x and y  array values length does not match");
         }
-        return new InterpolateSourceFunction(createPointsFromArray(xValues, yValues), delta);
+        return new SplineSourceFunction(createPointsFromArray(xValues, yValues), delta);
     }
 
     /**
@@ -264,13 +264,13 @@ public class SourceFunctionToolkit extends Toolkit {
      *            step segment length for evaluate curve
      * @return the interpolate source function
      */
-    public static InterpolateSourceFunction createInterpolateSourceFunction(
+    public static SplineSourceFunction createInterpolateSourceFunction(
             Date[] xValues, double[] yValues, double delta) {
         if (xValues.length != yValues.length) {
             throw new IllegalArgumentException(
                                                " x and y  array values length does not match");
         }
-        return new InterpolateSourceFunction(createPointsFromArray(xValues, yValues), delta);
+        return new SplineSourceFunction(createPointsFromArray(xValues, yValues), delta);
     }
 
     /**
@@ -282,13 +282,13 @@ public class SourceFunctionToolkit extends Toolkit {
      *            step segment length for evaluate curve
      * @return the interpolate source function
      */
-    public static InterpolateSourceFunction createInterpolateSourceFunction(
+    public static SplineSourceFunction createInterpolateSourceFunction(
             double[] xValues, Date[] yValues, double delta) {
         if (xValues.length != yValues.length) {
             throw new IllegalArgumentException(
                                                " x and y  array values length does not match");
         }
-        return new InterpolateSourceFunction(createPointsFromArray(xValues, yValues), delta);
+        return new SplineSourceFunction(createPointsFromArray(xValues, yValues), delta);
     }
 
     /**
@@ -300,13 +300,13 @@ public class SourceFunctionToolkit extends Toolkit {
      *            step segment length for evaluate curve
      * @return the interpolate source function
      */
-    public static InterpolateSourceFunction createInterpolateSourceFunction(
+    public static SplineSourceFunction createInterpolateSourceFunction(
             Date[] xValues, Double[] yValues, Double delta) {
         if (xValues.length != yValues.length) {
             throw new IllegalArgumentException(
                                                " x and y  array values length does not match");
         }
-        return new InterpolateSourceFunction(createPointsFromArray(xValues, yValues), delta);
+        return new SplineSourceFunction(createPointsFromArray(xValues, yValues), delta);
     }
 
     /**
@@ -318,13 +318,13 @@ public class SourceFunctionToolkit extends Toolkit {
      *            step segment length for evaluate curve
      * @return the interpolate source function
      */
-    public static InterpolateSourceFunction createInterpolateSourceFunction(
+    public static SplineSourceFunction createInterpolateSourceFunction(
             Double[] xValues, Date[] yValues, Double delta) {
         if (xValues.length != yValues.length) {
             throw new IllegalArgumentException(
                                                " x and y  array values length does not match");
         }
-        return new InterpolateSourceFunction(createPointsFromArray(xValues, yValues), delta);
+        return new SplineSourceFunction(createPointsFromArray(xValues, yValues), delta);
     }
 
     /**
@@ -336,13 +336,13 @@ public class SourceFunctionToolkit extends Toolkit {
      *            step segment length for evaluate curve
      * @return the interpolate source function
      */
-    public static InterpolateSourceFunction createInterpolateSourceFunction(
+    public static SplineSourceFunction createInterpolateSourceFunction(
             Double[] xValues, Double[] yValues, Double delta) {
         if (xValues.length != yValues.length) {
             throw new IllegalArgumentException(
                                                " x and y  array values length does not match");
         }
-        return new InterpolateSourceFunction(createPointsFromArray(xValues, yValues), delta);
+        return new SplineSourceFunction(createPointsFromArray(xValues, yValues), delta);
     }
 
     /**

@@ -9,21 +9,29 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 /**
- * <code>SourceFunction</code> defines a collection of points (x,y) for source function y=f(x)
+ * <code>SourceFunction</code> defines a collection of points (x,y) for source function y=f(x) or x=f(y)
  * 
+ * <h3>X Function<h3>
  * <ul>
- * <li>only one point P(x,y=f(x)) for given x value</li>
+ * <li>only and only one point P(x,y=f(x)) for given x value</li>
  * <li>sort by x</li>
  * </ul>
  * 
+ * <h3>Y Function<h3>
+ * <ul>
+ * <li>only and only one point P(x=f(y),y) for given y value</li>
+ * <li>sort by y</li>
+ * </ul>
+ * 
  * <p>
- *  the serie define {@link #getSource()} to provides the point collection (x,y) that define the curve function
+ *  {@link #getSource()} method provides the point collection (x,y) that define this source function
  * </p>
  * 
  * @author Sebastien Janaud
  */
 public interface SourceFunction {
 	
+	/**get nature of this source function*/
 	public FunctionNature getNature();
 
     /** return the source points for this source*/

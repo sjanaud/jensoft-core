@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <code>CosSource</code>
+ * <code>CosinusSourceFunction</code>
  * 
  * @author Sebastien Janaud
  * 
  */
-public class CosSource implements SourceFunction {
+public class CosinusSourceFunction extends AffineSourceFunction {
 	
 	/** source */
 	private List<Point2D> source;
@@ -26,7 +26,7 @@ public class CosSource implements SourceFunction {
 	/**
 	 * Create Cosinus source function
 	 */
-	public CosSource(double min, double max, double delta) {
+	public CosinusSourceFunction(double min, double max, double delta) {
 		this.min = min;
 		this.max = max;
 		this.delta = delta;
@@ -51,7 +51,7 @@ public class CosSource implements SourceFunction {
 	/**
 	 * Create Cosinus source function
 	 */
-	public CosSource(double min, double max, double delta, FunctionNature nature) {
+	public CosinusSourceFunction(double min, double max, double delta, FunctionNature nature) {
 		this(min, max, delta);
 		this.nature = nature;
 	}
@@ -72,12 +72,9 @@ public class CosSource implements SourceFunction {
 		return source;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#select(double
-	 * , double)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.SourceFunction#select(double, double)
 	 */
 	@Override
 	public List<Point2D> select(double start, double end) {
@@ -114,31 +111,6 @@ public class CosSource implements SourceFunction {
 		} else {
 			return new Point2D.Double(Math.cos(value),value);
 		}
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#next(double)
-	 */
-	@Override
-	public Point2D next(double x) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#previous(
-	 * double)
-	 */
-	@Override
-	public Point2D previous(double x) {
-		// TODO Auto-generated method stub
-		return null;
 	}
 
 	/*
@@ -185,55 +157,6 @@ public class CosSource implements SourceFunction {
 	@Override
 	public Point2D maxFunction() {
 		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#getName()
-	 */
-	@Override
-	public String getName() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#setName(java
-	 * .lang.String)
-	 */
-	@Override
-	public void setName(String name) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.jensoft.sw2d.core.plugin.function.source.SourceFunction#getId()
-	 */
-	@Override
-	public String getId() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#setId(java
-	 * .lang.String)
-	 */
-	@Override
-	public void setId(String id) {
-		// TODO Auto-generated method stub
-
 	}
 
 }

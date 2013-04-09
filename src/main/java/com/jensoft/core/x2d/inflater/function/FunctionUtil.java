@@ -25,7 +25,7 @@ import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.plugin.function.source.AffineSourceFunction;
-import com.jensoft.core.plugin.function.source.InterpolateSourceFunction;
+import com.jensoft.core.plugin.function.source.SplineSourceFunction;
 import com.jensoft.core.plugin.function.source.LinearRegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunctionToolkit;
@@ -234,7 +234,7 @@ public class FunctionUtil implements X2DFunctionElement{
      *            the element to parse
      * @return the serie
      */
-    private static InterpolateSourceFunction inflateInterpolateSerie(Element serieElement) {
+    private static SplineSourceFunction inflateInterpolateSerie(Element serieElement) {
         String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
         String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
         Double delta = elementDouble(serieElement, ELEMENT_SOURCEFUNCTION_INTERPOLATE_DELTA);
