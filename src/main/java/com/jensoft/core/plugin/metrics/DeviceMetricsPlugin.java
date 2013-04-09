@@ -520,15 +520,15 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
      * 
      * @author sebastien janaud
      */
-    public static class DeviceMultiMultiplierMetrics extends DeviceMetricsPlugin<Multiplier3MetricsManager> {
+    public static class DeviceMultiplier3Metrics extends DeviceMetricsPlugin<Multiplier3MetricsManager> {
 
         /**
-         * <code>X</code> manages {@link DeviceMultiMultiplierMetrics} for {@link DeviceAxis#AxisX}
+         * <code>X</code> manages {@link DeviceMultiplier3Metrics} for {@link DeviceAxis#AxisX}
          */
-        public static class X extends DeviceMultiMultiplierMetrics {
+        public static class X extends DeviceMultiplier3Metrics {
 
             /**
-             * Create {@link DeviceMultiMultiplierMetrics} for {@link DeviceAxis#AxisX}
+             * Create {@link DeviceMultiplier3Metrics} for {@link DeviceAxis#AxisX}
              * 
              * @param ref
              * @param baseLine
@@ -538,7 +538,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
             }
 
             /**
-             * Create {@link DeviceMultiMultiplierMetrics} for {@link DeviceAxis#AxisX}
+             * Create {@link DeviceMultiplier3Metrics} for {@link DeviceAxis#AxisX}
              * 
              * @param ref
              * @param baseLine
@@ -551,12 +551,12 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
         }
 
         /**
-         * <code>Y</code> manages {@link DeviceMultiMultiplierMetrics} for {@link DeviceAxis#AxisY}
+         * <code>Y</code> manages {@link DeviceMultiplier3Metrics} for {@link DeviceAxis#AxisY}
          */
-        public static class Y extends DeviceMultiMultiplierMetrics {
+        public static class Y extends DeviceMultiplier3Metrics {
 
             /**
-             * Create {@link DeviceMultiMultiplierMetrics} for {@link DeviceAxis#AxisY} for given parameters
+             * Create {@link DeviceMultiplier3Metrics} for {@link DeviceAxis#AxisY} for given parameters
              * 
              * @param ref
              * @param baseLine
@@ -566,7 +566,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
             }
 
             /**
-             * Create {@link DeviceMultiMultiplierMetrics} for {@link DeviceAxis#AxisY} for given parameters
+             * Create {@link DeviceMultiplier3Metrics} for {@link DeviceAxis#AxisY} for given parameters
              * 
              * @param ref
              * @param baseLine
@@ -588,7 +588,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
          * @param deviceAxis
          *            the x or y axis on device
          */
-        public DeviceMultiMultiplierMetrics(double ref, double baseLine, DeviceAxis deviceAxis) {
+        public DeviceMultiplier3Metrics(double ref, double baseLine, DeviceAxis deviceAxis) {
             super(new Multiplier3MetricsManager(ref), baseLine, deviceAxis);
         }
 
@@ -604,7 +604,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
          * @param markerPosition
          *            the marker position N,S,NS for x axis, W,E,WE for y axis
          */
-        public DeviceMultiMultiplierMetrics(double ref, double baseLine,
+        public DeviceMultiplier3Metrics(double ref, double baseLine,
                 MarkerPosition markerPosition, DeviceAxis deviceAxis) {
             super(new Multiplier3MetricsManager(ref), baseLine,
                   markerPosition, deviceAxis);

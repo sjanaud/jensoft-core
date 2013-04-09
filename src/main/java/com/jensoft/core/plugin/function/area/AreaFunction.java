@@ -204,11 +204,11 @@ public class AreaFunction extends Function {
      */
     public void solveGeometry() {
         if (!areaBaseSet) {
-            setAreaBase(getSourceFunction().minY().getY());
+            setAreaBase(getSourceFunction().minFunction().getY());
         }
         Shape curvePath = getPathFunction().getOrCreateGeometry().getPath();
-        Point2D minSource = getSourceFunction().min();
-        Point2D maxSource = getSourceFunction().max();
+        Point2D minSource = getSourceFunction().first();
+        Point2D maxSource = getSourceFunction().last();
         Point2D deviceAreaMin = getHost().getWindow2D().userToPixel(minSource);
         Point2D deviceAreaMax = getHost().getWindow2D().userToPixel(maxSource);
 

@@ -9,6 +9,7 @@ import java.awt.Color;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.plugin.function.FunctionPlugin;
+import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 
 /**
@@ -141,14 +142,24 @@ public abstract class Function {
      * @param metric
      */
     public void addMetricsLabel(GlyphMetric metric) {
-        if (metric.getValue() >= sourceFunction.min().getX()
-                && metric.getValue() <= sourceFunction.max().getX()) {
-            pathFunction.addMetrics(metric);
-        }
-        else {
-            throw new IllegalArgumentException(" metric value out of path function");
-
-        }
+    	if(sourceFunction.getNature() == FunctionNature.XFunction){
+    		if (metric.getValue() >= sourceFunction.first().getX()
+                    && metric.getValue() <= sourceFunction.last().getX()) {
+                pathFunction.addMetrics(metric);
+            }
+            else {
+                throw new IllegalArgumentException("x metric value out of path function");
+            }
+    	}else{
+    		if (metric.getValue() >= sourceFunction.first().getY()
+                    && metric.getValue() <= sourceFunction.last().getY()) {
+                pathFunction.addMetrics(metric);
+            }
+            else {
+                throw new IllegalArgumentException("y metric value out of path function");
+            }
+    	}
+        
     }
 
 }

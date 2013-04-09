@@ -259,8 +259,8 @@ public class SourceTrackerPlugin extends AbstractPlugin implements
         if (trackedSerie == null) {
             return;
         }
-        if (metric.getValue() >= trackedSerie.min().getX()
-                && metric.getValue() <= trackedSerie.max().getX()) {
+        if (metric.getValue() >= trackedSerie.first().getX()
+                && metric.getValue() <= trackedSerie.last().getX()) {
             curveMetricsPath.addMetrics(metric);
         }
         else {
