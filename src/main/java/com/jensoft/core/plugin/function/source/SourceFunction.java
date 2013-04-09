@@ -23,30 +23,35 @@ import java.util.List;
  * @author Sebastien Janaud
  */
 public interface SourceFunction {
+	
+	public FunctionNature getNature();
 
     /** return the source points for this source*/
     public List<Point2D> getSource();
 
-    /** select by x the points of the given x range */
-    public List<Point2D> select(double startX, double endX);
+    /** select by x or y (depends of nature) the points of the given range */
+    public List<Point2D> select(double start, double end);
 
-    /** evaluate the function point (x,y) for the specified x */
+    /** evaluate the function point (x,y) for the specified x or y (depends on function nature x or y) */
     public Point2D evaluate(double x);
 
-    /** get next point in the source after the specified x */
-    public Point2D next(double x);
+    /** get next point in the source after the specified x or y (depends on function nature x or y)*/
+    public Point2D next(double value);
 
-    /** get previous point in the source before specified x */
-    public Point2D previous(double x);
+    /** get previous point in the source before specified x or y (depends on function nature x or y)*/
+    public Point2D previous(double value);
 
-    /** return point corresponding to the min x, assumes that source is sorted by x */
-    public Point2D min();
+    /** return point corresponding to the min x or y (depends on function nature x or y), assumes that source is sorted*/
+    public Point2D first();
 
-    /** return point corresponding to the max x, assumes that source is sorted by x */
-    public Point2D max();
+    /** return point corresponding to the max x or y (depends on function nature x or y), assumes that source is sorted */
+    public Point2D last();
 
-    /** return point corresponding to the min y */
-    public Point2D minY();
+    /** return point corresponding to the min peak of function (depends on function nature x or y)*/
+    public Point2D minFunction();
+    
+    /** return point corresponding to the max peak of function (depends on function nature x or y)*/
+    public Point2D maxFunction();
 
     /** return the source name */
     public String getName();

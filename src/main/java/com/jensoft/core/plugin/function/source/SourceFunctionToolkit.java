@@ -142,11 +142,11 @@ public class SourceFunctionToolkit extends Toolkit {
     }
 
     /**
-     * create serie from x and y arrays.
+     * create default x function from x and y arrays.
      * 
      * @param xValues
      * @param yValues
-     * @return serie
+     * @return affine source X function
      */
     public static AffineSourceFunction createSourceFunction(double[] xValues,
             double[] yValues) {

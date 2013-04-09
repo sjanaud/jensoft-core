@@ -56,8 +56,8 @@ public class LinearRegressionSourceFunction extends AffineSourceFunction {
     @Override
     public List<Point2D> getSource() {
         List<Point2D> regressionSegment = new ArrayList<Point2D>();
-        Point2D pd2Min = min();
-        Point2D pd2Max = max();
+        Point2D pd2Min = first();
+        Point2D pd2Max = last();
         for (double x = pd2Min.getX(); x <= pd2Max.getX(); x = x + delta) {
             regressionSegment.add(new Point2D.Double(x, regression.predict(x)));
         }
