@@ -190,11 +190,9 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
         this.alphaFill = alphaFill;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.painter.Donut3DPaint#paintDonut3D
-     * (java.awt.Graphics2D, com.jensoft.sw2d.core.plugin.donut3d.Donut3D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.painter.paint.AbstractDonut3DPaint#paintDonut3D(java.awt.Graphics2D, com.jensoft.core.plugin.donut3d.Donut3D)
      */
     @Override
     public final void paintDonut3D(Graphics2D g2d, Donut3D donut3d) {

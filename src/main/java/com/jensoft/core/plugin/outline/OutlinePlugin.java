@@ -339,10 +339,9 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.outline.AbstractOutlinePlugin#doPaintOutline(com.jensoft.sw2d.core.view.View2D,
-     * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.outline.AbstractOutlinePlugin#doPaintOutline(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     public void doPaintOutline(View2D v2d, Graphics2D g2d, WindowPart windowPart) {

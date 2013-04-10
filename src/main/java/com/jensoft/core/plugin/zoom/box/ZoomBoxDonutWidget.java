@@ -31,7 +31,7 @@ import com.jensoft.core.widget.WidgetFolder;
 public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
 
     /** widget id */
-    public final static String ID = "@sw2d/widget/donutzoombox";
+    public final static String ID = "@widget/donutzoombox";
 
     /** donut radius */
     private final static int RADIUS = 32;
@@ -110,34 +110,34 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
         this.shiftEffect = shiftEffect;
     }
 
+   
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.Widget#onRegister()
+     * @see com.jensoft.core.widget.Widget#onRegister()
      */
     @Override
     public void onRegister() {
         getHost().addZoomBoxListener(new ZoomBoxListener() {
 
-            /*
-             * (non-Javadoc)
-             * @see com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft.sw2d.core.plugin.PluginEvent)
+            
+            /**
+             * @param pluginEvent
              */
             @Override
             public void pluginSelected(PluginEvent<ZoomBoxPlugin> pluginEvent) {
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.sw2d.core.plugin.PluginEvent)
+           
+            /**
+             * @param pluginEvent
              */
             @Override
             public void pluginUnlockSelected(PluginEvent<ZoomBoxPlugin> pluginEvent) {
             }
 
-            /*
-             * (non-Javadoc)
-             * @see com.jensoft.sw2d.core.plugin.zoom.box.ZoomBoxListener#zoomIn(com.jensoft.sw2d.core.plugin.zoom.box.
-             * ZoomBoxEvent)
+          
+           
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomIn(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
              */
             @Override
             public void zoomIn(ZoomBoxEvent pluginEvent) {
@@ -182,10 +182,9 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
                 }
             }
 
-            /*
-             * (non-Javadoc)
-             * @see com.jensoft.sw2d.core.plugin.zoom.box.ZoomBoxListener#zoomOut(com.jensoft.sw2d.core.plugin.zoom.box.
-             * ZoomBoxEvent)
+           
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomOut(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
              */
             @Override
             public void zoomOut(ZoomBoxEvent pluginEvent) {
@@ -194,22 +193,18 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
                 }
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.zoom.box.ZoomBoxListener#zoomClearHistory(com.jensoft.sw2d.core.plugin.zoom
-             * .box.ZoomBoxEvent)
+         
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomClearHistory(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
              */
             @Override
             public void zoomClearHistory(ZoomBoxEvent pluginEvent) {
                 donut2D.clearSlices();
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.zoom.box.ZoomBoxListener#zoomStart(com.jensoft.sw2d.core.plugin.zoom.box
-             * .ZoomBoxEvent)
+           
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomStart(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
              */
             @Override
             public void zoomStart(ZoomBoxEvent pluginEvent) {
@@ -220,11 +215,9 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
                 shiftWidget.start();
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.zoom.box.ZoomBoxListener#zoomHistory(com.jensoft.sw2d.core.plugin.zoom.box
-             * .ZoomBoxEvent)
+            
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomHistory(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
              */
             @Override
             public void zoomHistory(ZoomBoxEvent pluginEvent) {
@@ -233,11 +226,9 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
                 }
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.zoom.box.ZoomBoxListener#zoomBounded(com.jensoft.sw2d.core.plugin.zoom.box
-             * .ZoomBoxEvent)
+           
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomBounded(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
              */
             @Override
             public void zoomBounded(ZoomBoxEvent pluginEvent) {
@@ -264,8 +255,9 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
         }
     }
 
+   
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.Widget#isCompatiblePlugin()
+     * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
     @Override
     public final boolean isCompatiblePlugin() {
@@ -275,8 +267,9 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
         return false;
     }
 
+  
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.Widget#interceptMove(int, int)
+     * @see com.jensoft.core.widget.Widget#interceptMove(int, int)
      */
     @Override
     public void interceptMove(int x, int y) {
@@ -363,8 +356,9 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
 
     class DonutPlayerCallback implements ZoomPlayerCallback {
 
+      
         /* (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.zoom.box.ZoomBoxPlugin.ZoomPlayerCallback#play(com.jensoft.sw2d.core.plugin.zoom.box.ZoomBoxPlugin.BoundBox)
+         * @see com.jensoft.core.plugin.zoom.box.ZoomBoxPlugin.ZoomPlayerCallback#play(com.jensoft.core.plugin.zoom.box.ZoomBoxPlugin.BoundBox)
          */
         @Override
         public void play(BoundBox bounbdBox) {
@@ -415,8 +409,9 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
         return null;
     }
 
+    
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.Widget#paintWidget(com.jensoft.sw2d.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
     protected void paintWidget(View2D v2d, Graphics2D g2d) {

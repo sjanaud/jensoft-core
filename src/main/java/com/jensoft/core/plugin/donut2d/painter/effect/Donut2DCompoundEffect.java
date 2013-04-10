@@ -43,11 +43,9 @@ public class Donut2DCompoundEffect extends AbstractDonut2DEffect {
         this.effects = effects;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.painter.effect.AbstractDonut2DEffect#paintDonut2DEffect(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.painter.effect.AbstractDonut2DEffect#paintDonut2DEffect(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D)
      */
     @Override
     protected final void paintDonut2DEffect(Graphics2D g2d, Donut2D donut2D) {

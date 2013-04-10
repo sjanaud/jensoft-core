@@ -53,22 +53,20 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
     private ImageIcon checkIcon = SharedIcon.getCommon(Common.ITEM);
 
     /** listener */
-    private ContextSerieTrackerListener listener = new ContextSerieTrackerListener();
+    private ContextSourceTrackerListener listener = new ContextSourceTrackerListener();
 
-    class ContextSerieTrackerListener implements PeakTrackerListener {
+    class ContextSourceTrackerListener implements PeakTrackerListener {
 
-        /*
-         * (non-Javadoc)
-         * @see
-         * com.jensoft.sw2d.core.plugin.plottools.serietracker.SerieTrackerListener#serieTracked(com.jensoft.sw2d.core
-         * .plugin.plottools.serietracker.SerieTrackerEvent)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerListener#peakTracked(com.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerEvent)
          */
         @Override
         public void peakTracked(PeakTrackerEvent event) {
-            System.out.println("context peakTracked :" + event.getSerie().getName());
+            //System.out.println("context peakTracked :" + event.getSerie().getName());
 
-            JMenuItem item = serieSelectersMap.get(event.getSerie());
-            if (getHost().isTracked(event.getSerie())) {
+            JMenuItem item = serieSelectersMap.get(event.getSourceFunction());
+            if (getHost().isTracked(event.getSourceFunction())) {
                 item.setIcon(checkIcon);
             }
             else {
@@ -77,15 +75,13 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
 
         }
 
-        /*
-         * (non-Javadoc)
-         * @see
-         * com.jensoft.sw2d.core.plugin.plottools.serietracker.SerieTrackerListener#serieRegistered(com.jensoft.sw2d
-         * .core.plugin.plottools.serietracker.SerieTrackerEvent)
+     
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerListener#sourceRegistered(com.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerEvent)
          */
         @Override
-        public void serieRegistered(PeakTrackerEvent event) {
-            System.out.println("context serie registered :" + event.getSerie().getName());
+        public void sourceRegistered(PeakTrackerEvent event) {
+            System.out.println("context source registered :" + event.getSourceFunction().getName());
         }
 
     }
@@ -98,9 +94,10 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
         serieSelectersMap = new HashMap<SourceFunction, JMenuItem>();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.ContextEntry#buildContext()
+   
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.ContextEntry#buildContext()
      */
     @Override
     public void buildContext() {
@@ -184,9 +181,9 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
         setItem(rootMenu);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.ContextEntry#isCompatiblePlugin()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.ContextEntry#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {

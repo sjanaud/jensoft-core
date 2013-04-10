@@ -31,10 +31,9 @@ public class BarEffect4 extends AbstractBarEffect {
     public BarEffect4() {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.symbol.painter.BarEffect#paintBarEffect(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.symbol.BarSymbol)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.painter.effect.AbstractBarEffect#paintBarEffect(java.awt.Graphics2D, com.jensoft.core.plugin.symbol.BarSymbol)
      */
     @Override
     public void paintBarEffect(Graphics2D g2d, BarSymbol bar) {

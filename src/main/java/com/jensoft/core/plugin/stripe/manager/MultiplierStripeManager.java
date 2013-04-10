@@ -63,9 +63,9 @@ public class MultiplierStripeManager extends AbstractStripeManager {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.stripe.manager.StripeManager#getStripes()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.stripe.manager.StripeManager#getStripes()
      */
     @Override
     public List<Stripe> getStripes() {

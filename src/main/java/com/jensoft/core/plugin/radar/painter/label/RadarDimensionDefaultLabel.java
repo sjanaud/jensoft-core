@@ -284,12 +284,9 @@ public class RadarDimensionDefaultLabel extends AbstractRadarDimensionLabel {
         this.offsetRadius = offsetRadius;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.radar.painter.AbstractLabelRadarPainter#
-     * paintRadarLabel(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.radar.Radar)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.radar.painter.label.AbstractRadarDimensionLabel#paintDimensionLabel(java.awt.Graphics2D, com.jensoft.core.plugin.radar.Radar, com.jensoft.core.plugin.radar.RadarDimension)
      */
     @Override
     protected void paintDimensionLabel(Graphics2D g2d, Radar radar,

@@ -30,10 +30,9 @@ public class Donut2DCompatibleFill extends AbstractDonut2DFill {
         sliceFill = compatibleSliceFill;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.donut2d.painter.fill.AbstractDonut2DFill#paintDonut2DFill(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2D)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.painter.fill.AbstractDonut2DFill#paintDonut2DFill(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D)
      */
     @Override
     protected final void paintDonut2DFill(Graphics2D g2d, Donut2D donut2D) {

@@ -33,11 +33,11 @@ import com.jensoft.core.view.background.RoundViewFill;
 import com.jensoft.core.window.Window2D;
 
 /**
- * sw2d utility class for generate doc files API
+ * <code>JavadocPortfolioPie</code>
  * 
  * @author Sebastien Janaud
  */
-public class DocFilesPortfolioPieLabel {
+public class JavadocPortfolioPie {
 
     @Portfolio(name = "PieRadialLabel", width = 800, height = 800)
     public static View2D getPieRadialLabel() {
@@ -379,7 +379,7 @@ public class DocFilesPortfolioPieLabel {
      * @param args
      */
     public static void main(String[] args) {
-        DocFilesPortfolioPieLabel docFilePortfolio = new DocFilesPortfolioPieLabel();
+        JavadocPortfolioPie docFilePortfolio = new JavadocPortfolioPie();
         docFilePortfolio.render();
     }
 }

@@ -33,51 +33,41 @@ package com.jensoft.core.plugin.donut3d;
  */
 public abstract class Donut3DAdapter implements Donut3DListener {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.Donut3DListener#donut3DSliceClicked(com.jensoft.sw2d.core.plugin.donut3d
-     * .Donut3DEvent)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.Donut3DListener#donut3DSliceClicked(com.jensoft.core.plugin.donut3d.Donut3DEvent)
      */
     @Override
     public void donut3DSliceClicked(Donut3DEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.Donut3DListener#donut3DSlicePressed(com.jensoft.sw2d.core.plugin.donut3d
-     * .Donut3DEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.Donut3DListener#donut3DSlicePressed(com.jensoft.core.plugin.donut3d.Donut3DEvent)
      */
     @Override
     public void donut3DSlicePressed(Donut3DEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.Donut3DListener#donut3DSliceReleased(com.jensoft.sw2d.core.plugin.donut3d
-     * .Donut3DEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.Donut3DListener#donut3DSliceReleased(com.jensoft.core.plugin.donut3d.Donut3DEvent)
      */
     @Override
     public void donut3DSliceReleased(Donut3DEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.Donut3DListener#donut3DSliceEntered(com.jensoft.sw2d.core.plugin.donut3d
-     * .Donut3DEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.Donut3DListener#donut3DSliceEntered(com.jensoft.core.plugin.donut3d.Donut3DEvent)
      */
     @Override
     public void donut3DSliceEntered(Donut3DEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.Donut3DListener#donut3DSliceExited(com.jensoft.sw2d.core.plugin.donut3d.
-     * Donut3DEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.Donut3DListener#donut3DSliceExited(com.jensoft.core.plugin.donut3d.Donut3DEvent)
      */
     @Override
     public void donut3DSliceExited(Donut3DEvent e) {

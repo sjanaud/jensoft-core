@@ -93,9 +93,9 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device2D {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.Device2D#getDeviceMenuManager()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.Device2D#getDeviceMenuManager()
      */
     @Override
     public DeviceMenuManager getDeviceMenuManager() {

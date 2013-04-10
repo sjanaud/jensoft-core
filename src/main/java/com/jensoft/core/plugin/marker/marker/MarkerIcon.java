@@ -12,7 +12,7 @@ import javax.swing.ImageIcon;
 import com.jensoft.core.view.View2D;
 
 /**
- * MarkerImage
+ * <code>MarkerIcon</code>
  */
 public class MarkerIcon extends AbstractMarker {
 
@@ -24,6 +24,10 @@ public class MarkerIcon extends AbstractMarker {
     public MarkerIcon() {
     }
 
+    /**
+     * create marker with given image icon
+     * @param icon
+     */
     public MarkerIcon(ImageIcon icon) {
         super();
         this.icon = icon;
@@ -44,11 +48,9 @@ public class MarkerIcon extends AbstractMarker {
         this.icon = icon;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.marker.Marker#paintMarker(com.jensoft.sw2d
-     * .core.view.View2D, java.awt.Graphics2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
     public final void paintMarker(View2D view2d, Graphics2D g2d) {

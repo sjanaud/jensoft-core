@@ -10,17 +10,15 @@ import java.awt.Graphics2D;
 import com.jensoft.core.plugin.function.area.AreaFunction;
 
 /**
- * abstract Area Painter
+ * <code>AbstractAreaPainter</code>
  * 
  * @author Sebastien Janaud
  */
 public abstract class AbstractAreaPainter implements AreaPainter {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.area.painter.AreaPainter#paintArea(java.
-     * awt.Graphics2D, com.jensoft.sw2d.core.plugin.area.AreaCurve)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.function.area.painter.AreaPainter#paintArea(java.awt.Graphics2D, com.jensoft.core.plugin.function.area.AreaFunction)
      */
     @Override
     public void paintArea(Graphics2D g2d, AreaFunction areaCurve) {

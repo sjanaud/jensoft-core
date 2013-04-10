@@ -15,18 +15,43 @@ import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.Pie.PieNature;
 import com.jensoft.core.plugin.pie.PieSlice;
 
+/**
+ * <code>PieSliceRadialFill</code>
+ * 
+ * @author sebastien janaud
+ *
+ */
 public class PieSliceRadialFill extends AbstractPieSliceFill {
 
+	/**start radial color*/
     private Color startColor;
+    
+    /**end radial color*/
     private Color endColor;
 
+    /**
+     * create empty radial fill
+     */
     public PieSliceRadialFill() {
-    }
+    }    
+    
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.pie.painter.fill.AbstractPieSliceFill#paintPieSliceFill(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.pie.Pie, com.jensoft.sw2d.core.plugin.pie.PieSlice)
+   /**
+    * create fill with given colors
+    * @param startColor
+    * @param endColor
+    */
+    public PieSliceRadialFill(Color startColor, Color endColor) {
+		super();
+		this.startColor = startColor;
+		this.endColor = endColor;
+	}
+
+
+
+
+	/* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.painter.fill.AbstractPieSliceFill#paintPieSliceFill(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie, com.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     protected void paintPieSliceFill(Graphics2D g2d, Pie pie, PieSlice slice) {

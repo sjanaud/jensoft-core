@@ -27,13 +27,16 @@ public class TraceLayer extends AbstractMapLayer {
         geoPositions.add(geoPosition);
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.layer.AbstractMapLayer#doPaintMap(com.jensoft.core.map.projection.Map2D)
+     */
     @Override
     public void doPaintMap(Map2D map2d) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.map.layer.AbstractMapLayer#doPaint(java.awt.Graphics2D)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.layer.AbstractMapLayer#doPaint(java.awt.Graphics2D)
      */
     @Override
     public void doPaint(Graphics2D g2d) {

@@ -182,9 +182,9 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#lockSelected()
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#lockSelected()
      */
     @Override
     public void lockSelected() {
@@ -197,9 +197,9 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#unlockSelected()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#unlockSelected()
      */
     @Override
     public void unlockSelected() {
@@ -450,22 +450,17 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements
         zoomInLock = false;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.sw2d
-     * .core.view.View2D, java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.window.WindowPart)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnReleaseListener#onRelease
-     * (java.awt.event.MouseEvent)
+
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
      */
     @Override
     public void onRelease(MouseEvent me) {

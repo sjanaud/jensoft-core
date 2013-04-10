@@ -361,11 +361,9 @@ public class Donut3DPathLabel extends AbstractDonut3DSliceLabel {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel#paintDonut3DSliceLabel(java.awt.
-     * Graphics2D, com.jensoft.sw2d.core.plugin.donut3d.Donut3D, com.jensoft.sw2d.core.plugin.donut3d.Donut3DSlice)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel#paintDonut3DSliceLabel(java.awt.Graphics2D, com.jensoft.core.plugin.donut3d.Donut3D, com.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     protected void paintDonut3DSliceLabel(Graphics2D g2d, Donut3D donut3d,

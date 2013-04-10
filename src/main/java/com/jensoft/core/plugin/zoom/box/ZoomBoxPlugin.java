@@ -579,24 +579,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         return zoomLockAction;
     }
 
-    // /*
-    // * (non-Javadoc)
-    // * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#lockSelected()
-    // */
-    // @Override
-    // public void lockSelected() {
-    // super.lockSelected();
-    //
-    // }
-    //
-    // /*
-    // * (non-Javadoc)
-    // * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#unlockSelected()
-    // */
-    // @Override
-    // public void unlockSelected() {
-    // super.unlockSelected();
-    // }
+   
 
     /**
      * synchronize boxes when new bounded box occurs in any registered box plug
@@ -1095,15 +1078,9 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         return lockZoomingTransaction;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft
-     * .sw2d.core.plugin.PluginEvent)
-     */
+   
     @Override
-    public void onDrag(MouseEvent me) {
-        if (!isLockSelected()) {
+    public void onDrag(MouseEvent me) { if (!isLockSelected()) {
             return;
         }
 
@@ -1176,11 +1153,9 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         return getWindow2D().pixelToUser(getBoxCurrentDevicePoint());
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft
-     * .sw2d.core.plugin.PluginEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
      */
     @Override
     public void onPress(MouseEvent me) {
@@ -1273,11 +1248,9 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         return getWindow2D().pixelToUser(getBoxStartDevicePoint());
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft
-     * .sw2d.core.plugin.PluginEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
      */
     @Override
     public void onRelease(MouseEvent me) {
@@ -1321,11 +1294,9 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         zoomOut.start();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft
-     * .sw2d.core.plugin.PluginEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {

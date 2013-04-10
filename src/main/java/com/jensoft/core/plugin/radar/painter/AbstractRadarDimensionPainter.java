@@ -13,12 +13,9 @@ import com.jensoft.core.plugin.radar.RadarDimension;
 public abstract class AbstractRadarDimensionPainter implements
         RadarDimensionPainter {
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.radar.painter.RadarDimensionPainter#
-     * paintRadarDimension(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.radar.Radar,
-     * com.jensoft.sw2d.core.plugin.radar.RadarDimension)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.radar.painter.RadarDimensionPainter#paintRadarDimension(java.awt.Graphics2D, com.jensoft.core.plugin.radar.Radar, com.jensoft.core.plugin.radar.RadarDimension)
      */
     @Override
     public void paintRadarDimension(Graphics2D g2d, Radar radar,

@@ -41,11 +41,9 @@ public class PointSymbolDebugGeometryPainter extends AbstractPointSymbolPainter 
         this.pointColor = pointColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.symbol.painter.PointSymbolPainter#
-     * paintPointSymbol(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.symbol.PointSymbol)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.painter.point.AbstractPointSymbolPainter#paintPointSymbol(java.awt.Graphics2D, com.jensoft.core.plugin.symbol.PointSymbol)
      */
     @Override
     protected void paintPointSymbol(Graphics2D g2d, PointSymbol point) {

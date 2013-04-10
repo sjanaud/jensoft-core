@@ -1031,10 +1031,9 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
     protected abstract void paintPlugin(View2D v2d, Graphics2D g2d,
             WindowPart windowPart);
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.Plugin#paint(com.jensoft.sw2d.core.view.View2D, java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.window.WindowPart)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.Plugin#paint(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     public final void paint(View2D v2d, Graphics2D g2d, WindowPart windowPart) {

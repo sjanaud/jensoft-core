@@ -106,29 +106,8 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         registerWidget(lineSymbolWidget);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#lockSelected()
-     */
-    @Override
-    public void lockSelected() {
-        super.lockSelected();
-        getWindow2D().getView2D().repaint();
-        getWindow2D().getView2D().getWidgetPlugin()
-                .pushMessage("LOCK LINE SYMBOL", this, PushingBehavior.Fast);
-
-    }
-
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#unlockSelected()
-     */
-    @Override
-    public void unlockSelected() {
-        super.unlockSelected();
-        getWindow2D().getDevice2D().repaintDevice();
-
-    }
+   
+   
 
     /**
      * get the line symbol nature.
@@ -461,11 +440,9 @@ public class LineSymbolPlugin extends AbstractPlugin implements
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin#paintLayout(com.jensoft.sw2d
-     * .core.view.View2D, java.awt.Graphics2D, int)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
@@ -486,22 +463,18 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnWheelListener#onWheel(java
-     * .awt.event.MouseWheelEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnWheelListener#onWheel(java.awt.event.MouseWheelEvent)
      */
     @Override
     public void onWheel(MouseWheelEvent mwe) {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnDragListener#onDrag(java
-     * .awt.event.MouseEvent)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt.event.MouseEvent)
      */
     @Override
     public void onDrag(MouseEvent me) {
@@ -522,22 +495,17 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         // fireScroll();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnClickListener#onClick(java
-     * .awt.event.MouseEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnClickListener#onClick(java.awt.event.MouseEvent)
      */
     @Override
     public void onClick(MouseEvent me) {
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnReleaseListener#onRelease
-     * (java.awt.event.MouseEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
      */
     @Override
     public void onRelease(MouseEvent me) {
@@ -546,11 +514,9 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         // fire scroll stop
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnPressListener#onPress(java
-     * .awt.event.MouseEvent)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
      */
     @Override
     public void onPress(MouseEvent me) {
@@ -706,11 +672,9 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         unlockScroll();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnMoveListener#onMove(java
-     * .awt.event.MouseEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt.event.MouseEvent)
      */
     @Override
     public void onMove(MouseEvent me) {

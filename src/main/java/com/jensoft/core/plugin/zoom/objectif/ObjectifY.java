@@ -22,7 +22,7 @@ import com.jensoft.core.widget.bar.AbstractPlusMinusBarWidget;
 public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
 
     /** the widget id */
-    public final static String widgetBarYObjectifID = "@sw2d/widget/objectif/y";
+    public final static String widgetBarYObjectifID = "@widget/objectif/y";
 
     /** default bar width */
     private final static double defaultBarWidth = 16;
@@ -123,9 +123,9 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
         setOrphanLock(true);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.Widget#isCompatiblePlugin()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
     @Override
     public final boolean isCompatiblePlugin() {
@@ -135,9 +135,9 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.bar.AbstractBarWidget#onButton1Press()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton1Press()
      */
     @Override
     public void onButton1Press() {
@@ -148,9 +148,9 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
         objectif.startZoomIn(ZoomNature.ZoomY);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.bar.AbstractBarWidget#onButton2Press()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton2Press()
      */
     @Override
     public void onButton2Press() {
@@ -160,9 +160,9 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
         getHost().startZoomOut(ZoomNature.ZoomY);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.bar.AbstractBarWidget#onButton1Released()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton1Released()
      */
     @Override
     public void onButton1Released() {
@@ -173,10 +173,9 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.bar.AbstractBarWidget#onButton2Released()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton2Released()
      */
     @Override
     public void onButton2Released() {

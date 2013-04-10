@@ -92,11 +92,9 @@ public abstract class AbstractPieAnimator implements PieListener {
 
     protected abstract Runnable getAnimator(PieSlice slice);
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSliceClicked(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceClicked(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public final void pieSliceClicked(PieEvent e) {
@@ -104,11 +102,9 @@ public abstract class AbstractPieAnimator implements PieListener {
         onClicked(slice);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSlicePressed(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSlicePressed(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public final void pieSlicePressed(PieEvent e) {
@@ -116,11 +112,9 @@ public abstract class AbstractPieAnimator implements PieListener {
         onPressed(slice);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSliceReleased(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceReleased(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public final void pieSliceReleased(PieEvent e) {
@@ -128,11 +122,9 @@ public abstract class AbstractPieAnimator implements PieListener {
         onReleased(slice);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSliceEntered(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceEntered(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public final void pieSliceEntered(PieEvent e) {
@@ -140,11 +132,9 @@ public abstract class AbstractPieAnimator implements PieListener {
         onEntered(slice);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSliceExited(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceExited(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public final void pieSliceExited(PieEvent e) {

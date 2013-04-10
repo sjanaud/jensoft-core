@@ -22,6 +22,10 @@ import com.jensoft.core.plugin.donut2d.painter.AbstractDonut2DSlicePainter;
  * @see Donut2D
  * @author Sebastien Janaud
  */
+/**
+ * @author sebastien
+ *
+ */
 public abstract class AbstractDonut2DSliceFill extends AbstractDonut2DSlicePainter {
 
     /**
@@ -38,11 +42,9 @@ public abstract class AbstractDonut2DSliceFill extends AbstractDonut2DSlicePaint
     protected abstract void paintDonut2DSliceFill(Graphics2D g2d, Donut2D donut2D,
             Donut2DSlice slice);
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.painter.AbstractDonut2DSlicePainter#paintDonut2DSlice(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2D, com.jensoft.sw2d.core.plugin.donut2d.Donut2DSlice)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.painter.AbstractDonut2DSlicePainter#paintDonut2DSlice(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D, com.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     public final void paintDonut2DSlice(Graphics2D g2d, Donut2D donut2D, Donut2DSlice slice) {

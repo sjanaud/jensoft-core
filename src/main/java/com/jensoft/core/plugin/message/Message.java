@@ -879,7 +879,7 @@ public class Message extends JComponent {
         private static final long serialVersionUID = 7540521627693732418L;
 
         public MessageArea() {
-            setName("SW2D MessageArea");
+            setName("Jensoft MessageArea");
             textArea = new JTextArea();
             textArea.setOpaque(false);
 

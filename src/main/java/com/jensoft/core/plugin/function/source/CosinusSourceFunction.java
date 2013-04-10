@@ -56,11 +56,9 @@ public class CosinusSourceFunction extends AffineSourceFunction {
 		this.nature = nature;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#getSource()
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#getSource()
 	 */
 	@Override
 	public List<Point2D> getSource() {
@@ -73,8 +71,9 @@ public class CosinusSourceFunction extends AffineSourceFunction {
 	}
 
 	
+	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.function.source.SourceFunction#select(double, double)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#select(double, double)
 	 */
 	@Override
 	public List<Point2D> select(double start, double end) {
@@ -97,12 +96,9 @@ public class CosinusSourceFunction extends AffineSourceFunction {
 		return select;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#evaluate(
-	 * double)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate(double)
 	 */
 	@Override
 	public Point2D evaluate(double value) {
@@ -113,10 +109,9 @@ public class CosinusSourceFunction extends AffineSourceFunction {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.jensoft.sw2d.core.plugin.function.source.SourceFunction#first()
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#first()
 	 */
 	@Override
 	public Point2D first() {
@@ -125,10 +120,9 @@ public class CosinusSourceFunction extends AffineSourceFunction {
 		return source.get(0);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.jensoft.sw2d.core.plugin.function.source.SourceFunction#last()
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#last()
 	 */
 	@Override
 	public Point2D last() {
@@ -137,22 +131,18 @@ public class CosinusSourceFunction extends AffineSourceFunction {
 		return source.get(source.size() - 1);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#minFunction()
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#minFunction()
 	 */
 	@Override
 	public Point2D minFunction() {
 		return null;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.function.source.SourceFunction#maxFunction()
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#maxFunction()
 	 */
 	@Override
 	public Point2D maxFunction() {

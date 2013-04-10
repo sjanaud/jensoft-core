@@ -49,12 +49,9 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
         setTextAntialising(TextAntialiasing.On);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.sw2d
-     * .core.view.View2D, java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.window.WindowPart)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     public final void paintPlugin(View2D v2d, Graphics2D g2d,
@@ -376,10 +373,9 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
             getGridManager().registerGridModels(gridModelCollections);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.grid.GridPlugin#paintGrids(com.jensoft.sw2d.core.view.View2D,
-         * java.awt.Graphics2D)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.grid.GridPlugin#paintGrids(com.jensoft.core.view.View2D, java.awt.Graphics2D)
          */
         @Override
         protected void paintGrids(View2D v2d, Graphics2D g2d) {

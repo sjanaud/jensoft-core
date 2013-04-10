@@ -138,10 +138,9 @@ public class DalleProjection implements Projection2D {
         return new Point2D.Double(dim.getWidth() / 2, dim.getHeight() / 2);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.map.projection.Projection2D#geoToPixel(com.jensoft.sw2d.core.map.projection.GeoPosition)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.projection.Projection2D#geoToPixel(com.jensoft.core.map.projection.GeoPosition)
      */
     @Override
     public Point2D geoToPixel(GeoPosition geoPosition) {
@@ -156,9 +155,9 @@ public class DalleProjection implements Projection2D {
         return new Point2D.Double(pixelX, pixelY);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.map.projection.Projection2D#latitudeToPixel(double)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.projection.Projection2D#latitudeToPixel(double)
      */
     @Override
     public double latitudeToPixel(double latitude) {
@@ -170,9 +169,9 @@ public class DalleProjection implements Projection2D {
         return pixelY;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.map.projection.Projection2D#longitudeToPixel(double)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.projection.Projection2D#longitudeToPixel(double)
      */
     @Override
     public double longitudeToPixel(double longitude) {
@@ -181,9 +180,9 @@ public class DalleProjection implements Projection2D {
         return pixelX;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.map.projection.Projection2D#pixelToGeo(java.awt.geom.Point2D)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.projection.Projection2D#pixelToGeo(java.awt.geom.Point2D)
      */
     @Override
     public GeoPosition pixelToGeo(Point2D point) {
@@ -198,9 +197,9 @@ public class DalleProjection implements Projection2D {
         return new GeoPosition(latitude, longitude);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.map.projection.Projection2D#pixelToLatitude(double)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.projection.Projection2D#pixelToLatitude(double)
      */
     @Override
     public double pixelToLatitude(double pixelY) {
@@ -214,9 +213,9 @@ public class DalleProjection implements Projection2D {
         return latitude;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.map.projection.Projection2D#pixelToLongitude(double)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.projection.Projection2D#pixelToLongitude(double)
      */
     @Override
     public double pixelToLongitude(double pixelX) {

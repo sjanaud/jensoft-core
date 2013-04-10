@@ -52,11 +52,9 @@ public class AreaDefaultFill extends AbstractAreaFill {
         this.color = color;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.area.painter.AreaFill#paintAreaFill(java
-     * .awt.Graphics2D, com.jensoft.sw2d.core.plugin.area.AreaCurve)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill#paintAreaFill(java.awt.Graphics2D, com.jensoft.core.plugin.function.area.AreaFunction)
      */
     @Override
     public final void paintAreaFill(Graphics2D g2d, AreaFunction area) {

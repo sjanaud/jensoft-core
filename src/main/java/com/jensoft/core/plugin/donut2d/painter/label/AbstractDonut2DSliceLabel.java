@@ -339,11 +339,9 @@ public abstract class AbstractDonut2DSliceLabel extends AbstractDonut2DSlicePain
      */
     protected abstract void paintDonut2DSliceLabel(Graphics2D g2d, Donut2D donut2d, Donut2DSlice slice);
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.painter.AbstractDonut2DSlicePainter#paintDonut2DSlice(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2D, com.jensoft.sw2d.core.plugin.donut2d.Donut2DSlice)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.painter.AbstractDonut2DSlicePainter#paintDonut2DSlice(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D, com.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     public final void paintDonut2DSlice(Graphics2D g2d, Donut2D donut2d, Donut2DSlice slice) {

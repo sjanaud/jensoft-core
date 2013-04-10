@@ -31,51 +31,41 @@ package com.jensoft.core.plugin.pie;
  */
 abstract class PieAdapter implements PieListener {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSliceClicked(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceClicked(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSliceClicked(PieEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSlicePressed(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSlicePressed(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSlicePressed(PieEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSliceReleased(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceReleased(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSliceReleased(PieEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSliceEntered(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceEntered(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSliceEntered(PieEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.PieListener#pieSliceExited(com.jensoft
-     * .sw2d.core.plugin.pie.PieEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceExited(com.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSliceExited(PieEvent e) {

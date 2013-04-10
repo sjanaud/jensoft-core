@@ -57,9 +57,9 @@ public class ManMadeLayer extends AbstractMapLayer {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.map.layer.AbstractMapLayer#doPaint(java.awt.Graphics2D)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.map.layer.AbstractMapLayer#doPaint(java.awt.Graphics2D)
      */
     @Override
     public void doPaint(Graphics2D g2d) {

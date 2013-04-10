@@ -29,17 +29,21 @@ public class ZoomPercentDefaultDeviceContext extends ContextEntry<ZoomPercentPlu
      * create a default device menu context for the capture plugin
      */
     public ZoomPercentDefaultDeviceContext() {
-
     }
 
+    /**
+     * get the percent action
+     * @param zoomPercent
+     * @return percent action
+     */
     private ZoomPercentAction getPercentAction(ZoomPercent zoomPercent) {
         return getHost()
                 .getZoomPercentAction(zoomPercent);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.ContextEntry#buildContext()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.ContextEntry#buildContext()
      */
     @Override
     public void buildContext() {
@@ -93,9 +97,9 @@ public class ZoomPercentDefaultDeviceContext extends ContextEntry<ZoomPercentPlu
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.ContextEntry#isCompatiblePlugin()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.ContextEntry#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {

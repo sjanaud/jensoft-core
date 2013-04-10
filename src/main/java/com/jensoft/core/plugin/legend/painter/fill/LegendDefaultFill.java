@@ -39,11 +39,9 @@ public class LegendDefaultFill extends LegendFill {
         this.fillColor = fillColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.legend.painter.LegendFill#paintLegendFill
-     * (java.awt.Graphics2D, com.jensoft.sw2d.core.plugin.legend.Legend)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.legend.painter.LegendFill#paintLegendFill(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
      */
     @Override
     protected void paintLegendFill(Graphics2D g2d, Legend legend) {

@@ -64,13 +64,9 @@ public class RadarSurfaceDefaultPainter extends AbstractRadarSurfacePainter {
         this.fillColor = fillColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.radar.painter.AbstractRadarSurfacePainter
-     * #paintRadarSurface(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.radar.Radar,
-     * com.jensoft.sw2d.core.plugin.radar.RadarSurface)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.radar.painter.AbstractRadarSurfacePainter#paintRadarSurface(java.awt.Graphics2D, com.jensoft.core.plugin.radar.Radar, com.jensoft.core.plugin.radar.RadarSurface)
      */
     @Override
     public final void paintRadarSurface(Graphics2D g2d, Radar radar,

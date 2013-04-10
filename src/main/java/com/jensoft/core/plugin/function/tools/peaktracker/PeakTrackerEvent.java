@@ -33,7 +33,7 @@ public class PeakTrackerEvent extends EventObject {
      * 
      * @return serie
      */
-    public SourceFunction getSerie() {
+    public SourceFunction getSourceFunction() {
         return (SourceFunction) getSource();
     }
 }

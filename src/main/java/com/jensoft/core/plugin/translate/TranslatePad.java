@@ -24,7 +24,7 @@ import com.jensoft.core.widget.pad.AbstractBackwardForwardPadWidget;
 public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlugin> {
 
     /** the widget id */
-    public final static String translatePadID = "@sw2d/widget/translate/pad";
+    public final static String translatePadID = "@widget/translate/pad";
 
     /** the widget radius */
     private final static int widgetRadius = 32;
@@ -84,14 +84,17 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
         getPadGeometry().setInset(6);
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     */
     @Override
     protected void paintWidget(View2D v2d, Graphics2D g2d) {
         super.paintWidget(v2d, g2d);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.Widget#isCompatiblePlugin()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {
@@ -101,10 +104,9 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onNorthButtonPress()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onNorthButtonPress()
      */
     @Override
     public void onNorthButtonPress() {
@@ -115,21 +117,18 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
         super.onNorthButtonPress();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onNorthButtonReleased
-     * ()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onNorthButtonReleased()
      */
     @Override
     public void onNorthButtonReleased() {
         super.onNorthButtonReleased();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onSouthButtonPress()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onSouthButtonPress()
      */
     @Override
     public void onSouthButtonPress() {
@@ -140,21 +139,18 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
         super.onSouthButtonPress();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onSouthButtonReleased
-     * ()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onSouthButtonReleased()
      */
     @Override
     public void onSouthButtonReleased() {
         super.onSouthButtonReleased();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onWestButtonPress()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onWestButtonPress()
      */
     @Override
     public void onWestButtonPress() {
@@ -165,20 +161,18 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
         super.onWestButtonPress();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onWestButtonReleased()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onWestButtonReleased()
      */
     @Override
     public void onWestButtonReleased() {
         super.onWestButtonReleased();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onEastButtonPress()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onEastButtonPress()
      */
     @Override
     public void onEastButtonPress() {
@@ -189,10 +183,9 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
         super.onEastButtonPress();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onEastButtonReleased()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onEastButtonReleased()
      */
     @Override
     public void onEastButtonReleased() {
