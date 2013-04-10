@@ -38,11 +38,11 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
         AbstractPlugin.OnDragListener,
         AbstractPlugin.OnReleaseListener {
 
-    /** registered series */
-    private List<SourceFunction> series;
+    /** registered sources function */
+    private List<SourceFunction> sources;
 
-    /** registered series */
-    private List<SourceFunction> trackedSeries;
+    /** registered sources */
+    private List<SourceFunction> trackedSources;
 
     /** listeners */
     private EventListenerList trackerListenerList;
@@ -58,8 +58,8 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
      */
     public PeakTrackerPlugin() {
         setName("PeakTrackerPlugin");
-        series = new ArrayList<SourceFunction>();
-        trackedSeries = new ArrayList<SourceFunction>();
+        sources = new ArrayList<SourceFunction>();
+        trackedSources = new ArrayList<SourceFunction>();
         trackerListenerList = new EventListenerList();
         setOnMoveListener(this);
         setOnPressListener(this);
@@ -88,51 +88,51 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
     }
 
     /**
-     * fire serie being tracked started
+     * fire source being tracked started
      */
-    public void firePeakTracked(SourceFunction serie) {
+    public void firePeakTracked(SourceFunction source) {
         Object[] listeners = trackerListenerList.getListenerList();
         synchronized (listeners) {
             for (int i = 0; i < listeners.length; i += 2) {
                 if (listeners[i] == PeakTrackerListener.class) {
                     ((PeakTrackerListener) listeners[i + 1])
-                            .peakTracked(new PeakTrackerEvent(serie));
+                            .peakTracked(new PeakTrackerEvent(source));
                 }
             }
         }
     }
 
     /**
-     * fire serie registered
+     * fire source registered
      * 
-     * @param serie
-     *            the serie that has just been registered
+     * @param source
+     *            the source that has just been registered
      */
-    public void fireSerieRegistered(SourceFunction serie) {
+    public void fireSourceRegistered(SourceFunction source) {
         Object[] listeners = trackerListenerList.getListenerList();
         synchronized (listeners) {
             for (int i = 0; i < listeners.length; i += 2) {
                 if (listeners[i] == SourceTrackerListener.class) {
                     ((SourceTrackerListener) listeners[i + 1])
-                            .sourceRegistered(new SourceTrackerEvent(serie));
+                            .sourceRegistered(new SourceTrackerEvent(source));
                 }
             }
         }
     }
 
     /**
-     * @return the series
+     * @return the sources functions
      */
-    public List<SourceFunction> getSeries() {
-        return series;
+    public List<SourceFunction> getSources() {
+        return sources;
     }
 
     /**
-     * @param series
-     *            the series to set
+     * @param sources
+     *            the sources to set
      */
-    public void setSeries(List<SourceFunction> series) {
-        this.series = series;
+    public void setSources(List<SourceFunction> sources) {
+        this.sources = sources;
     }
 
     /**
@@ -166,54 +166,54 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
     }
 
     /**
-     * register serie in this tracker
+     * register source in this tracker
      * 
-     * @param serie
-     *            the serie to register
+     * @param source
+     *            the source to register
      */
-    public void registerSerie(SourceFunction serie) {
-        if (!series.contains(serie)) {
-            series.add(serie);
-            fireSerieRegistered(serie);
+    public void registerSource(SourceFunction source) {
+        if (!sources.contains(source)) {
+            sources.add(source);
+            fireSourceRegistered(source);
         }
     }
 
     /**
-     * track the given serie, register serie if i does not
+     * track the given source, register source if it does not
      * have been registered.
      * 
-     * @param serie
-     *            the serie to track
+     * @param source
+     *            the source to track
      */
-    public void trackSerie(SourceFunction serie) {
-        registerSerie(serie);
-        if (!trackedSeries.contains(serie)) {
-            trackedSeries.add(serie);
+    public void trackSource(SourceFunction source) {
+        registerSource(source);
+        if (!trackedSources.contains(source)) {
+            trackedSources.add(source);
         }
-        firePeakTracked(serie);
+        firePeakTracked(source);
     }
 
     /**
-     * untrack the given serie
+     * untrack the given source
      * 
-     * @param serie
-     *            the serie to track
+     * @param source
+     *            the source to track
      */
-    public void untrackSerie(SourceFunction serie) {
-        if (trackedSeries.contains(serie)) {
-            trackedSeries.remove(serie);
+    public void untrackSource(SourceFunction source) {
+        if (trackedSources.contains(source)) {
+            trackedSources.remove(source);
         }
-        firePeakTracked(serie);
+        firePeakTracked(source);
     }
 
     /**
-     * return true if the serie is tracked, false otherwise
+     * return true if the source is tracked, false otherwise
      * 
-     * @param serie
-     * @return true if the serie is tracked, false otherwise
+     * @param source
+     * @return true if the source is tracked, false otherwise
      */
-    public boolean isTracked(SourceFunction serie) {
-        return trackedSeries.contains(serie);
+    public boolean isTracked(SourceFunction source) {
+        return trackedSources.contains(source);
     }
 
     /**
@@ -305,7 +305,7 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
             return;
         }
 
-        for (SourceFunction trackedSerie : trackedSeries) {
+        for (SourceFunction trackedSerie : trackedSources) {
             if (trackedSerie == null) {
                 return;
             }

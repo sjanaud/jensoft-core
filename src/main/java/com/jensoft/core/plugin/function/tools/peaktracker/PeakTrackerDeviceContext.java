@@ -144,7 +144,7 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
                 });
 
         serieSelecterMenu = new JMenu("Series");
-        List<SourceFunction> series = getHost().getSeries();
+        List<SourceFunction> series = getHost().getSources();
         int count = 1;
         for (final SourceFunction iSerie2D : series) {
             String name = iSerie2D.getName();
@@ -163,11 +163,11 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
                     System.out.println("actionPerformed ::iSerie2D " + iSerie2D.getName() + "is track  ?"
                             + getHost().isTracked(iSerie2D));
                     if (getHost().isTracked(iSerie2D)) {
-                        getHost().untrackSerie(iSerie2D);
+                        getHost().untrackSource(iSerie2D);
                         System.out.println("actionPerformed :: untrackSerie " + iSerie2D.getName());
                     }
                     else {
-                        getHost().trackSerie(iSerie2D);
+                        getHost().trackSource(iSerie2D);
                         System.out.println("actionPerformed :: trackSerie " + iSerie2D.getName());
                     }
                     getHost().getWindow2D().getView2D().repaintDevice();

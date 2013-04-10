@@ -20,18 +20,18 @@ public class PeakTrackerEvent extends EventObject {
     private static final long serialVersionUID = 1225330748067264039L;
 
     /**
-     * Create serie tracker event for given serie
+     * Create source peak tracker event for given source
      * 
-     * @param serie
+     * @param source
      */
-    public PeakTrackerEvent(SourceFunction serie) {
-        super(serie);
+    public PeakTrackerEvent(SourceFunction source) {
+        super(source);
     }
 
     /**
-     * return the serie
+     * return the source function
      * 
-     * @return serie
+     * @return source function
      */
     public SourceFunction getSourceFunction() {
         return (SourceFunction) getSource();
