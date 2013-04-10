@@ -47,9 +47,8 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
             super("FlowGrid");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -80,9 +79,8 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
             super("FreeGrid");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -129,9 +127,8 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
             super("MultiplierGrid");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -160,9 +157,8 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
             super("StaticGrid");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -189,9 +185,8 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
             super("ModeledGrid");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -217,10 +212,7 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
     // super("AxisTimeMetrics");
     // }
     //
-    // /*
-    // * (non-Javadoc)
-    // * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
-    // */
+    
     // @Override
     // public void inflate(Element plugin) {
     //

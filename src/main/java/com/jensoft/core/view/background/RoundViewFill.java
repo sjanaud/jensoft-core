@@ -199,11 +199,9 @@ public class RoundViewFill extends BackgroundPainter {
         this.outlineColor = outlineColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.view.background.BackgroundPainter#paintViewBackground
-     * (java.awt.Graphics2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.view.background.BackgroundPainter#paintViewBackground(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
     public final void paintViewBackground(View2D view, Graphics2D g2d) {

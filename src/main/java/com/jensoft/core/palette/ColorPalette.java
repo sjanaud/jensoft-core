@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * <code>ColorPalette</code> provides abstract definition and utility methods for sw2d color palette.
+ * <code>ColorPalette</code> provides abstract definition and utility methods for color.
  * 
  * @author sebastien janaud
  */

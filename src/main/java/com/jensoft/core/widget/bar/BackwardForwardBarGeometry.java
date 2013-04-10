@@ -25,11 +25,9 @@ public class BackwardForwardBarGeometry extends AbstractBarGeometry {
         super(barWidgetOrientation);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.bar.AbstractBarGeometry#solveButton1Geometry
-     * (java.awt.geom.Rectangle2D)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarGeometry#solveButton1Geometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButton1Geometry(Rectangle2D rect1) {
@@ -52,11 +50,9 @@ public class BackwardForwardBarGeometry extends AbstractBarGeometry {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.bar.AbstractBarGeometry#solveButton2Geometry
-     * (java.awt.geom.Rectangle2D)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarGeometry#solveButton2Geometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButton2Geometry(Rectangle2D rect2) {

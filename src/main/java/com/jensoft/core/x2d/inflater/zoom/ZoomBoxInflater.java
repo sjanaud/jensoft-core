@@ -13,7 +13,7 @@ import com.jensoft.core.plugin.zoom.box.ZoomBoxPlugin;
 import com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.inflater.X2DInflater;
 /**
- * <code>ZoomWheelInflater</code>
+ * <code>ZoomBoxInflater</code>
  * 
  * @author Sebastien Janaud
  */
@@ -28,11 +28,9 @@ public class ZoomBoxInflater extends AbstractX2DPluginInflater<ZoomBoxPlugin> {
         setXSIType("ZoomBoxPlugin");
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.jet.inflater.AbstractPluginInflater#inflate(org
-     * .w3c.dom.Element)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public void inflate(Element pluginElement) {

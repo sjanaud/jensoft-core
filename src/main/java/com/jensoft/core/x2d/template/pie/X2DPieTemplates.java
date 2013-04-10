@@ -1,37 +1,3 @@
-/*
- * This source file is part of JenSoft SW2D Chart Framework
- * For the latest info, see http://www.jensoft.org
- * Copyright (c) 2008-2012 JenSoft
- * Project Lead: S�bastien Janaud (sebastien.janaud@gmail.com)
- * Developers: S�bastien Janaud
- * Marc Antoine Tessier
- * This program is distributed under a dual-licensing scheme:
- * 1. The first license, which is the default one, state that this software
- * is free software; you can redistribute it and/or modify it under the terms
- * of the GNU Lesser General Public License (LGPL) as published by the
- * Free Software Foundation; either version 2 of the License,
- * or (at your option) any later version.
- * 2. The second license, which is not free, apply only for licensee who got
- * a written agreement from JenSoft. The exact wording of this
- * license can be obtained from JenSoft. In essence this
- * JenSoft Unrestricted License state that the GNU Lesser General Public License
- * applies except that the software is distributed with no limitation or
- * requirements to publish or give back to the JenSoft project changes made
- * to the JenSoft source code. If you want create SDK or any Tool using JenSoft API
- * with commercial license without give back modification to JenSoft.
- * By default, the first type of license applies (the GNU LGPL), the JenSoft
- * Unrestricted License apply only for those who got a written agreement
- * from JenSoft.
- * Under both licenses, this program is distributed in the hope that it will
- * be useful, but WITHOUT ANY WARRANTY; without even the implied warranty
- * of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
- * See the GNU Lesser General Public License for more details.
- * You should have received a copy of the GNU Lesser General Public License
- * along with this program; if not, write to the Free Software Foundation, Inc.,
- * 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA, or go to
- * http://www.gnu.org/copyleft/lesser.txt .
- * For the JenSoft Unrestricted License contact JenSoft
- */
 package com.jensoft.core.x2d.template.pie;
 
 import java.io.File;
@@ -40,7 +6,7 @@ import com.jensoft.core.x2d.X2D;
 import com.jensoft.core.x2d.X2DException;
 
 /**
- * JETPie is a class that produce various pies images from JET templates
+ * <code>X2DPieTemplates</code>
  * 
  * @author Sebastien Janaud
  */

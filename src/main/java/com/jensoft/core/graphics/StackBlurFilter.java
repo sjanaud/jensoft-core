@@ -10,7 +10,7 @@ import java.awt.image.BufferedImage;
 /**
  * <p>
  * A stack blur filter can be used to create an approximation of a gaussian blur. The approximation is controlled by the
- * number of times the {@link com.jensoft.sw2d.core.graphics.jdesktop.swingx.image.FastBlurFilter} is applied onto the
+ * number of times the {@link FastBlurFilter} is applied onto the
  * source picture. The default number of iterations, 3, provides a decent compromise between speed and rendering
  * quality.
  * </p>

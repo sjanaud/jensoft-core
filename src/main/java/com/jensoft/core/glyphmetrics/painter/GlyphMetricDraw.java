@@ -26,10 +26,9 @@ public abstract class GlyphMetricDraw extends AbstractGlyphPainter {
      */
     abstract protected void paintGlyphMetricDraw(Graphics2D g2d, GlyphMetric glyphMetric);
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.glyphmetrics.painter.AbstractGlyphPainter#paintGlyphMetric(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.glyphmetrics.GlyphMetric)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.glyphmetrics.painter.AbstractGlyphPainter#paintGlyphMetric(java.awt.Graphics2D, com.jensoft.core.glyphmetrics.GlyphMetric)
      */
     @Override
     public final void paintGlyphMetric(Graphics2D g2d, GlyphMetric glyphMetric) {

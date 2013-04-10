@@ -32,7 +32,7 @@ import com.jensoft.core.view.View2D;
 public class PullDownButtonWidget<P extends AbstractPlugin> extends ButtonWidget<P> {
 
     /** the widget id */
-    public final static String ID = "@sw2d/widget/core/pulldownwidget";
+    public final static String ID = "@widget/core/pulldownwidget";
 
     private PullOrderComparator pullComparator = new PullOrderComparator();
     private int pullInsetX = 5;
@@ -240,11 +240,9 @@ public class PullDownButtonWidget<P extends AbstractPlugin> extends ButtonWidget
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.button.ButtonWidget#paintButton(com.jensoft
-     * .sw2d.core.view.View2D, java.awt.Graphics2D, java.awt.geom.Rectangle2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.button.ButtonWidget#paintButton(com.jensoft.core.view.View2D, java.awt.Graphics2D, java.awt.geom.Rectangle2D)
      */
     @Override
     public void paintButton(View2D v2d, Graphics2D g2d,

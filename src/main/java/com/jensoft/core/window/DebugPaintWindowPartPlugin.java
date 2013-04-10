@@ -25,10 +25,9 @@ public class DebugPaintWindowPartPlugin extends AbstractPlugin {
 
     private Map<WindowPart, Color> colorMap = new HashMap<WindowPart, Color>();
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.sw2d.core.view.View2D,
-     * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {

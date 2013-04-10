@@ -51,43 +51,42 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
     private ImageIcon unlockIcon = SharedIcon.getCommon(Common.UNLOCK);
 
     /** listener */
-    private ContextSerieTrackerListener listener = new ContextSerieTrackerListener();
+    private ContextSourceTrackerListener listener = new ContextSourceTrackerListener();
 
-    class ContextSerieTrackerListener implements SourceTrackerListener {
+    class ContextSourceTrackerListener implements SourceTrackerListener {
 
-        /*
-         * (non-Javadoc)
-         * @see
-         * com.jensoft.sw2d.core.plugin.plottools.serietracker.SerieTrackerListener#serieTracked(com.jensoft.sw2d.core
-         * .plugin.plottools.serietracker.SerieTrackerEvent)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#sourceTracked(com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
          */
         @Override
         public void sourceTracked(SourceTrackerEvent event) {
-            System.out.println("sourceSelecters size " + sourceSelecters.size());
+           // System.out.println("sourceSelecters size " + sourceSelecters.size());
             for (JMenuItem item : sourceSelecters) {
-                System.out.println("unlock icon set on item " + item.getText());
+               // System.out.println("unlock icon set on item " + item.getText());
                 item.setIcon(unlockIcon);
             }
 
             System.out.println("context source tracked :" + event.getSourceFunction().getName());
             JMenuItem item = sourceSelectersMap.get(event.getSourceFunction());
             item.setIcon(lockIcon);
-
         }
 
-        /*
-         * (non-Javadoc)
-         * @see
-         * com.jensoft.sw2d.core.plugin.plottools.serietracker.SerieTrackerListener#serieRegistered(com.jensoft.sw2d
-         * .core.plugin.plottools.serietracker.SerieTrackerEvent)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#sourceRegistered(com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
          */
         @Override
         public void sourceRegistered(SourceTrackerEvent event) {
             System.out.println("context source registered :" + event.getSourceFunction().getName());
         }
 
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#currentTrack(com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
+         */
         @Override
         public void currentTrack(SourceTrackerEvent event) {
+        	System.out.println("track :" + event.getSourceFunction().getName()+"");
         }
     }
 
@@ -110,8 +109,8 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
             return;
         }
 
-        getHost().removeSerieTrackerListener(listener);
-        getHost().addSerieTrackerListener(listener);
+        getHost().removeSourceTrackerListener(listener);
+        getHost().addSourceTrackerListener(listener);
 
         sourceSelecters.clear();
         sourceSelectersMap.clear();
@@ -148,28 +147,28 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
                 });
 
         serieSelecterMenu = new JMenu("Sources");
-        List<SourceFunction> series = getHost().getSources();
+        List<SourceFunction> sourceList = getHost().getSources();
         int count = 1;
-        for (final SourceFunction iSerie2D : series) {
-            String name = iSerie2D.getName();
+        for (final SourceFunction source : sourceList) {
+            String name = source.getName();
             if (name == null) {
                 name = "src-" + count;
-                iSerie2D.setName(name);
+                source.setName(name);
             }
             JMenuItem serieSelecter = new JMenuItem(name);
             serieSelecterMenu.add(serieSelecter);
-            sourceSelectersMap.put(iSerie2D, serieSelecter);
+            sourceSelectersMap.put(source, serieSelecter);
             sourceSelecters.add(serieSelecter);
             serieSelecter.addActionListener(new ActionListener() {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    getHost().trackSource(iSerie2D);
+                    getHost().trackSource(source);
                 }
             });
             count++;
 
-            getHost().trackSource(iSerie2D);
+            getHost().trackSource(source);
         }
         rootMenu.add(serieSelecterMenu);
         setGroup("Tracker");

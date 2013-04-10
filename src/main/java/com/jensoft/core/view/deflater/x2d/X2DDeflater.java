@@ -159,9 +159,9 @@ public class X2DDeflater extends AbstractViewDeflater {
         return e;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.view.deflater.AbstractViewDeflater#deflate()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.view.deflater.AbstractViewDeflater#deflate()
      */
     @Override
     public Document deflate() {

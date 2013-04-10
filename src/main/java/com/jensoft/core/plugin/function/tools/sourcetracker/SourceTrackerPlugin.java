@@ -22,6 +22,7 @@ import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
 import com.jensoft.core.glyphmetrics.StylePosition;
 import com.jensoft.core.glyphmetrics.painter.GlyphMetricFill;
+import com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.DefaultMarker;
 import com.jensoft.core.palette.InputFonts;
@@ -29,22 +30,19 @@ import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.Spectral;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.function.core.MetricsPathFunction;
+import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 import com.jensoft.core.window.WindowPart;
 
 /**
- * <code>CurveTrackerPlugin</code> takes the responsibility
- * to draw curve label for the current mouse point coordinate.
+ * <code>SourceTrackerPlugin</code> takes the responsibility to draw curve label
+ * for the current mouse point coordinate.
  * 
  * @see MetricsPathFunction
  * @see AbstractPlugin
  * @author Sebastien Janaud
- */
-/**
- * @author sebastien
- * 
  */
 public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugin.OnMoveListener, AbstractPlugin.OnPressListener, AbstractPlugin.OnDragListener, AbstractPlugin.OnReleaseListener {
 
@@ -58,9 +56,9 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	private Point2D currentTrackUser;
 
 	/** curve metrics path */
-	private MetricsPathFunction curveMetricsPath;
+	private MetricsPathFunction metricsPathFunction;
 
-	/** registered series */
+	/** registered sources */
 	private List<SourceFunction> sources;
 
 	/** listeners */
@@ -76,7 +74,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	private GlyphMetricFill glyphMetricsFill = new GlyphFill(Spectral.SPECTRAL_RED, Color.DARK_GRAY);
 
 	/** default marker */
-	private DefaultMarker glyphMarker = new DefaultMarker(NanoChromatique.RED);
+	private GlyphMetricMarkerPainter glyphMarker = new DefaultMarker(NanoChromatique.RED);
 
 	/** default glyph font */
 	private Font defaultGlyphFont = InputFonts.getFont(InputFonts.NEUROPOL, 12);
@@ -89,7 +87,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 */
 	public SourceTrackerPlugin() {
 		sources = new ArrayList<SourceFunction>();
-		curveMetricsPath = new MetricsPathFunction();
+		metricsPathFunction = new MetricsPathFunction();
 		trackerListenerList = new EventListenerList();
 		setOnMoveListener(this);
 		setOnPressListener(this);
@@ -100,20 +98,20 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	}
 
 	/**
-	 * add serie tracker listener
+	 * add source tracker listener
 	 * 
 	 * @param listener
 	 */
-	public void addSerieTrackerListener(SourceTrackerListener listener) {
+	public void addSourceTrackerListener(SourceTrackerListener listener) {
 		trackerListenerList.add(SourceTrackerListener.class, listener);
 	}
 
 	/**
-	 * remove serie tracker listener
+	 * remove source tracker listener
 	 * 
 	 * @param listener
 	 */
-	public void removeSerieTrackerListener(SourceTrackerListener listener) {
+	public void removeSourceTrackerListener(SourceTrackerListener listener) {
 		trackerListenerList.remove(SourceTrackerListener.class, listener);
 	}
 
@@ -135,7 +133,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 * fire source registered
 	 * 
 	 * @param source
-	 *            the serie that has just been registered
+	 *            the source that has just been registered
 	 */
 	public void fireSourceRegistered(SourceFunction source) {
 		Object[] listeners = trackerListenerList.getListenerList();
@@ -208,7 +206,8 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	public void trackSource(SourceFunction source) {
 		registerSourceFunction(source);
 		trackedSource = source;
-		curveMetricsPath.setSource(trackedSource);
+		metricsPathFunction.setSource(trackedSource);
+		metricsPathFunction.setSolveGeometryRequest(true);
 		fireSourceTracked();
 	}
 
@@ -250,14 +249,26 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 *            the glyph metric to add
 	 */
 	private void addMetrics(GlyphMetric metric) {
+
 		if (trackedSource == null) {
 			return;
 		}
-		if (metric.getValue() >= trackedSource.first().getX() && metric.getValue() <= trackedSource.last().getX()) {
-			curveMetricsPath.addMetrics(metric);
+		System.out.println("addMetrics " + metric.getValue());
+		if (trackedSource.getNature() == FunctionNature.XFunction) {
+			if (metric.getValue() >= trackedSource.first().getX() && metric.getValue() <= trackedSource.last().getX()) {
+
+				metricsPathFunction.addMetrics(metric);
+			} else {
+				throw new IllegalArgumentException("x function metric value out of source bound");
+			}
 		} else {
-			throw new IllegalArgumentException("metric value out of serie bound");
+			if (metric.getValue() >= trackedSource.first().getY() && metric.getValue() <= trackedSource.last().getY()) {
+				metricsPathFunction.addMetrics(metric);
+			} else {
+				throw new IllegalArgumentException("y function metric value out of source bound");
+			}
 		}
+
 	}
 
 	/**
@@ -278,7 +289,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	/**
 	 * @return the glyphMarker
 	 */
-	public DefaultMarker getGlyphMarker() {
+	public GlyphMetricMarkerPainter getGlyphMarker() {
 		return glyphMarker;
 	}
 
@@ -286,7 +297,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 * @param glyphMarker
 	 *            the glyphMarker to set
 	 */
-	public void setGlyphMarker(DefaultMarker glyphMarker) {
+	public void setGlyphMarker(GlyphMetricMarkerPainter glyphMarker) {
 		this.glyphMarker = glyphMarker;
 	}
 
@@ -294,7 +305,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 * remove all glyphs
 	 */
 	private void clearMetrics() {
-		curveMetricsPath.clearMetrics();
+		metricsPathFunction.clearMetrics();
 	}
 
 	/**
@@ -327,6 +338,8 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 *            the mouse event to transform in user metrics.
 	 */
 	private void processMetrics(MouseEvent me) {
+
+		metricsPathFunction.setSolveGeometryRequest(true);
 		int currentX = me.getX();
 		int currentY = me.getY();
 		Window2D w2d = getWindow2D();
@@ -335,20 +348,33 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		currentTrackUser = w2d.pixelToUser(currentTrackDevice);
 
 		clearMetrics();
-
-		GlyphMetric metric = new GlyphMetric();
-		metric.setValue(currentTrackUser.getX());
-		metric.setStylePosition(defaultStylePosition);
-		metric.setMetricsNature(GlyphMetricsNature.Median);
-		metric.setMetricsLabel(currentTrackUser.getY() + "");
-		metric.setDivergence(divergence);
-		metric.setGlyphMetricFill(glyphMetricsFill);
-		metric.setGlyphMetricMarkerPainter(glyphMarker);
-		metric.setFont(defaultGlyphFont);
-
+		GlyphMetric metric;
+		if (trackedSource.getNature() == FunctionNature.XFunction) {
+			metric = new GlyphMetric();
+			metric.setValue(currentTrackUser.getX());
+			metric.setStylePosition(defaultStylePosition);
+			metric.setMetricsNature(GlyphMetricsNature.Median);
+			metric.setMetricsLabel(currentTrackUser.getY() + "");
+			metric.setDivergence(divergence);
+			metric.setGlyphMetricFill(glyphMetricsFill);
+			metric.setGlyphMetricMarkerPainter(glyphMarker);
+			metric.setFont(defaultGlyphFont);
+		} else {
+			metric = new GlyphMetric();
+			metric.setValue(currentTrackUser.getY());
+			metric.setStylePosition(defaultStylePosition);
+			metric.setMetricsNature(GlyphMetricsNature.Median);
+			metric.setMetricsLabel(currentTrackUser.getX() + "");
+			metric.setDivergence(divergence);
+			metric.setGlyphMetricFill(glyphMetricsFill);
+			metric.setGlyphMetricMarkerPainter(glyphMarker);
+			metric.setFont(defaultGlyphFont);
+		}
 		try {
-			addMetrics(metric);
-			fireCurrentTrack();
+			if (metric != null) {
+				addMetrics(metric);
+				fireCurrentTrack();
+			}
 		} catch (IllegalArgumentException e) {
 		}
 		getWindow2D().getDevice2D().repaintDevice();
@@ -366,7 +392,6 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		if (!isLockSelected()) {
 			return;
 		}
-
 		processMetrics(me);
 	}
 
@@ -382,7 +407,6 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		if (!isLockSelected()) {
 			return;
 		}
-
 		processMetrics(me);
 	}
 
@@ -409,7 +433,6 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		if (!isLockSelected()) {
 			return;
 		}
-
 		clearMetrics();
 		getWindow2D().getDevice2D().repaintDevice();
 	}
@@ -423,9 +446,10 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 */
 	@Override
 	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		curveMetricsPath.setWindow2d(getWindow2D());
-		curveMetricsPath.setFontRenderContext(g2d.getFontRenderContext());
-		List<GlyphMetric> metrics = curveMetricsPath.getMetrics();
+		metricsPathFunction.setWindow2d(getWindow2D());
+		metricsPathFunction.setFontRenderContext(g2d.getFontRenderContext());
+		metricsPathFunction.setSolveGeometryRequest(true);
+		List<GlyphMetric> metrics = metricsPathFunction.getMetrics();
 		for (GlyphMetric glyphMetric : metrics) {
 
 			if (glyphMetric.getGlyphMetricMarkerPainter() != null) {

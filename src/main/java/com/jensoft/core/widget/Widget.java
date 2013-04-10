@@ -386,9 +386,9 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
         return getHost().getThemeColor();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.WidgetFolder.OnPostWidgetListener#onPostWidget()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.WidgetFolder.OnPostWidgetListener#onPostWidget()
      */
     @Override
     public void onPostWidget() {
@@ -580,10 +580,7 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
      */
     public abstract boolean isCompatiblePlugin();
 
-    // /*
-    // * (non-Javadoc)
-    // * @see com.jensoft.sw2d.core.widget.Widget#isCompatiblePlugin()
-    // */
+    
     //
     // public boolean isCompatiblePlugin() {
     // try{

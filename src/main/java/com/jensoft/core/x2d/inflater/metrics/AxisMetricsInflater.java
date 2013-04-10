@@ -48,9 +48,9 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
             super("AxisFlowMetrics");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -81,9 +81,9 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
             super("AxisFreeMetrics");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -127,9 +127,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
             super("AxisMultiplierMetrics");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -159,9 +158,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
             super("AxisMultiMultiplierMetrics");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -202,9 +200,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
             super("AxisStaticMetrics");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -232,9 +229,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
             super("AxisModeledMetrics");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
@@ -261,9 +257,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
             super("AxisTimeMetrics");
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+        /* (non-Javadoc)
+         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public void inflate(Element plugin) {
