@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.Image;
 
 /**
- * Image Drawable
+ * <code>ImageDrawable</code>
  * 
  * @author Sebastien Janaud
  */
@@ -91,9 +91,9 @@ public class ImageDrawable implements Drawable {
         this.y = y;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.drawable.Drawable#draw(java.awt.Graphics2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.drawable.Drawable#draw(java.awt.Graphics2D)
      */
     @Override
     public void draw(Graphics2D g2d) {

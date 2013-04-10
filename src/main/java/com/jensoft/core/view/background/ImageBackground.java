@@ -77,11 +77,9 @@ public class ImageBackground extends BackgroundPainter {
         this.rescale = rescale;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.view.background.BackgroundPainter#paintViewBackground(com.jensoft.sw2d.core.view.View2D,
-     * java.awt.Graphics2D)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.view.background.BackgroundPainter#paintViewBackground(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
     public void paintViewBackground(View2D view, Graphics2D g2d) {

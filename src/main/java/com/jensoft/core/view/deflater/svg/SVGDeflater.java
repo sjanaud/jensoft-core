@@ -24,8 +24,9 @@ public class SVGDeflater  extends AbstractViewDeflater{
         super(view2d);
     }
 
+  
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.view.deflater.AbstractViewDeflater#deflate()
+     * @see com.jensoft.core.view.deflater.AbstractViewDeflater#deflate()
      */
     @Override
     public Document deflate() {

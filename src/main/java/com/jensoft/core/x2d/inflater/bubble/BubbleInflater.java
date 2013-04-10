@@ -36,11 +36,8 @@ public class BubbleInflater extends AbstractX2DPluginInflater<BubblePlugin> {
         setXSIType("BubblePlugin");
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.jet.inflater.AbstractPluginInflater#inflate(org
-     * .w3c.dom.Element)
+    /* (non-Javadoc)
+     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public void inflate(Element pluginElement) {

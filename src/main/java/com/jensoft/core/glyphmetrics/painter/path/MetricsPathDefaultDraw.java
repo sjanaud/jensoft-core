@@ -95,7 +95,7 @@ public class MetricsPathDefaultDraw extends AbstractPathPainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.glyphmetrics.painter.AbstractPathPainter#paintPath(java.awt.Graphics2D, com.jensoft.sw2d.core.glyphmetrics.AbstractMetricsPath)
+     * @see com.jensoft.core.glyphmetrics.painter.AbstractPathPainter#paintPath(java.awt.Graphics2D, com.jensoft.core.glyphmetrics.AbstractMetricsPath)
      */
     @Override
     public void paintPath(Graphics2D g2d, AbstractMetricsPath metricsPath) {

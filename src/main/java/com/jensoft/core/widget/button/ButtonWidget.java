@@ -181,17 +181,13 @@ public class ButtonWidget<P extends AbstractPlugin> extends AbstractButtonWidget
         return shadeColors;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.button.AbstractButtonWidget#paintButton(
-     * com.jensoft.sw2d.core.view.View2D, java.awt.Graphics2D,
-     * java.awt.geom.Rectangle2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.button.AbstractButtonWidget#paintButton(com.jensoft.core.view.View2D, java.awt.Graphics2D, java.awt.geom.Rectangle2D)
      */
     @Override
     public void paintButton(View2D v2d, Graphics2D g2d,
             Rectangle2D buttonDrawingRegion) {
-        // System.out.println("paint button");
         double x = buttonDrawingRegion.getX();
         double y = buttonDrawingRegion.getY();
         double width = buttonDrawingRegion.getWidth();

@@ -465,9 +465,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
             }
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
          */
         @Override
         protected void validEntry(GeneralPath path) {
@@ -501,9 +501,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
             setType(EntryType.SEG_CLOSE);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
          */
         @Override
         protected void validEntry(GeneralPath path) {
@@ -540,9 +540,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
             setType(EntryType.SEG_MOVETO);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
          */
         @Override
         protected void validEntry(GeneralPath path) {
@@ -584,9 +584,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
             setType(EntryType.SEG_LINETO);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
          */
         @Override
         protected void validEntry(GeneralPath path) {
@@ -641,9 +641,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
             setType(EntryType.SEG_QUADTO);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
          */
         @Override
         protected void validEntry(GeneralPath path) {
@@ -715,9 +715,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
             setType(EntryType.SEG_CUBICTO);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry(java.awt.geom.GeneralPath)
          */
         @Override
         protected void validEntry(GeneralPath path) {
@@ -742,8 +742,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
     }
 
     
+    
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.glyphmetrics.AbstractMetricsPath#createPathMetrics()
+     * @see com.jensoft.core.glyphmetrics.AbstractMetricsPath#createPathMetrics()
      */
     @Override
     protected GeneralPath createPathMetrics() {
@@ -1137,9 +1138,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
         return glyphMetrics;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.glyphmetrics.MetricsPath#getMetrics()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.glyphmetrics.AbstractMetricsPath#getMetrics()
      */
     @Override
     public List<GlyphMetric> getMetrics() {

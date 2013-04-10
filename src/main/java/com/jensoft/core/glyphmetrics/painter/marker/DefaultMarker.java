@@ -113,11 +113,9 @@ public class DefaultMarker extends GlyphMetricMarkerPainter {
         this.divergence = divergence;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.glyphmetrics.painter.GlyphMetricMarkerPainter#paintGlyphMetricMarker(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.glyphmetrics.GlyphMetric)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter#paintGlyphMetricMarker(java.awt.Graphics2D, com.jensoft.core.glyphmetrics.GlyphMetric)
      */
     @Override
     public void paintGlyphMetricMarker(Graphics2D g2d, GlyphMetric glyphMetric) {

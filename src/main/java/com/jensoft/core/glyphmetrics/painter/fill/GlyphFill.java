@@ -43,10 +43,9 @@ public class GlyphFill extends GlyphMetricFill {
         this.themeColor2 = themeColor2;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.glyphmetrics.painter.GlyphMetricFill#paintGlyphMetricFill(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.glyphmetrics.GlyphMetric)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.glyphmetrics.painter.GlyphMetricFill#paintGlyphMetricFill(java.awt.Graphics2D, com.jensoft.core.glyphmetrics.GlyphMetric)
      */
     @Override
     public void paintGlyphMetricFill(Graphics2D g2d, GlyphMetric glyphMetric) {

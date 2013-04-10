@@ -11,13 +11,15 @@ import java.awt.geom.Rectangle2D;
 /**
  * @author Sebastien Janaud
  */
+/**
+ * @author sebastien
+ *
+ */
 public class PlusMinusPadGeometry extends AbstractPadGeometry {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadGeometry#solveButtonNorthGeometry
-     * (java.awt.geom.Rectangle2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonNorthGeometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButtonNorthGeometry(Rectangle2D buttonNorthBound) {
@@ -37,11 +39,9 @@ public class PlusMinusPadGeometry extends AbstractPadGeometry {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadGeometry#solveButtonSouthGeometry
-     * (java.awt.geom.Rectangle2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonSouthGeometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButtonSouthGeometry(Rectangle2D buttonSouthBound) {
@@ -54,11 +54,9 @@ public class PlusMinusPadGeometry extends AbstractPadGeometry {
         setSouthButton(southButton);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadGeometry#solveButtonWestGeometry
-     * (java.awt.geom.Rectangle2D)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonWestGeometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButtonWestGeometry(Rectangle2D buttonWestBound) {
@@ -71,11 +69,9 @@ public class PlusMinusPadGeometry extends AbstractPadGeometry {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadGeometry#solveButtonEastGeometry
-     * (java.awt.geom.Rectangle2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonEastGeometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButtonEastGeometry(Rectangle2D buttonEastBound) {

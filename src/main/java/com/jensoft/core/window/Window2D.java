@@ -324,9 +324,9 @@ public abstract class Window2D implements PluginListener {
             this.maxY = maxY;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#userToPixelX(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#userToPixelX(double)
          */
         @Override
         public double userToPixelX(double userX) {
@@ -334,9 +334,9 @@ public abstract class Window2D implements PluginListener {
             return scaleX * (userX - getMinX());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#userToPixelY(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#userToPixelY(double)
          */
         @Override
         public double userToPixelY(double userY) {
@@ -344,9 +344,9 @@ public abstract class Window2D implements PluginListener {
             return -scaleY * (userY - getMaxY());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#pixelToUserX(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#pixelToUserX(double)
          */
         @Override
         public double pixelToUserX(double userX) {
@@ -354,9 +354,9 @@ public abstract class Window2D implements PluginListener {
             return userX / scaleX + getMinX();
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#pixelToUserY(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#pixelToUserY(double)
          */
         @Override
         public double pixelToUserY(double userY) {
@@ -396,9 +396,9 @@ public abstract class Window2D implements PluginListener {
             bound(minx, maxx, miny, maxy);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Linear#userToPixelX(double)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Linear#userToPixelX(double)
          */
         @Override
         public double userToPixelX(double userX) {
@@ -406,9 +406,9 @@ public abstract class Window2D implements PluginListener {
             return scaleXLog * (Math.log10(userX) - Math.log10(getMinX()));
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Linear#pixelToUserX(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Linear#pixelToUserX(double)
          */
         @Override
         public double pixelToUserX(double pixelX) {
@@ -446,9 +446,9 @@ public abstract class Window2D implements PluginListener {
             bound(minx, maxx, miny, maxy);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Linear#userToPixelY(double)
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Linear#userToPixelY(double)
          */
         @Override
         public double userToPixelY(double userY) {
@@ -456,9 +456,9 @@ public abstract class Window2D implements PluginListener {
             return -scaleYLog * (Math.log10(userY) - Math.log10(getMaxY()));
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Linear#pixelToUserY(double)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Linear#pixelToUserY(double)
          */
         @Override
         public double pixelToUserY(double pixelY) {
@@ -498,9 +498,9 @@ public abstract class Window2D implements PluginListener {
             bound(minx, maxx, miny, maxy);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Linear#userToPixelX(double)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Linear#userToPixelX(double)
          */
         @Override
         public double userToPixelX(double userX) {
@@ -508,9 +508,9 @@ public abstract class Window2D implements PluginListener {
             return scaleXLog * (Math.log10(userX) - Math.log10(getMinX()));
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Linear#pixelToUserX(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Linear#pixelToUserX(double)
          */
         @Override
         public double pixelToUserX(double pixelX) {
@@ -518,9 +518,9 @@ public abstract class Window2D implements PluginListener {
             return Math.pow(10, pixelX / scaleXLog + Math.log10(getMinX()));
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Linear#userToPixelY(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Linear#userToPixelY(double)
          */
         @Override
         public double userToPixelY(double userY) {
@@ -528,9 +528,9 @@ public abstract class Window2D implements PluginListener {
             return -scaleYLog * (Math.log10(userY) - Math.log10(getMaxY()));
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Linear#pixelToUserY(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Linear#pixelToUserY(double)
          */
         @Override
         public double pixelToUserY(double pixelY) {
@@ -625,9 +625,9 @@ public abstract class Window2D implements PluginListener {
             this.level = level;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#getMinX()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#getMinX()
          */
         @Override
         public double getMinX() {
@@ -635,9 +635,9 @@ public abstract class Window2D implements PluginListener {
             return projection.pixelToLongitude(centerXPixel - getPixelWidth() / 2);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#getMaxX()
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#getMaxX()
          */
         @Override
         public double getMaxX() {
@@ -645,9 +645,9 @@ public abstract class Window2D implements PluginListener {
             return projection.pixelToLongitude(centerXPixel + getPixelWidth() / 2);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#getMinY()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#getMinY()
          */
         @Override
         public double getMinY() {
@@ -655,9 +655,9 @@ public abstract class Window2D implements PluginListener {
             return projection.pixelToLatitude(centerYPixel + getPixelHeight() / 2);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#getMaxY()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#getMaxY()
          */
         @Override
         public double getMaxY() {
@@ -665,9 +665,9 @@ public abstract class Window2D implements PluginListener {
             return projection.pixelToLatitude(centerYPixel - getPixelHeight() / 2);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#userToPixelX(double)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#userToPixelX(double)
          */
         @Override
         public double userToPixelX(double userX) {
@@ -675,9 +675,9 @@ public abstract class Window2D implements PluginListener {
             return -centerXPixel + getPixelWidth() / 2 + projection.longitudeToPixel(userX);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#userToPixelY(double)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#userToPixelY(double)
          */
         @Override
         public double userToPixelY(double userY) {
@@ -685,23 +685,21 @@ public abstract class Window2D implements PluginListener {
             return -centerYPixel + getPixelHeight() / 2 + projection.latitudeToPixel(userY);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#pixelToUserX(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#pixelToUserX(double)
          */
         @Override
         public double pixelToUserX(double pixelX) {
-            // TODO Auto-generated method stub
             return 0;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D#pixelToUserY(double)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D#pixelToUserY(double)
          */
         @Override
         public double pixelToUserY(double pixelY) {
-            // TODO Auto-generated method stub
             return 0;
         }
 
@@ -851,18 +849,18 @@ public abstract class Window2D implements PluginListener {
             super(minXDate.getTime(), maxXDate.getTime(), miny, maxy);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#getMinDate()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#getMinDate()
          */
         @Override
         public Date getMinDate() {
             return getMinXAsDate();
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#getMaxDate()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#getMaxDate()
          */
         @Override
         public Date getMaxDate() {
@@ -887,9 +885,9 @@ public abstract class Window2D implements PluginListener {
             return new Date(new Double(getMaxX()).longValue());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#pixelToTime(double)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#pixelToTime(double)
          */
         @Override
         public Date pixelToTime(double pixel) {
@@ -897,9 +895,9 @@ public abstract class Window2D implements PluginListener {
             return new Date(new Double(dateMillis).longValue());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#timeToPixel(java.util.Date)
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#timeToPixel(java.util.Date)
          */
         @Override
         public double timeToPixel(Date time) {
@@ -907,9 +905,9 @@ public abstract class Window2D implements PluginListener {
             return userToPixelX(userValue);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#getTimeDurationPixel()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#getTimeDurationPixel()
          */
         @Override
         public int getTimeDurationPixel() {
@@ -967,27 +965,27 @@ public abstract class Window2D implements PluginListener {
             return new Date(new Double(getMaxY()).longValue());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#getMinDate()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#getMinDate()
          */
         @Override
         public Date getMinDate() {
             return getMinYAsDate();
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#getMaxDate()
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#getMaxDate()
          */
         @Override
         public Date getMaxDate() {
             return getMaxYAsDate();
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#pixelToTime(double)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#pixelToTime(double)
          */
         @Override
         public Date pixelToTime(double pixel) {
@@ -995,9 +993,9 @@ public abstract class Window2D implements PluginListener {
             return new Date(new Double(dateMillis).longValue());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#timeToPixel(java.util.Date)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#timeToPixel(java.util.Date)
          */
         @Override
         public double timeToPixel(Date time) {
@@ -1005,9 +1003,9 @@ public abstract class Window2D implements PluginListener {
             return userToPixelY(userValue);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.window.Window2D.Time#getTimeDurationPixel()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.window.Window2D.Time#getTimeDurationPixel()
          */
         @Override
         public int getTimeDurationPixel() {
@@ -1367,11 +1365,9 @@ public abstract class Window2D implements PluginListener {
         plugins.remove(plugin);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft
-     * .sw2d.core.plugin.PluginEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginSelected(PluginEvent te) {
@@ -1383,11 +1379,9 @@ public abstract class Window2D implements PluginListener {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.PluginListener#pluginUnlockSelected(com.
-     * jensoft.sw2d.core.plugin.PluginEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginUnlockSelected(PluginEvent te) {
