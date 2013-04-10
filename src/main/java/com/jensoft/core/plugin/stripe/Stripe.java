@@ -6,9 +6,9 @@
 package com.jensoft.core.plugin.stripe;
 
 import com.jensoft.core.plugin.stripe.StripePlugin.StripeOrientation;
-import com.jensoft.core.plugin.stripe.manager.MultiplierStripeManager;
 import com.jensoft.core.plugin.stripe.manager.FlowStripeManager;
 import com.jensoft.core.plugin.stripe.manager.FreeStripeManager;
+import com.jensoft.core.plugin.stripe.manager.MultiplierStripeManager;
 import com.jensoft.core.plugin.stripe.manager.StripeManager;
 import com.jensoft.core.plugin.stripe.painter.AbstractStripePainter;
 import com.jensoft.core.plugin.stripe.painter.StripeDefaultPainter;

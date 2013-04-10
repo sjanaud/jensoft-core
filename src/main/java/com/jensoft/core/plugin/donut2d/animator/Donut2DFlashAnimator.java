@@ -7,8 +7,6 @@ package com.jensoft.core.plugin.donut2d.animator;
 
 import java.util.HashMap;
 
-import com.jensoft.core.plugin.donut2d.Donut2D;
-import com.jensoft.core.plugin.donut2d.Donut2DPlugin;
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 import com.jensoft.core.view.View2D;
 
