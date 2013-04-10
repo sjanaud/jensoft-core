@@ -135,11 +135,9 @@ public class Donut2DSliceRadialFill extends AbstractDonut2DSliceFill {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.painter.fill.AbstractDonut2DSliceFill#paintDonut2DSliceFill(java.awt.Graphics2D
-     * , com.jensoft.sw2d.core.plugin.donut2d.Donut2D, com.jensoft.sw2d.core.plugin.donut2d.Donut2DSlice)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.painter.fill.AbstractDonut2DSliceFill#paintDonut2DSliceFill(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D, com.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     protected final void paintDonut2DSliceFill(Graphics2D g2d, Donut2D pie, Donut2DSlice pieSection) {

@@ -31,64 +31,44 @@ package com.jensoft.core.plugin.symbol;
  */
 public abstract class BarAdapter implements BarListener {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.bar.BarListener#barSymbolClicked(com.jensoft
-     * .sw2d.core.plugin.bar.BarEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolClicked(com.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolClicked(BarEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.bar.BarListener#barSymbolPressed(com.jensoft
-     * .sw2d.core.plugin.bar.BarEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolPressed(com.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolPressed(BarEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.bar.BarListener#barSymbolReleased(com.jensoft
-     * .sw2d.core.plugin.bar.BarEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolReleased(com.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolReleased(BarEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.bar.BarListener#barSymbolEntered(com.jensoft
-     * .sw2d.core.plugin.bar.BarEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolEntered(com.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolEntered(BarEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.bar.BarListener#barSymbolExited(com.jensoft
-     * .sw2d.core.plugin.bar.BarEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolExited(com.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolExited(BarEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
 }

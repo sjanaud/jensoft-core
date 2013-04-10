@@ -59,11 +59,9 @@ public class AbstractDonut2DDefaultDraw extends Donut2DDefaultDraw {
         this.outlineColor = outlineColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.painter.Donut2DDraw#paintDonut2DDraw
-     * (java.awt.Graphics2D, com.jensoft.sw2d.core.plugin.donut2d.Donut2D)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.painter.draw.Donut2DDefaultDraw#paintDonut2DDraw(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D)
      */
     @Override
     public void paintDonut2DDraw(Graphics2D g2d, Donut2D donut2D) {

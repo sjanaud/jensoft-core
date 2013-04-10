@@ -30,11 +30,11 @@ import com.jensoft.core.view.background.RoundViewFill;
 import com.jensoft.core.window.Window2D;
 
 /**
- * sw2d utility class for generate doc files API
+ * <code>JavadocPortfolioDonut3D</code> doc files API
  * 
  * @author Sebastien Janaud
  */
-public class DocFilesPortfolioDonut3DLabel {
+public class JavadocPortfolioDonut3D {
 
     @Portfolio(name = "Donut3DRadialLabel")
     public static View2D getRadialLabelView() {
@@ -228,7 +228,7 @@ public class DocFilesPortfolioDonut3DLabel {
      * @param args
      */
     public static void main(String[] args) {
-        DocFilesPortfolioDonut3DLabel docFilePortfolio = new DocFilesPortfolioDonut3DLabel();
+        JavadocPortfolioDonut3D docFilePortfolio = new JavadocPortfolioDonut3D();
         docFilePortfolio.render();
     }
 }

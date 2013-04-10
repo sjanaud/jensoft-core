@@ -16,10 +16,9 @@ import com.jensoft.core.plugin.pie.Pie;
  */
 public abstract class AbstractPiePainter implements PiePainter {
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.pie.painter.PiePainter#paintPie(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.pie.Pie)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.painter.PiePainter#paintPie(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
      */
     @Override
     public void paintPie(Graphics2D g2d, Pie pie) {

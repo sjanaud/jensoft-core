@@ -67,11 +67,9 @@ public class PieLabelAnimator extends AbstractPieAnimator {
         this.sliceLabel = sliceLabel;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#onPressed(com.jensoft.sw2d.core.plugin.pie.PieSlice
-     * )
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#onPressed(com.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     protected void onPressed(PieSlice slice) {
@@ -83,11 +81,9 @@ public class PieLabelAnimator extends AbstractPieAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#onEntered(com.jensoft.sw2d.core.plugin.pie.PieSlice
-     * )
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#onEntered(com.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     protected void onEntered(PieSlice slice) {
@@ -99,10 +95,9 @@ public class PieLabelAnimator extends AbstractPieAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#onExited(com.jensoft.sw2d.core.plugin.pie.PieSlice)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#onExited(com.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     protected void onExited(PieSlice slice) {
@@ -114,11 +109,9 @@ public class PieLabelAnimator extends AbstractPieAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#getAnimator
-     * (com.jensoft.sw2d.core.plugin.pie.PieSlice)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#getAnimator(com.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     public Runnable getAnimator(PieSlice slice) {

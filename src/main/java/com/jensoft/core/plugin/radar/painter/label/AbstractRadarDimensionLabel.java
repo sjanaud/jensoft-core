@@ -51,13 +51,9 @@ public abstract class AbstractRadarDimensionLabel extends
     protected abstract void paintDimensionLabel(Graphics2D g2d, Radar radar,
             RadarDimension radarDimension);
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.radar.painter.AbstractRadarDimensionPainter
-     * #paintRadarDimension(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.radar.Radar,
-     * com.jensoft.sw2d.core.plugin.radar.RadarDimension)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.radar.painter.AbstractRadarDimensionPainter#paintRadarDimension(java.awt.Graphics2D, com.jensoft.core.plugin.radar.Radar, com.jensoft.core.plugin.radar.RadarDimension)
      */
     @Override
     public final void paintRadarDimension(Graphics2D g2d, Radar radar,

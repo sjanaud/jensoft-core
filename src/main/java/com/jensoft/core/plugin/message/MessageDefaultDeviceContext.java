@@ -39,9 +39,9 @@ public class MessageDefaultDeviceContext extends ContextEntry<MessagePlugin> {
     public MessageDefaultDeviceContext() {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.ContextEntry#buildContext()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.ContextEntry#buildContext()
      */
     @Override
     public void buildContext() {
@@ -85,9 +85,9 @@ public class MessageDefaultDeviceContext extends ContextEntry<MessagePlugin> {
         setItem(rootMenu);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.ContextEntry#isCompatiblePlugin()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.ContextEntry#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {

@@ -30,11 +30,9 @@ import com.jensoft.core.window.WindowPart;
  */
 public class MetricsDefaultPainter extends AbstractMetricsPainter {
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.painter.AbstractMetricsPainter#
-     * doPaintLineMetrics(java.awt.Graphics2D, java.awt.geom.Point2D,
-     * java.awt.geom.Point2D, java.awt.Color)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.painter.AbstractMetricsPainter#doPaintLineMetrics(java.awt.Graphics2D, java.awt.geom.Point2D, java.awt.geom.Point2D, java.awt.Color)
      */
     @Override
     public void doPaintLineMetrics(Graphics2D g2d, Point2D start, Point2D end,
@@ -206,10 +204,9 @@ public class MetricsDefaultPainter extends AbstractMetricsPainter {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.painter.AbstractMetricsPainter#
-     * doPaintMetrics(java.awt.Graphics2D, java.util.List)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.painter.AbstractMetricsPainter#doPaintMetrics(java.awt.Graphics2D, java.util.List)
      */
     @Override
     public void doPaintMetrics(Graphics2D g2d, List<Metrics> metrics) {

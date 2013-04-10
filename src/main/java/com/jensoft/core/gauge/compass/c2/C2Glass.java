@@ -464,7 +464,7 @@ public class C2Glass extends GlassGaugePainter {
 
         Font f = InputFonts.getFont(InputFonts.NO_MOVE, 12);
 
-        String copyright = "- C2 Compass Carbon  *** Sail Instrument *** Powered by SW2D -";
+        String copyright = "- C2 Compass Carbon  *** Sail Instrument *** Powered by JENSOFT -";
 
         GlyphVector glyphVector = f.createGlyphVector(
                                                       g2d.getFontRenderContext(), copyright);
@@ -475,7 +475,7 @@ public class C2Glass extends GlassGaugePainter {
 
         float startLength = geometry.lengthOfPath() / 2 - gvWidth / 2;
 
-        int c_p = copyright.indexOf("SW2D");
+        int c_p = copyright.indexOf("JENSOFT");
         int c_p2 = copyright.lastIndexOf("-");
 
         for (int j = 0; j < glyphVector.getNumGlyphs(); j++) {

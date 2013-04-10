@@ -22,15 +22,15 @@ import com.jensoft.core.plugin.legend.painter.LegendDraw;
  * 
  * @author Sebastien Janaud
  */
-public class LegendDraw1 extends LegendDraw {
+public class LegendDefaultDraw extends LegendDraw {
 
     private Color color1 = Color.BLACK;
     private Color color2 = Color.BLACK;
 
-    public LegendDraw1() {
+    public LegendDefaultDraw() {
     }
 
-    public LegendDraw1(Color color1, Color color2) {
+    public LegendDefaultDraw(Color color1, Color color2) {
         super();
         this.color1 = color1;
         this.color2 = color2;
@@ -52,11 +52,9 @@ public class LegendDraw1 extends LegendDraw {
         this.color2 = color2;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.legend.painter.LegendDraw#paintLegendDraw
-     * (java.awt.Graphics2D, com.jensoft.sw2d.core.plugin.legend.Legend)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.legend.painter.LegendDraw#paintLegendDraw(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
      */
     @Override
     protected void paintLegendDraw(Graphics2D g2d, Legend legend) {

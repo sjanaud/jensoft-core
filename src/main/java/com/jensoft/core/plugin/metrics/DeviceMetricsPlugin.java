@@ -776,10 +776,9 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
             return getMetricsManager().getTimingModels();
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(com.jensoft.sw2d.core.view.View2D,
-         * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
          */
         @Override
         protected void paintMetrics(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
@@ -972,10 +971,9 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
             return getMetricsManager().getMetricsModels();
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(com.jensoft.sw2d.core.view.View2D,
-         * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
          */
         @Override
         protected void paintMetrics(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
@@ -1411,10 +1409,9 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.sw2d.core.view.View2D,
-     * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     public final void paintPlugin(View2D v2d, Graphics2D g2d,

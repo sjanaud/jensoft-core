@@ -89,10 +89,9 @@ public class CompoundGridManager extends AbstractGridManager {
 		compoundgrids = new ArrayList<Grid>();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.jensoft.sw2d.core.plugin.grid.manager.GridManager#getGrids()
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.grid.manager.GridManager#getGrids()
 	 */
 	@Override
 	public List<Grid> getGrids() {
@@ -108,12 +107,9 @@ public class CompoundGridManager extends AbstractGridManager {
 		return compoundgrids;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.grid.manager.AbstractGridManager#setWindow2D
-	 * (com.jensoft.sw2d.core.window.Window2D)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setWindow2D(com.jensoft.core.window.Window2D)
 	 */
 	@Override
 	public void setWindow2D(Window2D w2d) {
@@ -123,12 +119,9 @@ public class CompoundGridManager extends AbstractGridManager {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.jensoft.sw2d.core.plugin.grid.manager.AbstractGridManager#
-	 * setGridOrientation(com.jensoft.sw2d.core.plugin
-	 * .grid.Grid.GridOrientation)
+
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setGridOrientation(com.jensoft.core.plugin.grid.Grid.GridOrientation)
 	 */
 	@Override
 	public void setGridOrientation(GridOrientation gridOrientation) {
@@ -138,12 +131,9 @@ public class CompoundGridManager extends AbstractGridManager {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.sw2d.core.plugin.grid.manager.AbstractGridManager#setGridColor
-	 * (java.awt.Color)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setGridColor(java.awt.Color)
 	 */
 	@Override
 	public void setGridColor(Color c) {

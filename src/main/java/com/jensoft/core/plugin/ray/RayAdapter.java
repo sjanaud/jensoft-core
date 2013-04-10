@@ -30,64 +30,44 @@ package com.jensoft.core.plugin.ray;
  */
 public abstract class RayAdapter implements RayListener {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.RayListener#rayClicked(com.jensoft.sw2d
-     * .core.plugin.ray.RayEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.RayListener#rayClicked(com.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayClicked(RayEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.RayListener#rayPressed(com.jensoft.sw2d
-     * .core.plugin.ray.RayEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.RayListener#rayPressed(com.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayPressed(RayEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.RayListener#rayReleased(com.jensoft.
-     * sw2d.core.plugin.ray.RayEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.RayListener#rayReleased(com.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayReleased(RayEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.RayListener#rayEntered(com.jensoft.sw2d
-     * .core.plugin.ray.RayEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.RayListener#rayEntered(com.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayEntered(RayEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.RayListener#rayExited(com.jensoft.sw2d
-     * .core.plugin.ray.RayEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.RayListener#rayExited(com.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayExited(RayEvent e) {
-        // TODO Auto-generated method stub
-
     }
 
 }

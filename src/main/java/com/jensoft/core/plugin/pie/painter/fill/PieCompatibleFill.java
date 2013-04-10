@@ -30,10 +30,9 @@ public class PieCompatibleFill extends AbstractPieFill {
         sliceFill = compatibleSliceFill;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.pie.painter.fill.AbstractPieFill#paintPieFill(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.pie.Pie)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.painter.fill.AbstractPieFill#paintPieFill(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
      */
     @Override
     protected final void paintPieFill(Graphics2D g2d, Pie pie) {

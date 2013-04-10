@@ -18,7 +18,7 @@ import com.jensoft.core.widget.bar.AbstractBarGeometry.BarWidgetOrientation;
 public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
 
     /** the widget id */
-    public final static String widgetBarXObjectifID = "@sw2d/widget/message";
+    public final static String widgetBarXObjectifID = "@widget/message";
 
     /** default bar width */
     private final static double defaultBarWidth = 180;
@@ -116,9 +116,9 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
         setOrphanLock(true);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.Widget#isCompatiblePlugin()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
     @Override
     public final boolean isCompatiblePlugin() {
@@ -137,6 +137,9 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
         return (MessagePlugin) getHost();
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onPaintStart()
+     */
     @Override
     public void onPaintStart() {
         setButton1Visible(false);
@@ -151,9 +154,9 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.bar.AbstractBarWidget#onButton1Press()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton1Press()
      */
     @Override
     public void onButton1Press() {
@@ -181,9 +184,9 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
         super.onButton1Press();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.bar.AbstractBarWidget#onButton2Press()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton2Press()
      */
     @Override
     public void onButton2Press() {
@@ -211,20 +214,18 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
         super.onButton2Press();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.bar.AbstractBarWidget#onButton1Released()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton1Released()
      */
     @Override
     public void onButton1Released() {
         super.onButton1Released();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.bar.AbstractBarWidget#onButton2Released()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton2Released()
      */
     @Override
     public void onButton2Released() {

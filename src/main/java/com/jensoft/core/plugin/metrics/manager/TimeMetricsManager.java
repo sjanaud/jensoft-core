@@ -119,9 +119,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         registerTimingModels(models);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getDeviceMetrics()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getDeviceMetrics()
      */
     @Override
     public List<Metrics> getDeviceMetrics() {
@@ -785,9 +785,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -798,9 +798,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -855,9 +855,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -868,9 +868,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -924,9 +924,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -937,9 +937,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -994,9 +994,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1007,9 +1007,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1064,9 +1064,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1077,9 +1077,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+     
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1134,9 +1134,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1147,9 +1147,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1204,9 +1204,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1217,9 +1217,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1273,9 +1273,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1286,9 +1286,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1342,9 +1342,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1355,9 +1355,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1410,9 +1410,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1423,9 +1423,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1480,9 +1480,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1493,9 +1493,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1585,9 +1585,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1598,9 +1598,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1654,9 +1654,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             setMetricsMarkerColor(markerColor);
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1667,9 +1667,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             return clone;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+        
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {

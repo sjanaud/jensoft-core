@@ -437,9 +437,9 @@ public class ModeledGridManager extends AbstractGridManager {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.grid.manager.GridManager#getGrids()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.grid.manager.GridManager#getGrids()
      */
     @Override
     public List<Grid> getGrids() {

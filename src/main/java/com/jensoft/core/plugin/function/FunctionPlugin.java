@@ -63,10 +63,9 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
             setName(AreaFunctionPlugin.class.getCanonicalName());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.sw2d.core.view.View2D,
-         * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+      
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
          */
         @Override
         protected void paintFunctions(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
@@ -117,10 +116,9 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
             setName(CurveFunctionPlugin.class.getCanonicalName());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.sw2d.core.view.View2D,
-         * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
          */
         @Override
         protected void paintFunctions(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
@@ -152,10 +150,9 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
             setName(ScatterFunctionPlugin.class.getCanonicalName());
         }
 
-        /*
-         * (non-Javadoc)
-         * @see com.jensoft.sw2d.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.sw2d.core.view.View2D,
-         * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+       
+        /* (non-Javadoc)
+         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
          */
         @Override
         protected void paintFunctions(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
@@ -186,40 +183,34 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#onWindowRegister()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#onWindowRegister()
      */
     @Override
     public void onWindowRegister() {
 
         getWindow2D().addWindow2DListener(new Window2DListener() {
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.window.Window2DListener#window2DUnlockActive(com.jensoft.sw2d.core.window.Window2DEvent
-             * )
+           
+            /* (non-Javadoc)
+             * @see com.jensoft.core.window.Window2DListener#window2DUnlockActive(com.jensoft.core.window.Window2DEvent)
              */
             @Override
             public void window2DUnlockActive(Window2DEvent w2dEvent) {
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.window.Window2DListener#window2DLockActive(com.jensoft.sw2d.core.window.Window2DEvent
-             * )
+            
+            /* (non-Javadoc)
+             * @see com.jensoft.core.window.Window2DListener#window2DLockActive(com.jensoft.core.window.Window2DEvent)
              */
             @Override
             public void window2DLockActive(Window2DEvent w2dEvent) {
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.window.Window2DListener#window2DBoundChanged(com.jensoft.sw2d.core.window.Window2DEvent
-             * )
+           
+            /* (non-Javadoc)
+             * @see com.jensoft.core.window.Window2DListener#window2DBoundChanged(com.jensoft.core.window.Window2DEvent)
              */
             @Override
             public void window2DBoundChanged(Window2DEvent w2dEvent) {
@@ -237,10 +228,9 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.window.Window2DListener#window2DResized(com.jensoft.sw2d.core.window.Window2DEvent)
+            
+            /* (non-Javadoc)
+             * @see com.jensoft.core.window.Window2DListener#window2DResized(com.jensoft.core.window.Window2DEvent)
              */
             @Override
             public void window2DResized(Window2DEvent w2dEvent) {
@@ -315,10 +305,9 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
         return functions;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.sw2d.core.view.View2D,
-     * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {

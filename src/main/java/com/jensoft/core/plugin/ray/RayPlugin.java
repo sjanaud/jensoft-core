@@ -664,11 +664,9 @@ public class RayPlugin extends AbstractPlugin implements
         rayListenerList.remove(RayListener.class, listener);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnReleaseListener#onRelease
-     * (java.awt.event.MouseEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
      */
     @Override
     public void onRelease(MouseEvent me) {
@@ -680,11 +678,9 @@ public class RayPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnPressListener#onPress(java
-     * .awt.event.MouseEvent)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
      */
     @Override
     public void onPress(MouseEvent me) {
@@ -696,33 +692,25 @@ public class RayPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnExitListener#onExit(java
-     * .awt.event.MouseEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnExitListener#onExit(java.awt.event.MouseEvent)
      */
     @Override
     public void onExit(MouseEvent me) {
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnEnterListener#onEnter(java
-     * .awt.event.MouseEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnEnterListener#onEnter(java.awt.event.MouseEvent)
      */
     @Override
     public void onEnter(MouseEvent me) {
-
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnClickListener#onClick(java
-     * .awt.event.MouseEvent)
+
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnClickListener#onClick(java.awt.event.MouseEvent)
      */
     @Override
     public void onClick(MouseEvent me) {
@@ -730,15 +718,12 @@ public class RayPlugin extends AbstractPlugin implements
             if (ray.getRayShape().contains(me.getX(), me.getY())) {
                 fireRayClicked(ray);
             }
-
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnMoveListener#onMove(java
-     * .awt.event.MouseEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt.event.MouseEvent)
      */
     @Override
     public void onMove(MouseEvent me) {
@@ -785,11 +770,9 @@ public class RayPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnDragListener#onDrag(java
-     * .awt.event.MouseEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt.event.MouseEvent)
      */
     @Override
     public void onDrag(MouseEvent me) {

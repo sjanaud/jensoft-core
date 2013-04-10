@@ -22,7 +22,7 @@ import com.jensoft.core.widget.pad.AbstractPlusMinusPadWidget;
 public class ObjectifPad extends AbstractPlusMinusPadWidget<ZoomObjectifPlugin> {
 
     /** the widget id */
-    public final static String objectifPadID = "@sw2d/widget/objectif/pad";
+    public final static String objectifPadID = "@widget/objectif/pad";
 
     /** the widget radius */
     private final static int widgetRadius = 32;
@@ -87,18 +87,11 @@ public class ObjectifPad extends AbstractPlusMinusPadWidget<ZoomObjectifPlugin> 
 
     }
 
-    /**
-     * get host as Objectif plugin
-     * 
-     * @return objectif
-     */
-    private ZoomObjectifPlugin getObjectif() {
-        return (ZoomObjectifPlugin) getHost();
-    }
+  
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.widget.Widget#isCompatiblePlugin()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {
@@ -108,105 +101,95 @@ public class ObjectifPad extends AbstractPlusMinusPadWidget<ZoomObjectifPlugin> 
         return false;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onNorthButtonPress()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onNorthButtonPress()
      */
     @Override
     public void onNorthButtonPress() {
-        getObjectif().startZoomIn(ZoomNature.ZoomY);
-        if (!getObjectif().isLockSelected()) {
+        getHost().startZoomIn(ZoomNature.ZoomY);
+        if (!getHost().isLockSelected()) {
             return;
         }
         super.onNorthButtonPress();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onNorthButtonReleased
-     * ()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onNorthButtonReleased()
      */
     @Override
     public void onNorthButtonReleased() {
-        getObjectif().stopZoomIn();
+        getHost().stopZoomIn();
         super.onNorthButtonReleased();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onSouthButtonPress()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onSouthButtonPress()
      */
     @Override
     public void onSouthButtonPress() {
-        if (!getObjectif().isLockSelected()) {
+        if (!getHost().isLockSelected()) {
             return;
         }
-        getObjectif().startZoomOut(ZoomNature.ZoomY);
+        getHost().startZoomOut(ZoomNature.ZoomY);
         super.onSouthButtonPress();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onSouthButtonReleased
-     * ()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onSouthButtonReleased()
      */
     @Override
     public void onSouthButtonReleased() {
-        getObjectif().stopZoomOut();
+        getHost().stopZoomOut();
         super.onSouthButtonReleased();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onWestButtonPress()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onWestButtonPress()
      */
     @Override
     public void onWestButtonPress() {
-        if (!getObjectif().isLockSelected()) {
+        if (!getHost().isLockSelected()) {
             return;
         }
-        getObjectif().startZoomOut(ZoomNature.ZoomX);
+        getHost().startZoomOut(ZoomNature.ZoomX);
         super.onWestButtonPress();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onWestButtonReleased()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onWestButtonReleased()
      */
     @Override
     public void onWestButtonReleased() {
-        getObjectif().stopZoomOut();
+        getHost().stopZoomOut();
         super.onWestButtonReleased();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onEastButtonPress()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onEastButtonPress()
      */
     @Override
     public void onEastButtonPress() {
-        if (!getObjectif().isLockSelected()) {
+        if (! getHost().isLockSelected()) {
             return;
         }
-        getObjectif().startZoomIn(ZoomNature.ZoomX);
+        getHost().startZoomIn(ZoomNature.ZoomX);
         super.onEastButtonPress();
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.widget.pad.AbstractPadWidget#onEastButtonReleased()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onEastButtonReleased()
      */
     @Override
     public void onEastButtonReleased() {
-        getObjectif().stopZoomIn();
+        getHost().stopZoomIn();
         super.onEastButtonReleased();
     }
 

@@ -58,9 +58,9 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft.sw2d.core.plugin.PluginEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginSelected(PluginEvent<ZoomObjectifPlugin> pluginEvent) {
@@ -76,9 +76,9 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.sw2d.core.plugin.PluginEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginUnlockSelected(PluginEvent<ZoomObjectifPlugin> pluginEvent) {
@@ -94,11 +94,9 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.zoom.objectif.ZoomObjectifListener#zoomIn(com.jensoft.sw2d.core.plugin.zoom.objectif
-     * .ZoomObjectifEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.zoom.objectif.ZoomObjectifListener#zoomIn(com.jensoft.core.plugin.zoom.objectif.ZoomObjectifEvent)
      */
     @Override
     public void zoomIn(ZoomObjectifEvent pluginEvent) {
@@ -115,11 +113,9 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.zoom.objectif.ZoomObjectifListener#zoomOut(com.jensoft.sw2d.core.plugin.zoom.objectif
-     * .ZoomObjectifEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.zoom.objectif.ZoomObjectifListener#zoomOut(com.jensoft.core.plugin.zoom.objectif.ZoomObjectifEvent)
      */
     @Override
     public void zoomOut(ZoomObjectifEvent pluginEvent) {

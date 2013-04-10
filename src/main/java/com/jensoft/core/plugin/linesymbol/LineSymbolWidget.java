@@ -21,7 +21,7 @@ import com.jensoft.core.widget.WidgetFolder;
 public class LineSymbolWidget extends Widget {
 
     /** the widget id */
-    public final static String ID = "@sw2d/widget/objectif";
+    public final static String ID = "@widget/objectif";
 
     /** the widget radius */
     private final static int widgetRadius = 32;

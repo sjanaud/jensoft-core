@@ -99,11 +99,9 @@ public class Donut3DLabelAnimator extends AbstractDonut3DAnimator {
         this.showLabelBehavior = showLabelBehavior;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.animator.AbstractDonut3DAnimator#onPressed(com.jensoft.sw2d.core.plugin.
-     * donut3d.Donut3DSlice)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.animator.AbstractDonut3DAnimator#onPressed(com.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     protected void onPressed(Donut3DSlice slice) {
@@ -115,11 +113,9 @@ public class Donut3DLabelAnimator extends AbstractDonut3DAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.animator.AbstractDonut3DAnimator#onEntered(com.jensoft.sw2d.core.plugin.
-     * donut3d.Donut3DSlice)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.animator.AbstractDonut3DAnimator#onEntered(com.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     protected void onEntered(Donut3DSlice slice) {
@@ -131,11 +127,9 @@ public class Donut3DLabelAnimator extends AbstractDonut3DAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.animator.AbstractDonut3DAnimator#onExited(com.jensoft.sw2d.core.plugin.donut3d
-     * .Donut3DSlice)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.animator.AbstractDonut3DAnimator#onExited(com.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     protected void onExited(Donut3DSlice slice) {
@@ -148,11 +142,9 @@ public class Donut3DLabelAnimator extends AbstractDonut3DAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.animator.AbstractDonut3DAnimator#getAnimator(com.jensoft.sw2d.core.plugin
-     * .donut3d.Donut3DSlice)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.animator.AbstractDonut3DAnimator#getAnimator(com.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     public Runnable getAnimator(Donut3DSlice pieSection) {

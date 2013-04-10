@@ -93,11 +93,9 @@ public class PieDivergenceAnimator extends AbstractPieAnimator {
         this.sleep = sleep;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#getAnimator
-     * (com.jensoft.sw2d.core.plugin.pie.PieSlice)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#getAnimator(com.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     public Runnable getAnimator(PieSlice slice) {
@@ -112,6 +110,9 @@ public class PieDivergenceAnimator extends AbstractPieAnimator {
             this.slice = slice;
         }
 
+        /* (non-Javadoc)
+         * @see java.lang.Runnable#run()
+         */
         @Override
         public void run() {
             try {

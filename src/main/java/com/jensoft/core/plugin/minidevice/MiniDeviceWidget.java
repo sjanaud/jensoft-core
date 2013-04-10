@@ -26,7 +26,7 @@ import com.jensoft.core.window.WindowPart;
  */
 public class MiniDeviceWidget extends Widget {
 
-    public final static String ID = "@sw2d/widget/minidevice";
+    public final static String ID = "@widget/minidevice";
 
     public MiniDeviceWidget() {
         super(ID);

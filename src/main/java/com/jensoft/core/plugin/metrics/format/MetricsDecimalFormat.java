@@ -34,8 +34,9 @@ public class MetricsDecimalFormat implements IMetricsFormat {
         this.decimalFormater = decimalFormater;
     }
 
+   
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.format.IMetricsFormat#format(double)
+     * @see com.jensoft.core.plugin.metrics.format.IMetricsFormat#format(double)
      */
     @Override
     public String format(double d) {

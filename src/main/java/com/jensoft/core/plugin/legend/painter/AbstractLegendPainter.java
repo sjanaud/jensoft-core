@@ -14,11 +14,9 @@ import com.jensoft.core.plugin.legend.Legend;
  */
 public abstract class AbstractLegendPainter implements LegendPainter {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.legend.painter.LegendPainter#paintLegend
-     * (java.awt.Graphics2D, com.jensoft.sw2d.core.plugin.legend.Legend)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.legend.painter.LegendPainter#paintLegend(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
      */
     @Override
     public void paintLegend(Graphics2D g2d, Legend legend) {

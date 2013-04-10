@@ -40,11 +40,9 @@ public class PolylinePointSymbolDebugGeometryPainter extends AbstractPolylinePoi
         this.pointColor = pointColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.symbol.painter.PolylinePointSymbolPainter#paintPolylinePointSymbol(java.awt.Graphics2D
-     * , com.jensoft.sw2d.core.plugin.symbol.PolylinePointSymbol)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.painter.polyline.AbstractPolylinePointSymbolPainter#paintPolylinePointSymbol(java.awt.Graphics2D, com.jensoft.core.plugin.symbol.PolylinePointSymbol)
      */
     @Override
     protected void paintPolylinePointSymbol(Graphics2D g2d, PolylinePointSymbol polyline) {

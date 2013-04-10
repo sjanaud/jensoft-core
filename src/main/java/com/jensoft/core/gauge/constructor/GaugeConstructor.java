@@ -21,9 +21,9 @@ import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.palette.PetalPalette;
 import com.jensoft.core.palette.TangoPalette;
 
-public class SW2DConstructor extends ConstructorGaugePainter {
+public class GaugeConstructor extends ConstructorGaugePainter {
 
-    public SW2DConstructor() {
+    public GaugeConstructor() {
 
     }
 

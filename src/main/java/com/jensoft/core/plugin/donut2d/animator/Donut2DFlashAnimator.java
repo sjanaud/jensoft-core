@@ -21,6 +21,10 @@ import com.jensoft.core.view.View2D;
  * @see Donut2DPlugin
  * @author Sebastien Janaud
  */
+/**
+ * @author sebastien
+ *
+ */
 public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
 
     /** host view */
@@ -155,11 +159,9 @@ public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#onEntered(com.jensoft.sw2d.core.plugin.pie.PieSlice
-     * )
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#onEntered(com.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     protected void onEntered(Donut2DSlice slice) {
@@ -174,10 +176,9 @@ public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#onExited(com.jensoft.sw2d.core.plugin.pie.PieSlice)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#onExited(com.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     protected void onExited(Donut2DSlice slice) {
@@ -191,11 +192,9 @@ public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#getAnimator
-     * (com.jensoft.sw2d.core.plugin.pie.PieSlice)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#getAnimator(com.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     public Runnable getAnimator(Donut2DSlice slice) {

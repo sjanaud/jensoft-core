@@ -28,11 +28,9 @@ public abstract class AbstractDonut2DFill extends AbstractDonut2DPainter {
      */
     protected abstract void paintDonut2DFill(Graphics2D g2d, Donut2D donut2D);
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.donut2d.painter.AbstractDonut2DPainter#
-     * paintDonut2D(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.painter.AbstractDonut2DPainter#paintDonut2D(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D)
      */
     @Override
     public final void paintDonut2D(Graphics2D g2d, Donut2D donut2D) {

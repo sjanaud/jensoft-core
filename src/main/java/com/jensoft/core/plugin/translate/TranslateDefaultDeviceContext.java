@@ -79,9 +79,9 @@ public class TranslateDefaultDeviceContext extends ContextEntry<TranslatePlugin>
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.ContextEntry#buildContext()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.ContextEntry#buildContext()
      */
     @Override
     public void buildContext() {
@@ -147,61 +147,51 @@ public class TranslateDefaultDeviceContext extends ContextEntry<TranslatePlugin>
 
         getHost().addTranslateListener(new TranslatePluginListener() {
 
-            /*
-             * (non-Javadoc)
-             * @see com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft.sw2d.core.plugin.PluginEvent)
+           
+            /**
+             * @param pluginEvent
              */
             @Override
             public void pluginSelected(PluginEvent<TranslatePlugin> pluginEvent) {
                 updateState();
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.sw2d.core.plugin.PluginEvent
-             * )
+           
+            /**
+             * @param pluginEvent
              */
             @Override
             public void pluginUnlockSelected(PluginEvent<TranslatePlugin> pluginEvent) {
                 updateState();
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.translate.TranslatePluginListener#translated(com.jensoft.sw2d.core.plugin
-             * .translate.TranslatePluginEvent)
+            
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translated(com.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translated(TranslatePluginEvent pluginEvent) {
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.translate.TranslatePluginListener#translateStoped(com.jensoft.sw2d.core.
-             * plugin.translate.TranslatePluginEvent)
+           
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateStoped(com.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translateStoped(TranslatePluginEvent pluginEvent) {
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.translate.TranslatePluginListener#translateStarted(com.jensoft.sw2d.core
-             * .plugin.translate.TranslatePluginEvent)
+            
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateStarted(com.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translateStarted(TranslatePluginEvent pluginEvent) {
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.translate.TranslatePluginListener#translateL2RChanged(com.jensoft.sw2d.core
-             * .plugin.translate.TranslatePluginEvent)
+            
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateL2RChanged(com.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translateL2RChanged(TranslatePluginEvent pluginEvent) {
@@ -214,11 +204,9 @@ public class TranslateDefaultDeviceContext extends ContextEntry<TranslatePlugin>
                 }
             }
 
-            /*
-             * (non-Javadoc)
-             * @see
-             * com.jensoft.sw2d.core.plugin.translate.TranslatePluginListener#translateB2TChanged(com.jensoft.sw2d.core
-             * .plugin.translate.TranslatePluginEvent)
+            
+            /* (non-Javadoc)
+             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateB2TChanged(com.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translateB2TChanged(TranslatePluginEvent pluginEvent) {
@@ -237,9 +225,9 @@ public class TranslateDefaultDeviceContext extends ContextEntry<TranslatePlugin>
         setItem(translateMenu);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.device.ContextEntry#isCompatiblePlugin()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.ContextEntry#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {

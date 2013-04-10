@@ -809,9 +809,9 @@ public class TranslatePlugin extends AbstractPlugin implements
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt.event.MouseEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt.event.MouseEvent)
      */
     @Override
     public void onDrag(MouseEvent e) {

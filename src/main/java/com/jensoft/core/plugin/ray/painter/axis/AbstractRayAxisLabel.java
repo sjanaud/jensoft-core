@@ -27,11 +27,9 @@ public abstract class AbstractRayAxisLabel extends AbstractRayPainter {
     protected abstract void paintRayAxisLabel(Graphics2D g2d, Ray ray,
             WindowPart windowPart);
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.painter.AbstractRayPainter#paintRay(
-     * java.awt.Graphics2D, com.jensoft.sw2d.core.plugin.ray.Ray)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.painter.AbstractRayPainter#paintRay(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray, com.jensoft.core.window.WindowPart)
      */
     @Override
     public final void paintRay(Graphics2D g2d, Ray ray, WindowPart windowPart) {

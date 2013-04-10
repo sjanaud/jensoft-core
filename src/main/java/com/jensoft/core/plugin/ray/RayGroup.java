@@ -431,73 +431,63 @@ public class RayGroup extends Ray {
         this.groupThicknessSet = groupThicknessSet;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.Ray#setRayDraw(com.jensoft.sw2d.core
-     * .plugin.ray.painter.RayDraw)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.Ray#setRayDraw(com.jensoft.core.plugin.ray.painter.draw.AbstractRayDraw)
      */
     @Override
     public void setRayDraw(AbstractRayDraw rayDraw) {
         setGroupDraw(rayDraw);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.Ray#setRayFill(com.jensoft.sw2d.core
-     * .plugin.ray.painter.RayFill)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.Ray#setRayFill(com.jensoft.core.plugin.ray.painter.fill.AbstractRayFill)
      */
     @Override
     public void setRayFill(AbstractRayFill rayFill) {
         setGroupFill(rayFill);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.Ray#setRayEffect(com.jensoft.sw2d.core
-     * .plugin.ray.painter.RayEffect)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.Ray#setRayEffect(com.jensoft.core.plugin.ray.painter.effect.AbstractRayEffect)
      */
     @Override
     public void setRayEffect(AbstractRayEffect rayEffect) {
         setGroupEffect(rayEffect);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.ray.Ray#setThickness(double)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.Ray#setThickness(double)
      */
     @Override
     public void setThickness(double thickness) {
         setGroupThickness(thickness);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.Ray#setThicknessType(com.jensoft.sw2d
-     * .core.plugin.ray.Ray.ThicknessType)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.Ray#setThicknessType(com.jensoft.core.plugin.ray.Ray.ThicknessType)
      */
     @Override
     public void setThicknessType(ThicknessType thicknessType) {
         setGroupThicknessType(thicknessType);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.Ray#setRayNature(com.jensoft.sw2d.core
-     * .plugin.ray.Ray.RayNature)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.Ray#setRayNature(com.jensoft.core.plugin.ray.Ray.RayNature)
      */
     @Override
     public void setRayNature(RayNature rayNature) {
         setGroupNature(rayNature);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.ray.Ray#setRayBase(double)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.Ray#setRayBase(double)
      */
     @Override
     public void setRayBase(double rayBase) {

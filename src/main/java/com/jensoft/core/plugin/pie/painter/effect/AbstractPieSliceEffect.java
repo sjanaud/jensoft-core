@@ -33,10 +33,9 @@ public abstract class AbstractPieSliceEffect extends AbstractPieSlicePainter {
     protected abstract void paintPieSliceEffect(Graphics2D g2d, Pie pie,
             PieSlice slice);
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.pie.painter.AbstractPieSlicePainter#paintPieSlice(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.pie.Pie, com.jensoft.sw2d.core.plugin.pie.PieSlice)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.painter.AbstractPieSlicePainter#paintPieSlice(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie, com.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     public final void paintPieSlice(Graphics2D g2d, Pie pie, PieSlice slice) {

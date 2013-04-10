@@ -64,74 +64,72 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
     public AbstractMetricsManager() {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#lockMarker()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#lockMarker()
      */
     @Override
     public void lockMarker() {
         lockMarker = true;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#unlockMarker()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#unlockMarker()
      */
     @Override
     public void unlockMarker() {
         lockMarker = false;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#isLockMarker()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#isLockMarker()
      */
     @Override
     public boolean isLockMarker() {
         return lockMarker;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#lockLabel()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#lockLabel()
      */
     @Override
     public void lockLabel() {
         lockLabel = true;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#unlockLabel()
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#unlockLabel()
      */
     @Override
     public void unlockLabel() {
         lockLabel = false;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#isLockLabel()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#isLockLabel()
      */
     @Override
     public boolean isLockLabel() {
         return lockLabel;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getRenderContext()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getRenderContext()
      */
     @Override
     public MetricsRenderContext getRenderContext() {
         return renderContext;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#setRenderContext(com.jensoft.sw2d.core.plugin
-     * .metrics.geom.MetricsRenderContext)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setRenderContext(com.jensoft.core.plugin.metrics.geom.MetricsRenderContext)
      */
     @Override
     public void setRenderContext(MetricsRenderContext renderContext) {
@@ -161,58 +159,54 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
         firePropertyChange("basicFormater", old, getDefaultFormat());
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getType()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getType()
      */
     @Override
     public MetricsType getType() {
         return type;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#setMetricsType(com.jensoft.sw2d.core.plugin
-     * .metrics.axis.AxisMetricsPlugin.MetricsType)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsType(com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType)
      */
     @Override
     public void setMetricsType(MetricsType type) {
         this.type = type;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getMetricsFormat()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsFormat()
      */
     @Override
     public IMetricsFormat getMetricsFormat() {
         return metricsFormat;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#setMetricsFormat(com.jensoft.sw2d.core.plugin
-     * .metrics.format.IMetricsFormat)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsFormat(com.jensoft.core.plugin.metrics.format.IMetricsFormat)
      */
     @Override
     public void setMetricsFormat(IMetricsFormat metricsFormat) {
         this.metricsFormat = metricsFormat;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getMetricsMarkerColor()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsMarkerColor()
      */
     @Override
     public Color getMetricsMarkerColor() {
         return metricsMarkerColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#setMetricsMarkerColor(java.awt.Color)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsMarkerColor(java.awt.Color)
      */
     @Override
     public void setMetricsMarkerColor(Color metricsColor) {
@@ -221,18 +215,18 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
         firePropertyChange("metricsMarkerColor", old, getMetricsMarkerColor());
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getMetricsLabelColor()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsLabelColor()
      */
     @Override
     public Color getMetricsLabelColor() {
         return metricsLabelColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#setMetricsLabelColor(java.awt.Color)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsLabelColor(java.awt.Color)
      */
     @Override
     public void setMetricsLabelColor(Color metricsLabelColor) {
@@ -241,54 +235,54 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
         firePropertyChange("metricsLabelColor", old, getMetricsLabelColor());
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getMetricsBaseLineColor()
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsBaseLineColor()
      */
     @Override
     public Color getMetricsBaseLineColor() {
         return metricsBaseLineColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#setMetricsBaseLineColor(java.awt.Color)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsBaseLineColor(java.awt.Color)
      */
     @Override
     public void setMetricsBaseLineColor(Color metricsBaseLineColor) {
         this.metricsBaseLineColor = metricsBaseLineColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getMetricsMedianFont()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsMedianFont()
      */
     @Override
     public Font getMetricsMedianFont() {
         return metricsMedianFont;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#setMetricsMedianFont(java.awt.Font)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsMedianFont(java.awt.Font)
      */
     @Override
     public void setMetricsMedianFont(Font metricsFont) {
         metricsMedianFont = metricsFont;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#getMetricsMajorFont()
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsMajorFont()
      */
     @Override
     public Font getMetricsMajorFont() {
         return metricsMajorFont;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.metrics.manager.MetricsLayoutManager#setMetricsMajorFont(java.awt.Font)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsMajorFont(java.awt.Font)
      */
     @Override
     public void setMetricsMajorFont(Font metricsMajorFont) {

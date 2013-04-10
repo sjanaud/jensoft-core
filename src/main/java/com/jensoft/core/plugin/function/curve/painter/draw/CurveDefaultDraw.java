@@ -101,11 +101,9 @@ public class CurveDefaultDraw extends AbstractCurveDraw {
         outlineStroke = outlineStrok;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.curve.painter.CurveDraw#drawCurve(java.awt
-     * .Graphics2D, com.jensoft.sw2d.core.plugin.curve.Curve)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw#drawCurve(java.awt.Graphics2D, com.jensoft.core.plugin.function.curve.CurveFunction)
      */
     @Override
     protected void drawCurve(Graphics2D g2d, CurveFunction curve) {

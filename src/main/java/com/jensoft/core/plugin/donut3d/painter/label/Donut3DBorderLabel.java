@@ -380,12 +380,9 @@ public class Donut3DBorderLabel extends AbstractDonut3DSliceLabel {
         this.linkColor = linkColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut3d.painter.SectionLabel#paintDonut3DLabel
-     * (java.awt.Graphics2D, com.jensoft.sw2d.core.plugin.donut3d.Donut3D,
-     * com.jensoft.sw2d.core.plugin.donut3d.Donut3DSection)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel#paintDonut3DSliceLabel(java.awt.Graphics2D, com.jensoft.core.plugin.donut3d.Donut3D, com.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     protected void paintDonut3DSliceLabel(Graphics2D g2d, Donut3D donut3D,

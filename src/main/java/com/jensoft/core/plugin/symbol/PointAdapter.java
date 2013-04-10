@@ -31,51 +31,41 @@ package com.jensoft.core.plugin.symbol;
  */
 public abstract class PointAdapter implements PointListener {
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.symbol.PointListener#pointSymbolClicked(com.jensoft.sw2d.core.plugin.symbol.PointEvent
-     * )
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolClicked(com.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolClicked(PointEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.symbol.PointListener#pointSymbolPressed(com.jensoft.sw2d.core.plugin.symbol.PointEvent
-     * )
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolPressed(com.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolPressed(PointEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.symbol.PointListener#pointSymbolReleased(com.jensoft.sw2d.core.plugin.symbol.PointEvent
-     * )
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolReleased(com.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolReleased(PointEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.symbol.PointListener#pointSymbolEntered(com.jensoft.sw2d.core.plugin.symbol.PointEvent
-     * )
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolEntered(com.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolEntered(PointEvent e) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.symbol.PointListener#pointSymbolExited(com.jensoft.sw2d.core.plugin.symbol.PointEvent
-     * )
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolExited(com.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolExited(PointEvent e) {

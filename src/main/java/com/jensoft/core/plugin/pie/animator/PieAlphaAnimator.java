@@ -143,11 +143,9 @@ public class PieAlphaAnimator extends AbstractPieAnimator {
         this.sleep = sleep;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#getAnimator
-     * (com.jensoft.sw2d.core.plugin.pie.PieSlice)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#getAnimator(com.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     public Runnable getAnimator(PieSlice slice) {

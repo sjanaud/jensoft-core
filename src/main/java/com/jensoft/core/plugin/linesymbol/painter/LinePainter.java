@@ -35,12 +35,7 @@ public class LinePainter extends AbstractLinePainter {
         this.lineStroke = lineStroke;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.linesymbol.painter.AbstractLinePainter#
-     * paintLineSymbol(java.awt.Graphics2D,
-     * com.jensoft.sw2d.core.plugin.linesymbol.LineSymbolComponent)
-     */
+   
     /**
      * @return the themeColor
      */

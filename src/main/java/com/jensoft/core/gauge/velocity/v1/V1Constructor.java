@@ -44,7 +44,7 @@ public class V1Constructor extends ConstructorGaugePainter {
         GeometryPath geometry = new GeometryPath(arc2d);
 
         Font f = InputFonts.getFont(InputFonts.SANSATION_BOLD, 10);
-        String copyright = "Racing Black/SW2D INSTRUMENT/all right reserved.";
+        String copyright = "Racing Black/JENSOFT INSTRUMENT/all right reserved.";
 
         GlyphVector glyphVector = f.createGlyphVector(
                                                       g2d.getFontRenderContext(), copyright);
@@ -55,7 +55,7 @@ public class V1Constructor extends ConstructorGaugePainter {
 
         float startLength = geometry.lengthOfPath() / 2 - gvWidth / 2;
 
-        int c_p = copyright.indexOf("SW2D");
+        int c_p = copyright.indexOf("JENSOFT");
 
         for (int j = 0; j < glyphVector.getNumGlyphs(); j++) {
 

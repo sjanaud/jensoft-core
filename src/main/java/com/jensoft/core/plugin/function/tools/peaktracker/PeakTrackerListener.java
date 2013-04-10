@@ -21,6 +21,6 @@ public interface PeakTrackerListener extends EventListener {
      * 
      * @param event
      */
-    void serieRegistered(PeakTrackerEvent event);
+    void sourceRegistered(PeakTrackerEvent event);
 
 }

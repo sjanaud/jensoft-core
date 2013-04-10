@@ -99,11 +99,9 @@ public abstract class AbstractDonut2DAnimator implements Donut2DListener {
      */
     protected abstract Runnable getAnimator(Donut2DSlice slice);
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2DListener#donut2DSliceClicked(com.jensoft.sw2d.core.plugin.donut2d
-     * .Donut2DEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.Donut2DListener#donut2DSliceClicked(com.jensoft.core.plugin.donut2d.Donut2DEvent)
      */
     @Override
     public final void donut2DSliceClicked(Donut2DEvent e) {
@@ -111,11 +109,9 @@ public abstract class AbstractDonut2DAnimator implements Donut2DListener {
         onClicked(slice);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2DListener#donut2DSlicePressed(com.jensoft.sw2d.core.plugin.donut2d
-     * .Donut2DEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.Donut2DListener#donut2DSlicePressed(com.jensoft.core.plugin.donut2d.Donut2DEvent)
      */
     @Override
     public final void donut2DSlicePressed(Donut2DEvent e) {
@@ -123,11 +119,9 @@ public abstract class AbstractDonut2DAnimator implements Donut2DListener {
         onPressed(slice);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2DListener#donut2DSliceReleased(com.jensoft.sw2d.core.plugin.donut2d
-     * .Donut2DEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.Donut2DListener#donut2DSliceReleased(com.jensoft.core.plugin.donut2d.Donut2DEvent)
      */
     @Override
     public final void donut2DSliceReleased(Donut2DEvent e) {
@@ -135,11 +129,9 @@ public abstract class AbstractDonut2DAnimator implements Donut2DListener {
         onReleased(slice);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2DListener#donut2DSliceEntered(com.jensoft.sw2d.core.plugin.donut2d
-     * .Donut2DEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.Donut2DListener#donut2DSliceEntered(com.jensoft.core.plugin.donut2d.Donut2DEvent)
      */
     @Override
     public final void donut2DSliceEntered(Donut2DEvent e) {
@@ -147,11 +139,9 @@ public abstract class AbstractDonut2DAnimator implements Donut2DListener {
         onEntered(slice);
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.donut2d.Donut2DListener#donut2DSliceExited(com.jensoft.sw2d.core.plugin.donut2d.
-     * Donut2DEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.Donut2DListener#donut2DSliceExited(com.jensoft.core.plugin.donut2d.Donut2DEvent)
      */
     @Override
     public final void donut2DSliceExited(Donut2DEvent e) {

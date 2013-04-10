@@ -53,11 +53,9 @@ public class RayDefaultDraw extends AbstractRayDraw {
         this.outlineColor = outlineColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.ray.painter.RayDraw#paintRay(java.awt.Graphics2D
-     * , com.jensoft.sw2d.core.plugin.ray.Ray)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.ray.painter.draw.AbstractRayDraw#paintRayDraw(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray)
      */
     @Override
     public void paintRayDraw(Graphics2D g2d, Ray ray) {

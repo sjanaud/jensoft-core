@@ -60,26 +60,27 @@ public class ZoomWheelSynchronizer implements ZoomWheelListener {
     }
 
    
+   
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.PluginListener#pluginSelected(com.jensoft.sw2d.core.plugin.PluginEvent)
+     * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginSelected(PluginEvent<ZoomWheelPlugin> pluginEvent) {
-
     }
 
    
+    
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.sw2d.core.plugin.PluginEvent)
+     * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginUnlockSelected(PluginEvent<ZoomWheelPlugin> pluginEvent) {
-
     }
 
    
+   
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.zoom.wheel.ZoomWheelListener#zoomIn(com.jensoft.sw2d.core.plugin.zoom.wheel.ZoomWheelEvent)
+     * @see com.jensoft.core.plugin.zoom.wheel.ZoomWheelListener#zoomIn(com.jensoft.core.plugin.zoom.wheel.ZoomWheelEvent)
      */
     @Override
     public void zoomIn(ZoomWheelEvent pluginEvent) {
@@ -98,8 +99,9 @@ public class ZoomWheelSynchronizer implements ZoomWheelListener {
     }
 
    
+    
     /* (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.zoom.wheel.ZoomWheelListener#zoomOut(com.jensoft.sw2d.core.plugin.zoom.wheel.ZoomWheelEvent)
+     * @see com.jensoft.core.plugin.zoom.wheel.ZoomWheelListener#zoomOut(com.jensoft.core.plugin.zoom.wheel.ZoomWheelEvent)
      */
     @Override
     public void zoomOut(ZoomWheelEvent pluginEvent) {

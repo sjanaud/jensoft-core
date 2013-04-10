@@ -15,7 +15,7 @@ import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
 /**
- * CrossMarker
+ * <code>CrossMarker</code>
  */
 public class CrossMarker extends AbstractMarker {
 
@@ -127,11 +127,9 @@ public class CrossMarker extends AbstractMarker {
 
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.marker.Marker#paintMarker(com.jensoft.sw2d
-     * .core.view.View2D, java.awt.Graphics2D)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
     public final void paintMarker(View2D view2d, Graphics2D g2d) {

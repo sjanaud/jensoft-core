@@ -110,6 +110,9 @@ public class Donut2DAlphaAnimator extends AbstractDonut2DAnimator {
 
     private Thread t;
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#onPressed(com.jensoft.core.plugin.donut2d.Donut2DSlice)
+     */
     @Override
     protected void onPressed(Donut2DSlice slice) {
         if (t == null) {
@@ -139,11 +142,9 @@ public class Donut2DAlphaAnimator extends AbstractDonut2DAnimator {
         this.sleep = sleep;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.pie.animator.AbstractPieAnimator#getAnimator
-     * (com.jensoft.sw2d.core.plugin.pie.PieSlice)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#getAnimator(com.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     public Runnable getAnimator(Donut2DSlice slice) {

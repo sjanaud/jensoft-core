@@ -120,10 +120,9 @@ public class Donut3DPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see com.jensoft.sw2d.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.sw2d.core.view.View2D,
-     * java.awt.Graphics2D, com.jensoft.sw2d.core.window.WindowPart)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
      */
     @Override
     protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
@@ -150,11 +149,9 @@ public class Donut3DPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnReleaseListener#onRelease
-     * (java.awt.event.MouseEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
      */
     @Override
     public void onRelease(MouseEvent me) {
@@ -169,11 +166,9 @@ public class Donut3DPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnPressListener#onPress(java
-     * .awt.event.MouseEvent)
+ 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
      */
     @Override
     public void onPress(MouseEvent me) {
@@ -191,31 +186,25 @@ public class Donut3DPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnExitListener#onExit(java
-     * .awt.event.MouseEvent)
+
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnExitListener#onExit(java.awt.event.MouseEvent)
      */
     @Override
     public void onExit(MouseEvent me) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnEnterListener#onEnter(java
-     * .awt.event.MouseEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnEnterListener#onEnter(java.awt.event.MouseEvent)
      */
     @Override
     public void onEnter(MouseEvent me) {
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnClickListener#onClick(java
-     * .awt.event.MouseEvent)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnClickListener#onClick(java.awt.event.MouseEvent)
      */
     @Override
     public void onClick(MouseEvent me) {
@@ -232,11 +221,9 @@ public class Donut3DPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnMoveListener#onMove(java
-     * .awt.event.MouseEvent)
+   
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt.event.MouseEvent)
      */
     @Override
     public void onMove(MouseEvent me) {
@@ -247,11 +234,9 @@ public class Donut3DPlugin extends AbstractPlugin implements
         }
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.AbstractPlugin.OnDragListener#onDrag(java
-     * .awt.event.MouseEvent)
+  
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt.event.MouseEvent)
      */
     @Override
     public void onDrag(MouseEvent me) {

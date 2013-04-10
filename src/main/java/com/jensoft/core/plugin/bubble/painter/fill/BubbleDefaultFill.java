@@ -37,11 +37,9 @@ public class BubbleDefaultFill extends BubbleFill {
         this.fillColor = fillColor;
     }
 
-    /*
-     * (non-Javadoc)
-     * @see
-     * com.jensoft.sw2d.core.plugin.bubble.painter.BubbleFill#paintBubble(java
-     * .awt.Graphics2D, com.jensoft.sw2d.core.plugin.bubble.Bubble)
+    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.bubble.painter.BubbleFill#paintBubble(java.awt.Graphics2D, com.jensoft.core.plugin.bubble.Bubble)
      */
     @Override
     public void paintBubble(Graphics2D g2d, Bubble bubble) {
