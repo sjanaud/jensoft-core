@@ -161,6 +161,8 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
             }
             for (int i = 0; i < getFunctions().size(); i++) {
                 ScatterFunction scatterCurve = getFunctions().get(i);
+                scatterCurve.getPathFunction().setWindow2d(getWindow2D());
+                scatterCurve.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
                 scatterCurve.solveScatter();
                 for (ScatterPoint scatter : scatterCurve.getScatters()) {
 

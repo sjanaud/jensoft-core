@@ -19,6 +19,7 @@ import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
 import com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
 import com.jensoft.core.plugin.function.core.Function;
 import com.jensoft.core.plugin.function.source.AffineSourceFunction;
+import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.LinearRegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SplineSourceFunction;
@@ -212,11 +213,26 @@ public class AreaFunction extends Function {
         Point2D deviceAreaMin = getHost().getWindow2D().userToPixel(minSource);
         Point2D deviceAreaMax = getHost().getWindow2D().userToPixel(maxSource);
 
-        double areaXMin = minSource.getX();
-        double areaXMax = maxSource.getX();
+        
+        double areaMin;
+        double areaMax;
 
-        Point2D deviceBaseMin = getHost().getWindow2D().userToPixel(new Point2D.Double(areaXMin, getAreaBase()));
-        Point2D deviceBaseMax = getHost().getWindow2D().userToPixel(new Point2D.Double(areaXMax, getAreaBase()));
+        Point2D deviceBaseMin;
+        Point2D deviceBaseMax;
+        if(getSourceFunction().getNature() == FunctionNature.XFunction){
+        	 areaMin = minSource.getX();
+             areaMax = maxSource.getX();
+
+             deviceBaseMin = getHost().getWindow2D().userToPixel(new Point2D.Double(areaMin, getAreaBase()));
+             deviceBaseMax = getHost().getWindow2D().userToPixel(new Point2D.Double(areaMax, getAreaBase()));
+        }else{
+        	 areaMin = minSource.getY();
+             areaMax = maxSource.getY();
+
+             deviceBaseMin = getHost().getWindow2D().userToPixel(new Point2D.Double(getAreaBase(),areaMin));
+             deviceBaseMax = getHost().getWindow2D().userToPixel(new Point2D.Double(getAreaBase(),areaMax));
+        }
+       
 
         setBaseLine(new Line2D.Double(deviceBaseMin, deviceBaseMax));
 
