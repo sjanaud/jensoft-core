@@ -7,17 +7,22 @@ package com.jensoft.core.plugin.function.tools.peaktracker;
 
 import java.util.EventListener;
 
+/**
+ * <code>PeakTrackerListener</code>
+ * @author sebastien janaud
+ *
+ */
 public interface PeakTrackerListener extends EventListener {
 
     /**
-     * call when a serie just being tracked or untracked
+     * call when a source just being tracked or untracked
      * 
      * @param event
      */
     void peakTracked(PeakTrackerEvent event);
 
     /**
-     * call when a serie just being registered into tracker plug-in
+     * call when a source just being registered into tracker plug-in
      * 
      * @param event
      */

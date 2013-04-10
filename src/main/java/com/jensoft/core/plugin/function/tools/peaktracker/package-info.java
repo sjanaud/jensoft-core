@@ -1,5 +1,5 @@
 /**
- * Provides plot peack tracker tool plug-in
+ * Provides source peack tracker tool plug-in
  * 
  * @since 1.0
  */
