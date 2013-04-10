@@ -25,10 +25,10 @@ import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.plugin.function.source.AffineSourceFunction;
-import com.jensoft.core.plugin.function.source.SplineSourceFunction;
 import com.jensoft.core.plugin.function.source.LinearRegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunctionToolkit;
+import com.jensoft.core.plugin.function.source.SplineSourceFunction;
 
 /**
  * <code>FunctionUtil</code> is an helper class to parse some common plot object

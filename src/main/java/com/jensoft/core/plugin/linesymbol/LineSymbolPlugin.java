@@ -19,7 +19,6 @@ import com.jensoft.core.plugin.linesymbol.core.LineSymbolGeometry;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbolGroup;
 import com.jensoft.core.plugin.linesymbol.painter.LineSymbolPainter;
 import com.jensoft.core.view.View2D;
-import com.jensoft.core.view.WidgetPlugin.PushingBehavior;
 import com.jensoft.core.window.Window2D;
 import com.jensoft.core.window.WindowPart;
 

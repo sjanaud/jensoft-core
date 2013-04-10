@@ -21,6 +21,7 @@ import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.AbstractPlugin;
+import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent;
 import com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener;
@@ -294,6 +295,8 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
         }
         getWindow2D().getDevice2D().repaintDevice();
     }
+    
+    
 
     /* (non-Javadoc)
      * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
@@ -305,31 +308,50 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
             return;
         }
 
-        for (SourceFunction trackedSerie : trackedSources) {
-            if (trackedSerie == null) {
+        for (SourceFunction trackedSource : trackedSources) {
+            if (trackedSource == null) {
                 return;
             }
 
             int indexMax = 0;
             int indexMin = 0;
-            double max = trackedSerie.getSource().get(0).getY();
-            double min = trackedSerie.getSource().get(0).getY();
-            for (int i = 0; i < trackedSerie.getSource().size(); i++) {
+            if(trackedSource.getNature() == FunctionNature.XFunction) {
+            	double max = trackedSource.getSource().get(0).getY();
+                double min = trackedSource.getSource().get(0).getY();
+                for (int i = 0; i < trackedSource.getSource().size(); i++) {
 
-                Point2D p = trackedSerie.getSource().get(i);
+                    Point2D p = trackedSource.getSource().get(i);
 
-                if (p.getY() > max) {
-                    indexMax = i;
-                    max = p.getY();
-                }
-                if (p.getY() < min) {
-                    indexMin = i;
-                    min = p.getY();
+                    if (p.getY() > max) {
+                        indexMax = i;
+                        max = p.getY();
+                    }
+                    if (p.getY() < min) {
+                        indexMin = i;
+                        min = p.getY();
+                    }
                 }
             }
+            else{
+            	double max = trackedSource.getSource().get(0).getX();
+                double min = trackedSource.getSource().get(0).getX();
+                for (int i = 0; i < trackedSource.getSource().size(); i++) {
 
-            Point2D p2dUserMax = trackedSerie.getSource().get(indexMax);
-            Point2D p2dUserMin = trackedSerie.getSource().get(indexMin);
+                    Point2D p = trackedSource.getSource().get(i);
+
+                    if (p.getX() > max) {
+                        indexMax = i;
+                        max = p.getX();
+                    }
+                    if (p.getX() < min) {
+                        indexMin = i;
+                        min = p.getX();
+                    }
+                }
+            }
+            
+            Point2D p2dUserMax = trackedSource.getSource().get(indexMax);
+            Point2D p2dUserMin = trackedSource.getSource().get(indexMin);
 
             Point2D p2dDeviceMax = getWindow2D().userToPixel(p2dUserMax);
             Point2D p2dDeviceMin = getWindow2D().userToPixel(p2dUserMin);
