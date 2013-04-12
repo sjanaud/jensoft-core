@@ -119,8 +119,7 @@ public class ScatterFunction extends Function {
 
         Shape morpheShape = morphe.getMorphe();
         BufferedImage primitive = createPrimitive(this, morpheShape);
-
-        for (Point2D sourcePoint : getSourceFunction().getFunction()) {
+        for (Point2D sourcePoint : getSourceFunction().getCurrentFunction()) {
             ScatterPoint scatter = new ScatterPoint();
             addScatter(scatter);
             scatter.setParent(this);

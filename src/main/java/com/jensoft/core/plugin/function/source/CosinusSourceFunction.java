@@ -17,52 +17,36 @@ import java.util.List;
  */
 public class CosinusSourceFunction extends  AbstractSourceFunction {
 	
-	/***/
-	private double min;
-	private double max;
+	/**delta increment for solving*/
 	private double delta;
 
 	/**
-	 * Create Cosinus source function with the default interval and delta interpolation increment
+	 * Create Cosinus source function with delta interpolation increment
 	 */
-	public CosinusSourceFunction(double min, double max, double delta) {
-		this.min = min;
-		this.max = max;
+	public CosinusSourceFunction(double delta) {
+		super();
 		this.delta = delta;
-		setNature(FunctionNature.XFunction);
 	}
 
 	/**
 	 * Create Cosinus source function
 	 */
 	public CosinusSourceFunction(double min, double max, double delta, FunctionNature nature) {
-		this(min, max, delta);
-		setNature(nature);
+		super(nature);
+		this.delta = delta;
 	}
-
+	
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#getFunction()
+	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#solveFunction(double, double)
 	 */
 	@Override
-	public List<Point2D> getFunction() {
-		List<Point2D> source = new ArrayList<Point2D>();
-		for(double d = min; d < max;d = d+delta){
-			source.add(evaluate(d));
+	public List<Point2D> solveFunction(double start, double end) {		
+		List<Point2D> newFunction = new ArrayList<Point2D>();
+		for(double d = start; d <= end; d = d+delta){
+			newFunction.add(evaluate(d));
 		}
-		return source;
-	}
-
-	
-	
-	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#select(double, double)
-	 */
-	@Override
-	public List<Point2D> select(double start, double end) {
-		this.min = start;
-		this.max = end;
-		return getFunction();
+		return newFunction;
 	}
 
 	
@@ -78,44 +62,5 @@ public class CosinusSourceFunction extends  AbstractSourceFunction {
 		}
 	}
 
-	
-//	/* (non-Javadoc)
-//	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#first()
-//	 */
-//	@Override
-//	public Point2D first() {
-//		if(getSource() == null)
-//			getFunction();
-//		return getSource().get(0);
-//	}
-//
-//	
-//	/* (non-Javadoc)
-//	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#last()
-//	 */
-//	@Override
-//	public Point2D last() {
-//		if(getSource() == null)
-//			getFunction();
-//		return getSource().get(getSource().size() - 1);
-//	}
-
-	
-//	/* (non-Javadoc)
-//	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#minFunction()
-//	 */
-//	@Override
-//	public Point2D minFunction() {
-//		return null;
-//	}
-//
-//	
-//	/* (non-Javadoc)
-//	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#maxFunction()
-//	 */
-//	@Override
-//	public Point2D maxFunction() {
-//		return null;
-//	}
 
 }

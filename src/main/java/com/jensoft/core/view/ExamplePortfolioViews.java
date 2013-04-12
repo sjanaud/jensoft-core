@@ -60,7 +60,7 @@ import com.jensoft.core.plugin.function.scatter.morphe.EllipseMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.QInverseMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.QStarMorphe;
 import com.jensoft.core.plugin.function.scatter.painter.fill.ScatterDefaultFill;
-import com.jensoft.core.plugin.function.source.AffineSourceFunction;
+import com.jensoft.core.plugin.function.source.LineSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunctionToolkit;
 import com.jensoft.core.plugin.function.source.SplineSourceFunction;
@@ -905,11 +905,11 @@ public class ExamplePortfolioViews {
         double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 5, 7, 9, 2, 4, 1 };
 
         // create a series
-        AffineSourceFunction serie1 = SourceFunctionToolkit.createSplineSourceFunction(xValues1,
+        LineSourceFunction serie1 = SourceFunctionToolkit.createSplineSourceFunction(xValues1,
                                                                                             yValues1, 0.1);
-        AffineSourceFunction serie2 = SourceFunctionToolkit.createSplineSourceFunction(xValues2,
+        LineSourceFunction serie2 = SourceFunctionToolkit.createSplineSourceFunction(xValues2,
                                                                                             yValues2, 0.1);
-        AffineSourceFunction serie3 = SourceFunctionToolkit.createSplineSourceFunction(xValues3,
+        LineSourceFunction serie3 = SourceFunctionToolkit.createSplineSourceFunction(xValues3,
                                                                                             yValues3, 0.1);
 
         // create curves

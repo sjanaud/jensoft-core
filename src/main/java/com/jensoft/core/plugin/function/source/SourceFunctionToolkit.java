@@ -136,11 +136,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 * @param yValues
 	 * @return affine source X function
 	 */
-	public static AffineSourceFunction createAffineSourceFunction(double[] xValues, double[] yValues) {
+	public static LineSourceFunction createAffineSourceFunction(double[] xValues, double[] yValues) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		return new AffineSourceFunction(createPointsFromArray(xValues, yValues));
+		return new LineSourceFunction(createPointsFromArray(xValues, yValues));
 	}
 
 	/**
@@ -151,11 +151,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 * @param nature
 	 * @return affine source X function
 	 */
-	public static AffineSourceFunction createAffineSourceFunction(double[] xValues, double[] yValues, FunctionNature nature) {
+	public static LineSourceFunction createAffineSourceFunction(double[] xValues, double[] yValues, FunctionNature nature) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		return new AffineSourceFunction(createPointsFromArray(xValues, yValues), nature);
+		return new LineSourceFunction(createPointsFromArray(xValues, yValues), nature);
 	}
 
 	/**
@@ -165,11 +165,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 * @param yValues
 	 * @return source
 	 */
-	public static AffineSourceFunction createSourceFunction(Date[] xValues, double[] yValues) {
+	public static LineSourceFunction createSourceFunction(Date[] xValues, double[] yValues) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}		
-		return new AffineSourceFunction(createPointsFromArray(xValues, yValues));
+		return new LineSourceFunction(createPointsFromArray(xValues, yValues));
 	}
 
 	/**
@@ -179,11 +179,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 * @param yValues
 	 * @return source
 	 */
-	public static AffineSourceFunction createSourceFunction(Date[] xValues, Double[] yValues) {
+	public static LineSourceFunction createSourceFunction(Date[] xValues, Double[] yValues) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		return new AffineSourceFunction(createPointsFromArray(xValues, yValues));
+		return new LineSourceFunction(createPointsFromArray(xValues, yValues));
 	}
 
 	/**
@@ -193,11 +193,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 * @param yValues
 	 * @return source
 	 */
-	public static AffineSourceFunction createSourceFunction(double[] xValues, Date[] yValues) {
+	public static LineSourceFunction createSourceFunction(double[] xValues, Date[] yValues) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		return new AffineSourceFunction(createPointsFromArray(xValues, yValues));
+		return new LineSourceFunction(createPointsFromArray(xValues, yValues));
 	}
 
 	/**
@@ -207,11 +207,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 * @param yValues
 	 * @return source
 	 */
-	public static AffineSourceFunction createSourceFunction(Double[] xValues, Date[] yValues) {
+	public static LineSourceFunction createSourceFunction(Double[] xValues, Date[] yValues) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		return new AffineSourceFunction(createPointsFromArray(xValues, yValues));
+		return new LineSourceFunction(createPointsFromArray(xValues, yValues));
 	}
 
 	/**
@@ -221,11 +221,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 * @param yValues
 	 * @return source
 	 */
-	public static AffineSourceFunction createSourceFunction(Double[] xValues, Double[] yValues) {
+	public static LineSourceFunction createSourceFunction(Double[] xValues, Double[] yValues) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		return new AffineSourceFunction(createPointsFromArray(xValues, yValues));
+		return new LineSourceFunction(createPointsFromArray(xValues, yValues));
 	}
 
 	/**

@@ -50,7 +50,7 @@ public class ObjectifDefaultDeviceContext extends ContextEntry<ZoomObjectifPlugi
             return;
         }
 
-        rootMenu = new JMenu("Objectif");
+        rootMenu = new JMenu("Zoom Lens");
         rootMenu.setIcon(objectifRootIcon);
 
         objectifLocker = new JMenuItem("Lock");

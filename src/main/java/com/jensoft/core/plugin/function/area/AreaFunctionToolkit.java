@@ -11,7 +11,7 @@ import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.plugin.Toolkit;
 import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunctionPlugin;
 import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
-import com.jensoft.core.plugin.function.source.AffineSourceFunction;
+import com.jensoft.core.plugin.function.source.LineSourceFunction;
 import com.jensoft.core.plugin.function.source.RegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SplineSourceFunction;
@@ -22,7 +22,7 @@ import com.jensoft.core.plugin.function.source.SplineSourceFunction;
  * @see AreaFunction
  * @see AreaFunctionPlugin
  * @see AbstractAreaDraw
- * @see AffineSourceFunction
+ * @see LineSourceFunction
  * @see SplineSourceFunction
  * @see RegressionSourceFunction
  * @see GlyphMetric
