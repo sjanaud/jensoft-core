@@ -15,7 +15,7 @@ import java.util.List;
  * @author Sebastien Janaud
  * 
  */
-public class CosinusSourceFunction extends  AbstractSourceFunction {
+public class MathSourceFunction extends  AbstractSourceFunction {
 	
 	/**delta increment for solving*/
 	private double delta;
@@ -23,7 +23,7 @@ public class CosinusSourceFunction extends  AbstractSourceFunction {
 	/**
 	 * Create Cosinus source function with delta interpolation increment
 	 */
-	public CosinusSourceFunction(double delta) {
+	public MathSourceFunction(double delta) {
 		super();
 		this.delta = delta;
 	}
@@ -31,7 +31,7 @@ public class CosinusSourceFunction extends  AbstractSourceFunction {
 	/**
 	 * Create Cosinus source function
 	 */
-	public CosinusSourceFunction(double min, double max, double delta, FunctionNature nature) {
+	public MathSourceFunction(double min, double max, double delta, FunctionNature nature) {
 		super(nature);
 		this.delta = delta;
 	}
