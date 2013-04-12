@@ -86,6 +86,81 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		}
 
 		/**
+		 * create source function with {@link FunctionNature#XFunction} nature
+		 * and specified points array
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values
+		 */
+		public LineSourceFunction(Date[] xValues, double[] yValues) {
+			super();
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function with {@link FunctionNature#XFunction} nature
+		 * and specified points array
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values
+		 */
+		public LineSourceFunction(double[] xValues, Date[] yValues) {
+			super();
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function with {@link FunctionNature#XFunction} nature
+		 * and specified points array
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values
+		 */
+		public LineSourceFunction(Double[] xValues, Double[] yValues) {
+			super();
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function with {@link FunctionNature#XFunction} nature
+		 * and specified points array
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values
+		 */
+		public LineSourceFunction(Date[] xValues, Double[] yValues) {
+			super();
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function with {@link FunctionNature#XFunction} nature
+		 * and specified points array
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values
+		 */
+		public LineSourceFunction(Double[] xValues, Date[] yValues) {
+			super();
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
 		 * create source function for given nature
 		 * 
 		 * @param source
@@ -110,6 +185,86 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 *            the x or y function nature
 		 */
 		public LineSourceFunction(double[] xValues, double[] yValues, FunctionNature nature) {
+			super(nature);
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function for given nature
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values *
+		 * @param nature
+		 *            the x or y function nature
+		 */
+		public LineSourceFunction(Date[] xValues, double[] yValues, FunctionNature nature) {
+			super(nature);
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function for given nature
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values *
+		 * @param nature
+		 *            the x or y function nature
+		 */
+		public LineSourceFunction(double[] xValues, Date[] yValues, FunctionNature nature) {
+			super(nature);
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function for given nature
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values *
+		 * @param nature
+		 *            the x or y function nature
+		 */
+		public LineSourceFunction(Double[] xValues, Double[] yValues, FunctionNature nature) {
+			super(nature);
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function for given nature
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values *
+		 * @param nature
+		 *            the x or y function nature
+		 */
+		public LineSourceFunction(Date[] xValues, Double[] yValues, FunctionNature nature) {
+			super(nature);
+			this.source = createPointsFromArray(xValues, yValues);
+			sortFunction();
+		}
+
+		/**
+		 * create source function for given nature
+		 * 
+		 * @param xValues
+		 *            the given x array function values
+		 * @param yValues
+		 *            the given y array function values *
+		 * @param nature
+		 *            the x or y function nature
+		 */
+		public LineSourceFunction(Double[] xValues, Date[] yValues, FunctionNature nature) {
 			super(nature);
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -316,11 +471,10 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		}
 
 	}
-	
-	
+
 	/**
-	 * <code>SplineSourceFunction</code> defines a spline source function which is
-	 * interpolate from source
+	 * <code>SplineSourceFunction</code> defines a spline source function which
+	 * is interpolate from source
 	 * 
 	 * @author sebastien janaud
 	 */
@@ -333,27 +487,137 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		private double delta;
 
 		/**
-		 * create an interpolate source for specified super source and delta
+		 * create spline source
 		 * 
-		 * @param source
-		 *            the source to interpolate
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
 		 * @param delta
-		 *            the delta to make interpolation
 		 */
-		public SplineSourceFunction(List<Point2D> source, double delta) {
-			super(source);
+		public SplineSourceFunction(Date[] xValues, double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
 
 		/**
-		 * create an interpolate source for specified super source and delta
+		 * create spline source
 		 * 
 		 * @param xValues
-		 *            the given x array function values
 		 * @param yValues
-		 *            the given y array function values
+		 * @param nature
 		 * @param delta
-		 *            the delta to make interpolation
+		 */
+		public SplineSourceFunction(Date[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public SplineSourceFunction(Date[] xValues, double[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public SplineSourceFunction(Date[] xValues, Double[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public SplineSourceFunction(double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public SplineSourceFunction(Double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public SplineSourceFunction(double[] xValues, Date[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public SplineSourceFunction(Double[] xValues, Date[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public SplineSourceFunction(double[] xValues, double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public SplineSourceFunction(Double[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
 		 */
 		public SplineSourceFunction(double[] xValues, double[] yValues, double delta) {
 			super(xValues, yValues);
@@ -361,30 +625,37 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		}
 
 		/**
-		 * create an interpolate source for specified super source and delta
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public SplineSourceFunction(Double[] xValues, Double[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
 		 * 
 		 * @param source
-		 *            the source to interpolate
+		 * @param nature
 		 * @param delta
-		 *            the delta to make interpolation
 		 */
-		public SplineSourceFunction(List<Point2D> source, double delta, FunctionNature nature) {
+		public SplineSourceFunction(List<Point2D> source, FunctionNature nature, double delta) {
 			super(source, nature);
 			this.delta = delta;
 		}
 
 		/**
-		 * create an interpolate source for specified super source and delta
+		 * create spline source
 		 * 
-		 * @param xValues
-		 *            the given x array function values
-		 * @param yValues
-		 *            the given y array function values
+		 * @param source
 		 * @param delta
-		 *            the delta to make interpolation
 		 */
-		public SplineSourceFunction(double[] xValues, double[] yValues, double delta, FunctionNature nature) {
-			super(xValues, yValues, nature);
+		public SplineSourceFunction(List<Point2D> source, double delta) {
+			super(source);
 			this.delta = delta;
 		}
 
@@ -474,7 +745,6 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 			return interpolateSource;
 		}
 
-		
 		/**
 		 * create interpolate function for given source.
 		 */
@@ -500,43 +770,155 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		}
 
 	}
-	
+
 	/**
-	 * <code>LinearRegressionSourceFunction</code> defines the user data input with
-	 * linear regression segment.
+	 * <code>LinearRegressionSourceFunction</code> defines the user data input
+	 * with linear regression segment.
 	 * 
 	 * @author sebastien janaud
 	 */
 	public static class RegressionSourceFunction extends LineSourceFunction {
 
 		/** evaluation regression function */
-		private SimpleRegression evaluateFunction = null;	
+		private SimpleRegression evaluateFunction = null;
 
 		/** the interpolate increment */
 		private double delta;
 
+
+
 		/**
-		 * create an interpolate source for specified super source and delta
+		 * create regression source
 		 * 
-		 * @param source
-		 *            the source to interpolate
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
 		 * @param delta
-		 *            the delta to make interpolation
 		 */
-		public RegressionSourceFunction(List<Point2D> source, double delta) {
-			super(source);
+		public RegressionSourceFunction(Date[] xValues, double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
 
 		/**
-		 * create an interpolate source for specified super source and delta
+		 * create regression source
 		 * 
 		 * @param xValues
-		 *            the given x array function values
 		 * @param yValues
-		 *            the given y array function values
+		 * @param nature
 		 * @param delta
-		 *            the delta to make interpolation
+		 */
+		public RegressionSourceFunction(Date[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public RegressionSourceFunction(Date[] xValues, double[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public RegressionSourceFunction(Date[] xValues, Double[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public RegressionSourceFunction(double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public RegressionSourceFunction(Double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public RegressionSourceFunction(double[] xValues, Date[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public RegressionSourceFunction(Double[] xValues, Date[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public RegressionSourceFunction(double[] xValues, double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public RegressionSourceFunction(Double[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
 		 */
 		public RegressionSourceFunction(double[] xValues, double[] yValues, double delta) {
 			super(xValues, yValues);
@@ -544,57 +926,60 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		}
 
 		/**
-		 * create an interpolate source for specified super source and delta
+		 * create regression source
 		 * 
-		 * @param source
-		 *            the source to interpolate
+		 * @param xValues
+		 * @param yValues
 		 * @param delta
-		 *            the delta to make interpolation
 		 */
-		public RegressionSourceFunction(List<Point2D> source, double delta, FunctionNature nature) {
-			super(source, nature);
+		public RegressionSourceFunction(Double[] xValues, Double[] yValues, double delta) {
+			super(xValues, yValues);
 			this.delta = delta;
 		}
 
 		/**
-		 * create an interpolate source for specified super source and delta
+		 * create regression source
 		 * 
-		 * @param xValues
-		 *            the given x array function values
-		 * @param yValues
-		 *            the given y array function values
+		 * @param source
+		 * @param nature
 		 * @param delta
-		 *            the delta to make interpolation
 		 */
-		public RegressionSourceFunction(double[] xValues, double[] yValues, double delta, FunctionNature nature) {
-			super(xValues, yValues, nature);
+		public RegressionSourceFunction(List<Point2D> source, FunctionNature nature, double delta) {
+			super(source, nature);
 			this.delta = delta;
 		}
 
-		
-		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#setSource(java.util.List)
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.plugin.function.source.AffineSourceFunction#setSource
+		 * (java.util.List)
 		 */
 		@Override
 		public void setSource(List<Point2D> source) {
 			super.setSource(source);
 			evaluateFunction = null;
 		}
-		
-		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.function.source.LineSourceFunction#solveFunction(double, double)
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.plugin.function.source.LineSourceFunction#solveFunction
+		 * (double, double)
 		 */
 		@Override
 		public List<Point2D> solveFunction(double start, double end) {
-			if(evaluateFunction == null){
+			if (evaluateFunction == null) {
 				createInterpolateFunction();
 			}
-			if(evaluateFunction == null){
+			if (evaluateFunction == null) {
 				return getSource();
-			}		
+			}
 			List<Point2D> newFunction = new ArrayList<Point2D>();
 			Point2D pd2Min = getSource().get(0);
-			Point2D pd2Max = getSource().get(getSource().size()-1);
+			Point2D pd2Max = getSource().get(getSource().size() - 1);
 			if (getNature() == FunctionNature.XFunction) {
 				for (double x = pd2Min.getX(); x <= pd2Max.getX(); x = x + delta) {
 					newFunction.add(new Point2D.Double(x, evaluateFunction.predict(x)));
@@ -604,18 +989,20 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 					newFunction.add(new Point2D.Double(evaluateFunction.predict(y), y));
 				}
 			}
-			
+
 			return newFunction;
 		}
-		
 
-		
-		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate(double)
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate
+		 * (double)
 		 */
 		@Override
 		public Point2D evaluate(double value) {
-			if(evaluateFunction == null){
+			if (evaluateFunction == null) {
 				createInterpolateFunction();
 			}
 			Point2D evaluatePoint = null;
@@ -623,7 +1010,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 				if (getNature() == FunctionNature.XFunction) {
 					evaluatePoint = new Point2D.Double(value, evaluateFunction.predict(value));
 				} else {
-					evaluatePoint = new Point2D.Double(evaluateFunction.predict(value),value);
+					evaluatePoint = new Point2D.Double(evaluateFunction.predict(value), value);
 				}
 			} catch (Exception e) {
 			}
@@ -643,7 +1030,6 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		}
 
 	}
-
 
 	/**
 	 * create list of points from x and y arrays.
@@ -715,6 +1101,24 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		List<Point2D> source = new ArrayList<Point2D>();
 		for (int i = 0; i < xValues.length; i++) {
 			source.add(new Point2D.Double(new Long(xValues[i].getTime()).doubleValue(), yValues[i]));
+		}
+		return source;
+	}
+
+	/**
+	 * create list of point from x date array and y double array
+	 * 
+	 * @param xValues
+	 * @param yValues
+	 * @return list of points
+	 */
+	public static List<Point2D> createPointsFromArray(Double[] xValues, Date[] yValues) {
+		if (xValues.length != yValues.length) {
+			throw new IllegalArgumentException(" x and y  array values length does not match");
+		}
+		List<Point2D> source = new ArrayList<Point2D>();
+		for (int i = 0; i < xValues.length; i++) {
+			source.add(new Point2D.Double(xValues[i], new Long(yValues[i].getTime()).doubleValue()));
 		}
 		return source;
 	}
