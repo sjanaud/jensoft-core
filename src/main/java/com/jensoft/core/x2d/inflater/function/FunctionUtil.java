@@ -24,11 +24,13 @@ import com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
-import com.jensoft.core.plugin.function.source.LineSourceFunction;
-import com.jensoft.core.plugin.function.source.RegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunctionToolkit;
-import com.jensoft.core.plugin.function.source.SplineSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSourceFunction;
+
 
 /**
  * <code>FunctionUtil</code> is an helper class to parse some common plot object
@@ -222,8 +224,9 @@ public class FunctionUtil implements X2DFunctionElement{
             valuesAsDoubleY.add(Double.parseDouble(y));
         }
 
-        return SourceFunctionToolkit.createSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
+        return new UserSourceFunction.LineSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
                                                  valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]));
+
 
     }
 
@@ -252,9 +255,10 @@ public class FunctionUtil implements X2DFunctionElement{
             valuesAsDoubleY.add(Double.parseDouble(y));
         }
 
-        return SourceFunctionToolkit
-                .createInterpolateSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
-                                                 valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]), delta);
+        return UserSourceFunction.SplineSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
+                valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]), delta);
+		
+       
     }
 
     /**
@@ -282,7 +286,7 @@ public class FunctionUtil implements X2DFunctionElement{
             valuesAsDoubleY.add(Double.parseDouble(y));
         }
 
-        return SourceFunctionToolkit.createLinearRegressionSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX
+        return new UserSourceFunction.RegressionSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX
                 .size()])), valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]), delta);
     }
 

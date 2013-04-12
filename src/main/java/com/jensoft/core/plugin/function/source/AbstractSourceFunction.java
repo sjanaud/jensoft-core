@@ -12,8 +12,15 @@ import com.jensoft.core.plugin.function.core.Function;
 import com.jensoft.core.window.Window2D;
 
 /**
- * <code>AbstractSourceFunction</code>
+ * <code>AbstractSourceFunction</code> defines a source function. The current build of function is get 
+ * by a call to {@link #getCurrentFunction()} which is the internal result of {@link #solveFunction(double, double)}
+ * on window domain [min,max], depends function nature.
  * 
+ * <p> this source is hosted by function {@link #host} 
+ * </p>
+ * 
+ * <p> the method {@link AbstractSourceFunction#evaluate(double)} can be used to solved the function result for a particular value.
+ * </p>
  * @author sebastien janaud
  * 
  */

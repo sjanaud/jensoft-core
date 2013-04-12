@@ -18,11 +18,11 @@ import com.jensoft.core.plugin.function.area.painter.AreaEffect;
 import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
 import com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
 import com.jensoft.core.plugin.function.core.Function;
-import com.jensoft.core.plugin.function.source.LineSourceFunction;
 import com.jensoft.core.plugin.function.source.FunctionNature;
-import com.jensoft.core.plugin.function.source.RegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
-import com.jensoft.core.plugin.function.source.SplineSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSourceFunction;
 
 /**
  * <code>AreaFunction</code> defines an area function that can be added in

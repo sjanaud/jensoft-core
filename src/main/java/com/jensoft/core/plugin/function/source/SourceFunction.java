@@ -35,11 +35,8 @@ public interface SourceFunction {
 	
 	/**get nature of this source function, for nature convention  x [y=f(x)] or y [x=f(y)] */
 	public FunctionNature getNature();
-
-    /** return the current solved function*/
-    //public List<Point2D> getFunction();
     
-    /** return the current solved function*/
+    /** return the current solved function for window*/
     public List<Point2D> getCurrentFunction();
     
     /**return the host function for this source*/
