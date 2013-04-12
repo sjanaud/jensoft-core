@@ -7,7 +7,7 @@ package com.jensoft.core.glyphmetrics;
 
 import java.awt.font.GlyphVector;
 
-import com.jensoft.core.plugin.function.core.MetricsPathFunction;
+import com.jensoft.core.plugin.function.MetricsPathFunction;
 
 /**
  * GlyphUtil help to get glyph properties
