@@ -24,7 +24,7 @@ import java.util.List;
  * </ul>
  * 
  * <p>
- *  {@link #getSource()} method provides the point collection (x,y) that define this source function
+ *  {@link #getFunction()} method provides the point collection (x,y) that define this source function
  * </p>
  * 
  * @author Sebastien Janaud
@@ -34,32 +34,32 @@ public interface SourceFunction {
 	/**get nature of this source function*/
 	public FunctionNature getNature();
 
-    /** return the source points for this source*/
-    public List<Point2D> getSource();
+    /** return all known points for this function*/
+    public List<Point2D> getFunction();
 
     /** select by x or y (depends of nature) the points of the given range */
     public List<Point2D> select(double start, double end);
 
     /** evaluate the function point (x,y) for the specified x or y (depends on function nature x or y) */
-    public Point2D evaluate(double x);
+    public Point2D evaluate(double value);
 
     /** get next point in the source after the specified x or y (depends on function nature x or y)*/
-    public Point2D next(double value);
+    //public Point2D next(double value);
 
     /** get previous point in the source before specified x or y (depends on function nature x or y)*/
-    public Point2D previous(double value);
+    //public Point2D previous(double value);
 
     /** return point corresponding to the min x or y (depends on function nature x or y), assumes that source is sorted*/
-    public Point2D first();
+    //public Point2D first();
 
     /** return point corresponding to the max x or y (depends on function nature x or y), assumes that source is sorted */
-    public Point2D last();
+    //public Point2D last();
 
     /** return point corresponding to the min peak of function (depends on function nature x or y)*/
-    public Point2D minFunction();
+   // public Point2D minFunction();
     
     /** return point corresponding to the max peak of function (depends on function nature x or y)*/
-    public Point2D maxFunction();
+    //public Point2D maxFunction();
 
     /** return the source name */
     public String getName();

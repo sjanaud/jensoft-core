@@ -12,7 +12,7 @@ import com.jensoft.core.plugin.Toolkit;
 import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunctionPlugin;
 import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
 import com.jensoft.core.plugin.function.source.AffineSourceFunction;
-import com.jensoft.core.plugin.function.source.LinearRegressionSourceFunction;
+import com.jensoft.core.plugin.function.source.RegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SplineSourceFunction;
 
@@ -24,7 +24,7 @@ import com.jensoft.core.plugin.function.source.SplineSourceFunction;
  * @see AbstractAreaDraw
  * @see AffineSourceFunction
  * @see SplineSourceFunction
- * @see LinearRegressionSourceFunction
+ * @see RegressionSourceFunction
  * @see GlyphMetric
  * @author Sebastien Janaud
  */
