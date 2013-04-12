@@ -7,6 +7,7 @@ package com.jensoft.core.plugin.function.source;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import com.jensoft.core.plugin.function.analysis.SimpleRegression;
@@ -17,12 +18,15 @@ import com.jensoft.core.plugin.function.analysis.SimpleRegression;
  * 
  * @author sebastien janaud
  */
-public class LinearRegressionSourceFunction extends AffineSourceFunction {
+public class RegressionSourceFunction extends AffineSourceFunction {
 
 	/** simple regression */
-	private SimpleRegression regression = null;
+	private SimpleRegression regression = null;	
 
-	/** the interpolate x segment */
+	/** interpolate segment */
+	private List<Point2D> interpolateFunction = new ArrayList<Point2D>();
+
+	/** the interpolate increment */
 	private double delta;
 
 	/**
@@ -31,10 +35,10 @@ public class LinearRegressionSourceFunction extends AffineSourceFunction {
 	 * @param userSource
 	 * @param delta
 	 */
-	public LinearRegressionSourceFunction(List<Point2D> userSource, double delta) {
+	public RegressionSourceFunction(List<Point2D> userSource, double delta) {
 		super(userSource);
 		this.delta = delta;
-		createInterpolateFunction();
+		interpolateFunction = new ArrayList<Point2D>();
 	}
 
 	
@@ -44,16 +48,18 @@ public class LinearRegressionSourceFunction extends AffineSourceFunction {
 	@Override
 	public void setSource(List<Point2D> source) {
 		super.setSource(source);
-		createInterpolateFunction();
+		regression = null;
+		interpolateFunction.clear();
 	}
-
+	
 	/* (non-Javadoc)
 	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#setNature(com.jensoft.core.plugin.function.source.FunctionNature)
 	 */
 	@Override
 	public void setNature(FunctionNature nature) {
 		super.setNature(nature);
-		createInterpolateFunction();
+		regression = null;
+		interpolateFunction.clear();
 	}
 
 	
@@ -61,21 +67,33 @@ public class LinearRegressionSourceFunction extends AffineSourceFunction {
 	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#getSource()
 	 */
 	@Override
-	public List<Point2D> getSource() {
-		List<Point2D> regressionSegment = new ArrayList<Point2D>();
-		Point2D pd2Min = first();
-		Point2D pd2Max = last();
+	public List<Point2D> getFunction() {
+		if(regression == null){
+			createInterpolateFunction();
+		}
+		if(regression == null){
+			return getSource();
+		}
+		if (interpolateFunction.size() > 0) {
+			return interpolateFunction;
+		}
+		if(getSource() == null){
+			return Collections.EMPTY_LIST;
+		}
+		
+		Point2D pd2Min = getSource().get(0);
+		Point2D pd2Max = getSource().get(getSource().size()-1);
 		if (getNature() == FunctionNature.XFunction) {
 			for (double x = pd2Min.getX(); x <= pd2Max.getX(); x = x + delta) {
-				regressionSegment.add(new Point2D.Double(x, regression.predict(x)));
+				interpolateFunction.add(new Point2D.Double(x, regression.predict(x)));
 			}
 		} else {
 			for (double y = pd2Min.getY(); y <= pd2Max.getY(); y = y + delta) {
-				regressionSegment.add(new Point2D.Double(regression.predict(y), y));
+				interpolateFunction.add(new Point2D.Double(regression.predict(y), y));
 			}
 		}
-
-		return regressionSegment;
+		
+		return interpolateFunction;
 	}
 
 	
@@ -84,6 +102,9 @@ public class LinearRegressionSourceFunction extends AffineSourceFunction {
 	 */
 	@Override
 	public Point2D evaluate(double value) {
+		if(regression == null){
+			createInterpolateFunction();
+		}
 		Point2D evaluatePoint = null;
 		try {
 			if (getNature() == FunctionNature.XFunction) {
@@ -101,7 +122,7 @@ public class LinearRegressionSourceFunction extends AffineSourceFunction {
 	 */
 	public void createInterpolateFunction() {
 		regression = new SimpleRegression();
-		List<Point2D> userSource = super.getSource();
+		List<Point2D> userSource = super.getFunction();
 		for (int i = 0; i < userSource.size(); i++) {
 			Point2D p2d = userSource.get(i);
 			regression.addData(p2d.getX(), p2d.getY());

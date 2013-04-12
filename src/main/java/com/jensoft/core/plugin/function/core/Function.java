@@ -19,7 +19,7 @@ import com.jensoft.core.plugin.function.source.SourceFunction;
  */
 public abstract class Function {
 
-    /** area name */
+    /** function name */
     private String name;
 
     /** source function */
@@ -143,21 +143,21 @@ public abstract class Function {
      */
     public void addMetricsLabel(GlyphMetric metric) {
     	if(sourceFunction.getNature() == FunctionNature.XFunction){
-    		if (metric.getValue() >= sourceFunction.first().getX()
-                    && metric.getValue() <= sourceFunction.last().getX()) {
+    		//if (metric.getValue() >= sourceFunction.first().getX()
+              //      && metric.getValue() <= sourceFunction.last().getX()) {
                 pathFunction.addMetrics(metric);
-            }
-            else {
-                throw new IllegalArgumentException("x metric value out of path function");
-            }
+           // }
+           // else {
+            //    throw new IllegalArgumentException("x metric value out of path function");
+           // }
     	}else{
-    		if (metric.getValue() >= sourceFunction.first().getY()
-                    && metric.getValue() <= sourceFunction.last().getY()) {
+    	//	if (metric.getValue() >= sourceFunction.first().getY()
+          //          && metric.getValue() <= sourceFunction.last().getY()) {
                 pathFunction.addMetrics(metric);
-            }
-            else {
-                throw new IllegalArgumentException("y metric value out of path function");
-            }
+           // }
+           // else {
+            //    throw new IllegalArgumentException("y metric value out of path function");
+            //}
     	}
         
     }

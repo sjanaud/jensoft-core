@@ -30,11 +30,11 @@ public class SourceFunctionToolkit extends Toolkit {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		List<Point2D> serie = new ArrayList<Point2D>();
+		List<Point2D> source = new ArrayList<Point2D>();
 		for (int i = 0; i < xValues.length; i++) {
-			serie.add(new Point2D.Double(xValues[i], yValues[i]));
+			source.add(new Point2D.Double(xValues[i], yValues[i]));
 		}
-		return serie;
+		return source;
 	}
 
 	/**
@@ -48,11 +48,11 @@ public class SourceFunctionToolkit extends Toolkit {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		List<Point2D> serie = new ArrayList<Point2D>();
+		List<Point2D> source = new ArrayList<Point2D>();
 		for (int i = 0; i < xValues.length; i++) {
-			serie.add(new Point2D.Double(xValues[i], yValues[i]));
+			source.add(new Point2D.Double(xValues[i], yValues[i]));
 		}
-		return serie;
+		return source;
 	}
 
 	/**
@@ -68,11 +68,11 @@ public class SourceFunctionToolkit extends Toolkit {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		List<Point2D> serie = new ArrayList<Point2D>();
+		List<Point2D> source = new ArrayList<Point2D>();
 		for (int i = 0; i < xValues.length; i++) {
-			serie.add(new Point2D.Double(new Long(xValues[i].getTime()).doubleValue(), yValues[i]));
+			source.add(new Point2D.Double(new Long(xValues[i].getTime()).doubleValue(), yValues[i]));
 		}
-		return serie;
+		return source;
 	}
 
 	/**
@@ -86,11 +86,11 @@ public class SourceFunctionToolkit extends Toolkit {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		List<Point2D> serie = new ArrayList<Point2D>();
+		List<Point2D> source = new ArrayList<Point2D>();
 		for (int i = 0; i < xValues.length; i++) {
-			serie.add(new Point2D.Double(new Long(xValues[i].getTime()).doubleValue(), yValues[i]));
+			source.add(new Point2D.Double(new Long(xValues[i].getTime()).doubleValue(), yValues[i]));
 		}
-		return serie;
+		return source;
 	}
 
 	/**
@@ -104,11 +104,11 @@ public class SourceFunctionToolkit extends Toolkit {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		List<Point2D> serie = new ArrayList<Point2D>();
+		List<Point2D> source = new ArrayList<Point2D>();
 		for (int i = 0; i < xValues.length; i++) {
-			serie.add(new Point2D.Double(xValues[i], new Long(yValues[i].getTime()).doubleValue()));
+			source.add(new Point2D.Double(xValues[i], new Long(yValues[i].getTime()).doubleValue()));
 		}
-		return serie;
+		return source;
 	}
 
 	/**
@@ -122,11 +122,11 @@ public class SourceFunctionToolkit extends Toolkit {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		List<Point2D> serie = new ArrayList<Point2D>();
+		List<Point2D> source = new ArrayList<Point2D>();
 		for (int i = 0; i < xValues.length; i++) {
-			serie.add(new Point2D.Double(xValues[i], new Long(yValues[i].getTime()).doubleValue()));
+			source.add(new Point2D.Double(xValues[i], new Long(yValues[i].getTime()).doubleValue()));
 		}
-		return serie;
+		return source;
 	}
 
 	/**
@@ -159,25 +159,25 @@ public class SourceFunctionToolkit extends Toolkit {
 	}
 
 	/**
-	 * create serie from x and y arrays.
+	 * create source from x and y arrays.
 	 * 
 	 * @param xValues
 	 * @param yValues
-	 * @return serie
+	 * @return source
 	 */
 	public static AffineSourceFunction createSourceFunction(Date[] xValues, double[] yValues) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
-		}
+		}		
 		return new AffineSourceFunction(createPointsFromArray(xValues, yValues));
 	}
 
 	/**
-	 * create serie from x and y arrays.
+	 * create source from x and y arrays.
 	 * 
 	 * @param xValues
 	 * @param yValues
-	 * @return serie
+	 * @return source
 	 */
 	public static AffineSourceFunction createSourceFunction(Date[] xValues, Double[] yValues) {
 		if (xValues.length != yValues.length) {
@@ -187,11 +187,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	}
 
 	/**
-	 * create serie from x and y arrays.
+	 * create source from x and y arrays.
 	 * 
 	 * @param xValues
 	 * @param yValues
-	 * @return serie
+	 * @return source
 	 */
 	public static AffineSourceFunction createSourceFunction(double[] xValues, Date[] yValues) {
 		if (xValues.length != yValues.length) {
@@ -201,11 +201,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	}
 
 	/**
-	 * create serie from x and y arrays.
+	 * create source from x and y arrays.
 	 * 
 	 * @param xValues
 	 * @param yValues
-	 * @return serie
+	 * @return source
 	 */
 	public static AffineSourceFunction createSourceFunction(Double[] xValues, Date[] yValues) {
 		if (xValues.length != yValues.length) {
@@ -215,11 +215,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	}
 
 	/**
-	 * create serie from x and y arrays.
+	 * create source from x and y arrays.
 	 * 
 	 * @param xValues
 	 * @param yValues
-	 * @return serie
+	 * @return source
 	 */
 	public static AffineSourceFunction createSourceFunction(Double[] xValues, Double[] yValues) {
 		if (xValues.length != yValues.length) {
@@ -229,13 +229,13 @@ public class SourceFunctionToolkit extends Toolkit {
 	}
 
 	/**
-	 * create interpolate serie from x and y arrays.
+	 * create interpolate source from x and y arrays.
 	 * 
 	 * @param xValues
 	 * @param yValues
 	 * @param delta
 	 *            step segment length for evaluate curve
-	 * @return the interpolate serie
+	 * @return the interpolate source
 	 */
 	public static SplineSourceFunction createSplineSourceFunction(double[] xValues, double[] yValues, double delta) {
 		if (xValues.length != yValues.length) {
@@ -245,14 +245,14 @@ public class SourceFunctionToolkit extends Toolkit {
 	}
 
 	/**
-	 * create interpolate serie from x and y arrays.
+	 * create interpolate source from x and y arrays.
 	 * 
 	 * @param xValues
 	 * @param yValues
 	 * @param delta
 	 *            step segment length for evaluate curve
 	 * @param nature
-	 * @return the interpolate serie
+	 * @return the interpolate source
 	 */
 	public static SplineSourceFunction createSplineSourceFunction(double[] xValues, double[] yValues, double delta, FunctionNature nature) {
 		if (xValues.length != yValues.length) {
@@ -350,11 +350,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 *            step segment length for evaluate curve
 	 * @return the interpolate source function
 	 */
-	public static LinearRegressionSourceFunction createLinearRegressionSourceFunction(double[] xValues, double[] yValues, double delta) {
+	public static RegressionSourceFunction createLinearRegressionSourceFunction(double[] xValues, double[] yValues, double delta) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		return new LinearRegressionSourceFunction(createPointsFromArray(xValues, yValues), delta);
+		return new RegressionSourceFunction(createPointsFromArray(xValues, yValues), delta);
 	}
 
 	/**
@@ -366,11 +366,11 @@ public class SourceFunctionToolkit extends Toolkit {
 	 *            step segment length for evaluate curve
 	 * @return the interpolate source function
 	 */
-	public static LinearRegressionSourceFunction createLinearRegressionSourceFunction(Double[] xValues, Double[] yValues, Double delta) {
+	public static RegressionSourceFunction createLinearRegressionSourceFunction(Double[] xValues, Double[] yValues, Double delta) {
 		if (xValues.length != yValues.length) {
 			throw new IllegalArgumentException(" x and y  array values length does not match");
 		}
-		return new LinearRegressionSourceFunction(createPointsFromArray(xValues, yValues), delta);
+		return new RegressionSourceFunction(createPointsFromArray(xValues, yValues), delta);
 	}
 
 }

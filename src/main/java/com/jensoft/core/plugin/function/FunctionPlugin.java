@@ -128,7 +128,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
             g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
-            // curve
+            
             for (int c = 0; c < getFunctions().size(); c++) {
                 CurveFunction curve = getFunctions().get(c);
                 curve.getPathFunction().setWindow2d(getWindow2D());

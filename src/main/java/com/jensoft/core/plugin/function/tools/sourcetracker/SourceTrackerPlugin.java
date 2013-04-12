@@ -255,18 +255,18 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		}
 		System.out.println("addMetrics " + metric.getValue());
 		if (trackedSource.getNature() == FunctionNature.XFunction) {
-			if (metric.getValue() >= trackedSource.first().getX() && metric.getValue() <= trackedSource.last().getX()) {
+			//if (metric.getValue() >= trackedSource.first().getX() && metric.getValue() <= trackedSource.last().getX()) {
 
 				metricsPathFunction.addMetrics(metric);
-			} else {
-				throw new IllegalArgumentException("x function metric value out of source bound");
-			}
+			//} else {
+			//	throw new IllegalArgumentException("x function metric value out of source bound");
+			//}
 		} else {
-			if (metric.getValue() >= trackedSource.first().getY() && metric.getValue() <= trackedSource.last().getY()) {
+			//if (metric.getValue() >= trackedSource.first().getY() && metric.getValue() <= trackedSource.last().getY()) {
 				metricsPathFunction.addMetrics(metric);
-			} else {
-				throw new IllegalArgumentException("y function metric value out of source bound");
-			}
+		//	} else {
+			//	throw new IllegalArgumentException("y function metric value out of source bound");
+			//}
 		}
 
 	}
@@ -348,27 +348,34 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		currentTrackUser = w2d.pixelToUser(currentTrackDevice);
 
 		clearMetrics();
-		GlyphMetric metric;
+		GlyphMetric metric = null;
 		if (trackedSource.getNature() == FunctionNature.XFunction) {
-			metric = new GlyphMetric();
-			metric.setValue(currentTrackUser.getX());
-			metric.setStylePosition(defaultStylePosition);
-			metric.setMetricsNature(GlyphMetricsNature.Median);
-			metric.setMetricsLabel(currentTrackUser.getY() + "");
-			metric.setDivergence(divergence);
-			metric.setGlyphMetricFill(glyphMetricsFill);
-			metric.setGlyphMetricMarkerPainter(glyphMarker);
-			metric.setFont(defaultGlyphFont);
+			Point2D result = trackedSource.evaluate(currentTrackUser.getX());
+			if (result != null) {
+				metric = new GlyphMetric();
+				metric.setValue(currentTrackUser.getX());
+				metric.setStylePosition(defaultStylePosition);
+				metric.setMetricsNature(GlyphMetricsNature.Median);
+				metric.setMetricsLabel(result.getY() + "");
+				metric.setDivergence(divergence);
+				metric.setGlyphMetricFill(glyphMetricsFill);
+				metric.setGlyphMetricMarkerPainter(glyphMarker);
+				metric.setFont(defaultGlyphFont);
+			}
 		} else {
-			metric = new GlyphMetric();
-			metric.setValue(currentTrackUser.getY());
-			metric.setStylePosition(defaultStylePosition);
-			metric.setMetricsNature(GlyphMetricsNature.Median);
-			metric.setMetricsLabel(currentTrackUser.getX() + "");
-			metric.setDivergence(divergence);
-			metric.setGlyphMetricFill(glyphMetricsFill);
-			metric.setGlyphMetricMarkerPainter(glyphMarker);
-			metric.setFont(defaultGlyphFont);
+			Point2D result = trackedSource.evaluate(currentTrackUser.getY());
+			if (result != null) {
+				metric = new GlyphMetric();
+				metric.setValue(currentTrackUser.getY());
+				metric.setStylePosition(defaultStylePosition);
+				metric.setMetricsNature(GlyphMetricsNature.Median);
+				metric.setMetricsLabel(result.getX() + "");
+				metric.setDivergence(divergence);
+				metric.setGlyphMetricFill(glyphMetricsFill);
+				metric.setGlyphMetricMarkerPainter(glyphMarker);
+				metric.setFont(defaultGlyphFont);
+			}
+
 		}
 		try {
 			if (metric != null) {
