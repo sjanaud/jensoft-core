@@ -24,8 +24,8 @@ import com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
+import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
-import com.jensoft.core.plugin.function.source.SourceFunctionToolkit;
 import com.jensoft.core.plugin.function.source.UserSourceFunction;
 import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSourceFunction;
 import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSourceFunction;
@@ -255,8 +255,10 @@ public class FunctionUtil implements X2DFunctionElement{
             valuesAsDoubleY.add(Double.parseDouble(y));
         }
 
-        return UserSourceFunction.SplineSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
-                valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]), delta);
+       
+        
+        return new UserSourceFunction.SplineSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
+                valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]),FunctionNature.XFunction, delta.doubleValue());
 		
        
     }
@@ -287,7 +289,7 @@ public class FunctionUtil implements X2DFunctionElement{
         }
 
         return new UserSourceFunction.RegressionSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX
-                .size()])), valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]), delta);
+                .size()])), valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]), delta.doubleValue());
     }
 
 }
