@@ -5,7 +5,7 @@
  */
 package com.jensoft.core.plugin.function.curve;
 
-import com.jensoft.core.plugin.function.core.Function;
+import com.jensoft.core.plugin.function.Function;
 import com.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw;
 import com.jensoft.core.plugin.function.curve.painter.draw.CurveDefaultDraw;
 import com.jensoft.core.plugin.function.source.SourceFunction;

@@ -3,12 +3,11 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.function.core;
+package com.jensoft.core.plugin.function;
 
 import java.awt.Color;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.plugin.function.FunctionPlugin;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 

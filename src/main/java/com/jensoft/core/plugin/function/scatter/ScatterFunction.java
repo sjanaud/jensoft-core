@@ -14,8 +14,8 @@ import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jensoft.core.plugin.function.Function;
 import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunctionPlugin;
-import com.jensoft.core.plugin.function.core.Function;
 import com.jensoft.core.plugin.function.scatter.morphe.ScatterMorphe;
 import com.jensoft.core.plugin.function.scatter.painter.ScatterDraw;
 import com.jensoft.core.plugin.function.scatter.painter.ScatterFill;

@@ -13,11 +13,11 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
+import com.jensoft.core.plugin.function.Function;
 import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunctionPlugin;
 import com.jensoft.core.plugin.function.area.painter.AreaEffect;
 import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
 import com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
-import com.jensoft.core.plugin.function.core.Function;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSourceFunction;

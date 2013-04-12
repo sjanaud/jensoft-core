@@ -29,7 +29,7 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.Spectral;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.plugin.function.core.MetricsPathFunction;
+import com.jensoft.core.plugin.function.MetricsPathFunction;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.view.View2D;
