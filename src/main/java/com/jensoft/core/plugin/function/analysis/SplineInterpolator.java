@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.function.analysis;
 
 /**
+ * <code>SplineInterpolator</code>
  * Computes a natural (also known as "free", "unclamped") cubic spline
  * interpolation for the data set.
  * <p>

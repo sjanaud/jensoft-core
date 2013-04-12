@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.function.analysis;
 
 /**
+ * <code>UnivariateRealFunction</code>
  * <p>
  * An interface representing a univariate real function.
  * </p>
@@ -21,9 +22,9 @@ public interface UnivariateRealFunction {
      * @param x
      *            the point for which the function value should be computed
      * @return the value
-     * @throws FunctionEvaluationException
+     * @throws AnalysisException
      *             if the function evaluation fails
      */
-    double value(double x) throws FunctionEvaluationException;
+    double value(double x) throws AnalysisException;
 
 }
