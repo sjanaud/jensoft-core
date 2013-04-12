@@ -6,30 +6,32 @@
 package com.jensoft.core.plugin.function.analysis;
 
 /**
- * MathException
+ * <code>AnalysisException</code>
+ * 
+ * @author sebastien janaud
  */
 public class AnalysisException extends Exception {
 
-    /** serial version UID */
-    private static final long serialVersionUID = 2408507244771260618L;
+	/** uid */
+	private static final long serialVersionUID = -8953469060102183297L;
 
-    public AnalysisException() {
-        super();
-    }
+	public AnalysisException() {
+		super();
+	}
 
-    public AnalysisException(String message, Throwable cause) {
-        super(message, cause);
+	public AnalysisException(String message, Throwable cause) {
+		super(message, cause);
 
-    }
+	}
 
-    public AnalysisException(String message) {
-        super(message);
+	public AnalysisException(String message) {
+		super(message);
 
-    }
+	}
 
-    public AnalysisException(Throwable cause) {
-        super(cause);
+	public AnalysisException(Throwable cause) {
+		super(cause);
 
-    }
+	}
 
 }
