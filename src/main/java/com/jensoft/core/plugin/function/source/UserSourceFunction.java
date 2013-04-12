@@ -1,5 +1,7 @@
-/**
- * 
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
 package com.jensoft.core.plugin.function.source;
 
@@ -20,6 +22,14 @@ import com.jensoft.core.window.Window2D;
 /**
  * <code>UserSourceFunction</code> defines kind of sources with user inputs like
  * x or y values and sample increment to make some interpolation.
+ * <p>
+ * You can use 3 type of user source function
+ * </p>
+ * <ul>
+ * <li>link {@link LineSourceFunction}</li>
+ * <li>link {@link SplineSourceFunction}</li>
+ * <li>link {@link RegressionSourceFunction}</li>
+ * </ul>
  * 
  * @author sebastien janaud
  * 

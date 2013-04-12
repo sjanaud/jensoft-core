@@ -90,14 +90,7 @@ public abstract class AbstractSourceFunction implements SourceFunction {
 		this.currentFunction = currentFunction;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.jensoft.core.plugin.function.source.SourceFunction#getFunction()
-	 */
-	//@Override
-	//public abstract List<Point2D> getFunction();
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 

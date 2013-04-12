@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <code>CosinusSourceFunction</code>
+ * <code>MathSourceFunction</code> defines many kinds of commons math function.
  * 
  * @author Sebastien Janaud
  * 
