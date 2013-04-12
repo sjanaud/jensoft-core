@@ -26,7 +26,11 @@ import com.jensoft.core.plugin.function.Function;
  * </ul>
  * 
  * <p>
- *  {@link #getFunction()} method provides the point collection (x,y) that define this source function
+ *  {@link #getCurrentFunction()} method provides the source function points collection (x,y) that define this source function which is the solved for current window
+ * </p>
+ * 
+ * <p>
+ * {@link #solveFunction(double, double)} solved the source function on the given interval
  * </p>
  * 
  * @author Sebastien Janaud
