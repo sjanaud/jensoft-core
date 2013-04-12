@@ -3,13 +3,17 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.function.scatter;
+package com.jensoft.core.plugin.function;
 
 import java.awt.Color;
+import java.awt.Stroke;
 
 import com.jensoft.core.plugin.Toolkit;
-import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunctionPlugin;
-import com.jensoft.core.plugin.function.scatter.ScatterFunction.ScatterPoint;
+import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
+import com.jensoft.core.plugin.function.curve.CurveFunction;
+import com.jensoft.core.plugin.function.curve.painter.draw.CurveDefaultDraw;
+import com.jensoft.core.plugin.function.scatter.ScatterFunction;
 import com.jensoft.core.plugin.function.scatter.morphe.RectangleMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.ScatterMorphe;
 import com.jensoft.core.plugin.function.scatter.painter.ScatterDraw;
@@ -17,19 +21,118 @@ import com.jensoft.core.plugin.function.scatter.painter.ScatterFill;
 import com.jensoft.core.plugin.function.scatter.painter.fill.ScatterDefaultFill;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 
-/**
- * <code>ScatterFunctionToolkit</code>
- * 
- * @see ScatterPoint
- * @see ScatterFunction
- * @see ScatterFunctionPlugin
- * @see ScatterDraw
- * @see ScatterFill
- * @see ScatterMorphe
- * @author Sebastien Janaud
- */
-public class ScatterFunctionToolkit extends Toolkit {
+public class FunctionToolkit extends Toolkit {
 
+    /**
+     * create default curve with specified parameters
+     * 
+     * @param source
+     *            the curve source
+     * @return curve
+     */
+    public static CurveFunction createCurveFunction(SourceFunction source) {
+        CurveFunction curve = new CurveFunction(source);
+        curve.setThemeColor(Color.BLACK);
+        return curve;
+    }
+
+    /**
+     * create default curve with specified parameters
+     * 
+     * @param source
+     *            the curve source
+     * @param color
+     *            the curve color
+     * @return curve
+     */
+    public static CurveFunction createCurveFunction(SourceFunction source, Color color) {
+        CurveFunction curve = new CurveFunction(source);
+        curve.setThemeColor(color);
+        return curve;
+    }
+
+    /**
+     * create default curve with specified parameters
+     * 
+     * @param source
+     *            the curve source
+     * @param color
+     *            the curve color
+     * @param stroke
+     *            the curve stroke
+     * @return curve
+     */
+    public static CurveFunction createCurveFunction(SourceFunction source, Color color,
+            Stroke curveStroke) {
+        CurveFunction curve = new CurveFunction(source);
+        curve.setThemeColor(color);
+        curve.setCurveDraw(new CurveDefaultDraw(curveStroke));
+        return curve;
+    }
+
+    /**
+     * create default curve with specified parameters
+     * 
+     * @param source
+     *            the curve source
+     * @param color
+     *            the curve color
+     * @param curveDraw
+     *            the curve draw
+     * @return curve
+     */
+    public static CurveFunction createCurveFunction(SourceFunction source, Color color,CurveDefaultDraw curveDraw) {
+        CurveFunction curve = new CurveFunction(source);
+        curve.setThemeColor(color);
+        curve.setCurveDraw(curveDraw);
+        return curve;
+    }
+    
+    /**
+     * create default area curve with specified parameters
+     * 
+     * @param source
+     *            the area curve source
+     * @return area curve
+     */
+    public static AreaFunction createArea(SourceFunction source) {
+        AreaFunction curve = new AreaFunction(source);
+        curve.setThemeColor(Color.BLACK);
+        return curve;
+    }
+
+    /**
+     * create default curve with specified parameters
+     * 
+     * @param source
+     *            the curve source
+     * @param color
+     *            the curve color
+     * @return curve
+     */
+    public static AreaFunction createArea(SourceFunction source, Color color) {
+        AreaFunction curve = new AreaFunction(source);
+        curve.setThemeColor(color);
+        return curve;
+    }
+
+    /**
+     * create default curve with specified parameters
+     * 
+     * @param source
+     *            the curve source
+     * @param color
+     *            the curve color
+     * @return curve
+     */
+    public static AreaFunction createArea(SourceFunction source, Color color,
+            AbstractAreaDraw curveAreaDraw) {
+        AreaFunction curve = new AreaFunction(source);
+        curve.setAreaDraw(curveAreaDraw);
+        curve.setThemeColor(color);
+        return curve;
+    }
+    
     /**
      * create default curve with specified parameters
      * 
