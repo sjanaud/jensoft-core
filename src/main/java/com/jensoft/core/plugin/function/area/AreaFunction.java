@@ -18,7 +18,7 @@ import com.jensoft.core.plugin.function.area.painter.AreaEffect;
 import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
 import com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
 import com.jensoft.core.plugin.function.core.Function;
-import com.jensoft.core.plugin.function.source.AffineSourceFunction;
+import com.jensoft.core.plugin.function.source.LineSourceFunction;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.RegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
@@ -43,7 +43,7 @@ import com.jensoft.core.plugin.function.source.SplineSourceFunction;
  * </p>
  * 
  * @see SourceFunction
- * @see AffineSourceFunction
+ * @see LineSourceFunction
  * @see SplineSourceFunction
  * @see RegressionSourceFunction
  * @see AreaFunctionToolkit
@@ -204,9 +204,9 @@ public class AreaFunction extends Function {
 
 	
 	private Point2D minFunction() {
-		Point2D minFunction = getSourceFunction().getFunction().get(0);
+		Point2D minFunction = getSourceFunction().getCurrentFunction().get(0);
 		if (FunctionNature.XFunction == getSourceFunction().getNature()) {
-			for (Point2D p : getSourceFunction().getFunction()) {
+			for (Point2D p : getSourceFunction().getCurrentFunction()) {
 				if (p.getY() < minFunction.getY()) {
 					minFunction = p;
 				}
@@ -214,7 +214,7 @@ public class AreaFunction extends Function {
 
 		}
 		if (FunctionNature.YFunction == getSourceFunction().getNature()) {
-			for (Point2D p : getSourceFunction().getFunction()) {
+			for (Point2D p : getSourceFunction().getCurrentFunction()) {
 				if (p.getX() < minFunction.getX()) {
 					minFunction = p;
 				}
@@ -237,8 +237,8 @@ public class AreaFunction extends Function {
 		Shape curvePath = getPathFunction().getOrCreateGeometry().getPath();
 		//Point2D minSource = getSourceFunction().first();
 		//Point2D maxSource = getSourceFunction().last();
-		Point2D minSource = getSourceFunction().getFunction().get(0);
-		Point2D maxSource = getSourceFunction().getFunction().get(getSourceFunction().getFunction().size()-1);
+		Point2D minSource = getSourceFunction().getCurrentFunction().get(0);
+		Point2D maxSource = getSourceFunction().getCurrentFunction().get(getSourceFunction().getCurrentFunction().size()-1);
 		Point2D deviceAreaMin = getHost().getWindow2D().userToPixel(minSource);
 		Point2D deviceAreaMax = getHost().getWindow2D().userToPixel(maxSource);
 

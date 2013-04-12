@@ -24,8 +24,8 @@ import com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
-import com.jensoft.core.plugin.function.source.AffineSourceFunction;
-import com.jensoft.core.plugin.function.source.LinearRegressionSourceFunction;
+import com.jensoft.core.plugin.function.source.LineSourceFunction;
+import com.jensoft.core.plugin.function.source.RegressionSourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.SourceFunctionToolkit;
 import com.jensoft.core.plugin.function.source.SplineSourceFunction;
@@ -158,7 +158,7 @@ public class FunctionUtil implements X2DFunctionElement{
     }
 
     /**
-     * inflate {@link AffineSourceFunction}
+     * inflate {@link LineSourceFunction}
      * 
      * @param curveSerieElement
      * @return serie
@@ -204,7 +204,7 @@ public class FunctionUtil implements X2DFunctionElement{
      *            the element to parse
      * @return the serie
      */
-    private static AffineSourceFunction inflateSerie2D(Element serieElement) {
+    private static LineSourceFunction inflateSerie2D(Element serieElement) {
 
         String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
         String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
@@ -264,7 +264,7 @@ public class FunctionUtil implements X2DFunctionElement{
      *            the element to parse
      * @return the serie
      */
-    private static LinearRegressionSourceFunction inflateRegressionSerie(Element serieElement) {
+    private static RegressionSourceFunction inflateRegressionSerie(Element serieElement) {
         String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
         String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
         Double delta = elementDouble(serieElement, ELEMENT_SOURCEFUNCTION_REGRESSION_DELTA);

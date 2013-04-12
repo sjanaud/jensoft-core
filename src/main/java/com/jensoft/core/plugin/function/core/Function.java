@@ -77,6 +77,7 @@ public abstract class Function {
      */
     public void setSourceFunction(SourceFunction sourceFunction) {
         this.sourceFunction = sourceFunction;
+        this.sourceFunction.setHost(this);
         pathFunction.setSource(sourceFunction);
     }
 

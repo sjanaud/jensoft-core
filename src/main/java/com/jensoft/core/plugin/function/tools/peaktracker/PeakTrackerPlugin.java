@@ -312,10 +312,10 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
             if (trackedSource == null) {
                 return;
             }
-            if (trackedSource.getFunction() == null) {
+            if (trackedSource.getCurrentFunction() == null) {
                 return;
             }
-            if (trackedSource.getFunction().size() == 0) {
+            if (trackedSource.getCurrentFunction().size() == 0) {
                 return;
             }
             
@@ -323,11 +323,11 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
             int indexMax = 0;
             int indexMin = 0;
             if(trackedSource.getNature() == FunctionNature.XFunction) {
-            	double max = trackedSource.getFunction().get(0).getY();
-                double min = trackedSource.getFunction().get(0).getY();
-                for (int i = 0; i < trackedSource.getFunction().size(); i++) {
+            	double max = trackedSource.getCurrentFunction().get(0).getY();
+                double min = trackedSource.getCurrentFunction().get(0).getY();
+                for (int i = 0; i < trackedSource.getCurrentFunction().size(); i++) {
 
-                    Point2D p = trackedSource.getFunction().get(i);
+                    Point2D p = trackedSource.getCurrentFunction().get(i);
 
                     if (p.getY() > max) {
                         indexMax = i;
@@ -340,11 +340,11 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
                 }
             }
             else{
-            	double max = trackedSource.getFunction().get(0).getX();
-                double min = trackedSource.getFunction().get(0).getX();
-                for (int i = 0; i < trackedSource.getFunction().size(); i++) {
+            	double max = trackedSource.getCurrentFunction().get(0).getX();
+                double min = trackedSource.getCurrentFunction().get(0).getX();
+                for (int i = 0; i < trackedSource.getCurrentFunction().size(); i++) {
 
-                    Point2D p = trackedSource.getFunction().get(i);
+                    Point2D p = trackedSource.getCurrentFunction().get(i);
 
                     if (p.getX() > max) {
                         indexMax = i;
@@ -357,8 +357,8 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
                 }
             }
             
-            Point2D p2dUserMax = trackedSource.getFunction().get(indexMax);
-            Point2D p2dUserMin = trackedSource.getFunction().get(indexMin);
+            Point2D p2dUserMax = trackedSource.getCurrentFunction().get(indexMax);
+            Point2D p2dUserMin = trackedSource.getCurrentFunction().get(indexMin);
 
             Point2D p2dDeviceMax = getWindow2D().userToPixel(p2dUserMax);
             Point2D p2dDeviceMin = getWindow2D().userToPixel(p2dUserMin);

@@ -416,9 +416,9 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 		}
 		List<Point2D> entries;
 		if (sourceFunction.getNature() == FunctionNature.XFunction) {
-			entries = sourceFunction.select(getWindow2d().getMinX(), getWindow2d().getMaxX());
+			entries = sourceFunction.solveFunction(getWindow2d().getMinX(), getWindow2d().getMaxX());
 		} else {
-			entries = sourceFunction.select(getWindow2d().getMinY(), getWindow2d().getMaxY());
+			entries = sourceFunction.solveFunction(getWindow2d().getMinY(), getWindow2d().getMaxY());
 		}
 
 		List<Point2D> src = new ArrayList<Point2D>();

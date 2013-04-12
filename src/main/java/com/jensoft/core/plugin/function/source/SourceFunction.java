@@ -8,18 +8,20 @@ package com.jensoft.core.plugin.function.source;
 import java.awt.geom.Point2D;
 import java.util.List;
 
+import com.jensoft.core.plugin.function.core.Function;
+
 /**
  * <code>SourceFunction</code> defines a collection of points (x,y) for source function y=f(x) or x=f(y)
  * 
  * <h3>X Function<h3>
  * <ul>
- * <li>only and only one point P(x,y=f(x)) for given x value</li>
+ * <li>only and only one Y point P(x,y=f(x)) for given x value</li>
  * <li>sort by x</li>
  * </ul>
  * 
  * <h3>Y Function<h3>
  * <ul>
- * <li>only and only one point P(x=f(y),y) for given y value</li>
+ * <li>only and only one X point P(x=f(y),y) for given y value</li>
  * <li>sort by y</li>
  * </ul>
  * 
@@ -31,35 +33,26 @@ import java.util.List;
  */
 public interface SourceFunction {
 	
-	/**get nature of this source function*/
+	/**get nature of this source function, for nature convention  x [y=f(x)] or y [x=f(y)] */
 	public FunctionNature getNature();
 
-    /** return all known points for this function*/
-    public List<Point2D> getFunction();
+    /** return the current solved function*/
+    //public List<Point2D> getFunction();
+    
+    /** return the current solved function*/
+    public List<Point2D> getCurrentFunction();
+    
+    /**return the host function for this source*/
+    public Function getHost();
+    
+    /**set the host function function for this source*/
+    public void setHost(Function function);
 
     /** select by x or y (depends of nature) the points of the given range */
-    public List<Point2D> select(double start, double end);
+    public List<Point2D> solveFunction(double start, double end);
 
     /** evaluate the function point (x,y) for the specified x or y (depends on function nature x or y) */
     public Point2D evaluate(double value);
-
-    /** get next point in the source after the specified x or y (depends on function nature x or y)*/
-    //public Point2D next(double value);
-
-    /** get previous point in the source before specified x or y (depends on function nature x or y)*/
-    //public Point2D previous(double value);
-
-    /** return point corresponding to the min x or y (depends on function nature x or y), assumes that source is sorted*/
-    //public Point2D first();
-
-    /** return point corresponding to the max x or y (depends on function nature x or y), assumes that source is sorted */
-    //public Point2D last();
-
-    /** return point corresponding to the min peak of function (depends on function nature x or y)*/
-   // public Point2D minFunction();
-    
-    /** return point corresponding to the max peak of function (depends on function nature x or y)*/
-    //public Point2D maxFunction();
 
     /** return the source name */
     public String getName();

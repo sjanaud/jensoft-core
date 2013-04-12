@@ -7,7 +7,6 @@ package com.jensoft.core.plugin.function.source;
 
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import com.jensoft.core.plugin.function.analysis.SimpleRegression;
@@ -18,13 +17,10 @@ import com.jensoft.core.plugin.function.analysis.SimpleRegression;
  * 
  * @author sebastien janaud
  */
-public class RegressionSourceFunction extends AffineSourceFunction {
+public class RegressionSourceFunction extends LineSourceFunction {
 
 	/** simple regression */
 	private SimpleRegression regression = null;	
-
-	/** interpolate segment */
-	private List<Point2D> interpolateFunction = new ArrayList<Point2D>();
 
 	/** the interpolate increment */
 	private double delta;
@@ -38,7 +34,6 @@ public class RegressionSourceFunction extends AffineSourceFunction {
 	public RegressionSourceFunction(List<Point2D> userSource, double delta) {
 		super(userSource);
 		this.delta = delta;
-		interpolateFunction = new ArrayList<Point2D>();
 	}
 
 	
@@ -49,52 +44,36 @@ public class RegressionSourceFunction extends AffineSourceFunction {
 	public void setSource(List<Point2D> source) {
 		super.setSource(source);
 		regression = null;
-		interpolateFunction.clear();
+		clearCurrentFunction();
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#setNature(com.jensoft.core.plugin.function.source.FunctionNature)
+	 * @see com.jensoft.core.plugin.function.source.LineSourceFunction#solveFunction(double, double)
 	 */
 	@Override
-	public void setNature(FunctionNature nature) {
-		super.setNature(nature);
-		regression = null;
-		interpolateFunction.clear();
-	}
-
-	
-	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.function.source.AffineSourceFunction#getSource()
-	 */
-	@Override
-	public List<Point2D> getFunction() {
+	public List<Point2D> solveFunction(double start, double end) {
 		if(regression == null){
 			createInterpolateFunction();
 		}
 		if(regression == null){
 			return getSource();
-		}
-		if (interpolateFunction.size() > 0) {
-			return interpolateFunction;
-		}
-		if(getSource() == null){
-			return Collections.EMPTY_LIST;
-		}
-		
+		}		
+		List<Point2D> newFunction = new ArrayList<Point2D>();
 		Point2D pd2Min = getSource().get(0);
 		Point2D pd2Max = getSource().get(getSource().size()-1);
 		if (getNature() == FunctionNature.XFunction) {
 			for (double x = pd2Min.getX(); x <= pd2Max.getX(); x = x + delta) {
-				interpolateFunction.add(new Point2D.Double(x, regression.predict(x)));
+				newFunction.add(new Point2D.Double(x, regression.predict(x)));
 			}
 		} else {
 			for (double y = pd2Min.getY(); y <= pd2Max.getY(); y = y + delta) {
-				interpolateFunction.add(new Point2D.Double(regression.predict(y), y));
+				newFunction.add(new Point2D.Double(regression.predict(y), y));
 			}
 		}
 		
-		return interpolateFunction;
+		return newFunction;
 	}
+	
 
 	
 	/* (non-Javadoc)
@@ -122,9 +101,9 @@ public class RegressionSourceFunction extends AffineSourceFunction {
 	 */
 	public void createInterpolateFunction() {
 		regression = new SimpleRegression();
-		List<Point2D> userSource = super.getFunction();
-		for (int i = 0; i < userSource.size(); i++) {
-			Point2D p2d = userSource.get(i);
+		List<Point2D> source = getSource();
+		for (int i = 0; i < source.size(); i++) {
+			Point2D p2d = source.get(i);
 			regression.addData(p2d.getX(), p2d.getY());
 		}
 	}
