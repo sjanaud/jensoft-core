@@ -8,6 +8,7 @@ package com.jensoft.core.plugin.function.analysis;
 import java.util.Arrays;
 
 /**
+ * <code>PolynomialSplineFunction</code>
  * Represents a polynomial spline function.
  * <p>
  * A <strong>polynomial spline function</strong> consists of a set of <i>interpolating polynomials</i> and an ascending

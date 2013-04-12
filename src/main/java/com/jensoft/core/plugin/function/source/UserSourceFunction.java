@@ -10,8 +10,7 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import com.jensoft.core.plugin.function.analysis.FunctionEvaluationException;
-import com.jensoft.core.plugin.function.analysis.MathException;
+import com.jensoft.core.plugin.function.analysis.AnalysisException;
 import com.jensoft.core.plugin.function.analysis.SimpleRegression;
 import com.jensoft.core.plugin.function.analysis.SplineInterpolator;
 import com.jensoft.core.plugin.function.analysis.UnivariateRealFunction;
@@ -691,7 +690,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 				} else {
 					evaluatePoint = new Point2D.Double(evaluateFunction.value(value), value);
 				}
-			} catch (FunctionEvaluationException e) {
+			} catch (AnalysisException e) {
 			}
 			return evaluatePoint;
 		}
@@ -725,7 +724,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 							interpolateSource.add(new Point2D.Double(x, evaluateFunction.value(x)));
 						}
 
-					} catch (FunctionEvaluationException e) {
+					} catch (AnalysisException e) {
 						return getSource();
 					}
 				}
@@ -736,7 +735,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 							interpolateSource.add(new Point2D.Double(evaluateFunction.value(y), y));
 						}
 
-					} catch (FunctionEvaluationException e) {
+					} catch (AnalysisException e) {
 						return getSource();
 					}
 				}
@@ -765,7 +764,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 				} else {
 					evaluateFunction = interpolator.interpolate(yValues, xValues);
 				}
-			} catch (MathException e) {
+			} catch (AnalysisException e) {
 			}
 		}
 

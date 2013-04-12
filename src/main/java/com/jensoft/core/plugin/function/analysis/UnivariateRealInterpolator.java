@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.function.analysis;
 
 /**
+ * <code>UnivariateRealInterpolator</code>
  * <p>
  * Interface representing a univariate real interpolator
  * </p>
@@ -23,10 +24,10 @@ public interface UnivariateRealInterpolator {
      * @param yval
      *            the values for the interpolation points
      * @return a function which interpolates the data set
-     * @throws MathException
+     * @throws AnalysisException
      *             if arguments violate assumptions made by the interpolation
      *             algorithm
      */
     UnivariateRealFunction interpolate(double xval[], double yval[])
-            throws MathException;
+            throws AnalysisException;
 }

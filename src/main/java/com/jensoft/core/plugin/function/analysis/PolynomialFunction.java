@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Arrays;
 
 /**
- * PolynomialFunction
+ * <code>PolynomialFunction</code>
  */
 public class PolynomialFunction implements
         DifferentiableUnivariateRealFunction, Serializable {

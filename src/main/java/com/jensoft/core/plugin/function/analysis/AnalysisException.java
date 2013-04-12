@@ -8,26 +8,26 @@ package com.jensoft.core.plugin.function.analysis;
 /**
  * MathException
  */
-public class MathException extends Exception {
+public class AnalysisException extends Exception {
 
     /** serial version UID */
     private static final long serialVersionUID = 2408507244771260618L;
 
-    public MathException() {
+    public AnalysisException() {
         super();
     }
 
-    public MathException(String message, Throwable cause) {
+    public AnalysisException(String message, Throwable cause) {
         super(message, cause);
 
     }
 
-    public MathException(String message) {
+    public AnalysisException(String message) {
         super(message);
 
     }
 
-    public MathException(Throwable cause) {
+    public AnalysisException(Throwable cause) {
         super(cause);
 
     }

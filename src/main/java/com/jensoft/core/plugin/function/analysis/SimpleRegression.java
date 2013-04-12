@@ -8,6 +8,7 @@ package com.jensoft.core.plugin.function.analysis;
 import java.io.Serializable;
 
 /**
+ * <code>SimpleRegression</code>
  * Estimates an ordinary least squares regression model with one independent
  * variable.
  * <p>

@@ -6,16 +6,17 @@
 package com.jensoft.core.plugin.function.analysis;
 
 /**
- * representing a differentiable univariate real function.
+ * <code>DifferentiableUnivariateRealFunction</code> representing a
+ * differentiable univariate real function.
+ * 
  */
-public interface DifferentiableUnivariateRealFunction extends
-        UnivariateRealFunction {
+public interface DifferentiableUnivariateRealFunction extends UnivariateRealFunction {
 
-    /**
-     * Returns the derivative of the function
-     * 
-     * @return the derivative function
-     */
-    UnivariateRealFunction derivative();
+	/**
+	 * Returns the derivative of the function
+	 * 
+	 * @return the derivative function
+	 */
+	UnivariateRealFunction derivative();
 
 }
