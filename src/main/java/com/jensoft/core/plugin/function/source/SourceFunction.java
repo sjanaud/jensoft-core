@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.function.source;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.plugin.function.core.Function;
+import com.jensoft.core.plugin.function.Function;
 
 /**
  * <code>SourceFunction</code> defines a collection of points (x,y) for source function y=f(x) or x=f(y)

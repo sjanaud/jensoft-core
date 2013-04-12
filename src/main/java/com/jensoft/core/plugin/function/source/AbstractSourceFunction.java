@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.function.source;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.plugin.function.core.Function;
+import com.jensoft.core.plugin.function.Function;
 import com.jensoft.core.window.Window2D;
 
 /**

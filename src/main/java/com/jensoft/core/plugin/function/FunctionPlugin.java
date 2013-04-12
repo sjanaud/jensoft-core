@@ -16,8 +16,6 @@ import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.function.area.AreaFunction;
-import com.jensoft.core.plugin.function.core.Function;
-import com.jensoft.core.plugin.function.core.MetricsPathFunction;
 import com.jensoft.core.plugin.function.curve.CurveFunction;
 import com.jensoft.core.plugin.function.scatter.ScatterFunction;
 import com.jensoft.core.plugin.function.scatter.ScatterFunction.ScatterPoint;
