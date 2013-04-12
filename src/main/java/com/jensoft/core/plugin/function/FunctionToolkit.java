@@ -93,39 +93,39 @@ public class FunctionToolkit extends Toolkit {
      * 
      * @param source
      *            the area curve source
-     * @return area curve
+     * @return area
      */
-    public static AreaFunction createArea(SourceFunction source) {
+    public static AreaFunction createAreaFunction(SourceFunction source) {
         AreaFunction curve = new AreaFunction(source);
         curve.setThemeColor(Color.BLACK);
         return curve;
     }
 
     /**
-     * create default curve with specified parameters
+     * create default area with specified parameters
      * 
      * @param source
      *            the curve source
      * @param color
      *            the curve color
-     * @return curve
+     * @return area
      */
-    public static AreaFunction createArea(SourceFunction source, Color color) {
+    public static AreaFunction createAreaFunction(SourceFunction source, Color color) {
         AreaFunction curve = new AreaFunction(source);
         curve.setThemeColor(color);
         return curve;
     }
 
     /**
-     * create default curve with specified parameters
+     * create default area with specified parameters
      * 
      * @param source
      *            the curve source
      * @param color
      *            the curve color
-     * @return curve
+     * @return area
      */
-    public static AreaFunction createArea(SourceFunction source, Color color,
+    public static AreaFunction createAreaFunction(SourceFunction source, Color color,
             AbstractAreaDraw curveAreaDraw) {
         AreaFunction curve = new AreaFunction(source);
         curve.setAreaDraw(curveAreaDraw);
