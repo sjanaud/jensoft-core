@@ -5,11 +5,11 @@
  */
 package com.jensoft.core.x2d.inflater.function;
 
-import com.jensoft.core.plugin.function.curve.CurveFunction;
+import com.jensoft.core.plugin.function.curve.Curve;
 
 
 /**
- * <code>X2DCurveElement</code> defines {@link CurveFunction} related elements names that should be used in any XML x2d
+ * <code>X2DCurveElement</code> defines {@link Curve} related elements names that should be used in any XML x2d
  * view
  * document and curve particular purpose.
  * 

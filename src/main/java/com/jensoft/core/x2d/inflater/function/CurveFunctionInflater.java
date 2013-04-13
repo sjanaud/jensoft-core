@@ -13,8 +13,8 @@ import org.w3c.dom.NodeList;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.plugin.function.FunctionPlugin;
-import com.jensoft.core.plugin.function.FunctionPlugin.CurveFunctionPlugin;
-import com.jensoft.core.plugin.function.curve.CurveFunction;
+import com.jensoft.core.plugin.function.FunctionPlugin.CurveFunction;
+import com.jensoft.core.plugin.function.curve.Curve;
 import com.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw;
 import com.jensoft.core.plugin.function.curve.painter.draw.CurveDefaultDraw;
 import com.jensoft.core.plugin.function.source.SourceFunction;
@@ -27,13 +27,13 @@ import com.jensoft.core.x2d.inflater.X2DInflater;
  * @author Sebastien Janaud
  */
 @X2DInflater(xsi="CurvePlugin")
-public class CurveFunctionInflater extends AbstractX2DPluginInflater<CurveFunctionPlugin> implements X2DCurveElement {
+public class CurveFunctionInflater extends AbstractX2DPluginInflater<CurveFunction> implements X2DCurveElement {
 
     /**
      * create curve inflater
      */
     public CurveFunctionInflater() {
-        setPlugin(new FunctionPlugin.CurveFunctionPlugin());
+        setPlugin(new FunctionPlugin.CurveFunction());
         setXSIType("CurvePlugin");
     }
 
@@ -46,7 +46,7 @@ public class CurveFunctionInflater extends AbstractX2DPluginInflater<CurveFuncti
         NodeList curveElementList = pluginElement.getElementsByTagName(ELEMENT_CURVE_FUNCTION);
         for (int i = 0; i < curveElementList.getLength(); i++) {
             Element curveElement = (Element) curveElementList.item(i);
-            CurveFunction function = inflateFunction(curveElement);
+            Curve function = inflateFunction(curveElement);
             if (function != null) {
                 getPlugin().addFunction(function);
             }
@@ -80,13 +80,13 @@ public class CurveFunctionInflater extends AbstractX2DPluginInflater<CurveFuncti
     }
 
     /**
-     * inflate {@link CurveFunction}
+     * inflate {@link Curve}
      * 
      * @param curveFunctionElement
      *            the curve function element to inflate
      * @return curve function
      */
-    private CurveFunction inflateFunction(Element curveFunctionElement) {
+    private Curve inflateFunction(Element curveFunctionElement) {
 
         Element sourceFunctionElement = (Element) curveFunctionElement.getElementsByTagName(ELEMENT_SOURCE_FUNCTION)
                 .item(0);
@@ -94,7 +94,7 @@ public class CurveFunctionInflater extends AbstractX2DPluginInflater<CurveFuncti
         if (sourceFunction == null) {
             return null;
         }
-        CurveFunction areaFunction = new CurveFunction(sourceFunction);
+        Curve areaFunction = new Curve(sourceFunction);
 
         String name = elementText(curveFunctionElement, ELEMENT_CURVE_NAME);
         areaFunction.setName(name);

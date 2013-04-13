@@ -46,16 +46,16 @@ import com.jensoft.core.plugin.donut3d.Donut3DToolkit;
 import com.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel;
 import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 import com.jensoft.core.plugin.function.FunctionPlugin;
-import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunctionPlugin;
-import com.jensoft.core.plugin.function.FunctionPlugin.CurveFunctionPlugin;
-import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunctionPlugin;
+import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
+import com.jensoft.core.plugin.function.FunctionPlugin.CurveFunction;
+import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
 import com.jensoft.core.plugin.function.FunctionToolkit;
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 import com.jensoft.core.plugin.function.area.painter.draw.AreaDefaultDraw;
 import com.jensoft.core.plugin.function.area.painter.fill.AreaGradientFill;
-import com.jensoft.core.plugin.function.curve.CurveFunction;
+import com.jensoft.core.plugin.function.curve.Curve;
 import com.jensoft.core.plugin.function.curve.painter.draw.CurveDefaultDraw;
-import com.jensoft.core.plugin.function.scatter.ScatterFunction;
+import com.jensoft.core.plugin.function.scatter.Scatter;
 import com.jensoft.core.plugin.function.scatter.morphe.EllipseMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.QInverseMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.QStarMorphe;
@@ -827,7 +827,7 @@ public class ExamplePortfolioViews {
 		westMetrics.setMetricsFont(font);
 		westMetrics.registerMetricsModels(MetricsModelRangeCollections.NanoGiga);
 
-		FunctionPlugin curveFunctions = new CurveFunctionPlugin();
+		FunctionPlugin curveFunctions = new CurveFunction();
 		window.registerPlugin(curveFunctions);
 
 		RoundViewFill roundViewFill = new RoundViewFill();
@@ -849,14 +849,14 @@ public class ExamplePortfolioViews {
 		double[] xValues3 = { 0, 1.4, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 		double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 5, 7, 9, 2, 4, 1 };
 
-		UserSourceFunction source1 = new UserSourceFunction.SplineSourceFunction(xValues1, yValues1, 0.1);
-		UserSourceFunction source2 = new UserSourceFunction.SplineSourceFunction(xValues2, yValues2, 0.1);
-		UserSourceFunction source3 = new UserSourceFunction.SplineSourceFunction(xValues3, yValues3, 0.1);
+		UserSourceFunction source1 = new UserSourceFunction.SplineSource(xValues1, yValues1, 0.1);
+		UserSourceFunction source2 = new UserSourceFunction.SplineSource(xValues2, yValues2, 0.1);
+		UserSourceFunction source3 = new UserSourceFunction.SplineSource(xValues3, yValues3, 0.1);
 
 		// create curves
-		CurveFunction curve1 = FunctionToolkit.createCurveFunction(source1, PetalPalette.PETAL1_HC, new CurveDefaultDraw());
-		CurveFunction curve2 = FunctionToolkit.createCurveFunction(source2, PetalPalette.PETAL2_HC, new CurveDefaultDraw());
-		CurveFunction curve3 = FunctionToolkit.createCurveFunction(source3, PetalPalette.PETAL3_HC, new CurveDefaultDraw());
+		Curve curve1 = FunctionToolkit.createCurveFunction(source1, PetalPalette.PETAL1_HC, new CurveDefaultDraw());
+		Curve curve2 = FunctionToolkit.createCurveFunction(source2, PetalPalette.PETAL2_HC, new CurveDefaultDraw());
+		Curve curve3 = FunctionToolkit.createCurveFunction(source3, PetalPalette.PETAL3_HC, new CurveDefaultDraw());
 
 		// add curves in curve view
 		curveFunctions.addFunction(curve1);
@@ -976,16 +976,16 @@ public class ExamplePortfolioViews {
 		window.setThemeColor(RosePalette.LIME);
 		view.setBackgroundPainter(roundViewFill);
 
-		AreaFunctionPlugin areaFunctions = new AreaFunctionPlugin();
+		AreaFunction areaFunctions = new AreaFunction();
 		window.registerPlugin(areaFunctions);
 
 		// source function
 		double[] xValues1 = { 0, 1, 2, 3, 4, 5.2, 6, 7, 8, 9, 10 };
 		double[] yValues1 = { 3, 1, 5, 4, 4.8, 7.3, 2, 3, 7, 10, 6 };
-		UserSourceFunction source = new UserSourceFunction.SplineSourceFunction(xValues1, yValues1, 0.1);
+		UserSourceFunction source = new UserSourceFunction.SplineSource(xValues1, yValues1, 0.1);
 
 		// CREATE CURVE
-		AreaFunction areaCurve = new AreaFunction(source);
+		Area areaCurve = new Area(source);
 		areaCurve.setAreaFill(new AreaGradientFill());
 		areaCurve.setAreaDraw(new AreaDefaultDraw(Color.WHITE, new BasicStroke(1f)));
 		areaCurve.setThemeColor(FilPalette.GREEN4);
@@ -1080,7 +1080,7 @@ public class ExamplePortfolioViews {
 		westMetrics.setMetricsFont(font);
 		westMetrics.registerMetricsModels(MetricsModelRangeCollections.NanoGiga);
 
-		AreaFunctionPlugin areaFunctions = new AreaFunctionPlugin();
+		AreaFunction areaFunctions = new AreaFunction();
 		window.registerPlugin(areaFunctions);
 
 		RoundViewFill roundViewFill = new RoundViewFill();
@@ -1101,9 +1101,9 @@ public class ExamplePortfolioViews {
 		double[] xValues3 = { 0, 1.4, 2, 3, 4, 5, 6, 6.5, 7, 8, 9, 10 };
 		double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 1, 4, 7, 9, 2, 4, 1 };
 
-		UserSourceFunction source1 = new UserSourceFunction.SplineSourceFunction(xValues1, yValues1, 0.1);
-		UserSourceFunction source2 = new UserSourceFunction.SplineSourceFunction(xValues2, yValues2, 0.1);
-		UserSourceFunction source3 = new UserSourceFunction.SplineSourceFunction(xValues3, yValues3, 0.1);
+		UserSourceFunction source1 = new UserSourceFunction.SplineSource(xValues1, yValues1, 0.1);
+		UserSourceFunction source2 = new UserSourceFunction.SplineSource(xValues2, yValues2, 0.1);
+		UserSourceFunction source3 = new UserSourceFunction.SplineSource(xValues3, yValues3, 0.1);
 
 		// CURVES STROKES
 		Stroke sDash1 = new BasicStroke(2f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND, 10, new float[] { 40, 5, 2, 5 }, 0);
@@ -1111,19 +1111,19 @@ public class ExamplePortfolioViews {
 		Stroke sDash3 = new BasicStroke(2f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND, 10, new float[] { 6, 3, 6, 3 }, 0);
 
 		// CREATE CURVES
-		AreaFunction curve1 = new AreaFunction(source1);
+		Area curve1 = new Area(source1);
 		curve1.setThemeColor(NanoChromatique.BLUE);
 		// curve1.setAreaDraw(new AreaDefaultDraw(Color.WHITE,sDash1));
 		curve1.setAreaFill(new AreaGradientFill());
 		curve1.setAreaBase(-3);
 
-		AreaFunction curve2 = new AreaFunction(source2);
+		Area curve2 = new Area(source2);
 		curve2.setThemeColor(NanoChromatique.GREEN);
 		// curve2.setAreaDraw(new AreaDefaultDraw(Color.WHITE,sDash2));
 		curve2.setAreaFill(new AreaGradientFill());
 		curve2.setAreaBase(-3);
 
-		AreaFunction curve3 = new AreaFunction(source3);
+		Area curve3 = new Area(source3);
 		curve3.setThemeColor(FilPalette.GRAY6);
 		// curve3.setAreaDraw(new AreaDefaultDraw(Color.WHITE,sDash3));
 		curve3.setAreaFill(new AreaGradientFill());
@@ -1234,7 +1234,7 @@ public class ExamplePortfolioViews {
 		westMetrics.registerMetricsModels(MetricsModelRangeCollections.NanoGiga);
 
 		// scatter function plug-in
-		ScatterFunctionPlugin scatters = new ScatterFunctionPlugin();
+		ScatterFunction scatters = new ScatterFunction();
 		window.registerPlugin(scatters);
 
 		RoundViewFill roundViewFill = new RoundViewFill();
@@ -1264,21 +1264,21 @@ public class ExamplePortfolioViews {
 		double[] yValues3 = { 0.4, 7.5, 5, 1, 2.8, 5, 7, 9, 2, 4, 1 };
 
 		// source function
-		UserSourceFunction source1 = new UserSourceFunction.SplineSourceFunction(xValues1, yValues1, 0.1);
-		UserSourceFunction source2 = new UserSourceFunction.SplineSourceFunction(xValues2, yValues2, 0.1);
-		UserSourceFunction source3 = new UserSourceFunction.SplineSourceFunction(xValues3, yValues3, 0.1);
+		UserSourceFunction source1 = new UserSourceFunction.SplineSource(xValues1, yValues1, 0.1);
+		UserSourceFunction source2 = new UserSourceFunction.SplineSource(xValues2, yValues2, 0.1);
+		UserSourceFunction source3 = new UserSourceFunction.SplineSource(xValues3, yValues3, 0.1);
 
-		ScatterFunction scatter1 = new ScatterFunction(source1);
+		Scatter scatter1 = new Scatter(source1);
 		scatter1.setThemeColor(Spectral.SPECTRAL_GREEN);
 		scatter1.setScatterFill(new ScatterDefaultFill());
 		scatter1.setScatterMorphe(new QInverseMorphe(5, 3));
 
-		ScatterFunction scatter2 = new ScatterFunction(source2);
+		Scatter scatter2 = new Scatter(source2);
 		scatter2.setThemeColor(Spectral.SPECTRAL_RED.brighter());
 		scatter2.setScatterFill(new ScatterDefaultFill());
 		scatter2.setScatterMorphe(new QStarMorphe(3, 6, 5));
 
-		ScatterFunction scatter3 = new ScatterFunction(source3);
+		Scatter scatter3 = new Scatter(source3);
 		scatter3.setThemeColor(Spectral.SPECTRAL_YELLOW.brighter());
 		scatter3.setScatterFill(new ScatterDefaultFill());
 		scatter3.setScatterMorphe(new EllipseMorphe(8, 8));

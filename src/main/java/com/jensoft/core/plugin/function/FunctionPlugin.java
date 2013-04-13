@@ -257,8 +257,10 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
      * @param function
      */
     public void addFunction(F function) {
-        function.setHost(this);
-        functions.add(function);
+    	if(!functions.contains(function)){
+    		function.setHost(this);
+            functions.add(function);	
+    	}        
     }
 
     /**
