@@ -7,26 +7,25 @@ package com.jensoft.core.plugin.function.area;
 
 import java.awt.Rectangle;
 import java.awt.Shape;
-import java.awt.geom.Area;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.plugin.function.Function;
-import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunctionPlugin;
+import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
 import com.jensoft.core.plugin.function.area.painter.AreaEffect;
 import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
 import com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSourceFunction;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSourceFunction;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSource;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSource;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSource;
 
 /**
  * <code>AreaFunction</code> defines an area function that can be added in
- * {@link AreaFunctionPlugin}<br>
+ * {@link AreaFunction}<br>
  * <br>
  * <center><img src="doc-files/simpleAreaCurve.png"/></center> <br>
  * <br>
@@ -34,26 +33,26 @@ import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSourceFu
  * <center><img src="doc-files/multipleAreaCurve.png"/></center> <br>
  * <br>
  * <p>
- * to add a new area curve into AreaCurvePlugin, Create {@link AreaFunction} and
+ * to add a new area curve into AreaCurvePlugin, Create {@link Area} and
  * add them to plugin with this method
- * {@link AreaFunctionPlugin#addFunction(AreaFunction)}
+ * {@link AreaFunction#addFunction(Area)}
  * </p>
  * <p>
  * AreaCurve use {@link SourceFunction} to define curve points.
  * </p>
  * 
  * @see SourceFunction
- * @see LineSourceFunction
- * @see SplineSourceFunction
- * @see RegressionSourceFunction
+ * @see LineSource
+ * @see SplineSource
+ * @see RegressionSource
  * @see AreaFunctionToolkit
- * @see AreaFunctionPlugin
+ * @see AreaFunction
  * @see AbstractAreaFill
  * @see AbstractAreaDraw
  * @see GlyphMetric
  * @author Sebastien Janaud
  */
-public class AreaFunction extends Function {
+public class Area extends Function {
 
 	/** area base */
 	private double areaBase;
@@ -82,7 +81,7 @@ public class AreaFunction extends Function {
 	/**
 	 * create empty Area
 	 */
-	public AreaFunction() {
+	public Area() {
 		super();
 	}
 
@@ -92,7 +91,7 @@ public class AreaFunction extends Function {
 	 * @param source
 	 *            the source to set
 	 */
-	public AreaFunction(SourceFunction source) {
+	public Area(SourceFunction source) {
 		super("area", source);
 	}
 
@@ -114,7 +113,7 @@ public class AreaFunction extends Function {
 	/**
 	 * @return the area
 	 */
-	public Area getArea() {
+	public java.awt.geom.Area getArea() {
 		return area;
 	}
 

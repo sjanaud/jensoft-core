@@ -14,7 +14,7 @@ import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.palette.ColorPalette;
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 
 /***
  * define curve linear gradient fill<br>
@@ -152,7 +152,7 @@ public class AreaGradientFill extends AbstractAreaFill {
      * @see com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill#paintAreaFill(java.awt.Graphics2D, com.jensoft.core.plugin.function.area.AreaFunction)
      */
     @Override
-    public final void paintAreaFill(Graphics2D g2d, AreaFunction area) {
+    public final void paintAreaFill(Graphics2D g2d, Area area) {
 
         // Shape shape = area.getAreaPath();
         Shape shape = area.getArea();

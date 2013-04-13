@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.function.scatter.painter.draw;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.function.scatter.ScatterFunction.ScatterPoint;
+import com.jensoft.core.plugin.function.scatter.Scatter.ScatterPoint;
 import com.jensoft.core.plugin.function.scatter.painter.ScatterDraw;
 
 /**

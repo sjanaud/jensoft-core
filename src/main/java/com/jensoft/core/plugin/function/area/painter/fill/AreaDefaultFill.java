@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.function.area.painter.fill;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 
 /**
  * AreaClassicFill
@@ -57,7 +57,7 @@ public class AreaDefaultFill extends AbstractAreaFill {
      * @see com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill#paintAreaFill(java.awt.Graphics2D, com.jensoft.core.plugin.function.area.AreaFunction)
      */
     @Override
-    public final void paintAreaFill(Graphics2D g2d, AreaFunction area) {
+    public final void paintAreaFill(Graphics2D g2d, Area area) {
         if(color != null){
             g2d.setPaint(color);
         }else{

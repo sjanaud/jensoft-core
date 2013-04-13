@@ -26,9 +26,9 @@ import com.jensoft.core.window.Window2D;
  * You can use 3 type of user source function
  * </p>
  * <ul>
- * <li>link {@link LineSourceFunction}</li>
- * <li>link {@link SplineSourceFunction}</li>
- * <li>link {@link RegressionSourceFunction}</li>
+ * <li>link {@link LineSource}</li>
+ * <li>link {@link SplineSource}</li>
+ * <li>link {@link RegressionSource}</li>
  * </ul>
  * 
  * @author sebastien janaud
@@ -59,7 +59,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class LineSourceFunction extends UserSourceFunction {
+	public static class LineSource extends UserSourceFunction {
 
 		/** source */
 		private List<Point2D> source;
@@ -73,7 +73,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param source
 		 *            the source function data points
 		 */
-		public LineSourceFunction(List<Point2D> source) {
+		public LineSource(List<Point2D> source) {
 			super();
 			this.source = source;
 			sortFunction();
@@ -88,7 +88,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 *            the given y array function values
 		 */
-		public LineSourceFunction(double[] xValues, double[] yValues) {
+		public LineSource(double[] xValues, double[] yValues) {
 			super();
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -103,7 +103,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 *            the given y array function values
 		 */
-		public LineSourceFunction(Date[] xValues, double[] yValues) {
+		public LineSource(Date[] xValues, double[] yValues) {
 			super();
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -118,7 +118,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 *            the given y array function values
 		 */
-		public LineSourceFunction(double[] xValues, Date[] yValues) {
+		public LineSource(double[] xValues, Date[] yValues) {
 			super();
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -133,7 +133,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 *            the given y array function values
 		 */
-		public LineSourceFunction(Double[] xValues, Double[] yValues) {
+		public LineSource(Double[] xValues, Double[] yValues) {
 			super();
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -148,7 +148,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 *            the given y array function values
 		 */
-		public LineSourceFunction(Date[] xValues, Double[] yValues) {
+		public LineSource(Date[] xValues, Double[] yValues) {
 			super();
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -163,7 +163,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 *            the given y array function values
 		 */
-		public LineSourceFunction(Double[] xValues, Date[] yValues) {
+		public LineSource(Double[] xValues, Date[] yValues) {
 			super();
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -177,7 +177,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 *            the x or y function nature
 		 */
-		public LineSourceFunction(List<Point2D> source, FunctionNature nature) {
+		public LineSource(List<Point2D> source, FunctionNature nature) {
 			super(nature);
 			this.source = source;
 			sortFunction();
@@ -193,7 +193,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 *            the x or y function nature
 		 */
-		public LineSourceFunction(double[] xValues, double[] yValues, FunctionNature nature) {
+		public LineSource(double[] xValues, double[] yValues, FunctionNature nature) {
 			super(nature);
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -209,7 +209,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 *            the x or y function nature
 		 */
-		public LineSourceFunction(Date[] xValues, double[] yValues, FunctionNature nature) {
+		public LineSource(Date[] xValues, double[] yValues, FunctionNature nature) {
 			super(nature);
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -225,7 +225,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 *            the x or y function nature
 		 */
-		public LineSourceFunction(double[] xValues, Date[] yValues, FunctionNature nature) {
+		public LineSource(double[] xValues, Date[] yValues, FunctionNature nature) {
 			super(nature);
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -241,7 +241,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 *            the x or y function nature
 		 */
-		public LineSourceFunction(Double[] xValues, Double[] yValues, FunctionNature nature) {
+		public LineSource(Double[] xValues, Double[] yValues, FunctionNature nature) {
 			super(nature);
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -257,7 +257,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 *            the x or y function nature
 		 */
-		public LineSourceFunction(Date[] xValues, Double[] yValues, FunctionNature nature) {
+		public LineSource(Date[] xValues, Double[] yValues, FunctionNature nature) {
 			super(nature);
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -273,7 +273,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 *            the x or y function nature
 		 */
-		public LineSourceFunction(Double[] xValues, Date[] yValues, FunctionNature nature) {
+		public LineSource(Double[] xValues, Date[] yValues, FunctionNature nature) {
 			super(nature);
 			this.source = createPointsFromArray(xValues, yValues);
 			sortFunction();
@@ -487,7 +487,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class SplineSourceFunction extends LineSourceFunction {
+	public static class SplineSource extends LineSource {
 
 		/** evaluation spline function */
 		private UnivariateRealFunction evaluateFunction = null;
@@ -503,7 +503,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public SplineSourceFunction(Date[] xValues, double[] yValues, FunctionNature nature, double delta) {
+		public SplineSource(Date[] xValues, double[] yValues, FunctionNature nature, double delta) {
 			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
@@ -516,7 +516,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public SplineSourceFunction(Date[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+		public SplineSource(Date[] xValues, Double[] yValues, FunctionNature nature, double delta) {
 			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
@@ -528,7 +528,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 * @param delta
 		 */
-		public SplineSourceFunction(Date[] xValues, double[] yValues, double delta) {
+		public SplineSource(Date[] xValues, double[] yValues, double delta) {
 			super(xValues, yValues);
 			this.delta = delta;
 		}
@@ -540,57 +540,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 * @param delta
 		 */
-		public SplineSourceFunction(Date[] xValues, Double[] yValues, double delta) {
-			super(xValues, yValues);
-			this.delta = delta;
-		}
-
-		/**
-		 * create spline source
-		 * 
-		 * @param xValues
-		 * @param yValues
-		 * @param nature
-		 * @param delta
-		 */
-		public SplineSourceFunction(double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
-			super(xValues, yValues, nature);
-			this.delta = delta;
-		}
-
-		/**
-		 * create spline source
-		 * 
-		 * @param xValues
-		 * @param yValues
-		 * @param nature
-		 * @param delta
-		 */
-		public SplineSourceFunction(Double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
-			super(xValues, yValues, nature);
-			this.delta = delta;
-		}
-
-		/**
-		 * create spline source
-		 * 
-		 * @param xValues
-		 * @param yValues
-		 * @param delta
-		 */
-		public SplineSourceFunction(double[] xValues, Date[] yValues, double delta) {
-			super(xValues, yValues);
-			this.delta = delta;
-		}
-
-		/**
-		 * create spline source
-		 * 
-		 * @param xValues
-		 * @param yValues
-		 * @param delta
-		 */
-		public SplineSourceFunction(Double[] xValues, Date[] yValues, double delta) {
+		public SplineSource(Date[] xValues, Double[] yValues, double delta) {
 			super(xValues, yValues);
 			this.delta = delta;
 		}
@@ -603,7 +553,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public SplineSourceFunction(double[] xValues, double[] yValues, FunctionNature nature, double delta) {
+		public SplineSource(double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
 			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
@@ -616,7 +566,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public SplineSourceFunction(Double[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+		public SplineSource(Double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
 			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
@@ -628,7 +578,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 * @param delta
 		 */
-		public SplineSourceFunction(double[] xValues, double[] yValues, double delta) {
+		public SplineSource(double[] xValues, Date[] yValues, double delta) {
 			super(xValues, yValues);
 			this.delta = delta;
 		}
@@ -640,7 +590,57 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 * @param delta
 		 */
-		public SplineSourceFunction(Double[] xValues, Double[] yValues, double delta) {
+		public SplineSource(Double[] xValues, Date[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public SplineSource(double[] xValues, double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public SplineSource(Double[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public SplineSource(double[] xValues, double[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create spline source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public SplineSource(Double[] xValues, Double[] yValues, double delta) {
 			super(xValues, yValues);
 			this.delta = delta;
 		}
@@ -652,7 +652,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public SplineSourceFunction(List<Point2D> source, FunctionNature nature, double delta) {
+		public SplineSource(List<Point2D> source, FunctionNature nature, double delta) {
 			super(source, nature);
 			this.delta = delta;
 		}
@@ -663,7 +663,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param source
 		 * @param delta
 		 */
-		public SplineSourceFunction(List<Point2D> source, double delta) {
+		public SplineSource(List<Point2D> source, double delta) {
 			super(source);
 			this.delta = delta;
 		}
@@ -786,7 +786,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class RegressionSourceFunction extends LineSourceFunction {
+	public static class RegressionSource extends LineSource {
 
 		/** evaluation regression function */
 		private SimpleRegression evaluateFunction = null;
@@ -804,7 +804,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public RegressionSourceFunction(Date[] xValues, double[] yValues, FunctionNature nature, double delta) {
+		public RegressionSource(Date[] xValues, double[] yValues, FunctionNature nature, double delta) {
 			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
@@ -817,7 +817,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public RegressionSourceFunction(Date[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+		public RegressionSource(Date[] xValues, Double[] yValues, FunctionNature nature, double delta) {
 			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
@@ -829,7 +829,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 * @param delta
 		 */
-		public RegressionSourceFunction(Date[] xValues, double[] yValues, double delta) {
+		public RegressionSource(Date[] xValues, double[] yValues, double delta) {
 			super(xValues, yValues);
 			this.delta = delta;
 		}
@@ -841,57 +841,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 * @param delta
 		 */
-		public RegressionSourceFunction(Date[] xValues, Double[] yValues, double delta) {
-			super(xValues, yValues);
-			this.delta = delta;
-		}
-
-		/**
-		 * create regression source
-		 * 
-		 * @param xValues
-		 * @param yValues
-		 * @param nature
-		 * @param delta
-		 */
-		public RegressionSourceFunction(double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
-			super(xValues, yValues, nature);
-			this.delta = delta;
-		}
-
-		/**
-		 * create regression source
-		 * 
-		 * @param xValues
-		 * @param yValues
-		 * @param nature
-		 * @param delta
-		 */
-		public RegressionSourceFunction(Double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
-			super(xValues, yValues, nature);
-			this.delta = delta;
-		}
-
-		/**
-		 * create regression source
-		 * 
-		 * @param xValues
-		 * @param yValues
-		 * @param delta
-		 */
-		public RegressionSourceFunction(double[] xValues, Date[] yValues, double delta) {
-			super(xValues, yValues);
-			this.delta = delta;
-		}
-
-		/**
-		 * create regression source
-		 * 
-		 * @param xValues
-		 * @param yValues
-		 * @param delta
-		 */
-		public RegressionSourceFunction(Double[] xValues, Date[] yValues, double delta) {
+		public RegressionSource(Date[] xValues, Double[] yValues, double delta) {
 			super(xValues, yValues);
 			this.delta = delta;
 		}
@@ -904,7 +854,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public RegressionSourceFunction(double[] xValues, double[] yValues, FunctionNature nature, double delta) {
+		public RegressionSource(double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
 			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
@@ -917,7 +867,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public RegressionSourceFunction(Double[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+		public RegressionSource(Double[] xValues, Date[] yValues, FunctionNature nature, double delta) {
 			super(xValues, yValues, nature);
 			this.delta = delta;
 		}
@@ -929,7 +879,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 * @param delta
 		 */
-		public RegressionSourceFunction(double[] xValues, double[] yValues, double delta) {
+		public RegressionSource(double[] xValues, Date[] yValues, double delta) {
 			super(xValues, yValues);
 			this.delta = delta;
 		}
@@ -941,7 +891,57 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param yValues
 		 * @param delta
 		 */
-		public RegressionSourceFunction(Double[] xValues, Double[] yValues, double delta) {
+		public RegressionSource(Double[] xValues, Date[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public RegressionSource(double[] xValues, double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param nature
+		 * @param delta
+		 */
+		public RegressionSource(Double[] xValues, Double[] yValues, FunctionNature nature, double delta) {
+			super(xValues, yValues, nature);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public RegressionSource(double[] xValues, double[] yValues, double delta) {
+			super(xValues, yValues);
+			this.delta = delta;
+		}
+
+		/**
+		 * create regression source
+		 * 
+		 * @param xValues
+		 * @param yValues
+		 * @param delta
+		 */
+		public RegressionSource(Double[] xValues, Double[] yValues, double delta) {
 			super(xValues, yValues);
 			this.delta = delta;
 		}
@@ -953,7 +953,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * @param nature
 		 * @param delta
 		 */
-		public RegressionSourceFunction(List<Point2D> source, FunctionNature nature, double delta) {
+		public RegressionSource(List<Point2D> source, FunctionNature nature, double delta) {
 			super(source, nature);
 			this.delta = delta;
 		}

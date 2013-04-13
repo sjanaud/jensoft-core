@@ -12,7 +12,7 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.Stroke;
 
-import com.jensoft.core.plugin.function.curve.CurveFunction;
+import com.jensoft.core.plugin.function.curve.Curve;
 
 /**
  * @author S�bastien Janaud
@@ -106,7 +106,7 @@ public class CurveDefaultDraw extends AbstractCurveDraw {
      * @see com.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw#drawCurve(java.awt.Graphics2D, com.jensoft.core.plugin.function.curve.CurveFunction)
      */
     @Override
-    protected void drawCurve(Graphics2D g2d, CurveFunction curve) {
+    protected void drawCurve(Graphics2D g2d, Curve curve) {
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));               
 
         g2d.setStroke(outlineStroke);

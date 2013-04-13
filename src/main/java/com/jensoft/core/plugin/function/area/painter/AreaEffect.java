@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.function.area.painter;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 
 /**
  * defines abstract area curve effect
@@ -24,14 +24,14 @@ public abstract class AreaEffect extends AbstractAreaPainter {
      * @param areaCurve
      *            the area curve to effect
      */
-    protected abstract void paintAreaEffect(Graphics2D g2d, AreaFunction areaCurve);
+    protected abstract void paintAreaEffect(Graphics2D g2d, Area areaCurve);
 
     
     /* (non-Javadoc)
      * @see com.jensoft.core.plugin.function.area.painter.AbstractAreaPainter#paintArea(java.awt.Graphics2D, com.jensoft.core.plugin.function.area.AreaFunction)
      */
     @Override
-    public final void paintArea(Graphics2D g2d, AreaFunction areaCurve) {
+    public final void paintArea(Graphics2D g2d, Area areaCurve) {
         paintAreaEffect(g2d, areaCurve);
     }
 

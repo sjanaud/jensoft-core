@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.function.curve.painter.draw;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.function.curve.CurveFunction;
+import com.jensoft.core.plugin.function.curve.Curve;
 import com.jensoft.core.plugin.function.curve.painter.CurvePainter;
 
 /**
@@ -25,14 +25,14 @@ public abstract class AbstractCurveDraw implements CurvePainter {
      * @param curve
      *            the curve to draw
      */
-    protected abstract void drawCurve(Graphics2D g2d, CurveFunction curve);
+    protected abstract void drawCurve(Graphics2D g2d, Curve curve);
 
    
     /* (non-Javadoc)
      * @see com.jensoft.core.plugin.function.curve.painter.CurvePainter#paintCurve(java.awt.Graphics2D, com.jensoft.core.plugin.function.curve.CurveFunction)
      */
     @Override
-    public final void paintCurve(Graphics2D g2d, CurveFunction curve) {
+    public final void paintCurve(Graphics2D g2d, Curve curve) {
         drawCurve(g2d, curve);
     }
 

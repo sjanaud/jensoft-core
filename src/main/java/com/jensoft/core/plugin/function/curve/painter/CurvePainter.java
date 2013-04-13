@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.function.curve.painter;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.function.curve.CurveFunction;
+import com.jensoft.core.plugin.function.curve.Curve;
 
 /**
  * this interface defines a curve painting operation
@@ -24,5 +24,5 @@ public interface CurvePainter {
      * @param curve
      *            the curve to paint
      */
-    public void paintCurve(Graphics2D g2d, CurveFunction curve);
+    public void paintCurve(Graphics2D g2d, Curve curve);
 }
