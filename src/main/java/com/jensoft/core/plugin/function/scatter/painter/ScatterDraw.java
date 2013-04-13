@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.function.scatter.painter;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.function.scatter.ScatterFunction.ScatterPoint;
+import com.jensoft.core.plugin.function.scatter.Scatter.ScatterPoint;
 
 /**
  * override this class to create a scatter draw ScatterDraw knows how to draw

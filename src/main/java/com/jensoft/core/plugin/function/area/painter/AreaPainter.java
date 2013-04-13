@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.function.area.painter;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 
 /**
  * this interface defines a painting operation on area curve
@@ -24,6 +24,6 @@ public interface AreaPainter {
      * @param areaCurve
      *            the area curve
      */
-    public void paintArea(Graphics2D g2d, AreaFunction areaCurve);
+    public void paintArea(Graphics2D g2d, Area areaCurve);
 
 }

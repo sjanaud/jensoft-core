@@ -9,11 +9,11 @@ import java.awt.Color;
 import java.awt.Stroke;
 
 import com.jensoft.core.plugin.Toolkit;
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
-import com.jensoft.core.plugin.function.curve.CurveFunction;
+import com.jensoft.core.plugin.function.curve.Curve;
 import com.jensoft.core.plugin.function.curve.painter.draw.CurveDefaultDraw;
-import com.jensoft.core.plugin.function.scatter.ScatterFunction;
+import com.jensoft.core.plugin.function.scatter.Scatter;
 import com.jensoft.core.plugin.function.scatter.morphe.RectangleMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.ScatterMorphe;
 import com.jensoft.core.plugin.function.scatter.painter.ScatterDraw;
@@ -30,8 +30,8 @@ public class FunctionToolkit extends Toolkit {
      *            the curve source
      * @return curve
      */
-    public static CurveFunction createCurveFunction(SourceFunction source) {
-        CurveFunction curve = new CurveFunction(source);
+    public static Curve createCurveFunction(SourceFunction source) {
+        Curve curve = new Curve(source);
         curve.setThemeColor(Color.BLACK);
         return curve;
     }
@@ -45,8 +45,8 @@ public class FunctionToolkit extends Toolkit {
      *            the curve color
      * @return curve
      */
-    public static CurveFunction createCurveFunction(SourceFunction source, Color color) {
-        CurveFunction curve = new CurveFunction(source);
+    public static Curve createCurveFunction(SourceFunction source, Color color) {
+        Curve curve = new Curve(source);
         curve.setThemeColor(color);
         return curve;
     }
@@ -62,9 +62,9 @@ public class FunctionToolkit extends Toolkit {
      *            the curve stroke
      * @return curve
      */
-    public static CurveFunction createCurveFunction(SourceFunction source, Color color,
+    public static Curve createCurveFunction(SourceFunction source, Color color,
             Stroke curveStroke) {
-        CurveFunction curve = new CurveFunction(source);
+        Curve curve = new Curve(source);
         curve.setThemeColor(color);
         curve.setCurveDraw(new CurveDefaultDraw(curveStroke));
         return curve;
@@ -81,8 +81,8 @@ public class FunctionToolkit extends Toolkit {
      *            the curve draw
      * @return curve
      */
-    public static CurveFunction createCurveFunction(SourceFunction source, Color color,CurveDefaultDraw curveDraw) {
-        CurveFunction curve = new CurveFunction(source);
+    public static Curve createCurveFunction(SourceFunction source, Color color,CurveDefaultDraw curveDraw) {
+        Curve curve = new Curve(source);
         curve.setThemeColor(color);
         curve.setCurveDraw(curveDraw);
         return curve;
@@ -95,8 +95,8 @@ public class FunctionToolkit extends Toolkit {
      *            the area curve source
      * @return area
      */
-    public static AreaFunction createAreaFunction(SourceFunction source) {
-        AreaFunction curve = new AreaFunction(source);
+    public static Area createAreaFunction(SourceFunction source) {
+        Area curve = new Area(source);
         curve.setThemeColor(Color.BLACK);
         return curve;
     }
@@ -110,8 +110,8 @@ public class FunctionToolkit extends Toolkit {
      *            the curve color
      * @return area
      */
-    public static AreaFunction createAreaFunction(SourceFunction source, Color color) {
-        AreaFunction curve = new AreaFunction(source);
+    public static Area createAreaFunction(SourceFunction source, Color color) {
+        Area curve = new Area(source);
         curve.setThemeColor(color);
         return curve;
     }
@@ -125,9 +125,9 @@ public class FunctionToolkit extends Toolkit {
      *            the curve color
      * @return area
      */
-    public static AreaFunction createAreaFunction(SourceFunction source, Color color,
+    public static Area createAreaFunction(SourceFunction source, Color color,
             AbstractAreaDraw curveAreaDraw) {
-        AreaFunction curve = new AreaFunction(source);
+        Area curve = new Area(source);
         curve.setAreaDraw(curveAreaDraw);
         curve.setThemeColor(color);
         return curve;
@@ -140,8 +140,8 @@ public class FunctionToolkit extends Toolkit {
      *            the curve source
      * @return curve
      */
-    public static ScatterFunction createScatterFunction(SourceFunction source) {
-        ScatterFunction curve = new ScatterFunction(source);
+    public static Scatter createScatterFunction(SourceFunction source) {
+        Scatter curve = new Scatter(source);
         curve.setScatterMorphe(new RectangleMorphe(3, 3));
         curve.setScatterFill(new ScatterDefaultFill());
         curve.setThemeColor(Color.BLACK);
@@ -157,8 +157,8 @@ public class FunctionToolkit extends Toolkit {
      *            the curve color
      * @return curve
      */
-    public static ScatterFunction createScatterFunction(SourceFunction source, Color color) {
-        ScatterFunction curve = new ScatterFunction(source);
+    public static Scatter createScatterFunction(SourceFunction source, Color color) {
+        Scatter curve = new Scatter(source);
         curve.setScatterMorphe(new RectangleMorphe(3, 3));
         curve.setScatterFill(new ScatterDefaultFill());
         curve.setThemeColor(color);
@@ -176,9 +176,9 @@ public class FunctionToolkit extends Toolkit {
      *            the scatter morphe
      * @return curve
      */
-    public static ScatterFunction createScatterFunction(SourceFunction source, Color color,
+    public static Scatter createScatterFunction(SourceFunction source, Color color,
             ScatterMorphe morphe) {
-        ScatterFunction curve = new ScatterFunction(source);
+        Scatter curve = new Scatter(source);
         curve.setThemeColor(color);
         curve.setScatterMorphe(morphe);
         curve.setScatterFill(new ScatterDefaultFill());
@@ -198,9 +198,9 @@ public class FunctionToolkit extends Toolkit {
      *            the scatter fill
      * @return curve
      */
-    public static ScatterFunction createScatterFunction(SourceFunction source, Color color,
+    public static Scatter createScatterFunction(SourceFunction source, Color color,
             ScatterMorphe morphe, ScatterFill scatterFill) {
-        ScatterFunction curve = new ScatterFunction(source);
+        Scatter curve = new Scatter(source);
         curve.setThemeColor(color);
         curve.setScatterMorphe(morphe);
         curve.setScatterFill(scatterFill);
@@ -221,10 +221,10 @@ public class FunctionToolkit extends Toolkit {
      * @param scatterDraw
      * @return curve
      */
-    public static ScatterFunction createScatterFunction(SourceFunction source, Color color,
+    public static Scatter createScatterFunction(SourceFunction source, Color color,
             ScatterMorphe morphe, ScatterFill scatterFill,
             ScatterDraw scatterDraw) {
-        ScatterFunction curve = new ScatterFunction(source);
+        Scatter curve = new Scatter(source);
         curve.setThemeColor(color);
         curve.setScatterMorphe(morphe);
         curve.setScatterFill(scatterFill);

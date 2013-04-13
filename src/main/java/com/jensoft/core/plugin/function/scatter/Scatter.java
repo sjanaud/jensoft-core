@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.plugin.function.Function;
-import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunctionPlugin;
+import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
 import com.jensoft.core.plugin.function.scatter.morphe.ScatterMorphe;
 import com.jensoft.core.plugin.function.scatter.painter.ScatterDraw;
 import com.jensoft.core.plugin.function.scatter.painter.ScatterFill;
@@ -25,10 +25,10 @@ import com.jensoft.core.plugin.function.source.SourceFunction;
  * <code>ScatterFunction</code>
  * 
  * @see ScatterPoint
- * @see ScatterFunctionPlugin
+ * @see ScatterFunction
  * @author Sebastien Janaud
  */
-public class ScatterFunction extends Function {
+public class Scatter extends Function {
 
     /** scatter draw */
     private ScatterDraw scatterDraw;
@@ -47,7 +47,7 @@ public class ScatterFunction extends Function {
      * 
      * @param source
      */
-    public ScatterFunction(SourceFunction source) {
+    public Scatter(SourceFunction source) {
         super("scatter", source);
         scatters = new ArrayList<ScatterPoint>();
     }
@@ -90,7 +90,7 @@ public class ScatterFunction extends Function {
         this.scatterMorphe = scatterMorphe;
     }
 
-    private BufferedImage createPrimitive(ScatterFunction scatterCurve, Shape shape) {
+    private BufferedImage createPrimitive(Scatter scatterCurve, Shape shape) {
         Rectangle rect = shape.getBounds();
         BufferedImage buffer = new BufferedImage((int) rect.getWidth(),
                                                  (int) rect.getHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -192,14 +192,14 @@ public class ScatterFunction extends Function {
     /**
      * Scatter defines a point on scatter curve
      * 
+     * @see Scatter
      * @see ScatterFunction
-     * @see ScatterFunctionPlugin
      * @author Sebastien Janaud
      */
     public static class ScatterPoint {
 
         /** parent scatter curve for this scatter */
-        private ScatterFunction parent;
+        private Scatter parent;
 
         /** user scatter point in user coordinate */
         private Point2D userPoint;
@@ -306,7 +306,7 @@ public class ScatterFunction extends Function {
          * 
          * @return scatter parent curve
          */
-        public ScatterFunction getParent() {
+        public Scatter getParent() {
             return parent;
         }
 
@@ -316,7 +316,7 @@ public class ScatterFunction extends Function {
          * @param parent
          *            the parent scatter curve to set
          */
-        public void setParent(ScatterFunction parent) {
+        public void setParent(Scatter parent) {
             this.parent = parent;
         }
 

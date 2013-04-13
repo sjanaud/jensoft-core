@@ -15,7 +15,7 @@ import com.jensoft.core.plugin.function.source.SourceFunction;
  * 
  * @author sebastien janaud
  */
-public class CurveFunction extends Function {
+public class Curve extends Function {
 
     /** painter to draw curve */
     private AbstractCurveDraw curveDraw;
@@ -26,7 +26,7 @@ public class CurveFunction extends Function {
      * @param source
      *            the source of this curve
      */
-    public CurveFunction(SourceFunction source) {
+    public Curve(SourceFunction source) {
         super("curve", source);
         curveDraw = new CurveDefaultDraw();
     }

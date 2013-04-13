@@ -10,7 +10,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 
 /**
  * <code>AreaDefaultDraw</code> defines 4 draw properties<br>
@@ -159,7 +159,7 @@ public class AreaDefaultDraw extends AbstractAreaDraw {
      * @see com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw#paintAreaDraw(java.awt.Graphics2D, com.jensoft.core.plugin.function.area.AreaFunction)
      */
     @Override
-    public void paintAreaDraw(Graphics2D g2d, AreaFunction areaCurve) {
+    public void paintAreaDraw(Graphics2D g2d, Area areaCurve) {
 
         if (areaCurve.getPathFunction() == null || areaCurve.getPathFunction().getOrCreateGeometry() == null
                 || areaCurve.getPathFunction().getOrCreateGeometry().getPath() == null) {

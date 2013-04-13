@@ -15,10 +15,10 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.plugin.function.area.AreaFunction;
-import com.jensoft.core.plugin.function.curve.CurveFunction;
-import com.jensoft.core.plugin.function.scatter.ScatterFunction;
-import com.jensoft.core.plugin.function.scatter.ScatterFunction.ScatterPoint;
+import com.jensoft.core.plugin.function.area.Area;
+import com.jensoft.core.plugin.function.curve.Curve;
+import com.jensoft.core.plugin.function.scatter.Scatter;
+import com.jensoft.core.plugin.function.scatter.Scatter.ScatterPoint;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2DEvent;
 import com.jensoft.core.window.Window2DListener;
@@ -51,14 +51,14 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
      * 
      * @author sebastien janaud
      */
-    public static class AreaFunctionPlugin extends FunctionPlugin<AreaFunction> {
+    public static class AreaFunction extends FunctionPlugin<Area> {
 
         /**
          * Create Area Function Plug-in
          */
-        public AreaFunctionPlugin() {
+        public AreaFunction() {
             super();
-            setName(AreaFunctionPlugin.class.getCanonicalName());
+            setName(AreaFunction.class.getCanonicalName());
         }
 
       
@@ -71,7 +71,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
                 return;
             }
 
-            for (AreaFunction area : getFunctions()) {
+            for (Area area : getFunctions()) {
                 if (area.getSourceFunction() == null) {
                     continue;
                 }
@@ -107,11 +107,11 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
      * 
      * @author sebastien janaud
      */
-    public static class CurveFunctionPlugin extends FunctionPlugin<CurveFunction> {
+    public static class CurveFunction extends FunctionPlugin<Curve> {
 
-        public CurveFunctionPlugin() {
+        public CurveFunction() {
             super();
-            setName(CurveFunctionPlugin.class.getCanonicalName());
+            setName(CurveFunction.class.getCanonicalName());
         }
 
        
@@ -128,7 +128,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
             
             for (int c = 0; c < getFunctions().size(); c++) {
-                CurveFunction curve = getFunctions().get(c);
+                Curve curve = getFunctions().get(c);
                 curve.getPathFunction().setWindow2d(getWindow2D());
                 curve.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
                 curve.getCurveDraw().paintCurve(g2d, curve);
@@ -141,11 +141,11 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
     /**
      * @author Sebastien Janaud
      */
-    public static class ScatterFunctionPlugin extends FunctionPlugin<ScatterFunction> {
+    public static class ScatterFunction extends FunctionPlugin<Scatter> {
 
-        public ScatterFunctionPlugin() {
+        public ScatterFunction() {
             super();
-            setName(ScatterFunctionPlugin.class.getCanonicalName());
+            setName(ScatterFunction.class.getCanonicalName());
         }
 
        
@@ -158,7 +158,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
                 return;
             }
             for (int i = 0; i < getFunctions().size(); i++) {
-                ScatterFunction scatterCurve = getFunctions().get(i);
+                Scatter scatterCurve = getFunctions().get(i);
                 scatterCurve.getPathFunction().setWindow2d(getWindow2D());
                 scatterCurve.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
                 scatterCurve.solveScatter();
