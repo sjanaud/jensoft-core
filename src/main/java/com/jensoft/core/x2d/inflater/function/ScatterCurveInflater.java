@@ -9,8 +9,8 @@ import java.awt.Color;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunctionPlugin;
-import com.jensoft.core.plugin.function.scatter.ScatterFunction;
+import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
+import com.jensoft.core.plugin.function.scatter.Scatter;
 import com.jensoft.core.plugin.function.scatter.morphe.EllipseMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.PolygonMorphe;
 import com.jensoft.core.plugin.function.scatter.morphe.QInverseMorphe;
@@ -27,13 +27,13 @@ import com.jensoft.core.x2d.inflater.X2DInflater;
  * @author Sebastien Janaud
  */
 @X2DInflater(xsi="ScatterPlugin")
-public class ScatterCurveInflater extends AbstractX2DPluginInflater<ScatterFunctionPlugin> {
+public class ScatterCurveInflater extends AbstractX2DPluginInflater<ScatterFunction> {
 
     /**
      * create scatter curve inflater
      */
     public ScatterCurveInflater() {
-        setPlugin(new ScatterFunctionPlugin());
+        setPlugin(new ScatterFunction());
         setXSIType("ScatterPlugin");
     }
 
@@ -46,24 +46,24 @@ public class ScatterCurveInflater extends AbstractX2DPluginInflater<ScatterFunct
         NodeList curveElements = curvesElement.getElementsByTagName("curve");
         for (int i = 0; i < curveElements.getLength(); i++) {
             Element labelElement = (Element) curveElements.item(i);
-            ScatterFunction curve = inflateCurve(labelElement);
+            Scatter curve = inflateCurve(labelElement);
             getPlugin().addFunction(curve);
         }
     }
 
     /**
-     * inflate {@link ScatterFunction}
+     * inflate {@link Scatter}
      * 
      * @param curveElement
      *            the curve element to inflate
      * @return scatter curve
      */
-    private ScatterFunction inflateCurve(Element curveElement) {
+    private Scatter inflateCurve(Element curveElement) {
 
         Element serieElement = (Element) curveElement.getElementsByTagName("serie2d").item(0);
         SourceFunction serie2D = FunctionUtil.inflateSourceFunction(serieElement);
 
-        ScatterFunction curve = new ScatterFunction(serie2D);
+        Scatter curve = new Scatter(serie2D);
 
         curve.setScatterFill(new ScatterDefaultFill());
 

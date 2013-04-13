@@ -5,10 +5,10 @@
  */
 package com.jensoft.core.x2d.inflater.function;
 
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 
 /**
- * <code>X2DAreaElement</code> defines {@link AreaFunction} related elements names that should be used in any XML x2d
+ * <code>X2DAreaElement</code> defines {@link Area} related elements names that should be used in any XML x2d
  * view
  * document and area particular purpose.
  * 

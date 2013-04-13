@@ -27,9 +27,9 @@ import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.UserSourceFunction;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSourceFunction;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSourceFunction;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSourceFunction;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSource;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSource;
+import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSource;
 
 
 /**
@@ -160,7 +160,7 @@ public class FunctionUtil implements X2DFunctionElement{
     }
 
     /**
-     * inflate {@link LineSourceFunction}
+     * inflate {@link LineSource}
      * 
      * @param curveSerieElement
      * @return serie
@@ -206,7 +206,7 @@ public class FunctionUtil implements X2DFunctionElement{
      *            the element to parse
      * @return the serie
      */
-    private static LineSourceFunction inflateSerie2D(Element serieElement) {
+    private static LineSource inflateSerie2D(Element serieElement) {
 
         String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
         String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
@@ -224,7 +224,7 @@ public class FunctionUtil implements X2DFunctionElement{
             valuesAsDoubleY.add(Double.parseDouble(y));
         }
 
-        return new UserSourceFunction.LineSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
+        return new UserSourceFunction.LineSource(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
                                                  valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]));
 
 
@@ -237,7 +237,7 @@ public class FunctionUtil implements X2DFunctionElement{
      *            the element to parse
      * @return the serie
      */
-    private static SplineSourceFunction inflateInterpolateSerie(Element serieElement) {
+    private static SplineSource inflateInterpolateSerie(Element serieElement) {
         String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
         String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
         Double delta = elementDouble(serieElement, ELEMENT_SOURCEFUNCTION_INTERPOLATE_DELTA);
@@ -257,7 +257,7 @@ public class FunctionUtil implements X2DFunctionElement{
 
        
         
-        return new UserSourceFunction.SplineSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
+        return new UserSourceFunction.SplineSource(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX.size()])),
                 valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]),FunctionNature.XFunction, delta.doubleValue());
 		
        
@@ -270,7 +270,7 @@ public class FunctionUtil implements X2DFunctionElement{
      *            the element to parse
      * @return the serie
      */
-    private static RegressionSourceFunction inflateRegressionSerie(Element serieElement) {
+    private static RegressionSource inflateRegressionSerie(Element serieElement) {
         String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
         String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
         Double delta = elementDouble(serieElement, ELEMENT_SOURCEFUNCTION_REGRESSION_DELTA);
@@ -288,7 +288,7 @@ public class FunctionUtil implements X2DFunctionElement{
             valuesAsDoubleY.add(Double.parseDouble(y));
         }
 
-        return new UserSourceFunction.RegressionSourceFunction(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX
+        return new UserSourceFunction.RegressionSource(valuesAsDoubleX.toArray((new Double[valuesAsDoubleX
                 .size()])), valuesAsDoubleY.toArray(new Double[valuesAsDoubleY.size()]), delta.doubleValue());
     }
 

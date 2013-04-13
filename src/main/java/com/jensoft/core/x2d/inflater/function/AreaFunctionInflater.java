@@ -14,8 +14,8 @@ import org.w3c.dom.NodeList;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.plugin.function.FunctionPlugin;
-import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunctionPlugin;
-import com.jensoft.core.plugin.function.area.AreaFunction;
+import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
+import com.jensoft.core.plugin.function.area.Area;
 import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
 import com.jensoft.core.plugin.function.area.painter.draw.AreaDefaultDraw;
 import com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
@@ -32,13 +32,13 @@ import com.jensoft.core.x2d.inflater.X2DInflater;
  * @since 1.0
  */
 @X2DInflater(xsi="AreaPlugin")
-public class AreaFunctionInflater extends AbstractX2DPluginInflater<AreaFunctionPlugin> implements X2DAreaElement {
+public class AreaFunctionInflater extends AbstractX2DPluginInflater<AreaFunction> implements X2DAreaElement {
 
     /**
      * create area inflater
      */
     public AreaFunctionInflater() {
-        setPlugin(new FunctionPlugin.AreaFunctionPlugin());
+        setPlugin(new FunctionPlugin.AreaFunction());
         setXSIType("AreaPlugin");
     }
 
@@ -52,7 +52,7 @@ public class AreaFunctionInflater extends AbstractX2DPluginInflater<AreaFunction
         NodeList curveElementList = pluginElement.getElementsByTagName(ELEMENT_AREA_FUNCTION);
         for (int i = 0; i < curveElementList.getLength(); i++) {
             Element curveElement = (Element) curveElementList.item(i);
-            AreaFunction function = inflateFunction(curveElement);
+            Area function = inflateFunction(curveElement);
             if (function != null) {
                 getPlugin().addFunction(function);
             }
@@ -124,20 +124,20 @@ public class AreaFunctionInflater extends AbstractX2DPluginInflater<AreaFunction
     }
 
     /**
-     * inflate {@link AreaFunction}
+     * inflate {@link Area}
      * 
      * @param areaFunctionElement
      *            the area function element to inflate
      * @return area function
      */
-    private AreaFunction inflateFunction(Element areaFunctionElement) {
+    private Area inflateFunction(Element areaFunctionElement) {
 
         Element sourceFunctionElement = (Element) areaFunctionElement.getElementsByTagName(ELEMENT_SOURCE_FUNCTION).item(0);
         SourceFunction sourceFunction = FunctionUtil.inflateSourceFunction(sourceFunctionElement);
         if (sourceFunction == null) {
             return null;
         }
-        AreaFunction areaFunction = new AreaFunction(sourceFunction);
+        Area areaFunction = new Area(sourceFunction);
 
         String name = elementText(areaFunctionElement, ELEMENT_AREA_NAME);
         areaFunction.setName(name);
