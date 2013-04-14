@@ -101,12 +101,21 @@ public class View2DEmitter {
     }
     
     /**
-     * emit PNG image on the given {@link OutputStream}
+     * emit PNG image on the given {@link OutputStream} with the current view size
      * 
      * @throws IOException
      */
     public void emitPNGImageOnStream(OutputStream outputStream)throws IOException{        
         ImageIO.write(emitAsBufferedImage(), "png", outputStream);
+    }
+    
+    /**
+     * emit PNG image on the given {@link OutputStream} with given image size
+     * 
+     * @throws IOException
+     */
+    public void emitPNGImageOnStream(OutputStream outputStream,int width,int height)throws IOException{        
+        ImageIO.write(emitAsBufferedImage(width,height), "png", outputStream);
     }
     
     /**
