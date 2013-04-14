@@ -528,12 +528,12 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
                     Font f = getMetricsManager().getRenderContext().getMetricsMajorFont();
                     FontMetrics fm = getMetricsManager().getRenderContext().getGraphics2D().getFontMetrics(f);
                     String typeString = getDecimalFormat().format(startRef);
-                    int typeWidth = fm.stringWidth(typeString);
+					int typeWidth = fm.stringWidth(typeString);
                     setPixelLabelHolder(typeWidth + 12);
                     
                     //nouveau calcul pour la largeur de la chaine
                     double max = startRef.doubleValue();
-                    for (double metricsValue = startRef.doubleValue(); metricsValue < maxUserValue.doubleValue(); metricsValue = metricsValue
+                    for (double metricsValue = startRef.doubleValue(); metricsValue <= maxUserValue.doubleValue(); metricsValue = metricsValue
                             + getFactor().doubleValue()) {
                        max = Math.max(max,metricsValue);
                     }
@@ -588,7 +588,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
             // System.out.println("to max : "+getMaxValue());
             // System.out.println("factor : "+getFactor());
             int count = 0;
-            for (double metricsValue = getRef().doubleValue(); metricsValue < getMaxValue().doubleValue(); metricsValue = metricsValue
+            for (double metricsValue = getRef().doubleValue(); metricsValue <= getMaxValue().doubleValue(); metricsValue = metricsValue
                     + getFactor().doubleValue()) {
                 // System.out.println("generate metrics iter : "+count++);
                 // System.out.println("metrics value : " + metricsValue);
