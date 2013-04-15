@@ -21,7 +21,6 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View2D;
-import com.jensoft.core.view.WidgetPlugin.PushingBehavior;
 import com.jensoft.core.window.Window2D;
 import com.jensoft.core.window.WindowBound;
 import com.jensoft.core.window.WindowPart;
@@ -1145,23 +1144,6 @@ public class TranslatePlugin extends AbstractPlugin implements
         }
     }
 
-    @Override
-    public void lockSelected() {
-        super.lockSelected();
-        if (getWindow2D() == null || getWindow2D().getView2D() == null) {
-            return;
-        }
-        getWindow2D()
-                .getView2D()
-                .getWidgetPlugin()
-                .pushMessage("LOCK " + getName().toUpperCase(), this,
-                             PushingBehavior.Fast);
-    }
-
-    @Override
-    public void unlockSelected() {
-        super.unlockSelected();
-    }
 
     @Override
     protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
@@ -1176,14 +1158,7 @@ public class TranslatePlugin extends AbstractPlugin implements
         return translateStartX;
     }
 
-    // /**
-    // * set the translate start x in device coordinate
-    // *
-    // * @param translateStartX
-    // */
-    // public void setTranslateStartDeviceX(int translateStartX) {
-    // this.translateStartX = translateStartX;
-    // }
+    
 
     /**
      * get the translate start y in device coordinate
@@ -1194,15 +1169,7 @@ public class TranslatePlugin extends AbstractPlugin implements
         return translateStartY;
     }
 
-    // /**
-    // * set the translate start y in device coordinate
-    // *
-    // * @param translateStartY
-    // */
-    // public void setTranslateStartDeviceY(int translateStartY) {
-    // this.translateStartY = translateStartY;
-    // }
-    //
+    
     /**
      * get the translate start point in device coordinate
      * 
@@ -1248,14 +1215,6 @@ public class TranslatePlugin extends AbstractPlugin implements
         return translateCurentX;
     }
 
-    // /**
-    // * set the translate current x in device coordinate
-    // *
-    // * @return translateCurentX
-    // */
-    // public void setTranslateCurentDeviceX(int translateCurentX) {
-    // this.translateCurentX = translateCurentX;
-    // }
 
     /**
      * get the translate current device y
@@ -1265,15 +1224,6 @@ public class TranslatePlugin extends AbstractPlugin implements
     public int getTranslateCurentDeviceY() {
         return translateCurentY;
     }
-
-    // /**
-    // * set the translate current y in device coordinate
-    // *
-    // * @param translateCurentY
-    // */
-    // public void setTranslateCurentDeviceY(int translateCurentY) {
-    // this.translateCurentY = translateCurentY;
-    // }
 
     /**
      * get Translate current device point
