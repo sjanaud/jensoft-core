@@ -5,6 +5,7 @@
  */
 package com.jensoft.core.plugin.donut2d.painter.label;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.FontMetrics;
@@ -79,7 +80,7 @@ public class Donut2DBorderLabel extends AbstractDonut2DSliceLabel {
     private Color linkMarkerDrawColor;
 
     /** link stroke */
-    private Stroke linkStroke;
+    private Stroke linkStroke = new BasicStroke();
 
     /** link extends */
     private int linkExtends = 20;

@@ -109,6 +109,12 @@ public class Donut3DSlice {
 
     /** fragment type */
     private Type type;
+    
+    /**fragment slice flag*/
+    private boolean isFragment;
+    
+    /**slice parent for this fragment*/
+    private Donut3DSlice parentSlice;
 
     /** inner model */
     private Ellipse2D innerModel;
@@ -935,5 +941,35 @@ public class Donut3DSlice {
 
         return sensibleArea;
     }
+
+	/**
+	 * @return the isFragment
+	 */
+	public boolean isFragment() {
+		return isFragment;
+	}
+
+	/**
+	 * @param isFragment the isFragment to set
+	 */
+	public void setFragment(boolean isFragment) {
+		this.isFragment = isFragment;
+	}
+
+	/**
+	 * @return the parentSlice
+	 */
+	public Donut3DSlice getParentSlice() {
+		return parentSlice;
+	}
+
+	/**
+	 * @param parentSlice the parentSlice to set
+	 */
+	public void setParentSlice(Donut3DSlice parentSlice) {
+		this.parentSlice = parentSlice;
+	}
+    
+    
 
 }

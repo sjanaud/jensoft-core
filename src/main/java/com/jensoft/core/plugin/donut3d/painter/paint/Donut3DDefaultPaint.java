@@ -197,27 +197,280 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
     @Override
     public final void paintDonut3D(Graphics2D g2d, Donut3D donut3d) {
         // System.out.println("-paint donut-");
-        List<Donut3DSlice> sections = donut3d.getPaintOrder();
-        for (Donut3DSlice section : sections) {
+    	
+    	
+    	List<Donut3DSlice> slicesFragments = donut3d.getPaintOrderFragments();
+    	  for (Donut3DSlice fragment : slicesFragments) {
 
+    		  //if(!fragment.getName().equals("s4.part.back"))
+    			//  continue;
+              // System.out.println("paint order : "+section.getName());
+              paintDonut3DFill2(g2d, donut3d, fragment);
+              
+              if (isPaintTopEffect()) {
+                  paintTopEffect(g2d, donut3d, fragment);
+              }
+
+              if (isPaintOuterEffect()) {
+                  paintOuterEffect(g2d, donut3d, fragment);
+              }
+
+              if (isPaintInnerEffect()) {
+                  paintInnerEffect(g2d, donut3d, fragment);
+              }
+              fragment.setPainted(true);
+    	  }
+    	
+//        List<Donut3DSlice> slices = donut3d.getPaintOrder();  	
+ //       for (Donut3DSlice slice : slices) {
             // System.out.println("paint order : "+section.getName());
-            paintDonut3DFill(g2d, donut3d, section);
+           // paintDonut3DFill(g2d, donut3d, slice);
 
-            if (isPaintTopEffect()) {
-                paintTopEffect(g2d, donut3d, section);
-            }
+//            if (isPaintTopEffect()) {
+//                paintTopEffect(g2d, donut3d, slice);
+//            }
+//
+//            if (isPaintOuterEffect()) {
+//                paintOuterEffect(g2d, donut3d, slice);
+//            }
+//
+//            if (isPaintInnerEffect()) {
+//                paintInnerEffect(g2d, donut3d, slice);
+//            }
+//            slice.setPainted(true);
+ //       }
 
-            if (isPaintOuterEffect()) {
-                paintOuterEffect(g2d, donut3d, section);
-            }
+    }
+    
+    public void paintDonut3DFill2(Graphics2D g2d, Donut3D donut3d,
+            Donut3DSlice s) {
+    	 if (s == null) {
+             return;
+         }
+         System.out.println("paint fill : " + s.getName());
 
-            if (isPaintInnerEffect()) {
-                paintInnerEffect(g2d, donut3d, section);
-            }
-            section.setPainted(true);
+        /**
+         * Back fragment outer face
+         */
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+                                                    alphaFill));
+       
 
+//        List<Donut3DSlice> fragments = s.getFragments();
+//        if (fragments == null) {
+//            return;
+//        }
+
+        if (fillBackOuter) {
+           //for (Donut3DSlice donut3dSection : fragments) {
+                if (s.getType() == Type.Back) {
+                    g2d.setColor(s.getThemeColor());
+                    g2d.fill(s.getOuterFace());
+                }
+           // }
         }
 
+        /**
+         * Back fragment bottom face
+         */
+        if (fillBackBottom) {
+           // for (Donut3DSlice donut3dSection : fragments) {
+                if (s.getType() == Type.Back) {
+                    g2d.setColor(s.getThemeColor());
+                    g2d.fill(s.getBottomFace());
+                }
+           // }
+        }
+
+        
+        /**
+         * Back fragment inner face
+         */
+        if (fillBackInner) {
+           // for (Donut3DSlice fragment : fragments) {
+                if (s.getType() == Type.Back) {
+                    g2d.setColor(s.getThemeColor());
+
+                    Area visibleInnerBackFace = new Area(
+                                                         s.getInnerFace());
+                    visibleInnerBackFace
+                            .subtract(new Area(donut3d.getTopFace()));
+
+                    visibleInnerBackFace.subtract(new Area(s.getParentSlice().getFrontInnerFace()));
+                    // ??
+                    // visibleInnerBackFace.subtract(new
+                    // Area(donut3dSection.getStartFace()));
+                    // visibleInnerBackFace.subtract(new
+                    // Area(donut3dSection.getEndFace()));
+
+                    // g2d.setColor(Color.RED);
+                    // g2d.draw(visibleInnerBackFace);
+                    g2d.fill(visibleInnerBackFace);
+                }
+           // }
+        }
+
+        /**
+         * Back fragment start and end face
+         */
+
+        if (fillBackStart) {
+           // for (Donut3DSlice fragment : fragments) {
+                if (s.getType() == Type.Back) {
+                    if (s.getParentSlice().isFirst(s)) {
+                    	System.out.println("fill back start "+s.getName());
+                        g2d.setColor(s.getThemeColor());
+                        g2d.fill(s.getStartFace());
+                        
+                        if (s.getParentSlice().isFirst(s) && (s.getParentSlice().getStartAngleDegree() <= 90 || s.getParentSlice().getStartAngleDegree() >= 270)) {
+                        	System.out.println("effect back start "+s.getName());
+                            paintStartEffect(g2d, donut3d, s);
+                        }
+                    }
+
+                }
+            //}
+        }
+       
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+                                                    alphaFill));
+        if (fillBackEnd) {
+            //for (Donut3DSlice fragment : fragments) {
+                if (s.getType() == Type.Back) {
+                    if (s.getParentSlice().isLast(s)) {
+                    	System.out.println("fill back end "+s.getName());
+                        g2d.setColor(s.getThemeColor());
+                        g2d.fill(s.getEndFace());
+                        
+                        if (s.getParentSlice().isLast(s) && (s.getEndAngleDegree() >= 90 && s.getEndAngleDegree() <= 270)) {
+                        	System.out.println("effect back end "+s.getName());
+                            paintEndEffect(g2d, donut3d, s);
+                        }
+                    }
+                }
+            //}
+        }
+        
+       
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+                                                    alphaFill));
+
+        /**
+         * Back fragment top face
+         */
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+                                                    alphaFill));
+        if (fillBackTop) {
+            //for (Donut3DSlice donut3dSection : fragments) {
+                if (s.getType() == Type.Back) {
+                    g2d.setColor(s.getParentSlice().getThemeColor());
+                    g2d.fill(s.getTopFace());
+                }
+            //}
+        }
+
+        /***
+         * FRONT
+         */
+
+        /**
+         * Front fragment inner face
+         */
+        if (fillFrontInner) {
+            //for (Donut3DSlice fragment : fragments) {
+                if (s.getType() == Type.Front) {
+                    g2d.setColor(s.getThemeColor());
+                    // g2d.fill(donut3dSection.getInnerFace());
+
+                    // g2d.setColor(Color.BLACK);
+                    Area a = new Area(s.getInnerFace());
+                    // g2d.draw(a);
+                    // a.intersect(new Area(s.getBackInnerFace()));
+
+                    g2d.fill(a);
+
+                }
+          //  }
+        }
+        /**
+         * Front fragment bottom face
+         */
+        if (fillFrontBottom) {
+           // for (Donut3DSlice donut3dSection : fragments) {
+                if (s.getType() == Type.Front) {
+                    g2d.setColor(s.getThemeColor());
+                    g2d.fill(s.getBottomFace());
+                }
+            //}
+        }
+        /**
+         * Front fragment start and end face
+         */
+        if (fillFrontStart) {
+           // for (Donut3DSlice fragment : fragments) {
+                if (s.getType() == Type.Front) {
+                    if (s.getParentSlice().isFirst(s)) {
+                    	System.out.println("fill front start "+s.getName());
+                        g2d.setColor(s.getThemeColor());
+                        g2d.fill(s.getStartFace());
+                        
+                        if (s.getParentSlice().isFirst(s) && (s.getStartAngleDegree() < 90 || s.getStartAngleDegree() > 270)) {
+                        	System.out.println("effect front start "+s.getName());
+                            paintStartEffect(g2d, donut3d, s);
+                        }
+                    }
+
+                }
+            //}
+        }
+       
+
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+                                                    alphaFill));
+        if (fillFrontEnd) {
+           // for (Donut3DSlice fragment : fragments) {
+                if (s.getType() == Type.Front) {
+                    if (s.getParentSlice().isLast(s)) {
+                    	System.out.println("fill front end "+s.getName());
+                        g2d.setColor(s.getParentSlice().getThemeColor());
+                        g2d.fill(s.getEndFace());
+                        
+                        if (s.getParentSlice().isLast(s) && (s.getEndAngleDegree() > 90 && s.getEndAngleDegree() < 270)) {
+                        	System.out.println("effect front end "+s.getName());
+                            paintEndEffect(g2d, donut3d, s);
+                        }
+                    }
+                }
+          //  }
+        }
+
+      
+
+        g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
+                                                    alphaFill));
+
+        /**
+         * Front fragment outer face
+         */
+        if (fillFrontOuter) {
+            //for (Donut3DSlice donut3dSection : fragments) {
+                if (s.getType() == Type.Front) {
+                    g2d.setColor(s.getParentSlice().getThemeColor());
+                    g2d.fill(s.getOuterFace());
+                }
+            //}
+        }
+        /**
+         * Front fragment top face
+         */
+        if (fillFrontTop) {
+            //for (Donut3DSlice donut3dSection : fragments) {
+                if (s.getType() == Type.Front) {
+                    g2d.setColor(s.getParentSlice().getThemeColor());
+                    g2d.fill(s.getTopFace());
+                }
+            //}
+        }
     }
 
     public void paintDonut3DFill(Graphics2D g2d, Donut3D donut3d,
@@ -584,16 +837,16 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
         }
 
         Area outerEffect2 = new Area();
-        if (section == null || section.getFragments() == null) {
+        if (section == null) {
             return;
         }
 
-        List<Donut3DSlice> fragments = section.getFragments();
-        for (Donut3DSlice fragment : fragments) {
-            if (fragment.getType() == Type.Front) {
-                outerEffect2.add(new Area(fragment.getOuterFace()));
+       // List<Donut3DSlice> fragments = section.getFragments();
+       // for (Donut3DSlice fragment : fragments) {
+            if (section.getType() == Type.Front) {
+                outerEffect2.add(new Area(section.getOuterFace()));
             }
-        }
+        //}
 
         // outerEffect.subtract(new Area(donut3d.getTopFace()));
         // outerEffect.subtract(new Area(donut3d.getStartFace()));
@@ -632,7 +885,7 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
         // g2d.draw(outerEffect);
     }
 
-    public void paintEndEffect(Graphics2D g2d, Donut3D donut3d,
+    private void paintEndEffect(Graphics2D g2d, Donut3D donut3d,
             Donut3DSlice section) {
 
         g2d.setComposite(AlphaComposite
@@ -690,7 +943,7 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 
     }
 
-    public void paintStartEffect(Graphics2D g2d, Donut3D donut3d,
+    private void paintStartEffect(Graphics2D g2d, Donut3D donut3d,
             Donut3DSlice section) {
 
         g2d.setComposite(AlphaComposite
@@ -760,7 +1013,11 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
                                                     alphaInner));
 
-        if (section == null || section.getFragments() == null) {
+//        if (section == null || section.getFragments() == null) {
+//            return;
+//        }
+        
+        if (section == null) {
             return;
         }
 
@@ -812,12 +1069,12 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
                                                                      startInner, endInner, distInner, colorsInner);
             Area a = new Area();
 
-            List<Donut3DSlice> fragments = section.getFragments();
-            for (Donut3DSlice donut3dSection : fragments) {
-                if (donut3dSection.getType() == Type.Back) {
+            //List<Donut3DSlice> fragments = section.getFragments();
+            //for (Donut3DSlice donut3dSection : fragments) {
+                if (section.getType() == Type.Back) {
 
                     Area visibleInnerBackFace = new Area(
-                                                         donut3dSection.getInnerFace());
+                    		section.getInnerFace());
                     visibleInnerBackFace
                             .subtract(new Area(donut3d.getTopFace()));
                     visibleInnerBackFace.subtract(new Area(section
@@ -826,7 +1083,7 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
                     // g2d.draw(a);
                     a.add(visibleInnerBackFace);
                 }
-            }
+           // }
             g2d.setPaint(paintInner);
 
             g2d.fill(a);

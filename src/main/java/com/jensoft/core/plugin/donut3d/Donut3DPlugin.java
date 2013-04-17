@@ -132,6 +132,7 @@ public class Donut3DPlugin extends AbstractPlugin implements
         }
 
         solveDonut3D();
+        
         for (Donut3D donut3D : donuts3D) {
 
             if (donut3D.getDonut3DPaint() != null) {

@@ -5,33 +5,99 @@
  */
 package com.jensoft.core.plugin.donut2d.painter.draw;
 
+import java.awt.BasicStroke;
+import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.Stroke;
+import java.util.List;
 
 import com.jensoft.core.plugin.donut2d.Donut2D;
-import com.jensoft.core.plugin.donut2d.painter.AbstractDonut2DPainter;
+import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 
 /**
- * Abstract definition of donut 2D drawing operation
+ * <code>AbstractDonut2DDefaultDraw</code>
+ * <p>
+ * Abstract definition for donut2D draw operation
+ * </p>
  */
-public abstract class Donut2DDefaultDraw extends AbstractDonut2DPainter {
+public class Donut2DDefaultDraw extends AbstractDonut2DDraw {
 
-    /**
-     * Draw donut 2D
-     * 
-     * @param g2d
-     *            the graphics context
-     * @param donut2D
-     *            the donut 2D to paint
-     */
-    protected abstract void paintDonut2DDraw(Graphics2D g2d, Donut2D donut2D);
+	/** draw color */
+	private Color outlineColor;
 
-   
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.painter.AbstractDonut2DPainter#paintDonut2D(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D)
-     */
-    @Override
-    public final void paintDonut2D(Graphics2D g2d, Donut2D donut2D) {
-        paintDonut2DDraw(g2d, donut2D);
-    }
+	/** draw stroke */
+	private Stroke stroke = new BasicStroke();
+
+	/**
+	 * create empty draw
+	 */
+	public Donut2DDefaultDraw() {
+	}
+
+	/**
+	 * create donut draw with specified color
+	 * 
+	 * @param outlineColor
+	 */
+	public Donut2DDefaultDraw(Color outlineColor) {
+		super();
+		this.outlineColor = outlineColor;
+	}
+
+	/**
+	 * create donut 2D draw with given color and outline
+	 * 
+	 * @param outlineColor
+	 * @param stroke
+	 */
+	public Donut2DDefaultDraw(Color outlineColor, Stroke stroke) {
+		super();
+		this.outlineColor = outlineColor;
+		this.stroke = stroke;
+	}
+
+	/**
+	 * get outline color
+	 * 
+	 * @return outline color
+	 */
+	public Color getOutlineColor() {
+		return outlineColor;
+	}
+
+	/**
+	 * set outline color
+	 * 
+	 * @param outlineColor
+	 *            the outline color to set
+	 */
+	public void setOutlineColor(Color outlineColor) {
+		this.outlineColor = outlineColor;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see com.jensoft.core.plugin.donut2d.painter.draw.Donut2DDefaultDraw#
+	 * paintDonut2DDraw(java.awt.Graphics2D,
+	 * com.jensoft.core.plugin.donut2d.Donut2D)
+	 */
+	@Override
+	public void paintDonut2DDraw(Graphics2D g2d, Donut2D donut2D) {
+		if (outlineColor == null)
+			return;
+
+		g2d.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, 1f));
+
+		List<Donut2DSlice> sections = donut2D.getSlices();
+		g2d.setStroke(new BasicStroke(2f));
+		for (int j = 0; j < sections.size(); j++) {
+
+			Donut2DSlice s = sections.get(j);
+			g2d.setStroke(stroke);
+			g2d.setColor(outlineColor);
+			g2d.draw(s.getSlicePath());
+		}
+	}
 
 }

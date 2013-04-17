@@ -18,7 +18,7 @@ import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator;
-import com.jensoft.core.plugin.donut2d.painter.draw.Donut2DDefaultDraw;
+import com.jensoft.core.plugin.donut2d.painter.draw.AbstractDonut2DDraw;
 import com.jensoft.core.plugin.donut2d.painter.effect.AbstractDonut2DEffect;
 import com.jensoft.core.plugin.donut2d.painter.fill.AbstractDonut2DFill;
 import com.jensoft.core.plugin.donut2d.painter.fill.Donut2DDefaultFill;
@@ -65,7 +65,7 @@ public class Donut2D {
     private double explose = 0;
 
     /** donut2D draw */
-    private Donut2DDefaultDraw donut2DDraw;
+    private AbstractDonut2DDraw donut2DDraw;
 
     /** donut2D fill */
     private AbstractDonut2DFill donut2DFill;
@@ -235,7 +235,7 @@ public class Donut2D {
      * 
      * @return donut draw
      */
-    public Donut2DDefaultDraw getDonut2DDraw() {
+    public AbstractDonut2DDraw getDonut2DDraw() {
         return donut2DDraw;
     }
 
@@ -245,7 +245,7 @@ public class Donut2D {
      * @param donut2dDraw
      *            the draw to set
      */
-    public void setDonut2DDraw(Donut2DDefaultDraw donut2dDraw) {
+    public void setDonut2DDraw(AbstractDonut2DDraw donut2dDraw) {
         donut2DDraw = donut2dDraw;
     }
 

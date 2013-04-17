@@ -10,7 +10,9 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jensoft.core.graphics.AlphaInterpolation;
 import com.jensoft.core.graphics.Antialiasing;
+import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel;
@@ -38,6 +40,8 @@ public class Donut2DPlugin extends AbstractPlugin implements
         setName("Donut2DPlugin");
         setAntialiasing(Antialiasing.On);
         setTextAntialising(TextAntialiasing.On);
+        setAlphaInterpolation(AlphaInterpolation.Quality);
+        setFractionalMetrics(Fractional.On);
         setPriority(100);
         donuts = new ArrayList<Donut2D>();
         setOnMoveListener(this);
@@ -103,12 +107,12 @@ public class Donut2DPlugin extends AbstractPlugin implements
 
         for (int i = 0; i < donuts.size(); i++) {
             Donut2D donut2D = donuts.get(i);
-
-            if (donut2D.getDonut2DDraw() != null) {
-                donut2D.getDonut2DDraw().paintDonut2D(g2d, donut2D);
-            }
+           
             if (donut2D.getDonut2DFill() != null) {
                 donut2D.getDonut2DFill().paintDonut2D(g2d, donut2D);
+            }
+            if (donut2D.getDonut2DDraw() != null) {
+                donut2D.getDonut2DDraw().paintDonut2D(g2d, donut2D);
             }
             if (donut2D.getDonut2DEffect() != null) {
                 donut2D.getDonut2DEffect().paintDonut2D(g2d, donut2D);
