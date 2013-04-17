@@ -299,6 +299,10 @@ public class Donut3D {
 
         Donut3DSlice fragment = new Donut3DSlice(donutSlice.getName()
                 + ".part", donutSlice.getThemeColor());
+        
+        fragment.setFragment(true);
+        fragment.setParentSlice(donutSlice);
+        
         if (startAngleDegree >= 0 && startAngleDegree < 180) {
             fragment.setType(Type.Back);
             fragment.setName(fragment.getName() + ".back");
@@ -649,6 +653,7 @@ public class Donut3D {
         List<Donut3DSlice> slicesOnAngle = new ArrayList<Donut3DSlice>();
         for (Donut3DSlice s : getSlices()) {
 
+        	//case 1 : s is strictly include in segment
             if (s.getStartAngleDegree() >= startAngleDegree
                     && s.getEndAngleDegree() >= startAngleDegree
                     && s.getStartAngleDegree() <= endAngleDegree
@@ -662,6 +667,67 @@ public class Donut3D {
                 slicesOnAngle.add(s);
             }
             else if (s.getStartAngleDegree() >= startAngleDegree
+                    && s.getEndAngleDegree() >= startAngleDegree
+                    && s.getStartAngleDegree() <= endAngleDegree
+                    && s.getEndAngleDegree() >= endAngleDegree) {
+                slicesOnAngle.add(s);
+            }
+            else if (s.getStartAngleDegree() <= startAngleDegree
+                    && s.getEndAngleDegree() >= startAngleDegree
+                    && s.getStartAngleDegree() <= endAngleDegree
+                    && s.getEndAngleDegree() >= endAngleDegree) {
+                slicesOnAngle.add(s);
+            }
+
+        }
+
+        return slicesOnAngle;
+    }
+    
+    /**
+     * get slices found on the specified frame angle
+     * 
+     * @param startAngleDegree
+     *            the start angle degree
+     * @param endAngleDegree
+     *            the end angle degree
+     * @return the slices intercept by the specified frame angle
+     */
+    public List<Donut3DSlice> getSlicesFragmentOnAngle(Donut3DSlice sliceParent,double startAngleDegree,
+            double endAngleDegree) {
+        if (startAngleDegree < 0 || startAngleDegree > 360
+                || endAngleDegree < 0 || endAngleDegree > 360) {
+            throw new IllegalArgumentException(
+                                               "StarAngleDegree and EndAngleDegree out of range [0,360]");
+        }
+        if (endAngleDegree < startAngleDegree) {
+            throw new IllegalArgumentException(
+                                               "EndAngleDegree should be  greater than StartAngleDegree");
+        }
+
+        List<Donut3DSlice> slicesOnAngle = new ArrayList<Donut3DSlice>();
+        for (Donut3DSlice s : sliceParent.getFragments()) {
+
+        	//case 1 : s is strictly include in segment
+            if (s.getStartAngleDegree() >= startAngleDegree
+                    && s.getEndAngleDegree() >= startAngleDegree
+                    && s.getStartAngleDegree() <= endAngleDegree
+                    && s.getEndAngleDegree() <= endAngleDegree) {
+                slicesOnAngle.add(s);
+            }
+            else if (s.getStartAngleDegree() <= startAngleDegree
+                    && s.getEndAngleDegree() >= startAngleDegree
+                    && s.getStartAngleDegree() <= endAngleDegree
+                    && s.getEndAngleDegree() <= endAngleDegree) {
+                slicesOnAngle.add(s);
+            }
+            else if (s.getStartAngleDegree() >= startAngleDegree
+                    && s.getEndAngleDegree() >= startAngleDegree
+                    && s.getStartAngleDegree() <= endAngleDegree
+                    && s.getEndAngleDegree() >= endAngleDegree) {
+                slicesOnAngle.add(s);
+            }
+            else if (s.getStartAngleDegree() <= startAngleDegree
                     && s.getEndAngleDegree() >= startAngleDegree
                     && s.getStartAngleDegree() <= endAngleDegree
                     && s.getEndAngleDegree() >= endAngleDegree) {
@@ -1169,6 +1235,118 @@ public class Donut3D {
         }
         return false;
     }
+    
+ 
+    /**
+     * get ordered slice to paint
+     * 
+     * @return sorted slices to be paint
+     */
+    public List<Donut3DSlice> getPaintOrderFragments() {
+    	 List<Donut3DSlice> paintOrderFragments = new ArrayList<Donut3DSlice>();
+    	 
+    	 List<Donut3DSlice> firstSlices = getSlicesOnAngle(90);    	 
+    	 List<Donut3DSlice> flattenFirstSlicesFragments = new ArrayList<Donut3DSlice>();
+         for (Donut3DSlice firstSlice : firstSlices) {
+        	 flattenFirstSlicesFragments.addAll(firstSlice.getFragments());
+         }
+    	 
+         List<Donut3DSlice> lastSlices = getSlicesOnAngle(270);   
+         List<Donut3DSlice> flattenLastSlicesFragments = new ArrayList<Donut3DSlice>();
+         for (Donut3DSlice lastSlice : lastSlices) {
+        	 flattenLastSlicesFragments.addAll(lastSlice.getFragments());
+         }
+
+         //first fragment on 90°        
+         for (Donut3DSlice firstSliceFragment : flattenFirstSlicesFragments) {
+			if(firstSliceFragment.getStartAngleDegree() <= 90 && firstSliceFragment.getEndAngleDegree() >= 90){
+				//System.out.println("found fragment from : "+firstSlice.getName() +" for fragment ["+donut3dSliceFragment.getStartAngleDegree()+","+donut3dSliceFragment.getEndAngleDegree()+"]");
+				paintOrderFragments.add(firstSliceFragment);
+			}
+         }        	
+        
+         
+         //other from first
+         for (Donut3DSlice firstSliceFragment : flattenFirstSlicesFragments) {
+        	  if (!in(firstSliceFragment, paintOrderFragments) && !in(firstSliceFragment, flattenLastSlicesFragments)) {
+        		  paintOrderFragments.add(firstSliceFragment);
+              }
+         }
+         
+         //left
+         List<Donut3DSlice> slicesLeft = getSlicesOnAngle(90, 270);
+         for (Donut3DSlice sliceLeft : slicesLeft) {
+        	 List<Donut3DSlice> sliceLeftFragments = sliceLeft.getFragments();
+        	 for (Donut3DSlice leftFragment : sliceLeftFragments) {
+        		 if (!in(leftFragment, paintOrderFragments) && !in(leftFragment, flattenLastSlicesFragments)) {
+        			 paintOrderFragments.add(leftFragment);
+                 }
+			}
+             
+         }
+         
+         // right
+         Donut3DSlice zeroSlice = getSliceOnAngle(0);
+         
+         List<Donut3DSlice> slicesRight1 = getSlicesOnAngle(0, 90);
+         Collections.reverse(slicesRight1);
+         for (Donut3DSlice sliceRight1 : slicesRight1) {
+        	 //List<Donut3DSlice> right1Fragments = sliceRight1.getFragments();
+        	 List<Donut3DSlice> right1Fragments = getSlicesFragmentOnAngle(sliceRight1, 0, 90);
+        	 for (Donut3DSlice right1Fragment : right1Fragments) {
+        		 
+        		 
+        		 
+        		 if (!in(right1Fragment, paintOrderFragments) && !zeroSlice.getFragments().contains(right1Fragment)
+                         && !in(right1Fragment, flattenLastSlicesFragments)) {
+        			 paintOrderFragments.add(right1Fragment);
+                 }
+        	 }
+             
+         }
+
+        
+         List<Donut3DSlice> zeroFragments = zeroSlice.getFragments();
+	       for (int i = zeroFragments.size()-1; i >= 0; i--) {
+	    	   Donut3DSlice zeroFragment = zeroFragments.get(i);
+	         	  if (zeroFragment != null && !in(zeroFragment, paintOrderFragments)
+	                       && !in(zeroFragment, flattenLastSlicesFragments)) {
+	              	 paintOrderFragments.add(zeroFragment);
+	               }
+	          
+	       }
+        // Collections.reverse(zeroFragments);
+        
+       
+
+         // RIGHT 2
+         List<Donut3DSlice> slicesRight2 = getSlicesOnAngle(270, 360);
+         Collections.reverse(slicesRight2);
+         for (Donut3DSlice sliceRight2 : slicesRight2) {
+        	 //List<Donut3DSlice> right2Fragments = sliceRight2.getFragments();
+        	 List<Donut3DSlice> right2Fragments = getSlicesFragmentOnAngle(sliceRight2, 270, 360);
+        	 for (Donut3DSlice right2Fragment : right2Fragments) {
+        		 if (!in(right2Fragment, paintOrderFragments) && !zeroSlice.getFragments().contains(right2Fragment)
+                         && !in(right2Fragment, flattenLastSlicesFragments)) {
+        			 paintOrderFragments.add(right2Fragment);
+                 }
+        	 }
+        	
+         }
+
+         for (Donut3DSlice lastFragment : flattenLastSlicesFragments) {
+        	 if (!in(lastFragment, paintOrderFragments)){
+        		 paintOrderFragments.add(lastFragment);
+        	 }else{
+        		 System.out.println("last fragment already use :"+lastFragment.getName()+" "+ lastFragment.getStartAngleDegree()+"-->"+lastFragment.getEndAngleDegree());
+        	 }
+		}
+         
+        
+         
+         System.out.println("paint order by fragments "+paintOrderFragments);
+         return paintOrderFragments;
+    }
 
     /**
      * get ordered slice to paint
@@ -1176,6 +1354,8 @@ public class Donut3D {
      * @return sorted slices to be paint
      */
     public List<Donut3DSlice> getPaintOrder() {
+    	getPaintOrderFragments();
+    	
         List<Donut3DSlice> paintOrder = new ArrayList<Donut3DSlice>();
 
         List<Donut3DSlice> firstSlices = getSlicesOnAngle(90);
@@ -1186,7 +1366,7 @@ public class Donut3D {
                     && !in(firstSlice, lastSlices)) {
                 paintOrder.add(firstSlice);
             }
-        }
+        }        
 
         // LEFT
         List<Donut3DSlice> slicesLeft = getSlicesOnAngle(90, 270);
@@ -1224,11 +1404,12 @@ public class Donut3D {
 
         // PAINT LAST
         for (Donut3DSlice lastSlice : lastSlices) {
-            if (lastSlice != null) {
-                paintOrder.add(lastSlice);
+            if (lastSlice != null) {            	
+            	paintOrder.add(lastSlice);          
+                
             }
         }
-
+        System.out.println("paint order : "+paintOrder);
         return paintOrder;
     }
 
