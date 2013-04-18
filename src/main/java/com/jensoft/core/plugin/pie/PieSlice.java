@@ -93,6 +93,22 @@ public class PieSlice {
         divergence = 0;
         sliceLabels = new ArrayList<AbstractPieSliceLabel>();
     }
+    
+    /**
+     * create pie slice with the given parameters
+     * 
+     * @param name
+     *            the pie slice name
+     * @param themeColor
+     *            the pie theme color
+     */
+    public PieSlice(String name, Color themeColor,double value) {
+        this.name = name;
+        this.themeColor = themeColor;
+        this.value=value;
+        divergence = 0;
+        sliceLabels = new ArrayList<AbstractPieSliceLabel>();
+    }
 
     /**
      * get the pie host

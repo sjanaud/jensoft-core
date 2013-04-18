@@ -19,8 +19,6 @@ import com.jensoft.core.plugin.pie.PieSlice;
  */
 public class PieRadialEffect extends AbstractPieEffect {
 
-    private Color startColor;
-    private Color endColor;
 
     private Color[] shadeColors;
     private float[] shadeFractions;
@@ -46,19 +44,18 @@ public class PieRadialEffect extends AbstractPieEffect {
     }
 
     /**
-     * create Pie Effect
-     * 
-     * @param startColor
-     *            the start color
-     * @param endColor
-     *            the end color
+     * create radial effect with given shader
+     * @param shadeColors
+     * @param shadeFractions
      */
-    public PieRadialEffect(Color startColor, Color endColor) {
-        this.startColor = startColor;
-        this.endColor = endColor;
-    }
+    public PieRadialEffect(Color[] shadeColors, float[] shadeFractions) {
+		super();
+		this.shadeColors = shadeColors;
+		this.shadeFractions = shadeFractions;
+	}
 
-    /**
+
+	/**
      * @return the reload
      */
     public boolean isReload() {
@@ -105,29 +102,7 @@ public class PieRadialEffect extends AbstractPieEffect {
         setReload(true);
     }
 
-    /**
-     * @return the startColor
-     */
-    public Color getStartColor() {
-        return startColor;
-    }
-
-    /**
-     * @param startColor
-     *            the startColor to set
-     */
-    public void setStartColor(Color startColor) {
-        this.startColor = startColor;
-        setReload(true);
-    }
-
-    /**
-     * @return the endColor
-     */
-    public Color getEndColor() {
-        return endColor;
-    }
-
+    
     /**
      * @return the offsetRadius
      */
@@ -148,14 +123,7 @@ public class PieRadialEffect extends AbstractPieEffect {
         setReload(true);
     }
 
-    /**
-     * @param endColor
-     *            the endColor to set
-     */
-    public void setEndColor(Color endColor) {
-        this.endColor = endColor;
-        setReload(true);
-    }
+   
 
     /**
      * set the shader parameters
@@ -241,8 +209,7 @@ public class PieRadialEffect extends AbstractPieEffect {
     public final void paintPieEffect(Graphics2D g2d, Pie pie) {
 
         if (pieSliceRadialEffect == null || reload) {
-            pieSliceRadialEffect = new PieSliceRadialEffect(startColor, endColor,
-                                                            offsetRadius);
+            pieSliceRadialEffect = new PieSliceRadialEffect(offsetRadius);
             pieSliceRadialEffect.setFocusAngle(focusAngle);
             pieSliceRadialEffect.setFocusRadius(focusRadius);
             if (shadeFractions != null && shadeColors != null
