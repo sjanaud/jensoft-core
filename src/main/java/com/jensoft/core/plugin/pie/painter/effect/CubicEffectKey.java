@@ -6,7 +6,7 @@
 package com.jensoft.core.plugin.pie.painter.effect;
 
 /**
- * <code>Effect3Key</code>
+ * <code>CubicEffectKey</code>
  * 
  * @author Sebastien Janaud
  */

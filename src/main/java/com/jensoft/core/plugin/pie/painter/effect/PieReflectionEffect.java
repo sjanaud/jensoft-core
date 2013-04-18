@@ -90,6 +90,7 @@ public class PieReflectionEffect extends AbstractPieEffect {
     }
 
     /**
+     * opacity [0,1]
      * @param opacity
      *            the opacity to set
      */
@@ -112,6 +113,7 @@ public class PieReflectionEffect extends AbstractPieEffect {
     }
 
     /**
+     * length [0,1]
      * @param lenght
      *            the length to set
      */

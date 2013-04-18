@@ -18,18 +18,13 @@ import com.jensoft.core.plugin.pie.Pie.PieNature;
 import com.jensoft.core.plugin.pie.PieSlice;
 
 /**
- * <code>PieEffect2Section</code>
+ * <code>PieSliceRadialEffect</code>
  * 
  * @author Sebastien Janaud
  */
 public class PieSliceRadialEffect extends AbstractPieSliceEffect {
 
-    /** simple shader start color */
-    private Color startColor;
-
-    /** simple shader end color */
-    private Color endColor;
-
+    
     /** offset radius */
     private int offsetRadius = 0;
 
@@ -46,43 +41,12 @@ public class PieSliceRadialEffect extends AbstractPieSliceEffect {
     private int focusAngle = 270;
 
     /**
-     * create Pie Effect
+     * create pie radial effect
      */
     public PieSliceRadialEffect() {
     }
 
-    /**
-     * create pie effect with specified parameters
-     * 
-     * @param startColor
-     *            the start color to set
-     * @param endColor
-     *            the end color to set
-     * @param offsetRadius
-     *            the offset radius to set
-     */
-    public PieSliceRadialEffect(Color startColor, Color endColor, int offsetRadius) {
-        if (offsetRadius < 0) {
-            throw new IllegalArgumentException(
-                                               "offset radius should be greater than 0");
-        }
-        this.startColor = startColor;
-        this.endColor = endColor;
-        this.offsetRadius = offsetRadius;
-    }
 
-    /**
-     * create Pie Effect
-     * 
-     * @param startColor
-     *            the start color
-     * @param endColor
-     *            the end color
-     */
-    public PieSliceRadialEffect(Color startColor, Color endColor) {
-        this.startColor = startColor;
-        this.endColor = endColor;
-    }
 
     /**
      * create pie effect with specified parameter
@@ -145,27 +109,7 @@ public class PieSliceRadialEffect extends AbstractPieSliceEffect {
         this.focusAngle = focusAngle;
     }
 
-    /**
-     * @return the startColor
-     */
-    public Color getStartColor() {
-        return startColor;
-    }
-
-    /**
-     * @param startColor
-     *            the startColor to set
-     */
-    public void setStartColor(Color startColor) {
-        this.startColor = startColor;
-    }
-
-    /**
-     * @return the endColor
-     */
-    public Color getEndColor() {
-        return endColor;
-    }
+  
 
     /**
      * @return the offsetRadius
@@ -186,15 +130,7 @@ public class PieSliceRadialEffect extends AbstractPieSliceEffect {
         this.offsetRadius = offsetRadius;
     }
 
-    /**
-     * @param endColor
-     *            the endColor to set
-     */
-    public void setEndColor(Color endColor) {
-        this.endColor = endColor;
-    }
-
-    
+   
     /* (non-Javadoc)
      * @see com.jensoft.core.plugin.pie.painter.effect.AbstractPieSliceEffect#paintPieSliceEffect(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie, com.jensoft.core.plugin.pie.PieSlice)
      */
@@ -238,19 +174,13 @@ public class PieSliceRadialEffect extends AbstractPieSliceEffect {
 
         RadialGradientPaint p;
         if (colors == null && fractions == null) {
-            float[] dist = { 0.0f, 1.0f };
-            Color cStart = new Color(255, 255, 255, 180);
-            //Color cEnd = new Color(40, 40, 40, 70);
-            Color cEnd = new Color(255, 255, 255, 20);
+            float[] dist = { 0.0f, 0.8f,1.0f };
+            Color c1 = new Color(255, 255, 255, 0);            
+            Color c2 = new Color(255, 255, 255, 120); 
+            Color c3 = new Color(255, 255, 255, 200);
 
-            if (startColor != null) {
-                cStart = startColor;
-            }
-            if (endColor != null) {
-                cEnd = endColor;
-            }
-
-            Color[] cols = { cStart, cEnd };
+            
+            Color[] cols = { c1, c2, c3};
             p = new RadialGradientPaint(cent, (float) radius, focus, dist,
                                         cols, CycleMethod.NO_CYCLE);
         }
