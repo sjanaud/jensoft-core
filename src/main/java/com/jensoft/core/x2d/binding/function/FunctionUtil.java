@@ -178,13 +178,13 @@ public class FunctionUtil implements X2DFunctionElement{
 
         SourceFunction serie = null;
         if (type.equalsIgnoreCase(ELEMENT_SOURCEFUNCTION_XSI_TYPE_AFFINE_SOURCEFUNCTION)) {
-            serie = FunctionUtil.inflateSerie2D(serieElement);
+            serie = FunctionUtil.inflateLineSource(serieElement);
         }
         if (type.equalsIgnoreCase(ELEMENT_SOURCEFUNCTION_XSI_TYPE_INTERPOLATE_SOURCEFUNCTION)) {
-            serie = FunctionUtil.inflateInterpolateSerie(serieElement);
+            serie = FunctionUtil.inflateSplineSource(serieElement);
         }
         if (type.equalsIgnoreCase(ELEMENT_SOURCEFUNCTION_XSI_TYPE_REGRESSION_SOURCEFUNCTION)) {
-            serie = FunctionUtil.inflateRegressionSerie(serieElement);
+            serie = FunctionUtil.inflateRegressionSource(serieElement);
         }
         if (serie != null) {
             String id = elementText(serieElement, ELEMENT_SOURCEFUNCTION_ID);
@@ -202,14 +202,14 @@ public class FunctionUtil implements X2DFunctionElement{
     /**
      * parse the specified element as {@link SourceFunction}
      * 
-     * @param serieElement
+     * @param sourceElement
      *            the element to parse
-     * @return the serie
+     * @return the source
      */
-    private static LineSource inflateSerie2D(Element serieElement) {
+    private static LineSource inflateLineSource(Element sourceElement) {
 
-        String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
-        String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
+        String sourcex = elementText(sourceElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
+        String sourcey = elementText(sourceElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
 
         StringTokenizer tokenizerX = new StringTokenizer(sourcex, " ");
         List<Double> valuesAsDoubleX = new ArrayList<Double>();
@@ -233,14 +233,14 @@ public class FunctionUtil implements X2DFunctionElement{
     /**
      * parse the specified element as {@link SourceFunction}
      * 
-     * @param serieElement
+     * @param sourceElement
      *            the element to parse
-     * @return the serie
+     * @return the source
      */
-    private static SplineSource inflateInterpolateSerie(Element serieElement) {
-        String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
-        String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
-        Double delta = elementDouble(serieElement, ELEMENT_SOURCEFUNCTION_INTERPOLATE_DELTA);
+    private static SplineSource inflateSplineSource(Element sourceElement) {
+        String sourcex = elementText(sourceElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
+        String sourcey = elementText(sourceElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
+        Double delta = elementDouble(sourceElement, ELEMENT_SOURCEFUNCTION_INTERPOLATE_DELTA);
 
         StringTokenizer tokenizerX = new StringTokenizer(sourcex, " ");
         List<Double> valuesAsDoubleX = new ArrayList<Double>();
@@ -266,14 +266,14 @@ public class FunctionUtil implements X2DFunctionElement{
     /**
      * parse the specified element as {@link SourceFunction}
      * 
-     * @param serieElement
+     * @param sourceElement
      *            the element to parse
-     * @return the serie
+     * @return the source
      */
-    private static RegressionSource inflateRegressionSerie(Element serieElement) {
-        String sourcex = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
-        String sourcey = elementText(serieElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
-        Double delta = elementDouble(serieElement, ELEMENT_SOURCEFUNCTION_REGRESSION_DELTA);
+    private static RegressionSource inflateRegressionSource(Element sourceElement) {
+        String sourcex = elementText(sourceElement, ELEMENT_SOURCEFUNCTION_SOURCE_X);
+        String sourcey = elementText(sourceElement, ELEMENT_SOURCEFUNCTION_SOURCE_Y);
+        Double delta = elementDouble(sourceElement, ELEMENT_SOURCEFUNCTION_REGRESSION_DELTA);
 
         StringTokenizer tokenizerX = new StringTokenizer(sourcex, " ");
         List<Double> valuesAsDoubleX = new ArrayList<Double>();
