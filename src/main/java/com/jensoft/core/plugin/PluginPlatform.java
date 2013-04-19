@@ -23,8 +23,8 @@ import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.Portfolio.ImageType;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
-import com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.inflater.X2DInflater;
+import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
+import com.jensoft.core.x2d.binding.X2DInflater;
 
 /**
  * <code>PluginPlatform</code>
