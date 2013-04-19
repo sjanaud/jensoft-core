@@ -30,13 +30,13 @@ import javax.swing.event.EventListenerList;
 import com.jensoft.core.device.DevicePartComponent;
 import com.jensoft.core.view.background.BackgroundPainter;
 import com.jensoft.core.view.deflater.svg.SVGDeflater;
-import com.jensoft.core.view.deflater.x2d.X2DDeflater;
 import com.jensoft.core.widget.WidgetFolder;
 import com.jensoft.core.window.Window2D;
 import com.jensoft.core.window.Window2DEvent;
 import com.jensoft.core.window.Window2DListener;
 import com.jensoft.core.window.WindowPart;
 import com.jensoft.core.window.WindowPartComponent;
+import com.jensoft.core.x2d.deflater.X2DDeflater;
 
 /**
  * <code>View2D</code> defines the end chart view.
