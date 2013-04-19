@@ -5,8 +5,6 @@
  */
 package com.jensoft.core.x2d.binding.outline;
 
-import static com.jensoft.core.x2d.binding.outline.X2DOutlineElement.ELEMENT_OUTLINE_COLOR;
-
 import java.awt.Color;
 
 import org.w3c.dom.Element;
@@ -21,7 +19,7 @@ import com.jensoft.core.x2d.binding.X2DInflater;
  * @author Sebastien Janaud
  */
 @X2DInflater(xsi="OutlinePlugin")
-public class OutlineInflater extends AbstractX2DPluginInflater<OutlinePlugin> {
+public class OutlineInflater extends AbstractX2DPluginInflater<OutlinePlugin> implements X2DOutlineElement{
 
     /**
      * create outline inflater

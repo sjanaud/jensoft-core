@@ -1,5 +1,5 @@
 /**
- * Provides outline inflater
+ * Provides outline bindings
  * 
  * @author sebastien janaud
  * @since 1.0

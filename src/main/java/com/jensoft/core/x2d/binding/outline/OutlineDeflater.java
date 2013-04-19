@@ -5,7 +5,7 @@ import org.w3c.dom.Element;
 import com.jensoft.core.plugin.outline.OutlinePlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 
-public class OutlineDeflater extends AbstractX2DPluginDeflater<OutlinePlugin> {		
+public class OutlineDeflater extends AbstractX2DPluginDeflater<OutlinePlugin>  implements X2DOutlineElement{		
 
 	public OutlineDeflater() {
 		super(new OutlinePlugin());
@@ -16,22 +16,16 @@ public class OutlineDeflater extends AbstractX2DPluginDeflater<OutlinePlugin> {
 		super(plugin);
 		setXSIType("OutlinePlugin");
 	}
-	
-//	<plugin xsi:type="OutlinePlugin">
-//	<outline-color>
-//		<r>0</r>
-//		<g>0</g>
-//		<b>0</b>
-//		<a>255</a>
-//	</outline-color>
-//	</plugin>
 
 	/* (non-Javadoc)
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {		
-		return null;
+	public Element deflate() {
+		Element pluginElement = createPluginRootElement();		
+		Element outlineColorElement = createColorElement(getX2dDocument(), ELEMENT_OUTLINE_COLOR, getPlugin().getThemeColor());
+		pluginElement.appendChild(outlineColorElement);	
+		return pluginElement;
 	}
 
 }
