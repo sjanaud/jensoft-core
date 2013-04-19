@@ -19,212 +19,219 @@ import com.jensoft.core.plugin.pie.PieSlice;
  */
 public class PieRadialEffect extends AbstractPieEffect {
 
+	/** shade colors */
+	private Color[] shadeColors;
 
-    private Color[] shadeColors;
-    private float[] shadeFractions;
+	/** shade fractions */
+	private float[] shadeFractions;
 
-    private int offsetRadius = 0;
-    private int focusRadius = 0;
-    private int focusAngle = 270;
+	/** effect offset radius */
+	private int offsetRadius = 0;
 
-    private PieSliceRadialEffect pieSliceRadialEffect;
+	/** focus radius */
+	private int focusRadius = 0;
 
-    /** reload flag */
-    private boolean reload = false;
+	/** focus angle */
+	private int focusAngle = 270;
 
-    /** shifting incience flag */
-    private boolean shiftingFocusIncidence = false;
-    /** shifting radius flag */
-    private boolean shiftingFocusRadius = false;
+	/** slice effect */
+	private PieSliceRadialEffect pieSliceRadialEffect;
 
-    /**
-     * create Pie Effect
-     */
-    public PieRadialEffect() {
-    }
+	/** reload flag */
+	private boolean reload = false;
 
-    /**
-     * create radial effect with given shader
-     * @param shadeColors
-     * @param shadeFractions
-     */
-    public PieRadialEffect(Color[] shadeColors, float[] shadeFractions) {
+	/** shifting incience flag */
+	private boolean shiftingFocusIncidence = false;
+
+	/** shifting radius flag */
+	private boolean shiftingFocusRadius = false;
+
+	/**
+	 * create Pie Effect
+	 */
+	public PieRadialEffect() {
+	}
+
+	/**
+	 * create radial effect with given shader
+	 * 
+	 * @param shadeColors
+	 * @param shadeFractions
+	 */
+	public PieRadialEffect(Color[] shadeColors, float[] shadeFractions) {
 		super();
 		this.shadeColors = shadeColors;
 		this.shadeFractions = shadeFractions;
 	}
 
+	/**
+	 * @return the reload
+	 */
+	public boolean isReload() {
+		return reload;
+	}
 
 	/**
-     * @return the reload
-     */
-    public boolean isReload() {
-        return reload;
-    }
+	 * @param reload
+	 *            the reload to set
+	 */
+	public void setReload(boolean reload) {
+		this.reload = reload;
+	}
 
-    /**
-     * @param reload
-     *            the reload to set
-     */
-    public void setReload(boolean reload) {
-        this.reload = reload;
-    }
+	/**
+	 * @return the focusRadius
+	 */
+	public int getFocusRadius() {
+		return focusRadius;
+	}
 
-    /**
-     * @return the focusRadius
-     */
-    public int getFocusRadius() {
-        return focusRadius;
-    }
+	/**
+	 * @param focusRadius
+	 *            the focusRadius to set
+	 */
+	public void setFocusRadius(int focusRadius) {
+		this.focusRadius = focusRadius;
+		setReload(true);
+	}
 
-    /**
-     * @param focusRadius
-     *            the focusRadius to set
-     */
-    public void setFocusRadius(int focusRadius) {
-        this.focusRadius = focusRadius;
-        setReload(true);
-    }
+	/**
+	 * @return the focusAngle
+	 */
+	public int getFocusAngle() {
+		return focusAngle;
+	}
 
-    /**
-     * @return the focusAngle
-     */
-    public int getFocusAngle() {
-        return focusAngle;
-    }
+	/**
+	 * @param focusAngle
+	 *            the focusAngle to set
+	 */
+	public void setFocusAngle(int focusAngle) {
+		this.focusAngle = focusAngle;
+		setReload(true);
+	}
 
-    /**
-     * @param focusAngle
-     *            the focusAngle to set
-     */
-    public void setFocusAngle(int focusAngle) {
-        this.focusAngle = focusAngle;
-        setReload(true);
-    }
+	/**
+	 * @return the offsetRadius
+	 */
+	public int getOffsetRadius() {
+		return offsetRadius;
+	}
 
-    
-    /**
-     * @return the offsetRadius
-     */
-    public int getOffsetRadius() {
-        return offsetRadius;
-    }
+	/**
+	 * @param offsetRadius
+	 *            the offsetRadius to set
+	 */
+	public void setOffsetRadius(int offsetRadius) {
+		if (offsetRadius < 0) {
+			throw new IllegalArgumentException("offset radius should be greater than 0");
+		}
+		this.offsetRadius = offsetRadius;
+		setReload(true);
+	}
 
-    /**
-     * @param offsetRadius
-     *            the offsetRadius to set
-     */
-    public void setOffsetRadius(int offsetRadius) {
-        if (offsetRadius < 0) {
-            throw new IllegalArgumentException(
-                                               "offset radius should be greater than 0");
-        }
-        this.offsetRadius = offsetRadius;
-        setReload(true);
-    }
+	/**
+	 * set the shader parameters
+	 * 
+	 * @param fractions
+	 * @param colors
+	 */
+	public void setShader(float[] fractions, Color[] colors) {
+		if (fractions == null || colors == null) {
+			return;
+		}
 
-   
+		if (fractions.length != colors.length) {
+			throw new IllegalArgumentException("length array does not match");
+		}
 
-    /**
-     * set the shader parameters
-     * 
-     * @param fractions
-     * @param colors
-     */
-    public void setShader(float[] fractions, Color[] colors) {
-        if (fractions == null || colors == null) {
-            return;
-        }
+		shadeFractions = fractions;
+		shadeColors = colors;
+		setReload(true);
+	}
 
-        if (fractions.length != colors.length) {
-            throw new IllegalArgumentException("length array does not match");
-        }
+	/**
+	 * @return the shiftingFocusIncidence
+	 */
+	public boolean isShiftingFocusIncidence() {
+		return shiftingFocusIncidence;
+	}
 
-        shadeFractions = fractions;
-        shadeColors = colors;
-        setReload(true);
-    }
+	/**
+	 * @param shiftingFocusIncidence
+	 *            the shiftingFocusIncidence to set
+	 */
+	public void setShiftingFocusIncidence(boolean shiftingFocusIncidence) {
+		this.shiftingFocusIncidence = shiftingFocusIncidence;
+	}
 
-    /**
-     * @return the shiftingFocusIncidence
-     */
-    public boolean isShiftingFocusIncidence() {
-        return shiftingFocusIncidence;
-    }
+	/**
+	 * @return the shiftingFocusRadius
+	 */
+	public boolean isShiftingFocusRadius() {
+		return shiftingFocusRadius;
+	}
 
-    /**
-     * @param shiftingFocusIncidence
-     *            the shiftingFocusIncidence to set
-     */
-    public void setShiftingFocusIncidence(boolean shiftingFocusIncidence) {
-        this.shiftingFocusIncidence = shiftingFocusIncidence;
-    }
+	/**
+	 * @param shiftingFocusRadius
+	 *            the shiftingFocusRadius to set
+	 */
+	public void setShiftingFocusRadius(boolean shiftingFocusRadius) {
+		this.shiftingFocusRadius = shiftingFocusRadius;
+	}
 
-    /**
-     * @return the shiftingFocusRadius
-     */
-    public boolean isShiftingFocusRadius() {
-        return shiftingFocusRadius;
-    }
+	/**
+	 * shift focus angle degree for the embedded effect in specified pie
+	 * 
+	 * @param pie
+	 */
+	public static void shiftIncidence(Pie pie) {
+		AbstractPieEffect effect = pie.getPieEffect();
+		if (effect != null && effect instanceof PieRadialEffect) {
+			Effect2ShiftIncidence shift = new Effect2ShiftIncidence(pie);
+			shift.start();
+		}
+	}
 
-    /**
-     * @param shiftingFocusRadius
-     *            the shiftingFocusRadius to set
-     */
-    public void setShiftingFocusRadius(boolean shiftingFocusRadius) {
-        this.shiftingFocusRadius = shiftingFocusRadius;
-    }
+	/**
+	 * shift focus radius degree for the embedded effect in specified pie
+	 * 
+	 * @param pie
+	 */
+	public static void shiftRadius(Pie pie) {
+		AbstractPieEffect effect = pie.getPieEffect();
+		if (effect != null && effect instanceof PieRadialEffect) {
+			Effect2ShiftRadius shift = new Effect2ShiftRadius(pie);
+			shift.start();
+		}
+	}
 
-    /**
-     * shift focus angle degree for the embedded effect in specified pie
-     * 
-     * @param pie
-     */
-    public static void shiftIncidence(Pie pie) {
-        AbstractPieEffect effect = pie.getPieEffect();
-        if (effect != null && effect instanceof PieRadialEffect) {
-            Effect2ShiftIncidence shift = new Effect2ShiftIncidence(pie);
-            shift.start();
-        }
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect#paintPieEffect
+	 * (java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
+	 */
+	@Override
+	public final void paintPieEffect(Graphics2D g2d, Pie pie) {
 
-    /**
-     * shift focus radius degree for the embedded effect in specified pie
-     * 
-     * @param pie
-     */
-    public static void shiftRadius(Pie pie) {
-        AbstractPieEffect effect = pie.getPieEffect();
-        if (effect != null && effect instanceof PieRadialEffect) {
-            Effect2ShiftRadius shift = new Effect2ShiftRadius(pie);
-            shift.start();
-        }
-    }
+		if (pieSliceRadialEffect == null || reload) {
+			pieSliceRadialEffect = new PieSliceRadialEffect(offsetRadius);
+			pieSliceRadialEffect.setFocusAngle(focusAngle);
+			pieSliceRadialEffect.setFocusRadius(focusRadius);
+			if (shadeFractions != null && shadeColors != null && shadeFractions.length == shadeColors.length) {
+				pieSliceRadialEffect.setShader(shadeFractions, shadeColors);
+			}
+		}
 
-   
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect#paintPieEffect(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
-     */
-    @Override
-    public final void paintPieEffect(Graphics2D g2d, Pie pie) {
+		for (PieSlice slice : pie.getSlices()) {
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, slice.getAlpha()));
+			pieSliceRadialEffect.paintPieSlice(g2d, pie, slice);
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
+		}
 
-        if (pieSliceRadialEffect == null || reload) {
-            pieSliceRadialEffect = new PieSliceRadialEffect(offsetRadius);
-            pieSliceRadialEffect.setFocusAngle(focusAngle);
-            pieSliceRadialEffect.setFocusRadius(focusRadius);
-            if (shadeFractions != null && shadeColors != null
-                    && shadeFractions.length == shadeColors.length) {
-                pieSliceRadialEffect.setShader(shadeFractions, shadeColors);
-            }
-        }
-
-        for (PieSlice slice : pie.getSlices()) {
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, slice.getAlpha()));
-            pieSliceRadialEffect.paintPieSlice(g2d, pie, slice);
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
-        }
-
-    }
+	}
 }
 
 /**
@@ -232,42 +239,39 @@ public class PieRadialEffect extends AbstractPieEffect {
  */
 class Effect2ShiftIncidence extends Thread {
 
-    private Pie pie;
-    private PieRadialEffect effect2;
+	private Pie pie;
+	private PieRadialEffect effect2;
 
-    public Effect2ShiftIncidence(Pie pie) {
-        this.pie = pie;
-    }
+	public Effect2ShiftIncidence(Pie pie) {
+		this.pie = pie;
+	}
 
-    @Override
-    public void run() {
+	@Override
+	public void run() {
 
-        try {
-            effect2 = (PieRadialEffect) pie.getPieEffect();
-            if (effect2.isShiftingFocusIncidence()) {
-                throw new InterruptedException("effect is already shifting.");
-            }
-            pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
-            effect2.setShiftingFocusIncidence(true);
-            while (true) {
-                for (int i = 0; i < 90; i++) {
-                    effect2.setFocusAngle(i * 4);
-                    Thread.sleep(20);
-                    pie.getHostPlugin().getWindow2D().getView2D()
-                            .repaintDevice();
-                }
-            }
+		try {
+			effect2 = (PieRadialEffect) pie.getPieEffect();
+			if (effect2.isShiftingFocusIncidence()) {
+				throw new InterruptedException("effect is already shifting.");
+			}
+			pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+			effect2.setShiftingFocusIncidence(true);
+			while (true) {
+				for (int i = 0; i < 90; i++) {
+					effect2.setFocusAngle(i * 4);
+					Thread.sleep(20);
+					pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+				}
+			}
 
-        }
-        catch (InterruptedException e) {
-            effect2.setShiftingFocusIncidence(false);
-            Thread.currentThread().interrupt();
-        }
-        finally {
-            effect2.setShiftingFocusIncidence(false);
-        }
+		} catch (InterruptedException e) {
+			effect2.setShiftingFocusIncidence(false);
+			Thread.currentThread().interrupt();
+		} finally {
+			effect2.setShiftingFocusIncidence(false);
+		}
 
-    }
+	}
 }
 
 /**
@@ -275,48 +279,44 @@ class Effect2ShiftIncidence extends Thread {
  */
 class Effect2ShiftRadius extends Thread {
 
-    private Pie pie;
-    private PieRadialEffect effect2;
+	private Pie pie;
+	private PieRadialEffect effect2;
 
-    public Effect2ShiftRadius(Pie pie) {
-        this.pie = pie;
-    }
+	public Effect2ShiftRadius(Pie pie) {
+		this.pie = pie;
+	}
 
-    @Override
-    public void run() {
+	@Override
+	public void run() {
 
-        try {
-            effect2 = (PieRadialEffect) pie.getPieEffect();
-            if (effect2.isShiftingFocusRadius()) {
-                throw new InterruptedException("effect is already shifting.");
-            }
-            pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
-            effect2.setShiftingFocusRadius(true);
-            double pieRadius = pie.getRadius();
-            while (true) {
-                for (double i = 0; i < pieRadius; i++) {
-                    effect2.setFocusRadius((int) i);
-                    Thread.sleep(50);
-                    pie.getHostPlugin().getWindow2D().getView2D()
-                            .repaintDevice();
-                }
-                for (double i = pieRadius; i > 0; i--) {
-                    effect2.setFocusRadius((int) i);
-                    Thread.sleep(50);
-                    pie.getHostPlugin().getWindow2D().getView2D()
-                            .repaintDevice();
-                }
+		try {
+			effect2 = (PieRadialEffect) pie.getPieEffect();
+			if (effect2.isShiftingFocusRadius()) {
+				throw new InterruptedException("effect is already shifting.");
+			}
+			pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+			effect2.setShiftingFocusRadius(true);
+			double pieRadius = pie.getRadius();
+			while (true) {
+				for (double i = 0; i < pieRadius; i++) {
+					effect2.setFocusRadius((int) i);
+					Thread.sleep(50);
+					pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+				}
+				for (double i = pieRadius; i > 0; i--) {
+					effect2.setFocusRadius((int) i);
+					Thread.sleep(50);
+					pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+				}
 
-            }
+			}
 
-        }
-        catch (InterruptedException e) {
-            effect2.setShiftingFocusRadius(false);
-            Thread.currentThread().interrupt();
-        }
-        finally {
-            effect2.setShiftingFocusRadius(false);
-        }
+		} catch (InterruptedException e) {
+			effect2.setShiftingFocusRadius(false);
+			Thread.currentThread().interrupt();
+		} finally {
+			effect2.setShiftingFocusRadius(false);
+		}
 
-    }
+	}
 }

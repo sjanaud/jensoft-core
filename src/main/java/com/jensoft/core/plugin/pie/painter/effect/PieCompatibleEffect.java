@@ -11,7 +11,7 @@ import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.PieSlice;
 
 /**
- * <code>CompatiblePieEffect</code>
+ * <code>PieCompatibleEffect</code>
  * <p>
  * a compatible pie effect use slice effect definition to draw effect on each slice effect
  * </p>

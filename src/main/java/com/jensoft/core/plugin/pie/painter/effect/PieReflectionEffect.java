@@ -14,6 +14,7 @@ import java.util.List;
 import com.jensoft.core.graphics.ReflectionRenderer;
 import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.PieSlice;
+import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel;
 
 /**
  * /**
@@ -50,7 +51,7 @@ import com.jensoft.core.plugin.pie.PieSlice;
  * </ul>
  * </p>
  * 
- * @author Sebastien Janaud
+ * @author sebastien janaud
  */
 public class PieReflectionEffect extends AbstractPieEffect {
 
@@ -71,6 +72,9 @@ public class PieReflectionEffect extends AbstractPieEffect {
 
     /** pie reflection */
     private BufferedImage reflection;
+    
+    /**use flag for label for reflection*/
+    private boolean reflectLabel = true;
 
     /**
      * create Pie Reflection Effect
@@ -145,9 +149,25 @@ public class PieReflectionEffect extends AbstractPieEffect {
         this.blurEnabled = blurEnabled;
         renderer.setBlurEnabled(blurEnabled);
     }
+    
+    
 
   
-    /* (non-Javadoc)
+    /**
+	 * @return the reflectLabel
+	 */
+	public boolean isReflectLabel() {
+		return reflectLabel;
+	}
+
+	/**
+	 * @param reflectLabel the reflectLabel to set
+	 */
+	public void setReflectLabel(boolean reflectLabel) {
+		this.reflectLabel = reflectLabel;
+	}
+
+	/* (non-Javadoc)
      * @see com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect#paintPieEffect(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
      */
     @Override
@@ -230,9 +250,11 @@ public class PieReflectionEffect extends AbstractPieEffect {
             }
 
             // maybe use label in reflection !
-            // for(SectionLabel label : pieSection.getSectionLabels()){
-            // label.paintSection(g2d, pie, pieSection);
-            // }
+            if(isReflectLabel()){
+	             for(AbstractPieSliceLabel label : slice.getSliceLabels()){
+	            	 label.paintPieSlice(g2d, pie, slice);
+	             }
+            }
 
         }
 
