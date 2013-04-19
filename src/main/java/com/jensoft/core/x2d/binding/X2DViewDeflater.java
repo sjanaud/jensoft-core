@@ -49,6 +49,7 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
+import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.view.background.BackgroundPainter;
 import com.jensoft.core.view.background.RoundViewFill;
@@ -100,7 +101,19 @@ public class X2DViewDeflater extends AbstractViewDeflater {
 		this.deflaters = deflaters;
 	}
 
-	
+    /**
+     * lookup deflater for the specified plugin class
+     * 
+     * @param xsiType
+     *            the XSI type
+     * @return plugin inflater
+     */
+    protected AbstractX2DPluginDeflater<?> lookupType(AbstractPlugin plugin) {
+        for (AbstractX2DPluginDeflater<?> deflater : deflaters) {
+           
+        }
+        return null;
+    }
 
 	/*
 	 * (non-Javadoc)
@@ -113,7 +126,10 @@ public class X2DViewDeflater extends AbstractViewDeflater {
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
 			DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
 			x2dDocument = documentBuilder.newDocument();
-
+			for(AbstractX2DPluginDeflater<?> deflater : deflaters){
+				deflater.setX2dDocument(x2dDocument);
+			}
+			
 			Element view2DElement = x2dDocument.createElement(ELEMENT_VIEW_ROOT);
 			x2dDocument.appendChild(view2DElement);
 
@@ -153,6 +169,13 @@ public class X2DViewDeflater extends AbstractViewDeflater {
 				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MAX_Y, window2d.getMaxY()));
 				window2DElement.appendChild(DeflaterUtil.createColorElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_THEME_COLOR, window2d.getThemeColor()));
 				
+				List<AbstractPlugin> plugins = window2d.getPluginRegistry();
+				for (AbstractPlugin abstractPlugin : plugins) {
+					AbstractX2DPluginDeflater<?> deflater = lookupType(abstractPlugin);
+					if(deflater != null){
+						window2DElement.appendChild(deflater.deflate());
+					}
+				}
 				
 			}
 
