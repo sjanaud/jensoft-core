@@ -19,6 +19,8 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import com.jensoft.core.view.View2D;
+import com.jensoft.core.x2d.deflater.AbstractX2DPluginDeflater;
+import com.jensoft.core.x2d.deflater.X2DViewDeflater;
 import com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.inflater.X2DViewInflater;
 import com.jensoft.core.x2d.inflater.donut2d.Donut2DInflater;
@@ -48,66 +50,83 @@ import com.jensoft.core.x2d.lang.X2DSchemaErrorHandler;
  */
 public class X2D {
 
-    /** observer clients errors handlers */
-    private List<X2DErrorHandler> errorHandlers;
+	/** observer clients errors handlers */
+	private List<X2DErrorHandler> errorHandlers;
 
-    /** x2d template document */
-    private Document x2dDocument;
+	/** x2d template document */
+	private Document x2dDocument;
 
-    /** X2D inflater */
-    private X2DViewInflater x2dInflater;
+	/** X2D inflater */
+	private X2DViewInflater x2dInflater;
 
-    /** the view2D */
-    private View2D view2D;
+	/** X2D deflater */
+	private X2DViewDeflater x2dDeflater;
 
-    /** core annotated inflaters */
-    private List<AbstractX2DPluginInflater<?>> coreInflaters = new ArrayList<AbstractX2DPluginInflater<?>>();
+	/** the view2D */
+	private View2D view2D;
 
-    /** user inflaters */
-    private List<AbstractX2DPluginInflater<?>> inflaters = new ArrayList<AbstractX2DPluginInflater<?>>();
+	/** core annotated inflaters */
+	private List<AbstractX2DPluginInflater<?>> coreInflaters = new ArrayList<AbstractX2DPluginInflater<?>>();
 
-    /** lookup native core inflaters */
-    private boolean lookupCoreInflaters = true;
+	/** core annotated deflaters */
+	private List<AbstractX2DPluginDeflater<?>> coreDeflaters = new ArrayList<AbstractX2DPluginDeflater<?>>();
 
-    /**
-     * create <code>X2D</code>
-     */
-    public X2D() {
-        initHandlers();
-        initCoreInflaters();
-    }
+	/** user inflaters */
+	private List<AbstractX2DPluginInflater<?>> inflaters = new ArrayList<AbstractX2DPluginInflater<?>>();
 
-    /**
-     * initialize errors handlers related objects
-     */
-    private void initHandlers() {
-        errorHandlers = new ArrayList<X2DErrorHandler>();
-    }
+	/** user deflaters */
+	private List<AbstractX2DPluginDeflater<?>> deflaters = new ArrayList<AbstractX2DPluginDeflater<?>>();
 
-    /**
-     * initialize core inflaters
-     */
-    private void initCoreInflaters() {
-//        System.err.println("--X2D initCoreInflater--");
-//        List<Class<?>> inflaters = PluginPlatform.scanX2DInflater(X2DInflater.class.getPackage().getName());
-//        System.err.println("--X2D found --:"+inflaters.size());
-//        for (Class<?> inflaterClass : inflaters) {
-//            try {
-//                AbstractX2DPluginInflater<?> inflater = (AbstractX2DPluginInflater<?>) inflaterClass.newInstance();
-//                coreInflaters.add(inflater);
-//            }
-//            catch (InstantiationException e) {
-//                e.printStackTrace();
-//            }
-//            catch (IllegalAccessException e) {
-//                e.printStackTrace();
-//            }
-//        }
-    	
-    	//scan trows file permission exception in applet mode, via findClasses in patlformPlugin
-    	//TODO find proper way to scan annotation in applet mode (via url and not file maybe!)
-    	
-    	coreInflaters.add(new OutlineInflater());
+	/** lookup native core inflaters */
+	private boolean lookupCoreInflaters = true;
+
+	/** lookup native core deflaters */
+	private boolean lookupCoreDeflaters = true;
+
+	/**
+	 * create <code>X2D</code>
+	 */
+	public X2D() {
+		initHandlers();
+		initCoreInflaters();
+		initCoreDeflaters();
+	}
+
+	/**
+	 * initialize errors handlers related objects
+	 */
+	private void initHandlers() {
+		errorHandlers = new ArrayList<X2DErrorHandler>();
+	}
+
+	/**
+	 * initialize core inflaters
+	 */
+	private void initCoreInflaters() {
+		// System.err.println("--X2D initCoreInflater--");
+		// List<Class<?>> inflaters =
+		// PluginPlatform.scanX2DInflater(X2DInflater.class.getPackage().getName());
+		// System.err.println("--X2D found --:"+inflaters.size());
+		// for (Class<?> inflaterClass : inflaters) {
+		// try {
+		// AbstractX2DPluginInflater<?> inflater =
+		// (AbstractX2DPluginInflater<?>) inflaterClass.newInstance();
+		// coreInflaters.add(inflater);
+		// }
+		// catch (InstantiationException e) {
+		// e.printStackTrace();
+		// }
+		// catch (IllegalAccessException e) {
+		// e.printStackTrace();
+		// }
+		// }
+
+		// scan trows file permission exception in applet mode, via findClasses
+		// in patlformPlugin
+		// TODO find proper way to scan annotation in applet mode (via url and
+		// not file maybe!)
+
+		coreInflaters.add(new OutlineInflater());
 
 		// legend
 		coreInflaters.add(new LegendInflater());
@@ -146,271 +165,291 @@ public class X2D {
 
 		// translate
 		coreInflaters.add(new TranslateInflater());
-    }
+	}
 
-    /**
-     * @return the lookupCoreInflaters
-     */
-    public boolean isLookupCoreInflaters() {
-        return lookupCoreInflaters;
-    }
+	/**
+	 * initialize core deflaters
+	 */
+	private void initCoreDeflaters() {
 
-    /**
-     * @param lookupCoreInflaters
-     *            the lookupCoreInflaters to set
-     */
-    public void setLookupCoreInflaters(boolean lookupCoreInflaters) {
-        this.lookupCoreInflaters = lookupCoreInflaters;
-    }
+	}
 
-    /**
-     * add jet error handler
-     * 
-     * @param handler
-     *            the handler to add
-     */
-    public void addX2DErrorHandler(X2DErrorHandler handler) {
-        errorHandlers.add(handler);
-    }
+	/**
+	 * @return the lookupCoreInflaters
+	 */
+	public boolean isLookupCoreInflaters() {
+		return lookupCoreInflaters;
+	}
 
-    /**
-     * register the source template
-     * 
-     * @param xlmlSource
-     *            the xml source as string
-     */
-    public void registerX2DSource(String xmlSource) throws X2DException {
+	/**
+	 * @param lookupCoreInflaters
+	 *            the lookupCoreInflaters to set
+	 */
+	public void setLookupCoreInflaters(boolean lookupCoreInflaters) {
+		this.lookupCoreInflaters = lookupCoreInflaters;
+	}
 
-        X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
-        try {
+	/**
+	 * @return the lookupCoreDeflaters
+	 */
+	public boolean isLookupCoreDeflaters() {
+		return lookupCoreDeflaters;
+	}
 
-            X2DSchema.validX2D(xmlSource, errorHandler);
-            if (!errorHandler.hasErrors()) {
-                x2dDocument = X2DSchema.parseX2D(xmlSource);
-                x2dDocument.normalize();
-                x2dInflater = new X2DViewInflater();
-                x2dInflater.getInflaters().addAll(inflaters);
-                if (lookupCoreInflaters) {
-                    x2dInflater.getInflaters().addAll(coreInflaters);
-                }
-                x2dInflater.setX2D(x2dDocument);
-                view2D = x2dInflater.inflate();
-            }
-            else {
-                X2DException x2dException = new X2DException(
-                                                             "X2D could not register template source , see exception errors.");
+	/**
+	 * @param lookupCoreDeflaters
+	 *            the lookupCoreDeflaters to set
+	 */
+	public void setLookupCoreDeflaters(boolean lookupCoreDeflaters) {
+		this.lookupCoreDeflaters = lookupCoreDeflaters;
+	}
 
-                x2dException.setErrors(errorHandler.getErrors());
-                throw x2dException;
-            }
+	/**
+	 * add jet error handler
+	 * 
+	 * @param handler
+	 *            the handler to add
+	 */
+	public void addX2DErrorHandler(X2DErrorHandler handler) {
+		errorHandlers.add(handler);
+	}
 
-        }
-        catch (SAXException e) {
-            throw new X2DException(e);
-        }
-        catch (IOException e) {
-            throw new X2DException(e);
-        }
-        catch (ParserConfigurationException e) {
-            throw new X2DException(e);
-        }
-    }
+	/**
+	 * register the source template
+	 * 
+	 * @param xlmlSource
+	 *            the xml source as string
+	 */
+	public void registerX2DSource(String xmlSource) throws X2DException {
 
-    /**
-     * register the source template
-     * 
-     * @param xmlDocument
-     *            the xml source document
-     */
-    public void registerX2DDocument(Document xmlDocument) throws X2DException {
-        System.out.println("register document");
-        X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
+		X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
+		try {
 
-        X2DSchema.validX2D(xmlDocument, errorHandler);
-        if (!errorHandler.hasErrors()) {
-            x2dDocument = xmlDocument;
-            x2dDocument.normalize();
-            x2dInflater = new X2DViewInflater();
-            x2dInflater.getInflaters().addAll(inflaters);
-            if (lookupCoreInflaters) {
-                x2dInflater.getInflaters().addAll(coreInflaters);
-            }
-            x2dInflater.setX2D(x2dDocument);
-            view2D = x2dInflater.inflate();
-        }
-        else {
-            X2DException x2dException = new X2DException(
-                                                         "X2D could not register template source , see exception errors.");
+			X2DSchema.validX2D(xmlSource, errorHandler);
+			if (!errorHandler.hasErrors()) {
+				x2dDocument = X2DSchema.parseX2D(xmlSource);
+				x2dDocument.normalize();
+				x2dInflater = new X2DViewInflater();
+				x2dInflater.getInflaters().addAll(inflaters);
+				if (lookupCoreInflaters) {
+					x2dInflater.getInflaters().addAll(coreInflaters);
+				}
+				x2dInflater.setX2D(x2dDocument);
+				view2D = x2dInflater.inflate();
+			} else {
+				X2DException x2dException = new X2DException("X2D could not register template source , see exception errors.");
 
-            x2dException.setErrors(errorHandler.getErrors());
-            throw x2dException;
-        }
+				x2dException.setErrors(errorHandler.getErrors());
+				throw x2dException;
+			}
 
-    }
+		} catch (SAXException e) {
+			throw new X2DException(e);
+		} catch (IOException e) {
+			throw new X2DException(e);
+		} catch (ParserConfigurationException e) {
+			throw new X2DException(e);
+		}
+	}
 
-    /**
-     * register the new x2d file template
-     * 
-     * @param x2dFile
-     */
-    public void registerX2DFile(File x2dFile) throws X2DException {
+	/**
+	 * register the source template
+	 * 
+	 * @param xmlDocument
+	 *            the xml source document
+	 */
+	public void registerX2DDocument(Document xmlDocument) throws X2DException {
+		System.out.println("register document");
+		X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
 
-        X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
-        try {
+		X2DSchema.validX2D(xmlDocument, errorHandler);
+		if (!errorHandler.hasErrors()) {
+			x2dDocument = xmlDocument;
+			x2dDocument.normalize();
+			x2dInflater = new X2DViewInflater();
+			x2dInflater.getInflaters().addAll(inflaters);
+			if (lookupCoreInflaters) {
+				x2dInflater.getInflaters().addAll(coreInflaters);
+			}
+			x2dInflater.setX2D(x2dDocument);
+			view2D = x2dInflater.inflate();
+		} else {
+			X2DException x2dException = new X2DException("X2D could not register template source , see exception errors.");
 
-            X2DSchema.validX2D(x2dFile, errorHandler);
-            if (!errorHandler.hasErrors()) {
-                x2dDocument = X2DSchema.parseX2D(x2dFile);
-                x2dDocument.normalize();
-                x2dInflater = new X2DViewInflater();
-                x2dInflater.getInflaters().addAll(inflaters);
-                if (lookupCoreInflaters) {
-                    x2dInflater.getInflaters().addAll(coreInflaters);
-                }
-                x2dInflater.setX2D(x2dDocument);
-                view2D = x2dInflater.inflate();
-            }
-            else {
-                X2DException x2dException = new X2DException("X2D could not register template file "
-                        + x2dFile.getName() + ", see exception errors.");
-                x2dException.setErrors(errorHandler.getErrors());
-                throw x2dException;
-            }
+			x2dException.setErrors(errorHandler.getErrors());
+			throw x2dException;
+		}
 
-        }
-        catch (SAXException e) {
-            throw new X2DException(e);
-        }
-        catch (IOException e) {
-            throw new X2DException(e);
-        }
-        catch (ParserConfigurationException e) {
-            throw new X2DException(e);
-        }
+	}
 
-        System.out.println("X2D : register x2d template : " + x2dFile.getName() + " completed");
-    }
+	/**
+	 * register the new x2d file template
+	 * 
+	 * @param x2dFile
+	 */
+	public void registerX2DFile(File x2dFile) throws X2DException {
 
-    /**
-     * register the new x2d input stream
-     * 
-     * @param x2dInputStream
-     */
-    public void registerX2D(InputStream x2dInputStream) throws X2DException {
-        if (x2dInputStream == null)
-            throw new X2DException("X2D input stream cannot be null.");
+		X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
+		try {
 
-        X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
-        try {
+			X2DSchema.validX2D(x2dFile, errorHandler);
+			if (!errorHandler.hasErrors()) {
+				x2dDocument = X2DSchema.parseX2D(x2dFile);
+				x2dDocument.normalize();
+				x2dInflater = new X2DViewInflater();
+				x2dInflater.getInflaters().addAll(inflaters);
+				if (lookupCoreInflaters) {
+					x2dInflater.getInflaters().addAll(coreInflaters);
+				}
+				x2dInflater.setX2D(x2dDocument);
+				view2D = x2dInflater.inflate();
+			} else {
+				X2DException x2dException = new X2DException("X2D could not register template file " + x2dFile.getName() + ", see exception errors.");
+				x2dException.setErrors(errorHandler.getErrors());
+				throw x2dException;
+			}
 
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            byte[] buffer = new byte[1024];
-            int len;
-            while ((len = x2dInputStream.read(buffer)) > -1) {
-                baos.write(buffer, 0, len);
-            }
-            baos.flush();
+		} catch (SAXException e) {
+			throw new X2DException(e);
+		} catch (IOException e) {
+			throw new X2DException(e);
+		} catch (ParserConfigurationException e) {
+			throw new X2DException(e);
+		}
 
-            InputStream is1 = new ByteArrayInputStream(baos.toByteArray());
-            InputStream is2 = new ByteArrayInputStream(baos.toByteArray());
+		System.out.println("X2D : register x2d template : " + x2dFile.getName() + " completed");
+	}
 
-            x2dInputStream.close();
-            baos.close();
+	/**
+	 * register the view in x2d
+	 * 
+	 * @param view
+	 */
+	public void registerView(View2D view) throws X2DException {
+		this.view2D = view;
+		x2dDeflater = new X2DViewDeflater(view);
+		x2dDeflater.getDeflaters().addAll(deflaters);
+		if (lookupCoreDeflaters) {
+			x2dDeflater.getDeflaters().addAll(coreDeflaters);
+		}
+		x2dDeflater.setView2D(view);
+		x2dDocument=x2dDeflater.deflate();
+	}
 
-            X2DSchema.validX2D(is1, errorHandler);
-            if (!errorHandler.hasErrors()) {
-                x2dDocument = X2DSchema.parseX2D(is2);
-                x2dDocument.normalize();
-                x2dInflater = new X2DViewInflater();
-                x2dInflater.getInflaters().addAll(inflaters);
-                if (lookupCoreInflaters) {
-                    x2dInflater.getInflaters().addAll(coreInflaters);
-                }
-                x2dInflater.setX2D(x2dDocument);
-                view2D = x2dInflater.inflate();
-                is1.close();
-                is2.close();
-            }
-            else {
-                X2DException x2dException = new X2DException("X2D could not register input stream template file "
-                        + ", see exception errors.");
-                x2dException.setErrors(errorHandler.getErrors());
-                throw x2dException;
-            }
+	/**
+	 * register the new x2d input stream
+	 * 
+	 * @param x2dInputStream
+	 */
+	public void registerX2D(InputStream x2dInputStream) throws X2DException {
+		if (x2dInputStream == null)
+			throw new X2DException("X2D input stream cannot be null.");
 
-        }
-        catch (SAXException e) {
-            throw new X2DException(e);
-        }
-        catch (IOException e) {
-            throw new X2DException(e);
-        }
-        catch (ParserConfigurationException e) {
-            throw new X2DException(e);
-        }
+		X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
+		try {
 
-        System.out.println("X2D : register x2d input stream template  completed");
-    }
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024];
+			int len;
+			while ((len = x2dInputStream.read(buffer)) > -1) {
+				baos.write(buffer, 0, len);
+			}
+			baos.flush();
 
-    /**
-     * @return the inflaters
-     */
-    public List<AbstractX2DPluginInflater<?>> getInflaters() {
-        return inflaters;
-    }
+			InputStream is1 = new ByteArrayInputStream(baos.toByteArray());
+			InputStream is2 = new ByteArrayInputStream(baos.toByteArray());
 
-    /**
-     * @param inflaters
-     *            the inflaters to set
-     */
-    public void setInflaters(List<AbstractX2DPluginInflater<?>> inflaters) {
-        this.inflaters = inflaters;
-    }
+			x2dInputStream.close();
+			baos.close();
 
-    /**
-     * register plugin inflater for this view emitter
-     * 
-     * @param inflater
-     *            the inflater to register
-     */
-    public void registerInflater(AbstractX2DPluginInflater<?> inflater) {
-        if (inflater.getXSIType() == null) {
-            throw new IllegalArgumentException("XSI Type for Inflater :" + inflater.getClass()
-                    + " is null. it should be provided");
-        }
-        inflaters.add(inflater);
-    }
+			X2DSchema.validX2D(is1, errorHandler);
+			if (!errorHandler.hasErrors()) {
+				x2dDocument = X2DSchema.parseX2D(is2);
+				x2dDocument.normalize();
+				x2dInflater = new X2DViewInflater();
+				x2dInflater.getInflaters().addAll(inflaters);
+				if (lookupCoreInflaters) {
+					x2dInflater.getInflaters().addAll(coreInflaters);
+				}
+				x2dInflater.setX2D(x2dDocument);
+				view2D = x2dInflater.inflate();
+				is1.close();
+				is2.close();
+			} else {
+				X2DException x2dException = new X2DException("X2D could not register input stream template file " + ", see exception errors.");
+				x2dException.setErrors(errorHandler.getErrors());
+				throw x2dException;
+			}
 
-    /**
-     * @return the x2dDocument
-     */
-    public Document getX2dDocument() {
-        return x2dDocument;
-    }
+		} catch (SAXException e) {
+			throw new X2DException(e);
+		} catch (IOException e) {
+			throw new X2DException(e);
+		} catch (ParserConfigurationException e) {
+			throw new X2DException(e);
+		}
 
-    /**
-     * @return the view2D
-     */
-    public View2D getView2D() {
-        return view2D;
-    }
+		System.out.println("X2D : register x2d input stream template  completed");
+	}
 
-    /**
-     * get view key
-     * 
-     * @return view key
-     */
-    public String getViewKey() {
-        return x2dInflater.getViewKey();
-    }
-    
-    /**
-     * get view key
-     * 
-     * @return view key
-     */
-    public String getApiKey() {
-        return x2dInflater.getAPIKey();
-    }
+	/**
+	 * @return the inflaters
+	 */
+	public List<AbstractX2DPluginInflater<?>> getInflaters() {
+		return inflaters;
+	}
+
+	/**
+	 * @param inflaters
+	 *            the inflaters to set
+	 */
+	public void setInflaters(List<AbstractX2DPluginInflater<?>> inflaters) {
+		this.inflaters = inflaters;
+	}
+
+	/**
+	 * register plugin inflater for this view emitter
+	 * 
+	 * @param inflater
+	 *            the inflater to register
+	 */
+	public void registerInflater(AbstractX2DPluginInflater<?> inflater) {
+		if (inflater.getXSIType() == null) {
+			throw new IllegalArgumentException("XSI Type for Inflater :" + inflater.getClass() + " is null. it should be provided");
+		}
+		inflaters.add(inflater);
+	}
+
+	/**
+	 * @return the x2dDocument
+	 */
+	public Document getX2dDocument() {
+		return x2dDocument;
+	}
+
+	/**
+	 * @return the view2D
+	 */
+	public View2D getView2D() {
+		return view2D;
+	}
+
+	/**
+	 * get view key
+	 * 
+	 * @return view key
+	 */
+	public String getViewKey() {
+		return x2dInflater.getViewKey();
+	}
+
+	/**
+	 * get view key
+	 * 
+	 * @return view key
+	 */
+	public String getApiKey() {
+		return x2dInflater.getAPIKey();
+	}
 
 }
