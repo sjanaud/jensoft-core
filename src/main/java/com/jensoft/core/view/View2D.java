@@ -29,14 +29,13 @@ import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.device.DevicePartComponent;
 import com.jensoft.core.view.background.BackgroundPainter;
-import com.jensoft.core.view.deflater.svg.SVGDeflater;
+import com.jensoft.core.view.deflater.AbstractViewDeflater;
 import com.jensoft.core.widget.WidgetFolder;
 import com.jensoft.core.window.Window2D;
 import com.jensoft.core.window.Window2DEvent;
 import com.jensoft.core.window.Window2DListener;
 import com.jensoft.core.window.WindowPart;
 import com.jensoft.core.window.WindowPartComponent;
-import com.jensoft.core.x2d.deflater.X2DDeflater;
 
 /**
  * <code>View2D</code> defines the end chart view.
@@ -105,12 +104,7 @@ public class View2D extends JComponent implements Window2DListener,
     /** the active window */
     private Window2D activeWindow;
 
-    /** the X2D Deflater */
-    private X2DDeflater X2DDeflater;
-
-    /** the SVG Deflater */
-    private SVGDeflater SVGDeflater;
-
+   
     /** view emitter */
     private View2DEmitter viewEmitter;
 
@@ -1106,20 +1100,6 @@ public class View2D extends JComponent implements Window2DListener,
                                  RenderingHints.VALUE_FRACTIONALMETRICS_ON);
             backgroundPainter.paintViewBackground(this, g2d);
         }
-    }
-
-    /**
-     * @return the x2DDeflater
-     */
-    public X2DDeflater getX2DDeflater() {
-        return X2DDeflater;
-    }
-
-    /**
-     * @return the sVGDeflater
-     */
-    public SVGDeflater getSVGDeflater() {
-        return SVGDeflater;
     }
 
     /**
