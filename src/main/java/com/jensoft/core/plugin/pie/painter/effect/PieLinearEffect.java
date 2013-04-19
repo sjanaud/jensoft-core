@@ -20,338 +20,263 @@ import com.jensoft.core.plugin.pie.PieSlice;
  */
 public class PieLinearEffect extends AbstractPieEffect {
 
-    /** start color */
-    private Color startColor;
+	/** offset radius */
+	private int offsetRadius = 10;
 
-    /** end color */
-    private Color endColor;
+	/** incidence angle degree */
+	private int incidenceAngleDegree = 90;
 
-    /** offset radius */
-    private int offsetRadius = 10;
+	/** section effect */
+	private PieSliceLinearEffect pieSliceLinearEffect;
 
-    /** incidence angle degree */
-    private int incidenceAngleDegree = 90;
+	/** shade fractions */
+	private float[] shadeFractions;
 
-    /** section effect */
-    private PieSliceLinearEffect pieSliceLinearEffect;
+	/** shade colors */
+	private Color[] shadeColors;
 
-    /** shade fractions */
-    private float[] shadeFractions;
+	/** reload flag */
+	private boolean reload = false;
 
-    /** shade colors */
-    private Color[] shadeColors;
+	/** shifting flag */
+	private boolean shifting = false;
 
-    /** reload flag */
-    private boolean reload = false;
+	/**
+	 * create a default pie linear effect with default angle degree, offset
+	 * radius and shader parameters create default effect
+	 */
+	public PieLinearEffect() {
+	}
 
-    /** shifting flag */
-    private boolean shifting = false;
+	/**
+	 * @param incidenceAngleDegree
+	 */
+	public PieLinearEffect(int incidenceAngleDegree) {
+		this();
+		this.incidenceAngleDegree = incidenceAngleDegree;
+	}
 
-    /**
-     * create default effect
-     */
-    public PieLinearEffect() {
-    }
+	/**
+	 * create a pie linear effect with given parameters
+	 * 
+	 * @param incidenceAngleDegree
+	 * @param offsetRadius
+	 *            the offset radius, must be greater than 0
+	 */
+	public PieLinearEffect(int incidenceAngleDegree, int offsetRadius) {
+		this(incidenceAngleDegree);
+		if (offsetRadius < 0) {
+			throw new IllegalArgumentException("offset radius should be greater than 0");
+		}
+		this.offsetRadius = offsetRadius;
+	}
 
-    /**
-     * @param incidenceAngleDegree
-     */
-    public PieLinearEffect(int incidenceAngleDegree) {
-        super();
-        this.incidenceAngleDegree = incidenceAngleDegree;
-    }
+	/**
+	 * create a linear effect with given angle degree, offset radius and shader
+	 * parameters
+	 * 
+	 * @param incidenceAngleDegree
+	 * @param offsetRadius
+	 * @param shadeFractions
+	 * @param shadeColors
+	 * 
+	 */
+	public PieLinearEffect(int incidenceAngleDegree, int offsetRadius, float[] shadeFractions, Color[] shadeColors) {
+		this(incidenceAngleDegree, offsetRadius);
+		this.shadeFractions = shadeFractions;
+		this.shadeColors = shadeColors;
+	}
 
-    /**
-     * @param incidenceAngleDegree
-     */
-    public PieLinearEffect(int incidenceAngleDegree, int offsetRadius) {
-        super();
-        this.incidenceAngleDegree = incidenceAngleDegree;
-        this.offsetRadius = offsetRadius;
-    }
+	/**
+	 * @return the reload
+	 */
+	public boolean isReload() {
+		return reload;
+	}
 
-    /**
-     * create effect with the specified given parameters
-     * 
-     * @param startColor
-     *            the start color to set
-     * @param endColor
-     *            the end color to set
-     * @param offsetRadius
-     *            the offset radius
-     */
-    public PieLinearEffect(Color startColor, Color endColor, int offsetRadius) {
-        if (offsetRadius < 0) {
-            throw new IllegalArgumentException(
-                                               "offset radius should be greater than 0");
-        }
-        this.startColor = startColor;
-        this.endColor = endColor;
-        this.offsetRadius = offsetRadius;
-    }
+	/**
+	 * @param reload
+	 *            the reload to set
+	 */
+	public void setReload(boolean reload) {
+		this.reload = reload;
+	}
 
-    /**
-     * create effect with the specified given parameters
-     * 
-     * @param startColor
-     *            the start color to set
-     * @param endColor
-     *            the end color to set
-     * @param offsetRadius
-     *            the offset radius
-     * @param incidenceAngleDegree
-     *            the gradient angle degree effect
-     */
-    public PieLinearEffect(Color startColor, Color endColor, int offsetRadius,
-            int incidenceAngleDegree) {
-        if (offsetRadius < 0) {
-            throw new IllegalArgumentException(
-                                               "offset radius should be greater than 0");
-        }
-        this.startColor = startColor;
-        this.endColor = endColor;
-        this.offsetRadius = offsetRadius;
-        this.incidenceAngleDegree = incidenceAngleDegree;
-    }
+	/**
+	 * @return the offsetRadius
+	 */
+	public int getOffsetRadius() {
+		return offsetRadius;
+	}
 
-    /**
-     * create effect with the specified given parameters
-     * 
-     * @param startColor
-     *            the start color to set
-     * @param endColor
-     *            the end color to set
-     */
-    public PieLinearEffect(Color startColor, Color endColor) {
-        this(startColor, endColor, 0);
-    }
+	/**
+	 * @param offsetRadius
+	 *            the offsetRadius to set
+	 */
+	public void setOffsetRadius(int offsetRadius) {
+		if (offsetRadius < 0) {
+			throw new IllegalArgumentException("offset radius should be greater than 0");
+		}
+		this.offsetRadius = offsetRadius;
+		setReload(true);
+	}
 
-    /**
-     * @return the reload
-     */
-    public boolean isReload() {
-        return reload;
-    }
+	/**
+	 * set the shadow parameters
+	 * 
+	 * @param fractions
+	 * @param colors
+	 */
+	public void setShader(float[] fractions, Color[] colors) {
+		if (fractions.length != colors.length) {
+			throw new IllegalArgumentException("length array does not match");
+		}
+		shadeFractions = fractions;
+		shadeColors = colors;
+	}
 
-    /**
-     * @param reload
-     *            the reload to set
-     */
-    public void setReload(boolean reload) {
-        this.reload = reload;
-    }
+	/**
+	 * set the shadow parameters
+	 * 
+	 * @param shader
+	 */
+	public void setShader(Shader shader) {
+		shadeFractions = shader.getFractions();
+		shadeColors = shader.getColors();
+	}
 
-    /**
-     * @return the startColor
-     */
-    public Color getStartColor() {
-        return startColor;
-    }
+	/**
+	 * @return the incidenceAngleDegree
+	 */
+	public int getIncidenceAngleDegree() {
+		return incidenceAngleDegree;
+	}
 
-    /**
-     * @param startColor
-     *            the startColor to set
-     */
-    public void setStartColor(Color startColor) {
-        this.startColor = startColor;
-        setReload(true);
-    }
+	/**
+	 * @param incidenceAngleDegree
+	 *            the incidenceAngleDegree to set
+	 */
+	public void setIncidenceAngleDegree(int incidenceAngleDegree) {
+		this.incidenceAngleDegree = incidenceAngleDegree;
+		setReload(true);
+	}
 
-    /**
-     * @return the endColor
-     */
-    public Color getEndColor() {
-        return endColor;
-    }
+	/**
+	 * shift incidence angle degree for the embedded effect in specified pie
+	 * 
+	 * @param pie
+	 */
+	public static Effect1ShiftIncidence shiftIncidence(Pie pie) {
+		AbstractPieEffect effect = pie.getPieEffect();
+		if (effect != null && (effect instanceof PieLinearEffect || effect instanceof PieCompoundEffect)) {
+			Effect1ShiftIncidence shift = new Effect1ShiftIncidence(pie);
+			shift.start();
+			return shift;
+		}
+		return null;
+	}
 
-    /**
-     * @param endColor
-     *            the endColor to set
-     */
-    public void setEndColor(Color endColor) {
-        this.endColor = endColor;
-        setReload(true);
-    }
+	/**
+	 * @return the shifting
+	 */
+	public boolean isShifting() {
+		return shifting;
+	}
 
-    /**
-     * @return the offsetRadius
-     */
-    public int getOffsetRadius() {
-        return offsetRadius;
-    }
+	/**
+	 * @param shifting
+	 *            the shifting to set
+	 */
+	public void setShifting(boolean shifting) {
+		this.shifting = shifting;
+	}
 
-    /**
-     * @param offsetRadius
-     *            the offsetRadius to set
-     */
-    public void setOffsetRadius(int offsetRadius) {
-        if (offsetRadius < 0) {
-            throw new IllegalArgumentException(
-                                               "offset radius should be greater than 0");
-        }
-        this.offsetRadius = offsetRadius;
-        setReload(true);
-    }
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect#paintPieEffect
+	 * (java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
+	 */
+	@Override
+	public final void paintPieEffect(Graphics2D g2d, Pie pie) {
+		if (pieSliceLinearEffect == null || reload) {
+			pieSliceLinearEffect = new PieSliceLinearEffect(incidenceAngleDegree,offsetRadius);
 
-    /**
-     * set the shadow parameters
-     * 
-     * @param fractions
-     * @param colors
-     */
-    public void setShader(float[] fractions, Color[] colors) {
-        if (fractions.length != colors.length) {
-            throw new IllegalArgumentException("length array does not match");
-        }
-        shadeFractions = fractions;
-        shadeColors = colors;
-    }
+			if (shadeFractions != null && shadeColors != null) {
+				pieSliceLinearEffect.setShader(shadeFractions, shadeColors);
+			}
+		}
 
-    /**
-     * set the shadow parameters
-     * 
-     * @param shader
-     */
-    public void setShader(Shader shader) {
-        shadeFractions = shader.getFractions();
-        shadeColors = shader.getColors();
-    }
+		for (PieSlice slice : pie.getSlices()) {
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, slice.getAlpha()));
+			pieSliceLinearEffect.paintPieSlice(g2d, pie, slice);
+			g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+		}
 
-    /**
-     * @return the incidenceAngleDegree
-     */
-    public int getIncidenceAngleDegree() {
-        return incidenceAngleDegree;
-    }
+	}
 
-    /**
-     * @param incidenceAngleDegree
-     *            the incidenceAngleDegree to set
-     */
-    public void setIncidenceAngleDegree(int incidenceAngleDegree) {
-        this.incidenceAngleDegree = incidenceAngleDegree;
-        setReload(true);
-    }
+	/**
+	 * shift effect incidence
+	 */
+	public static class Effect1ShiftIncidence extends Thread {
 
-    /**
-     * shift incidence angle degree for the embedded effect in specified pie
-     * 
-     * @param pie
-     */
-    public static Effect1ShiftIncidence shiftIncidence(Pie pie) {
-        AbstractPieEffect effect = pie.getPieEffect();
-        if (effect != null && (effect instanceof PieLinearEffect || effect instanceof PieCompoundEffect)) {
-            Effect1ShiftIncidence shift = new Effect1ShiftIncidence(pie);
-            shift.start();
-            return shift;
-        }
-        return null;
-    }
+		private Pie pie;
+		private PieLinearEffect effect1;
 
-    /**
-     * @return the shifting
-     */
-    public boolean isShifting() {
-        return shifting;
-    }
+		public Effect1ShiftIncidence(Pie pie) {
+			this.pie = pie;
+		}
 
-    /**
-     * @param shifting
-     *            the shifting to set
-     */
-    public void setShifting(boolean shifting) {
-        this.shifting = shifting;
-    }
+		@Override
+		public void run() {
 
-   
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect#paintPieEffect(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
-     */
-    @Override
-    public final void paintPieEffect(Graphics2D g2d, Pie pie) {
-        if (pieSliceLinearEffect == null || reload) {
-            pieSliceLinearEffect = new PieSliceLinearEffect(startColor, endColor,
-                                                            offsetRadius, incidenceAngleDegree);
+			try {
 
-            if (shadeFractions != null && shadeColors != null) {
-                pieSliceLinearEffect.setShader(shadeFractions, shadeColors);
-            }
-        }
+				if (pie.getPieEffect() instanceof PieLinearEffect) {
+					effect1 = (PieLinearEffect) pie.getPieEffect();
+					if (effect1.isShifting()) {
+						throw new InterruptedException("effect is already shifting.");
+					}
+					pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+					effect1.setShifting(true);
+					while (true) {
+						for (int i = 0; i < 90; i++) {
+							effect1.setIncidenceAngleDegree(i * 4);
+							Thread.sleep(20);
+							pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+						}
+					}
+				} else if (pie.getPieEffect() instanceof PieCompoundEffect) {
+					PieCompoundEffect pc = (PieCompoundEffect) pie.getPieEffect();
+					AbstractPieEffect[] effects = pc.getEffects();
+					for (int i = 0; i < effects.length; i++) {
+						if (effects[i] instanceof PieLinearEffect) {
+							System.out.println("ok, effect found in compound");
+							effect1 = (PieLinearEffect) effects[i];
+							if (effect1.isShifting()) {
+								throw new InterruptedException("effect is already shifting.");
+							}
+							pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+							while (true) {
+								for (int j = 0; j < 90; j++) {
+									System.out.println("j");
+									effect1.setIncidenceAngleDegree(j * 4);
+									Thread.sleep(20);
+									pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+								}
+							}
+						}
+					}
+				}
 
-        for (PieSlice slice : pie.getSlices()) {
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, slice.getAlpha()));
-            pieSliceLinearEffect.paintPieSlice(g2d, pie, slice);
-            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
-        }
+			} catch (InterruptedException e) {
+				effect1.setShifting(false);
+				Thread.currentThread().interrupt();
+			} finally {
+				effect1.setShifting(false);
+			}
 
-    }
-
-    /**
-     * shift effect incidence
-     */
-    public static class Effect1ShiftIncidence extends Thread {
-
-        private Pie pie;
-        private PieLinearEffect effect1;
-
-        public Effect1ShiftIncidence(Pie pie) {
-            this.pie = pie;
-        }
-
-        @Override
-        public void run() {
-
-            try {
-
-                if (pie.getPieEffect() instanceof PieLinearEffect) {
-                    effect1 = (PieLinearEffect) pie.getPieEffect();
-                    if (effect1.isShifting()) {
-                        throw new InterruptedException("effect is already shifting.");
-                    }
-                    pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
-                    effect1.setShifting(true);
-                    while (true) {
-                        for (int i = 0; i < 90; i++) {
-                            effect1.setIncidenceAngleDegree(i * 4);
-                            Thread.sleep(20);
-                            pie.getHostPlugin().getWindow2D().getView2D()
-                                    .repaintDevice();
-                        }
-                    }
-                }
-                else if (pie.getPieEffect() instanceof PieCompoundEffect) {
-                    PieCompoundEffect pc = (PieCompoundEffect) pie.getPieEffect();
-                    AbstractPieEffect[] effects = pc.getEffects();
-                    for (int i = 0; i < effects.length; i++) {
-                        if (effects[i] instanceof PieLinearEffect) {
-                            System.out.println("ok, effect found in compound");
-                            effect1 = (PieLinearEffect) effects[i];
-                            if (effect1.isShifting()) {
-                                throw new InterruptedException("effect is already shifting.");
-                            }
-                            pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
-                            while (true) {
-                                for (int j = 0; j < 90; j++) {
-                                    System.out.println("j");
-                                    effect1.setIncidenceAngleDegree(j * 4);
-                                    Thread.sleep(20);
-                                    pie.getHostPlugin().getWindow2D().getView2D()
-                                            .repaintDevice();
-                                }
-                            }
-                        }
-                    }
-                }
-
-            }
-            catch (InterruptedException e) {
-                effect1.setShifting(false);
-                Thread.currentThread().interrupt();
-            }
-            finally {
-                effect1.setShifting(false);
-            }
-
-        }
-    }
+		}
+	}
 }

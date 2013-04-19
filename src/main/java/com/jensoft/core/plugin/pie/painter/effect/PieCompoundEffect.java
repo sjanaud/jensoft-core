@@ -17,10 +17,6 @@ import com.jensoft.core.plugin.pie.Pie;
  * 
  * @author Sebastien Janaud
  */
-/**
- * @author sebastien
- *
- */
 public class PieCompoundEffect extends AbstractPieEffect {
 
     private AbstractPieEffect[] effects;
