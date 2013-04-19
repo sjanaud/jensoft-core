@@ -1,5 +1,5 @@
 /**
- * Provides view and plug-ins inflaters
+ * Provides view and plug-ins bindings
  * 
  * @author sebastien janaud
  * @since 1.0
