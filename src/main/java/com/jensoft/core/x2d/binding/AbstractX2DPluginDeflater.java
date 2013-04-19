@@ -12,7 +12,6 @@ import com.jensoft.core.plugin.AbstractPlugin;
 
 /**
  * <code>AbstractX2DPluginDeflater</code>
- * Abstract inflate plug in operation
  * 
  * @author Sebastien Janaud
  */
