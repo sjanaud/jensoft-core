@@ -28,9 +28,7 @@ import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_M
 import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_NAME;
 import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_THEME_COLOR;
 
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Stroke;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,7 +49,6 @@ import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
-import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.view.background.BackgroundPainter;
 import com.jensoft.core.view.background.RoundViewFill;
@@ -103,86 +100,7 @@ public class X2DViewDeflater extends AbstractViewDeflater {
 		this.deflaters = deflaters;
 	}
 
-	/**
-	 * create element
-	 * 
-	 * @param element
-	 *            the element name
-	 * @return element
-	 */
-	private Element createSingleElement(String element, String value) {
-		if (value == null)
-			value = "";
-		Element e = x2dDocument.createElement(element);
-		e.appendChild(x2dDocument.createTextNode(value));
-		return e;
-	}
-
-	/**
-	 * create element
-	 * 
-	 * @param element
-	 *            the element name
-	 * @return element
-	 */
-	private Element createSingleElement(String element, int value) {
-		Element e = x2dDocument.createElement(element);
-		e.appendChild(x2dDocument.createTextNode(Integer.toString(value)));
-		return e;
-	}
-
-	/**
-	 * create element
-	 * 
-	 * @param element
-	 *            the element name
-	 * @return element
-	 */
-	private Element createSingleElement(String element, double value) {
-		Element e = x2dDocument.createElement(element);
-		e.appendChild(x2dDocument.createTextNode(Double.toString(value)));
-		return e;
-	}
-
-	/**
-	 * create element
-	 * 
-	 * @param element
-	 *            the element name
-	 * @return element
-	 */
-	private Element createColorElement(String element, Color value) {
-		Element e = x2dDocument.createElement(element);
-		e.appendChild(createSingleElement("r", Integer.toString(value.getRed())));
-		e.appendChild(createSingleElement("g", Integer.toString(value.getGreen())));
-		e.appendChild(createSingleElement("b", Integer.toString(value.getBlue())));
-		e.appendChild(createSingleElement("a", Integer.toString(value.getAlpha())));
-		return e;
-	}
-
-	/**
-	 * create element
-	 * 
-	 * @param element
-	 *            the element name
-	 * @return element
-	 */
-	private Element createStrokeElement(String element, Stroke value) {
-		Element e = x2dDocument.createElement(element);
-		return e;
-	}
-
-	/**
-	 * create element
-	 * 
-	 * @param element
-	 *            the element name
-	 * @return element
-	 */
-	private Element createShaderElement(String element, Shader value) {
-		Element e = x2dDocument.createElement(element);
-		return e;
-	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -203,23 +121,23 @@ public class X2DViewDeflater extends AbstractViewDeflater {
 			view2DElement.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
 			view2DElement.setAttribute("xsi:schemaLocation", "http://www.jensoft.org/jensoft/schema/x2d ../../schema/x2d.xsd");
 
-			view2DElement.appendChild(createSingleElement(ELEMENT_VIEW_KEY, getView2D().getViewKey()));
-			view2DElement.appendChild(createSingleElement(ELEMENT_API_KEY, getView2D().getApiKey()));
-			view2DElement.appendChild(createSingleElement(ELEMENT_VIEW_WIDTH, getView2D().getWidth()));
-			view2DElement.appendChild(createSingleElement(ELEMENT_VIEW_HEIGHT, getView2D().getHeight()));
-			view2DElement.appendChild(createSingleElement(ELEMENT_VIEW_HOLDER_WEST, getView2D().getPlaceHolderAxisWest()));
-			view2DElement.appendChild(createSingleElement(ELEMENT_VIEW_HOLDER_EAST, getView2D().getPlaceHolderAxisEast()));
-			view2DElement.appendChild(createSingleElement(ELEMENT_VIEW_HOLDER_NORTH, getView2D().getPlaceHolderAxisNorth()));
-			view2DElement.appendChild(createSingleElement(ELEMENT_VIEW_HOLDER_SOUTH, getView2D().getPlaceHolderAxisSouth()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_KEY, getView2D().getViewKey()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_API_KEY, getView2D().getApiKey()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WIDTH, getView2D().getWidth()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HEIGHT, getView2D().getHeight()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_WEST, getView2D().getPlaceHolderAxisWest()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_EAST, getView2D().getPlaceHolderAxisEast()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_NORTH, getView2D().getPlaceHolderAxisNorth()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_SOUTH, getView2D().getPlaceHolderAxisSouth()));
 
 			BackgroundPainter painter = getView2D().getBackgroundPainter();
 			if (painter instanceof RoundViewFill) {
 				RoundViewFill rvf = (RoundViewFill) painter;
 				Element view2DBackgroundElement = x2dDocument.createElement(ELEMENT_VIEW_BACKGROUND_BACKGROUND);
-				view2DBackgroundElement.appendChild(createSingleElement(ELEMENT_VIEW_BACKGROUND_OUTLINEROUND, rvf.getOutlineRound()));
-				view2DBackgroundElement.appendChild(createColorElement(ELEMENT_VIEW_BACKGROUND_COLOR, rvf.getOutlineColor()));
-				view2DBackgroundElement.appendChild(createStrokeElement(ELEMENT_VIEW_BACKGROUND_STROKE, rvf.getOutlineStroke()));
-				view2DBackgroundElement.appendChild(createShaderElement(ELEMENT_VIEW_BACKGROUND_SHADER, rvf.getShader()));
+				view2DBackgroundElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_OUTLINEROUND, rvf.getOutlineRound()));
+				view2DBackgroundElement.appendChild(DeflaterUtil.createColorElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_COLOR, rvf.getOutlineColor()));
+				view2DBackgroundElement.appendChild(DeflaterUtil.createStrokeElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_STROKE, rvf.getOutlineStroke()));
+				view2DBackgroundElement.appendChild(DeflaterUtil.createShaderElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_SHADER, rvf.getShader()));
 			}
 
 			List<Window2D> windows = getView2D().getRegisterWindow();
@@ -227,13 +145,15 @@ public class X2DViewDeflater extends AbstractViewDeflater {
 				Element window2DElement = x2dDocument.createElement(ELEMENT_VIEW_WINDOW2D);
 				view2DElement.appendChild(window2DElement);
 
-				window2DElement.appendChild(createSingleElement(ELEMENT_VIEW_WINDOW2D_ID, window2d.getWindowID()));
-				window2DElement.appendChild(createSingleElement(ELEMENT_VIEW_WINDOW2D_NAME, window2d.getName()));
-				window2DElement.appendChild(createSingleElement(ELEMENT_VIEW_WINDOW2D_MIN_X, window2d.getMinX()));
-				window2DElement.appendChild(createSingleElement(ELEMENT_VIEW_WINDOW2D_MAX_X, window2d.getMaxX()));
-				window2DElement.appendChild(createSingleElement(ELEMENT_VIEW_WINDOW2D_MIN_Y, window2d.getMinY()));
-				window2DElement.appendChild(createSingleElement(ELEMENT_VIEW_WINDOW2D_MAX_Y, window2d.getMaxY()));
-				window2DElement.appendChild(createColorElement(ELEMENT_VIEW_WINDOW2D_THEME_COLOR, window2d.getThemeColor()));
+				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_ID, window2d.getWindowID()));
+				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_NAME, window2d.getName()));
+				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MIN_X, window2d.getMinX()));
+				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MAX_X, window2d.getMaxX()));
+				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MIN_Y, window2d.getMinY()));
+				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MAX_Y, window2d.getMaxY()));
+				window2DElement.appendChild(DeflaterUtil.createColorElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_THEME_COLOR, window2d.getThemeColor()));
+				
+				
 			}
 
 			return x2dDocument;
