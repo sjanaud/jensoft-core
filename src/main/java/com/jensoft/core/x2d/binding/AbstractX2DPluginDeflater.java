@@ -5,6 +5,7 @@
  */
 package com.jensoft.core.x2d.binding;
 
+import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import com.jensoft.core.plugin.AbstractPlugin;
@@ -15,10 +16,16 @@ import com.jensoft.core.plugin.AbstractPlugin;
  * 
  * @author Sebastien Janaud
  */
-public abstract class AbstractX2DPluginDeflater<T extends AbstractPlugin> {
+public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> {
+	
+	/** X2D document */
+	private Document x2dDocument;
 
     /** inflate plug in */
-    private T plugin;
+    private P plugin;
+    
+    /** xsi type */
+    private String XSIType;
     
     /**
      * create inflater
@@ -30,14 +37,46 @@ public abstract class AbstractX2DPluginDeflater<T extends AbstractPlugin> {
      * create inflater for the given plugin
      * @param plugin
      */
-    public AbstractX2DPluginDeflater(T plugin){
+    public AbstractX2DPluginDeflater(P plugin){
         this.plugin=plugin;
     }
+    
+    
 
     /**
+	 * @return the xSIType
+	 */
+	public String getXSIType() {
+		return XSIType;
+	}
+
+	/**
+	 * @param xSIType the xSIType to set
+	 */
+	public void setXSIType(String xSIType) {
+		XSIType = xSIType;
+	}
+	
+	
+
+	/**
+	 * @return the x2dDocument
+	 */
+	public Document getX2dDocument() {
+		return x2dDocument;
+	}
+
+	/**
+	 * @param x2dDocument the x2dDocument to set
+	 */
+	public void setX2dDocument(Document x2dDocument) {
+		this.x2dDocument = x2dDocument;
+	}
+
+	/**
      * @return the plug in
      */
-    public T getPlugin() {
+    public P getPlugin() {
         return plugin;
     }
 
@@ -62,7 +101,7 @@ public abstract class AbstractX2DPluginDeflater<T extends AbstractPlugin> {
      * @param plugin
      *            the plug in to set
      */
-    public void setPlugin(T plugin) {
+    public void setPlugin(P plugin) {
         this.plugin = plugin;
     }
 
