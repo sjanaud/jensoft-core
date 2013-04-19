@@ -16,6 +16,12 @@ public abstract class AbstractViewDeflater {
 
     /** the deflate view */
     private View2D view2D;
+    
+    /**
+     * create view Deflater
+     */
+    public AbstractViewDeflater() {
+    }
 
     /**
      * create Deflater
