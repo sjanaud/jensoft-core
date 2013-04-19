@@ -1293,13 +1293,21 @@ public class Donut3D {
          for (Donut3DSlice sliceRight1 : slicesRight1) {
         	 //List<Donut3DSlice> right1Fragments = sliceRight1.getFragments();
         	 List<Donut3DSlice> right1Fragments = getSlicesFragmentOnAngle(sliceRight1, 0, 90);
-        	 for (Donut3DSlice right1Fragment : right1Fragments) {
-        		 
+        	 for (Donut3DSlice right1Fragment : right1Fragments) { 
         		 
         		 
         		 if (!in(right1Fragment, paintOrderFragments) && !zeroSlice.getFragments().contains(right1Fragment)
-                         && !in(right1Fragment, flattenLastSlicesFragments)) {
-        			 paintOrderFragments.add(right1Fragment);
+                         /*&& !in(right1Fragment, flattenLastSlicesFragments)*/) {
+        			 if(in(right1Fragment, flattenLastSlicesFragments)){
+	        			 for (Donut3DSlice dLastFragment : flattenLastSlicesFragments) {
+							if(dLastFragment.equals(right1Fragment) && right1Fragment.getType() == Type.Back){
+								paintOrderFragments.add(right1Fragment);
+							}
+	        			 }
+        			 }else{
+        				 paintOrderFragments.add(right1Fragment);
+        			 }
+        			 
                  }
         	 }
              
@@ -1310,8 +1318,17 @@ public class Donut3D {
 	       for (int i = zeroFragments.size()-1; i >= 0; i--) {
 	    	   Donut3DSlice zeroFragment = zeroFragments.get(i);
 	         	  if (zeroFragment != null && !in(zeroFragment, paintOrderFragments)
-	                       && !in(zeroFragment, flattenLastSlicesFragments)) {
-	              	 paintOrderFragments.add(zeroFragment);
+	                       /*&& !in(zeroFragment, flattenLastSlicesFragments)*/) {
+	              	 //paintOrderFragments.add(zeroFragment);
+	         		 if(in(zeroFragment, flattenLastSlicesFragments)){
+	        			 for (Donut3DSlice dLastFragment : flattenLastSlicesFragments) {
+							if(dLastFragment.equals(zeroFragment) && zeroFragment.getType() == Type.Back){
+								paintOrderFragments.add(zeroFragment);
+							}
+	        			 }
+        			 }else{
+        				 paintOrderFragments.add(zeroFragment);
+        			 }
 	               }
 	          
 	       }
@@ -1327,8 +1344,17 @@ public class Donut3D {
         	 List<Donut3DSlice> right2Fragments = getSlicesFragmentOnAngle(sliceRight2, 270, 360);
         	 for (Donut3DSlice right2Fragment : right2Fragments) {
         		 if (!in(right2Fragment, paintOrderFragments) && !zeroSlice.getFragments().contains(right2Fragment)
-                         && !in(right2Fragment, flattenLastSlicesFragments)) {
-        			 paintOrderFragments.add(right2Fragment);
+                         /*&& !in(right2Fragment, flattenLastSlicesFragments)*/) {
+        			 //paintOrderFragments.add(right2Fragment);
+        			 if(in(right2Fragment, flattenLastSlicesFragments)){
+	        			 for (Donut3DSlice dLastFragment : flattenLastSlicesFragments) {
+							if(dLastFragment.equals(right2Fragment) && right2Fragment.getType() == Type.Back){
+								paintOrderFragments.add(right2Fragment);
+							}
+	        			 }
+        			 }else{
+        				 paintOrderFragments.add(right2Fragment);
+        			 }
                  }
         	 }
         	
