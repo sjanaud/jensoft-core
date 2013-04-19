@@ -16,7 +16,7 @@ import com.jensoft.core.plugin.AbstractPlugin;
  * 
  * @author Sebastien Janaud
  */
-public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> {
+public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> extends DeflaterUtil{
 	
 	/** X2D document */
 	private Document x2dDocument;
@@ -42,6 +42,11 @@ public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> {
     }
     
     
+    protected Element createPluginRootElement(){
+    	Element pluginElement = getX2dDocument().createElement("plugin");
+		pluginElement.setAttribute("xsi:type", getXSIType());
+		return pluginElement;
+    }
 
     /**
 	 * @return the xSIType
