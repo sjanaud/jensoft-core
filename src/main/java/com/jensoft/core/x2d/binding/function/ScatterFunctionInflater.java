@@ -27,12 +27,12 @@ import com.jensoft.core.x2d.binding.X2DInflater;
  * @author Sebastien Janaud
  */
 @X2DInflater(xsi="ScatterPlugin")
-public class ScatterCurveInflater extends AbstractX2DPluginInflater<ScatterFunction> {
+public class ScatterFunctionInflater extends AbstractX2DPluginInflater<ScatterFunction> {
 
     /**
      * create scatter curve inflater
      */
-    public ScatterCurveInflater() {
+    public ScatterFunctionInflater() {
         setPlugin(new ScatterFunction());
         setXSIType("ScatterPlugin");
     }
