@@ -27,7 +27,7 @@ import com.jensoft.core.x2d.binding.donut2d.Donut2DInflater;
 import com.jensoft.core.x2d.binding.donut3d.Donut3DInflater;
 import com.jensoft.core.x2d.binding.function.AreaFunctionInflater;
 import com.jensoft.core.x2d.binding.function.CurveFunctionInflater;
-import com.jensoft.core.x2d.binding.function.ScatterCurveInflater;
+import com.jensoft.core.x2d.binding.function.ScatterFunctionInflater;
 import com.jensoft.core.x2d.binding.grid.GridInflater;
 import com.jensoft.core.x2d.binding.legend.LegendInflater;
 import com.jensoft.core.x2d.binding.metrics.AxisMetricsInflater;
@@ -156,7 +156,7 @@ public class X2D {
 		// functions
 		coreInflaters.add(new CurveFunctionInflater());
 		coreInflaters.add(new AreaFunctionInflater());
-		coreInflaters.add(new ScatterCurveInflater());
+		coreInflaters.add(new ScatterFunctionInflater());
 
 		// zooms
 		coreInflaters.add(new ZoomWheelInflater());
