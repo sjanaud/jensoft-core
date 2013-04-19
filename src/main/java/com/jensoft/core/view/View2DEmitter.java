@@ -162,15 +162,6 @@ public class View2DEmitter {
 
     }
 
-    /**
-     * emit the template itself as {@link Document}
-     * 
-     * @return the template document itself
-     */
-    public Document emitX2D() {
-        return view2D.getX2DDeflater().deflate();
-    }
-
 }
 
 /**
