@@ -742,7 +742,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         }
 
         /**
-         * @return the pixelLabelHolder
+         *@param pixelLabelHolder
          */
         public void setPixelLabelHolder(int pixelLabelHolder) {
             this.pixelLabelHolder = pixelLabelHolder;

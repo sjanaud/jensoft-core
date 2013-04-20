@@ -71,9 +71,7 @@ public abstract class ViewAppletUI extends JApplet {
 
 	/**
 	 * show the given demo in the demo frame
-	 * 
-	 * @param demo
-	 *            the demo to show
+	 *
 	 */
 	private void create() {
 

@@ -154,7 +154,7 @@ public abstract class AbstractMapLayer implements Projectable2D, Clearable {
     /**
      * get the interpolation
      * 
-     * @return
+     * @return interpolation
      */
     public Interpolation getInterpolation() {
         return interpolation;
@@ -163,7 +163,7 @@ public abstract class AbstractMapLayer implements Projectable2D, Clearable {
     /**
      * set the interpolation
      * 
-     * @param deviceBandStart
+     * @param interpolation
      */
     public void setInterpolation(Interpolation interpolation) {
         this.interpolation = interpolation == null ? Interpolation.NearestNeighbor
@@ -182,7 +182,7 @@ public abstract class AbstractMapLayer implements Projectable2D, Clearable {
     /**
      * set the antialiasing
      * 
-     * @param antialias
+     * @param antialiasing
      */
     public void setAntialiasing(Antialiasing antialiasing) {
         this.antialiasing = antialiasing;

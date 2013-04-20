@@ -61,7 +61,7 @@ public class Grid {
 
         /**
          * parse the grid orientation
-         * @param string representation of orientation
+         * @param orientation representation of orientation
          * @return grid orientation
          */
         public static GridOrientation parse(String orientation) {
@@ -85,7 +85,7 @@ public class Grid {
     /**
      * create grid with specified orientation
      * 
-     * @param type
+     * @param gridOrientation
      */
     public Grid(GridOrientation gridOrientation) {
         this.gridOrientation = gridOrientation;
@@ -103,7 +103,7 @@ public class Grid {
     /**
      * set fraction for annotation
      * 
-     * @param annotationFractional
+     * @param annotationFraction
      *            the fraction annotation to set
      */
     public void setAnnotationFraction(float annotationFraction) {

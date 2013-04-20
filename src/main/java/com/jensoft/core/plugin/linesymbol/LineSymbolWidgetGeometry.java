@@ -198,10 +198,10 @@ public class LineSymbolWidgetGeometry {
     }
 
     /**
-     * set the center X of this geometry
+     * set the center Y of this geometry
      * 
-     * @param centerX
-     *            the center X to set
+     * @param centerY
+     *            the center Y to set
      */
     public void setCenterY(int centerY) {
         this.centerY = centerY;

@@ -761,7 +761,7 @@ public abstract class Window2D implements PluginListener {
         /**
          * get the pixel size of the time dimension
          * 
-         * @return
+         * @return bound time duration
          */
         public abstract int getTimeDurationPixel();
 
@@ -917,8 +917,8 @@ public abstract class Window2D implements PluginListener {
         /**
          * bound this {@link TimeX} window with given times min and max date for x dimension
          * 
-         * @param minDate
-         * @param maxDate
+         * @param minXDate
+         * @param maxXDate
          * @param miny
          * @param maxy
          */

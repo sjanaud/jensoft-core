@@ -986,7 +986,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		/**
 		 * unregister the given {@link MetricsModelCollections}
 		 * 
-		 * @param models
+		 * @param ModelCollections
 		 *            the metrics models to remove
 		 */
 		public void unregisterMetricsModels(MetricsModelCollections ModelCollections) {
@@ -1202,7 +1202,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	/**
 	 * delegate, get the metrics label color
 	 * 
-	 * @param metricsLabelColor
 	 */
 	public Color getMetricsLabelColor() {
 		return getMetricsManager().getMetricsLabelColor();
@@ -1360,7 +1359,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	/**
 	 * set the metrics painter
 	 * 
-	 * @param painter
+	 * @param metricsPainter
 	 */
 	public void setMetricsPainter(AbstractMetricsPainter metricsPainter) {
 		this.metricsPainter = metricsPainter;

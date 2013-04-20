@@ -80,10 +80,8 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	private Font defaultGlyphFont = InputFonts.getFont(InputFonts.NEUROPOL, 12);
 
 	/**
-	 * create a curve tracker for the specified serie parameter
+	 * create source tracker
 	 * 
-	 * @param trackedSource
-	 *            the serie to track
 	 */
 	public SourceTrackerPlugin() {
 		sources = new ArrayList<SourceFunction>();

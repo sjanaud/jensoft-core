@@ -1107,8 +1107,8 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
     /**
      * bound zoom box for the current specified coordinate in the current transaction
      * 
-     * @param deviceCurrentX
-     * @param deviceCurrentY
+     * @param currentBox
+     *
      */
     public void processZoomBound(Point2D currentBox) {
 
@@ -1186,7 +1186,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
     /**
      * start parameters for a start bound zoom box
      * 
-     * @param the
+     * @param startBox
      *            box start point coordinate in the current transaction type
      */
     public void processZoomStart(Point2D startBox) {

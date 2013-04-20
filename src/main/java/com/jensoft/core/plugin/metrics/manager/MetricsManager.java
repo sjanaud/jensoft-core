@@ -182,7 +182,7 @@ public interface MetricsManager {
      * get metrics solved
      * </p>
      * 
-     * @return
+     * @return metrics collection
      */
     public List<Metrics> getDeviceMetrics();
 

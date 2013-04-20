@@ -287,7 +287,6 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
         /**
          * get the grid count in the static manager
          * 
-         * @return gridCount
          */
         public void getGridCount() {
             getGridManager().getGridCount();

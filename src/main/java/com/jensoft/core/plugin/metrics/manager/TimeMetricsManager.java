@@ -397,7 +397,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         }
 
         /**
-         * @return the pixelLabelHolder
+         * @param pixelLabelHolder
          */
         public void setPixelLabelHolder(int pixelLabelHolder) {
             this.pixelLabelHolder = pixelLabelHolder;
@@ -491,7 +491,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
     /**
      * get the window worker
      * 
-     * @return
+     * @return time window
      */
     public Window2D.Time getTimingWindow() {
         Window2D window = getRenderContext().getWindow2D();
@@ -677,13 +677,14 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         return minutes;
     }
 
+  
     /**
-     * generate hours from reference for the given duration and hours increment
-     * 
+     *  generate hours from reference for the given duration and hours increment
      * @param ref
      * @param durationHours
-     * @param minuteIncrement
-     * @return hours metrics
+     * @param hoursIncrement
+     * @param model
+     * @return
      */
     protected List<TimePointMetrics> generateHoursPoint(Calendar ref, long durationHours, int hoursIncrement,
             TimeModel model) {
@@ -1529,8 +1530,6 @@ public class TimeMetricsManager extends AbstractMetricsManager {
          * 
          * @param durations
          *            the time points to format
-         * @param formater
-         *            the date formatter
          * @return formated metrics
          */
         public List<Metrics> formatWeekDuration(List<TimeDurationMetrics> durations) {
@@ -1708,8 +1707,6 @@ public class TimeMetricsManager extends AbstractMetricsManager {
          * 
          * @param points
          *            the time points to format
-         * @param formater
-         *            the date formatter
          * @return formated metrics
          */
         public List<Metrics> formatMonthDuration(List<TimeDurationMetrics> points) {

@@ -59,16 +59,11 @@ public class TranslateY extends AbstractBackwardForwardBarWidget<TranslatePlugin
     /** button draw color */
     private Color buttonDrawColor = RosePalette.EMERALD;
 
-    /**
-     * create Y Translate with specified parameters
-     * 
-     * @param id
-     *            the widget ID
-     * @param width
-     *            widget width
-     * @param height
-     *            widget height
-     */
+   /**
+    * create Y Translate with specified parameters
+    * @param width
+    * @param height
+    */
     public TranslateY(double width, double height) {
         super(widgetBarTranslateYID, width, height, defaultXFolderIndex,
               defaultYFolderIndex, BarWidgetOrientation.Vertical);
@@ -80,20 +75,13 @@ public class TranslateY extends AbstractBackwardForwardBarWidget<TranslatePlugin
         setOrphanLock(true);
     }
 
-    /**
-     * create Y Translate with specified parameters
-     * 
-     * @param id
-     *            the widget ID
-     * @param width
-     *            widget width
-     * @param height
-     *            widget height
-     * @param xIndex
-     *            widget x folder index
-     * @param yIndex
-     *            widget y folder index
-     */
+   /**
+    * create Y Translate with specified parameters
+    * @param width
+    * @param height
+    * @param xIndex
+    * @param yIndex
+    */
     public TranslateY(double width, double height, int xIndex, int yIndex) {
         super(widgetBarTranslateYID, width, height, xIndex, yIndex,
               BarWidgetOrientation.Vertical);
@@ -108,7 +96,6 @@ public class TranslateY extends AbstractBackwardForwardBarWidget<TranslatePlugin
     /**
      * create default Y Translate widget
      * 
-     * @param id
      */
     public TranslateY() {
         super(widgetBarTranslateYID, defaultBarWidth, defaultBarHeight, 1000, 2,

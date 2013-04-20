@@ -63,10 +63,10 @@ public class FunctionToolkit extends Toolkit {
      * @return curve
      */
     public static Curve createCurveFunction(SourceFunction source, Color color,
-            Stroke curveStroke) {
+            Stroke stroke) {
         Curve curve = new Curve(source);
         curve.setThemeColor(color);
-        curve.setCurveDraw(new CurveDefaultDraw(curveStroke));
+        curve.setCurveDraw(new CurveDefaultDraw(stroke));
         return curve;
     }
 

@@ -752,7 +752,7 @@ public class ModeledGridManager extends AbstractGridManager {
         }
 
         /**
-         * @return the pixelLabelHolder
+         * @param pixelLabelHolder
          */
         public void setPixelLabelHolder(int pixelLabelHolder) {
             this.pixelLabelHolder = pixelLabelHolder;

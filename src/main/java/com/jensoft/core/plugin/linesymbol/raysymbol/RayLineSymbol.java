@@ -52,7 +52,7 @@ public class RayLineSymbol extends LineSymbol {
     /**
      * get all entries registered in this line ray symbol
      * 
-     * @return
+     * @return ray entries
      */
     public List<RayEntry> getEntries() {
         return entries;

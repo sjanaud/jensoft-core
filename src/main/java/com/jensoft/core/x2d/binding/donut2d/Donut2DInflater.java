@@ -288,11 +288,11 @@ public class Donut2DInflater extends AbstractX2DPluginInflater<Donut2DPlugin> {
     }
 
     /**
-     * inflate donutD paint {@link AbstractDonut2DPaint}
+     * inflate donutD fill
      * 
      * @param donut2DFillElement
      *            the donut3D paint element to inflate
-     * @return paint
+     * @return fill
      */
     private AbstractDonut2DFill inflateDonut2DFill(Element donut2DFillElement) {
         if (donut2DFillElement == null) {
@@ -445,7 +445,7 @@ public class Donut2DInflater extends AbstractX2DPluginInflater<Donut2DPlugin> {
     }
 
     /**
-     * inflate abstract label properties into specified {@link inflateDonut2DSliceLabel}
+     * inflate abstract label properties
      * 
      * @param labelElement
      *            the label element to inflate

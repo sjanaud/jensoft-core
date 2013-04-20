@@ -66,7 +66,7 @@ public class X2DSchema {
     /**
      * get x2d schema
      * 
-     * @return
+     * @return x2d schema
      */
     public Schema getX2DSchema() {
         return x2dSchema;

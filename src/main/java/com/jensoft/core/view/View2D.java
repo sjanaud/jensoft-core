@@ -165,8 +165,6 @@ public class View2D extends JComponent implements Window2DListener,
     /**
      * get the view footer
      * 
-     * @param the
-     *            footer container
      */
     public JPanel getFooterContainer() {
         return footerContainer;
@@ -175,7 +173,7 @@ public class View2D extends JComponent implements Window2DListener,
     /**
      * get the device component
      * 
-     * @return
+     * @return device ârt
      */
     public DevicePartComponent getDevice2D() {
         return device2D;
@@ -806,7 +804,7 @@ public class View2D extends JComponent implements Window2DListener,
      *            the widget folder x index
      * @param yIndex
      *            the widget folder y index
-     * @return
+     * @return widget folder
      */
     public WidgetFolder newWidgetFolderIntance(String id, double width,
             double height, int xIndex, int yIndex) {

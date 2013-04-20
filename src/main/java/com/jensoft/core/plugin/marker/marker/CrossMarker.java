@@ -46,7 +46,7 @@ public class CrossMarker extends AbstractMarker {
     /**
      * set marker vertical shape
      * 
-     * @param vertical
+     * @param shapeMarkerV
      *            cross shape
      */
     public void setShapeMarkerV(Shape shapeMarkerV) {
@@ -65,7 +65,7 @@ public class CrossMarker extends AbstractMarker {
     /**
      * set marker horizontal shape
      * 
-     * @param horizontal
+     * @param shapeMarkerH
      *            cross shape
      */
     public void setShapeMarkerH(Shape shapeMarkerH) {

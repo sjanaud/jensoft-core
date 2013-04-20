@@ -59,7 +59,7 @@ public class DalleProjection implements Projection2D {
     /**
      * get zoom level for this paving projection
      * 
-     * @return
+     * @return zomm level
      */
     public int getZoom() {
         return zoom;

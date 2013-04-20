@@ -57,8 +57,6 @@ public class ViewFrameUI extends JFrame {
 	/**
 	 * show the given demo in the demo frame
 	 * 
-	 * @param demo
-	 *            the demo to show
 	 */
 	private void create() {
 

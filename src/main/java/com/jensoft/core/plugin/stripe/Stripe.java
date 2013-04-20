@@ -222,8 +222,8 @@ public class Stripe {
 	}
 
 	/**
-	 * @param bandPaint
-	 *            the bandPaint to set
+	 * @param stripePaint
+	 *            the stripePaint to set
 	 */
 	public void setStripePaint(StripePaint stripePaint) {
 		this.stripePaint = stripePaint;

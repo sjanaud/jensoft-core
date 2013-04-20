@@ -86,7 +86,7 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
      * 
      * @param offsetX
      *            the offset x to add on solve label X location
-     * @param offset
+     * @param offsetY
      *            the offset y to add on solve label Y location
      */
     public BarDefaultAxisLabel(int offsetX, int offsetY) {
@@ -343,16 +343,12 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
                 .getInstance(AlphaComposite.SRC_OVER, 1f));
     }
 
-    /**
-     * paint vertical symbol
-     * 
-     * @param v2d
-     *            the view2D
-     * @param g2d
-     *            the graphics context
-     * @param windowPart
-     *            the window part
-     */
+   /**
+    * paint vertical symbol
+    * @param g2d
+    * @param bar
+    * @param windowPart
+    */
     private void paintVSymbol(Graphics2D g2d, BarSymbol bar,
             WindowPart windowPart) {
 
@@ -511,16 +507,12 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
 
     }
 
-    /**
-     * paint horizontal symbol
-     * 
-     * @param v2d
-     *            the view2D
-     * @param g2d
-     *            the graphics context
-     * @param windowPart
-     *            the window part
-     */
+   /**
+    * paint horizontal symbol
+    * @param g2d
+    * @param bar
+    * @param windowPart
+    */
     private void paintHSymbol(Graphics2D g2d, BarSymbol bar,
             WindowPart windowPart) {
 

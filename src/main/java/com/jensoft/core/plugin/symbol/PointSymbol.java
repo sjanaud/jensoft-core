@@ -142,7 +142,7 @@ public class PointSymbol extends SymbolComponent {
     }
 
     /**
-     * @param pointSymbolPainter
+     * @param pointSymbolPainterList
      *            the pointSymbolPainter list to set
      */
     public void setPointSymbolPainters(List<AbstractPointSymbolPainter> pointSymbolPainterList) {

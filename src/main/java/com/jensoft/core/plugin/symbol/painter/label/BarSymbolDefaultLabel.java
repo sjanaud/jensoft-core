@@ -56,12 +56,9 @@ public class BarSymbolDefaultLabel extends AbstractBarLabel {
     }
 
     /**
-     * create classic label with specified parameters
-     * 
-     * @param verticalOffset
-     *            the vertical offset
-     * @param horizontalOffset
-     *            the horizontal offset
+     * create default label with specified parameters
+     * @param label
+     * @param labelColor
      */
     public BarSymbolDefaultLabel(String label, Color labelColor) {
         super();

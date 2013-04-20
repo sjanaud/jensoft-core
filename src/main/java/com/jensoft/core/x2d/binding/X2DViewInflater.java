@@ -269,7 +269,7 @@ public class X2DViewInflater implements X2DView2DElement {
      * 
      * @param background
      *            the background element view to inflate
-     * @return
+     * @return the background painter
      */
     public BackgroundPainter parseBackground(Element background) {
         if (background == null) {

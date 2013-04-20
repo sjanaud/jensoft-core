@@ -112,7 +112,7 @@ public class Donut2DReflectionEffect extends AbstractDonut2DEffect {
     }
 
     /**
-     * @param lenght
+     * @param length
      *            the length to set
      */
     public void setLength(float length) {

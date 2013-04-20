@@ -234,9 +234,9 @@ public class Donut2DLinearEffect extends AbstractDonut2DEffect {
     }
 
     /**
-     * shift incidence angle degree for the embedded effect in specified pie
+     * shift incidence angle degree for the embedded effect in specified donut2D
      * 
-     * @param pie
+     * @param donut2D
      */
     public static void shiftIncidence(Donut2D donut2D) {
         AbstractDonut2DEffect effect = donut2D.getDonut2DEffect();

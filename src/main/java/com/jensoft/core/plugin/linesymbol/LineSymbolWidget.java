@@ -43,9 +43,9 @@ public class LineSymbolWidget extends Widget {
     }
 
     /**
-     * return control geometry
+     * return widget geometry
      * 
-     * @return
+     * @return widget geometry
      */
     public LineSymbolWidgetGeometry getControl() {
         return objectifControl;

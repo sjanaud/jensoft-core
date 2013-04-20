@@ -258,10 +258,7 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
     /**
      * override this method in subclass widget to intercept wheel rotation
      * 
-     * @param x
-     *            the x location
-     * @param y
-     *            the y location
+     * @param rotation
      */
     public void interceptWheel(int rotation) {
     }

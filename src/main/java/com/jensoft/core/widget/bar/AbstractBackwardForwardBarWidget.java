@@ -29,8 +29,6 @@ public abstract class AbstractBackwardForwardBarWidget<P extends AbstractPlugin>
      *            widget x folder index
      * @param yIndex
      *            widget y folder index
-     * @param geometry
-     *            widget bar geometry
      * @param barWidgetOrientation
      *            widget bat orientation
      */

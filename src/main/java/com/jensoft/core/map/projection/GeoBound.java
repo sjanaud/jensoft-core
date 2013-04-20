@@ -74,7 +74,7 @@ public class GeoBound {
     /**
      * set the latitudeSouth south
      * 
-     * @param latitudeNorth
+     * @param latitudeSouth
      *            the latitude south to set
      */
     public void setLatitudeSouth(double latitudeSouth) {

@@ -87,7 +87,7 @@ public class InflaterUtil {
     /**
      * parse the specified font string into {@link Font}
      * 
-     * @param fontElement
+     * @param font
      *            the element to parse
      * @return font
      */

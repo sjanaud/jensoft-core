@@ -29,7 +29,7 @@ public abstract class AbstractWidgetGeometry {
     /**
      * solve geometry for the specified widget bound
      * 
-     * @param bound2D
+     * @param widgetBound2D
      */
     protected abstract void solveGeometry(Rectangle2D widgetBound2D);
 
@@ -41,7 +41,7 @@ public abstract class AbstractWidgetGeometry {
      *            the x point coordinate
      * @param y
      *            the y point coordinate
-     * @return
+     * @return true if intercept, false otherwise
      */
     public boolean interceptSensibleShape(int x, int y) {
         for (Shape sensibleShape : sensibleShapes) {

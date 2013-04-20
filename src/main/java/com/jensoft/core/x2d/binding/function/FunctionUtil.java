@@ -162,15 +162,15 @@ public class FunctionUtil implements X2DFunctionElement{
     /**
      * inflate {@link LineSource}
      * 
-     * @param curveSerieElement
-     * @return serie
+     * @param sourceElement
+     * @return source function
      */
-    public static SourceFunction inflateSourceFunction(Element serieElement) {
-        if (serieElement == null) {
+    public static SourceFunction inflateSourceFunction(Element sourceElement) {
+        if (sourceElement == null) {
             return null;
         }
 
-        String type = getType(serieElement);
+        String type = getType(sourceElement);
 
         if (type == null) {
             return null;
@@ -178,17 +178,17 @@ public class FunctionUtil implements X2DFunctionElement{
 
         SourceFunction serie = null;
         if (type.equalsIgnoreCase(ELEMENT_SOURCEFUNCTION_XSI_TYPE_AFFINE_SOURCEFUNCTION)) {
-            serie = FunctionUtil.inflateLineSource(serieElement);
+            serie = FunctionUtil.inflateLineSource(sourceElement);
         }
         if (type.equalsIgnoreCase(ELEMENT_SOURCEFUNCTION_XSI_TYPE_INTERPOLATE_SOURCEFUNCTION)) {
-            serie = FunctionUtil.inflateSplineSource(serieElement);
+            serie = FunctionUtil.inflateSplineSource(sourceElement);
         }
         if (type.equalsIgnoreCase(ELEMENT_SOURCEFUNCTION_XSI_TYPE_REGRESSION_SOURCEFUNCTION)) {
-            serie = FunctionUtil.inflateRegressionSource(serieElement);
+            serie = FunctionUtil.inflateRegressionSource(sourceElement);
         }
         if (serie != null) {
-            String id = elementText(serieElement, ELEMENT_SOURCEFUNCTION_ID);
-            String name = elementText(serieElement, ELEMENT_SOURCEFUNCTION_NAME);
+            String id = elementText(sourceElement, ELEMENT_SOURCEFUNCTION_ID);
+            String name = elementText(sourceElement, ELEMENT_SOURCEFUNCTION_NAME);
             if (id != null) {
                 serie.setId(id);
             }

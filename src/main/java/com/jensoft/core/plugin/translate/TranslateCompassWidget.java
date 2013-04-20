@@ -311,7 +311,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
     /**
      * get compass geometry
      * 
-     * @return
+     * @return compass geometry
      */
     private CompassGeometry getCompassGeometry() {
         return compassWidget;
