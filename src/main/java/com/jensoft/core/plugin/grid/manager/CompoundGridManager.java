@@ -41,7 +41,7 @@ public class CompoundGridManager extends AbstractGridManager {
 	
 	
 	/**
-	 * @param managers
+	 * @param gmanagers
 	 *            the managers to set
 	 */
 	public void addManagers(GridManager...gmanagers) {
