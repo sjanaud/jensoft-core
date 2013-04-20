@@ -57,17 +57,17 @@ public class StripePalette {
     /**
      * add paint to this palette
      * 
-     * @param paint
+     * @param color
      */
     public void addPaint(Color color) {
         palette.add(new StripePaint(color));
     }
 
-    /**
-     * add paint to this palette
-     * 
-     * @param paint
-     */
+   /**
+    * add paint to this palette
+    * @param shadeFractions
+    * @param shadeColors
+    */
     public void addPaint(float[] shadeFractions, Color[] shadeColors) {
         palette.add(new StripePaint(shadeFractions, shadeColors));
     }

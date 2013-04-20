@@ -60,16 +60,11 @@ public class ObjectifX extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
     /** button draw color */
     private Color buttonDrawColor = RosePalette.EMERALD;
 
-    /**
-     * create X Objectif
-     * 
-     * @param id
-     * @param width
-     * @param height
-     * @param xIndex
-     * @param yIndex
-     * @param barWidgetOrientation
-     */
+   /**
+    * create X Objectif
+    * @param width
+    * @param height
+    */
     public ObjectifX(double width, double height) {
         super(widgetBarXObjectifID, width, height, defaultXFolderIndex,
               defaultYFolderIndex, BarWidgetOrientation.Horizontal);
@@ -81,16 +76,13 @@ public class ObjectifX extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
         setOrphanLock(true);
     }
 
-    /**
-     * create X Objectif
-     * 
-     * @param id
-     * @param width
-     * @param height
-     * @param xIndex
-     * @param yIndex
-     * @param barWidgetOrientation
-     */
+   /**
+    * create X Objectif
+    * @param width
+    * @param height
+    * @param xIndex
+    * @param yIndex
+    */
     public ObjectifX(double width, double height, int xIndex, int yIndex) {
         super(widgetBarXObjectifID, width, height, xIndex, yIndex,
               BarWidgetOrientation.Horizontal);

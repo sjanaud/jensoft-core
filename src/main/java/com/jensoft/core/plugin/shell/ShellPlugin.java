@@ -448,10 +448,8 @@ public class ShellPlugin extends AbstractPlugin implements
     }
 
     /**
-     * remove the specified message showing from device component
+     * remove the volatile message showing from device component
      * 
-     * @param message
-     *            the message to remove showing
      */
     public void unshowVolatileMessage() {
         if (volatileShell != null) {

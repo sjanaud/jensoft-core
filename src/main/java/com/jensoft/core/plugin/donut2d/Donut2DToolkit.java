@@ -44,7 +44,7 @@ public class Donut2DToolkit extends Toolkit {
      *            the center Y in user window projection
      * @param innerRadius
      * @param outerRadius
-     * @return
+     * @return donut2D
      */
     public static Donut2D createDonut2D(String name, double centerX, double centerY,
             double innerRadius, double outerRadius) {
@@ -60,17 +60,13 @@ public class Donut2DToolkit extends Toolkit {
         return donut2D;
     }
 
-    /**
-     * create a new Donut2D in User projection with specified parameter
-     * 
-     * @param centerX
-     *            the center X in user window projection
-     * @param centerY
-     *            the center Y in user window projection
-     * @param innerRadius
-     * @param outerRadius
-     * @return
-     */
+   /**
+    *  create a new Donut2D in User projection with specified parameter
+    * @param name
+    * @param innerRadius
+    * @param outerRadius
+    * @return donut2D 
+    */
     public static Donut2D createDonut2D(String name, double innerRadius, double outerRadius) {
         Donut2D donut2D = new Donut2D();
         donut2D.setName(name);
@@ -475,7 +471,7 @@ public class Donut2DToolkit extends Toolkit {
     /**
      * push specified sections into specified donut
      * 
-     * @param donut3D
+     * @param donut2D
      *            the host donut
      * @param slices
      *            the slices to push

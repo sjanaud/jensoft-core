@@ -217,7 +217,7 @@ public class X2D {
 	/**
 	 * register the source template
 	 * 
-	 * @param xlmlSource
+	 * @param xmlSource
 	 *            the xml source as string
 	 */
 	public void registerX2DSource(String xmlSource) throws X2DException {

@@ -195,7 +195,7 @@ public class Pie {
     /**
      * add pie animator
      * 
-     * @param pie
+     * @param animator
      *            the pie animator to add
      */
     public void addPieAnimator(AbstractPieAnimator animator) {
@@ -531,7 +531,7 @@ public class Pie {
     /**
      * build slice
      * 
-     * @param pieslice
+     * @param slice
      *            the pie slice to build
      */
     private void buildSlice(PieSlice slice) {

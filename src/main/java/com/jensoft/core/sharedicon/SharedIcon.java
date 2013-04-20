@@ -168,7 +168,7 @@ public class SharedIcon {
     /**
      * get shared icon
      * 
-     * @param shared
+     * @param common
      *            icon
      * @return icon
      */

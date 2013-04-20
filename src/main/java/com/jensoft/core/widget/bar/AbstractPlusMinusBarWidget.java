@@ -15,28 +15,24 @@ import com.jensoft.core.widget.bar.AbstractBarGeometry.BarWidgetOrientation;
  */
 public abstract class AbstractPlusMinusBarWidget<P extends AbstractPlugin> extends AbstractBarWidget<P> {
 
-    /**
-     * /** create PlusMinusBarWidget with specified parameters
-     * 
-     * @param id
-     *            widget ID
-     * @param width
-     *            widget width
-     * @param height
-     *            widget height
-     * @param xIndex
-     *            widget x folder index
-     * @param yIndex
-     *            widget y folder index
-     * @param geometry
-     *            widget bar geometry
-     * @param barWidgetOrientation
-     *            widget bat orientation
-     */
-    public AbstractPlusMinusBarWidget(String id, double width, double height,
-            int xIndex, int yIndex, BarWidgetOrientation barWidgetOrientation) {
-        super(id, width, height, xIndex, yIndex, new PlusMinusBarGeometry(
-                                                                          barWidgetOrientation), barWidgetOrientation);
-    }
+	/**
+	 * /** create PlusMinusBarWidget with specified parameters
+	 * 
+	 * @param id
+	 *            widget ID
+	 * @param width
+	 *            widget width
+	 * @param height
+	 *            widget height
+	 * @param xIndex
+	 *            widget x folder index
+	 * @param yIndex
+	 *            widget y folder index
+	 * @param barWidgetOrientation
+	 *            widget bat orientation
+	 */
+	public AbstractPlusMinusBarWidget(String id, double width, double height, int xIndex, int yIndex, BarWidgetOrientation barWidgetOrientation) {
+		super(id, width, height, xIndex, yIndex, new PlusMinusBarGeometry(barWidgetOrientation), barWidgetOrientation);
+	}
 
 }

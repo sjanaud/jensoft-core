@@ -139,8 +139,6 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
     /**
      * deflate outline
      * 
-     * @param startDelay
-     *            start delay before starting deflate
      */
     public DeflateOutline deflateOutline() {
         if (isInflating()) {

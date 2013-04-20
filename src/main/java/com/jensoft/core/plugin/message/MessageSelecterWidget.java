@@ -56,15 +56,11 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
     /** button draw color */
     private Color buttonDrawColor = Spectral.SPECTRAL_BLUE1;
 
+ 
     /**
-     * create X Translate
-     * 
-     * @param id
+     * create message selecter widget
      * @param width
      * @param height
-     * @param xIndex
-     * @param yIndex
-     * @param barWidgetOrientation
      */
     public MessageSelecterWidget(double width, double height) {
         super(widgetBarXObjectifID, width, height, defaultXFolderIndex,

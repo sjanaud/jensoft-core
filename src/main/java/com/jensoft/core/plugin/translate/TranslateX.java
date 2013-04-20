@@ -56,16 +56,11 @@ public class TranslateX extends AbstractBackwardForwardBarWidget<TranslatePlugin
     /** button draw color */
     private Color buttonDrawColor = RosePalette.EMERALD;
 
-    /**
-     * create X Translate
-     * 
-     * @param id
-     * @param width
-     * @param height
-     * @param xIndex
-     * @param yIndex
-     * @param barWidgetOrientation
-     */
+   /**
+    * create X Translate
+    * @param width
+    * @param height
+    */
     public TranslateX(double width, double height) {
         super(widgetBarTranslateXID, width, height, defaultXFolderIndex,
               defaultYFolderIndex, BarWidgetOrientation.Horizontal);
@@ -77,15 +72,13 @@ public class TranslateX extends AbstractBackwardForwardBarWidget<TranslatePlugin
         setOrphanLock(true);
     }
 
+   
     /**
      * create X Translate
-     * 
-     * @param id
      * @param width
      * @param height
      * @param xIndex
      * @param yIndex
-     * @param barWidgetOrientation
      */
     public TranslateX(double width, double height, int xIndex, int yIndex) {
         super(widgetBarTranslateXID, width, height, xIndex, yIndex,

@@ -68,7 +68,7 @@ public class SymbolToolkit extends Toolkit {
      * @param nameSymbol
      * @param base
      * @param thickness
-     * @return
+     * @return bar symbol group
      */
     public final static BarSymbolGroup createBarGroup(String nameSymbol,
             double base, double thickness) {
@@ -102,7 +102,7 @@ public class SymbolToolkit extends Toolkit {
      * @param nameSymbol
      * @param base
      * @param thickness
-     * @return
+     * @return bar symbol group
      */
     public final static BarSymbolGroup createBarGroup(String nameSymbol,
             double base, double thickness, int round) {
@@ -279,7 +279,7 @@ public class SymbolToolkit extends Toolkit {
      *            the symbol base
      * @param thickness
      *            the symbol thickness
-     * @param inflate
+     * @param symbolInflate
      *            the inflate type
      * @param symbolInflateValue
      *            the inflate value, than should be greater than 0
@@ -332,7 +332,7 @@ public class SymbolToolkit extends Toolkit {
      *            the symbol base
      * @param thickness
      *            the symbol thickness
-     * @param inflate
+     * @param symbolInflate
      *            the inflate type
      * @param symbolInflateValue
      *            the inflate value, than should be greater than 0
@@ -381,7 +381,7 @@ public class SymbolToolkit extends Toolkit {
      * 
      * @param nameSymbol
      *            the name symbol to set
-     * @param inflate
+     * @param symbolInflate
      *            the inflate type
      * @param symbolInflateValue
      *            the inflate value, than should be greater than 0
@@ -435,11 +435,11 @@ public class SymbolToolkit extends Toolkit {
     /**
      * create new stack list
      * 
-     * @param name
+     * @param names
      *            the stack name array
-     * @param themeColor
+     * @param themeColors
      *            the stack theme colors array
-     * @param proportionValue
+     * @param proportionValues
      *            the stack proportion values array
      * @return new stack list
      */

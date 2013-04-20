@@ -48,10 +48,11 @@ public class ClassSearchUtils {
     /**
      * Search for the resource with the extension in the classpath. Method
      * self-instantiate factory for every call to ensure thread safety.
-     * @param extension Mandatory extension of the resource. If all resources
+     * @param prefix Mandatory extension of the resource. If all resources
      * are required extension should be empty string. Null extension is not
      * allowed and will cause method to fail.
      * @return List of all resources with specified extension.
+     * 
      */
     public static List<ClassPathEntry> searchClassPath(String prefix) {
         return searchClassPath(prefix, ".class");

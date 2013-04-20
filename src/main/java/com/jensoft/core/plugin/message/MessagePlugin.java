@@ -448,10 +448,7 @@ public class MessagePlugin extends AbstractPlugin implements
     }
 
     /**
-     * remove the specified message showing from device component
-     * 
-     * @param message
-     *            the message to remove showing
+     * remove the volatile message showing from device component
      */
     public void unshowVolatileMessage() {
         if (volatileMessage != null) {

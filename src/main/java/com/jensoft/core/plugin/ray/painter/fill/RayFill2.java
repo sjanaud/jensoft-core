@@ -37,11 +37,8 @@ public class RayFill2 extends AbstractRayFill {
 
     /**
      * fill ray X
-     * 
      * @param g2d
-     *            the graphics context
-     * @param ray
-     *            the ray to fill
+     * @param bar
      */
     private void fillXRay(Graphics2D g2d, Ray bar) {
 

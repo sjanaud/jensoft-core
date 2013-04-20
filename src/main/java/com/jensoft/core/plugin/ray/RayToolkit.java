@@ -391,9 +391,9 @@ public class RayToolkit extends Toolkit {
      * 
      * @param names
      *            the ray stack name array
-     * @param themeColor
+     * @param themeColors
      *            the ray stack theme colors array
-     * @param proportionValue
+     * @param proportionValues
      *            the ray stack proportion values array
      * @return new ray stack list
      */

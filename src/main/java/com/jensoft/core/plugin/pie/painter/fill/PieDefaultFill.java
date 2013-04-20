@@ -6,17 +6,14 @@
 package com.jensoft.core.plugin.pie.painter.fill;
 
 /**
- * <code>PieDefaultFill</code> fill all sections with {@link PieSliceDefaultFill}
+ * <code>PieDefaultFill</code> fill all slices with {@link PieSliceDefaultFill}
  * 
- * @see PieSliceDefaultFill
- * @see PieCompatibleFill
- * @see AbstractPieFill
  * @author Sebastien Janaud
  */
 public class PieDefaultFill extends PieCompatibleFill {
 
     /**
-     * @param compatibleSliceFill
+     * create the pie compatible fill
      */
     public PieDefaultFill() {
         super(new PieSliceDefaultFill());

@@ -94,10 +94,10 @@ public class PluginPlatform {
     }
 
     /**
-     * register the specified plug in into platform
+     * register the specified window2d into platform
      * 
-     * @param plugin
-     *            the plug in to register
+     * @param window2d
+     *            the window2d to register
      */
     public void register(Window2D window2d) {
         if (!windows.contains(window2d)) {
@@ -241,7 +241,7 @@ public class PluginPlatform {
      * return all {@link AbstractX2DPluginInflater} annotated with {@link X2DInflater} for the given package
      * 
      * @param packageName
-     * @return
+     * @return scanned portfolio
      */
     public static List<Class<?>> scanPortfolio(String packageName) {
         List<Class<?>> portfolios = new ArrayList<Class<?>>();
@@ -272,7 +272,7 @@ public class PluginPlatform {
      * return all {@link JenSoftAPIDemo} and inherits from {@link ViewDemo} classes for the given package
      * 
      * @param packageName
-     * @return
+     * @return scanned jensoft demo
      */
     public static List<Class<?>> scanJenSoftViewDemo(String packageName) {
         List<Class<?>> classes = scanJenSoftDemo(packageName);       
@@ -282,7 +282,7 @@ public class PluginPlatform {
    
 
     /**
-     * return all {@link JenSoftAPIDemo} annotated classes for the given package
+     * return jensoft demo
      * 
      * @param packageName
      * @return jensoft demos

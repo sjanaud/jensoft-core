@@ -406,15 +406,16 @@ public class OSMRestBridgeEngine {
     }
     
     
+    
     /**
      * stream a tile with the specified index
-     * 
-     * @param x
-     * @param y
-     * @param zoom
-     * @return the stream of this tile
+     * @param longitudeWest
+     * @param longEast
+     * @param latitudeNorth
+     * @param latitudeSouth
+     * @return
      */
-    public Stream streamBoundBox(double longitudeWest, double longEast,double latitudeNorth,double latitudeSouth) {
+     Stream streamBoundBox(double longitudeWest, double longEast,double latitudeNorth,double latitudeSouth) {
         Stream stream = new Stream();
         try {
            

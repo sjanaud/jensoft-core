@@ -32,8 +32,6 @@ public class CompoundGridManager extends AbstractGridManager {
 	 * 
 	 * @param gridOrientation
 	 *            the grids orientation
-	 * @param managers
-	 *            the managers
 	 */
 	public CompoundGridManager(GridOrientation gridOrientation) {
 		super(gridOrientation);

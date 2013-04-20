@@ -15,16 +15,13 @@ import com.jensoft.core.window.WindowPart;
  */
 public interface RayPainter {
 
-    /**
-     * paint ray
-     * 
-     * @param g2d
-     *            the graphics context
-     * @param ray
-     *            the ray to paint
-     * @param the
-     *            window zone
-     */
-    public void paintRay(Graphics2D g2d, Ray ray, WindowPart windowPart);
+	/**
+	 * paint ray
+	 * 
+	 * @param g2d
+	 * @param ray
+	 * @param windowPart
+	 */
+	public void paintRay(Graphics2D g2d, Ray ray, WindowPart windowPart);
 
 }

@@ -6,7 +6,7 @@
 package com.jensoft.core.plugin.metrics.format;
 
 /**
- * IMetricsFormat format the double model to pretty print convenience
+ * <code>IMetricsFormat</code> format the double model to pretty print convenience
  * 
  * @author sebastien janaud
  */
@@ -15,7 +15,7 @@ public interface IMetricsFormat {
     /**
      * format the given double value
      * @param value
-     * @return
+     * @return formatted value
      */
     public String format(double value);
 

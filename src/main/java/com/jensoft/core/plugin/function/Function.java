@@ -36,7 +36,6 @@ public abstract class Function {
     /**
      * create function
      * 
-     * @param name
      */
     public Function() {
         pathFunction = new MetricsPathFunction();

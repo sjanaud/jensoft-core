@@ -211,7 +211,7 @@ public class RadarDimension {
     /**
      * add metric to this radar dimension
      * 
-     * @param radarMetrics
+     * @param dimensionMetrics
      *            the radar metric to add on this dimension
      * @throws IllegalArgumentException
      *             if radarMetrics is out of dimension minimum and maximum bound
@@ -309,7 +309,6 @@ public class RadarDimension {
      * 
      * @param radarMetrics
      *            the radar metrics geometry to solve
-     * @return metrics coordinate reference
      */
     public void solveMetrics(RadarMetrics radarMetrics) {
         metricsPath.solveMetrics(radarMetrics);

@@ -128,7 +128,7 @@ public class Legend {
     /**
      * get legend theme color
      * 
-     * @return
+     * @return legend theme color
      */
     public Color getThemeColor() {
         return themeColor;

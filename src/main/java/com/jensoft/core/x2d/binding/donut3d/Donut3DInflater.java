@@ -351,7 +351,7 @@ public class Donut3DInflater extends AbstractX2DPluginInflater<Donut3DPlugin> {
     }
 
     /**
-     * inflate abstract label properties into specified {@link inflateDonut3DSliceLabel}
+     * inflate abstract label properties
      * 
      * @param labelElement
      *            the label element to inflate

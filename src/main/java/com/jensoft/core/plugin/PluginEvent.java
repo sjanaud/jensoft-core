@@ -20,7 +20,7 @@ public class PluginEvent<P extends AbstractPlugin> extends EventObject {
     private P plugin;
     /**
      * create plugin event with the given plug in
-     * @param source
+     * @param plugin
      */
     public PluginEvent(P plugin) {
         super(plugin);

@@ -634,7 +634,7 @@ public class BarSymbolRelativeLabel extends AbstractBarLabel {
      *            the graphics context
      * @param bar
      *            the bar symbol
-     * @return
+     * @return label width
      */
     public double getLabelWidth(Graphics2D g2d, BarSymbol bar) {
         if (font == null) {

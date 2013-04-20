@@ -107,21 +107,14 @@ public abstract class AbstractPadWidget<P extends AbstractPlugin> extends Widget
     /** abstract pad geometry */
     private AbstractPadGeometry padGeometry;
 
+
     /**
      * create abstract pad geometry with specified parameters
-     * 
      * @param id
-     *            the pad id
-     * @param width
-     *            the pad width
-     * @param height
-     *            the pad height
+     * @param padSquare
      * @param xIndex
-     *            the pad x folder index
      * @param yIndex
-     *            the pad y folder index
      * @param geometry
-     *            the pad geometry
      */
     public AbstractPadWidget(String id, double padSquare, int xIndex,
             int yIndex, AbstractPadGeometry geometry) {

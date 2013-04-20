@@ -516,7 +516,7 @@ public class RayRelativeLabel extends AbstractRayLabel {
      *            the graphics context
      * @param ray
      *            the ray symbol
-     * @return
+     * @return label width
      */
     public double getLabelWidth(Graphics2D g2d, Ray ray) {
         if (font == null) {

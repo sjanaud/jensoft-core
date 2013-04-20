@@ -104,8 +104,8 @@ public class X2DViewDeflater extends AbstractViewDeflater {
     /**
      * lookup deflater for the specified plugin class
      * 
-     * @param xsiType
-     *            the XSI type
+     * @param plugin
+     *            the plugin class
      * @return plugin inflater
      */
     protected AbstractX2DPluginDeflater<?> lookupType(AbstractPlugin plugin) {

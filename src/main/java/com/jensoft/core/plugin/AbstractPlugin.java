@@ -866,7 +866,7 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
         /**
          * on wheel call back
          * 
-         * @param me
+         * @param mwe
          *            the mouse wheel event on the plug in part
          */
         public void onWheel(MouseWheelEvent mwe);

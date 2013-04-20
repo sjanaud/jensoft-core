@@ -284,7 +284,7 @@ public class PiePlugin extends AbstractPlugin implements
     /**
      * fire pie entered
      * 
-     * @param pie
+     * @param slice
      *            the pie slice entered to fire
      */
     public void firePieEntered(PieSlice slice) {

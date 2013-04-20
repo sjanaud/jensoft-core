@@ -214,11 +214,9 @@ public class MultiplierMetricsManager extends AbstractMetricsManager {
     }
 
     /**
-     * create the metrics collection for the specified major, median and minor
+     * create the metrics collection for the specified major
      * 
      * @param major
-     * @param median
-     * @param minor
      * @return the volatile metrics collection
      */
     private List<Metrics> createMetrics(double major) {

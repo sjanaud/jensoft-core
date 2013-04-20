@@ -111,8 +111,6 @@ public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> extend
 
     /**
      * deflate the T plugin mean read the given plugin root element and configure plugin
-     * @param  plugin
-     *             the element to inflate
      */
     public abstract Element deflate();
 

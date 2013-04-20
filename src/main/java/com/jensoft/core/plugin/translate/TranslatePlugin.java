@@ -601,7 +601,7 @@ public class TranslatePlugin extends AbstractPlugin implements
     /**
      * return true if the tool is passive translate
      * 
-     * @return
+     * @return true is translate is passivate
      */
     public boolean isPassiveTranslate() {
         return passiveTranslate;

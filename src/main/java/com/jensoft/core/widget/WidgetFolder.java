@@ -105,7 +105,7 @@ public class WidgetFolder {
     /**
      * set target folder
      * 
-     * @param potentialFolder
+     * @param targetFolder
      *            the target folder to set
      */
     public void setTargetFolder(WidgetFolder targetFolder) {
@@ -218,7 +218,7 @@ public class WidgetFolder {
     /**
      * get on post listener for this folder
      * 
-     * @return
+     * @return post listener
      */
     public OnPostWidgetListener getOnPostListener() {
         return onPostListener;

@@ -414,7 +414,7 @@ public class Donut2D {
     /**
      * set donut inner radius
      * 
-     * @param interinnerRadiusalRadius
+     * @param innerRadius
      *            the inner radius
      */
     public void setInnerRadius(double innerRadius) {

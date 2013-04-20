@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 
 /**
- * tagging interface that defines painting glyph operation
+ * <code>GlyphMetricPainter</code> tagging interface that defines painting glyph operation
  * 
  * @author Sebastien Janaud
  */
@@ -18,11 +18,8 @@ public interface GlyphMetricPainter {
 
     /**
      * glyph painting operation
-     * 
      * @param g2d
-     *            the graphics context
-     * @param metricsPath
-     *            the metrics path
+     * @param glyphMetric
      */
     public void paintGlyphMetric(Graphics2D g2d, GlyphMetric glyphMetric);
 }
