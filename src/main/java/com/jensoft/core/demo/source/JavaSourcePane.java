@@ -22,7 +22,6 @@ import javax.swing.text.StyleContext;
 import com.jensoft.core.demo.styles.SectionStyle;
 import com.jensoft.core.demo.styles.SourceStyle;
 import com.jensoft.core.demo.styles.WordStyle;
-import com.jensoft.core.desktop.viewsbase.SScrollPane;
 import com.jensoft.core.palette.RosePalette;
 import com.jensoft.core.palette.TangoPalette;
 
@@ -63,7 +62,7 @@ public class JavaSourcePane extends JComponent {
 		sourceTextPane.setMargin(new Insets(10, 10, 10, 10));
 		sourceTextPane.setEditable(false);
 
-		SScrollPane scroll = new SScrollPane(sourceTextPane);
+		SourceScrollPane scroll = new SourceScrollPane(sourceTextPane);
 		scroll.setWheelScrollingEnabled(true);
 
 		add(new ControlPanel(sourceTextPane), BorderLayout.NORTH);

@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ScrollPaneLayout;
 
-import com.jensoft.core.desktop.scrollui.Sw2dScrollbarUI;
+import com.jensoft.core.demo.source.DemoScrollbarUI;
 
 public class SScrollPane extends JScrollPane implements DeviceComponent {
 
@@ -37,8 +37,8 @@ public class SScrollPane extends JScrollPane implements DeviceComponent {
         setOpaque(false);
         setVerticalScrollBar(createVerticalScrollBar());
         setHorizontalScrollBar(createHorizontalScrollBar());
-        getVerticalScrollBar().setUI(new Sw2dScrollbarUI());
-        getHorizontalScrollBar().setUI(new Sw2dScrollbarUI());
+        getVerticalScrollBar().setUI(new DemoScrollbarUI());
+        getHorizontalScrollBar().setUI(new DemoScrollbarUI());
 
         // setSize(150, 40);
         setPreferredSize(new Dimension(100, 100));

@@ -20,7 +20,6 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 
 import com.jensoft.core.demo.xml.XmlTextPane;
-import com.jensoft.core.desktop.viewsbase.SScrollPane;
 import com.jensoft.core.x2d.X2D;
 
 /**
@@ -52,7 +51,7 @@ public class X2DSourcePane extends JComponent {
 		sourceTextPane.setMargin(new Insets(10, 10, 10, 10));
 		sourceTextPane.setEditable(false);
 
-		SScrollPane scroll = new SScrollPane(sourceTextPane);
+		SourceScrollPane scroll = new SourceScrollPane(sourceTextPane);
 		scroll.setWheelScrollingEnabled(true);
 
 		add(new ControlPanel(sourceTextPane), BorderLayout.NORTH);
