@@ -23,83 +23,81 @@ import com.jensoft.core.plugin.donut2d.Donut2DSlice;
  */
 public class Donut2DSliceDefaultDraw extends AbstractDonut2DSliceDraw {
 
-    /** draw color */
-    private Color drawColor;
+	/** draw color */
+	private Color drawColor;
 
-    /** stroke color */
-    private Stroke drawStroke;
+	/** stroke color */
+	private Stroke drawStroke;
 
-    /** default stroke */
-    private Stroke defaultStroke = new BasicStroke();
+	/** default stroke */
+	private Stroke defaultStroke = new BasicStroke();
 
-    /**
-     * create empty default donut2D slice draw
-     */
-    public Donut2DSliceDefaultDraw() {
-    }
+	/**
+	 * create empty default donut2D slice draw
+	 */
+	public Donut2DSliceDefaultDraw() {
+	}
 
-    /**
-     * create default section draw
-     * 
-     * @param drawColor
-     *            the draw color
-     * @param drawStroke
-     *            the stroke
-     */
-    public Donut2DSliceDefaultDraw(Color drawColor, Stroke drawStroke) {
-        super();
-        this.drawColor = drawColor;
-        this.drawStroke = drawStroke;
-    }
+	/**
+	 * create default section draw
+	 * 
+	 * @param drawColor
+	 *            the draw color
+	 * @param drawStroke
+	 *            the stroke
+	 */
+	public Donut2DSliceDefaultDraw(Color drawColor, Stroke drawStroke) {
+		super();
+		this.drawColor = drawColor;
+		this.drawStroke = drawStroke;
+	}
 
-    /**
-     * @return the drawColor
-     */
-    public Color getDrawColor() {
-        return drawColor;
-    }
+	/**
+	 * @return the drawColor
+	 */
+	public Color getDrawColor() {
+		return drawColor;
+	}
 
-    /**
-     * @param drawColor
-     *            the drawColor to set
-     */
-    public void setDrawColor(Color drawColor) {
-        this.drawColor = drawColor;
-    }
+	/**
+	 * @param drawColor
+	 *            the drawColor to set
+	 */
+	public void setDrawColor(Color drawColor) {
+		this.drawColor = drawColor;
+	}
 
-    /**
-     * @return the drawStroke
-     */
-    public Stroke getDrawStroke() {
-        return drawStroke;
-    }
+	/**
+	 * @return the drawStroke
+	 */
+	public Stroke getDrawStroke() {
+		return drawStroke;
+	}
 
-    /**
-     * @param drawStroke
-     *            the drawStroke to set
-     */
-    public void setDrawStroke(Stroke drawStroke) {
-        this.drawStroke = drawStroke;
-    }
+	/**
+	 * @param drawStroke
+	 *            the drawStroke to set
+	 */
+	public void setDrawStroke(Stroke drawStroke) {
+		this.drawStroke = drawStroke;
+	}
 
-    @Override
-    protected final void paintDonut2DSliceDraw(Graphics2D g2d, Donut2D donut2D, Donut2DSlice slice) {
+	@Override
+	protected final void paintDonut2DSliceDraw(Graphics2D g2d, Donut2D donut2D, Donut2DSlice slice) {
 
-        if (drawColor != null) {
-            g2d.setColor(drawColor);
-        }
-        else {
-            g2d.setColor(Color.WHITE);
-        }
+		if (drawColor != null) {
+			g2d.setColor(drawColor);
+		} else {
+			g2d.setColor(slice.getThemeColor());
+		}
 
-        if (drawStroke != null) {
-            g2d.setStroke(drawStroke);
-        }
-        else {
-            g2d.setStroke(defaultStroke);
-        }
+		if (drawStroke != null) {
+			g2d.setStroke(drawStroke);
+		} else {
+			g2d.setStroke(defaultStroke);
+		}
 
-        g2d.draw(slice.getSlicePath());
+		g2d.draw(slice.getSlicePath());
 
-    }
+	}
 }

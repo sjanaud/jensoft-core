@@ -28,10 +28,13 @@ public class Donut2DDefaultDraw extends AbstractDonut2DDraw {
 	/** draw stroke */
 	private Stroke stroke = new BasicStroke();
 
+	/**slice draw*/
+	private Donut2DSliceDefaultDraw sliceDraw;
 	/**
 	 * create empty draw
 	 */
 	public Donut2DDefaultDraw() {
+		sliceDraw = new Donut2DSliceDefaultDraw();
 	}
 
 	/**
@@ -40,8 +43,9 @@ public class Donut2DDefaultDraw extends AbstractDonut2DDraw {
 	 * @param outlineColor
 	 */
 	public Donut2DDefaultDraw(Color outlineColor) {
-		super();
+		this();
 		this.outlineColor = outlineColor;
+		sliceDraw.setDrawColor(outlineColor);
 	}
 
 	/**
@@ -51,10 +55,14 @@ public class Donut2DDefaultDraw extends AbstractDonut2DDraw {
 	 * @param stroke
 	 */
 	public Donut2DDefaultDraw(Color outlineColor, Stroke stroke) {
-		super();
+		this();
 		this.outlineColor = outlineColor;
 		this.stroke = stroke;
+		sliceDraw.setDrawColor(outlineColor);
+		sliceDraw.setDrawStroke(stroke);
 	}
+	
+	
 
 	/**
 	 * get outline color
@@ -84,19 +92,22 @@ public class Donut2DDefaultDraw extends AbstractDonut2DDraw {
 	 */
 	@Override
 	public void paintDonut2DDraw(Graphics2D g2d, Donut2D donut2D) {
-		if (outlineColor == null)
-			return;
-
+		
 		g2d.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, 1f));
 
 		List<Donut2DSlice> sections = donut2D.getSlices();
 		g2d.setStroke(new BasicStroke(2f));
 		for (int j = 0; j < sections.size(); j++) {
-
+			
 			Donut2DSlice s = sections.get(j);
-			g2d.setStroke(stroke);
-			g2d.setColor(outlineColor);
-			g2d.draw(s.getSlicePath());
+			
+			sliceDraw.paintDonut2DSlice(g2d, donut2D, s);
+			//s.setSliceDraw(sliceDraw);
+			
+			
+			//g2d.setStroke(stroke);
+			//g2d.setColor(outlineColor);
+			//g2d.draw(s.getSlicePath());
 		}
 	}
 
