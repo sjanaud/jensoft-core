@@ -1,15 +1,22 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.jensoft</groupId>
 	<artifactId>jensoft-core</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>JenSoft API Core</name>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jdkVersion>1.6</jdkVersion>
-		<java.home>${env.JAVA_HOME}</java.home>
-	</properties>
+
+	<parent>
+		<groupId>com.jensoft</groupId>
+		<artifactId>jensoft-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+
+	<scm>
+		<connection>scm:svn:http://www.jensoft.org/svn/trunk/jensoft-core</connection>
+		<developerConnection>scm:svn:http://www.jensoft.org/svn/trunk/jensoft-core</developerConnection>
+		<url>http://www.jensoft.org/svn/trunk/jensoft-core</url>
+	</scm>
+
 	<dependencies>
 
 		<!-- you need to install system lib jnlp.jar in local repository , can 
@@ -69,7 +76,7 @@
 					<archive>
 						<addMavenDescriptor>false</addMavenDescriptor>
 					</archive>
-					<keystore>${basedir}\jensoft.keystore</keystore>
+					<keystore>${basedir}/jensoft.keystore</keystore>
 					<alias>jensoft</alias>
 					<storepass>password</storepass>
 					<keypass>password</keypass>
