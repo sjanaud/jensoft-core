@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jensoft-core</artifactId>
-	<version>0.9.0-alpha</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<name>JenSoft API Core</name>
 
 	<parent>
@@ -11,9 +11,9 @@
 	</parent>
 
 	<scm>
-		<connection>scm:svn:http://www.jensoft.org/svn/tags/jensoft-core-0.9.0-alpha</connection>
-		<developerConnection>scm:svn:http://www.jensoft.org/svn/tags/jensoft-core-0.9.0-alpha</developerConnection>
-		<url>http://www.jensoft.org/svn/tags/jensoft-core-0.9.0-alpha</url>
+		<connection>scm:svn:http://www.jensoft.org/svn/trunk/jensoft-core</connection>
+		<developerConnection>scm:svn:http://www.jensoft.org/svn/trunk/jensoft-core</developerConnection>
+		<url>http://www.jensoft.org/svn/trunk/jensoft-core</url>
 	</scm>
 
 	<dependencies>
