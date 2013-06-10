@@ -5,29 +5,6 @@
  */
 package com.jensoft.core.x2d.binding;
 
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_API_KEY;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_BACKGROUND_BACKGROUND;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_BACKGROUND_COLOR;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_BACKGROUND_OUTLINEROUND;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_BACKGROUND_SHADER;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_BACKGROUND_STROKE;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_HEIGHT;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_HOLDER_EAST;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_HOLDER_NORTH;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_HOLDER_SOUTH;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_HOLDER_WEST;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_KEY;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_ROOT;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WIDTH;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_ID;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_MAX_X;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_MAX_Y;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_MIN_X;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_MIN_Y;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_NAME;
-import static com.jensoft.core.x2d.lang.X2DView2DElement.ELEMENT_VIEW_WINDOW2D_THEME_COLOR;
-
 import java.awt.Dimension;
 import java.io.File;
 import java.util.ArrayList;
@@ -55,6 +32,7 @@ import com.jensoft.core.view.background.BackgroundPainter;
 import com.jensoft.core.view.background.RoundViewFill;
 import com.jensoft.core.view.deflater.AbstractViewDeflater;
 import com.jensoft.core.window.Window2D;
+import com.jensoft.core.x2d.lang.X2DView2DElement;
 
 /**
  * <code>X2DViewDeflater</code>
@@ -64,7 +42,7 @@ import com.jensoft.core.window.Window2D;
  * 
  * @author sebastien janaud
  */
-public class X2DViewDeflater extends AbstractViewDeflater {
+public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DElement{
 
 	/** X2D document */
 	private Document x2dDocument;
@@ -110,7 +88,9 @@ public class X2DViewDeflater extends AbstractViewDeflater {
      */
     protected AbstractX2DPluginDeflater<?> lookupType(AbstractPlugin plugin) {
         for (AbstractX2DPluginDeflater<?> deflater : deflaters) {
-           
+        	if (deflater.getXSIType() != null && deflater.getXSIType().equals(plugin.getClass().getSimpleName())) {
+                return deflater;
+            }
         }
         return null;
     }
@@ -135,7 +115,7 @@ public class X2DViewDeflater extends AbstractViewDeflater {
 
 			view2DElement.setAttribute("xmlns", "http://www.jensoft.org/jensoft/schema/x2d");
 			view2DElement.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
-			view2DElement.setAttribute("xsi:schemaLocation", "http://www.jensoft.org/jensoft/schema/x2d ../../schema/x2d.xsd");
+			//view2DElement.setAttribute("xsi:schemaLocation", "http://www.jensoft.org/jensoft/schema/x2d ../../schema/x2d.xsd");
 
 			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_KEY, getView2D().getViewKey()));
 			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_API_KEY, getView2D().getApiKey()));
@@ -150,32 +130,74 @@ public class X2DViewDeflater extends AbstractViewDeflater {
 			if (painter instanceof RoundViewFill) {
 				RoundViewFill rvf = (RoundViewFill) painter;
 				Element view2DBackgroundElement = x2dDocument.createElement(ELEMENT_VIEW_BACKGROUND_BACKGROUND);
-				view2DBackgroundElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_OUTLINEROUND, rvf.getOutlineRound()));
-				view2DBackgroundElement.appendChild(DeflaterUtil.createColorElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_COLOR, rvf.getOutlineColor()));
-				view2DBackgroundElement.appendChild(DeflaterUtil.createStrokeElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_STROKE, rvf.getOutlineStroke()));
-				view2DBackgroundElement.appendChild(DeflaterUtil.createShaderElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_SHADER, rvf.getShader()));
+				if(rvf.getOutlineRound() >0){
+					view2DBackgroundElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_OUTLINEROUND, rvf.getOutlineRound()));
+				}
+				if(rvf.getOutlineColor() != null){
+					view2DBackgroundElement.appendChild(DeflaterUtil.createColorElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_COLOR, rvf.getOutlineColor()));
+				}
+				if(rvf.getOutlineStroke() != null){
+					view2DBackgroundElement.appendChild(DeflaterUtil.createStrokeElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_STROKE, rvf.getOutlineStroke()));
+				}
+				if(rvf.getShader() != null){
+					view2DBackgroundElement.appendChild(DeflaterUtil.createShaderElement(x2dDocument,ELEMENT_VIEW_BACKGROUND_SHADER, rvf.getShader()));
+				}
 			}
 
 			List<Window2D> windows = getView2D().getRegisterWindow();
+			
 			for (Window2D window2d : windows) {
 				Element window2DElement = x2dDocument.createElement(ELEMENT_VIEW_WINDOW2D);
+				if(window2d.getClass().getName().equals(Window2D.Linear.class.getName())){
+					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_LINEAR);
+				}
+				else if(window2d.getClass().getName().equals(Window2D.LogX.class.getName())){
+					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_LOGX);
+				}
+				else if(window2d.getClass().getName().equals(Window2D.LogY.class.getName())){
+					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_LOGY);
+				}
+				else if(window2d.getClass().getName().equals(Window2D.Log.class.getName())){
+					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_LOG);
+				}
+				else if(window2d.getClass().getName().equals(Window2D.TimeX.class.getName())){
+					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_TIMEX);
+				}
+				else if(window2d.getClass().getName().equals(Window2D.TimeY.class.getName())){
+					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_TIMEY);
+				}
+				
+				
 				view2DElement.appendChild(window2DElement);
-
+				if(window2d.getWindowID() == null){
+					window2d.setWindowID("window-"+windows.indexOf(window2d));
+				}
+				
+				
 				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_ID, window2d.getWindowID()));
-				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_NAME, window2d.getName()));
+				
+				if(window2d.getName() != null){
+					window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_NAME, window2d.getName()));
+				}
+				
+				
+				if(window2d.getThemeColor() != null){
+					window2DElement.appendChild(DeflaterUtil.createColorElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_THEME_COLOR, window2d.getThemeColor()));
+				}
+				
+				List<AbstractPlugin> plugins = window2d.getPluginRegistry();
+				for (AbstractPlugin abstractPlugin : plugins) {
+					AbstractX2DPluginDeflater deflater = lookupType(abstractPlugin);
+					if(deflater != null){
+						deflater.setPlugin(abstractPlugin);
+						window2DElement.appendChild(deflater.deflate());
+					}
+				}
+				
 				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MIN_X, window2d.getMinX()));
 				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MAX_X, window2d.getMaxX()));
 				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MIN_Y, window2d.getMinY()));
 				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_MAX_Y, window2d.getMaxY()));
-				window2DElement.appendChild(DeflaterUtil.createColorElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_THEME_COLOR, window2d.getThemeColor()));
-				
-				List<AbstractPlugin> plugins = window2d.getPluginRegistry();
-				for (AbstractPlugin abstractPlugin : plugins) {
-					AbstractX2DPluginDeflater<?> deflater = lookupType(abstractPlugin);
-					if(deflater != null){
-						window2DElement.appendChild(deflater.deflate());
-					}
-				}
 				
 			}
 

@@ -45,9 +45,9 @@ public class PieToolkit {
      *            the pie radius
      * @return the pie
      */
-    public static Pie createPie(String name, int radius) {
+    public static Pie createPie(String name, double radius) {
         Pie pie = new Pie(name, radius);
-        pie.setPieNature(PieNature.PieUser);
+        pie.setPieNature(PieNature.User);
         pie.setStartAngleDegree(0);
         pie.setCenterX(0);
         pie.setCenterY(0);
@@ -68,7 +68,7 @@ public class PieToolkit {
      */
     public static Pie createPie(String name, int radius, double startAngleDegree) {
         Pie pie = new Pie(name, radius);
-        pie.setPieNature(PieNature.PieUser);
+        pie.setPieNature(PieNature.User);
         pie.setStartAngleDegree(startAngleDegree);
         pie.setCenterX(0);
         pie.setCenterY(0);
@@ -90,7 +90,7 @@ public class PieToolkit {
     public static Pie createPie(String name, int radius,
             double startAngleDegree, AbstractPieEffect pieEffect) {
         Pie pie = new Pie(name, radius);
-        pie.setPieNature(PieNature.PieUser);
+        pie.setPieNature(PieNature.User);
         pie.setStartAngleDegree(startAngleDegree);
         pie.setCenterX(0);
         pie.setCenterY(0);
@@ -115,7 +115,7 @@ public class PieToolkit {
     public static Pie createPie(String name, int radius,
             double startAngleDegree, AbstractPieFill pieFill) {
         Pie pie = new Pie(name, radius);
-        pie.setPieNature(PieNature.PieUser);
+        pie.setPieNature(PieNature.User);
         pie.setStartAngleDegree(startAngleDegree);
         pie.setCenterX(0);
         pie.setCenterY(0);
@@ -141,7 +141,7 @@ public class PieToolkit {
     public static Pie createPie(String name, int radius,
             double startAngleDegree, AbstractPieFill pieFill, AbstractPieEffect pieEffect) {
         Pie pie = new Pie(name, radius);
-        pie.setPieNature(PieNature.PieUser);
+        pie.setPieNature(PieNature.User);
         pie.setStartAngleDegree(startAngleDegree);
         pie.setCenterX(0);
         pie.setCenterY(0);

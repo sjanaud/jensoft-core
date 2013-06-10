@@ -23,7 +23,9 @@ import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DViewDeflater;
 import com.jensoft.core.x2d.binding.X2DViewInflater;
+import com.jensoft.core.x2d.binding.donut2d.Donut2DDeflater;
 import com.jensoft.core.x2d.binding.donut2d.Donut2DInflater;
+import com.jensoft.core.x2d.binding.donut3d.Donut3DDeflater;
 import com.jensoft.core.x2d.binding.donut3d.Donut3DInflater;
 import com.jensoft.core.x2d.binding.function.AreaFunctionInflater;
 import com.jensoft.core.x2d.binding.function.CurveFunctionInflater;
@@ -31,7 +33,9 @@ import com.jensoft.core.x2d.binding.function.ScatterFunctionInflater;
 import com.jensoft.core.x2d.binding.grid.GridInflater;
 import com.jensoft.core.x2d.binding.legend.LegendInflater;
 import com.jensoft.core.x2d.binding.metrics.AxisMetricsInflater;
+import com.jensoft.core.x2d.binding.outline.OutlineDeflater;
 import com.jensoft.core.x2d.binding.outline.OutlineInflater;
+import com.jensoft.core.x2d.binding.pie.PieDeflater;
 import com.jensoft.core.x2d.binding.pie.PieInflater;
 import com.jensoft.core.x2d.binding.translate.TranslateInflater;
 import com.jensoft.core.x2d.binding.zoom.ZoomBoxInflater;
@@ -171,7 +175,11 @@ public class X2D {
 	 * initialize core deflaters
 	 */
 	private void initCoreDeflaters() {
-
+		coreDeflaters.add(new OutlineDeflater());
+		coreDeflaters.add(new PieDeflater());
+		coreDeflaters.add(new Donut2DDeflater());
+		coreDeflaters.add(new Donut3DDeflater());
+		
 	}
 
 	/**

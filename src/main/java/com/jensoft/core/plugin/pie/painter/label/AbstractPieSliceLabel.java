@@ -161,6 +161,14 @@ public abstract class AbstractPieSliceLabel extends AbstractPieSlicePainter {
             shadeColors = shader.getColors();
         }
     }
+    
+    /**
+     * return a copy of label shader
+     * @return shader copy
+     */
+    public Shader getShader(){
+    	return new Shader(shadeFractions, shadeColors);
+    }
 
     /**
      * @return the labelPaddingX
