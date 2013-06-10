@@ -664,7 +664,7 @@
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:element>
-					<xsd:element name="reflect-length" default="0.4"
+					<xsd:element name="reflection-length" default="0.4"
 						minOccurs="0">
 						<xsd:simpleType>
 							<xsd:restriction base="xsd:float">
@@ -713,13 +713,13 @@
 				minOccurs="0" />
 			<xsd:element name="fill-color" type="Color" minOccurs="0" />
 			<xsd:element name="shader" type="Shader" minOccurs="0" />
-			<xsd:element name="style" minOccurs="0" default="both">
+			<xsd:element name="style" minOccurs="0" default="Both">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
-						<xsd:enumeration value="both" />
-						<xsd:enumeration value="fill" />
-						<xsd:enumeration value="draw" />
-						<xsd:enumeration value="nothing" />
+						<xsd:enumeration value="Both" />
+						<xsd:enumeration value="Fill" />
+						<xsd:enumeration value="Stroke" />
+						<xsd:enumeration value="Nothing" />
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
@@ -759,12 +759,12 @@
 					</xsd:element>
 					<xsd:element name="link-enable" type="xsd:boolean"
 						default="true" minOccurs="0" />
-					<xsd:element name="link-style" default="line"
+					<xsd:element name="link-style" default="Line"
 						minOccurs="0">
 						<xsd:simpleType>
 							<xsd:restriction base="xsd:string">
-								<xsd:enumeration value="line" />
-								<xsd:enumeration value="quad" />
+								<xsd:enumeration value="Line" />
+								<xsd:enumeration value="Quad" />
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:element>
@@ -779,8 +779,7 @@
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:element>
-					<xsd:element name="marker-enable" type="xsd:boolean"
-						default="false" minOccurs="0" />
+					<xsd:element name="marker-enable" type="xsd:boolean" default="false" minOccurs="0" />						
 					<xsd:element name="marker-draw" type="Color" minOccurs="0" />
 					<xsd:element name="marker-fill" type="Color" minOccurs="0" />
 				</xsd:sequence>
@@ -861,7 +860,6 @@
 		</xsd:sequence>
 	</xsd:complexType>
 
-
 	<xsd:complexType name="Pie">
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string" default="0" />
@@ -870,11 +868,11 @@
 			<xsd:element name="radius" type="xsd:double" default="90" />
 			<xsd:element name="start-angle" type="xsd:double"
 				default="0" />
-			<xsd:element name="nature" default="user">
+			<xsd:element name="nature" default="User">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
-						<xsd:enumeration value="user" />
-						<xsd:enumeration value="device" />
+						<xsd:enumeration value="User" />
+						<xsd:enumeration value="Device" />
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
