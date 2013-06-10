@@ -5,17 +5,14 @@
  */
 package com.jensoft.core.x2d.binding;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Stroke;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.InputFonts;
 
 /**
  * <code>DeflaterUtil</code>
@@ -31,7 +28,7 @@ public class DeflaterUtil {
 	 *            the element name
 	 * @return element
 	 */
-	public static Element createSingleElement(Document x2dDocument,String element, String value) {
+	public static Element createSingleElement(Document x2dDocument, String element, String value) {
 		if (value == null)
 			value = "";
 		Element e = x2dDocument.createElement(element);
@@ -46,7 +43,7 @@ public class DeflaterUtil {
 	 *            the element name
 	 * @return element
 	 */
-	public static Element createSingleElement(Document x2dDocument,String element, int value) {
+	public static Element createSingleElement(Document x2dDocument, String element, int value) {
 		Element e = x2dDocument.createElement(element);
 		e.appendChild(x2dDocument.createTextNode(Integer.toString(value)));
 		return e;
@@ -59,25 +56,44 @@ public class DeflaterUtil {
 	 *            the element name
 	 * @return element
 	 */
-	public static Element createSingleElement(Document x2dDocument,String element, double value) {
+	public static Element createSingleElement(Document x2dDocument, String element, double value) {
 		Element e = x2dDocument.createElement(element);
 		e.appendChild(x2dDocument.createTextNode(Double.toString(value)));
 		return e;
 	}
 
 	/**
+	 * create font element
+	 * 
+	 * @param element
+	 *            the font element name
+	 * @return element
+	 */
+	public static Element createFontElement(Document x2dDocument, String element, Font f) {
+		// Element e = x2dDocument.createElement(element);
+		// e.appendChild(createSingleElement(x2dDocument,"name", f.getName()));
+		// e.appendChild(createSingleElement(x2dDocument,"style",
+		// Integer.toString(f.getStyle())));
+		// e.appendChild(createSingleElement(x2dDocument,"size",
+		// Integer.toString(f.getSize())));
+		// return e;
+		return null;
+
+	}
+
+	/**
 	 * create element
 	 * 
 	 * @param element
 	 *            the element name
 	 * @return element
 	 */
-	public static Element createColorElement(Document x2dDocument,String element, Color value) {
+	public static Element createColorElement(Document x2dDocument, String element, Color value) {
 		Element e = x2dDocument.createElement(element);
-		e.appendChild(createSingleElement(x2dDocument,"r", Integer.toString(value.getRed())));
-		e.appendChild(createSingleElement(x2dDocument,"g", Integer.toString(value.getGreen())));
-		e.appendChild(createSingleElement(x2dDocument,"b", Integer.toString(value.getBlue())));
-		e.appendChild(createSingleElement(x2dDocument,"a", Integer.toString(value.getAlpha())));
+		e.appendChild(createSingleElement(x2dDocument, "r", Integer.toString(value.getRed())));
+		e.appendChild(createSingleElement(x2dDocument, "g", Integer.toString(value.getGreen())));
+		e.appendChild(createSingleElement(x2dDocument, "b", Integer.toString(value.getBlue())));
+		e.appendChild(createSingleElement(x2dDocument, "a", Integer.toString(value.getAlpha())));
 		return e;
 	}
 
@@ -88,8 +104,9 @@ public class DeflaterUtil {
 	 *            the element name
 	 * @return element
 	 */
-	public static Element createStrokeElement(Document x2dDocument,String element, Stroke value) {
+	public static Element createStrokeElement(Document x2dDocument, String element, Stroke value) {
 		Element e = x2dDocument.createElement(element);
+		e.appendChild(createSingleElement(x2dDocument, "width", "1"));
 		return e;
 	}
 
@@ -102,7 +119,14 @@ public class DeflaterUtil {
 	 */
 	public static Element createShaderElement(Document x2dDocument,String element, Shader value) {
 		Element e = x2dDocument.createElement(element);
+		for (int i = 0; i < value.getFractions().length; i++) {
+			Element entry = x2dDocument.createElement("shaderEntry");
+			Element f =createSingleElement(x2dDocument, "f", value.getFractions()[i]);
+			Element c =createColorElement(x2dDocument, "c", value.getColors()[i]);
+			entry.appendChild(f);
+			entry.appendChild(c);
+			e.appendChild(entry);		
+		}
 		return e;
 	}
-
 }

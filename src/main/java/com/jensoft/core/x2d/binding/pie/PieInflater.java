@@ -37,7 +37,6 @@ import com.jensoft.core.plugin.pie.painter.label.PiePathLabel.PathName;
 import com.jensoft.core.plugin.pie.painter.label.PieRadialLabel;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DInflater;
-import com.jensoft.core.x2d.lang.X2DSchema;
 
 /**
  * <code>PieInflater</code>
@@ -46,14 +45,6 @@ import com.jensoft.core.x2d.lang.X2DSchema;
  * objects.
  * <p>
  * 
- * @see Pie
- * @see PiePlugin
- * @see PieToolkit
- * @see PieNature
- * @see AbstractPieSliceLabel
- * @see AbstractPieEffect
- * @see X2DPieElement
- * @see X2DSchema
  * @author Sebastien Janaud
  */
 @X2DInflater(xsi="PiePlugin")
@@ -388,9 +379,10 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
         Color color = elementColor(sliceElement, ELEMENT_PIE_SLICE_COLOR);
 
         PieSlice s = PieToolkit.createSlice(sliceName,
-                                            color, Integer.parseInt(value),
+                                            color, Double.parseDouble(value),
                                             Integer.parseInt(divergence));
 
+        
         NodeList labelListElement = sliceElement.getElementsByTagName(ELEMENT_PIE_SLICE_LABEL);
 
         for (int i = 0; i < labelListElement.getLength(); i++) {
@@ -415,8 +407,8 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
         String name = elementText(pieElement, ELEMENT_PIE_NAME);
         Double x = elementDouble(pieElement, ELEMENT_PIE_X);
         Double y = elementDouble(pieElement, ELEMENT_PIE_Y);
-        Integer radius = elementInteger(pieElement, ELEMENT_PIE_RADIUS);
-        Integer startAngleDegree = elementInteger(pieElement, ELEMENT_PIE_START_ANGLE_DEGREE);
+        Double radius = elementDouble(pieElement, ELEMENT_PIE_RADIUS);
+        Double startAngleDegree = elementDouble(pieElement, ELEMENT_PIE_START_ANGLE_DEGREE);
         String nature = elementText(pieElement, ELEMENT_PIE_NATURE);
 
         Pie pie = PieToolkit.createPie(name, radius);

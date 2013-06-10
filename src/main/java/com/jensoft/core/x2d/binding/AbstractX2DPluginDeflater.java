@@ -84,23 +84,7 @@ public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> extend
         return plugin;
     }
 
-    /**
-     * trim specified children element value from specified parent
-     * 
-     * @param parent
-     *            the parent element
-     * @param childName
-     *            the children name
-     * @return children element string trim value
-     */
-    public String elementTextTrim(Element parent, String childName) {
-        Element childElement = (Element) parent.getElementsByTagName(childName).item(0);
-        if (childElement != null) {
-            return childElement.getTextContent();
-        }
-        return null;
-    }
-
+   
     /**
      * @param plugin
      *            the plug in to set

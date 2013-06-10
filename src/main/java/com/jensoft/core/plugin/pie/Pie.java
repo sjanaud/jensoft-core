@@ -59,7 +59,7 @@ public class Pie {
     private List<PieSlice> slices;
 
     /** default pie nature */
-    private PieNature pieNature = PieNature.PieUser;
+    private PieNature pieNature = PieNature.User;
 
     /** minimum from which the labels will be disabled */
     private double passiveLabelAtMinPercent = 0;
@@ -76,7 +76,7 @@ public class Pie {
      * @author Sebastien Janaud
      */
     public enum PieNature {
-        PieDevice("device"), PieUser("user");
+        Device("Device"), User("User");
 
         /** nature is the projection system */
         private String nature;
@@ -108,13 +108,13 @@ public class Pie {
          * @return pie nature
          */
         public static PieNature parseNature(String nature) {
-            if (PieDevice.getNature().equals(nature)) {
-                return PieDevice;
+            if (Device.getNature().equals(nature)) {
+                return Device;
             }
-            if (PieUser.getNature().equals(nature)) {
-                return PieUser;
+            if (User.getNature().equals(nature)) {
+                return User;
             }
-            return PieDevice;
+            return Device;
         }
 
     }
@@ -548,11 +548,11 @@ public class Pie {
         }
 
         Point2D c = null;
-        if (pieNature == PieNature.PieUser) {
+        if (pieNature == PieNature.User) {
             c = getHostPlugin().getWindow2D().userToPixel(
                                                           new Point2D.Double(centerX, centerY));
         }
-        if (pieNature == PieNature.PieDevice) {
+        if (pieNature == PieNature.Device) {
             c = new Point2D.Double(centerX, centerY);
         }
 
