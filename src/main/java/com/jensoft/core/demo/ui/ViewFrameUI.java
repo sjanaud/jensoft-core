@@ -18,9 +18,12 @@ import javax.swing.UIManager;
 import com.jensoft.core.demo.component.DemoTab;
 import com.jensoft.core.demo.component.DemoTabSet;
 import com.jensoft.core.demo.source.JavaSourcePane;
+import com.jensoft.core.demo.source.X2DSourcePane;
 import com.jensoft.core.palette.FilPalette;
 import com.jensoft.core.palette.JennyPalette;
 import com.jensoft.core.view.View2D;
+import com.jensoft.core.x2d.X2D;
+import com.jensoft.core.x2d.X2DException;
 
 /**
  * <code>ViewDemoFrameUI</code>
@@ -103,6 +106,22 @@ public class ViewFrameUI extends JFrame {
 		JavaSourcePane viewSource = new JavaSourcePane();
 		tabSet.addComandTab(viewSourceTab, viewSource);
 		viewSource.loadSource(view.getClass());
+		
+		DemoTab x2dSourceTab = new DemoTab("X2D");
+		x2dSourceTab.setTabColor(JennyPalette.JENNY6);
+		ImageIcon icon3 = ImageResource.getInstance().createImageIcon("source.png", "");
+		viewSourceTab.setTabIcon(icon3);
+		X2DSourcePane x2dSourcePane = new X2DSourcePane();
+		tabSet.addComandTab(x2dSourceTab, x2dSourcePane);		
+		X2D x2d = new X2D();
+		try {
+			x2d.registerView(view);
+		} catch (X2DException e) {
+			e.printStackTrace();
+		}
+		x2dSourcePane.loadX2DSource(x2d);
+		
+		
 
 		demoTab.setSelected(true);
 

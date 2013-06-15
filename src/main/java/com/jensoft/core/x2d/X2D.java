@@ -283,7 +283,6 @@ public class X2D {
 			view2D = x2dInflater.inflate();
 		} else {
 			X2DException x2dException = new X2DException("X2D could not register template source , see exception errors.");
-
 			x2dException.setErrors(errorHandler.getErrors());
 			throw x2dException;
 		}

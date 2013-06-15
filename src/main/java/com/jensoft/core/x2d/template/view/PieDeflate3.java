@@ -21,9 +21,14 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 
 import com.jensoft.core.demo.nature.JenSoftView;
+import com.jensoft.core.drawable.text.TextPath.PathSide;
+import com.jensoft.core.drawable.text.TextPath.TextPosition;
 import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.FilPalette;
 import com.jensoft.core.palette.InputFonts;
+import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.Pie.PieNature;
 import com.jensoft.core.plugin.pie.PiePlugin;
@@ -35,21 +40,23 @@ import com.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
 import com.jensoft.core.plugin.pie.painter.fill.PieRadialFill;
-import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel.Style;
 import com.jensoft.core.plugin.pie.painter.label.PieBorderLabel;
+import com.jensoft.core.plugin.pie.painter.label.PiePathLabel;
+import com.jensoft.core.plugin.pie.painter.label.PieRadialLabel;
+import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel.Style;
 import com.jensoft.core.plugin.pie.painter.label.PieBorderLabel.LinkStyle;
+import com.jensoft.core.plugin.pie.painter.label.PiePathLabel.PathName;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 import com.jensoft.core.x2d.X2D;
 import com.jensoft.core.x2d.X2DException;
 
 @JenSoftView
-public class PieDeflateTest2 extends View2D {
+public class PieDeflate3 extends View2D {
 
 	private static final long serialVersionUID = 156889765687899L;
-
 	public static void main(String[] args) {
-		PieDeflateTest2 v = new PieDeflateTest2();
+		PieDeflate3 v = new PieDeflate3();
 		v.deflate();
 	}
 
@@ -79,15 +86,14 @@ public class PieDeflateTest2 extends View2D {
 			e.printStackTrace();
 		}
 	}
-
-	public PieDeflateTest2() {
+	public PieDeflate3() {
 		super(2);
 		setViewKey("view key");
 		setApiKey("5e4f49a6-37af-4bc4-bb37-1d62364114c3");
-		setName("deflate2");
+		setName("deflate3");
 		Window2D window = new Window2D.Linear(-1, 1, -1, 1);
 		registerWindow2D(window);
-		
+
 		PiePlugin piePlugin = new PiePlugin();
 		window.registerPlugin(piePlugin);
 
@@ -120,8 +126,9 @@ public class PieDeflateTest2 extends View2D {
 		PieSlice s3 = PieToolkit.createSlice("s3", new Color(78, 148, 44), 30, 0);
 		PieSlice s4 = PieToolkit.createSlice("s4", RosePalette.AEGEANBLUE, 5, 0);
 		PieSlice s5 = PieToolkit.createSlice("s5", RosePalette.INDIGO, 5, 0);
+		
 
-		PieToolkit.pushSlices(pie, s1, s2, s3, s4, s5);
+		PieToolkit.pushSlices(pie, s1, s2, s3, s4,s5);
 		piePlugin.addPie(pie);
 
 		pie.setPassiveLabelAtMinPercent(18);
@@ -133,68 +140,48 @@ public class PieDeflateTest2 extends View2D {
 		pie.setPassiveLabelAtMinPercent(0);
 
 		Font f = InputFonts.getNoMove(10);
+		
 		// LABEL 1
-		PieBorderLabel label1 = PieToolkit.createBorderLabel("SILVER", ColorPalette.WHITE, f, 30);
+		PieRadialLabel label1 = PieToolkit.createRadialLabel("SILVER", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
 		label1.setStyle(Style.Both);
 		label1.setOutlineStroke(s);
 		label1.setShader(fractions, colors);
 		label1.setOutlineColor(RosePalette.REDWOOD);
 		label1.setOutlineRound(20);
-		label1.setLinkColor(RosePalette.COALBLACK);
-		label1.setLinkStyle(LinkStyle.Line);
-		label1.setLinkExtends(30);
-		label1.setMargin(60);
-
 		s1.addSliceLabel(label1);
 
 		// LABEL 2
-		PieBorderLabel label2 = PieToolkit.createBorderLabel("RHODIUM", ColorPalette.WHITE, f, 30);
+		PieRadialLabel label2 = PieToolkit.createRadialLabel("GOLD", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
 		label2.setStyle(Style.Both);
 		label2.setOutlineStroke(s);
 		label2.setShader(fractions, colors);
 		label2.setOutlineColor(RosePalette.LIME);
 		label2.setOutlineRound(20);
-		label2.setLinkColor(RosePalette.COALBLACK);
-		label2.setLinkExtends(30);
-		label2.setLinkStyle(LinkStyle.Line);
-		label2.setMargin(40);
 		s2.addSliceLabel(label2);
 
 		// LABEL 3
-		PieBorderLabel label3 = PieToolkit.createBorderLabel("COPPER", ColorPalette.WHITE, f, 30);
+		PieRadialLabel label3 = PieToolkit.createRadialLabel("COPPER", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
 		label3.setStyle(Style.Both);
 		label3.setOutlineStroke(s);
 		label3.setShader(fractions, colors);
 		label3.setOutlineColor(RosePalette.EMERALD);
 		label3.setOutlineRound(20);
-		label3.setLinkColor(RosePalette.COALBLACK);
-		label3.setLinkStyle(LinkStyle.Line);
-		label3.setLinkExtends(30);
-		label3.setMargin(50);
 		s3.addSliceLabel(label3);
 
-		PieBorderLabel label4 = PieToolkit.createBorderLabel("PALLADIUM", ColorPalette.WHITE, f, 30);
+		PieRadialLabel label4 = PieToolkit.createRadialLabel("PLATINIUM", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
 		label4.setStyle(Style.Both);
 		label4.setOutlineStroke(s);
 		label4.setOutlineColor(RosePalette.COBALT);
 		label4.setShader(fractions, colors);
 		label4.setOutlineRound(20);
-		label4.setLinkColor(RosePalette.COALBLACK);
-		label4.setLinkStyle(LinkStyle.Line);
-		label4.setLinkExtends(30);
-		label4.setMargin(70);
 		s4.addSliceLabel(label4);
-
-		PieBorderLabel label5 = PieToolkit.createBorderLabel("PLATINIUM", ColorPalette.WHITE, f, 30);
+		
+		PieRadialLabel label5 = PieToolkit.createRadialLabel("RHODIUM", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
 		label5.setStyle(Style.Both);
 		label5.setOutlineStroke(s);
 		label5.setOutlineColor(RosePalette.COBALT);
 		label5.setShader(fractions, colors);
 		label5.setOutlineRound(20);
-		label5.setLinkColor(RosePalette.COALBLACK);
-		label5.setLinkStyle(LinkStyle.Line);
-		label5.setLinkExtends(30);
-		label5.setMargin(70);
 		s5.addSliceLabel(label5);
 
 	}
