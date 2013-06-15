@@ -67,11 +67,22 @@ public class X2DSchemaErrorHandler implements ErrorHandler {
         X2DError error = new X2DError();
         error.setColumnNumber(exception.getColumnNumber());
         error.setLineNumber(exception.getLineNumber());
-        error.setMessage(exception.getMessage());
+       
+        if(exception.getCause() != null){
+        	error.setMessage(exception.getMessage()+" with cause :"+exception.getCause().getMessage());	
+        }else{
+        	error.setMessage(exception.getMessage());	
+        }
+        if(exception.getException() != null){
+        	error.setMessage(exception.getMessage()+" with exception :"+exception.getException().getMessage());	
+        }else{
+        	error.setMessage(exception.getMessage());	
+        }   
         error.setPublicId(exception.getPublicId());
         error.setSystemId(exception.getSystemId());
         errors.add(error);
     }
+   
 
     @Override
     public void warning(SAXParseException exception) throws SAXException {

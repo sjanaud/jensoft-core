@@ -77,7 +77,7 @@ public class TextPath implements Drawable {
      * text position
      */
     public enum TextPosition {
-        Left("left"), Middle("middle"), Right("right");
+        Left("Left"), Middle("Middle"), Right("Right");
 
         private String textPosition;
 
@@ -115,7 +115,7 @@ public class TextPath implements Drawable {
     }
 
     public enum PathSide {
-        Above("above"), Over("over"), Below("below");
+        Above("Above"), Over("Over"), Below("Below");
 
         private String pathSide;
 

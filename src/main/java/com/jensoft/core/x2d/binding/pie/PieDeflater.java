@@ -108,7 +108,9 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 		labelElement.appendChild(createSingleElement(getX2dDocument(), ELEMENT_PIE_LABEL_PATH_TEXT_POSITION, label.getTextPosition().name()));
 		labelElement.appendChild(createSingleElement(getX2dDocument(), ELEMENT_PIE_LABEL_PATH_TEXT_SIDE, label.getPathSide().name()));
 		labelElement.appendChild(createSingleElement(getX2dDocument(), ELEMENT_PIE_LABEL_PATH_SEGMENT_PATH, label.getPathName().name()));
-		labelElement.appendChild(createShaderElement(getX2dDocument(), ELEMENT_PIE_LABEL_PATH_TEXT_SHADER, label.getShader()));
+		if(label.getShader() != null){
+			labelElement.appendChild(createShaderElement(getX2dDocument(), ELEMENT_PIE_LABEL_PATH_TEXT_SHADER, label.getShader()));
+		}
 
 		return labelElement;
 	}
@@ -190,7 +192,9 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 		labelElement.appendChild(createSingleElement(getX2dDocument(), ELEMENT_PIE_LABEL_TEXT_PADDING_X, abstractLabel.getLabelPaddingX()));
 		labelElement.appendChild(createSingleElement(getX2dDocument(), ELEMENT_PIE_LABEL_TEXT_PADDING_Y, abstractLabel.getLabelPaddingY()));
 		labelElement.appendChild(createSingleElement(getX2dDocument(), ELEMENT_PIE_LABEL_OUTLINE_ROUND, abstractLabel.getOutlineRound()));
-		labelElement.appendChild(createColorElement(getX2dDocument(), ELEMENT_PIE_LABEL_OUTLINE_COLOR, abstractLabel.getOutlineColor()));
+		if(abstractLabel.getOutlineColor() != null){
+			labelElement.appendChild(createColorElement(getX2dDocument(), ELEMENT_PIE_LABEL_OUTLINE_COLOR, abstractLabel.getOutlineColor()));
+		}
 		
 		if(abstractLabel.getOutlineStroke() != null){
 			labelElement.appendChild(createStrokeElement(getX2dDocument(), ELEMENT_PIE_LABEL_OUTLINE_STROKE, abstractLabel.getOutlineStroke()));

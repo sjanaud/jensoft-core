@@ -80,6 +80,12 @@ public class X2DException extends Exception {
             }
         }
         stringBuffer.append("}");
+        if(getCause() != null){
+        	 stringBuffer.append(" with cause : "+getCause());
+        }
+        if(super.getCause() != null){
+       	 stringBuffer.append(" with root cause : "+super.getCause());
+       }
         return stringBuffer.toString();
     }
 

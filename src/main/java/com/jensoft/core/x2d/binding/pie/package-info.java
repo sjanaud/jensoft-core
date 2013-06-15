@@ -1,5 +1,5 @@
 /**
- * Provides pie inflater
+ * Provides pie inflater/deflater
  * 
  * @author sebastien janaud
  * @since 1.0

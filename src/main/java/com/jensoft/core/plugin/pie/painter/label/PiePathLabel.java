@@ -88,7 +88,7 @@ public class PiePathLabel extends AbstractPieSliceLabel {
      * @author Sebastien Janaud
      */
     public enum PathName {
-        Start("start"), Arc("arc"), End("end");
+        Start("Start"), Arc("Arc"), End("End");
 
         /** path name */
         private String pathName;

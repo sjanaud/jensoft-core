@@ -167,7 +167,9 @@ public abstract class AbstractPieSliceLabel extends AbstractPieSlicePainter {
      * @return shader copy
      */
     public Shader getShader(){
+    	if(shadeFractions != null && shadeColors != null)
     	return new Shader(shadeFractions, shadeColors);
+    	return null;
     }
 
     /**

@@ -801,33 +801,33 @@
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:element>
-					<xsd:element name="text-position" default="left"
+					<xsd:element name="text-position" default="Left"
 						minOccurs="0">
 						<xsd:simpleType>
 							<xsd:restriction base="xsd:string">
-								<xsd:enumeration value="left" />
-								<xsd:enumeration value="middle" />
-								<xsd:enumeration value="right" />
+								<xsd:enumeration value="Left" />
+								<xsd:enumeration value="Middle" />
+								<xsd:enumeration value="Right" />
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:element>
-					<xsd:element name="text-side" default="above"
+					<xsd:element name="text-side" default="Above"
 						minOccurs="0">
 						<xsd:simpleType>
 							<xsd:restriction base="xsd:string">
-								<xsd:enumeration value="above" />
-								<xsd:enumeration value="over" />
-								<xsd:enumeration value="below" />
+								<xsd:enumeration value="Above" />
+								<xsd:enumeration value="Over" />
+								<xsd:enumeration value="Below" />
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:element>
-					<xsd:element name="segment-path" default="arc"
+					<xsd:element name="segment-path" default="Arc"
 						minOccurs="0">
 						<xsd:simpleType>
 							<xsd:restriction base="xsd:string">
-								<xsd:enumeration value="arc" />
-								<xsd:enumeration value="start" />
-								<xsd:enumeration value="end" />
+								<xsd:enumeration value="Arc" />
+								<xsd:enumeration value="Start" />
+								<xsd:enumeration value="End" />
 							</xsd:restriction>
 						</xsd:simpleType>
 					</xsd:element>

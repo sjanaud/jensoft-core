@@ -217,8 +217,8 @@ public class RoundViewFill extends BackgroundPainter {
                          RenderingHints.VALUE_DITHER_ENABLE);
         g2d.setRenderingHints(qualityHints);
         RoundRectangle2D roundBackground = new RoundRectangle2D.Double(
-                                                                       paddingX, paddingY, width - 2 * paddingX,
-                                                                       height - 2 * paddingY, outlineRound,
+                                                                       paddingX, paddingY, width-1 - 2 * paddingX,
+                                                                       height-1 - 2 * paddingY, outlineRound,
                                                                        outlineRound);
 
         if (shader != null) {
