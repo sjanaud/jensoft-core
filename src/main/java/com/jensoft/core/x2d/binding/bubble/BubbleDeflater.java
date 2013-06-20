@@ -7,35 +7,28 @@ package com.jensoft.core.x2d.binding.bubble;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.pie.PiePlugin;
+import com.jensoft.core.plugin.bubble.BubblePlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>BubbleDeflater</code>
+ * 
  * @author sebastien janaud
- *
+ * 
  */
-public class BubbleDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
+@X2DBinding(xsi = "BubblePlugin", plugin = BubblePlugin.class)
+public class BubbleDeflater extends AbstractX2DPluginDeflater<BubblePlugin> {
 
-	public BubbleDeflater() {
-		super();
-		setXSIType("BubblePlugin");
-	}
-
-	public BubbleDeflater(PiePlugin plugin) {
-		super(plugin);
-		setXSIType("BubblePlugin");
-	}
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {
+	public Element deflate(BubblePlugin bubblePlugin) {
 		Element pluginElement = createPluginRootElement();
 		return pluginElement;
 	}
-	
-	
 
 }

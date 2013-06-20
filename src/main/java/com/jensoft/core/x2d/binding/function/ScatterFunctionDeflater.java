@@ -7,31 +7,23 @@ package com.jensoft.core.x2d.binding.function;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.pie.PiePlugin;
+import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>ScatterFunctionDeflater</code>
  * @author sebastien janaud
  *
  */
-public class ScatterFunctionDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
-
-	public ScatterFunctionDeflater() {
-		super();
-		setXSIType("ScatterFunctionPlugin");
-	}
-
-	public ScatterFunctionDeflater(PiePlugin plugin) {
-		super(plugin);
-		setXSIType("ScatterFunctionPlugin");
-	}
+@X2DBinding(xsi="ScatterPlugin",plugin=ScatterFunction.class)
+public class ScatterFunctionDeflater extends AbstractX2DPluginDeflater<ScatterFunction> {
 
 	/* (non-Javadoc)
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {
+	public Element deflate(ScatterFunction plugin) {
 		Element pluginElement = createPluginRootElement();
 		return pluginElement;
 	}

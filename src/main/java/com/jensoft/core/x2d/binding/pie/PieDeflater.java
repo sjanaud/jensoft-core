@@ -36,25 +36,14 @@ import com.jensoft.core.x2d.binding.X2DBinding;
 @X2DBinding(xsi="PiePlugin",plugin=PiePlugin.class)
 public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements X2DPieElement {
 
-	public PieDeflater() {
-		super();
-		setXSIType("PiePlugin");
-	}
-
-	public PieDeflater(PiePlugin plugin) {
-		super(plugin);
-		setXSIType("PiePlugin");
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate(com.jensoft.core.plugin.AbstractPlugin)
 	 */
 	@Override
-	public Element deflate() {	
+	public Element deflate(PiePlugin plugin) {	
 		Element pluginElement = createPluginRootElement();
-		List<Pie> pies = getPlugin().getPies();
+		List<Pie> pies = plugin.getPies();
 		for (Pie pie : pies) {
 			pluginElement.appendChild(deflatePie(pie));
 		}

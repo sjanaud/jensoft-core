@@ -51,15 +51,6 @@ import com.jensoft.core.x2d.binding.X2DBinding;
 public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements X2DPieElement{
 
    
-    
-    public static void main(String[] args) {
-    	X2DBinding c = PieInflater.class.getAnnotation(X2DBinding.class);
-    	System.out.println("xsi : "+c.xsi());
-    	System.out.println("type : "+c.plugin());
-    	
-    	
-	}
-
    
     /**
      * inflate the {@link PieLinearEffect}

@@ -88,7 +88,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
      */
     protected AbstractX2DPluginDeflater<? extends AbstractPlugin> lookupType(AbstractPlugin plugin) {
         for (AbstractX2DPluginDeflater<? extends AbstractPlugin> deflater : deflaters) {
-        	if (deflater.getXSIType() != null && deflater.getXSIType().equals(plugin.getClass().getSimpleName())) {
+        	if (deflater.getBinding().xsi() != null && deflater.getBinding().xsi().equals(plugin.getClass().getSimpleName())) {
                 return deflater;
             }
         }
@@ -191,7 +191,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 					AbstractX2DPluginDeflater deflater = lookupType(abstractPlugin);
 					if(deflater != null){
 						deflater.setPlugin(abstractPlugin);
-						Element pluginElement = deflater.deflate();
+						Element pluginElement = deflater.deflate(abstractPlugin);
 						if(pluginElement != null){
 							window2DElement.appendChild(pluginElement);
 						}
@@ -207,27 +207,11 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 
 			return x2dDocument;
 		} catch (DOMException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;
-
-		// // write the content into xml file
-		// TransformerFactory transformerFactory =
-		// TransformerFactory.newInstance();
-		// Transformer transformer = transformerFactory.newTransformer();
-		// DOMSource source = new DOMSource(doc);
-		// StreamResult result = new StreamResult(new File("C:\\file.xml"));
-		//
-		// // Output to console for testing
-		// // StreamResult result = new StreamResult(System.out);
-		//
-		// transformer.transform(source, result);
-		//
-		// System.out.println("File saved!");
 
 	}
 

@@ -7,7 +7,7 @@ package com.jensoft.core.x2d.binding.grid;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.pie.PiePlugin;
+import com.jensoft.core.plugin.grid.GridPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 
 /**
@@ -16,17 +16,9 @@ import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
  * @author sebastien janaud
  * 
  */
-public class GridDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
+public class GridDeflater extends AbstractX2DPluginDeflater<GridPlugin> {
 
-	public GridDeflater() {
-		super();
-		setXSIType("GridPlugin");
-	}
-
-	public GridDeflater(PiePlugin plugin) {
-		super(plugin);
-		setXSIType("GridPlugin");
-	}
+	
 
 	/*
 	 * (non-Javadoc)
@@ -34,7 +26,7 @@ public class GridDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {
+	public Element deflate(GridPlugin plugin) {
 		Element pluginElement = createPluginRootElement();
 		return pluginElement;
 	}

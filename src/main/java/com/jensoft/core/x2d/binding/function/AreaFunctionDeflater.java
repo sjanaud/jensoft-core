@@ -7,31 +7,24 @@ package com.jensoft.core.x2d.binding.function;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.pie.PiePlugin;
+import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>AreaFunctionDeflater</code>
  * @author sebastien janaud
  *
  */
-public class AreaFunctionDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
+@X2DBinding(xsi="AreaPlugin",plugin=AreaFunction.class)
+public class AreaFunctionDeflater extends AbstractX2DPluginDeflater<AreaFunction> {
 
-	public AreaFunctionDeflater() {
-		super();
-		setXSIType("AreaFunctionPlugin");
-	}
-
-	public AreaFunctionDeflater(PiePlugin plugin) {
-		super(plugin);
-		setXSIType("AreaFunctionPlugin");
-	}
 
 	/* (non-Javadoc)
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {
+	public Element deflate(AreaFunction plugin) {
 		Element pluginElement = createPluginRootElement();
 		return pluginElement;
 	}
