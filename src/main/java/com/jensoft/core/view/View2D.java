@@ -1203,8 +1203,8 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 
 		RenderingHints qualityHints = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
 		qualityHints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-		// qualityHints.put(RenderingHints.KEY_DITHERING,
-		// RenderingHints.VALUE_DITHER_ENABLE);
+		 qualityHints.put(RenderingHints.KEY_DITHERING,
+		 RenderingHints.VALUE_DITHER_ENABLE);
 		// qualityHints.put(RenderingHints.KEY_ALPHA_INTERPOLATION,
 		// RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
 		// qualityHints.put(RenderingHints.KEY_RENDERING,

@@ -25,6 +25,7 @@ import com.jensoft.core.plugin.pie.painter.label.PiePathLabel;
 import com.jensoft.core.plugin.pie.painter.label.PieRadialLabel;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import com.jensoft.core.x2d.binding.DeflaterUtil;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>PieDeflater</code>
@@ -32,6 +33,7 @@ import com.jensoft.core.x2d.binding.DeflaterUtil;
  * @author sebastien janaud
  * 
  */
+@X2DBinding(xsi="PiePlugin",plugin=PiePlugin.class)
 public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements X2DPieElement {
 
 	public PieDeflater() {
@@ -50,12 +52,11 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {
+	public Element deflate() {	
 		Element pluginElement = createPluginRootElement();
 		List<Pie> pies = getPlugin().getPies();
 		for (Pie pie : pies) {
 			pluginElement.appendChild(deflatePie(pie));
-
 		}
 		return pluginElement;
 	}
@@ -76,7 +77,6 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 		for (PieSlice slice : pie.getSlices()) {
 			pieElement.appendChild(deflatePieSlice(slice));
 		}
-		
 		return pieElement;
 	}
 

@@ -247,7 +247,7 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
     	 if (s == null) {
              return;
          }
-         System.out.println("paint fill : " + s.getName());
+         //System.out.println("paint fill : " + s.getName());
 
         /**
          * Back fragment outer face
@@ -318,12 +318,12 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
            // for (Donut3DSlice fragment : fragments) {
                 if (s.getType() == Type.Back) {
                     if (s.getParentSlice().isFirst(s)) {
-                    	System.out.println("fill back start "+s.getName());
+                    	//System.out.println("fill back start "+s.getName());
                         g2d.setColor(s.getThemeColor());
                         g2d.fill(s.getStartFace());
                         
                         if (s.getParentSlice().isFirst(s) && (s.getParentSlice().getStartAngleDegree() <= 90 || s.getParentSlice().getStartAngleDegree() >= 270)) {
-                        	System.out.println("effect back start "+s.getName());
+                        	//System.out.println("effect back start "+s.getName());
                             paintStartEffect(g2d, donut3d, s);
                         }
                     }
@@ -338,12 +338,12 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
             //for (Donut3DSlice fragment : fragments) {
                 if (s.getType() == Type.Back) {
                     if (s.getParentSlice().isLast(s)) {
-                    	System.out.println("fill back end "+s.getName());
+                    	//System.out.println("fill back end "+s.getName());
                         g2d.setColor(s.getThemeColor());
                         g2d.fill(s.getEndFace());
                         
                         if (s.getParentSlice().isLast(s) && (s.getEndAngleDegree() >= 90 && s.getEndAngleDegree() <= 270)) {
-                        	System.out.println("effect back end "+s.getName());
+                        	//System.out.println("effect back end "+s.getName());
                             paintEndEffect(g2d, donut3d, s);
                         }
                     }
@@ -410,12 +410,12 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
            // for (Donut3DSlice fragment : fragments) {
                 if (s.getType() == Type.Front) {
                     if (s.getParentSlice().isFirst(s)) {
-                    	System.out.println("fill front start "+s.getName());
+                    	//System.out.println("fill front start "+s.getName());
                         g2d.setColor(s.getThemeColor());
                         g2d.fill(s.getStartFace());
                         
                         if (s.getParentSlice().isFirst(s) && (s.getStartAngleDegree() < 90 || s.getStartAngleDegree() > 270)) {
-                        	System.out.println("effect front start "+s.getName());
+                        	//System.out.println("effect front start "+s.getName());
                             paintStartEffect(g2d, donut3d, s);
                         }
                     }
@@ -431,12 +431,12 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
            // for (Donut3DSlice fragment : fragments) {
                 if (s.getType() == Type.Front) {
                     if (s.getParentSlice().isLast(s)) {
-                    	System.out.println("fill front end "+s.getName());
+                    	//System.out.println("fill front end "+s.getName());
                         g2d.setColor(s.getParentSlice().getThemeColor());
                         g2d.fill(s.getEndFace());
                         
                         if (s.getParentSlice().isLast(s) && (s.getEndAngleDegree() > 90 && s.getEndAngleDegree() < 270)) {
-                        	System.out.println("effect front end "+s.getName());
+                        	//System.out.println("effect front end "+s.getName());
                             paintEndEffect(g2d, donut3d, s);
                         }
                     }

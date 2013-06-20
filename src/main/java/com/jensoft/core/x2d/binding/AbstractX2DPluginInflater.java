@@ -14,65 +14,43 @@ import com.jensoft.core.plugin.AbstractPlugin;
  * 
  * @author Sebastien Janaud
  */
-public abstract class AbstractX2DPluginInflater<P extends AbstractPlugin> extends InflaterUtil{
+public abstract class AbstractX2DPluginInflater<P extends AbstractPlugin> extends InflaterUtil {
 
-    /** inflated plug in */
-    private P plugin;
 
-    /** xsi type */
-    private String XSIType;
+	/**
+	 * create inflater
+	 */
+	public AbstractX2DPluginInflater() {
+	}
 
-    /**
-     * create inflater
-     */
-    public AbstractX2DPluginInflater() {
-    }
+	public X2DBinding getBinding() {
+		return getClass().getAnnotation(X2DBinding.class);
+	}
+	
+	public String getXSIType(){
+		return getBinding().xsi();
+	}
+	
+	public Class getJavaType(){
+		return getBinding().plugin();
+	}
+	
+	protected Object getPluginInstance(){
+		try {
+			return getJavaType().newInstance();
+		} catch (InstantiationException e) {
+		} catch (IllegalAccessException e) {
+		}
+		return null;
+	}
 
-    /**
-     * create inflater with given XSI type
-     */
-    public AbstractX2DPluginInflater(String XSIType) {
-        this.XSIType = XSIType;
-    }
-
-   
-
-    /**
-     * @return the plug in
-     */
-    public P getPlugin() {
-        return plugin;
-    }
-
-    /**
-     * @return the xSIType
-     */
-    public String getXSIType() {
-        return XSIType;
-    }
-
-    /**
-     * @param xSIType
-     *            the xSIType to set
-     */
-    public void setXSIType(String xSIType) {
-        XSIType = xSIType;
-    }
-
-    /**
-     * @param plugin
-     *            the plug in to set
-     */
-    public void setPlugin(P plugin) {
-        this.plugin = plugin;
-    }
-
-    /**
-     * inflate the T plugin mean read the given plugin root element and configure plugin
-     * 
-     * @param plugin
-     *            the element to inflate
-     */
-    public abstract void inflate(Element plugin);
+	/**
+	 * inflate the T plugin mean read the given plugin root element and
+	 * configure plugin
+	 * 
+	 * @param plugin
+	 *            the element to inflate
+	 */
+	public abstract P inflate(Element plugin);
 
 }

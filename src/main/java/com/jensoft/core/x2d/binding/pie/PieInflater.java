@@ -36,7 +36,7 @@ import com.jensoft.core.plugin.pie.painter.label.PiePathLabel;
 import com.jensoft.core.plugin.pie.painter.label.PiePathLabel.PathName;
 import com.jensoft.core.plugin.pie.painter.label.PieRadialLabel;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>PieInflater</code>
@@ -47,16 +47,18 @@ import com.jensoft.core.x2d.binding.X2DInflater;
  * 
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="PiePlugin")
+@X2DBinding(xsi="PiePlugin",plugin=PiePlugin.class)
 public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements X2DPieElement{
 
-    /**
-     * create pie inflater with a default pie plugin instance
-     */
-    public PieInflater() {
-        setPlugin(new PiePlugin());
-        setXSIType("PiePlugin");
-    }
+   
+    
+    public static void main(String[] args) {
+    	X2DBinding c = PieInflater.class.getAnnotation(X2DBinding.class);
+    	System.out.println("xsi : "+c.xsi());
+    	System.out.println("type : "+c.plugin());
+    	
+    	
+	}
 
    
     /**
@@ -77,6 +79,8 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
             linearEffect.setOffsetRadius(offsetRadius);
         }
         return linearEffect;
+        
+        
     }
 
     /**
@@ -126,7 +130,6 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
         }
 
         return reflectionEffect;
-
     }
 
     /**
@@ -416,7 +419,7 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
         pie.setCenterY(y);
         pie.setStartAngleDegree(startAngleDegree);
         pie.setPieNature(PieNature.parseNature(nature));
-        pie.setHostPlugin(getPlugin());
+       
         NodeList slices = pieElement.getElementsByTagName(ELEMENT_PIE_SLICE);
         for (int i = 0; i < slices.getLength(); i++) {
             Element pieSliceElement = (Element) slices.item(i);
@@ -437,13 +440,16 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
+    public PiePlugin inflate(Element pluginElement) {
+    	PiePlugin piePlugin = new PiePlugin();
         NodeList pieElementList = pluginElement.getElementsByTagName(ELEMENT_PIE);
         for (int i = 0; i < pieElementList.getLength(); i++) {
             Element pieElement = (Element) pieElementList.item(i);
             Pie pie = inflatePie(pieElement);
-            getPlugin().addPie(pie);
+            pie.setHostPlugin(piePlugin);
+            piePlugin.addPie(pie);
         }
+        return piePlugin;
     }
 
 }

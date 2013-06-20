@@ -11,33 +11,25 @@ import com.jensoft.core.plugin.zoom.box.ZoomBoxDefaultDeviceContext;
 import com.jensoft.core.plugin.zoom.box.ZoomBoxDonutWidget;
 import com.jensoft.core.plugin.zoom.box.ZoomBoxPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 /**
  * <code>ZoomBoxInflater</code>
  * 
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="ZoomBoxPlugin")
+@X2DBinding(xsi="ZoomBoxPlugin",plugin=ZoomBoxPlugin.class)
 public class ZoomBoxInflater extends AbstractX2DPluginInflater<ZoomBoxPlugin> {
 
-    /**
-     * create zoom wheel inflater
-     */
-    public ZoomBoxInflater() {
-        setPlugin(new ZoomBoxPlugin());
-        setXSIType("ZoomBoxPlugin");
-    }
-
-   
+       
     /* (non-Javadoc)
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
+    public ZoomBoxPlugin inflate(Element pluginElement) {
         ZoomBoxPlugin box = new ZoomBoxPlugin();
         box.registerContext(new ZoomBoxDefaultDeviceContext());
         box.registerWidget(new ZoomBoxDonutWidget());
-        setPlugin(box);
+        return box;
     }
 
   

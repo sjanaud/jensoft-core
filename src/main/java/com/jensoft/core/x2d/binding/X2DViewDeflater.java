@@ -47,7 +47,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 	/** X2D document */
 	private Document x2dDocument;
 
-	private List<AbstractX2DPluginDeflater<?>> deflaters = new ArrayList<AbstractX2DPluginDeflater<?>>();
+	private List<AbstractX2DPluginDeflater<? extends AbstractPlugin>> deflaters = new ArrayList<AbstractX2DPluginDeflater<? extends AbstractPlugin>>();
 
 	/**
 	 * create default view deflater
@@ -67,7 +67,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 	/**
 	 * @return the deflaters
 	 */
-	public List<AbstractX2DPluginDeflater<?>> getDeflaters() {
+	public List<AbstractX2DPluginDeflater<? extends AbstractPlugin>> getDeflaters() {
 		return deflaters;
 	}
 
@@ -75,7 +75,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 	 * @param deflaters
 	 *            the deflaters to set
 	 */
-	public void setDeflaters(List<AbstractX2DPluginDeflater<?>> deflaters) {
+	public void setDeflaters(List<AbstractX2DPluginDeflater<? extends AbstractPlugin>> deflaters) {
 		this.deflaters = deflaters;
 	}
 
@@ -86,8 +86,8 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
      *            the plugin class
      * @return plugin inflater
      */
-    protected AbstractX2DPluginDeflater<?> lookupType(AbstractPlugin plugin) {
-        for (AbstractX2DPluginDeflater<?> deflater : deflaters) {
+    protected AbstractX2DPluginDeflater<? extends AbstractPlugin> lookupType(AbstractPlugin plugin) {
+        for (AbstractX2DPluginDeflater<? extends AbstractPlugin> deflater : deflaters) {
         	if (deflater.getXSIType() != null && deflater.getXSIType().equals(plugin.getClass().getSimpleName())) {
                 return deflater;
             }
@@ -185,12 +185,16 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 					window2DElement.appendChild(DeflaterUtil.createColorElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_THEME_COLOR, window2d.getThemeColor()));
 				}
 				
+				
 				List<AbstractPlugin> plugins = window2d.getPluginRegistry();
 				for (AbstractPlugin abstractPlugin : plugins) {
 					AbstractX2DPluginDeflater deflater = lookupType(abstractPlugin);
 					if(deflater != null){
 						deflater.setPlugin(abstractPlugin);
-						window2DElement.appendChild(deflater.deflate());
+						Element pluginElement = deflater.deflate();
+						if(pluginElement != null){
+							window2DElement.appendChild(pluginElement);
+						}
 					}
 				}
 				

@@ -12,12 +12,13 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
+ * X2D binding defines bind operation between x2d type and java type and annotate class that provides inflate or deflate mechanism
  * @author Sebastien Janaud
  */
 @Documented
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface X2DInflater {
-
+public @interface X2DBinding {
     String xsi();
+    Class plugin();
 }

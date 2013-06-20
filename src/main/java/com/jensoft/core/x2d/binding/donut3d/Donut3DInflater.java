@@ -5,58 +5,6 @@
  */
 package com.jensoft.core.x2d.binding.donut3d;
 
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_DEFAULTPAINT_INCIDENCE_EFFECT_ANGLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_DEFAULTPAINT_INNER_EFFECT_ALPHA;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_DEFAULTPAINT_INNER_EFFECT_ENABLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_DEFAULTPAINT_OUTER_EFFECT_ALPHA;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_DEFAULTPAINT_OUTER_EFFECT_ENABLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_DEFAULTPAINT_SLICE_FILL_ALPHA;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_DEFAULTPAINT_TOP_EFFECT_ALPHA;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_DEFAULTPAINT_TOP_EFFECT_ENABLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_INNER_RADIUS;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LABEL_MARGIN;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_ALIGNMENT;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_COLOR;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_ENABLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_EXTENDS;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_MARKER_DRAW;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_MARKER_ENABLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_MARKER_FILL;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_STROKE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_BORDER_LINK_STYLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_FILL_COLOR;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_OUTLINE_COLOR;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_OUTLINE_ROUND;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_OUTLINE_STROKE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_PATH_SEGMENT_PATH;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_PATH_TEXT_DIVERGENCE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_PATH_TEXT_POSITION;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_PATH_TEXT_SHADER;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_PATH_TEXT_SIDE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_RADIAL_OFFSET_RADIUS;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_SHADER;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_STYLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_TEXT;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_TEXT_COLOR;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_TEXT_FONT;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_TEXT_PADDING_X;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_LABEL_TEXT_PADDING_Y;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_NATURE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_OUTER_RADIUS;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_PAINT;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_SLICE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_SLICE_COLOR;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_SLICE_DIVERGENCE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_SLICE_LABEL;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_SLICE_NAME;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_SLICE_VALUE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_START_ANGLE;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_THICKNESS;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_TILT;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_X;
-import static com.jensoft.core.x2d.binding.donut3d.X2DDonut3DElement.ELEMENT_DONUT3D_Y;
-
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -79,7 +27,7 @@ import com.jensoft.core.plugin.donut3d.painter.paint.AbstractDonut3DPaint;
 import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.InflaterUtil;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 /**
  * <code>Donut3DInflater</code>
  * <p>
@@ -94,18 +42,9 @@ import com.jensoft.core.x2d.binding.X2DInflater;
  * @see AbstractDonut3DPaint
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="Donut3DPlugin")
-public class Donut3DInflater extends AbstractX2DPluginInflater<Donut3DPlugin> {
+@X2DBinding(xsi="Donut3DPlugin",plugin=Donut3DPlugin.class)
+public class Donut3DInflater extends AbstractX2DPluginInflater<Donut3DPlugin> implements X2DDonut3DElement{
 
-    /**
-     * create donut3D inflater
-     */
-    public Donut3DInflater() {
-        setPlugin(new Donut3DPlugin());
-        setXSIType("Donut3DPlugin");
-    }
-
-   
 
     /**
      * inflate the {@link Donut3DDefaultPaint}
@@ -497,13 +436,15 @@ public class Donut3DInflater extends AbstractX2DPluginInflater<Donut3DPlugin> {
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
+    public Donut3DPlugin inflate(Element pluginElement) {
+    	Donut3DPlugin donut3dPlugin = new Donut3DPlugin();
         NodeList donut3DElementList = pluginElement.getElementsByTagName(ELEMENT_DONUT3D);
         for (int i = 0; i < donut3DElementList.getLength(); i++) {
             Element donut3DElement = (Element) donut3DElementList.item(i);
             Donut3D donut3d = inflateDonut3D(donut3DElement);
-            getPlugin().addDonut(donut3d);
+            donut3dPlugin.addDonut(donut3d);
         }
+        return donut3dPlugin;
     }
 
 }

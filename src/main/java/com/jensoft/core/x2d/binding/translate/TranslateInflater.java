@@ -17,29 +17,20 @@ import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.plugin.translate.TranslateX;
 import com.jensoft.core.plugin.translate.TranslateY;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 /**
  * <code>TranslateInflater</code>
  * 
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="TranslatePlugin")
+@X2DBinding(xsi="TranslatePlugin",plugin=TranslatePlugin.class)
 public class TranslateInflater extends AbstractX2DPluginInflater<TranslatePlugin> {
 
-    /**
-     * create translate inflater
-     */
-    public TranslateInflater() {
-        setPlugin(new TranslatePlugin());
-        setXSIType("TranslatePlugin");
-    }
-
-   
     /* (non-Javadoc)
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
+    public TranslatePlugin inflate(Element pluginElement) {
         TranslatePlugin translate = new TranslatePlugin();
         translate.registerContext(new TranslateDefaultDeviceContext());
         
@@ -55,7 +46,9 @@ public class TranslateInflater extends AbstractX2DPluginInflater<TranslatePlugin
         TranslateY ty = new TranslateY();       
         
         translate.registerWidget(compass,tx,ty);
-        setPlugin(translate);
+       
+        
+        return translate;
     }
 
   

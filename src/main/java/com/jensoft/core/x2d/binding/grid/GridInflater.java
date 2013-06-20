@@ -12,6 +12,7 @@ import java.awt.Stroke;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
 import com.jensoft.core.plugin.grid.Grid;
 import com.jensoft.core.plugin.grid.Grid.GridOrientation;
 import com.jensoft.core.plugin.grid.GridPlugin;
@@ -22,7 +23,7 @@ import com.jensoft.core.plugin.grid.GridPlugin.MultiplierGrid;
 import com.jensoft.core.plugin.grid.GridPlugin.StaticGrid;
 import com.jensoft.core.plugin.grid.manager.ModeledGridManager.GridModelRangeCollections;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>GridInflater</code>
@@ -37,21 +38,15 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
      * 
      * @author sebastien janaud
      */
-    @X2DInflater(xsi="FlowGrid")
+    @X2DBinding(xsi="FlowGrid",plugin=FlowGrid.class)
     public static class FlowGridInflater extends GridInflater<FlowGrid> {
 
-        /**
-         * create flow metrics inflater
-         */
-        public FlowGridInflater() {
-            super("FlowGrid");
-        }
-
+       
         /* (non-Javadoc)
          * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
-        public void inflate(Element plugin) {
+        public GridPlugin.FlowGrid inflate(Element plugin) {
             Double flowStart = elementDouble(plugin, ELEMENT_GRID_FLOW_START);
             Double flowEnd = elementDouble(plugin, ELEMENT_GRID_FLOW_END);
             Double flowInterval = elementDouble(plugin, ELEMENT_GRID_FLOW_INTERVAL);
@@ -59,7 +54,7 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
             GridPlugin.FlowGrid flow = new GridPlugin.FlowGrid(flowStart, flowEnd, flowInterval,
                                                                getGridOrientation(plugin));
             completeFromAbstract(flow, plugin);
-            setPlugin(flow);
+            return flow;
         }
 
     }
@@ -69,21 +64,15 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
      * 
      * @author sebastien janaud
      */
-    @X2DInflater(xsi="FreeGrid")
+    @X2DBinding(xsi="FreeGrid",plugin=FreeGrid.class)
     public static class FreeGridInflater extends GridInflater<FreeGrid> {
 
-        /**
-         * create free metrics inflater
-         */
-        public FreeGridInflater() {
-            super("FreeGrid");
-        }
 
         /* (non-Javadoc)
          * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
-        public void inflate(Element plugin) {
+        public GridPlugin.FreeGrid inflate(Element plugin) {
 
             GridPlugin.FreeGrid free = new GridPlugin.FreeGrid(getGridOrientation(plugin));
             NodeList freeMetricsElements = plugin.getElementsByTagName(ELEMENT_GRID_FREE);
@@ -107,7 +96,7 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
             }
 
             completeFromAbstract(free, plugin);
-            setPlugin(free);
+            return free;
         }
 
     }
@@ -117,26 +106,20 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
      * 
      * @author sebastien janaud
      */
-    @X2DInflater(xsi="MultiplierGrid")
+    @X2DBinding(xsi="MultiplierGrid",plugin=MultiplierGrid.class)
     public static class MultiplierGridInflater extends GridInflater<MultiplierGrid> {
 
-        /**
-         * create multiplier metrics inflater
-         */
-        public MultiplierGridInflater() {
-            super("MultiplierGrid");
-        }
 
         /* (non-Javadoc)
          * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
-        public void inflate(Element plugin) {
+        public GridPlugin.MultiplierGrid inflate(Element plugin) {
             Double ref = elementDouble(plugin, ELEMENT_GRID_MULTIPLIER_REF);
             Double mul = elementDouble(plugin, ELEMENT_GRID_MULTIPLIER_MULTIPLIER);
             GridPlugin.MultiplierGrid multiplier = new GridPlugin.MultiplierGrid(ref, mul, getGridOrientation(plugin));
             completeFromAbstract(multiplier, plugin);
-            setPlugin(multiplier);
+            return multiplier;
 
         }
 
@@ -147,25 +130,19 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
      * 
      * @author sebastien janaud
      */
-    @X2DInflater(xsi="StaticGridInflater")
+    @X2DBinding(xsi="StaticGridInflater",plugin=StaticGrid.class)
     public static class StaticGridInflater extends GridInflater<StaticGrid> {
 
-        /**
-         * create static inflater
-         */
-        public StaticGridInflater() {
-            super("StaticGrid");
-        }
 
         /* (non-Javadoc)
          * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
-        public void inflate(Element plugin) {
+        public GridPlugin.StaticGrid inflate(Element plugin) {
             int gridCount = elementInteger(plugin, ELEMENT_GRID_STATIC_COUNT);
             GridPlugin.StaticGrid staticMetrics = new GridPlugin.StaticGrid(getGridOrientation(plugin), gridCount);
             completeFromAbstract(staticMetrics, plugin);
-            setPlugin(staticMetrics);
+            return staticMetrics;
         }
 
     }
@@ -175,25 +152,19 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
      * 
      * @author sebastien janaud
      */
-    @X2DInflater(xsi="ModeledGrid")
+    @X2DBinding(xsi="ModeledGrid",plugin=ModeledGrid.class)
     public static class ModeledGridInflater extends GridInflater<ModeledGrid> {
 
-        /**
-         * create modeled grids inflater
-         */
-        public ModeledGridInflater() {
-            super("ModeledGrid");
-        }
-
+        
         /* (non-Javadoc)
          * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
-        public void inflate(Element plugin) {
+        public GridPlugin.ModeledGrid inflate(Element plugin) {
             GridPlugin.ModeledGrid modeledMetrics = new ModeledGrid(getGridOrientation(plugin));
             modeledMetrics.registerGridModels(GridModelRangeCollections.YoctoYotta);
             completeFromAbstract(modeledMetrics, plugin);
-            setPlugin(modeledMetrics);
+            return modeledMetrics;
         }
 
     }
@@ -277,14 +248,6 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
 
     }
 
-    /**
-     * Create axis metrics plug-in with the given XSI Type
-     * 
-     * @param XSIType
-     *            the XSI type for the particular axis metrics
-     */
-    public GridInflater(String XSIType) {
-        super(XSIType);
-    }
+   
 
 }

@@ -18,6 +18,7 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
+import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
@@ -73,13 +74,13 @@ public class X2D {
 	private List<AbstractX2DPluginInflater<?>> coreInflaters = new ArrayList<AbstractX2DPluginInflater<?>>();
 
 	/** core annotated deflaters */
-	private List<AbstractX2DPluginDeflater<?>> coreDeflaters = new ArrayList<AbstractX2DPluginDeflater<?>>();
+	private List<AbstractX2DPluginDeflater<? extends AbstractPlugin>> coreDeflaters = new ArrayList<AbstractX2DPluginDeflater<? extends AbstractPlugin>>();
 
 	/** user inflaters */
-	private List<AbstractX2DPluginInflater<?>> inflaters = new ArrayList<AbstractX2DPluginInflater<?>>();
+	private List<AbstractX2DPluginInflater<? extends AbstractPlugin>> inflaters = new ArrayList<AbstractX2DPluginInflater<? extends AbstractPlugin>>();
 
 	/** user deflaters */
-	private List<AbstractX2DPluginDeflater<?>> deflaters = new ArrayList<AbstractX2DPluginDeflater<?>>();
+	private List<AbstractX2DPluginDeflater<? extends AbstractPlugin>> deflaters = new ArrayList<AbstractX2DPluginDeflater<? extends AbstractPlugin>>();
 
 	/** lookup native core inflaters */
 	private boolean lookupCoreInflaters = true;
