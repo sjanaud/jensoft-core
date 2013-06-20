@@ -7,7 +7,7 @@ package com.jensoft.core.x2d.binding.metrics;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.pie.PiePlugin;
+import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 
 /**
@@ -16,17 +16,7 @@ import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
  * @author sebastien janaud
  * 
  */
-public class AxisMetricsDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
-
-	public AxisMetricsDeflater() {
-		super();
-		setXSIType("GridPlugin");
-	}
-
-	public AxisMetricsDeflater(PiePlugin plugin) {
-		super(plugin);
-		setXSIType("GridPlugin");
-	}
+public class AxisMetricsDeflater extends AbstractX2DPluginDeflater<AxisMetricsPlugin> {
 
 	/*
 	 * (non-Javadoc)
@@ -34,7 +24,7 @@ public class AxisMetricsDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {
+	public Element deflate(AxisMetricsPlugin plugin) {
 		Element pluginElement = createPluginRootElement();
 		return pluginElement;
 	}

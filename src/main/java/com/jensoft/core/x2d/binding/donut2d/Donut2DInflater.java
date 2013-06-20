@@ -39,11 +39,6 @@ import com.jensoft.core.x2d.binding.X2DBinding;
  * Donut2D inflater takes the responsibility to parse XML element into {@link Donut2D} related objects.
  * <p>
  * 
- * @see Donut2D
- * @see Donut2DPlugin
- * @see Donut2DToolkit
- * @see Donut2DNature
- * @see AbstractDonut2DSliceLabel
  * @author Sebastien Janaud
  */
 @X2DBinding(xsi="Donut2DPlugin", plugin=Donut2DPlugin.class)

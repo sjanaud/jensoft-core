@@ -7,35 +7,28 @@ package com.jensoft.core.x2d.binding.donut2d;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.pie.PiePlugin;
+import com.jensoft.core.plugin.donut2d.Donut2DPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>Donut2DDeflater</code>
+ * 
  * @author sebastien janaud
- *
+ * 
  */
-public class Donut2DDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
+@X2DBinding(xsi = "Donut2DPlugin", plugin = Donut2DPlugin.class)
+public class Donut2DDeflater extends AbstractX2DPluginDeflater<Donut2DPlugin> {
 
-	public Donut2DDeflater() {
-		super();
-		setXSIType("Donut2DPlugin");
-	}
-
-	public Donut2DDeflater(PiePlugin plugin) {
-		super(plugin);
-		setXSIType("Donut2DPlugin");
-	}
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {
+	public Element deflate(Donut2DPlugin donut2dPlugin) {
 		Element pluginElement = createPluginRootElement();
 		return pluginElement;
 	}
-	
-	
 
 }

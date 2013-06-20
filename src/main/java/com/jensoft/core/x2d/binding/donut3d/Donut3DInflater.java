@@ -34,12 +34,6 @@ import com.jensoft.core.x2d.binding.X2DBinding;
  * Donut3D inflater takes the responsibility to create {@link Donut3DPlugin} from donut3D x2d element.
  * <p>
  * 
- * @see Donut3D
- * @see Donut3DPlugin
- * @see Donut3DToolkit
- * @see Donut3DNature
- * @see AbstractDonut3DSliceLabel
- * @see AbstractDonut3DPaint
  * @author Sebastien Janaud
  */
 @X2DBinding(xsi="Donut3DPlugin",plugin=Donut3DPlugin.class)

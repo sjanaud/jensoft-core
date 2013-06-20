@@ -175,8 +175,8 @@ public class X2DViewInflater implements X2DView2DElement {
 	 *            the inflater to register
 	 */
 	public void registerInflater(AbstractX2DPluginInflater<?> inflater) {
-		if (inflater.getXSIType() == null) {
-			throw new IllegalArgumentException("XSI Type for Inflater :" + inflater.getClass() + " is null. it should be provided");
+		if (inflater.getBinding().xsi() == null) {
+			throw new IllegalArgumentException("X2D Binding Error, XSI Type for Inflater :" + inflater.getClass() + " is null. it should be provided");
 		}
 		System.err.println("--registerInflater::" + inflater.getClass());
 		inflaters.add(inflater);

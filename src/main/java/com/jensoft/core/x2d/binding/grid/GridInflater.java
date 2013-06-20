@@ -12,7 +12,6 @@ import java.awt.Stroke;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
 import com.jensoft.core.plugin.grid.Grid;
 import com.jensoft.core.plugin.grid.Grid.GridOrientation;
 import com.jensoft.core.plugin.grid.GridPlugin;

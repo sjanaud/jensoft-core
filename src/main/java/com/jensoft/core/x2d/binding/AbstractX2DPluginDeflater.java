@@ -23,9 +23,6 @@ public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> extend
     /** inflate plug in */
     private P plugin;
     
-    /** xsi type */
-    private String XSIType;
-    
     /**
      * create inflater
      */
@@ -46,26 +43,15 @@ public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> extend
      */
     protected Element createPluginRootElement(){
     	Element pluginElement = getX2dDocument().createElement("plugin");
-		pluginElement.setAttribute("xsi:type", getXSIType());
+		pluginElement.setAttribute("xsi:type", getBinding().xsi());
 		return pluginElement;
     }
 
-    /**
-	 * @return the xSIType
-	 */
-	public String getXSIType() {
-		return XSIType;
-	}
-
-	/**
-	 * @param xSIType the xSIType to set
-	 */
-	public void setXSIType(String xSIType) {
-		XSIType = xSIType;
+    public X2DBinding getBinding() {
+		return getClass().getAnnotation(X2DBinding.class);
 	}
 	
 	
-
 	/**
 	 * @return the x2dDocument
 	 */
@@ -99,7 +85,7 @@ public abstract class AbstractX2DPluginDeflater<P extends AbstractPlugin> extend
     /**
      * deflate P plugin mean read the given plugin root element and configure plugin
      */
-    public abstract Element deflate();
+    public abstract Element deflate(P plugin);
 
 
 }

@@ -7,31 +7,24 @@ package com.jensoft.core.x2d.binding.function;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.pie.PiePlugin;
+import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
+import com.jensoft.core.plugin.function.FunctionPlugin.CurveFunction;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>CurveFunctionPlugin</code>
  * @author sebastien janaud
  *
  */
-public class CurveFunctionDeflater extends AbstractX2DPluginDeflater<PiePlugin> {
-
-	public CurveFunctionDeflater() {
-		super();
-		setXSIType("CurveFunctionPlugin");
-	}
-
-	public CurveFunctionDeflater(PiePlugin plugin) {
-		super(plugin);
-		setXSIType("CurveFunctionPlugin");
-	}
+@X2DBinding(xsi="CurvePlugin",plugin=AreaFunction.class)
+public class CurveFunctionDeflater extends AbstractX2DPluginDeflater<CurveFunction> {
 
 	/* (non-Javadoc)
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate() {
+	public Element deflate(CurveFunction plugin) {
 		Element pluginElement = createPluginRootElement();
 		return pluginElement;
 	}
