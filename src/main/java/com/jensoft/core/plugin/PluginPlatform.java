@@ -24,7 +24,7 @@ import com.jensoft.core.view.Portfolio.ImageType;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>PluginPlatform</code>
@@ -238,7 +238,7 @@ public class PluginPlatform {
     }
 
     /**
-     * return all {@link AbstractX2DPluginInflater} annotated with {@link X2DInflater} for the given package
+     * return all {@link AbstractX2DPluginInflater} annotated with {@link X2DBinding} for the given package
      * 
      * @param packageName
      * @return scanned portfolio
@@ -308,7 +308,7 @@ public class PluginPlatform {
     }
 
     /**
-     * return all {@link AbstractX2DPluginInflater} annotated with {@link X2DInflater} for the given package
+     * return all {@link AbstractX2DPluginInflater} annotated with {@link X2DBinding} for the given package
      * 
      * @param packageName
      * @return x2d demo
@@ -318,7 +318,7 @@ public class PluginPlatform {
         try {
             Iterable<Class<?>> classes = getClasses(packageName);
             for (Class<?> testClass : classes) {
-                if (testClass.isAnnotationPresent(X2DInflater.class)) {
+                if (testClass.isAnnotationPresent(X2DBinding.class)) {
                     System.err.println("x2d annotation found : " + testClass);
                     if (AbstractX2DPluginInflater.class.isAssignableFrom(testClass)) {
                         inflaters.add(testClass);
@@ -422,7 +422,7 @@ public class PluginPlatform {
         System.out.println("found view demo number : " + viewdemos.size());
         
       
-        List<Class<?>> x2dinflaters = PluginPlatform.scanX2DInflater(X2DInflater.class.getPackage().getName());
+        List<Class<?>> x2dinflaters = PluginPlatform.scanX2DInflater(X2DBinding.class.getPackage().getName());
         System.out.println("found x2d inflaters number : " + x2dinflaters.size());
         
     }

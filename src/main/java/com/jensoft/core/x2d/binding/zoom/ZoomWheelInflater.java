@@ -9,31 +9,22 @@ import org.w3c.dom.Element;
 
 import com.jensoft.core.plugin.zoom.wheel.ZoomWheelPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 /**
  * <code>ZoomWheelInflater</code>
  * 
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="ZoomWheelPlugin")
+@X2DBinding(xsi="ZoomWheelPlugin",plugin=ZoomWheelPlugin.class)
 public class ZoomWheelInflater extends AbstractX2DPluginInflater<ZoomWheelPlugin> {
 
-    /**
-     * create zoom wheel inflater
-     */
-    public ZoomWheelInflater() {
-        setPlugin(new ZoomWheelPlugin());
-        setXSIType("ZoomWheelPlugin");
-    }
-
-   
+      
     /* (non-Javadoc)
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
-        
+    public ZoomWheelPlugin inflate(Element pluginElement) {
+        return new ZoomWheelPlugin();
     }
-
   
 }

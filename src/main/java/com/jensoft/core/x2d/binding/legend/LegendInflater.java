@@ -19,23 +19,16 @@ import com.jensoft.core.plugin.legend.LegendPlugin;
 import com.jensoft.core.plugin.legend.painter.fill.LegendDefaultFill;
 import com.jensoft.core.plugin.legend.painter.fill.LegendGradientFill;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>LegendInflater</code>
  * 
  * @author sebastien janaud
  */
-@X2DInflater(xsi="LegendPlugin")
+@X2DBinding(xsi="LegendPlugin",plugin=LegendPlugin.class)
 public class LegendInflater extends AbstractX2DPluginInflater<LegendPlugin> implements X2DLegendElement {
 
-    /**
-     * create new legend inflater
-     */
-    public LegendInflater() {
-        setPlugin(new LegendPlugin());
-        setXSIType("LegendPlugin");
-    }
 
     /**
      * inflate into {@link Legend} the given x2d legend element
@@ -54,7 +47,7 @@ public class LegendInflater extends AbstractX2DPluginInflater<LegendPlugin> impl
         Float depth = elementFloat(element, ELEMENT_LEGEND_DEPTH);
 
         Legend legend = new Legend(text);
-        getPlugin().addLegend(legend);
+      
 
         if (font != null) {
             legend.setFont(font);
@@ -89,18 +82,17 @@ public class LegendInflater extends AbstractX2DPluginInflater<LegendPlugin> impl
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
+    public LegendPlugin inflate(Element pluginElement) {
         LegendPlugin plugin = new LegendPlugin();
         NodeList legendElements = pluginElement.getElementsByTagName(ELEMENT_LEGEND);
         for (int i = 0; i < legendElements.getLength(); i++) {
             Element element = (Element) legendElements.item(i);
             Legend legend = inflateLegend(element);
             if(legend != null){
-                System.out.println("add legend!");
                 plugin.addLegend(legend);
             }
         }
-        setPlugin(plugin);
+       return plugin;
     }
 
 }

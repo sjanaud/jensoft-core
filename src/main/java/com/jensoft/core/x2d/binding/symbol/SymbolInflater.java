@@ -11,6 +11,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.jensoft.core.graphics.Shader;
+import com.jensoft.core.plugin.pie.PiePlugin;
 import com.jensoft.core.plugin.symbol.BarSymbol;
 import com.jensoft.core.plugin.symbol.BarSymbol.MorpheStyle;
 import com.jensoft.core.plugin.symbol.BarSymbolGroup;
@@ -36,37 +37,30 @@ import com.jensoft.core.plugin.symbol.painter.label.BarSymbolRelativeLabel.Horiz
 import com.jensoft.core.plugin.symbol.painter.label.BarSymbolRelativeLabel.VerticalAlignment;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.InflaterUtil;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>SymbolInflater<code>
  * 
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="SymbolPlugin")
+@X2DBinding(xsi="SymbolPlugin",plugin=SymbolPlugin.class)
 public class SymbolInflater extends AbstractX2DPluginInflater<SymbolPlugin> {
-
-    /**
-     * create symbol inflater
-     */
-    public SymbolInflater() {
-        setPlugin(new SymbolPlugin());
-        setXSIType("SymbolPlugin");
-    }
 
 
     /* (non-Javadoc)
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element paramsElement) {
+    public SymbolPlugin inflate(Element paramsElement) {
+    	SymbolPlugin symbolPlugin = new SymbolPlugin();
         String nature = elementText(paramsElement, "nature");
         SymbolNature barnature = SymbolNature.parse(nature);
         if (barnature == null) {
-            return;
+            return null;
         }
 
-        getPlugin().setNature(barnature);
+        symbolPlugin.setNature(barnature);
         Element layersElement = (Element) paramsElement.getElementsByTagName("layers");
 
         NodeList layerElements = layersElement.getElementsByTagName("layer");
@@ -74,13 +68,13 @@ public class SymbolInflater extends AbstractX2DPluginInflater<SymbolPlugin> {
             Element layerElement = (Element) layerElements.item(i);
             String type = elementText(layerElement, "type");
             if (type.equals("BarSymbolLayer")) {
-                getPlugin().addLayer(inflateBarSymbolLayer(layerElement));
+            	symbolPlugin.addLayer(inflateBarSymbolLayer(layerElement));
             }
             else if (type.equals("PointSymbolLayer")) {
                 // getPlugin().addLayer(inflateBarSymbolLayer(layerRootElement));
             }
         }
-
+        return symbolPlugin;
     }
 
     /**
@@ -118,7 +112,6 @@ public class SymbolInflater extends AbstractX2DPluginInflater<SymbolPlugin> {
         }
 
         return layer;
-
     }
 
     /**

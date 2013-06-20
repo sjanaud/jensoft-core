@@ -11,6 +11,7 @@ import java.awt.Font;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import com.jensoft.core.plugin.legend.LegendPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FlowMetrics;
@@ -23,319 +24,284 @@ import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelRangeCollections;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>AxisMetricsInflater</code>
  * 
  * @author Sebastien Janaud
  */
-public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extends
-        AbstractX2DPluginInflater<A> implements X2DMetricsElement {
+public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extends AbstractX2DPluginInflater<A> implements X2DMetricsElement {
 
-    /**
-     * <code>FlowMetricsInflater</code>
-     * 
-     * @author sebastien janaud
-     */
-    @X2DInflater(xsi="FlowMetricsInflater")
-    public static class FlowMetricsInflater extends AxisMetricsInflater<FlowMetrics> {
+	/**
+	 * <code>FlowMetricsInflater</code>
+	 * 
+	 * @author sebastien janaud
+	 */
+	@X2DBinding(xsi = "FlowMetricsInflater", plugin = FlowMetrics.class)
+	public static class FlowMetricsInflater extends AxisMetricsInflater<FlowMetrics> {
 
-        /**
-         * create flow metrics inflater
-         */
-        public FlowMetricsInflater() {
-            super("AxisFlowMetrics");
-        }
+		
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * .w3c.dom.Element)
+		 */
+		@Override
+		public AxisMetricsPlugin.FlowMetrics inflate(Element plugin) {
+			Double flowStart = elementDouble(plugin, ELEMENT_METRICS_FLOW_START);
+			Double flowEnd = elementDouble(plugin, ELEMENT_METRICS_FLOW_END);
+			Double flowInterval = elementDouble(plugin, ELEMENT_METRICS_FLOW_INTERVAL);
+			String axisName = elementText(plugin, ELEMENT_METRICS_AXIS);
+			Axis axis = Axis.parse(axisName);
+			AxisMetricsPlugin.FlowMetrics flow = new FlowMetrics(flowStart, flowEnd, flowInterval, axis);
+			completeFromAbstract(flow, plugin);
+			return flow;
+		}
 
-       
-        /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
-         */
-        @Override
-        public void inflate(Element plugin) {
-            Double flowStart = elementDouble(plugin, ELEMENT_METRICS_FLOW_START);
-            Double flowEnd = elementDouble(plugin, ELEMENT_METRICS_FLOW_END);
-            Double flowInterval = elementDouble(plugin, ELEMENT_METRICS_FLOW_INTERVAL);
-            String axisName = elementText(plugin, ELEMENT_METRICS_AXIS);
-            Axis axis = Axis.parse(axisName);
-            AxisMetricsPlugin.FlowMetrics flow = new FlowMetrics(flowStart, flowEnd, flowInterval, axis);
-            completeFromAbstract(flow, plugin);
-            setPlugin(flow);
-        }
+	}
 
-    }
+	/**
+	 * <code>FreeMetricsInflater</code>
+	 * 
+	 * @author sebastien janaud
+	 */
+	@X2DBinding(xsi = "FreeMetricsInflater", plugin = FreeMetrics.class)
+	public static class FreeMetricsInflater extends AxisMetricsInflater<FreeMetrics> {
 
-    /**
-     * <code>FreeMetricsInflater</code>
-     * 
-     * @author sebastien janaud
-     */
-    @X2DInflater(xsi="FreeMetricsInflater")
-    public static class FreeMetricsInflater extends AxisMetricsInflater<FreeMetrics> {
+		
 
-        /**
-         * create free metrics inflater
-         */
-        public FreeMetricsInflater() {
-            super("AxisFreeMetrics");
-        }
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * .w3c.dom.Element)
+		 */
+		@Override
+		public AxisMetricsPlugin.FreeMetrics inflate(Element plugin) {
+			String axisName = elementText(plugin, ELEMENT_METRICS_AXIS);
+			Axis axis = Axis.parse(axisName);
 
-     
-        /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
-         */
-        @Override
-        public void inflate(Element plugin) {
-            String axisName = elementText(plugin, ELEMENT_METRICS_AXIS);
-            Axis axis = Axis.parse(axisName);
+			AxisMetricsPlugin.FreeMetrics free = new FreeMetrics(axis);
+			NodeList freeMetricsElements = plugin.getElementsByTagName(ELEMENT_METRICS_FREE);
+			for (int i = 0; i < freeMetricsElements.getLength(); i++) {
+				Element element = (Element) freeMetricsElements.item(i);
+				Double value = elementDouble(element, ELEMENT_METRICS_FREE_VALUE);
+				String text = elementText(element, ELEMENT_METRICS_FREE_TEXT);
 
-            AxisMetricsPlugin.FreeMetrics free = new FreeMetrics(axis);
-            NodeList freeMetricsElements = plugin.getElementsByTagName(ELEMENT_METRICS_FREE);
-            for (int i = 0; i < freeMetricsElements.getLength(); i++) {
-                Element element = (Element) freeMetricsElements.item(i);
-                Double value = elementDouble(element, ELEMENT_METRICS_FREE_VALUE);
-                String text = elementText(element, ELEMENT_METRICS_FREE_TEXT);
+				if (text == null) {
+					free.addMetrics(value);
+				} else {
+					free.addMetrics(value, text);
+				}
 
-                if (text == null) {
-                    free.addMetrics(value);
-                }
-                else {
-                    free.addMetrics(value, text);
-                }
+			}
 
-            }
+			completeFromAbstract(free, plugin);
+			return free;
+		}
 
-            completeFromAbstract(free, plugin);
-            setPlugin(free);
-        }
+	}
 
-    }
+	/**
+	 * <code>MultiplierMetricsInflater</code>
+	 * 
+	 * @author sebastien janaud
+	 */
+	@X2DBinding(xsi = "AxisMultiplierMetrics", plugin = MultiplierMetrics.class)
+	public static class MultiplierMetricsInflater extends AxisMetricsInflater<MultiplierMetrics> {
 
-    /**
-     * <code>MultiplierMetricsInflater</code>
-     * 
-     * @author sebastien janaud
-     */
-    @X2DInflater(xsi="AxisMultiplierMetrics")
-    public static class MultiplierMetricsInflater extends AxisMetricsInflater<MultiplierMetrics> {
+		
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * .w3c.dom.Element)
+		 */
+		@Override
+		public AxisMetricsPlugin.MultiplierMetrics inflate(Element plugin) {
+			Double ref = elementDouble(plugin, ELEMENT_METRICS_MULTIPLIER_REF);
+			Double mul = elementDouble(plugin, ELEMENT_METRICS_MULTIPLIER_MULTIPLIER);
+			AxisMetricsPlugin.MultiplierMetrics multiplier = new AxisMetricsPlugin.MultiplierMetrics(ref, mul, Axis.AxisSouth);
+			completeFromAbstract(multiplier, plugin);
+			return multiplier;
+		}
 
-        /**
-         * create multiplier metrics inflater
-         */
-        public MultiplierMetricsInflater() {
-            super("AxisMultiplierMetrics");
-        }
+	}
 
-        /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
-         */
-        @Override
-        public void inflate(Element plugin) {
-            Double ref = elementDouble(plugin, ELEMENT_METRICS_MULTIPLIER_REF);
-            Double mul = elementDouble(plugin, ELEMENT_METRICS_MULTIPLIER_MULTIPLIER);
-            AxisMetricsPlugin.MultiplierMetrics multiplier = new AxisMetricsPlugin.MultiplierMetrics(ref, mul,
-                                                                                                     Axis.AxisSouth);
-            completeFromAbstract(multiplier, plugin);
-            setPlugin(multiplier);
+	/**
+	 * <code>MultiMultiplierMetricsInflater</code>
+	 * 
+	 * @author sebastien janaud
+	 */
+	@X2DBinding(xsi = "AxisMultiMultiplierMetrics", plugin = Multiplier3Metrics.class)
+	public static class MultiMultiplierMetricsInflater extends AxisMetricsInflater<Multiplier3Metrics> {
 
-        }
+		
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * .w3c.dom.Element)
+		 */
+		@Override
+		public AxisMetricsPlugin.Multiplier3Metrics inflate(Element plugin) {
+			Double ref = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_REF);
+			Double majorMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MAJOR_MULTIPLIER);
+			Double medianMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MEDIAN_MULTIPLIER);
+			Double minorMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MINOR_MULTIPLIER);
 
-    }
+			AxisMetricsPlugin.Multiplier3Metrics multiMultiplier = new AxisMetricsPlugin.Multiplier3Metrics(ref, getAxis(plugin));
+			if (majorMultiplier != null) {
+				multiMultiplier.setMajor(majorMultiplier);
+			}
+			if (medianMultiplier != null) {
+				multiMultiplier.setMedian(medianMultiplier);
+			}
+			if (minorMultiplier != null) {
+				multiMultiplier.setMinor(minorMultiplier);
+			}
+			completeFromAbstract(multiMultiplier, plugin);
+			return multiMultiplier;
+		}
+	}
 
-    /**
-     * <code>MultiMultiplierMetricsInflater</code>
-     * 
-     * @author sebastien janaud
-     */
-    @X2DInflater(xsi="AxisMultiMultiplierMetrics")
-    public static class MultiMultiplierMetricsInflater extends AxisMetricsInflater<Multiplier3Metrics> {
+	/**
+	 * <code>StaticMetricsInflater</code>
+	 * 
+	 * @author sebastien janaud
+	 */
+	@X2DBinding(xsi = "AxisStaticMetrics", plugin = StaticMetrics.class)
+	public static class StaticMetricsInflater extends AxisMetricsInflater<StaticMetrics> {
 
-        /**
-         * create multiplier metrics inflater
-         */
-        public MultiMultiplierMetricsInflater() {
-            super("AxisMultiMultiplierMetrics");
-        }
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * .w3c.dom.Element)
+		 */
+		@Override
+		public AxisMetricsPlugin.StaticMetrics inflate(Element plugin) {
+			int metricsCount = elementInteger(plugin, ELEMENT_METRICS_STATIC_COUNT);
+			AxisMetricsPlugin.StaticMetrics staticMetrics = new AxisMetricsPlugin.StaticMetrics(metricsCount, getAxis(plugin));
+			completeFromAbstract(staticMetrics, plugin);
+			return staticMetrics;
+		}
 
-        /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
-         */
-        @Override
-        public void inflate(Element plugin) {
-            Double ref = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_REF);
-            Double majorMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MAJOR_MULTIPLIER);
-            Double medianMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MEDIAN_MULTIPLIER);
-            Double minorMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MINOR_MULTIPLIER);
+	}
 
-            AxisMetricsPlugin.Multiplier3Metrics multiMultiplier = new AxisMetricsPlugin.Multiplier3Metrics(
-                                                                                                                    ref,
-                                                                                                                    getAxis(plugin));
-            if (majorMultiplier != null) {
-                multiMultiplier.setMajor(majorMultiplier);
-            }
-            if (medianMultiplier != null) {
-                multiMultiplier.setMedian(medianMultiplier);
-            }
-            if (minorMultiplier != null) {
-                multiMultiplier.setMinor(minorMultiplier);
-            }
-            completeFromAbstract(multiMultiplier, plugin);
-            setPlugin(multiMultiplier);
-        }
-    }
+	/**
+	 * <code>ModeledMetricsInflater</code>
+	 * 
+	 * @author sebastien janaud
+	 */
+	@X2DBinding(xsi = "AxisModeledMetrics", plugin = ModeledMetrics.class)
+	public static class ModeledMetricsInflater extends AxisMetricsInflater<ModeledMetrics> {
 
-    /**
-     * <code>StaticMetricsInflater</code>
-     * 
-     * @author sebastien janaud
-     */
-    @X2DInflater(xsi="AxisStaticMetrics")
-    public static class StaticMetricsInflater extends AxisMetricsInflater<StaticMetrics> {
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * .w3c.dom.Element)
+		 */
+		@Override
+		public AxisMetricsPlugin.ModeledMetrics inflate(Element plugin) {
+			AxisMetricsPlugin.ModeledMetrics modeledMetrics = new ModeledMetrics(getAxis(plugin));
+			modeledMetrics.registerMetricsModels(MetricsModelRangeCollections.YoctoYotta);
+			completeFromAbstract(modeledMetrics, plugin);
+			return modeledMetrics;
+		}
 
-        /**
-         * create multiplier metrics inflater
-         */
-        public StaticMetricsInflater() {
-            super("AxisStaticMetrics");
-        }
+	}
 
-        /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
-         */
-        @Override
-        public void inflate(Element plugin) {
-            int metricsCount = elementInteger(plugin, ELEMENT_METRICS_STATIC_COUNT);
-            AxisMetricsPlugin.StaticMetrics staticMetrics = new AxisMetricsPlugin.StaticMetrics(metricsCount,
-                                                                                                getAxis(plugin));
-            completeFromAbstract(staticMetrics, plugin);
-            setPlugin(staticMetrics);
-        }
+	/**
+	 * <code>TimeMetricsInflater</code>
+	 * 
+	 * @author sebastien janaud
+	 */
+	@X2DBinding(xsi = "AxisTimeMetrics", plugin = TimeMetrics.class)
+	public static class TimeMetricsInflater extends AxisMetricsInflater<TimeMetrics> {
 
-    }
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * .w3c.dom.Element)
+		 */
+		@Override
+		public AxisMetricsPlugin.TimeMetrics inflate(Element plugin) {
 
-    /**
-     * <code>ModeledMetricsInflater</code>
-     * 
-     * @author sebastien janaud
-     */
-    @X2DInflater(xsi="AxisModeledMetrics")
-    public static class ModeledMetricsInflater extends AxisMetricsInflater<ModeledMetrics> {
+			AxisMetricsPlugin.TimeMetrics timingMetrics = new AxisMetricsPlugin.TimeMetrics(getAxis(plugin));
 
-        /**
-         * create modeled metrics inflater
-         */
-        public ModeledMetricsInflater() {
-            super("AxisModeledMetrics");
-        }
+			timingMetrics.registerTimeModel(new TimeMetricsManager.Minute1Model());
+			timingMetrics.registerTimeModel(new TimeMetricsManager.Minute15Model());
 
-        /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
-         */
-        @Override
-        public void inflate(Element plugin) {
-            AxisMetricsPlugin.ModeledMetrics modeledMetrics = new ModeledMetrics(getAxis(plugin));
-            modeledMetrics.registerMetricsModels(MetricsModelRangeCollections.YoctoYotta);
-            completeFromAbstract(modeledMetrics, plugin);
-            setPlugin(modeledMetrics);
-        }
+			timingMetrics.registerTimeModel(new TimeMetricsManager.HourModel());
+			timingMetrics.registerTimeModel(new TimeMetricsManager.Hour3Model());
 
-    }
+			timingMetrics.registerTimeModel(new TimeMetricsManager.DayNumberModel());
+			timingMetrics.registerTimeModel(new TimeMetricsManager.DayShortTextModel());
+			timingMetrics.registerTimeModel(new TimeMetricsManager.DayLongTextModel());
 
-    /**
-     * <code>TimeMetricsInflater</code>
-     * 
-     * @author sebastien janaud
-     */
-    @X2DInflater(xsi="AxisTimeMetrics")
-    public static class TimeMetricsInflater extends AxisMetricsInflater<TimeMetrics> {
+			timingMetrics.registerTimeModel(new TimeMetricsManager.WeekModel());
+			timingMetrics.registerTimeModel(new TimeMetricsManager.WeekDurationDurationModel());
 
-        /**
-         * create time metrics inflater
-         */
-        public TimeMetricsInflater() {
-            super("AxisTimeMetrics");
-        }
+			timingMetrics.registerTimeModel(new TimeMetricsManager.MonthModel());
+			timingMetrics.registerTimeModel(new TimeMetricsManager.MonthDurationModel());
 
-        /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
-         */
-        @Override
-        public void inflate(Element plugin) {
+			completeFromAbstract(timingMetrics, plugin);
 
-            AxisMetricsPlugin.TimeMetrics timingMetrics = new AxisMetricsPlugin.TimeMetrics(getAxis(plugin));
+			return timingMetrics;
+		}
 
-            timingMetrics.registerTimeModel(new TimeMetricsManager.Minute1Model());
-            timingMetrics.registerTimeModel(new TimeMetricsManager.Minute15Model());
+	}
 
-            timingMetrics.registerTimeModel(new TimeMetricsManager.HourModel());
-            timingMetrics.registerTimeModel(new TimeMetricsManager.Hour3Model());
+	protected Axis getAxis(Element plugin) {
+		String axisName = elementText(plugin, ELEMENT_METRICS_AXIS);
+		Axis axis = Axis.parse(axisName);
+		return axis;
+	}
 
-            timingMetrics.registerTimeModel(new TimeMetricsManager.DayNumberModel());
-            timingMetrics.registerTimeModel(new TimeMetricsManager.DayShortTextModel());
-            timingMetrics.registerTimeModel(new TimeMetricsManager.DayLongTextModel());
+	/**
+	 * Complete the axis plug-in by property of super class
+	 * 
+	 * @param abstratPlugin
+	 * @param pluginElement
+	 */
+	protected void completeFromAbstract(AxisMetricsPlugin<?> abstratPlugin, Element pluginElement) {
+		Integer axisSpacing = elementInteger(pluginElement, ELEMENT_METRICS_AXIS_SPACING);
+		Boolean linePaint = elementBoolean(pluginElement, ELEMENT_METRICS_AXIS_LINE_PAINT);
+		Color lineColor = elementColor(pluginElement, ELEMENT_METRICS_AXIS_LINE_COLOR);
+		Color markerColor = elementColor(pluginElement, ELEMENT_METRICS_AXIS_MARKER_COLOR);
+		Color textColor = elementColor(pluginElement, ELEMENT_METRICS_AXIS_TEXT_COLOR);
+		Font f = elementFont(pluginElement, ELEMENT_METRICS_AXIS_TEXT_FONT);
 
-            timingMetrics.registerTimeModel(new TimeMetricsManager.WeekModel());
-            timingMetrics.registerTimeModel(new TimeMetricsManager.WeekDurationDurationModel());
-
-            timingMetrics.registerTimeModel(new TimeMetricsManager.MonthModel());
-            timingMetrics.registerTimeModel(new TimeMetricsManager.MonthDurationModel());
-
-            completeFromAbstract(timingMetrics, plugin);
-
-            setPlugin(timingMetrics);
-        }
-
-    }
-
-    protected Axis getAxis(Element plugin) {
-        String axisName = elementText(plugin, ELEMENT_METRICS_AXIS);
-        Axis axis = Axis.parse(axisName);
-        return axis;
-    }
-
-  
-    /**
-     * Complete the axis plug-in by property of super class
-     * @param abstratPlugin
-     * @param pluginElement
-     */
-    protected void completeFromAbstract(AxisMetricsPlugin<?> abstratPlugin, Element pluginElement) {
-        Integer axisSpacing = elementInteger(pluginElement, ELEMENT_METRICS_AXIS_SPACING);
-        Boolean linePaint = elementBoolean(pluginElement, ELEMENT_METRICS_AXIS_LINE_PAINT);
-        Color lineColor = elementColor(pluginElement, ELEMENT_METRICS_AXIS_LINE_COLOR);
-        Color markerColor = elementColor(pluginElement, ELEMENT_METRICS_AXIS_MARKER_COLOR);
-        Color textColor = elementColor(pluginElement, ELEMENT_METRICS_AXIS_TEXT_COLOR);
-        Font f = elementFont(pluginElement, ELEMENT_METRICS_AXIS_TEXT_FONT);
-
-        if (axisSpacing != null && axisSpacing > 0) {
-            abstratPlugin.setAxisSpacing(axisSpacing);
-        }
-        if (linePaint != null) {
-            abstratPlugin.setPaintAxisBaseLine(linePaint);
-        }
-        if (lineColor != null) {
-            abstratPlugin.setMetricsBaseLineColor(lineColor);
-        }
-        if (markerColor != null) {
-            abstratPlugin.setMetricsMarkerColor(markerColor);
-        }
-        if (textColor != null) {
-            abstratPlugin.setMetricsLabelColor(textColor);
-        }
-        if (f != null) {
-            abstratPlugin.setMetricsFont(f);
-        }
-    }
-
-    /**
-     * Create axis metrics plug-in with the given XSI Type
-     * 
-     * @param XSIType
-     *            the XSI type for the particular axis metrics
-     */
-    public AxisMetricsInflater(String XSIType) {
-        super(XSIType);
-    }
+		if (axisSpacing != null && axisSpacing > 0) {
+			abstratPlugin.setAxisSpacing(axisSpacing);
+		}
+		if (linePaint != null) {
+			abstratPlugin.setPaintAxisBaseLine(linePaint);
+		}
+		if (lineColor != null) {
+			abstratPlugin.setMetricsBaseLineColor(lineColor);
+		}
+		if (markerColor != null) {
+			abstratPlugin.setMetricsMarkerColor(markerColor);
+		}
+		if (textColor != null) {
+			abstratPlugin.setMetricsLabelColor(textColor);
+		}
+		if (f != null) {
+			abstratPlugin.setMetricsFont(f);
+		}
+	}
 
 }

@@ -23,7 +23,7 @@ import com.jensoft.core.plugin.function.area.painter.fill.AreaDefaultFill;
 import com.jensoft.core.plugin.function.area.painter.fill.AreaGradientFill;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>AreaFunctionInflater</code>
@@ -31,32 +31,24 @@ import com.jensoft.core.x2d.binding.X2DInflater;
  * @author Sebastien Janaud
  * @since 1.0
  */
-@X2DInflater(xsi="AreaPlugin")
+@X2DBinding(xsi="AreaPlugin",plugin=AreaFunction.class)
 public class AreaFunctionInflater extends AbstractX2DPluginInflater<AreaFunction> implements X2DAreaElement {
-
-    /**
-     * create area inflater
-     */
-    public AreaFunctionInflater() {
-        setPlugin(new FunctionPlugin.AreaFunction());
-        setXSIType("AreaPlugin");
-    }
-
-   
 
     /* (non-Javadoc)
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
+    public FunctionPlugin.AreaFunction inflate(Element pluginElement) {
+    	FunctionPlugin.AreaFunction area = new FunctionPlugin.AreaFunction();
         NodeList curveElementList = pluginElement.getElementsByTagName(ELEMENT_AREA_FUNCTION);
         for (int i = 0; i < curveElementList.getLength(); i++) {
             Element curveElement = (Element) curveElementList.item(i);
             Area function = inflateFunction(curveElement);
             if (function != null) {
-                getPlugin().addFunction(function);
+            	area.addFunction(function);
             }
         }
+        return area;
     }
 
     /**

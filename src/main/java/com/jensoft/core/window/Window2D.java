@@ -75,7 +75,7 @@ public abstract class Window2D implements PluginListener {
 
         /**
          * Constructs and initializes a <code>Linear</code>window projection with
-         * coordinates (0,&nbsp;0,&nbsp;0,&nbsp;0).
+         * coordinates (0,0,0,0).
          */
         public Linear() {
         }

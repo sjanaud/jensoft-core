@@ -19,7 +19,6 @@ public class RadarInflater extends AbstractX2DPluginInflater<RadarPlugin> {
      * create radar inflater
      */
     public RadarInflater() {
-        setPlugin(new RadarPlugin());
     }
 
    
@@ -27,8 +26,8 @@ public class RadarInflater extends AbstractX2DPluginInflater<RadarPlugin> {
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element plugin) {
-
+    public RadarPlugin inflate(Element plugin) {
+    	return new RadarPlugin();
     }
 
    

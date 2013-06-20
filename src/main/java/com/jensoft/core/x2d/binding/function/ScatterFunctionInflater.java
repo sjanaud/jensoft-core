@@ -9,6 +9,8 @@ import java.awt.Color;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+
+import com.jensoft.core.plugin.function.FunctionPlugin;
 import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
 import com.jensoft.core.plugin.function.scatter.Scatter;
 import com.jensoft.core.plugin.function.scatter.morphe.EllipseMorphe;
@@ -19,36 +21,31 @@ import com.jensoft.core.plugin.function.scatter.morphe.StarMorphe;
 import com.jensoft.core.plugin.function.scatter.painter.fill.ScatterDefaultFill;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>ScatterCurveInflater</code>
  * 
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="ScatterPlugin")
+@X2DBinding(xsi="ScatterPlugin",plugin=ScatterFunction.class)
 public class ScatterFunctionInflater extends AbstractX2DPluginInflater<ScatterFunction> {
 
-    /**
-     * create scatter curve inflater
-     */
-    public ScatterFunctionInflater() {
-        setPlugin(new ScatterFunction());
-        setXSIType("ScatterPlugin");
-    }
 
     /* (non-Javadoc)
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element paramsElement) {
+    public FunctionPlugin.ScatterFunction inflate(Element paramsElement) {
+    	FunctionPlugin.ScatterFunction scatter = new ScatterFunction();
         Element curvesElement = (Element) paramsElement.getElementsByTagName("curves").item(0);
         NodeList curveElements = curvesElement.getElementsByTagName("curve");
         for (int i = 0; i < curveElements.getLength(); i++) {
             Element labelElement = (Element) curveElements.item(i);
             Scatter curve = inflateCurve(labelElement);
-            getPlugin().addFunction(curve);
+            scatter.addFunction(curve);
         }
+        return scatter;
     }
 
     /**

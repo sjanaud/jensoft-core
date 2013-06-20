@@ -11,23 +11,15 @@ import org.w3c.dom.Element;
 
 import com.jensoft.core.plugin.outline.OutlinePlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>OutlineInflater</code>
  * 
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="OutlinePlugin")
+@X2DBinding(xsi="OutlinePlugin",plugin=OutlinePlugin.class)
 public class OutlineInflater extends AbstractX2DPluginInflater<OutlinePlugin> implements X2DOutlineElement{
-
-    /**
-     * create outline inflater
-     */
-    public OutlineInflater() {
-        setPlugin(new OutlinePlugin());
-        setXSIType("OutlinePlugin");
-    }
 
    
    
@@ -35,11 +27,13 @@ public class OutlineInflater extends AbstractX2DPluginInflater<OutlinePlugin> im
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element outlinePluginElement) {
+    public OutlinePlugin inflate(Element outlinePluginElement) {
+    	OutlinePlugin outline = new OutlinePlugin();
         Element tc = (Element) outlinePluginElement.getElementsByTagName(ELEMENT_OUTLINE_COLOR).item(0);
 
         Color themeColor = elementColor(tc);
-        getPlugin().setThemeColor(themeColor);
+        outline.setThemeColor(themeColor);
+        return outline;
     }
 
 }

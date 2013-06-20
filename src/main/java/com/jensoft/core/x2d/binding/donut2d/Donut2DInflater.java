@@ -5,54 +5,6 @@
  */
 package com.jensoft.core.x2d.binding.donut2d;
 
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_EFFECT;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_EFFECT_LINEAR_INCIDENCE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_EFFECT_LINEAR_OFFSET_RADIUS;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_EFFECT_REFLECTION_BLUR_ENABLE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_EFFECT_REFLECTION_MASK_OPACITY;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_EFFECT_REFLECTION_REFLECT_LENGTH;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_FILL;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_FILL_RADIAL_GRADIENT_TYPE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_INNER_RADIUS;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_LINK_COLOR;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_LINK_ENABLE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_LINK_EXTENDS;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_LINK_MARKER_DRAW;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_LINK_MARKER_ENABLE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_LINK_MARKER_FILL;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_LINK_STROKE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_LINK_STYLE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_BORDER_MARGIN;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_FILL_COLOR;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_OUTLINE_COLOR;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_OUTLINE_ROUND;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_OUTLINE_STROKE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_PADDING_X;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_PADDING_Y;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_PATH_SEGMENT_PATH;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_PATH_TEXT_POSITION;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_PATH_TEXT_SHADER;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_PATH_TEXT_SIDE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_RADIAL_OFFSET_RADIUS;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_SHADER;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_STYLE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_TEXT;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_TEXT_COLOR;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_TEXT_DIVERGENCE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_LABEL_TEXT_FONT;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_NATURE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_OUTER_RADIUS;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_SLICE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_SLICE_COLOR;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_SLICE_DIVERGENCE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_SLICE_LABEL;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_SLICE_NAME;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_SLICE_VALUE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_START_ANGLE;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_X;
-import static com.jensoft.core.x2d.binding.donut2d.X2DDonut2DElement.ELEMENT_DONUT2D_Y;
-
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
@@ -80,7 +32,7 @@ import com.jensoft.core.plugin.donut2d.painter.label.Donut2DPathLabel.Donut2DFac
 import com.jensoft.core.plugin.donut2d.painter.label.Donut2DRadialLabel;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.InflaterUtil;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 /**
  * <code>Donut2DInflater</code>
  * <p>
@@ -94,18 +46,8 @@ import com.jensoft.core.x2d.binding.X2DInflater;
  * @see AbstractDonut2DSliceLabel
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="Donut2DPlugin")
-public class Donut2DInflater extends AbstractX2DPluginInflater<Donut2DPlugin> {
-
-    /**
-     * create donut2D inflater
-     */
-    public Donut2DInflater() {
-        setPlugin(new Donut2DPlugin());
-        setXSIType("Donut2DPlugin");
-    }
-
-   
+@X2DBinding(xsi="Donut2DPlugin", plugin=Donut2DPlugin.class)
+public class Donut2DInflater extends AbstractX2DPluginInflater<Donut2DPlugin> implements X2DDonut2DElement{
 
     /**
      * defines the various type for donut2D effect
@@ -596,13 +538,16 @@ public class Donut2DInflater extends AbstractX2DPluginInflater<Donut2DPlugin> {
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
+    public Donut2DPlugin inflate(Element pluginElement) {
+    	Donut2DPlugin d2d = new Donut2DPlugin();
         NodeList donut2DElementList = pluginElement.getElementsByTagName(ELEMENT_DONUT2D);
         for (int i = 0; i < donut2DElementList.getLength(); i++) {
             Element donut2DElement = (Element) donut2DElementList.item(i);
             Donut2D donut2d = inflateDonut2D(donut2DElement);
-            getPlugin().addDonut(donut2d);
+            d2d.addDonut(donut2d);
         }
+        
+        return d2d;
     }
 
 }

@@ -13,44 +13,39 @@ import org.w3c.dom.NodeList;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.plugin.function.FunctionPlugin;
+import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
 import com.jensoft.core.plugin.function.FunctionPlugin.CurveFunction;
 import com.jensoft.core.plugin.function.curve.Curve;
 import com.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw;
 import com.jensoft.core.plugin.function.curve.painter.draw.CurveDefaultDraw;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DInflater;
+import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>CurveInflater</code> takes the responsibility to inflates X2D curve
  * 
  * @author Sebastien Janaud
  */
-@X2DInflater(xsi="CurvePlugin")
+@X2DBinding(xsi="CurvePlugin",plugin=AreaFunction.class)
 public class CurveFunctionInflater extends AbstractX2DPluginInflater<CurveFunction> implements X2DCurveElement {
-
-    /**
-     * create curve inflater
-     */
-    public CurveFunctionInflater() {
-        setPlugin(new FunctionPlugin.CurveFunction());
-        setXSIType("CurvePlugin");
-    }
 
     
     /* (non-Javadoc)
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public void inflate(Element pluginElement) {
+    public FunctionPlugin.CurveFunction inflate(Element pluginElement) {
+    	FunctionPlugin.CurveFunction curve = new FunctionPlugin.CurveFunction();
         NodeList curveElementList = pluginElement.getElementsByTagName(ELEMENT_CURVE_FUNCTION);
         for (int i = 0; i < curveElementList.getLength(); i++) {
             Element curveElement = (Element) curveElementList.item(i);
             Curve function = inflateFunction(curveElement);
             if (function != null) {
-                getPlugin().addFunction(function);
+            	curve.addFunction(function);
             }
         }
+        return curve;
     }
 
     /**
