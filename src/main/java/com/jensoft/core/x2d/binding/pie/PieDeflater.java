@@ -15,6 +15,7 @@ import com.jensoft.core.plugin.pie.PiePlugin;
 import com.jensoft.core.plugin.pie.PieSlice;
 import com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieCompoundEffect;
+import com.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
@@ -238,6 +239,36 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 
 		return effectElement;
 	}
+	
+	/**
+	 * deflate element
+	 * 
+	 * @param effect
+	 *            the effect to deflate
+	 * @return effect element
+	 */
+	private Element deflatePieCubicEffect(PieCubicEffect effect) {
+		Element effectElement = getX2dDocument().createElement(ELEMENT_PIE_EFFECT);
+		effectElement.setAttribute("xsi:type", ELEMENT_PIE_EFFECT_TYPE_CUBIC);
+
+		effectElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_EFFECT_CUBIC_INCIDENCE,effect.getIncidenceAngleDegree()));
+		effectElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_EFFECT_CUBIC_OFFSET_RADIUS, effect.getOffsetRadius()));
+		
+		
+		Element cubicKey = getX2dDocument().createElement(ELEMENT_PIE_EFFECT_CUBIC_KEY);
+		effectElement.appendChild(cubicKey);
+		
+		cubicKey.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_EFFECT_CUBIC_KEY_ANGLE_DELTA_START, effect.getCubicKey().getStartAngleDelta()));
+		cubicKey.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_EFFECT_CUBIC_KEY_ANGLE_DELTA_END, effect.getCubicKey().getEndAngleDelta()));
+		cubicKey.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_EFFECT_CUBIC_KEY_RADIUS_FRACTION_START, effect.getCubicKey().getStartControlFractionRadius()));
+		cubicKey.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_EFFECT_CUBIC_KEY_RADIUS_FRACTION_END, effect.getCubicKey().getEndControlFractionRadius()));
+
+		if(effect.getFrame() != null)
+		effectElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_EFFECT_CUBIC_FRAME, effect.getFrame().name()));
+		
+		
+		return effectElement;
+	}
 
 	/**
 	 * deflate element
@@ -319,6 +350,10 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 
 		if (pieEffect.getClass().getName().equals(PieReflectionEffect.class.getName())) {
 			return deflatePieReflectionEffect((PieReflectionEffect) pieEffect);
+		}
+		
+		if (pieEffect.getClass().getName().equals(PieCubicEffect.class.getName())) {
+			return deflatePieCubicEffect((PieCubicEffect) pieEffect);
 		}
 
 		return null;

@@ -150,6 +150,9 @@ public interface X2DPieElement {
 
 	/** pie effect linear element */
 	public final static String ELEMENT_PIE_EFFECT_TYPE_LINEAR = "PieLinearEffect";
+	
+	/** pie effect cubic element */
+	public final static String ELEMENT_PIE_EFFECT_TYPE_CUBIC = "PieCubicEffect";
 
 	/** pie effect linear element */
 	public final static String ELEMENT_PIE_EFFECT_TYPE_RADIAL = "PieRadialEffect";
@@ -183,4 +186,32 @@ public interface X2DPieElement {
 
 	/** pie 'reflection effect' reflection length element */
 	public final static String ELEMENT_PIE_EFFECT_REFLECTION_LENGTH = "reflection-length";
+	
+	/** pie 'cubic effect' incidence angle element */
+	public final static String ELEMENT_PIE_EFFECT_CUBIC_INCIDENCE = "incidence-angle";
+
+	/** pie 'cubic effect' offset radius element */
+	public final static String ELEMENT_PIE_EFFECT_CUBIC_OFFSET_RADIUS = "offset-radius";
+	
+	/** pie 'cubic effect' cubic key element */
+	public final static String ELEMENT_PIE_EFFECT_CUBIC_KEY = "cubic-key";
+	
+	/** pie 'cubic effect' cubic key delta angle start element */
+	public final static String ELEMENT_PIE_EFFECT_CUBIC_KEY_ANGLE_DELTA_START = "start-angle-delta";
+	
+	/** pie 'cubic effect' cubic key delta angle end element */
+	public final static String ELEMENT_PIE_EFFECT_CUBIC_KEY_ANGLE_DELTA_END = "end-angle-delta";
+	
+	/** pie 'cubic effect' cubic key delta angle start element */
+	public final static String ELEMENT_PIE_EFFECT_CUBIC_KEY_RADIUS_FRACTION_START = "start-radius-fraction";
+	
+	/** pie 'cubic effect' cubic key delta angle end element */
+	public final static String ELEMENT_PIE_EFFECT_CUBIC_KEY_RADIUS_FRACTION_END = "end-radius-fraction";
+	
+	
+	/** pie 'cubic effect' cubic frame element */
+	public final static String ELEMENT_PIE_EFFECT_CUBIC_FRAME = "cubic-frame";
+	
+	
+
 }
