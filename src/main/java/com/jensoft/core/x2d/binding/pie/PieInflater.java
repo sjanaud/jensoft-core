@@ -72,10 +72,10 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
 		if (cubicKeyNL != null && cubicKeyNL.getLength() > 0) {
 			Element cubicKeyElement = (Element) cubicKeyNL.item(0);
 
-			Integer startAngleDelta = elementInteger(effectElement, ELEMENT_PIE_EFFECT_CUBIC_KEY_ANGLE_DELTA_START);
-			Integer endAngleDelta = elementInteger(effectElement, ELEMENT_PIE_EFFECT_CUBIC_KEY_ANGLE_DELTA_END);
-			Float startRadiusFraction = elementFloat(effectElement, ELEMENT_PIE_EFFECT_CUBIC_KEY_RADIUS_FRACTION_START);
-			Float endRadiusFraction = elementFloat(effectElement, ELEMENT_PIE_EFFECT_CUBIC_KEY_RADIUS_FRACTION_END);
+			Integer startAngleDelta = elementInteger(cubicKeyElement, ELEMENT_PIE_EFFECT_CUBIC_KEY_ANGLE_DELTA_START);
+			Integer endAngleDelta = elementInteger(cubicKeyElement, ELEMENT_PIE_EFFECT_CUBIC_KEY_ANGLE_DELTA_END);
+			Float startRadiusFraction = elementFloat(cubicKeyElement, ELEMENT_PIE_EFFECT_CUBIC_KEY_RADIUS_FRACTION_START);
+			Float endRadiusFraction = elementFloat(cubicKeyElement, ELEMENT_PIE_EFFECT_CUBIC_KEY_RADIUS_FRACTION_END);
 
 			CubicEffectKey key = new CubicEffectKey(startAngleDelta, startRadiusFraction, endAngleDelta, endRadiusFraction);
 			cubicEffect.setCubicKey(key);
