@@ -19,6 +19,9 @@ import com.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
+import com.jensoft.core.plugin.pie.painter.fill.AbstractPieFill;
+import com.jensoft.core.plugin.pie.painter.fill.PieDefaultFill;
+import com.jensoft.core.plugin.pie.painter.fill.PieRadialFill;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel;
 import com.jensoft.core.plugin.pie.painter.label.PieBorderLabel;
 import com.jensoft.core.plugin.pie.painter.label.PieBoundLabel;
@@ -61,6 +64,11 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 		pieElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_RADIUS, pie.getRadius()));
 		pieElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_START_ANGLE_DEGREE, pie.getStartAngleDegree()));
 		pieElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_NATURE, pie.getPieNature().name()));
+		
+		if (pie.getPieFill() != null) {
+			pieElement.appendChild(deflatePieFill(pie.getPieFill()));
+		}
+		
 		if (pie.getPieEffect() != null) {
 			pieElement.appendChild(deflatePieEffect(pie.getPieEffect()));
 		}
@@ -325,6 +333,27 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 			}
 		}
 		return effectElement;
+	}
+	
+	/**
+	 * inflate pie fill {@link AbstractPieFill}
+	 * 
+	 * @param pieFill
+	 *            the pie fill to deflate
+	 * @return effect
+	 */
+	private Element deflatePieFill(AbstractPieFill pieFill) {
+		if (pieFill.getClass().getName().equals(PieDefaultFill.class.getName())) {
+			Element effectElement = getX2dDocument().createElement(ELEMENT_PIE_FILL);
+			effectElement.setAttribute("xsi:type", ELEMENT_PIE_FILL_TYPE_LINEAR);
+			return effectElement;
+		}
+		if (pieFill.getClass().getName().equals(PieRadialFill.class.getName())) {
+			Element effectElement = getX2dDocument().createElement(ELEMENT_PIE_FILL);
+			effectElement.setAttribute("xsi:type", ELEMENT_PIE_FILL_TYPE_RADIAL);
+			return effectElement;
+		}
+		return null;
 	}
 
 	/**

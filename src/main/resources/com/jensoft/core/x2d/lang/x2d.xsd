@@ -572,6 +572,31 @@
 
 
 	<!-- Defines Pie Effect -->
+	
+	<!-- Defines Pie Effect -->
+	<xsd:complexType name="PieFill" abstract="true">
+		<xsd:sequence>
+		</xsd:sequence>
+	</xsd:complexType>
+	
+	<xsd:complexType name="PieLinearFill">
+		<xsd:complexContent>
+			<xsd:extension base="PieFill">
+				<xsd:sequence>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
+	<xsd:complexType name="PieRadialFill">
+		<xsd:complexContent>
+			<xsd:extension base="PieFill">
+				<xsd:sequence>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	
 	<xsd:complexType name="PieEffect" abstract="true">
 		<xsd:sequence>
 		</xsd:sequence>
@@ -602,8 +627,76 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	
+	<xsd:complexType name="PieCubicEffect">
+		<xsd:complexContent>
+			<xsd:extension base="PieLinearEffect">
+				<xsd:sequence>
+					<xsd:element name="cubic-key" minOccurs="0">
+					    <xsd:complexType>
+					        <xsd:sequence>
+								<xsd:element name="start-angle-delta" >
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:int">
+											<xsd:minInclusive value="20" />
+											<xsd:maxInclusive value="150" />
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="end-angle-delta" >
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:int">
+											<xsd:minInclusive value="20" />
+											<xsd:maxInclusive value="150" />
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="start-radius-fraction" >
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:float">
+											<xsd:minInclusive value="0" />
+											<xsd:maxInclusive value="1" />
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+								<xsd:element name="end-radius-fraction" >
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:float">
+											<xsd:minInclusive value="0" />
+											<xsd:maxInclusive value="1" />
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:element>
+							</xsd:sequence>
+					    </xsd:complexType>
+					</xsd:element>						
+					<xsd:element name="frame" minOccurs="0" default="Wave1">
+						<xsd:simpleType>
+							<xsd:restriction base="xsd:string">
+								<xsd:enumeration value="Wave1" />
+								<xsd:enumeration value="Wave2" />
+								<xsd:enumeration value="Wave3" />
+								<xsd:enumeration value="Wave4" />
+								<xsd:enumeration value="Wave5" />
+								<xsd:enumeration value="Wave6" />
+								<xsd:enumeration value="Moon1" />
+								<xsd:enumeration value="Moon2" />
+								<xsd:enumeration value="Moon3" />
+								<xsd:enumeration value="Moon4" />
+								<xsd:enumeration value="Round1" />
+								<xsd:enumeration value="Round2" />
+								<xsd:enumeration value="Round3" />
+								<xsd:enumeration value="Round4" />
+							</xsd:restriction>
+						</xsd:simpleType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
 
 
+	
 	<xsd:complexType name="PieRadialEffect">
 		<xsd:complexContent>
 			<xsd:extension base="PieEffect">
@@ -866,8 +959,7 @@
 			<xsd:element name="x" type="xsd:double" default="0" />
 			<xsd:element name="y" type="xsd:double" default="0" />
 			<xsd:element name="radius" type="xsd:double" default="90" />
-			<xsd:element name="start-angle" type="xsd:double"
-				default="0" />
+			<xsd:element name="start-angle" type="xsd:double" default="0" />				
 			<xsd:element name="nature" default="User">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
@@ -876,9 +968,10 @@
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
+			<xsd:element name="fill" type="PieFill" minOccurs="0" />
 			<xsd:element name="effect" type="PieEffect" minOccurs="0" />
-			<xsd:element name="slice" type="PieSlice" minOccurs="1"
-				maxOccurs="unbounded" />
+			<xsd:element name="slice" type="PieSlice" minOccurs="1" maxOccurs="unbounded" />
+				
 		</xsd:sequence>
 	</xsd:complexType>
 

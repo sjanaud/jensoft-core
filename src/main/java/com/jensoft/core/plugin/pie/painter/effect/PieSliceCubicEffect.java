@@ -106,15 +106,15 @@ public class PieSliceCubicEffect extends AbstractPieSliceEffect {
     }
 
     /**
-     * set frame for this effect
+     * set key for this effect
      * 
-     * @param frame
+     * @param key
      */
-    public void setFrame(CubicEffectKey frame) {
-        setStartAngleDelta(frame.getStartAngleDelta());
-        setStartControlFractionRadius(frame.getStartControlFractionRadius());
-        setEndAngleDelta(frame.getEndAngleDelta());
-        setEndControlFractionRadius(frame.getEndControlFractionRadius());
+    public void setCubicKey(CubicEffectKey key) {
+        setStartAngleDelta(key.getStartAngleDelta());
+        setStartControlFractionRadius(key.getStartControlFractionRadius());
+        setEndAngleDelta(key.getEndAngleDelta());
+        setEndControlFractionRadius(key.getEndControlFractionRadius());
     }
 
     /**

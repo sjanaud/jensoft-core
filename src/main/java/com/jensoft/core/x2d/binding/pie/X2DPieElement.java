@@ -144,6 +144,16 @@ public interface X2DPieElement {
 
 	/** pie 'slice border label' link marker fill element */
 	public final static String ELEMENT_PIE_LABEL_BORDER_LINK_MARKERFILL = "marker-fill";
+	
+	
+	/** pie fill root element */
+	public final static String ELEMENT_PIE_FILL = "fill";
+	
+	/** pie linear fill type */
+	public final static String ELEMENT_PIE_FILL_TYPE_LINEAR = "PieLinearFill";
+	
+	/** pie radial fill element */
+	public final static String ELEMENT_PIE_FILL_TYPE_RADIAL = "PieRadialFill";
 
 	/** pie effect root element */
 	public final static String ELEMENT_PIE_EFFECT = "effect";

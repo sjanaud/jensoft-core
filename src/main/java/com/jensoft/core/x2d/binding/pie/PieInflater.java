@@ -28,6 +28,9 @@ import com.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
+import com.jensoft.core.plugin.pie.painter.fill.AbstractPieFill;
+import com.jensoft.core.plugin.pie.painter.fill.PieDefaultFill;
+import com.jensoft.core.plugin.pie.painter.fill.PieRadialFill;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel.Style;
 import com.jensoft.core.plugin.pie.painter.label.PieBorderLabel;
@@ -81,10 +84,13 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
 			cubicEffect.setCubicKey(key);
 		}
 		String frameText = elementText(effectElement, ELEMENT_PIE_EFFECT_CUBIC_FRAME);
-		CubicEffectFrame frame = CubicEffectFrame.valueOf(frameText);
-		if(frame != null){
-			cubicEffect.setFrame(frame);
+		if(frameText != null){
+			CubicEffectFrame frame = CubicEffectFrame.valueOf(frameText);
+			if(frame != null){
+				cubicEffect.setFrame(frame);
+			}
 		}
+		
 		return cubicEffect;
 	}
 
@@ -155,6 +161,26 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
 		}
 
 		return reflectionEffect;
+	}
+	
+	/**
+	 * inflate pie fill {@link AbstractPieFill}
+	 * 
+	 * @param pieFillElement
+	 *            the pie fill element to inflate
+	 * @return effect
+	 */
+	private AbstractPieFill inflatePieFill(Element pieFillElement) {
+		if (pieFillElement == null || pieFillElement.getAttribute("xsi:type") == null) {
+			return new PieDefaultFill();
+		}				
+		if (getType(pieFillElement).equals(ELEMENT_PIE_FILL_TYPE_LINEAR)) {
+			return new PieDefaultFill();
+		}
+		else if (getType(pieFillElement).equals(ELEMENT_PIE_FILL_TYPE_RADIAL)) {
+			return new PieRadialFill();
+		}
+		return new PieDefaultFill();
 	}
 
 	/**
@@ -449,6 +475,10 @@ public class PieInflater extends AbstractX2DPluginInflater<PiePlugin> implements
 			PieSlice pieSlice = inflatePieSlice(pieSliceElement);
 			pie.addSlice(pieSlice);
 		}
+		
+		Element fillElement = (Element) pieElement.getElementsByTagName(ELEMENT_PIE_FILL).item(0);
+		AbstractPieFill fill = inflatePieFill(fillElement);
+		pie.setPieFill(fill);
 
 		Element effectElement = (Element) pieElement.getElementsByTagName(ELEMENT_PIE_EFFECT).item(0);
 		AbstractPieEffect effect = inflatePieEffect(effectElement);

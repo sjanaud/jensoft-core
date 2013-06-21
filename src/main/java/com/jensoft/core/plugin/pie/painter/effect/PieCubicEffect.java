@@ -12,7 +12,7 @@ import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.PieSlice;
 
 /**
- * <code>PieCubicEffect</code> defines a rounded-cubic effect
+ * <code>PieCubicEffect</code> defines a pie cubic effect
  * 
  * @author Sebastien Janaud
  */
@@ -24,26 +24,10 @@ public class PieCubicEffect extends AbstractPieEffect {
 	/** end color */
 	private Color endColor;
 
-	/** start angle delta to add on the incidence */
-	private int startAngleDelta = 45;
-
-	/** start angle delta to subtract on the incidence */
-	private int endAngleDelta = 90;
-
-	/**
-	 * applied fraction on base radius to obtain the virtual radius for start
-	 * control
-	 */
-	private float startControlFractionRadius = 0.5f;
-
-	/**
-	 * applied fraction on base radius to obtain the virtual radius for end
-	 * control
-	 */
-	private float endControlFractionRadius = 0.5f;
+	
 
 	/** incidence angle degree */
-	private int incidenceAngleDegree = 90;
+	private int incidenceAngleDegree = 300;
 
 	/** offset radius */
 	private int offsetRadius = 4;
@@ -51,7 +35,9 @@ public class PieCubicEffect extends AbstractPieEffect {
 	/** section effect */
 	private PieSliceCubicEffect sectionEffect;
 
-	private CubicEffectKey frame;
+	private CubicEffectKey key;
+	
+	private CubicEffectFrame frame;
 
 	/** reload flag */
 	private boolean reload = false;
@@ -134,82 +120,8 @@ public class PieCubicEffect extends AbstractPieEffect {
 		setReload(true);
 	}
 
-	/**
-	 * @return the startAngleDelta
-	 */
-	public int getStartAngleDelta() {
-		return startAngleDelta;
-	}
+	
 
-	/**
-	 * @param startAngleDelta
-	 *            the startAngleDelta to set
-	 */
-	public void setStartAngleDelta(int startAngleDelta) {
-		if (startAngleDelta < -60 || startAngleDelta > 150) {
-			throw new IllegalArgumentException("startAngleDelta out of range [-100,100]");
-		}
-		this.startAngleDelta = startAngleDelta;
-		setReload(true);
-	}
-
-	/**
-	 * @return the endAngleDelta
-	 */
-	public int getEndAngleDelta() {
-		return endAngleDelta;
-	}
-
-	/**
-	 * @param endAngleDelta
-	 *            the endAngleDelta to set
-	 */
-	public void setEndAngleDelta(int endAngleDelta) {
-		if (endAngleDelta < -100 || endAngleDelta > 150) {
-			throw new IllegalArgumentException("endAngleDelta out of range [-100,100]");
-		}
-		this.endAngleDelta = endAngleDelta;
-		setReload(true);
-	}
-
-	/**
-	 * @return the startControlFractionRadius
-	 */
-	public float getStartControlFractionRadius() {
-		return startControlFractionRadius;
-	}
-
-	/**
-	 * @param startControlFractionRadius
-	 *            the startControlFractionRadius to set
-	 */
-	public void setStartControlFractionRadius(float startControlFractionRadius) {
-		if (startControlFractionRadius < 0 || startControlFractionRadius > 1) {
-			throw new IllegalArgumentException("startControlFractionRadius out of range [0,1]");
-		}
-
-		this.startControlFractionRadius = startControlFractionRadius;
-		setReload(true);
-	}
-
-	/**
-	 * @return the endControlFractionRadius
-	 */
-	public float getEndControlFractionRadius() {
-		return endControlFractionRadius;
-	}
-
-	/**
-	 * @param endControlFractionRadius
-	 *            the endControlFractionRadius to set
-	 */
-	public void setEndControlFractionRadius(float endControlFractionRadius) {
-		if (endControlFractionRadius < 0 || endControlFractionRadius > 1) {
-			throw new IllegalArgumentException("endControlFractionRadius out of range [0,1]");
-		}
-		this.endControlFractionRadius = endControlFractionRadius;
-		setReload(true);
-	}
 
 	/**
 	 * @return the startColor
@@ -260,18 +172,35 @@ public class PieCubicEffect extends AbstractPieEffect {
 	}
 
 	/**
+	 * @return the key
+	 */
+	public CubicEffectKey getCubicKey() {
+		return key;
+	}
+
+	/**
+	 * @param key
+	 *            the key to set
+	 */
+	public void setCubicKey(CubicEffectKey key) {
+		this.key = key;
+	}
+	
+	
+
+	/**
 	 * @return the frame
 	 */
-	public CubicEffectKey getFrame() {
+	public CubicEffectFrame getFrame() {
 		return frame;
 	}
 
 	/**
-	 * @param frame
-	 *            the frame to set
+	 * @param frame the frame to set
 	 */
-	public void setFrame(CubicEffectKey frame) {
+	public void setFrame(CubicEffectFrame frame) {
 		this.frame = frame;
+		setCubicKey(frame.getKeyFrame());
 	}
 
 	/*
@@ -288,14 +217,9 @@ public class PieCubicEffect extends AbstractPieEffect {
 			sectionEffect = new PieSliceCubicEffect(startColor, endColor, incidenceAngleDegree);
 			sectionEffect.setOffsetRadius(offsetRadius);
 
-			sectionEffect.setEndAngleDelta(endAngleDelta);
-			sectionEffect.setStartAngleDelta(startAngleDelta);
 
-			sectionEffect.setStartControlFractionRadius(startControlFractionRadius);
-			sectionEffect.setEndControlFractionRadius(endControlFractionRadius);
-
-			if (frame != null) {
-				sectionEffect.setFrame(frame);
+			if (key != null) {
+				sectionEffect.setCubicKey(key);
 			}
 		}
 
