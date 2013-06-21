@@ -109,7 +109,7 @@ public class PieDeflate3 extends View2D {
 		linearFX.setOffsetRadius(5);
 
 		PieCubicEffect cubicFX = new PieCubicEffect();
-		cubicFX.setFrame(CubicEffectFrame.Round4.getKeyFrame());
+		cubicFX.setCubicKey(CubicEffectFrame.Round4.getKeyFrame());
 		pie.setPieEffect(cubicFX);
 
 		PieReflectionEffect reflectionFX = new PieReflectionEffect();
