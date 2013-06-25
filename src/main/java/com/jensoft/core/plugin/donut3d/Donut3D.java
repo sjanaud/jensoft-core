@@ -1364,13 +1364,10 @@ public class Donut3D {
         	 if (!in(lastFragment, paintOrderFragments)){
         		 paintOrderFragments.add(lastFragment);
         	 }else{
-        		 System.out.println("last fragment already use :"+lastFragment.getName()+" "+ lastFragment.getStartAngleDegree()+"-->"+lastFragment.getEndAngleDegree());
+        		 //System.out.println("last fragment already use :"+lastFragment.getName()+" "+ lastFragment.getStartAngleDegree()+"-->"+lastFragment.getEndAngleDegree());
         	 }
 		}
-         
-        
-         
-         System.out.println("paint order by fragments "+paintOrderFragments);
+         //System.out.println("paint order by fragments "+paintOrderFragments);
          return paintOrderFragments;
     }
 
