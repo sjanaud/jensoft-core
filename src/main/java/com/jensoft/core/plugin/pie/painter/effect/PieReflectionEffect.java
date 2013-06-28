@@ -181,10 +181,11 @@ public class PieReflectionEffect extends AbstractPieEffect {
             Area a = pie.getPieArea();
             Rectangle rect = a.getBounds();
 
-            g2d.drawImage(reflection, (int) rect.getX(),
-                          (int) (rect.getY() + rect.getHeight()), null);
+            g2d.drawImage(reflection, (int) rect.getX(), (int) (rect.getY() + rect.getHeight()), null);
+                         
         }
         catch (Throwable e) {
+        	e.printStackTrace();
         }
 
     }
