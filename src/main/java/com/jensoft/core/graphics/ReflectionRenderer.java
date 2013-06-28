@@ -92,26 +92,7 @@ import java.beans.PropertyChangeSupport;
  */
 public class ReflectionRenderer {
 
-    /**
-     * <p>
-     * Identifies a change to the opacity used to render the reflection.
-     * </p>
-     */
-    public static final String OPACITY_CHANGED_PROPERTY = "reflection_opacity";
-
-    /**
-     * <p>
-     * Identifies a change to the length of the rendered reflection.
-     * </p>
-     */
-    public static final String LENGTH_CHANGED_PROPERTY = "reflection_length";
-
-    /**
-     * <p>
-     * Identifies a change to the blurring of the rendered reflection.
-     * </p>
-     */
-    public static final String BLUR_ENABLED_CHANGED_PROPERTY = "reflection_blur";
+ 
 
     // opacity of the reflection
     private float opacity;
@@ -122,8 +103,7 @@ public class ReflectionRenderer {
     // should the reflection be blurred?
     private boolean blurEnabled;
 
-    // notifies listeners of properties changes
-    private PropertyChangeSupport changeSupport;
+    
     private StackBlurFilter stackBlurFilter;
 
     /**
@@ -196,8 +176,8 @@ public class ReflectionRenderer {
      *            if true, the reflection is blurred
      */
     public ReflectionRenderer(float opacity, float length, boolean blurEnabled) {
-        // noinspection ThisEscapedInObjectConstruction
-        changeSupport = new PropertyChangeSupport(this);
+        
+        
         stackBlurFilter = new StackBlurFilter(1);
 
         setOpacity(opacity);
@@ -205,35 +185,7 @@ public class ReflectionRenderer {
         setBlurEnabled(blurEnabled);
     }
 
-    /**
-     * <p>
-     * Add a PropertyChangeListener to the listener list. The listener is registered for all properties. The same
-     * listener object may be added more than once, and will be called as many times as it is added. If
-     * <code>listener</code> is null, no exception is thrown and no action is taken.
-     * </p>
-     * 
-     * @param listener
-     *            the PropertyChangeListener to be added
-     */
-    public void addPropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.addPropertyChangeListener(listener);
-    }
-
-    /**
-     * <p>
-     * Remove a PropertyChangeListener from the listener list. This removes a PropertyChangeListener that was registered
-     * for all properties. If <code>listener</code> was added more than once to the same event source, it will be
-     * notified one less time after being removed. If <code>listener</code> is null, or was never added, no exception is
-     * thrown and no action is taken.
-     * </p>
-     * 
-     * @param listener
-     *            the PropertyChangeListener to be removed
-     */
-    public void removePropertyChangeListener(PropertyChangeListener listener) {
-        changeSupport.removePropertyChangeListener(listener);
-    }
-
+    
     /**
      * <p>
      * Gets the opacity used by the factory to generate reflections.
@@ -270,20 +222,13 @@ public class ReflectionRenderer {
      * @see #appendReflection(java.awt.image.BufferedImage)
      */
     public void setOpacity(float opacity) {
-        float oldOpacity = this.opacity;
-
         if (opacity < 0.0f) {
             opacity = 0.0f;
         }
         else if (opacity > 1.0f) {
             opacity = 1.0f;
         }
-
-        if (oldOpacity != opacity) {
-            this.opacity = opacity;
-            changeSupport.firePropertyChange(OPACITY_CHANGED_PROPERTY,
-                                             oldOpacity, this.opacity);
-        }
+        this.opacity = opacity;
     }
 
     /**
@@ -322,20 +267,14 @@ public class ReflectionRenderer {
      * @see #appendReflection(java.awt.image.BufferedImage)
      */
     public void setLength(float length) {
-        float oldLength = this.length;
-
         if (length < 0.0f) {
             length = 0.0f;
         }
         else if (length > 1.0f) {
             length = 1.0f;
         }
-
-        if (oldLength != length) {
-            this.length = length;
-            changeSupport.firePropertyChange(LENGTH_CHANGED_PROPERTY,
-                                             oldLength, this.length);
-        }
+        this.length = length;
+       
     }
 
     /**
@@ -372,13 +311,7 @@ public class ReflectionRenderer {
      * @see #appendReflection(java.awt.image.BufferedImage)
      */
     public void setBlurEnabled(boolean blurEnabled) {
-        if (blurEnabled != this.blurEnabled) {
-            boolean oldBlur = this.blurEnabled;
-            this.blurEnabled = blurEnabled;
-
-            changeSupport.firePropertyChange(BLUR_ENABLED_CHANGED_PROPERTY,
-                                             oldBlur, this.blurEnabled);
-        }
+    	 this.blurEnabled = blurEnabled;
     }
 
     /**
