@@ -443,9 +443,7 @@ public class ReflectionRenderer {
                 : 0;
         int height = (int) (image.getHeight() * length);
 
-        BufferedImage buffer = GraphicsUtilities
-                .createCompatibleTranslucentImage(image.getWidth() + blurOffset
-                        * 2, height + blurOffset * 2);
+        BufferedImage buffer = new BufferedImage(image.getWidth() + blurOffset * 2, height + blurOffset * 2, BufferedImage.TYPE_INT_ARGB);//GraphicsUtilities.createCompatibleTranslucentImage(image.getWidth() + blurOffset * 2, height + blurOffset * 2);
         Graphics2D g2 = buffer.createGraphics();
 
         g2.translate(0, image.getHeight());
