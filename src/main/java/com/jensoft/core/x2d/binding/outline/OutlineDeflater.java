@@ -27,8 +27,10 @@ public class OutlineDeflater extends AbstractX2DPluginDeflater<OutlinePlugin> im
 	@Override
 	public Element deflate(OutlinePlugin plugin) {
 		Element pluginElement = createPluginRootElement();
-		Element outlineColorElement = createColorElement(getX2dDocument(), ELEMENT_OUTLINE_COLOR, getPlugin().getThemeColor());
-		pluginElement.appendChild(outlineColorElement);
+		if(getPlugin().getThemeColor() != null){
+			Element outlineColorElement = createColorElement(getX2dDocument(), ELEMENT_OUTLINE_COLOR, getPlugin().getThemeColor());
+			pluginElement.appendChild(outlineColorElement);
+		}
 		return pluginElement;
 	}
 
