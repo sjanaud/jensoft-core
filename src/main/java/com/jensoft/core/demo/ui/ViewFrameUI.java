@@ -116,7 +116,7 @@ public class ViewFrameUI extends JFrame {
 		X2D x2d = new X2D();
 		try {
 			x2d.registerView(view);
-		} catch (X2DException e) {
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 		x2dSourcePane.loadX2DSource(x2d);

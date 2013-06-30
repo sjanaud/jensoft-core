@@ -26,7 +26,7 @@ public class ControlPanel extends JComponent {
 
 	private ClipboardService clipboardService;
 
-	private Clipboard clipboardSystem;
+	//private Clipboard clipboardSystem;
 
 	public ControlPanel(final JTextPane textPane) {
 		setLayout(new BoxLayout(this, BoxLayout.X_AXIS));
@@ -36,15 +36,15 @@ public class ControlPanel extends JComponent {
 		} catch (UnavailableServiceException e) {
 		}
 
-		if(clipboardService == null){
-			try {
-				clipboardSystem = Toolkit.getDefaultToolkit().getSystemClipboard();
-			} catch (HeadlessException ex) {
-			} catch (AWTError err) {
-			}
-		}
+//		if(clipboardService == null){
+//			try {
+//				clipboardSystem = Toolkit.getDefaultToolkit().getSystemClipboard();
+//			} catch (HeadlessException ex) {
+//			} catch (AWTError err) {
+//			}
+//		}
 
-		if(clipboardService != null || clipboardSystem != null){
+		if(clipboardService != null){
 			JButton copy = new JButton("copy");
 			copy.addActionListener(new ActionListener() {
 	
@@ -58,10 +58,7 @@ public class ControlPanel extends JComponent {
 							System.out.println("copy to service clipboard");
 							clipboardService.setContents(data);
 						}
-						else if(clipboardSystem != null){
-							System.out.println("copy to system clipboard");
-							clipboardSystem.setContents(data, null);
-						}
+						
 					} catch (Exception e1) {
 					}
 	

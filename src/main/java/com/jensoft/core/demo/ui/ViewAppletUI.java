@@ -65,7 +65,8 @@ public abstract class ViewAppletUI extends JApplet {
 				}
 			});
 		} catch (Exception e) {
-			System.err.println("Applet UI didn't successfully complete");
+			e.printStackTrace();
+			System.err.println("Applet UI didn't successfully complete : "+e.getMessage());
 		}
 	}
 
