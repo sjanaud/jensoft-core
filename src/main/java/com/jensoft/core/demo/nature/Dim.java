@@ -11,8 +11,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jensoft.core.view.background.NoBackground;
-
 /**
  * <code>JenSoftView</code>
  * 
@@ -21,8 +19,10 @@ import com.jensoft.core.view.background.NoBackground;
 @Documented
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface JenSoftView {	
-	Dim dimension() default @Dim(width=600,height=400);
-	Class background() default NoBackground.class;
+public @interface Dim {
+	
+	int width();
+	int height();
+	
 	
 }
