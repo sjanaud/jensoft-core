@@ -50,6 +50,7 @@ public abstract class ViewAppletUI extends JApplet {
 	private String inset;
 	private String drawOutline;
 	private String cornerRadius;
+	
 
 	/**
 	 * in Applet UI
@@ -90,7 +91,7 @@ public abstract class ViewAppletUI extends JApplet {
 		getContentPane().setLayout(new BorderLayout());
 
 		JPanel masterPane = new JPanel();
-		masterPane.setBackground(Color.BLACK);
+		masterPane.setBackground(Color.WHITE);
 
 		masterPane.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 		masterPane.setLayout(new BorderLayout());

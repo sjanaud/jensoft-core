@@ -345,6 +345,7 @@ public class ZoomWheelPlugin extends AbstractPlugin implements
             for (int i = 0; i < count; i++) {
                 zoomIn();
                 fireZoomIn();
+                mwe.consume();
             }
 
         }
@@ -354,6 +355,7 @@ public class ZoomWheelPlugin extends AbstractPlugin implements
             for (int i = 0; i < count; i++) {
                 zoomOut();
                 fireZoomOut();
+                mwe.consume();
             }
         }
 
