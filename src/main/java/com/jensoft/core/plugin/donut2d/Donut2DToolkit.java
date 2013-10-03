@@ -50,7 +50,7 @@ public class Donut2DToolkit extends Toolkit {
             double innerRadius, double outerRadius) {
         Donut2D donut2D = new Donut2D();
         donut2D.setName(name);
-        donut2D.setNature(Donut2DNature.Donut2DUser);
+        donut2D.setNature(Donut2DNature.User);
         donut2D.setCenterX(centerX);
         donut2D.setCenterY(centerY);
         donut2D.setInnerRadius(innerRadius);
@@ -70,7 +70,7 @@ public class Donut2DToolkit extends Toolkit {
     public static Donut2D createDonut2D(String name, double innerRadius, double outerRadius) {
         Donut2D donut2D = new Donut2D();
         donut2D.setName(name);
-        donut2D.setNature(Donut2DNature.Donut2DUser);
+        donut2D.setNature(Donut2DNature.User);
         donut2D.setCenterX(0);
         donut2D.setCenterY(0);
         donut2D.setInnerRadius(innerRadius);

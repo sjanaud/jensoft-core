@@ -246,11 +246,11 @@ public class Donut2DSliceLinearEffect extends AbstractDonut2DSliceEffect {
         }
 
         Point2D c = null;
-        if (donut2D.getNature() == Donut2DNature.Donut2DUser) {
+        if (donut2D.getNature() == Donut2DNature.User) {
             c = donut2D.getHostPlugin().getWindow2D()
                     .userToPixel(new Point2D.Double(centerX, centerY));
         }
-        if (donut2D.getNature() == Donut2DNature.Donut2DDevice) {
+        if (donut2D.getNature() == Donut2DNature.Device) {
             c = new Point2D.Double(centerX, centerY);
         }
 
