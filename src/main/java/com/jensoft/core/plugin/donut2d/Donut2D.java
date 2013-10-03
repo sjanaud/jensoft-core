@@ -38,7 +38,7 @@ public class Donut2D {
     private String name;
 
     /** donut2D nature */
-    private Donut2DNature nature = Donut2DNature.Donut2DDevice;
+    private Donut2DNature nature = Donut2DNature.Device;
 
     /** donut2D center x */
     private double centerX;
@@ -90,12 +90,12 @@ public class Donut2D {
         /**
          * defines coordinate system in user space, base on window2D projection
          */
-        Donut2DUser("user"),
+        User("user"),
 
         /**
          * defines coordinate system in device space, base on pixel component
          */
-        Donut2DDevice("device");
+        Device("device");
 
         /** nature is the projection system */
         private String nature;
@@ -127,13 +127,13 @@ public class Donut2D {
          * @return donut3D nature
          */
         public static Donut2DNature parseNature(String nature) {
-            if (Donut2DDevice.getNature().equals(nature)) {
-                return Donut2DDevice;
+            if (Device.getNature().equals(nature)) {
+                return Device;
             }
-            if (Donut2DUser.getNature().equals(nature)) {
-                return Donut2DUser;
+            if (User.getNature().equals(nature)) {
+                return User;
             }
-            return Donut2DDevice;
+            return Device;
         }
     }
 
@@ -505,7 +505,7 @@ public class Donut2D {
      * compute buildCenterX and buildCenterY with given projection nature
      */
     private void projection() {
-        if (getNature() == Donut2DNature.Donut2DUser) {
+        if (getNature() == Donut2DNature.User) {
             Point2D center = getCenter();
             Point2D projectedCenter = getHostPlugin().getWindow2D().userToPixel(
                                                                                 center);

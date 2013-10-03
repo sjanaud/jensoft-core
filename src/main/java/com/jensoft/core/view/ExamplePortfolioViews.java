@@ -1696,7 +1696,7 @@ public class ExamplePortfolioViews {
 		w2d.registerPlugin(donut2DPlugin);
 
 		Donut2D donut1 = new Donut2D();
-		donut1.setNature(Donut2DNature.Donut2DUser);
+		donut1.setNature(Donut2DNature.User);
 		donut1.setCenterX(0);
 		donut1.setCenterY(0);
 		donut1.setInnerRadius(40);
@@ -1722,7 +1722,7 @@ public class ExamplePortfolioViews {
 		donut2DPlugin.addDonut(donut1);
 
 		Donut2D donut2 = new Donut2D();
-		donut2.setNature(Donut2DNature.Donut2DUser);
+		donut2.setNature(Donut2DNature.User);
 		donut2.setCenterX(0);
 		donut2.setCenterY(0);
 		donut2.setInnerRadius(40);
@@ -1744,7 +1744,7 @@ public class ExamplePortfolioViews {
 		donut2.addSlice(s6);
 
 		Donut2D donut3 = new Donut2D();
-		donut3.setNature(Donut2DNature.Donut2DUser);
+		donut3.setNature(Donut2DNature.User);
 		donut3.setCenterX(1);
 		donut3.setCenterY(0);
 		donut3.setInnerRadius(40);
