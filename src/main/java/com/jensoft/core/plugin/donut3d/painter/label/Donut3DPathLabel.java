@@ -360,6 +360,17 @@ public class Donut3DPathLabel extends AbstractDonut3DSliceLabel {
             colors = shader.getColors();
         }
     }
+    
+    /**
+     * get new shader from {@link Donut3DPathLabel#fractions} and {@link Donut3DPathLabel#colors}
+     * @return new shader from reference
+     */
+    public Shader getTextShader(){
+    	if(fractions != null && colors != null){
+    		return new Shader(fractions, colors);
+    	}
+    	return null;
+    }
 
    
     /* (non-Javadoc)

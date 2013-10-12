@@ -54,7 +54,12 @@ public class X2DSourcePane extends JComponent {
 		SourceScrollPane scroll = new SourceScrollPane(sourceTextPane);
 		scroll.setWheelScrollingEnabled(true);
 
-		add(new ControlPanel(sourceTextPane), BorderLayout.NORTH);
+		try {
+			add(new ControlPanel(sourceTextPane), BorderLayout.NORTH);
+		} catch (Error e) {
+			// java.lang.NoClassDefFoundError: javax/jnlp/UnavailableServiceException
+		}
+		
 
 		add(scroll, BorderLayout.CENTER);
 	}

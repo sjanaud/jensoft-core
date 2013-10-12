@@ -1,5 +1,5 @@
 /**
- * Provides pie inflater/deflater
+ * Provides X2D Pie inflater/deflater
  * 
  * @author sebastien janaud
  * @since 1.0

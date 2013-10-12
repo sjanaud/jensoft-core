@@ -216,7 +216,7 @@ public class Donut3DInflater extends AbstractX2DPluginInflater<Donut3DPlugin> im
      *            the label element to parse
      * @return the slice label
      */
-    private Donut3DRadialLabel inflateDonut3DSliceRadialLabel(Element labelElement) {
+	private Donut3DRadialLabel inflateDonut3DSliceRadialLabel(Element labelElement) {
 
         Donut3DRadialLabel sliceLabel = new Donut3DRadialLabel();
         inflateDonut3DSliceLabel(sliceLabel, labelElement);
