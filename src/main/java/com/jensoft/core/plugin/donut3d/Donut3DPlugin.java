@@ -50,7 +50,14 @@ public class Donut3DPlugin extends AbstractPlugin implements
     /** donut 3D registry */
     private List<Donut3D> donuts3D = new ArrayList<Donut3D>();
 
-    /** listeners */
+    /**
+	 * @return the donuts3D
+	 */
+	public List<Donut3D> getDonuts3D() {
+		return donuts3D;
+	}
+
+	/** listeners */
     private EventListenerList donut3DListenerList;
 
     /**

@@ -6,6 +6,14 @@
 package com.jensoft.core.x2d.binding.donut2d;
 
 import com.jensoft.core.plugin.donut2d.Donut2D;
+import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DCompoundEffect;
+import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DLinearEffect;
+import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DReflectionEffect;
+import com.jensoft.core.plugin.donut2d.painter.fill.Donut2DDefaultFill;
+import com.jensoft.core.plugin.donut2d.painter.fill.Donut2DRadialFill;
+import com.jensoft.core.plugin.donut2d.painter.label.Donut2DBorderLabel;
+import com.jensoft.core.plugin.donut2d.painter.label.Donut2DPathLabel;
+import com.jensoft.core.plugin.donut2d.painter.label.Donut2DRadialLabel;
 
 /**
  * <code>X2DDonut2DElement</code> defines {@link Donut2D} related elements names that should be used in any XML x2d view
@@ -18,6 +26,9 @@ public interface X2DDonut2DElement {
 
     /** donut2D root element */
     public static String ELEMENT_DONUT2D = "donut2d";
+    
+    /** donut2D center x element */
+    public static String ELEMENT_DONUT2D_NAME = "name";
 
     /** donut2D center x element */
     public static String ELEMENT_DONUT2D_X = "x";
@@ -81,6 +92,18 @@ public interface X2DDonut2DElement {
 
     /** donut2D slice label fill color element */
     public static String ELEMENT_DONUT2D_LABEL_FILL_COLOR = "fill-color";
+    
+    
+    /** donut2D path label type */
+    public static String ELEMENT_DONUT2D_LABEL_TYPE_PATH = Donut2DPathLabel.class.getSimpleName();
+    
+    /** donut2D path label type */
+    public static String ELEMENT_DONUT2D_LABEL_TYPE_BORDER = Donut2DBorderLabel.class.getSimpleName();
+    
+    /** donut2D path label type */
+    public static String ELEMENT_DONUT2D_LABEL_TYPE_RADIAL = Donut2DRadialLabel.class.getSimpleName();
+    
+    
 
     /** donut2D slice label shader element */
     public static String ELEMENT_DONUT2D_LABEL_SHADER = "shader";
@@ -89,7 +112,7 @@ public interface X2DDonut2DElement {
     public static String ELEMENT_DONUT2D_LABEL_STYLE = "style";
 
     /** donut2D slice 'label path' divergence element */
-    public static String ELEMENT_DONUT2D_LABEL_TEXT_DIVERGENCE = "text-divergence";
+    public static String ELEMENT_DONUT2D_LABEL_PATH_TEXT_DIVERGENCE = "text-divergence";
 
     /** donut2D slice 'label path' text position element */
     public static String ELEMENT_DONUT2D_LABEL_PATH_TEXT_POSITION = "text-position";
@@ -135,6 +158,17 @@ public interface X2DDonut2DElement {
 
     /** donut2D effect root element */
     public static String ELEMENT_DONUT2D_EFFECT = "effect";
+    
+    
+    /** donut2D effect linear */
+    public static String ELEMENT_DONUT2D_EFFECT_TYPE_LINEAR = Donut2DLinearEffect.class.getSimpleName();
+    
+    /** donut2D effect compound */
+    public static String ELEMENT_DONUT2D_EFFECT_TYPE_COMPOUND = Donut2DCompoundEffect.class.getSimpleName();
+    
+    /** donut2D effect reflection */
+    public static String ELEMENT_DONUT2D_EFFECT_TYPE_REFLECTION = Donut2DReflectionEffect.class.getSimpleName();
+    
 
     /** donut2D 'effect linear' incidence element */
     public static String ELEMENT_DONUT2D_EFFECT_LINEAR_INCIDENCE = "incidence-angle";
@@ -162,6 +196,12 @@ public interface X2DDonut2DElement {
 
     /** donut2D fill root element */
     public static String ELEMENT_DONUT2D_FILL = "fill";
+    
+    /** donut2D fill default */
+    public static String ELEMENT_DONUT2D_FILL_TYPE_DEFAULT = Donut2DDefaultFill.class.getSimpleName();
+    
+    /** donut2D fill radial */
+    public static String ELEMENT_DONUT2D_FILL_TYPE_RADIAL = Donut2DRadialFill.class.getSimpleName();
 
     /** donut2D fill radial gradient type element */
     public static String ELEMENT_DONUT2D_FILL_RADIAL_GRADIENT_TYPE = "gradient-type";

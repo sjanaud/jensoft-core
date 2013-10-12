@@ -56,9 +56,10 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 
 	private Element deflatePie(Pie pie) {
 		Element pieElement = getX2dDocument().createElement(ELEMENT_PIE);
-		if (pie.getName() != null) {
-			pieElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_NAME, pie.getName()));
+		if (pie.getName() == null) {
+			pie.setName("pie");
 		}
+		pieElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_NAME, pie.getName()));
 		pieElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_X, pie.getCenterX()));
 		pieElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_Y, pie.getCenterY()));
 		pieElement.appendChild(DeflaterUtil.createSingleElement(getX2dDocument(), ELEMENT_PIE_RADIUS, pie.getRadius()));

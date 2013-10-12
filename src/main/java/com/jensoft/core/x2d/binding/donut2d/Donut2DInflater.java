@@ -340,7 +340,7 @@ public class Donut2DInflater extends AbstractX2DPluginInflater<Donut2DPlugin> im
         Donut2DPathLabel sliceLabel = new Donut2DPathLabel();
         inflateDonut2DSliceLabel(sliceLabel, labelElement);
 
-        String pathdivergence = elementText(labelElement, ELEMENT_DONUT2D_LABEL_TEXT_DIVERGENCE);
+        String pathdivergence = elementText(labelElement, ELEMENT_DONUT2D_LABEL_PATH_TEXT_DIVERGENCE);
         String textposition = elementText(labelElement, ELEMENT_DONUT2D_LABEL_PATH_TEXT_POSITION);
         String pathside = elementText(labelElement, ELEMENT_DONUT2D_LABEL_PATH_TEXT_SIDE);
         String pathname = elementText(labelElement, ELEMENT_DONUT2D_LABEL_PATH_SEGMENT_PATH);

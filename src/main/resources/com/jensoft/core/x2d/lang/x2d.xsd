@@ -946,7 +946,7 @@
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string" minOccurs="0" />
 			<xsd:element name="value" type="xsd:double" />
-			<xsd:element name="divergence" type="xsd:int" default="0" />
+			<xsd:element name="divergence" type="xsd:double" default="0" />
 			<xsd:element name="slice-color" type="Color" />
 			<xsd:element name="label" type="PieSliceLabel" minOccurs="0"
 				maxOccurs="3" />
@@ -1281,14 +1281,14 @@
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string" />
 			<xsd:element name="value" type="xsd:double" />
-			<xsd:element name="divergence" type="xsd:int" default="0" />
+			<xsd:element name="divergence" type="xsd:double" default="0" />
 			<xsd:element name="slice-color" type="Color" />
 			<xsd:element name="label" type="Donut2DSliceLabel"
 				minOccurs="0" maxOccurs="3" />
 		</xsd:sequence>
 	</xsd:complexType>
 
-	<!-- Defines Donut2D -->
+	
 	<xsd:complexType name="Donut2D">
 		<xsd:sequence>
 			<xsd:element name="name" type="xsd:string" default="donut2d" />
@@ -1300,11 +1300,11 @@
 				default="140" />
 			<xsd:element name="start-angle" type="xsd:double"
 				default="0" />
-			<xsd:element name="nature" default="user">
+			<xsd:element name="nature" default="User">
 				<xsd:simpleType>
 					<xsd:restriction base="xsd:string">
-						<xsd:enumeration value="user" />
-						<xsd:enumeration value="device" />
+						<xsd:enumeration value="User" />
+						<xsd:enumeration value="Device" />
 					</xsd:restriction>
 				</xsd:simpleType>
 			</xsd:element>
