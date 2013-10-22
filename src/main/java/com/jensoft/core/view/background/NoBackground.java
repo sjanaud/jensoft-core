@@ -10,7 +10,7 @@ public class NoBackground extends BackgroundPainter {
 	}
 
 	@Override
-	public void paintViewBackground(View2D view, Graphics2D g2d) {
+	public void paintViewBackground(View2D view,int viewWidth,int viewHeight, Graphics2D g2d) {
 	}
 
 }
