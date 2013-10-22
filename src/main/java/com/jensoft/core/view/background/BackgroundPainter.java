@@ -14,6 +14,6 @@ import com.jensoft.core.view.View2D;
  */
 public abstract class BackgroundPainter {
 
-    public abstract void paintViewBackground(View2D view, Graphics2D g2d);
+    public abstract void paintViewBackground(View2D view,int viewWidth,int viewHeight, Graphics2D g2d);
 
 }

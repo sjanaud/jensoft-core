@@ -61,7 +61,7 @@ public class TabBackgroundPainter extends BackgroundPainter {
     private Font f = new Font("tahoma", Font.PLAIN, 14);
 
     @Override
-    public void paintViewBackground(View2D view, Graphics2D g2d) {
+    public void paintViewBackground(View2D view,int viewWidth,int viewHeight, Graphics2D g2d) {
 
         g2d.setColor(pSQouche.getBackground());
         RenderingHints hints = new RenderingHints(

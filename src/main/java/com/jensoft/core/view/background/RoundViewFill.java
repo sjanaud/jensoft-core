@@ -208,7 +208,7 @@ public class RoundViewFill extends BackgroundPainter {
 	 * (com.jensoft.core.view.View2D, java.awt.Graphics2D)
 	 */
 	@Override
-	public final void paintViewBackground(View2D view, Graphics2D g2d) {
+	public final void paintViewBackground(View2D view,int viewWidth,int viewHeight, Graphics2D g2d) {
 
 		int width = view.getWidth();
 		int height = view.getHeight();

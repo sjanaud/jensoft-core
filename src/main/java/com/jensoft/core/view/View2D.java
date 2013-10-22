@@ -1072,7 +1072,7 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 			g2d.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
 			g2d.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
 			g2d.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-			backgroundPainter.paintViewBackground(this, g2d);
+			backgroundPainter.paintViewBackground(this,getWidth(),getHeight(), g2d);
 		}
 	}
 
@@ -1129,6 +1129,8 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 		if (width < 0 || height < 0) {
 			throw new IllegalArgumentException("view width and view height should be greater than zero");
 		}
+		
+		//Create new View ? clone plugin ?
 
 		// image view
 		BufferedImage viewImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
@@ -1218,7 +1220,7 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 		g2d.setRenderingHints(qualityHints);
 
 		if (backgroundPainter != null) {
-			backgroundPainter.paintViewBackground(this, g2d);
+			backgroundPainter.paintViewBackground(this,width,height, g2d);
 		}
 
 		if (northImage != null) {

@@ -82,12 +82,12 @@ public class ImageBackground extends BackgroundPainter {
      * @see com.jensoft.core.view.background.BackgroundPainter#paintViewBackground(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    public void paintViewBackground(View2D view, Graphics2D g2d) {
+    public void paintViewBackground(View2D view,int viewWidth,int viewHeight, Graphics2D g2d) {
         if (rescale) {
-            g2d.drawImage(backgroundImage, 0, 0, view.getWidth(), view.getHeight(), null);
+            g2d.drawImage(backgroundImage, 0, 0, viewWidth, viewHeight, null);
         }
         else {
-            g2d.drawImage(backgroundImage, view.getWidth() / 2 - backgroundImage.getWidth(null) / 2, view.getHeight()
+            g2d.drawImage(backgroundImage, viewWidth / 2 - backgroundImage.getWidth(null) / 2, viewHeight
                     / 2 - backgroundImage.getHeight(null) / 2, null);
         }
     }
