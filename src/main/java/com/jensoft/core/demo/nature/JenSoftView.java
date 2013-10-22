@@ -25,4 +25,5 @@ public @interface JenSoftView {
 	Dim dimension() default @Dim(width=600,height=400);
 	Class background() default NoBackground.class;
 	String description() default "";
+	boolean ignore() default false;
 }
