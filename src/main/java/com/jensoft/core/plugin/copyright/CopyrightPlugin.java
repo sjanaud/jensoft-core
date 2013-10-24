@@ -12,22 +12,23 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.InputFonts;
+import com.jensoft.core.palette.RosePalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 
-public class DemoCopyrightPlugin extends AbstractPlugin {
+public class CopyrightPlugin extends AbstractPlugin {
 
-    private Color textColor;
+    private Color textColor = RosePalette.INDIGO;
     private String copyright;
 
-    public DemoCopyrightPlugin(String copyright) {
+    public CopyrightPlugin() {
         setName(getClass().getSimpleName());
         setAntialiasing(Antialiasing.On);
         setTextAntialising(TextAntialiasing.On);
         setPriority(1000);
-        this.copyright = copyright;
-        textColor = ColorPalette.getRandomColor();
+        this.copyright = "JenSoft API "+"\u00a9"+" www.jensoftapi.com";
+        //textColor = ColorPalette.getRandomColor();
     }
 
     @Override
