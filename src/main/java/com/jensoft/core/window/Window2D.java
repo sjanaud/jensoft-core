@@ -21,6 +21,7 @@ import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginEvent;
 import com.jensoft.core.plugin.PluginListener;
+import com.jensoft.core.plugin.copyright.CopyrightPlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.view.View2DAdapter;
 import com.jensoft.core.view.View2DEvent;
@@ -1085,6 +1086,7 @@ public abstract class Window2D implements PluginListener {
      * methods below.
      */
     protected Window2D() {
+    	registerPlugin(new CopyrightPlugin());
     }
 
     /** device component */
