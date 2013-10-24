@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.copyright;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 
 import com.jensoft.core.graphics.Antialiasing;
@@ -27,8 +28,8 @@ public class CopyrightPlugin extends AbstractPlugin {
         setAntialiasing(Antialiasing.On);
         setTextAntialising(TextAntialiasing.On);
         setPriority(1000);
-        this.copyright = "JenSoft API "+"\u00a9"+" www.jensoftapi.com";
-        //textColor = ColorPalette.getRandomColor();
+        this.copyright = "\u00a9"+"JenSoftAPI"+" http://wwww.jensoftapi.com";
+        textColor = ColorPalette.getRandomColor();
     }
 
     @Override
@@ -37,9 +38,9 @@ public class CopyrightPlugin extends AbstractPlugin {
         if (windowPart != WindowPart.Device) {
             return;
         }
-
-        g2d.setFont(InputFonts.getNoMove(9));
         g2d.setColor(textColor);
+        //g2d.setFont(InputFonts.getNoMove(9));
+        g2d.setFont(new Font("console",Font.PLAIN,10));
         g2d.drawString(copyright, 10, 10);
 
     }
