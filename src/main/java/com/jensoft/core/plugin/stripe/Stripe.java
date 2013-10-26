@@ -19,7 +19,6 @@ import com.jensoft.core.plugin.stripe.painter.StripePalette;
  * 
  * <code>Stripe</code>
  * 
- * @see AbstractStripePlugin
  * @see StripePlugin
  * @see StripePalette
  * @see StripePaint

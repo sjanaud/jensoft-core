@@ -118,7 +118,7 @@ public class PieReflectionEffect extends AbstractPieEffect {
 
     /**
      * length [0,1]
-     * @param lenght
+     * @param length
      *            the length to set
      */
     public void setLength(float length) {

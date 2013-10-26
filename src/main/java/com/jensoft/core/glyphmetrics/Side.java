@@ -13,7 +13,6 @@ import com.jensoft.core.plugin.function.MetricsPathFunction;
  * metrics side, right or left side along the path
  * 
  * @see GlyphMetric
- * @see MetricsPath
  * @see AbstractMetricsPath
  * @see GeneralMetricsPath
  * @see MetricsPathFunction

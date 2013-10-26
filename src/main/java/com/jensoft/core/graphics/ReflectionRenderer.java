@@ -74,13 +74,6 @@ import java.awt.image.BufferedImage;
  * BufferedImage reflection = renderer.appendReflection(bufferedImage);
  * </pre>
  * 
- * </p>
- * <h2>Properties Changes</h2>
- * <p>
- * This renderer allows to register property change listeners with {@link #addPropertyChangeListener}. Listening to
- * properties changes is very useful when you emebed the renderer in a graphical component and give the API user the
- * ability to access the renderer. By listening to properties changes, you can easily repaint the component when needed.
- * </p>
  * <h2>Threading Issues</h2>
  * <p>
  * <code>ReflectionRenderer</code> is not guaranteed to be thread-safe.

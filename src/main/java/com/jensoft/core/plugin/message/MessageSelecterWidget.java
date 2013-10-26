@@ -77,12 +77,10 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
     /**
      * create X Translate
      * 
-     * @param id
      * @param width
      * @param height
      * @param xIndex
      * @param yIndex
-     * @param barWidgetOrientation
      */
     public MessageSelecterWidget(double width, double height, int xIndex, int yIndex) {
         super(widgetBarXObjectifID, width, height, xIndex, yIndex,

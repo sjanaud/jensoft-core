@@ -96,8 +96,6 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
 
     /**
      * create default Y Objectif widget
-     * 
-     * @param id
      */
     public ObjectifY() {
         super(widgetBarYObjectifID, defaultBarWidth, defaultBarHeight,
