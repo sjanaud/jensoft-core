@@ -47,7 +47,7 @@ public class Bezier extends AbstractPlot {
 	 * 
 	 * @param i
 	 * @param t
-	 * @return
+	 * @return eval the pojnt on the spline
 	 */
 	private Point2D p(int i, double t) {
 		double px = 0;

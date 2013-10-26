@@ -13,7 +13,6 @@ import com.jensoft.core.plugin.function.MetricsPathFunction;
  * metrics style are Tangent Radial Orthogonal or default
  * 
  * @see GlyphMetric
- * @see MetricsPath
  * @see AbstractMetricsPath
  * @see GeneralMetricsPath
  * @see MetricsPathFunction

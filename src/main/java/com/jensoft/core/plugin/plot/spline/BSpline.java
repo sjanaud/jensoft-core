@@ -44,7 +44,7 @@ public class BSpline extends AbstractPlot {
 	 * 
 	 * @param i
 	 * @param t
-	 * @return
+	 * @return eval point on the spline
 	 */
 	private Point2D p(int i, float t) {
 		float px = 0;

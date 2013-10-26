@@ -36,7 +36,7 @@ public class Cubic {
 	 * evaluate cubic
 	 * 
 	 * @param u
-	 * @return
+	 * @return eval
 	 */
 	public double eval(double u) {
 		return ((d * u + c) * u + b) * u + a;
