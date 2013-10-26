@@ -413,7 +413,7 @@ public class OSMRestBridgeEngine {
      * @param longEast
      * @param latitudeNorth
      * @param latitudeSouth
-     * @return
+     * @return stream
      */
      Stream streamBoundBox(double longitudeWest, double longEast,double latitudeNorth,double latitudeSouth) {
         Stream stream = new Stream();

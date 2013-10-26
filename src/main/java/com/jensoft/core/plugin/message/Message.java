@@ -910,7 +910,7 @@ public class Message extends JComponent {
         /**
          * get the text area of message
          * 
-         * @return
+         * @return text area message
          */
         public JTextArea getArea() {
             return textArea;

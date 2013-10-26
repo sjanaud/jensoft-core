@@ -21,7 +21,6 @@ import com.jensoft.core.view.View2D.DeviceBand;
  * BarSymbol is a simple bar <br>
  * 
  * @see SymbolPlugin
- * @see WindowBarSymbol2D
  * @see BarSymbolGroup
  * @see StackedBarSymbol
  * 

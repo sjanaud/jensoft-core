@@ -13,8 +13,6 @@ import java.lang.annotation.Target;
 
 /**
  * <code>Generated/code>
- * 
- * @see ViewDemo
  * @author Sebastien Janaud
  */
 @Documented

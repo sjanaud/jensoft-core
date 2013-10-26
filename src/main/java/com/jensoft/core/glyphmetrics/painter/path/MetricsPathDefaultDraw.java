@@ -37,7 +37,7 @@ public class MetricsPathDefaultDraw extends AbstractPathPainter {
     /**
      * create default path draw with specified color
      * 
-     * @param outlineColor
+     * @param pathDrawColor
      */
     public MetricsPathDefaultDraw(Color pathDrawColor) {
         this.pathDrawColor = pathDrawColor;
