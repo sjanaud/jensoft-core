@@ -24,28 +24,18 @@ import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSour
 import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSource;
 
 /**
- * <code>AreaFunction</code> defines an area function that can be added in
- * {@link AreaFunction}<br>
+ * <code>AreaFunction</code> defines an area function 
  * <br>
  * <center><img src="doc-files/simpleAreaCurve.png"/></center> <br>
  * <br>
  * <br>
  * <center><img src="doc-files/multipleAreaCurve.png"/></center> <br>
  * <br>
- * <p>
- * to add a new area curve into AreaCurvePlugin, Create {@link Area} and
- * add them to plugin with this method
- * {@link AreaFunction#addFunction(Area)}
- * </p>
- * <p>
- * AreaCurve use {@link SourceFunction} to define curve points.
- * </p>
  * 
  * @see SourceFunction
  * @see LineSource
  * @see SplineSource
  * @see RegressionSource
- * @see AreaFunctionToolkit
  * @see AreaFunction
  * @see AbstractAreaFill
  * @see AbstractAreaDraw

@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 /**
  * <code>AppletUI/code>
  * 
- * @see ViewDemo
+
  * 
  * @author Sebastien Janaud
  */

@@ -684,7 +684,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
      * @param durationHours
      * @param hoursIncrement
      * @param model
-     * @return
+     * @return time point metrics collection
      */
     protected List<TimePointMetrics> generateHoursPoint(Calendar ref, long durationHours, int hoursIncrement,
             TimeModel model) {

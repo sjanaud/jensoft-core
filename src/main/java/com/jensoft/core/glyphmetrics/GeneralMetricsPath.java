@@ -76,7 +76,6 @@ import java.util.List;
  * <center><img src="doc-files/general-metrics1.png"></center><br>
  * </p>
  * 
- * @see MetricsPath
  * @see AbstractMetricsPath
  * @see GlyphMetric
  * @see GlyphGeometry

@@ -26,7 +26,7 @@ public class Bezier extends AbstractPlot {
 	 * the basis function for a Bezier spline
 	 * @param i
 	 * @param t
-	 * @return
+	 * @return coefficient
 	 */
 	private double b(int i, double t) {
 		switch (i) {

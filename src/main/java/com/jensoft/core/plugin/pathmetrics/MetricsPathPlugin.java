@@ -34,7 +34,6 @@ import com.jensoft.core.window.WindowPart;
  * </p>
  * 
  * @see AbstractMetricsPath
- * @see MetricsPath
  * @see GlyphMetric
  */
 public class MetricsPathPlugin extends AbstractPlugin {

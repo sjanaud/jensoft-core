@@ -192,7 +192,7 @@ public class Donut3DDeflater extends AbstractX2DPluginDeflater<Donut3DPlugin> im
 	/**
 	 * deflate the given path label into XML Element
 	 * 
-	 * @param donut
+	 * @param label
 	 *            label
 	 * @return label element
 	 */

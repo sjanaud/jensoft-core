@@ -217,7 +217,7 @@ public abstract class AbstractPlot {
 	 * 
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return plot anchor
 	 */
 	public PlotAnchor getPlotAnchor(int x, int y) {
 		int mind = Integer.MAX_VALUE;
@@ -240,7 +240,7 @@ public abstract class AbstractPlot {
 	 * 
 	 * @param x
 	 * @param y
-	 * @return
+	 * @return selected plot anchor
 	 */
 	public PlotAnchor selectPlotAnchor(int x, int y) {
 		selectedAnchor = getPlotAnchor(x, y);
@@ -266,7 +266,6 @@ public abstract class AbstractPlot {
 	 * 
 	 * @param x
 	 * @param y
-	 * @return index of the control point
 	 */
 	public void addPoint(double x, double y) {
 		userPoints.add(new Point2D.Double(x, y));

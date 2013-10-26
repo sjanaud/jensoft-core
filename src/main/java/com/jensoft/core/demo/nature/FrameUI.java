@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 /**
  *<code>FrameUI/code>
  * 
- * @see ViewDemo
+
  * @author Sebastien Janaud
  */
 @Documented

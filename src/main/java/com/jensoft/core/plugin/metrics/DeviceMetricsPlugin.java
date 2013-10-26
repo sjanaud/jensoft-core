@@ -877,7 +877,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 
 		/**
 		 * <code>Y</code> manages {@link DeviceModeledMetrics} for
-		 * {@link DeviceAxis.AxisY}
+		 * {@link DeviceAxis#AxisY}
 		 */
 		public static class Y extends DeviceModeledMetrics {
 

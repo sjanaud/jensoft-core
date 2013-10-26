@@ -159,7 +159,7 @@ public class DeviceMenuManager {
      * get context entry for the specified group
      * 
      * @param group
-     * @return
+     * @return group context
      */
     private List<ContextEntry<?>> getGroup(String group) {
         List<ContextEntry<?>> agcList = actionRegistry.get(group);
