@@ -269,7 +269,7 @@ public class PluginPlatform {
     }
 
     /**
-     * return all {@link JenSoftAPIDemo} and inherits from {@link ViewDemo} classes for the given package
+     * return all {@link JenSoftAPIDemo} classes for the given package
      * 
      * @param packageName
      * @return scanned jensoft demo
