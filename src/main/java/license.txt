@@ -2,7 +2,7 @@ JenSoftAPI Dual Licensing
 -------------------------
 
 JenSoft API has a dual licensing model with open source license and commercial licenses. 
-Dual Licensing allows software companies to provide their products for either commercial*
+Dual Licensing allows software companies to provide their products for either commercial
 or Open Source development. Dual Licensing is based on the principle of Fair Exchange. 
 For using JenSoft API to develop applications, JenSoft requires its users to choose one 
 of the following options:
@@ -39,5 +39,20 @@ with the open-source AGPL license. The specific benefits of a commercial license
 		*prominent mention and inclusion of the JenSoft API copyright and the AGPL license
 		*disclosure of modifications
 	-Release from the requirement to not change the JenSoftAPI copyright line in the view chart
+	
+
+Commercial licenses
+------------------------
+ JenSoft Commercial licenses are sold much like other commercial software. 
+ The type of license depends on your application. Therefore, we need additional information to provide pricing.
+ We need to know which of the following type of applications are you looking to build. 
+ You must know what kind of software nature you are looking to build : Desktop, Server or SaaS licenses, 
+ OEM Licenses, please contact JenSoft.
+
+ 	-Server Licenses for application within an organizations network to be accessed by employees of the company for generation and manipulation of charts. Server licenses are sold by the server or in virtualized environment by the VM.
+ 	-Desktop License for standalone application which is run on Desktop VM. Desktop licenses are by quantities of desktops.
+ 	-SaaS/Hosted License for a hosted solution within an organization to be accessed by external users. Licensing is based on volumes of charts generated.
+ 	-Server or Desktop OEM Licenses for independent software vendors who wish to include the JenSoft API library within their applications. The license is based on volume categories of licenses to be distributed.
+
 
   
