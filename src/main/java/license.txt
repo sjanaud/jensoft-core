@@ -1,0 +1,43 @@
+JenSoftAPI Dual Licensing
+-------------------------
+
+JenSoft API has a dual licensing model with open source license and commercial licenses. 
+Dual Licensing allows software companies to provide their products for either commercial*
+or Open Source development. Dual Licensing is based on the principle of Fair Exchange. 
+For using JenSoft API to develop applications, JenSoft requires its users to choose one 
+of the following options:
+
+ -Support the development of JenSoft API by purchasing commercial licenses.
+ -Support the Open Source community by releasing their application under an Open Source license.
+
+Although JenSoft API is a free/open source software (F/OSS) project, giving you a lot of freedom
+and flexibility regarding the use of the JenSoft software, this doesn't mean you're free to do 
+anything you want with the product: you have to respect the Affero General Public License.
+You can be released from the requirements of the license by purchasing a commercial license from JenSoftAPI company.
+
+JenSoft is an avid supporter of open source software. Our open source license is the appropriate option 
+if you are creating an open source application under a license compatible with the Affero GPL license. 
+Although the Affero GPLv3 has many terms, the most important is that you must provide the source code of your 
+application to your users so they can be free to modify your application for their own needs. 
+Our commercial is the appropriate option if you want to use framework in commercial applications 
+whose source code you want to keep proprietary.
+
+Buying such a license is mandatory as soon as you develop commercial activities distributing the JenSoft API 
+software inside your product or deploying it on a network without disclosing the source code of your own 
+applications under the AGPL license. These activities include: offering paid services to customers as an ASP, 
+serving Charts on the fly in the cloud or in a web application, shipping JenSoft API with a closed source product.
+
+How buy a license ?
+------------------------
+A JenSoft API commercial license provides advantages not available 
+with the open-source AGPL license. The specific benefits of a commercial license include:
+
+	-Indemnification in the event of IP (intellectual property) or patent infringement
+	-Release from the requirements of the copyleft AGPL license, which include:
+		*distribution of all source code including your own product, including if it is a web-based application
+		*licensing of your own product under the AGPL license
+		*prominent mention and inclusion of the JenSoft API copyright and the AGPL license
+		*disclosure of modifications
+	-Release from the requirement to not change the JenSoftAPI copyright line in the view chart
+
+  
