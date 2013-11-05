@@ -51,37 +51,26 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-<!-- 			<plugin> -->
-<!-- 				<groupId>org.apache.maven.plugins</groupId> -->
-<!-- 				<artifactId>maven-jar-plugin</artifactId> -->
-<!-- 				<version>2.4</version> -->
-<!-- 				<executions> -->
-<!-- 					<execution> -->
-<!-- 						<id>sign</id> -->
-<!-- 						<phase>install</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>sign</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 					<execution> -->
-<!-- 						<id>verify</id> -->
-<!-- 						<phase>install</phase> -->
-<!-- 						<goals> -->
-<!-- 							<goal>sign-verify</goal> -->
-<!-- 						</goals> -->
-<!-- 					</execution> -->
-<!-- 				</executions> -->
-<!-- 				<configuration> -->
-<!-- 					<archive> -->
-<!-- 						<addMavenDescriptor>false</addMavenDescriptor> -->
-<!-- 					</archive> -->
-<!-- 					<keystore>${basedir}/jensoft.keystore</keystore> -->
-<!-- 					<alias>jensoft</alias> -->
-<!-- 					<storepass>password</storepass> -->
-<!-- 					<keypass>password</keypass> -->
-<!-- 				</configuration> -->
-<!-- 			</plugin> -->
 
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-jar-plugin</artifactId>
+			    <configuration>
+			        <archive>
+			            <addMavenDescriptor>false</addMavenDescriptor>
+			            <manifest>
+			                <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+			                <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+			            </manifest>
+			            <manifestEntries>
+			            	<Permissions>sandbox</Permissions>
+							<Codebase>jensoftapi.com</Codebase>
+							<Application-Name>Jensoft API</Application-Name>
+			            </manifestEntries>
+			        </archive>
+			    </configuration>
+			</plugin>
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-source-plugin</artifactId>
