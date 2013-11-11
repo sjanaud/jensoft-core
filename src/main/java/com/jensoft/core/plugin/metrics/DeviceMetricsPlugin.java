@@ -1029,13 +1029,13 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 			super.assignType();
 			int axisSpacing = 0;
 			List<MetricsModel> sequence = getMetricsManager().getSequenceMetrics();
-			System.out.println("--SEQUENCE MODELS--");
+			//System.out.println("--SEQUENCE MODELS--");
 			for (MetricsModel model : sequence) {
 				if (model.getRank() > 0 && !sequence.get(0).isMinimal())
 					continue;
 				if (model.getRank() > 1)
 					continue;
-				System.out.println("applicable model : " + model);
+				//System.out.println("applicable model : " + model);
 				List<Metrics> metrics = model.generateMetrics();
 				if (super.deviceAxis == DeviceAxis.AxisX) {
 					paintMetricsX(v2d, g2d, metrics, super.baseLine, axisSpacing);
