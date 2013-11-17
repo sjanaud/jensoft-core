@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.jensoft.core.graphics.AlphaInterpolation;
 import com.jensoft.core.graphics.Antialiasing;
+import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
@@ -38,10 +39,12 @@ public class Donut2DPlugin extends AbstractPlugin implements
      */
     public Donut2DPlugin() {
         setName("Donut2DPlugin");
+       
         setAntialiasing(Antialiasing.On);
         setTextAntialising(TextAntialiasing.On);
-        setAlphaInterpolation(AlphaInterpolation.Quality);
-        setFractionalMetrics(Fractional.On);
+        setDithering(Dithering.On);
+       
+        
         setPriority(100);
         donuts = new ArrayList<Donut2D>();
         setOnMoveListener(this);
