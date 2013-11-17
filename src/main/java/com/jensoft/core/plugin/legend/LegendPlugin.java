@@ -18,6 +18,9 @@ import javax.swing.JComponent;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
 import com.jensoft.core.glyphmetrics.GlyphUtil;
+import com.jensoft.core.graphics.Antialiasing;
+import com.jensoft.core.graphics.Dithering;
+import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.legend.LegendConstraints.LegendAlignment;
 import com.jensoft.core.plugin.legend.LegendConstraints.LegendPosition;
@@ -41,6 +44,9 @@ public class LegendPlugin extends AbstractPlugin {
      * create legend plugin
      */
     public LegendPlugin() {
+    	setAntialiasing(Antialiasing.On);
+        setTextAntialising(TextAntialiasing.On);
+        setDithering(Dithering.On);
         setName(LegendPlugin.class.getCanonicalName());
         legends = new ArrayList<Legend>();
     }
