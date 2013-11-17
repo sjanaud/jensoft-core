@@ -51,11 +51,10 @@ public class PiePlugin extends AbstractPlugin implements
         setOnPressListener(this);
         setOnDragListener(this);
 
-        setTextAntialising(TextAntialiasing.On);
         setAntialiasing(Antialiasing.On);
-        setFractionalMetrics(Fractional.On);
+        setTextAntialising(TextAntialiasing.On);
         setDithering(Dithering.On);
-        setAlphaInterpolation(AlphaInterpolation.Quality);
+        
         setPriority(100);
        
     }
