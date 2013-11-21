@@ -1,13 +1,13 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jensoft-core</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0${version.suffix}-SNAPSHOT</version>
 	<name>JenSoft API Core</name>
 
 	<parent>
 		<groupId>com.jensoft</groupId>
 		<artifactId>jensoft-parent</artifactId>
-		<version>1.0</version>
+		<version>1.1-SNAPSHOT</version>
 	</parent>
 
 	<scm>
@@ -15,30 +15,6 @@
 		<developerConnection>scm:svn:http://www.jensoft.org/svn/trunk/jensoft-core</developerConnection>
 		<url>http://www.jensoft.org/svn/trunk/jensoft-core</url>
 	</scm>
-
-	<profiles>
-		<profile>
-			<id>DEV</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<env>dev</env>
-			</properties>
-		</profile>
-		<profile>
-			<id>PREPROD</id>
-			<properties>
-				<env>preprod</env>
-			</properties>
-		</profile>
-		<profile>
-			<id>PROD</id>
-			<properties>
-				<env>prod</env>
-			</properties>
-		</profile>
-	</profiles>
 
 	<dependencies>
 
