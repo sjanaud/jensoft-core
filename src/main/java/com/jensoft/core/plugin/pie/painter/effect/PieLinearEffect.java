@@ -260,7 +260,6 @@ public class PieLinearEffect extends AbstractPieEffect {
 							pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
 							while (true) {
 								for (int j = 0; j < 90; j++) {
-									System.out.println("j");
 									effect1.setIncidenceAngleDegree(j * 4);
 									Thread.sleep(20);
 									pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
