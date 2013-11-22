@@ -252,7 +252,6 @@ public class PieLinearEffect extends AbstractPieEffect {
 					AbstractPieEffect[] effects = pc.getEffects();
 					for (int i = 0; i < effects.length; i++) {
 						if (effects[i] instanceof PieLinearEffect) {
-							System.out.println("ok, effect found in compound");
 							effect1 = (PieLinearEffect) effects[i];
 							if (effect1.isShifting()) {
 								throw new InterruptedException("effect is already shifting.");
