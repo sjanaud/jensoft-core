@@ -152,7 +152,6 @@ public class JavaSourcePane extends JComponent {
 	 * load the view source file in the current class loader
 	 */
 	public void loadSource(Class source) {
-		System.out.println("JenSoft API - Load View source");
 		String inputSourceName = "NA";
 		try {
 			ClassLoader cloader = source.getClassLoader();

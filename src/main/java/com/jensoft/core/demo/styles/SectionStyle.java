@@ -54,7 +54,6 @@ public class SectionStyle {
                         DefaultStyledDocument d = (DefaultStyledDocument) comp.getDocument();
                         d.setCharacterAttributes(lastStartIndex, (lastEndIndex - lastStartIndex) + patternEnd.length(),
                                                  style, true);
-                       // System.out.println("segment to hightlight : "+content.substring(lastStartIndex, lastEndIndex+patternEnd.length()));
                         lastStartIndex = lastEndIndex+patternEnd.length();
                     }
                     catch (Exception e) {

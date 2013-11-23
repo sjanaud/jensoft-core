@@ -276,8 +276,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
 
         }
 
-        System.out.println("line  component : location "
-                + lineComponent.getLocation());
+       // System.out.println("line  component : location " + lineComponent.getLocation());
         return positionY;
     }
 

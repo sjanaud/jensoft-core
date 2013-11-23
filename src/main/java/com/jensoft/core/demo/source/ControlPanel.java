@@ -55,7 +55,6 @@ public class ControlPanel extends JComponent {
 						StringSelection data;
 						data = new StringSelection(textPane.getText());
 						if (clipboardService != null) {
-							System.out.println("copy to service clipboard");
 							clipboardService.setContents(data);
 						}
 						

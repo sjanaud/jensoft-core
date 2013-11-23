@@ -38,8 +38,5 @@ public class Shader {
         return colors;
     }
 
-    public static void main(String[] args) {
-        Color c = new Color(0x202737);
-        System.out.println(c.getRed() + "." + c.getGreen() + "." + c.getBlue());
-    }
+   
 }
