@@ -72,7 +72,6 @@ public class DocFilesPortfolioDonut3D {
     }
 
     public void render() {
-        System.out.println(System.getProperty("user.dir"));
         String packageName = this.getClass().getPackage().getName();
         String packagePath = packageName.replace('.', File.separatorChar);
         String docFilePath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath

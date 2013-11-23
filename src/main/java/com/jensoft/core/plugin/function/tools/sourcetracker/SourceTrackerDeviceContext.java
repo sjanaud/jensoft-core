@@ -61,13 +61,9 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
          */
         @Override
         public void sourceTracked(SourceTrackerEvent event) {
-           // System.out.println("sourceSelecters size " + sourceSelecters.size());
             for (JMenuItem item : sourceSelecters) {
-               // System.out.println("unlock icon set on item " + item.getText());
                 item.setIcon(unlockIcon);
             }
-
-            System.out.println("context source tracked :" + event.getSourceFunction().getName());
             JMenuItem item = sourceSelectersMap.get(event.getSourceFunction());
             item.setIcon(lockIcon);
         }
@@ -78,7 +74,6 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
          */
         @Override
         public void sourceRegistered(SourceTrackerEvent event) {
-            System.out.println("context source registered :" + event.getSourceFunction().getName());
         }
 
         /* (non-Javadoc)
@@ -86,7 +81,6 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
          */
         @Override
         public void currentTrack(SourceTrackerEvent event) {
-        	System.out.println("track :" + event.getSourceFunction().getName()+"");
         }
     }
 

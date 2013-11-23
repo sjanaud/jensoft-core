@@ -251,20 +251,10 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		if (trackedSource == null) {
 			return;
 		}
-		System.out.println("addMetrics " + metric.getValue());
 		if (trackedSource.getNature() == FunctionNature.XFunction) {
-			//if (metric.getValue() >= trackedSource.first().getX() && metric.getValue() <= trackedSource.last().getX()) {
-
-				metricsPathFunction.addMetrics(metric);
-			//} else {
-			//	throw new IllegalArgumentException("x function metric value out of source bound");
-			//}
+			metricsPathFunction.addMetrics(metric);
 		} else {
-			//if (metric.getValue() >= trackedSource.first().getY() && metric.getValue() <= trackedSource.last().getY()) {
-				metricsPathFunction.addMetrics(metric);
-		//	} else {
-			//	throw new IllegalArgumentException("y function metric value out of source bound");
-			//}
+			metricsPathFunction.addMetrics(metric);
 		}
 
 	}

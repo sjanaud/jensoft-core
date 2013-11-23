@@ -1291,7 +1291,6 @@ public class Donut3D {
          List<Donut3DSlice> slicesRight1 = getSlicesOnAngle(0, 90);
          Collections.reverse(slicesRight1);
          for (Donut3DSlice sliceRight1 : slicesRight1) {
-        	 //List<Donut3DSlice> right1Fragments = sliceRight1.getFragments();
         	 List<Donut3DSlice> right1Fragments = getSlicesFragmentOnAngle(sliceRight1, 0, 90);
         	 for (Donut3DSlice right1Fragment : right1Fragments) { 
         		 
@@ -1432,7 +1431,6 @@ public class Donut3D {
                 
             }
         }
-        System.out.println("paint order : "+paintOrder);
         return paintOrder;
     }
 

@@ -649,7 +649,6 @@ public class DevicePartComponent extends JComponent implements Device2D,
      */
     @Override
     public void viewWindow2DSelected(View2DEvent view2dEvent) {
-        // System.out.println("Device2D - windowSelected");
     }
 
     

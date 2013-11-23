@@ -72,7 +72,7 @@ public class ComponentsPlugin extends AbstractPlugin {
     protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
 
         if (!init) {
-            System.out.println("init paint layout :" + count++);
+            //System.out.println("init paint layout :" + count++);
             project();
             for (DeviceComponent component : userComponents) {
                 // System.out.println("add user component");

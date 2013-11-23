@@ -81,7 +81,7 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
          */
         @Override
         public void sourceRegistered(PeakTrackerEvent event) {
-            System.out.println("context source registered :" + event.getSourceFunction().getName());
+            //System.out.println("context source registered :" + event.getSourceFunction().getName());
         }
 
     }
@@ -160,15 +160,13 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("actionPerformed ::iSerie2D " + iSerie2D.getName() + "is track  ?"
-                            + getHost().isTracked(iSerie2D));
+                   // System.out.println("actionPerformed ::iSerie2D " + iSerie2D.getName() + "is track  ?"
+                          //  + getHost().isTracked(iSerie2D));
                     if (getHost().isTracked(iSerie2D)) {
                         getHost().untrackSource(iSerie2D);
-                        System.out.println("actionPerformed :: untrackSerie " + iSerie2D.getName());
                     }
                     else {
                         getHost().trackSource(iSerie2D);
-                        System.out.println("actionPerformed :: trackSerie " + iSerie2D.getName());
                     }
                     getHost().getWindow2D().getView2D().repaintDevice();
                 }

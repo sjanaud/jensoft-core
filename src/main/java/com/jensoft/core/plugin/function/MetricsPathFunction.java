@@ -631,7 +631,6 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 
 				// Point2D pointZero = geometry.pointAtLength(0);
 				// System.out.println("point test :"+pointZero);
-
 				// System.out.println("point start :"+pointStart);
 				// System.out.println("point end :"+pointEnd);
 
