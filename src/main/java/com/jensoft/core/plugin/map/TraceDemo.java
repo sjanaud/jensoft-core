@@ -10,8 +10,8 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.core.demo.ui.ViewFrameUI;
+import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
+import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.map.layer.highway.GroupRenderingProperties;
 import com.jensoft.core.map.layer.highway.Highway;

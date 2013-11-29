@@ -1,7 +1,7 @@
 package com.jensoft.core.plugin.plot.catalog;
 
-import com.jensoft.core.demo.nature.JenSoftView;
-import com.jensoft.core.demo.ui.ViewFrameUI;
+import com.jensoft.core.catalog.nature.JenSoftView;
+import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;

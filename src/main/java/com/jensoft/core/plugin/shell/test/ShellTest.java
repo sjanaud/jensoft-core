@@ -10,8 +10,8 @@ import java.awt.Color;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import com.jensoft.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.core.demo.ui.ViewFrameUI;
+import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
+import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.shell.Shell;
 import com.jensoft.core.plugin.shell.ShellPlugin;
 import com.jensoft.core.view.View2D;

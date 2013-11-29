@@ -7,8 +7,8 @@ package com.jensoft.core.gauge.velocity.v1;
 
 import java.awt.Color;
 
-import com.jensoft.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.core.demo.ui.ViewFrameUI;
+import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
+import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.gauge.RadialGaugePlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;

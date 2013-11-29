@@ -5,8 +5,8 @@
  */
 package com.jensoft.core.gauge.compass.c2;
 
-import com.jensoft.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.core.demo.ui.ViewFrameUI;
+import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
+import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.gauge.RadialGaugePlugin;
 import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
 import com.jensoft.core.plugin.translate.TranslatePlugin;
