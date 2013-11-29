@@ -10,8 +10,8 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.jensoft.core.demo.nature.JenSoftAPIDemo;
-import com.jensoft.core.demo.ui.ViewFrameUI;
+import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
+import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.palette.Alpha;
 import com.jensoft.core.palette.ColorPalette;
