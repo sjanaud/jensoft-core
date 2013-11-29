@@ -18,7 +18,7 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import com.jensoft.core.demo.nature.JenSoftAPIDemo;
+import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.Portfolio.ImageType;
 import com.jensoft.core.view.View2D;

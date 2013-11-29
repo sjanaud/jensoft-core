@@ -18,7 +18,7 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.w3c.dom.Document;
 
-import com.jensoft.core.demo.nature.JenSoftView;
+import com.jensoft.core.catalog.nature.JenSoftView;
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.RosePalette;

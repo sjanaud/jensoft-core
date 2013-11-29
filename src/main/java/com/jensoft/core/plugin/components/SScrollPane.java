@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ScrollPaneLayout;
 
-import com.jensoft.core.demo.source.DemoScrollbarUI;
+import com.jensoft.core.catalog.source.DemoScrollbarUI;
 
 public class SScrollPane extends JScrollPane implements DeviceComponent {
 

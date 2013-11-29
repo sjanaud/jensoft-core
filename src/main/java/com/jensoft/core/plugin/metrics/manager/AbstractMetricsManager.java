@@ -8,11 +8,11 @@ package com.jensoft.core.plugin.metrics.manager;
 import java.awt.Color;
 import java.awt.Font;
 
-import com.jensoft.core.bean.AbstractBean;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.format.MetricsDecimalFormat;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
+import com.jensoft.core.view.AbstractBean;
 
 /**
  * AbstractMetricsManager takes the responsibility to solve and create metrics

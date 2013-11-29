@@ -19,7 +19,6 @@ import java.util.Properties;
 
 import javax.swing.event.EventListenerList;
 
-import com.jensoft.core.bean.AbstractBean;
 import com.jensoft.core.device.ContextEntry;
 import com.jensoft.core.device.ContextRegistry;
 import com.jensoft.core.graphics.AlphaInterpolation;
@@ -29,6 +28,7 @@ import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.view.AbstractBean;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.view.WidgetRegistry;
 import com.jensoft.core.widget.Widget;
