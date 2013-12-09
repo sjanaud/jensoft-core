@@ -36,6 +36,7 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
         for (int i = 0; i < zoomObjectifs.length; i++) {
             ZoomObjectifPlugin objectif = zoomObjectifs[i];
             objectif.addZoomObjectifListener(this);
+            objectif.addPluginListener(this);
             zoomObjectifsList.add(objectif);
         }
     }

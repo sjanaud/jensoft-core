@@ -38,14 +38,14 @@ public class TimeMetricsManager extends AbstractMetricsManager {
     private static long CENTURY_MILLIS = DECENNARY_MILLIS * 10L;
 
     public static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
-    public static SimpleDateFormat monthFormat = new SimpleDateFormat("MMMMMMMMMMM");
+    public static SimpleDateFormat monthFormat = new SimpleDateFormat("MMM");
     public static SimpleDateFormat monthShortFormat = new SimpleDateFormat("MMM");
     public static SimpleDateFormat secondFormat = new SimpleDateFormat("ss");
     public static SimpleDateFormat minuteFormat = new SimpleDateFormat("mm ' m'");
     public static SimpleDateFormat hourFormat = new SimpleDateFormat("HH ' h'");
     public static SimpleDateFormat dayNumberFormat = new SimpleDateFormat("dd");
-    public static SimpleDateFormat dayLabelFormat = new SimpleDateFormat("EEEEEEEEE, dd");
-    public static SimpleDateFormat dayLongLabelFormat = new SimpleDateFormat("EEEEEEEEE, dd ,MMMM");
+    public static SimpleDateFormat dayLabelFormat = new SimpleDateFormat("EEE, dd");
+    public static SimpleDateFormat dayLongLabelFormat = new SimpleDateFormat("EEE, dd ,MMM");
     public static SimpleDateFormat weekFormat = new SimpleDateFormat("'W.' ww");
 
     // public static TimeModel[] MinutesModels = new TimeModel[] { new Minute1Model(), new Minute1ModelMinimal(), new

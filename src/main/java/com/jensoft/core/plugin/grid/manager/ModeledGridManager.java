@@ -61,6 +61,7 @@ public class ModeledGridManager extends AbstractGridManager {
         PicoTera(12),
         NanoGiga(9),
         MicroMega(6),
+        
         MilliKilo(3),
         CentiHecto(2),
         DeciDeca(1),
@@ -266,12 +267,12 @@ public class ModeledGridManager extends AbstractGridManager {
         GridModel clone = model.cloneModel();
         clone.setMetricsManager(this);
         gridModels.add(clone);
-        // if (createMinimal) {
-        // GridModel minimalModel = clone.cloneModel();
-        // minimalModel.setMinimal(true);
-        // minimalModel.setMetricsManager(this);
-        // gridModels.add(minimalModel);
-        // }
+         if (createMinimal) {
+         GridModel minimalModel = clone.cloneModel();
+         minimalModel.setMinimal(true);
+         minimalModel.setMetricsManager(this);
+         gridModels.add(minimalModel);
+         }
         Collections.sort(gridModels, modelComparator);
     }
 
@@ -363,7 +364,9 @@ public class ModeledGridManager extends AbstractGridManager {
         Collections.sort(gridModels, modelComparator);
         int rank = 0;
         for (GridModel metricsModel : gridModels) {
+        	
             if (metricsModel.isValid()) {
+            	
                 sequence.add(metricsModel);
             }
         }
@@ -384,6 +387,7 @@ public class ModeledGridManager extends AbstractGridManager {
         for (GridModel mm : sequence) {
             mm.setRank(rank++);
         }
+        //System.out.println("grid size list :"+sequence.size());
         return sequence;
     }
 
@@ -469,7 +473,7 @@ public class ModeledGridManager extends AbstractGridManager {
         private BigDecimal maxValue;
 
         /** pixel label holder */
-        private int pixelLabelHolder = 20;
+        private int pixelLabelHolder = 6;
 
         /** rank of this model */
         private int rank;
@@ -481,7 +485,7 @@ public class ModeledGridManager extends AbstractGridManager {
         private Stroke gridStroke;
 
         /** pixelAxisHolder */
-        private int pixelAxisHolder = 20;
+        private int pixelAxisHolder = 4;
 
         /** minimal tag for this domain */
         private boolean minimal = false;
@@ -519,6 +523,7 @@ public class ModeledGridManager extends AbstractGridManager {
                 throw new PluginException("Grid orientation should be supply.");
             }
 
+           // System.out.println("holder : "+getPixelLabelHolder());
             int compare = (userSize.divide(factor, RoundingMode.HALF_EVEN))
                     .multiply(new BigDecimal(getPixelLabelHolder())).compareTo(pixelSize);
 
@@ -527,7 +532,7 @@ public class ModeledGridManager extends AbstractGridManager {
                 setMaxValue(maxUserValue);
 
                 if (minimal) {
-                    setPixelLabelHolder(6);
+                    setPixelLabelHolder(10);
                     setPixelAxisHolder(0);
                 }
                 else {
@@ -549,7 +554,7 @@ public class ModeledGridManager extends AbstractGridManager {
                     // int typeWidth2 = fm.stringWidth(typeString2);
                     // setPixelLabelHolder(typeWidth2 + 12);
 
-                    setPixelLabelHolder(40);
+                    setPixelLabelHolder(20);
                 }
                 valid = true;
                 // System.out.println("start ref : "+startRef);

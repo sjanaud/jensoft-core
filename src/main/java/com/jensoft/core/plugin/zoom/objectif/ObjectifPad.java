@@ -11,6 +11,7 @@ import java.awt.Stroke;
 
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.plugin.zoom.objectif.ZoomObjectifPlugin.ZoomLensType;
 import com.jensoft.core.plugin.zoom.objectif.ZoomObjectifPlugin.ZoomNature;
 import com.jensoft.core.widget.pad.AbstractPlusMinusPadWidget;
 
@@ -191,6 +192,13 @@ public class ObjectifPad extends AbstractPlusMinusPadWidget<ZoomObjectifPlugin> 
     public void onEastButtonReleased() {
         getHost().stopZoomIn();
         super.onEastButtonReleased();
+    }
+    
+    @Override
+    public void onRegister() {
+    	if(getHost().getZoomLensType() != ZoomLensType.ZoomXY){
+    		throw new IllegalStateException("Pad lens is only compatible with lens type : "+ZoomLensType.class.getName()+"#"+ZoomLensType.ZoomXY);
+    	}
     }
 
 }
