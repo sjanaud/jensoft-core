@@ -11,18 +11,18 @@ import java.util.Date;
 import com.jensoft.core.palette.NanoChromatique;
 
 /**
- * create stock market with low, high, open, close, volume, with fixing and
- * fixing duration values for a fixing date.
+ * <code>Stock</code>defines a stock market with low, high, open, close, volume,
+ * with fixing and fixing duration values for a fixing date.
  * 
+ * @since 1.0
  * @author sebastien janaud
  * 
  */
 public class Stock {
-	
+
 	private Color bearishColor = NanoChromatique.RED.brighter();
 	private Color bullishColor = NanoChromatique.GREEN.brighter();
 	private Color volumeColor = NanoChromatique.BLUE.brighter();
-	
 
 	private Date fixing;
 	private long fixingDurationMillis;
@@ -32,7 +32,6 @@ public class Stock {
 	private double low;
 	private double high;
 	private double volume;
-
 
 	/**
 	 * create empty stock candle
@@ -100,8 +99,6 @@ public class Stock {
 		this.high = high;
 	}
 
-	
-
 	public double getVolume() {
 		return volume;
 	}
@@ -110,7 +107,6 @@ public class Stock {
 		this.volume = volume;
 	}
 
-
 	public long getFixingDurationMillis() {
 		return fixingDurationMillis;
 	}
@@ -118,7 +114,6 @@ public class Stock {
 	public void setFixingDurationMillis(long fixingDurationMillis) {
 		this.fixingDurationMillis = fixingDurationMillis;
 	}
-
 
 	public boolean isBearish() {
 		return (open > close);
@@ -151,9 +146,5 @@ public class Stock {
 	public void setVolumeColor(Color volumeColor) {
 		this.volumeColor = volumeColor;
 	}
-
-	
-
-	
 
 }
