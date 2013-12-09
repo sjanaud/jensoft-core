@@ -49,7 +49,7 @@ public interface SourceFunction {
     /**set the host function function for this source*/
     public void setHost(Function function);
 
-    /** select by x or y (depends of nature) the points of the given range */
+    /** solve and select by x or y (depends of nature) the points of the given range */
     public List<Point2D> solveFunction(double start, double end);
 
     /** evaluate the function point (x,y) for the specified x or y (depends on function nature x or y) */

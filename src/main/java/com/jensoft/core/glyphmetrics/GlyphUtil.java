@@ -15,7 +15,6 @@ import com.jensoft.core.plugin.function.MetricsPathFunction;
  * @see GlyphMetric
  * @see AbstractMetricsPath
  * @see GeneralMetricsPath
- * @see MetricsPathFunction
  * @author Sebastien Janaud
  */
 public class GlyphUtil {
