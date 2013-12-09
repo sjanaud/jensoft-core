@@ -14,6 +14,8 @@ import java.util.List;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.stock.geom.CandleStickGeom;
 import com.jensoft.core.plugin.stock.geom.CurveStockGeom;
+import com.jensoft.core.plugin.stock.geom.FixingStockGeom;
+import com.jensoft.core.plugin.stock.geom.MovingAverageStockGeom;
 import com.jensoft.core.plugin.stock.geom.OhlcGeom;
 import com.jensoft.core.plugin.stock.geom.StockGeometry;
 import com.jensoft.core.plugin.stock.geom.StockItemGeometry;
@@ -248,11 +250,10 @@ public abstract class StockLayer<G extends StockGeometry> {
 	}
 
 	/***
-	 * define curve layer that shows stock line. Line reflect the close value
-	 * for the fixing time.
+	 * define abstract curve layer that shows stock line.
 	 * 
 	 */
-	public static class Curve extends StockLayer<CurveStockGeom> {
+	public static abstract class Curve<C extends CurveStockGeom> extends StockLayer<CurveStockGeom> {
 
 		private Color curveColor = NanoChromatique.BLUE;
 
@@ -299,7 +300,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		@Override
 		protected void solveLayer() {
 			getGeometries().clear();
-			CurveStockGeom geom = new CurveStockGeom();
+			CurveStockGeom geom = getGeomInstance();
 			geom.setLayer(this);
 			for (Stock stock : getHost().getStocks()) {
 				StockItemGeometry itemGeom = new StockItemGeometry();
@@ -310,6 +311,12 @@ public abstract class StockLayer<G extends StockGeometry> {
 			geom.solveGeometry();
 			addGeometry(geom);
 		}
+		
+		/**
+		 * return a new instance of the generic geometry
+		 * @return generic geometry
+		 */
+		protected abstract C getGeomInstance();
 
 		/*
 		 * (non-Javadoc)
@@ -326,17 +333,44 @@ public abstract class StockLayer<G extends StockGeometry> {
 
 					g2d.setColor(curveColor);
 
-					geom.getClosePathFunction().setSolveGeometryRequest(true);
-					geom.getClosePathFunction().setWindow2d(getHost().getWindow2D());
-					geom.getClosePathFunction().setFontRenderContext(g2d.getFontRenderContext());
+					geom.getPathFunction().setSolveGeometryRequest(true);
+					geom.getPathFunction().setWindow2d(getHost().getWindow2D());
+					geom.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
 
-					Shape s = geom.getClosePathFunction().getOrCreateGeometry().getPath();
+					Shape s = geom.getPathFunction().getOrCreateGeometry().getPath();
 					g2d.draw(s);
 				}
 			}
 		}
 
 	}
+	
+	/**
+	 *  <code>FixingCurve</code> reflect the close values for stocks fixing times
+	 *
+	 */
+	public static class FixingCurve extends Curve<FixingStockGeom> {
+
+		@Override
+		protected FixingStockGeom getGeomInstance() {
+			return new FixingStockGeom();
+		}
+		
+	}
+	
+	/**
+	 *  <code>MovingAverageCurve</code> reflect the moving average for stocks
+	 *
+	 */
+	public static class MovingAverageCurve extends Curve<MovingAverageStockGeom> {
+
+		@Override
+		protected MovingAverageStockGeom getGeomInstance() {
+			return new MovingAverageStockGeom();
+		}
+		
+	}
+	
 
 	/**
 	 * solve layer geometry.
