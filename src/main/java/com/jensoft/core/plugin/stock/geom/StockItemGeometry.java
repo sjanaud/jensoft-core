@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import com.jensoft.core.plugin.stock.Stock;
 import com.jensoft.core.window.Window2D;
 
-public abstract class StockItemGeometry extends StockGeometry {
+public class StockItemGeometry extends StockGeometry {
 
 	private Stock stock;
 
