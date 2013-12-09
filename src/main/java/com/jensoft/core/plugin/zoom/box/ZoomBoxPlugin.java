@@ -1111,7 +1111,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
      *
      */
     public void processZoomBound(Point2D currentBox) {
-
+    	
         if (transactionType == TransactionType.DeviceTransaction) {
             zoomBoxCurrentX = (int) currentBox.getX();
             zoomBoxCurrentY = (int) currentBox.getY();
@@ -1129,6 +1129,10 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
 
             zoomBoxCurrentX = (int) deviceCurrentBox.getX();
             zoomBoxCurrentY = (int) deviceCurrentBox.getY();
+        }
+        
+        if (!isValidateBound()) {
+        	
         }
 
         // new
@@ -1195,7 +1199,8 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
             zoomBoxStartX = (int) startBox.getX();
             zoomBoxStartY = (int) startBox.getY();
             zoomBoxCurrentX = zoomBoxStartX;
-            zoomBoxCurrentY = zoomBoxStartX;
+            //zoomBoxCurrentY = zoomBoxStartX;
+            zoomBoxCurrentY = zoomBoxStartY;
 
         }
         else if (transactionType == TransactionType.UserTransaction) {
@@ -1203,7 +1208,8 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
             zoomBoxStartX = (int) deviceStartBox.getX();
             zoomBoxStartY = (int) deviceStartBox.getY();
             zoomBoxCurrentX = zoomBoxStartX;
-            zoomBoxCurrentY = zoomBoxStartX;
+            //zoomBoxCurrentY = zoomBoxStartX;
+            zoomBoxCurrentY = zoomBoxStartY;
         }
 
         // new
@@ -1444,6 +1450,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
     }
+    
 
     /**
      * return true if the transaction type is a user transaction else
@@ -1472,7 +1479,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                 return true;
             }
         }
-
+        // System.out.println("return false");
         return false;
     }
 

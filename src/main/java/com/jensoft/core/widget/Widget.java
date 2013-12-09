@@ -58,6 +58,8 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
     private boolean isMovable = true;
 
     private boolean orphanLock = false;
+    
+    
 
     /**
      * Widget constructor

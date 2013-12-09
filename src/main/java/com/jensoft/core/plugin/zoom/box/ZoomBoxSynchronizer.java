@@ -112,20 +112,28 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
             for (ZoomBoxPlugin zbp : boxesList) {
                 if (!zbp.equals(zoomBoxPlugin)) {
                     Window2D w2d = zbp.getWindow2D();
-                    Point2D userBoxStartSource = zoomBoxPlugin
-                            .getBoxStartUserPoint();
+                    
+                    //interpretation base on press in user system
+                    Point2D userBoxStartSource = zoomBoxPlugin .getBoxStartUserPoint();
                     Point2D deviceStartTarget = w2d.userToPixel(userBoxStartSource);
-                    zbp.processZoomStart(new Point2D.Double((int) deviceStartTarget.getX(),
-                                                            (int) deviceStartTarget.getY()));
+                    zbp.processZoomStart(new Point2D.Double((int) deviceStartTarget.getX(),(int) deviceStartTarget.getY()));
+                    
+                    //interpretation based on press in pixel coordinate
+                    Point2D deviceBoxStartSource = zoomBoxPlugin .getBoxStartDevicePoint();
+                    zbp.processZoomStart(deviceBoxStartSource);
+                    
                     w2d.getDevice2D().repaintDevice();
                 }
             }
             dispathingEvent = false;
         }
     }
+    
+    
 
    
-    /* (non-Javadoc)
+
+	/* (non-Javadoc)
      * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomBounded(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
      */
     @Override
@@ -136,14 +144,17 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
             for (ZoomBoxPlugin zbp : boxesList) {
                 if (!zbp.equals(zoomBoxPlugin)) {
                     Window2D w2d = zbp.getWindow2D();
-                    Point2D userBoxCurrentSource = zoomBoxPlugin
-                            .getBoxCurrentUserPoint();
-                    Point2D deviceCurrentTarget = w2d
-                            .userToPixel(userBoxCurrentSource);
-                    zbp.processZoomBound(new Point2D.Double((int) deviceCurrentTarget.getX(),
-                                                            (int) deviceCurrentTarget.getY()));
+                    
+                    //interpretation base on press in user system
+                    Point2D userBoxCurrentSource = zoomBoxPlugin.getBoxCurrentUserPoint();
+                    Point2D deviceCurrentTarget = w2d.userToPixel(userBoxCurrentSource);
+                    zbp.processZoomBound(new Point2D.Double((int) deviceCurrentTarget.getX(),(int) deviceCurrentTarget.getY()));
+                    
+                    //interpretation based on press in pixel coordinate
+                    Point2D deviceBoxCurrentSource = zoomBoxPlugin .getBoxCurrentDevicePoint();
+                    zbp.processZoomBound(deviceBoxCurrentSource);
+                    
                     w2d.getDevice2D().repaintDevice();
-                    zbp.fireZoomBounded();
                 }
             }
             dispathingEvent = false;

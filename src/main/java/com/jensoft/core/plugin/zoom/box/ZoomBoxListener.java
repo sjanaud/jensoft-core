@@ -55,5 +55,6 @@ public interface ZoomBoxListener extends PluginListener<ZoomBoxPlugin> {
      * @param pluginEvent
      */
     public void zoomClearHistory(ZoomBoxEvent pluginEvent);
-
+    
+    
 }
