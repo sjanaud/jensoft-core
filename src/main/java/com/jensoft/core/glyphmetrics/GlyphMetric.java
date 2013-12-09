@@ -29,7 +29,6 @@ import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
  * 
  * @see AbstractMetricsPath
  * @see GeneralMetricsPath
- * @see MetricsPathFunction
  * @see GlyphMetricsNature
  * @see GlyphMetricFill
  * @see MetricsPathPainter

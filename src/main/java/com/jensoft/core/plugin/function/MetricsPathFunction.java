@@ -33,10 +33,6 @@ import com.jensoft.core.plugin.function.source.SourceFunction;
  * 
  * @author Sebastien Janaud
  */
-/**
- * @author sebastien
- *
- */
 public class MetricsPathFunction extends AbstractMetricsPath {
 
 	/** path metrics for this manager */
