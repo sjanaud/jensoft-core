@@ -22,7 +22,6 @@ public class Stock {
 
 	private Color bearishColor = NanoChromatique.RED.brighter();
 	private Color bullishColor = NanoChromatique.GREEN.brighter();
-	private Color volumeColor = NanoChromatique.BLUE.brighter();
 
 	private Date fixing;
 	private long fixingDurationMillis;
@@ -137,14 +136,6 @@ public class Stock {
 
 	public void setBullishColor(Color bullishColor) {
 		this.bullishColor = bullishColor;
-	}
-
-	public Color getVolumeColor() {
-		return volumeColor;
-	}
-
-	public void setVolumeColor(Color volumeColor) {
-		this.volumeColor = volumeColor;
 	}
 
 }
