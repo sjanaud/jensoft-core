@@ -1,17 +1,14 @@
 package com.jensoft.core.plugin.stock.geom;
 
 import java.awt.geom.Point2D;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.UserSourceFunction;
 import com.jensoft.core.plugin.stock.Stock;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Comparison;
 
 /**
  * <code>MovingAverageStockGeom</code> defines a moving average curve geometry
