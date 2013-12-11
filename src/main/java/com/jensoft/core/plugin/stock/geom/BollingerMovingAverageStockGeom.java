@@ -10,10 +10,9 @@ import com.jensoft.core.plugin.function.MetricsPathFunction;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.UserSourceFunction;
 import com.jensoft.core.plugin.stock.Stock;
-import com.jensoft.core.plugin.stock.geom.MovingAverageStockGeom.StockComparator;
 
 /**
- * <code>BollingerMovingAverageStockGeom</code> defines a Bollinger stripe
+ * <code>BollingerMovingAverageStockGeom</code> defines a Bollinger band's
  * for a set of stock items.
  * <p>
  * move count property define the moving average session count.
@@ -38,6 +37,9 @@ public class BollingerMovingAverageStockGeom extends CurveStockGeom {
 	 * create stock fixing geometry
 	 */
 	public BollingerMovingAverageStockGeom() {
+		super();
+		pathFunctionUp = new MetricsPathFunction();
+		pathFunctionBottom = new MetricsPathFunction();
 	}
 
 	/**
@@ -47,6 +49,8 @@ public class BollingerMovingAverageStockGeom extends CurveStockGeom {
 	public BollingerMovingAverageStockGeom(int moveCount) {
 		super();
 		this.moveCount = moveCount;
+		pathFunctionUp = new MetricsPathFunction();
+		pathFunctionBottom = new MetricsPathFunction();
 	}
 
 	/**
@@ -81,10 +85,6 @@ public class BollingerMovingAverageStockGeom extends CurveStockGeom {
 	 */
 	@Override
 	public void solveGeometry() {
-		
-		
-		
-		//simple moving average on stocks for rank n.
 		List<Point2D> upperPoint = new ArrayList<Point2D>();
 		List<Point2D> bottomPoint = new ArrayList<Point2D>();
 		List<Point2D> stockMAs = new ArrayList<Point2D>();
@@ -107,9 +107,9 @@ public class BollingerMovingAverageStockGeom extends CurveStockGeom {
 				Stock s = stocks.get(i - j);
 				squarred = squarred + Math.pow((s.getClose()-movingAverage), 2);
 			}
-			double deviation = Math.floor(squarred/moveCount);
+			double deviation = Math.sqrt(squarred/new Double(moveCount).doubleValue());
 			upperPoint.add(new Point2D.Double(new Long(root.getFixing().getTime()).doubleValue(), movingAverage + 2*deviation));
-			bottomPoint.add(new Point2D.Double(new Long(root.getFixing().getTime()).doubleValue(), movingAverage-2*deviation));
+			bottomPoint.add(new Point2D.Double(new Long(root.getFixing().getTime()).doubleValue(), movingAverage - 2*deviation));
 		}
 		
 		SourceFunction averageSourceFunction = new UserSourceFunction.LineSource(stockMAs);
@@ -118,9 +118,8 @@ public class BollingerMovingAverageStockGeom extends CurveStockGeom {
 		SourceFunction upperSourceFunction = new UserSourceFunction.LineSource(upperPoint);
 		getPathFunctionUp().setSource(upperSourceFunction);
 		
-
 		SourceFunction bottomSourceFunction = new UserSourceFunction.LineSource(bottomPoint);
-		getPathFunctionUp().setSource(bottomSourceFunction);
+		getPathFunctionBottom().setSource(bottomSourceFunction);
 		
 	}
 	
