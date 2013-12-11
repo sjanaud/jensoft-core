@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
 package com.jensoft.core.plugin.stock.geom;
 
 import java.awt.geom.Point2D;
@@ -34,7 +39,7 @@ public class FixingStockGeom extends CurveStockGeom {
 	 */
 	@Override
 	public void solveGeometry() {
-		List<Point2D> lowPoints = new ArrayList<Point2D>();
+		List<Point2D> fixingPoints = new ArrayList<Point2D>();
 
 		for (StockItemGeometry geometry : getStockItemGeometries()) {
 			// not need solve path function solve itself based on source
@@ -42,11 +47,11 @@ public class FixingStockGeom extends CurveStockGeom {
 			// geometry.solveGeometry();
 
 			Stock s = geometry.getStock();
-			lowPoints.add(new Point2D.Double(s.getFixing().getTime(), s.getLow()));
+			fixingPoints.add(new Point2D.Double(new Long(s.getFixing().getTime()).doubleValue(), s.getClose()));
 
 		}
 
-		SourceFunction sourceFunction = new UserSourceFunction.LineSource(lowPoints);
+		SourceFunction sourceFunction = new UserSourceFunction.LineSource(fixingPoints);
 		getPathFunction().setSource(sourceFunction);
 	}
 

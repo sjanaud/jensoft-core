@@ -1,20 +1,17 @@
 package com.jensoft.core.plugin.stock.geom;
 
 import java.awt.geom.Point2D;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import java.util.Date;
 import java.util.List;
 
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.source.UserSourceFunction;
 import com.jensoft.core.plugin.stock.Stock;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Comparison;
 
 /**
- * <code>MovingAverageStockGeom</code> defines a moving average curve geometry
+ * <code>WeightedMovingAverageStockGeom</code> defines a weighted moving average curve geometry
  * for a set of stock items.
  * <p>
  * move count property define the moving average session count.
@@ -24,7 +21,7 @@ import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils.Comparison;
  * @author sebastien janaud
  * 
  */
-public class MovingAverageStockGeom extends CurveStockGeom {
+public class WeightedMovingAverageStockGeom extends CurveStockGeom {
 
 	/** move count */
 	private int moveCount = 20;
@@ -32,14 +29,14 @@ public class MovingAverageStockGeom extends CurveStockGeom {
 	/**
 	 * create stock fixing geometry
 	 */
-	public MovingAverageStockGeom() {
+	public WeightedMovingAverageStockGeom() {
 	}
 
 	/**
 	 * create moving geometry with given average count
 	 * @param moveCount
 	 */
-	public MovingAverageStockGeom(int moveCount) {
+	public WeightedMovingAverageStockGeom(int moveCount) {
 		super();
 		this.moveCount = moveCount;
 	}
@@ -82,11 +79,13 @@ public class MovingAverageStockGeom extends CurveStockGeom {
 		for (int i = moveCount; i < stocks.size(); i++) {
 			Stock root = stocks.get(i);
 			double sum = 0;
+			double divider = 0;
 			for (int j = 0; j < moveCount; j++) {
 				Stock s = stocks.get(i - j);
-				sum = sum + s.getClose();
+				sum = sum + (moveCount-j)*s.getClose();
+				divider = divider + (moveCount-j);
 			}
-			double movingAverage = sum / moveCount;
+			double movingAverage = sum / divider;
 			points.add(new Point2D.Double(new Long(root.getFixing().getTime()).doubleValue(), movingAverage));
 		}
 		SourceFunction sourceFunction = new UserSourceFunction.LineSource(points);

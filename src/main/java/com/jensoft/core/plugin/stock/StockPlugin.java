@@ -17,8 +17,8 @@ import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 
 /**
- * <code></code>
- * Stock plugin takes the responsibility to paint commons stock charts
+ * <code></code> Stock plug-in takes the responsibility to paint commons stock
+ * charts
  * 
  * @since 1.0
  * @author sebastien janaud
@@ -26,14 +26,14 @@ import com.jensoft.core.window.WindowPart;
  */
 public class StockPlugin extends AbstractPlugin {
 
-	/**stock items*/
+	/** stock items */
 	protected List<Stock> stocks = new ArrayList<Stock>();
 
-	/**stock layers*/
+	/** stock layers */
 	private List<StockLayer<?>> stockLayers = new ArrayList<StockLayer<?>>();
 
 	/**
-	 * create candle stick plugin
+	 * create stock plug-in
 	 */
 	public StockPlugin() {
 		setAntialiasing(Antialiasing.On);
@@ -42,10 +42,9 @@ public class StockPlugin extends AbstractPlugin {
 		setPriority(100);
 	}
 
-	
-	
 	/**
 	 * get the registered stock layers
+	 * 
 	 * @return layers
 	 */
 	public List<StockLayer<?>> getLayers() {
@@ -54,8 +53,9 @@ public class StockPlugin extends AbstractPlugin {
 
 	/**
 	 * set stock layers
+	 * 
 	 * @param layers
-	 * 			layers to set
+	 *            layers to set
 	 */
 	public void setLayers(List<StockLayer<?>> layers) {
 		for (int i = 0; i < layers.size(); i++) {
@@ -66,9 +66,10 @@ public class StockPlugin extends AbstractPlugin {
 
 	/**
 	 * add the given stock layer
+	 * 
 	 * @param layer
-	 * 			the layer to add
-	 * 		
+	 *            the layer to add
+	 * 
 	 */
 	public void addLayer(StockLayer<?> layer) {
 		layer.setHost(this);
@@ -77,8 +78,9 @@ public class StockPlugin extends AbstractPlugin {
 
 	/**
 	 * add array of stock layer
+	 * 
 	 * @param layers
-	 * 			layers to add
+	 *            layers to add
 	 */
 	public void addLayer(StockLayer<?>... layers) {
 		for (int i = 0; i < layers.length; i++) {
@@ -89,6 +91,7 @@ public class StockPlugin extends AbstractPlugin {
 
 	/**
 	 * get stock items
+	 * 
 	 * @return stocks
 	 */
 	public List<Stock> getStocks() {
@@ -97,8 +100,9 @@ public class StockPlugin extends AbstractPlugin {
 
 	/**
 	 * set stock items
+	 * 
 	 * @param stocks
-	 * 			the stocks items to add
+	 *            the stocks items to add
 	 */
 	public void setStocks(List<Stock> stocks) {
 		this.stocks = stocks;
@@ -106,37 +110,40 @@ public class StockPlugin extends AbstractPlugin {
 
 	/**
 	 * add stock item
+	 * 
 	 * @param stock
 	 */
 	public void addStocks(Stock stock) {
 		this.stocks.add(stock);
 	}
-	
+
 	/**
 	 * add array of stocks
+	 * 
 	 * @param stocks
-	 * 			stocks to add
+	 *            stocks to add
 	 */
-	public void addStock(Stock...stocks) {
+	public void addStock(Stock... stocks) {
 		for (int i = 0; i < stocks.length; i++) {
 			this.stocks.add(stocks[i]);
 		}
 	}
 
-	
-	
-	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
+	 * .View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
 	 */
 	@Override
 	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		for(StockLayer<?> layer : stockLayers){
+		System.out.println("paint layer "+windowPart.name());
+		for (StockLayer<?> layer : stockLayers) {
 			layer.solveLayer();
 			layer.paintLayer(v2d, g2d, windowPart);
 		}
-		
+
 	}
-	
-	
 
 }

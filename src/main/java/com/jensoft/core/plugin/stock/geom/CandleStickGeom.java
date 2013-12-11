@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
 package com.jensoft.core.plugin.stock.geom;
 
 import java.awt.Color;
@@ -6,21 +11,36 @@ import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.palette.NanoChromatique;
 
-public class CandleStickGeom extends StockItemGeometry{
-	
+/**
+ * <code>CandleStickGeom</code> defines the common candle stick market geometry
+ * with line for low/high amplitude and rectangle for open/close amplitude
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ * 
+ */
+public class CandleStickGeom extends StockItemGeometry {
+
 	private Color lowHighColor = NanoChromatique.BLACK.brighter();
-	
-	
+
+	/**line low/high shape*/
 	private Line2D deviceLowHighGap;
-	private Rectangle2D deviceLowOpenCloseGap;
 	
+	/**rectangle open/close shape*/
+	private Rectangle2D deviceLowOpenCloseGap;
+
+	/**
+	 * create candle stick geometry
+	 */
 	public CandleStickGeom() {
-		
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.stock.geom.StockItemGeometry#solveGeometry()
+	 */
 	@Override
 	public void solveGeometry() {
-		
+
 		super.solveGeometry();
 		Line2D deviceLowHighGap = new Line2D.Double(getDeviceLow(), getDeviceHigh());
 		setDeviceLowHighGap(deviceLowHighGap);
@@ -57,6 +77,5 @@ public class CandleStickGeom extends StockItemGeometry{
 	public void setLowHighColor(Color lowHighColor) {
 		this.lowHighColor = lowHighColor;
 	}
-
 
 }
