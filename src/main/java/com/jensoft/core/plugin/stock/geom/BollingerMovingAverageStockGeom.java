@@ -71,14 +71,6 @@ public class BollingerMovingAverageStockGeom extends CurveStockGeom {
 	/** move count */
 	private int moveCount = 20;
 
-	/**
-	 * create stock fixing geometry
-	 */
-	public BollingerMovingAverageStockGeom() {
-		super();
-		pathFunctionUp = new MetricsPathFunction();
-		pathFunctionBottom = new MetricsPathFunction();
-	}
 
 	/**
 	 * create moving geometry with given average count

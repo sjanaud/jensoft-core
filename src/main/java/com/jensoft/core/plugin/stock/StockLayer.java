@@ -209,11 +209,43 @@ public abstract class StockLayer<G extends StockGeometry> {
 	 */
 	public static class Volume extends StockLayer<VolumeBarGeometry> {
 
+		private Color volumeFillColor = NanoChromatique.BLUE;
+
 		public enum VolumeType {
 			Curve, Area, Bar,
 		}
 
+		/**
+		 * create default stock volume layer
+		 */
 		public Volume() {
+		}
+
+		/**
+		 * create stock volume layer with fill color
+		 * @param volumeFillColor
+		 */
+		public Volume(Color volumeFillColor) {
+			super();
+			this.volumeFillColor = volumeFillColor;
+		}
+
+		/**
+		 * get volume fill color
+		 * 
+		 * @return fill color
+		 */
+		public Color getVolumeFillColor() {
+			return volumeFillColor;
+		}
+
+		/**
+		 * set volume fill color
+		 * 
+		 * @param volumeFillColor
+		 */
+		public void setVolumeFillColor(Color volumeFillColor) {
+			this.volumeFillColor = volumeFillColor;
 		}
 
 		/*
@@ -245,7 +277,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		protected void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
 			if (windowPart == WindowPart.Device) {
 				for (VolumeBarGeometry geom : getGeometries()) {
-					g2d.setColor(geom.getStock().getVolumeColor());
+					g2d.setColor(volumeFillColor);
 					g2d.fill(geom.getDeviceVolumeGap());
 				}
 			}
@@ -513,7 +545,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		private Color bollingerBottomLineColor = RosePalette.INDIGO.brighter();
 
 		/**
-		 * create moving average with given move counts
+		 * create Bollinger with given move counts and defaults colors
 		 * 
 		 * @param moveCount
 		 */
@@ -523,7 +555,9 @@ public abstract class StockLayer<G extends StockGeometry> {
 		}
 
 		/**
-		 * create moving average layer with color and move count
+		 * create Bollinger layer with color for median curve with is a simple
+		 * moving average and move count. defaults colors for upper and lower
+		 * curves
 		 * 
 		 * @param curveColor
 		 * @param moveCount
@@ -531,6 +565,21 @@ public abstract class StockLayer<G extends StockGeometry> {
 		public BollingerBands(Color curveColor, int moveCount) {
 			super(curveColor);
 			this.moveCount = moveCount;
+		}
+
+		/**
+		 * create Bollinger layer with colors and move count
+		 * 
+		 * @param moveCount
+		 * @param curveColor
+		 * @param bollingerUpLineColor
+		 * @param bollingerBottomLineColor
+		 */
+		public BollingerBands(int moveCount, Color curveColor, Color bollingerUpLineColor, Color bollingerBottomLineColor) {
+			super(curveColor);
+			this.moveCount = moveCount;
+			this.bollingerUpLineColor = bollingerUpLineColor;
+			this.bollingerBottomLineColor = bollingerBottomLineColor;
 		}
 
 		/*
