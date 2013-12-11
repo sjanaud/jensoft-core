@@ -12,7 +12,7 @@ import com.jensoft.core.palette.NanoChromatique;
 
 /**
  * <code>Stock</code>defines a stock market with low, high, open, close, volume,
- * with fixing and fixing duration values for a fixing date.
+ * with fixing and fixing duration.
  * 
  * @since 1.0
  * @author sebastien janaud

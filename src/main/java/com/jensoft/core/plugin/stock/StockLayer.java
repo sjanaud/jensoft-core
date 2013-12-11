@@ -12,14 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.plugin.stock.geom.BollingerMovingAverageStockGeom;
 import com.jensoft.core.plugin.stock.geom.CandleStickGeom;
 import com.jensoft.core.plugin.stock.geom.CurveStockGeom;
+import com.jensoft.core.plugin.stock.geom.ExponentialMovingAverageStockGeom;
 import com.jensoft.core.plugin.stock.geom.FixingStockGeom;
 import com.jensoft.core.plugin.stock.geom.MovingAverageStockGeom;
 import com.jensoft.core.plugin.stock.geom.OhlcGeom;
 import com.jensoft.core.plugin.stock.geom.StockGeometry;
 import com.jensoft.core.plugin.stock.geom.StockItemGeometry;
 import com.jensoft.core.plugin.stock.geom.VolumeBarGeometry;
+import com.jensoft.core.plugin.stock.geom.WeightedMovingAverageStockGeom;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 
@@ -311,9 +315,10 @@ public abstract class StockLayer<G extends StockGeometry> {
 			geom.solveGeometry();
 			addGeometry(geom);
 		}
-		
+
 		/**
 		 * return a new instance of the generic geometry
+		 * 
 		 * @return generic geometry
 		 */
 		protected abstract C getGeomInstance();
@@ -344,33 +349,237 @@ public abstract class StockLayer<G extends StockGeometry> {
 		}
 
 	}
-	
+
 	/**
-	 *  <code>FixingCurve</code> reflect the close values for stocks fixing times
-	 *
+	 * <code>FixingCurve</code> reflect the close values for stocks fixing times
+	 * 
 	 */
 	public static class FixingCurve extends Curve<FixingStockGeom> {
+
+		public FixingCurve() {
+			super();
+		}
+
+		public FixingCurve(Color curveColor) {
+			super(curveColor);
+		}
 
 		@Override
 		protected FixingStockGeom getGeomInstance() {
 			return new FixingStockGeom();
 		}
-		
+
 	}
-	
+
 	/**
-	 *  <code>MovingAverageCurve</code> reflect the moving average for stocks
-	 *
+	 * <code>MovingAverageCurve</code> reflect the moving average for stocks
+	 * 
 	 */
 	public static class MovingAverageCurve extends Curve<MovingAverageStockGeom> {
 
+		/** moving average count */
+		private int moveCount = 20;
+
+		/**
+		 * create moving average with given move counts
+		 * 
+		 * @param moveCount
+		 */
+		public MovingAverageCurve(int moveCount) {
+			super();
+			this.moveCount = moveCount;
+		}
+
+		/**
+		 * create moving average layer with color and move count
+		 * 
+		 * @param curveColor
+		 * @param moveCount
+		 */
+		public MovingAverageCurve(Color curveColor, int moveCount) {
+			super(curveColor);
+			this.moveCount = moveCount;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
+		 */
 		@Override
 		protected MovingAverageStockGeom getGeomInstance() {
-			return new MovingAverageStockGeom();
+			return new MovingAverageStockGeom(moveCount);
 		}
-		
+
 	}
-	
+
+	/**
+	 * <code>WeightedMovingAverageCurve</code> reflect the moving average for
+	 * stocks
+	 * 
+	 */
+	public static class WeightedMovingAverageCurve extends Curve<WeightedMovingAverageStockGeom> {
+
+		/** moving average count */
+		private int moveCount = 20;
+
+		/**
+		 * create moving average with given move counts
+		 * 
+		 * @param moveCount
+		 */
+		public WeightedMovingAverageCurve(int moveCount) {
+			super();
+			this.moveCount = moveCount;
+		}
+
+		/**
+		 * create moving average layer with color and move count
+		 * 
+		 * @param curveColor
+		 * @param moveCount
+		 */
+		public WeightedMovingAverageCurve(Color curveColor, int moveCount) {
+			super(curveColor);
+			this.moveCount = moveCount;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
+		 */
+		@Override
+		protected WeightedMovingAverageStockGeom getGeomInstance() {
+			return new WeightedMovingAverageStockGeom(moveCount);
+		}
+
+	}
+
+	/**
+	 * <code>ExponentialdMovingAverageCurve</code> reflect the moving average
+	 * for stocks
+	 * 
+	 */
+	public static class ExponentialdMovingAverageCurve extends Curve<ExponentialMovingAverageStockGeom> {
+
+		/** moving average count */
+		private int moveCount = 20;
+
+		/**
+		 * create moving average with given move counts
+		 * 
+		 * @param moveCount
+		 */
+		public ExponentialdMovingAverageCurve(int moveCount) {
+			super();
+			this.moveCount = moveCount;
+		}
+
+		/**
+		 * create moving average layer with color and move count
+		 * 
+		 * @param curveColor
+		 * @param moveCount
+		 */
+		public ExponentialdMovingAverageCurve(Color curveColor, int moveCount) {
+			super(curveColor);
+			this.moveCount = moveCount;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
+		 */
+		@Override
+		protected ExponentialMovingAverageStockGeom getGeomInstance() {
+			return new ExponentialMovingAverageStockGeom(moveCount);
+		}
+
+	}
+
+	/**
+	 * <code>ExponentialdMovingAverageCurve</code> reflect the moving average
+	 * for stocks
+	 * 
+	 */
+	public static class BollingerBands extends Curve<BollingerMovingAverageStockGeom> {
+
+		/** moving average count */
+		private int moveCount = 20;
+
+		private Color bollingerUpLineColor = RosePalette.INDIGO.brighter();
+		private Color bollingerBottomLineColor = RosePalette.INDIGO.brighter();
+
+		/**
+		 * create moving average with given move counts
+		 * 
+		 * @param moveCount
+		 */
+		public BollingerBands(int moveCount) {
+			super();
+			this.moveCount = moveCount;
+		}
+
+		/**
+		 * create moving average layer with color and move count
+		 * 
+		 * @param curveColor
+		 * @param moveCount
+		 */
+		public BollingerBands(Color curveColor, int moveCount) {
+			super(curveColor);
+			this.moveCount = moveCount;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
+		 */
+		@Override
+		protected BollingerMovingAverageStockGeom getGeomInstance() {
+			return new BollingerMovingAverageStockGeom(moveCount);
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.plugin.stock.StockLayer.Curve#paintLayer(com.jensoft
+		 * .core.view.View2D, java.awt.Graphics2D,
+		 * com.jensoft.core.window.WindowPart)
+		 */
+		@Override
+		protected void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+			super.paintLayer(v2d, g2d, windowPart);
+			if (windowPart == WindowPart.Device) {
+
+				for (CurveStockGeom geom : getGeometries()) {
+
+					BollingerMovingAverageStockGeom bollingerGeom = (BollingerMovingAverageStockGeom) geom;
+
+					bollingerGeom.getPathFunctionUp().setSolveGeometryRequest(true);
+					bollingerGeom.getPathFunctionUp().setWindow2d(getHost().getWindow2D());
+					bollingerGeom.getPathFunctionUp().setFontRenderContext(g2d.getFontRenderContext());
+
+					bollingerGeom.getPathFunctionBottom().setSolveGeometryRequest(true);
+					bollingerGeom.getPathFunctionBottom().setWindow2d(getHost().getWindow2D());
+					bollingerGeom.getPathFunctionBottom().setFontRenderContext(g2d.getFontRenderContext());
+
+					g2d.setColor(bollingerUpLineColor);
+					Shape upFonction = bollingerGeom.getPathFunctionUp().getOrCreateGeometry().getPath();
+					g2d.draw(upFonction);
+
+					g2d.setColor(bollingerBottomLineColor);
+					Shape bottomFonction = bollingerGeom.getPathFunctionBottom().getOrCreateGeometry().getPath();
+					g2d.draw(bottomFonction);
+				}
+			}
+		}
+
+	}
 
 	/**
 	 * solve layer geometry.
