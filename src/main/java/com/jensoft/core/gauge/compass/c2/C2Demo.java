@@ -21,11 +21,9 @@ public class C2Demo extends View2D {
    
 
     public C2Demo() {
-    super();
+    super(10);
 
-        setPlaceHolderAxisSouth(80);
-        setPlaceHolderAxisWest(120);
-        setPlaceHolderAxisEast(120);
+        
 
         // view.setDeviceBackground(Color.WHITE);
 

@@ -280,9 +280,9 @@ public class C2Body extends BodyGaugePainter {
 
             metricsPart = new PartBuffer(centerX - radius, centerY - radius,
                                          2 * radius, 2 * radius);
-            g2d.setColor(Color.RED);
-            g2d.drawRect((int) (centerX - radius), (int) (centerY - radius),
-                         2 * radius, 2 * radius);
+//            g2d.setColor(Color.RED);
+//            g2d.drawRect((int) (centerX - radius), (int) (centerY - radius),
+//                         2 * radius, 2 * radius);
             Graphics2D g2dPart = metricsPart.getBuffer().createGraphics();
             g2dPart.setRenderingHints(g2d.getRenderingHints());
             g2dPart.translate(-centerX + radius, -centerY + radius);
