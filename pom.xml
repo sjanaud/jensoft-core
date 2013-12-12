@@ -13,9 +13,9 @@
 	</parent>
 
 	<scm>
-		<connection>scm:svn:http://www.jensoft.org/svn/trunk/jensoft-core</connection>
-		<developerConnection>scm:svn:http://www.jensoft.org/svn/trunk/jensoft-core</developerConnection>
-		<url>http://www.jensoft.org/svn/trunk/jensoft-core</url>
+		<connection>scm:svn:http://svn.jensoft.org/trunk/jensoft-core</connection>
+		<developerConnection>scm:svn:http://svn.jensoft.org/trunk/jensoft-core</developerConnection>
+		<url>http://svn.jensoft.org/trunk/jensoft-core</url>
 	</scm>
 
 	<dependencies>
