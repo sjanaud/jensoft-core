@@ -152,6 +152,7 @@ public class C2Needle extends NeedleGaugePainter {
 
         Point2D center = new Point2D.Double(centerX, centerY);
 
+        getGauge().getMetricsManager().setSolveGeometryRequest(true);
         Point2D pNeedle2 = getGauge().getMetricsManager().getRadialPoint(
                                                                          curentValue, 70, Side.SideLeft);
         Point2D pNeedle2TT = getGauge().getWindow2D().userToPixel(pNeedle2);
