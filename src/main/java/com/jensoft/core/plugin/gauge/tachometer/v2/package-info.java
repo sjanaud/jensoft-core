@@ -4,4 +4,4 @@
  * @author sebastien janaud
  * @since 1.0
  */
-package com.jensoft.core.plugin.gauge.velocity.v2;
+package com.jensoft.core.plugin.gauge.tachometer.v2;

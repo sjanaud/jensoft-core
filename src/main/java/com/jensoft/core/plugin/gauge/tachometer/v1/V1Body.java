@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.velocity.v1;
+package com.jensoft.core.plugin.gauge.tachometer.v1;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
