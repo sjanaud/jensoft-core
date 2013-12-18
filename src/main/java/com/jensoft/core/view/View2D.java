@@ -425,26 +425,32 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 	 * view creation
 	 */
 	private void createView() {
-
+		setDoubleBuffered(false);
+		
 		axisEast = new WindowPartComponent(WindowPart.East, this);
 		Dimension dimMarginRight = new Dimension(placeHolderAxisEast, 10);
 		axisEast.setPreferredSize(dimMarginRight);
+		axisEast.setDoubleBuffered(false);
 
 		axisWest = new WindowPartComponent(WindowPart.West, this);
 		Dimension dimMarginLeft = new Dimension(placeHolderAxisWest, 10);
 		axisWest.setPreferredSize(dimMarginLeft);
+		axisWest.setDoubleBuffered(false);
 
 		axisNorth = new WindowPartComponent(WindowPart.North, this);
 		Dimension dimMarginNorth = new Dimension(10, placeHolderAxisNorth);
 		axisNorth.setPreferredSize(dimMarginNorth);
+		axisNorth.setDoubleBuffered(false);
 
 		axisSouth = new WindowPartComponent(WindowPart.South, this);
 		Dimension dimMarginSouth = new Dimension(10, placeHolderAxisSouth);
 		axisSouth.setPreferredSize(dimMarginSouth);
+		axisSouth.setDoubleBuffered(false);
 
 		device2D = new DevicePartComponent();
-		setDoubleBuffered(false);
-
+		device2D.setDoubleBuffered(false);
+		
+		
 		device2D.setView2D(this);
 
 		addView2DListener(device2D);

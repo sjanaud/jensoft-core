@@ -11,8 +11,6 @@ import com.jensoft.core.gauge.core.painter.BodyGaugePainter;
 import com.jensoft.core.gauge.core.painter.ConstructorGaugePainter;
 import com.jensoft.core.gauge.core.painter.EnvelopGaugePainter;
 import com.jensoft.core.gauge.core.painter.GlassGaugePainter;
-import com.jensoft.core.gauge.core.painter.NeedleGaugePainter;
-import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.window.Window2D;
 
 public class RadialGauge {
@@ -22,22 +20,18 @@ public class RadialGauge {
     private int radius;
     private Window2D window2D;
 
-    // one per gauge
     private EnvelopGaugePainter envelop;
     private GlassGaugePainter effect;
     private ConstructorGaugePainter constructor;
 
     private BackgroundGaugePainter background;
     private BodyGaugePainter body;
-    private NeedleGaugePainter needle;
-    private GeneralMetricsPath metricsManager;
 
     public RadialGauge(double x, double y, int radius) {
         this.radius = radius;
         this.x = x;
         this.y = y;
 
-        metricsManager = new GeneralMetricsPath();
     }
 
     public Window2D getWindow2D() {
@@ -48,9 +42,6 @@ public class RadialGauge {
         window2D = window2d;
     }
 
-    public GeneralMetricsPath getMetricsManager() {
-        return metricsManager;
-    }
 
     public int getRadius() {
         return radius;
@@ -101,15 +92,6 @@ public class RadialGauge {
     public void setBody(BodyGaugePainter body) {
         body.setGauge(this);
         this.body = body;
-    }
-
-    public NeedleGaugePainter getNeedle() {
-        return needle;
-    }
-
-    public void setNeedle(NeedleGaugePainter needle) {
-        needle.setGauge(this);
-        this.needle = needle;
     }
 
     public GlassGaugePainter getEffect() {

@@ -15,6 +15,7 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
+import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.List;
@@ -25,21 +26,236 @@ import com.jensoft.core.gauge.core.painter.BodyGaugePainter;
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
+import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
 import com.jensoft.core.glyphmetrics.GlyphUtil;
+import com.jensoft.core.glyphmetrics.StylePosition;
+import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
+import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
+import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.InputFonts;
+import com.jensoft.core.palette.JennyPalette;
 import com.jensoft.core.palette.PetalPalette;
 import com.jensoft.core.palette.TangoPalette;
 
 public class C2Body extends BodyGaugePainter {
 
     public C2Body() {
+    	
+    	 pathManager = new GeneralMetricsPath();
+         pathManager.setProjectionNature(ProjectionNature.DEVICE);
+         pathManager.setAutoReverseGlyph(false);
+         pathManager.setReverseAll(true);
+         pathManager.setMin(0);
+         pathManager.setMax(360);
+
+         GlyphMetric metric = new GlyphMetric();
+         metric.setValue(0);
+         metric.setStylePosition(StylePosition.Default);
+         metric.setMetricsNature(GlyphMetricsNature.Major);
+         metric.setMetricsLabel("E");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, Color.ORANGE));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.BUTTER3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 34));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(30);
+         metric.setStylePosition(StylePosition.Tangent);
+         metric.setMetricsNature(GlyphMetricsNature.Median);
+         metric.setMetricsLabel("3O");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 18));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(60);
+
+         metric.setStylePosition(StylePosition.Tangent);
+         metric.setMetricsNature(GlyphMetricsNature.Median);
+         metric.setMetricsLabel("6O");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 18));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(90);
+         metric.setStylePosition(StylePosition.Default);
+         metric.setMetricsNature(GlyphMetricsNature.Major);
+         metric.setMetricsLabel("N");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 JennyPalette.JENNY6));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(JennyPalette.JENNY6));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 34));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(120);
+
+         metric.setStylePosition(StylePosition.Tangent);
+         metric.setMetricsNature(GlyphMetricsNature.Median);
+         metric.setMetricsLabel("12O");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 18));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(150);
+
+         metric.setStylePosition(StylePosition.Tangent);
+         metric.setMetricsNature(GlyphMetricsNature.Median);
+         metric.setMetricsLabel("15O");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 18));
+         pathManager.addMetric(metric);
+
+         // metric = new GlyphMetric();
+         // metric.setUserValue(150);
+         //
+         // metric.setStylePosition(StylePosition.Default);
+         // metric.setMetricsNature(MetricsNature.Median);
+         // metric.setMetricsLabel("15O");
+         // metric.setDivergence(15);
+         // metric.setGlyphMetricFill(new GradientFill(Color.WHITE,
+         // TangoPalette.CHAMELEON1));
+         // metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+         // TangoPalette.CHAMELEON1));
+         // //metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         // metric.setFont(InputFonts.getFont(InputFonts.ELEMENT,18));
+         // pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(180);
+         metric.setStylePosition(StylePosition.Default);
+         metric.setMetricsNature(GlyphMetricsNature.Major);
+         metric.setMetricsLabel("W");
+         metric.setDivergence(-30);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.ORANGE3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.ORANGE3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 34));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(210);
+         metric.setStylePosition(StylePosition.Tangent);
+         metric.setMetricsNature(GlyphMetricsNature.Median);
+         metric.setMetricsLabel("210");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 18));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(240);
+         metric.setStylePosition(StylePosition.Tangent);
+         metric.setMetricsNature(GlyphMetricsNature.Median);
+         metric.setMetricsLabel("240");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 18));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(270);
+
+         metric.setStylePosition(StylePosition.Default);
+         metric.setMetricsNature(GlyphMetricsNature.Major);
+         metric.setMetricsLabel("S");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON1));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON1));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 34));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(300);
+
+         metric.setStylePosition(StylePosition.Tangent);
+         metric.setMetricsNature(GlyphMetricsNature.Median);
+         metric.setMetricsLabel("300");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 18));
+         pathManager.addMetric(metric);
+
+         metric = new GlyphMetric();
+         metric.setValue(330);
+
+         metric.setStylePosition(StylePosition.Tangent);
+         metric.setMetricsNature(GlyphMetricsNature.Median);
+         metric.setMetricsLabel("330");
+         metric.setDivergence(-20);
+         metric.setGlyphMetricFill(new GlyphFill(Color.WHITE,
+                                                 TangoPalette.CHAMELEON3));
+         metric.setGlyphMetricMarkerPainter(new TicTacMarker(
+                                                             TangoPalette.CHAMELEON3));
+         // metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
+         metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 18));
+         pathManager.addMetric(metric);
+         
+         needle = new C2Needle();
+         needle.setPathManager(pathManager);
+         
         createCompasse();
     }
 
+    public GeneralMetricsPath getPathManager() {
+		return pathManager;
+	}
+
+	public void setPathManager(GeneralMetricsPath pathManager) {
+		this.pathManager = pathManager;
+	}
+
+	private GeneralMetricsPath pathManager;
     private Arc2D arc2d;
     private int startAngleDegreee = 0;
     private int endAngleDegree = 360;
     private PartBuffer metricsPart;
+    private C2Needle needle;
 
     private SailCompass compass;
 
@@ -263,7 +479,7 @@ public class C2Body extends BodyGaugePainter {
 
         int radius = getGauge().getRadius() - 10;
 
-        GeneralMetricsPath pathManager = getGauge().getMetricsManager();
+        GeneralMetricsPath pathManager = getPathManager();
         pathManager.setWindow2d(getGauge().getWindow2D());
         pathManager.resetPath();
         pathManager.setFontRenderContext(g2d.getFontRenderContext());
@@ -327,6 +543,12 @@ public class C2Body extends BodyGaugePainter {
     public void paintBody(Graphics2D g2d, RadialGauge radialGauge) {
         paintCompass(g2d);
         paintMetrics(g2d);
-    }
+		paintNeedle(g2d);
+	}
+
+	private void paintNeedle(Graphics2D g2d) {
+		needle.setGauge(getGauge());
+		needle.paintGauge(g2d, getGauge());
+	}
 
 }
