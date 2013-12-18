@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.tachometer;
+package com.jensoft.core.plugin.gauge.speedometer;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -28,9 +28,9 @@ import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.BodyGaugePainter;
 import com.jensoft.core.plugin.gauge.core.NeedleGaugePainter;
 
-public class TachometerBody extends BodyGaugePainter {
+public class SpeedometerBody extends BodyGaugePainter {
 
-	public TachometerBody() {
+	public SpeedometerBody() {
 		metricsManager = new GeneralMetricsPath();
 		metricsManager.setProjectionNature(ProjectionNature.DEVICE);
 
@@ -76,7 +76,7 @@ public class TachometerBody extends BodyGaugePainter {
 
 
 
-		needle = new TachometerNeedle();
+		needle = new SpeedometerNeedle();
 		needle.setPathManager(getMetricsManager());
 
 		needle.setCurentValue(180);

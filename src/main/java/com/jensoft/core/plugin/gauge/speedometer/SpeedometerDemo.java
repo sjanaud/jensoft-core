@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.tachometer;
+package com.jensoft.core.plugin.gauge.speedometer;
 
 import java.awt.Color;
 
@@ -14,13 +14,13 @@ import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
 @JenSoftAPIDemo
-public class TachometerDemo extends View2D {
+public class SpeedometerDemo extends View2D {
 
     private static final long serialVersionUID = 156889765687899L;
 
    
 
-    public TachometerDemo() {
+    public SpeedometerDemo() {
     super();
 
         setPlaceHolderAxisSouth(80);
@@ -31,7 +31,7 @@ public class TachometerDemo extends View2D {
         Window2D w2d = new Window2D.Linear(-3000, 3000, -2500, 2500);
         w2d.setName("velocity gauge window");
 
-        Tachometer gauge = new Tachometer();
+        Speedometer gauge = new Speedometer();
         RadialGaugePlugin layout = new RadialGaugePlugin(gauge);
 
         w2d.registerPlugin(layout);
@@ -45,7 +45,7 @@ public class TachometerDemo extends View2D {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        final ViewFrameUI demoFrame = new ViewFrameUI(new TachometerDemo());
+        final ViewFrameUI demoFrame = new ViewFrameUI(new SpeedometerDemo());
        
     }
 

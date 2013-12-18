@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.tachometer;
+package com.jensoft.core.plugin.gauge.speedometer;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -25,7 +25,7 @@ import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.NeedleGaugePainter;
 
-public class TachometerNeedle extends NeedleGaugePainter {
+public class SpeedometerNeedle extends NeedleGaugePainter {
 	
 
 	private void paintNeedle(Graphics2D g2d) {

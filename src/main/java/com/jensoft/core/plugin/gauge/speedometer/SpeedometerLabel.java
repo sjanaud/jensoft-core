@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.tachometer;
+package com.jensoft.core.plugin.gauge.speedometer;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -21,9 +21,9 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.ConstructorGaugePainter;
 
-public class TachometerLabel extends ConstructorGaugePainter {
+public class SpeedometerLabel extends ConstructorGaugePainter {
 
-    public TachometerLabel() {
+    public SpeedometerLabel() {
 
     }
 
