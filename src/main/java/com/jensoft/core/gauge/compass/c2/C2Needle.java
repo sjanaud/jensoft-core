@@ -106,7 +106,7 @@ public class C2Needle extends NeedleGaugePainter {
             // System.out.println("needle engine stop cycle");
 
             // curentValue = newValue;
-            getGauge().getWindow2D().getDevice2D().repaintDevice();
+            //getGauge().getWindow2D().getDevice2D().repaintDevice();
 
         }
 
@@ -145,15 +145,15 @@ public class C2Needle extends NeedleGaugePainter {
                 .userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
         int radius = getGauge().getRadius() - 50;
 
-        GeneralMetricsPath pathManager = getGauge().getMetricsManager();
+        GeneralMetricsPath pathManager = getPathManager();
         pathManager.setFontRenderContext(g2d.getFontRenderContext());
 
-        getGauge().getMetricsManager().setWindow2d(getGauge().getWindow2D());
+        pathManager.setWindow2d(getGauge().getWindow2D());
 
         Point2D center = new Point2D.Double(centerX, centerY);
 
-        getGauge().getMetricsManager().setSolveGeometryRequest(true);
-        Point2D pNeedle2 = getGauge().getMetricsManager().getRadialPoint(
+        pathManager.setSolveGeometryRequest(true);
+        Point2D pNeedle2 = pathManager.getRadialPoint(
                                                                          curentValue, 70, Side.SideLeft);
         Point2D pNeedle2TT = getGauge().getWindow2D().userToPixel(pNeedle2);
         Line2D lNeedle = new Line2D.Double(center.getX(), center.getY(),

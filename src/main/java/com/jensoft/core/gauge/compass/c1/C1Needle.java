@@ -144,10 +144,9 @@ public class C1Needle extends NeedleGaugePainter {
                 .userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
         int radius = getGauge().getRadius() - 50;
 
-        GeneralMetricsPath pathManager = getGauge().getMetricsManager();
-        pathManager.setFontRenderContext(g2d.getFontRenderContext());
+        getPathManager().setFontRenderContext(g2d.getFontRenderContext());
 
-        getGauge().getMetricsManager().setWindow2d(getGauge().getWindow2D());
+        getPathManager().setWindow2d(getGauge().getWindow2D());
 
         // pathManager.setFontRenderContext(g2d.getFontRenderContext());
         // int startAngleDegreee = 200;
@@ -164,7 +163,7 @@ public class C1Needle extends NeedleGaugePainter {
 
         Point2D center = new Point2D.Double(centerX, centerY);
 
-        Point2D pNeedle2 = getGauge().getMetricsManager().getRadialPoint(
+        Point2D pNeedle2 = getPathManager().getRadialPoint(
                                                                          curentValue, 60, Side.SideLeft);// getGauge().getMetricsManager().getPoint(125);//new
                                                                                                          // Point2D.Double(centerX+radius
                                                                                                          // *

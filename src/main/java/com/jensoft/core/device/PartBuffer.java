@@ -27,16 +27,9 @@ public class PartBuffer {
         height = h;
 
         part = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-        graphics2D = part.createGraphics();
     }
 
-    public void dispose() {
-        graphics2D.dispose();
-    }
-
-    public Graphics2D getGraphics2D() {
-        return graphics2D;
-    }
+   
 
     public double getX() {
         return x;

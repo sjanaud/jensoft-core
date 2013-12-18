@@ -22,7 +22,6 @@ public abstract class EnvelopGaugePainter extends AbstractGaugePainter {
     @Override
     public final void paintGauge(Graphics2D g2d, RadialGauge radialGauge) {
         paintEnvelop(g2d, radialGauge);
-
     }
 
 }
