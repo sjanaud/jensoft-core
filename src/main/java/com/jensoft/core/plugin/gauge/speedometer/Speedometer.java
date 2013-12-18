@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.tachometer;
+package com.jensoft.core.plugin.gauge.speedometer;
 
 import java.util.Random;
 
@@ -11,22 +11,22 @@ import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.Glass1;
 
-public class Tachometer extends RadialGauge {
+public class Speedometer extends RadialGauge {
 
-    public Tachometer() {
+    public Speedometer() {
         super(0, 0, 90);
 
         CiseroEnvelop e1 = new CiseroEnvelop();
         setEnvelop(e1);
 
-        TachometerBody b1 = new TachometerBody();
+        SpeedometerBody b1 = new SpeedometerBody();
         setBody(b1);
 
         Glass1 effect = new Glass1();
         setEffect(effect);
 
        
-        TachometerLabel v1c = new TachometerLabel();
+        SpeedometerLabel v1c = new SpeedometerLabel();
         setConstructor(v1c);
         // Thread demo = new Thread(needleAnimator,"needle animator");
         // demo.start();
