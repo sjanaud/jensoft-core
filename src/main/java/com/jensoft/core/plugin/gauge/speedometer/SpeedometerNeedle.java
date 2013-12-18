@@ -35,13 +35,15 @@ public class SpeedometerNeedle extends NeedleGaugePainter {
 		int radius = getGauge().getRadius() - 10;
 
 		GeneralMetricsPath pathManager = getPathManager();
+		
+		pathManager.setSolveGeometryRequest(true);
 		pathManager.setFontRenderContext(g2d.getFontRenderContext());
 
 		getPathManager().setWindow2d(getGauge().getWindow2D());
 
 		Point2D center = new Point2D.Double(centerX, centerY);
 
-		Point2D pNeedle2 = getPathManager().getRadialPoint(getCurentValue(), 40, Side.SideRight);
+		Point2D pNeedle2 = getPathManager().getRadialPoint(getCurentValue(), 20, Side.SideRight);
 		Point2D pNeedle2TT = getGauge().getWindow2D().userToPixel(pNeedle2);
 		Line2D lNeedle = new Line2D.Double(center.getX(), center.getY(), pNeedle2.getX(), pNeedle2.getY());
 
