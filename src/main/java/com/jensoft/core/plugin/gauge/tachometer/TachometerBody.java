@@ -15,9 +15,6 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.device.PartBuffer;
-import com.jensoft.core.gauge.core.RadialGauge;
-import com.jensoft.core.gauge.core.painter.BodyGaugePainter;
-import com.jensoft.core.gauge.core.painter.NeedleGaugePainter;
 import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
@@ -27,6 +24,9 @@ import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
+import com.jensoft.core.plugin.gauge.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.BodyGaugePainter;
+import com.jensoft.core.plugin.gauge.core.NeedleGaugePainter;
 
 public class TachometerBody extends BodyGaugePainter {
 
