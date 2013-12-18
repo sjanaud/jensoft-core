@@ -14,12 +14,12 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.gauge.core.RadialGauge;
-import com.jensoft.core.gauge.core.painter.ConstructorGaugePainter;
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.plugin.gauge.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.ConstructorGaugePainter;
 
 public class TachometerLabel extends ConstructorGaugePainter {
 

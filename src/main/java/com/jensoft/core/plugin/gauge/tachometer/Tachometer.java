@@ -7,9 +7,9 @@ package com.jensoft.core.plugin.gauge.tachometer;
 
 import java.util.Random;
 
-import com.jensoft.core.gauge.core.RadialGauge;
-import com.jensoft.core.gauge.envelop.CiseroEnvelop;
-import com.jensoft.core.gauge.glass.Glass1;
+import com.jensoft.core.plugin.gauge.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
+import com.jensoft.core.plugin.gauge.core.glass.Glass1;
 
 public class Tachometer extends RadialGauge {
 
