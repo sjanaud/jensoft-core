@@ -7,7 +7,6 @@ package com.jensoft.core.plugin.gauge;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.gauge.core.RadialGauge;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.Interpolation;
