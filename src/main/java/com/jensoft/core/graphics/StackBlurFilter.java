@@ -20,7 +20,7 @@ import java.awt.image.BufferedImage;
  * edges. The performance of this filter are independant from the radius.
  * </p>
  * 
- * @author Sebastien Janaud
+ *
  */
 public class StackBlurFilter extends AbstractFilter {
 
