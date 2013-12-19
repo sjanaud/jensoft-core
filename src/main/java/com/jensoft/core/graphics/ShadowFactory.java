@@ -101,7 +101,7 @@ import java.util.HashMap;
  * <code>ShadowFactory</code> is not guaranteed to be thread-safe.
  * </p>
  * 
- * @author Sebastien Janaud
+ * 
  */
 
 public class ShadowFactory {

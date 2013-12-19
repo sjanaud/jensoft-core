@@ -19,7 +19,6 @@ import java.awt.image.BufferedImage;
  * edges. The performance of this filter are independant from the radius.
  * </p>
  * 
- * @author Romain Guy <romain.guy@mac.com>
  */
 public class FastBlurFilter extends AbstractFilter {
 

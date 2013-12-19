@@ -79,19 +79,16 @@ import java.awt.image.BufferedImage;
  * <code>ReflectionRenderer</code> is not guaranteed to be thread-safe.
  * </p>
  * 
- * @author Sebastien Janaud
+ *
  */
 public class ReflectionRenderer {
 
  
 
-    // opacity of the reflection
     private float opacity;
 
-    // length of the reflection
     private float length;
 
-    // should the reflection be blurred?
     private boolean blurEnabled;
 
     
