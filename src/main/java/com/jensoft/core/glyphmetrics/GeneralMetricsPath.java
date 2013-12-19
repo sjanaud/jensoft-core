@@ -398,8 +398,8 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 				System.out.println("move to "+coordinates[0]+","+ coordinates[1]);
 				Point2D pm = null;
 				if (getProjectionNature() == ProjectionNature.USER) {
-					//pm = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
-					pm = getWindow2d().userToPixel(new Point2D.Double(coordinates[1], coordinates[0]));
+					pm = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
+					//pm = getWindow2d().userToPixel(new Point2D.Double(coordinates[1], coordinates[0]));
 				} else {
 					pm = new Point2D.Double(coordinates[0], coordinates[1]);
 				}
@@ -444,10 +444,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 					pc3 = getWindow2d().userToPixel(new Point2D.Double(coordinates[4], coordinates[5]));
 					
 					//seems Arc2D get reverse path iterator!? --> send mail to Jim Grapham?
-					
-//					pc1 = getWindow2d().userToPixel(new Point2D.Double(coordinates[1], coordinates[0]));
-//					pc2 = getWindow2d().userToPixel(new Point2D.Double(coordinates[3], coordinates[2]));
-//					pc3 = getWindow2d().userToPixel(new Point2D.Double(coordinates[5], coordinates[4]));
+					//pc1 = getWindow2d().userToPixel(new Point2D.Double(coordinates[1], coordinates[0]));
+					//pc2 = getWindow2d().userToPixel(new Point2D.Double(coordinates[3], coordinates[2]));
+					//pc3 = getWindow2d().userToPixel(new Point2D.Double(coordinates[5], coordinates[4]));
 					
 				} else {
 					
