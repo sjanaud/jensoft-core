@@ -37,7 +37,7 @@ public class V2Gauge extends RadialGauge {
         // Thread demo = new Thread(needleAnimator,"needle animator");
         // demo.start();
 
-       // needle.setCurentValue(6);
+      
 
     }
 

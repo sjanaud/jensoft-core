@@ -35,9 +35,9 @@ public class V2GaugeDemo extends View2D {
 
         V2Gauge gauge = new V2Gauge();
         RadialGaugePlugin layout = new RadialGaugePlugin(gauge);
-
         w2d.registerPlugin(layout);
-        w2d.registerPlugin(new ZoomWheelPlugin());
+       
+        
         registerWindow2D(w2d);
         
         Thread t = new Thread(){
