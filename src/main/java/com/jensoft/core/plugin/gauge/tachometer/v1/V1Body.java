@@ -131,6 +131,7 @@ public class V1Body extends BodyGaugePainter {
          
 
          needle = new V1Needle();
+         needle.setPathManager(metricsPath);
     }
 
     private GeneralMetricsPath metricsPath;
