@@ -16,7 +16,7 @@ public class Watch extends RadialGauge {
     public Watch() {
         super(0, 0, 90);
 
-        CiseroEnvelop e1 = new CiseroEnvelop();
+        CiseroEnvelop e1 = new CiseroEnvelop(4);
         setEnvelop(e1);
 
         WatchBody b1 = new WatchBody();

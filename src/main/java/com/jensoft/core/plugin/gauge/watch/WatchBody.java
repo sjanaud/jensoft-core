@@ -31,156 +31,193 @@ import com.jensoft.core.plugin.gauge.core.NeedleGaugePainter;
 
 public class WatchBody extends BodyGaugePainter {
 
-	
-	private Arc2D arc2d;
+	//private Arc2D arc2d;
 	private int startAngleDegreee = 90;
 	private int extendsAngleDegree = 220;
 	private PartBuffer metricsPart;
+
+	private GeneralMetricsPath hourMetricsManager;
+	private GeneralMetricsPath minuteMetricsManager;
+	private GeneralMetricsPath secondMetricsManager;
+
 	private GeneralMetricsPath metricsManager;
-	private NeedleGaugePainter needle;
-	
+	private WatchNeedle needle;
+
 	public WatchBody() {
+
+		hourMetricsManager = new GeneralMetricsPath();
+		hourMetricsManager.setProjectionNature(ProjectionNature.DEVICE);
+		hourMetricsManager.setRange(0, 12);
+
+		minuteMetricsManager = new GeneralMetricsPath();
+		minuteMetricsManager.setProjectionNature(ProjectionNature.DEVICE);
+		minuteMetricsManager.setRange(0, 60);
+
+		secondMetricsManager = new GeneralMetricsPath();
+		secondMetricsManager.setProjectionNature(ProjectionNature.DEVICE);
+		secondMetricsManager.setRange(0, 60);
+
 		metricsManager = new GeneralMetricsPath();
 		metricsManager.setProjectionNature(ProjectionNature.DEVICE);
-
 		metricsManager.setMin(0);
 		metricsManager.setMax(12);
-		
+
 		createMainTicks();
 		createMainMetrics();
-		
-//		//add legend
-//		GlyphMetric metric = new GlyphMetric();
-//		metric.setValue(280);
-//		metric.setStylePosition(StylePosition.Default);
-//		//metric.setMetricsNature(GlyphMetricsNature.Major);
-//		metric.setMetricsLabel("Km/h");
-//
-//		metric.setDivergence(30);
-//		GlyphFill legendFill = new GlyphFill(Color.WHITE, NanoChromatique.RED);
-//		metric.setGlyphMetricFill(legendFill);
-//		metric.setGlyphMetricMarkerPainter(null);
-//		metric.setFont(InputFonts.getFont(InputFonts.NEUROPOL, 16));
-//		
-//		metricsManager.addMetric(metric);
 
-
+		// //add legend
+		// GlyphMetric metric = new GlyphMetric();
+		// metric.setValue(280);
+		// metric.setStylePosition(StylePosition.Default);
+		// //metric.setMetricsNature(GlyphMetricsNature.Major);
+		// metric.setMetricsLabel("Km/h");
+		//
+		// metric.setDivergence(30);
+		// GlyphFill legendFill = new GlyphFill(Color.WHITE,
+		// NanoChromatique.RED);
+		// metric.setGlyphMetricFill(legendFill);
+		// metric.setGlyphMetricMarkerPainter(null);
+		// metric.setFont(InputFonts.getFont(InputFonts.NEUROPOL, 16));
+		//
+		// metricsManager.addMetric(metric);
 
 		needle = new WatchNeedle();
 		needle.setPathManager(getMetricsManager());
+		needle.setHourMetricsManager(hourMetricsManager);
+		needle.setMinuteMetricsManager(minuteMetricsManager);
+		needle.setSecondMetricsManager(secondMetricsManager);
 
 		needle.setCurentValue(10);
 	}
-	
-	private void createMainTicks(){
+
+	private void createMainTicks() {
 		RoundMarker rm = new RoundMarker(NanoChromatique.ORANGE, NanoChromatique.WHITE, 4);
-		
-		TicTacMarker ttm = new TicTacMarker(NanoChromatique.ORANGE);
+		GlyphFill gf = new GlyphFill(Color.WHITE, NanoChromatique.BLUE);
+		TicTacMarker ttm = new TicTacMarker(NanoChromatique.YELLOW);
 		ttm.setSize(4);
 		ttm.setDivergence(4);
-		
-		for(int i = 0;i<12;i++){
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 16);
+		for (int i = 0; i < 12; i++) {
 			GlyphMetric metric = new GlyphMetric();
 			metric.setValue(i);
 			metric.setStylePosition(StylePosition.Default);
-			metric.setMetricsLabel("1");
-
+			metric.setMetricsLabel(i + "");
+			metric.setFont(f);
 			metric.setDivergence(16);
-			if(i == 0 || i == 3 || i == 6 || i == 9){
-				metric.setGlyphMetricMarkerPainter(new RoundMarker(NanoChromatique.ORANGE, NanoChromatique.WHITE, 4));
-				//metric.setGlyphMetricMarkerPainter(ttm);
-			}
-			else{
+			if (i == 0 || i == 3 || i == 6 || i == 9) {
+				// metric.setGlyphMetricMarkerPainter(new
+				// RoundMarker(NanoChromatique.ORANGE, NanoChromatique.WHITE,
+				// 4));
+				// metric.setGlyphMetricMarkerPainter(ttm);
+			} else {
+				metric.setGlyphMetricFill(gf);
 				metric.setGlyphMetricMarkerPainter(ttm);
+				metricsManager.addMetric(metric);
 			}
-			metricsManager.addMetric(metric);
+
 		}
 	}
-	
-	private void createMainMetrics(){
-		GlyphFill gf = new GlyphFill(Color.WHITE, NanoChromatique.ORANGE);
-		TicTacMarker ttm = new TicTacMarker(NanoChromatique.ORANGE);
+
+	private void createMainMetrics() {
+		GlyphFill gf = new GlyphFill(Color.WHITE, NanoChromatique.BLUE);
+		TicTacMarker ttm = new TicTacMarker(NanoChromatique.RED);
 		ttm.setSize(3);
 		ttm.setDivergence(3);
-		Font f= InputFonts.getFont(InputFonts.ELEMENT, 26);
-		
-		//6 o'clock
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 36);
+
+		// 6 o'clock
 		GlyphMetric metric = new GlyphMetric();
 		metric.setValue(0);
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsLabel("12");
-		metric.setDivergence(16);
+		metric.setDivergence(5);
 		metric.setGlyphMetricFill(gf);
 		metric.setFont(f);
 		metricsManager.addMetric(metric);
-		
-		//3 o'clock
+
+		// 3 o'clock
 		metric = new GlyphMetric();
 		metric.setValue(3);
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsLabel("3");
-		metric.setDivergence(16);
+		metric.setDivergence(5);
 		metric.setGlyphMetricFill(gf);
 		metric.setFont(f);
 		metricsManager.addMetric(metric);
-		
-		//6
+
+		// 6
 		metric = new GlyphMetric();
 		metric.setValue(6);
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsLabel("6");
-		metric.setDivergence(16);
+		metric.setDivergence(5);
 		metric.setGlyphMetricFill(gf);
-		//metric.setGlyphMetricMarkerPainter(ttm);
+		// metric.setGlyphMetricMarkerPainter(ttm);
 		metric.setFont(f);
 		metricsManager.addMetric(metric);
-		
-		//9
+
+		// 9
 		metric = new GlyphMetric();
 		metric.setValue(9);
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsLabel("9");
-		metric.setDivergence(16);
+		metric.setDivergence(5);
 		metric.setGlyphMetricFill(gf);
-		//metric.setGlyphMetricMarkerPainter(ttm);
+		// metric.setGlyphMetricMarkerPainter(ttm);
 		metric.setFont(f);
-		
+
 		metricsManager.addMetric(metric);
 	}
 
-	
-
 	public GeneralMetricsPath getMetricsManager() {
 		return metricsManager;
+	}
+
+	public GeneralMetricsPath getHourMetricsManager() {
+		return hourMetricsManager;
+	}
+
+	public GeneralMetricsPath getMinuteMetricsManager() {
+		return minuteMetricsManager;
+	}
+
+	public GeneralMetricsPath getSecondMetricsManager() {
+		return secondMetricsManager;
 	}
 
 	private void paintMetrics(Graphics2D g2d) {
 
 		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
 		double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
-		
+
 		int radius = getGauge().getRadius() - 10;
 
-		// startAngleDegreee = 210;
-		// endAngleDegree = -30;
-
-		// startAngleDegreee = 260;
-		// endAngleDegree = 0;
+		
 
 		startAngleDegreee = 90;
 		extendsAngleDegree = -360;
 
-		GeneralMetricsPath pathManager = getMetricsManager();
-		pathManager.setWindow2d(getGauge().getWindow2D());
+		
+		Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
+		Arc2D arc2d1 = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
+		Arc2D arc2d2 = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
+		Arc2D arc2d3 = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
 
-		pathManager.resetPath();
-
-		arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
-
-		g2d.setColor(Color.RED);
-		//g2d.draw(arc2d);
-
-		pathManager.append(arc2d);
+		metricsManager.setWindow2d(getGauge().getWindow2D());
+		metricsManager.resetPath();
+		metricsManager.append(arc2d);
+		
+		hourMetricsManager.setWindow2d(getGauge().getWindow2D());
+		hourMetricsManager.resetPath();
+		hourMetricsManager.append(arc2d1);
+		
+		minuteMetricsManager.setWindow2d(getGauge().getWindow2D());
+		minuteMetricsManager.resetPath();
+		minuteMetricsManager.append(arc2d2);
+		
+		secondMetricsManager.setWindow2d(getGauge().getWindow2D());
+		secondMetricsManager.resetPath();
+		secondMetricsManager.append(arc2d3);
 
 		radius = getGauge().getRadius();
 		if (metricsPart == null) {
@@ -194,9 +231,9 @@ public class WatchBody extends BodyGaugePainter {
 			g2dPart.setStroke(new BasicStroke(0.4f));
 			g2dPart.setColor(Color.BLACK);
 
-			pathManager.setFontRenderContext(g2dPart.getFontRenderContext());
+			metricsManager.setFontRenderContext(g2dPart.getFontRenderContext());
 
-			List<GlyphMetric> metrics = pathManager.getMetrics();
+			List<GlyphMetric> metrics = metricsManager.getMetrics();
 			for (GlyphMetric m : metrics) {
 
 				if (m.getGlyphMetricMarkerPainter() != null) {

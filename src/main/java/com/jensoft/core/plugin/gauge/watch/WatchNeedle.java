@@ -8,15 +8,18 @@ package com.jensoft.core.plugin.gauge.watch;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.LinearGradientPaint;
 import java.awt.RadialGradientPaint;
 import java.awt.Shape;
 import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
+import java.awt.geom.GeneralPath;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
+import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.glyphmetrics.Side;
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.NanoChromatique;
@@ -28,76 +31,60 @@ import com.jensoft.core.plugin.gauge.core.NeedleGaugePainter;
 public class WatchNeedle extends NeedleGaugePainter {
 	
 
-	private void paintNeedle(Graphics2D g2d) {
-
+	private int hour = 2;
+	private int minutes;
+	private int second;
+	
+	private GeneralMetricsPath hourMetricsManager;
+	private GeneralMetricsPath minuteMetricsManager;
+	private GeneralMetricsPath secondMetricsManager;
+	
+	private void paintNeedle(Graphics2D g2d,GeneralMetricsPath path,double value,int radialDivergence, int thickness) {
 		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
 		double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
-		int radius = getGauge().getRadius() - 10;
-
-		GeneralMetricsPath pathManager = getPathManager();
 		
-		pathManager.setSolveGeometryRequest(true);
-		pathManager.setFontRenderContext(g2d.getFontRenderContext());
 
-		getPathManager().setWindow2d(getGauge().getWindow2D());
+		//GeneralMetricsPath pathManager = path;		
+		path.setSolveGeometryRequest(true);
+		path.setFontRenderContext(g2d.getFontRenderContext());
+		path.setWindow2d(getGauge().getWindow2D());
 
 		Point2D center = new Point2D.Double(centerX, centerY);
-
-		Point2D pNeedle2 = getPathManager().getRadialPoint(getCurentValue(), 20, Side.SideRight);
-		Point2D pNeedle2TT = getGauge().getWindow2D().userToPixel(pNeedle2);
+		Point2D pNeedle2 = path.getRadialPoint(value, radialDivergence, Side.SideRight);
+		
 		Line2D lNeedle = new Line2D.Double(center.getX(), center.getY(), pNeedle2.getX(), pNeedle2.getY());
 
 		BasicStroke stroke = new BasicStroke(2, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
-		BasicStroke stroke2 = new BasicStroke(8, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
+		BasicStroke stroke2 = new BasicStroke(thickness, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND);
 		Shape tShape = stroke.createStrokedShape(lNeedle);
 		Shape tShape2 = stroke2.createStrokedShape(lNeedle);
 
 		Area area = new Area(tShape);
 		Area area2 = new Area(tShape2);
 
-		int w = 20;
+		int w = 5;
 		Ellipse2D cacheCenter = new Ellipse2D.Double(centerX - w, centerY - w, 2 * w, 2 * w);
-		Area area3 = new Area(cacheCenter);
+		
 
-		g2d.setColor(ColorPalette.alpha(NanoChromatique.GREEN, 120));
+		g2d.setColor(ColorPalette.alpha(NanoChromatique.YELLOW.brighter(), 160));
 
 		g2d.fill(area2);
 
-		g2d.setColor(NanoChromatique.GREEN);
+		g2d.setColor(NanoChromatique.YELLOW);
 
 		g2d.fill(area);
-
-		// deco gradient
-		// int w0 = 25;
-		// int r = NanoChromatique.PINK.getRed();
-		// int g = NanoChromatique.PINK.getGreen();
-		// int b = NanoChromatique.PINK.getBlue();
-
-		// //Ellipse2D cacheCenter0 = new
-		// Ellipse2D.Double(centerX-w0,centerY-w0,2*w0,2*w0);
-		// RoundGradientPaint rgp0 = new RoundGradientPaint(centerX, centerY,new
-		// Color(r,g,b,250), new Point2D.Double(5, 25), new Color(r,g,b,40));
-		// //RadialGradientPaint rgp0 = new RadialGradientPaint(new
-		// Point2D.Double(centerX,centerY), 25, new float[]{0f,1f},new
-		// Color[]{new Color(r,g,b,250),new Color(r,g,b,40)});
-		//
-		// g2d.setPaint(rgp0);
-
-		// RoundGradientPaint rgp = new RoundGradientPaint(centerX,
-		// centerY,Color.BLACK,new Point2D.Double(0, 20),
-		// Color.DARK_GRAY.darker());
 		RadialGradientPaint rgp = new RadialGradientPaint(new Point2D.Double(centerX, centerY), 20, new float[] { 0f, 1f }, new Color[] { ColorPalette.alpha(Color.BLACK,180), ColorPalette.alpha(Color.BLACK,100) });
 
 		g2d.setPaint(rgp);
 		g2d.fill(cacheCenter);
 		g2d.setStroke(new BasicStroke(2f));
 
-		g2d.setColor(NanoChromatique.GREEN);
+		g2d.setColor(NanoChromatique.BLUE.brighter());
 
 		g2d.draw(cacheCenter);
-
 	}
-
+	
+	
 	private void paintDeco1(Graphics2D g2d) {
 
 		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
@@ -185,12 +172,340 @@ public class WatchNeedle extends NeedleGaugePainter {
 
 		}
 	}
+	
+	
+	public void paintHourNeedle(Graphics2D g2d, RadialGauge radialGauge) {
+		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
+		double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
+		
+		GeneralMetricsPath path = getHourMetricsManager();
+		
+		path.setSolveGeometryRequest(true);
+		path.setFontRenderContext(g2d.getFontRenderContext());
+		path.setWindow2d(getGauge().getWindow2D());
+
+		Point2D center = new Point2D.Double(centerX, centerY);
+		Point2D needle = path.getRadialPoint(2, 50, Side.SideRight);
+		
+		Line2D needleLineBase = new Line2D.Double(center.getX(), center.getY(), needle.getX(), needle.getY());
+		GeometryPath geomPath1 = new GeometryPath(needleLineBase);
+		
+		double px,py;
+		px = centerX + 10 * Math.sin(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		py = centerY - 10 * Math.cos(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		Line2D needleLineBaseExtends = new Line2D.Double(px, py, needle.getX(), needle.getY());
+		GeometryPath geomPath2 = new GeometryPath(needleLineBaseExtends);
+		
+		//g2d.setColor(NanoChromatique.GREEN);
+		//g2d.drawRect((int)px, (int)py,4,4);
+	
+		double px4,py4;
+		px4 = centerX + 20 * Math.sin(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		py4 = centerY - 20 * Math.cos(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		//g2d.setColor(NanoChromatique.GREEN);
+		//g2d.drawRect((int)px4, (int)py4,4,4);
+		
+		GeneralPath path1 = new GeneralPath();
+		
+		
+		Point2D p1l = geomPath1.orthoLeftPointAtLength(2, 6);
+		Point2D p1r = geomPath1.orthoRightPointAtLength(2,6);
+		
+//		g2d.setColor(NanoChromatique.BLUE);
+//		g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+//		g2d.setColor(NanoChromatique.RED);
+//		g2d.drawRect((int)p1r.getX(), (int)p1r.getY(),4,4);
+		
+		Point2D p2l = geomPath2.orthoLeftPointAtLength(2, 8);
+		Point2D p2r = geomPath2.orthoRightPointAtLength(2,8);
+		Point2D p3l = geomPath1.orthoLeftPointAtLength(geomPath1.lengthOfPath()-4, 3);
+		Point2D p3r = geomPath1.orthoRightPointAtLength(geomPath1.lengthOfPath()-4,3);
+		
+		path1.moveTo(p1l.getX(), p1l.getY());
+		//path1.lineTo(p2l.getX(), p2l.getY());
+		path1.quadTo(px,py,p2l.getX(), p2l.getY());
+		path1.quadTo(px4, py4, p2r.getX(), p2r.getY());
+		//path1.lineTo(p2r.getX(), p2r.getY());
+		//path1.lineTo(p1r.getX(), p1r.getY());
+		path1.quadTo(px,py,p1r.getX(), p1r.getY());
+		path1.lineTo(p3r.getX(), p3r.getY());
+		path1.lineTo(needle.getX(),needle.getY());
+		path1.lineTo(p3l.getX(), p3l.getY());
+		path1.closePath();
+		
+		
+		
+		Line2D l = new Line2D.Double(p1l, p1r);
+		Line2D l2 = new Line2D.Double(p2l,p2r);
+		
+		
+		
+		
+		
+		
+		//g2d.draw(needleLineBase);
+		//g2d.draw(l);
+		//g2d.draw(l2);
+		//g2d.draw(needleLineBaseExtends);
+	
+		g2d.setColor(ColorPalette.alpha(NanoChromatique.BLUE.brighter(),200));
+		Point2D start = new Point2D.Double(px4, py4);
+		Point2D end = new Point2D.Double(needle.getX(), needle.getY());
+
+		
+		LinearGradientPaint shader = new LinearGradientPaint(start, end, new float[]{0,1}, new Color[]{Color.WHITE,NanoChromatique.BLUE});
+		g2d.setPaint(shader);
+		g2d.fill(path1);
+		g2d.setColor(NanoChromatique.BLUE);
+		g2d.draw(path1);
+		//g2d.fill(path1);
+		
+		//g2d.setColor(NanoChromatique.BLUE);
+		//g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+		
+		//g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+		g2d.setColor(NanoChromatique.BLUE.darker());
+		g2d.fillOval((int)centerX-2, (int)centerY-2, 4, 4);
+	}
+	
+	public void paintMinuteNeedle(Graphics2D g2d, RadialGauge radialGauge) {
+		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
+		double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
+		
+		GeneralMetricsPath path = getMinuteMetricsManager();
+		
+		path.setSolveGeometryRequest(true);
+		path.setFontRenderContext(g2d.getFontRenderContext());
+		path.setWindow2d(getGauge().getWindow2D());
+
+		Point2D center = new Point2D.Double(centerX, centerY);
+		Point2D needle = path.getRadialPoint(30, 20, Side.SideRight);
+		
+		Line2D needleLineBase = new Line2D.Double(center.getX(), center.getY(), needle.getX(), needle.getY());
+		GeometryPath geomPath1 = new GeometryPath(needleLineBase);
+		
+		double px,py;
+		px = centerX + 10 * Math.sin(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		py = centerY - 10 * Math.cos(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		Line2D needleLineBaseExtends = new Line2D.Double(px, py, needle.getX(), needle.getY());
+		GeometryPath geomPath2 = new GeometryPath(needleLineBaseExtends);
+		
+		//g2d.setColor(NanoChromatique.GREEN);
+		//g2d.drawRect((int)px, (int)py,4,4);
+	
+		double px4,py4;
+		px4 = centerX + 20 * Math.sin(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		py4 = centerY - 20 * Math.cos(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		//g2d.setColor(NanoChromatique.GREEN);
+		//g2d.drawRect((int)px4, (int)py4,4,4);
+		
+		GeneralPath path1 = new GeneralPath();
+		
+		
+		Point2D p1l = geomPath1.orthoLeftPointAtLength(2,4);
+		Point2D p1r = geomPath1.orthoRightPointAtLength(2,4);
+		
+//		g2d.setColor(NanoChromatique.BLUE);
+//		g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+//		g2d.setColor(NanoChromatique.RED);
+//		g2d.drawRect((int)p1r.getX(), (int)p1r.getY(),4,4);
+		
+		Point2D p2l = geomPath2.orthoLeftPointAtLength(2, 6);
+		Point2D p2r = geomPath2.orthoRightPointAtLength(2,6);
+		Point2D p3l = geomPath1.orthoLeftPointAtLength(geomPath1.lengthOfPath()-4, 3);
+		Point2D p3r = geomPath1.orthoRightPointAtLength(geomPath1.lengthOfPath()-4,3);
+		
+		path1.moveTo(p1l.getX(), p1l.getY());
+		//path1.lineTo(p2l.getX(), p2l.getY());
+		path1.quadTo(px,py,p2l.getX(), p2l.getY());
+		path1.quadTo(px4, py4, p2r.getX(), p2r.getY());
+		//path1.lineTo(p2r.getX(), p2r.getY());
+		//path1.lineTo(p1r.getX(), p1r.getY());
+		path1.quadTo(px,py,p1r.getX(), p1r.getY());
+		path1.lineTo(p3r.getX(), p3r.getY());
+		path1.lineTo(needle.getX(),needle.getY());
+		path1.lineTo(p3l.getX(), p3l.getY());
+		path1.closePath();
+		
+		
+		
+		Line2D l = new Line2D.Double(p1l, p1r);
+		Line2D l2 = new Line2D.Double(p2l,p2r);
+		
+		
+		
+		
+		
+		
+		//g2d.draw(needleLineBase);
+		//g2d.draw(l);
+		//g2d.draw(l2);
+		//g2d.draw(needleLineBaseExtends);
+	
+		g2d.setColor(ColorPalette.alpha(NanoChromatique.BLUE.brighter(),200));
+		Point2D start = new Point2D.Double(px4, py4);
+		Point2D end = new Point2D.Double(needle.getX(), needle.getY());
+
+		
+		LinearGradientPaint shader = new LinearGradientPaint(start, end, new float[]{0,1}, new Color[]{Color.WHITE,NanoChromatique.BLUE});
+		g2d.setPaint(shader);
+		g2d.fill(path1);
+		
+		g2d.setColor(NanoChromatique.WHITE);
+		g2d.draw(path1);
+		//g2d.fill(path1);
+		
+		//g2d.setColor(NanoChromatique.BLUE);
+		//g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+		
+		//g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+		g2d.setColor(NanoChromatique.BLUE.darker());
+		g2d.fillOval((int)centerX-2, (int)centerY-2, 4, 4);
+	}
+	
+	public void paintSecondeNeedle(Graphics2D g2d, RadialGauge radialGauge) {
+		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
+		double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
+		
+		GeneralMetricsPath path = getSecondMetricsManager();
+		
+		path.setSolveGeometryRequest(true);
+		path.setFontRenderContext(g2d.getFontRenderContext());
+		path.setWindow2d(getGauge().getWindow2D());
+
+		Point2D center = new Point2D.Double(centerX, centerY);
+		Point2D needle = path.getRadialPoint(48, 20, Side.SideRight);
+		
+		Line2D needleLineBase = new Line2D.Double(center.getX(), center.getY(), needle.getX(), needle.getY());
+		GeometryPath geomPath1 = new GeometryPath(needleLineBase);
+		
+		double px,py;
+		px = centerX + 10 * Math.sin(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		py = centerY - 10 * Math.cos(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		Line2D needleLineBaseExtends = new Line2D.Double(px, py, needle.getX(), needle.getY());
+		GeometryPath geomPath2 = new GeometryPath(needleLineBaseExtends);
+		
+		//g2d.setColor(NanoChromatique.GREEN);
+		//g2d.drawRect((int)px, (int)py,4,4);
+	
+		double px4,py4;
+		px4 = centerX + 20 * Math.sin(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		py4 = centerY - 20 * Math.cos(geomPath1.angleAtLength(0)+3*Math.PI/2);
+		//g2d.setColor(NanoChromatique.GREEN);
+		//g2d.drawRect((int)px4, (int)py4,4,4);
+		
+		GeneralPath path1 = new GeneralPath();
+		
+		
+		Point2D p1l = geomPath1.orthoLeftPointAtLength(2,4);
+		Point2D p1r = geomPath1.orthoRightPointAtLength(2,4);
+		
+//		g2d.setColor(NanoChromatique.BLUE);
+//		g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+//		g2d.setColor(NanoChromatique.RED);
+//		g2d.drawRect((int)p1r.getX(), (int)p1r.getY(),4,4);
+		
+		Point2D p2l = geomPath2.orthoLeftPointAtLength(2, 6);
+		Point2D p2r = geomPath2.orthoRightPointAtLength(2,6);
+		Point2D p3l = geomPath1.orthoLeftPointAtLength(geomPath1.lengthOfPath()-4, 3);
+		Point2D p3r = geomPath1.orthoRightPointAtLength(geomPath1.lengthOfPath()-4,3);
+		
+		path1.moveTo(p1l.getX(), p1l.getY());
+		//path1.lineTo(p2l.getX(), p2l.getY());
+		path1.quadTo(px,py,p2l.getX(), p2l.getY());
+		path1.quadTo(px4, py4, p2r.getX(), p2r.getY());
+		//path1.lineTo(p2r.getX(), p2r.getY());
+		//path1.lineTo(p1r.getX(), p1r.getY());
+		path1.quadTo(px,py,p1r.getX(), p1r.getY());
+		path1.lineTo(p3r.getX(), p3r.getY());
+		path1.lineTo(needle.getX(),needle.getY());
+		path1.lineTo(p3l.getX(), p3l.getY());
+		path1.closePath();
+		
+		
+		
+		Line2D l = new Line2D.Double(p1l, p1r);
+		Line2D l2 = new Line2D.Double(p2l,p2r);
+		
+		
+		
+		
+		
+		
+		//g2d.draw(needleLineBase);
+		//g2d.draw(l);
+		//g2d.draw(l2);
+		//g2d.draw(needleLineBaseExtends);
+	
+		g2d.setColor(ColorPalette.alpha(NanoChromatique.BLUE.brighter(),200));
+		Point2D start = new Point2D.Double(px4, py4);
+		Point2D end = new Point2D.Double(needle.getX(), needle.getY());
+
+		
+		LinearGradientPaint shader = new LinearGradientPaint(start, end, new float[]{0,1}, new Color[]{Color.WHITE,NanoChromatique.BLUE});
+		g2d.setPaint(shader);
+		//g2d.fill(path1);
+		
+		
+		g2d.setColor(NanoChromatique.YELLOW.brighter());
+		g2d.setStroke(new BasicStroke(3));
+		g2d.draw(needleLineBaseExtends);
+		//g2d.fill(path1);
+		
+		//g2d.setColor(NanoChromatique.BLUE);
+		//g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+		
+		//g2d.drawRect((int)p1l.getX(), (int)p1l.getY(),4,4);
+		g2d.setColor(NanoChromatique.BLUE.darker());
+		g2d.fillOval((int)centerX-2, (int)centerY-2, 4, 4);
+	}
 
 	@Override
 	public void paintNeedle(Graphics2D g2d, RadialGauge radialGauge) {
-		paintNeedle(g2d);
-		//paintDeco1(g2d);
-
+		
+		hour = 2;
+		minutes = 55;
+		second = 27;
+		
+		//paintNeedle(g2d, getHourMetricsManager(), hour, 60,10);
+		//paintNeedle(g2d, getMinuteMetricsManager(), minutes,40,6);
+		//paintNeedle(g2d, getSecondMetricsManager(), second,20,2);
+		
+		paintHourNeedle(g2d, radialGauge);
+		paintMinuteNeedle(g2d, radialGauge);
+		paintSecondeNeedle(g2d, radialGauge);
 	}
+
+
+	public GeneralMetricsPath getHourMetricsManager() {
+		return hourMetricsManager;
+	}
+
+
+	public void setHourMetricsManager(GeneralMetricsPath hourMetricsManager) {
+		this.hourMetricsManager = hourMetricsManager;
+	}
+
+
+	public GeneralMetricsPath getMinuteMetricsManager() {
+		return minuteMetricsManager;
+	}
+
+
+	public void setMinuteMetricsManager(GeneralMetricsPath minuteMetricsManager) {
+		this.minuteMetricsManager = minuteMetricsManager;
+	}
+
+
+	public GeneralMetricsPath getSecondMetricsManager() {
+		return secondMetricsManager;
+	}
+
+
+	public void setSecondMetricsManager(GeneralMetricsPath secondMetricsManager) {
+		this.secondMetricsManager = secondMetricsManager;
+	}
+	
+	
 
 }
