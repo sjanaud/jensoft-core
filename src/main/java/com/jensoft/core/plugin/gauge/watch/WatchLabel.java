@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.tachometer.v1;
+package com.jensoft.core.plugin.gauge.watch;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -21,9 +21,10 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.ConstructorGaugePainter;
 
-public class V1Constructor extends ConstructorGaugePainter {
+public class WatchLabel extends ConstructorGaugePainter {
 
-    public V1Constructor() {
+    public WatchLabel() {
+
     }
 
     @Override
@@ -43,7 +44,7 @@ public class V1Constructor extends ConstructorGaugePainter {
         GeometryPath geometry = new GeometryPath(arc2d);
 
         Font f = InputFonts.getFont(InputFonts.SANSATION_BOLD, 10);
-        String copyright = "Racing Black/JENSOFT INSTRUMENT/all right reserved.";
+        String copyright = "jensoft instrument - Watch";
 
         GlyphVector glyphVector = f.createGlyphVector(
                                                       g2d.getFontRenderContext(), copyright);
@@ -82,9 +83,9 @@ public class V1Constructor extends ConstructorGaugePainter {
 
             g2d.setColor(Color.WHITE);
 
-            if (j >= c_p && j < c_p + 15) {
-                g2d.setColor(TangoPalette.CHAMELEON1);
-            }
+//            if (j >= c_p && j < c_p + 15) {
+//                g2d.setColor(TangoPalette.CHAMELEON1);
+//            }
 
             g2d.fill(ts);
 
