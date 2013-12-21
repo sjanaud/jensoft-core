@@ -242,6 +242,40 @@ public class GeometryPath {
         }
         return pointAtLength(start + (end - start) * fraction);
     }
+    
+    /**
+     * return the orthogonal point that diverges of radius from path at the given length by the left
+     * @param length
+     * @param radius
+     * @return orthogonal left point
+     */
+    public Point2D orthoLeftPointAtLength(float length, float radius){
+    	float metricAngle = angleAtLength(length);
+		Point2D p = pointAtLength(length);
+		double px,py;
+		
+		px = p.getX() + radius * Math.sin(metricAngle);
+		py = p.getY() - radius * Math.cos(metricAngle);
+		
+		return new Point2D.Double(px,py);
+    }
+    
+    
+    /**
+     * return the orthogonal point that diverges of radius from path at the given length by the right
+     * @param length
+     * @param radius
+     * @return orthogonal right point
+     */
+    public Point2D orthoRightPointAtLength(float length, float radius){
+    	float metricAngle = angleAtLength(length);
+		Point2D p = pointAtLength(length);
+		double px,py;
+		px = p.getX() - radius * Math.sin(metricAngle);
+		py = p.getY() + radius * Math.cos(metricAngle);
+		
+		return new Point2D.Double(px,py);
+    }
 
     /**
      * return the point defines by the specified length
