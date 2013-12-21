@@ -5,6 +5,7 @@
  */
 package com.jensoft.core.glyphmetrics.painter.marker;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
@@ -134,8 +135,7 @@ public class RoundMarker extends GlyphMetricMarkerPainter {
      */
     @Override
     public void paintGlyphMetricMarker(Graphics2D g2d, GlyphMetric glyphMetric) {
-        g2d.setComposite(java.awt.AlphaComposite.getInstance(
-                                                             java.awt.AlphaComposite.SRC_OVER, 1f));
+        //g2d.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, 1f));
 
         Point2D p = glyphMetric.getMetricPointRef();
 
@@ -149,9 +149,10 @@ public class RoundMarker extends GlyphMetricMarkerPainter {
 
             if (markerFillColor != null) {
                 g2d.setColor(markerFillColor);
-                g2d.fill(marker);
+				g2d.fill(marker);
             }
             if (markerDrawColor != null) {
+            	g2d.setStroke(new BasicStroke());
                 g2d.setColor(markerDrawColor);
                 g2d.draw(marker);
             }

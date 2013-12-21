@@ -133,6 +133,20 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		pmetrics = new ArrayList<GlyphMetric>();
 		entries = new ArrayList<SegmentEntry>();
 	}
+	
+	/**
+	 * set the ranges values of the path *
+	 * 
+	 * @param min
+	 *            the minimum user metrics value for this path to set
+	 * @param max
+	 *            the maximum user metrics value for this path to set
+	 *            
+	 */
+	public void setRange(double min, double max) {
+		this.min = min;
+		this.max = max;
+	}
 
 	/**
 	 * get the minimum value of the path
@@ -835,18 +849,18 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	 * @return radial point
 	 */
 	public Point2D getRadialPoint(double metricsValue, int radius, Side side) {
-
+		System.out.println("get radial point for value : "+metricsValue);
 		scalePath();
 		double deviceLength = unitUserToDevice * metricsValue;
 		Point2D p = geometry.pointAtLength((float) deviceLength);
 		float metricAngle = geometry.angleAtLength((float) deviceLength);
 		double px;
 		double py;
+		System.out.println("metrics angle : "+metricAngle);
 		if (side == Side.SideRight) {
 			px = p.getX() - radius * Math.sin(metricAngle);
 			py = p.getY() + radius * Math.cos(metricAngle);
 		} else {
-
 			px = p.getX() + radius * Math.sin(metricAngle);
 			py = p.getY() - radius * Math.cos(metricAngle);
 		}
@@ -1120,7 +1134,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 
 		for (GlyphMetric vm : volatileMetrics) {
 			if (vm.getValue() < getMin() || vm.getValue() > getMax()) {
-				throw new IllegalArgumentException("metrics value out of path range.");
+				throw new IllegalArgumentException("metrics value out of path range :"+vm.getValue());
 			}
 
 			GlyphMetric m = new GlyphMetric();
