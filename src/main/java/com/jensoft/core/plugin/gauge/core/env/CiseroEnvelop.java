@@ -35,8 +35,21 @@ import com.jensoft.core.plugin.gauge.core.EnvelopGaugePainter;
  */
 public class CiseroEnvelop extends EnvelopGaugePainter {
 
+	
+	private double extendsRatio = 3; 
+	private double alpha = 10;
+	
 	public CiseroEnvelop() {
 	}
+	
+	
+
+	public CiseroEnvelop(double extendsRatio) {
+		super();
+		this.extendsRatio = extendsRatio;
+	}
+
+
 
 	private PartBuffer envelopPart;
 
@@ -103,8 +116,7 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 		return a;
 	}
 	
-	int deltaExternal = 40;
-	double alpha = 10;
+	
 	
 
 	public void paint2(Graphics2D g2d) {
@@ -112,7 +124,7 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
 		double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
 		
-		deltaExternal = getGauge().getRadius()/3;
+		int deltaExternal = (int)(getGauge().getRadius()/extendsRatio);
 		if (envelopPart == null) {
 
 			
