@@ -7,8 +7,10 @@ package com.jensoft.core.plugin.gauge;
 
 import java.awt.Graphics2D;
 
+import com.jensoft.core.graphics.AlphaInterpolation;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
+import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
@@ -21,12 +23,12 @@ public class RadialGaugePlugin extends AbstractPlugin {
 
     public RadialGaugePlugin(RadialGauge gauge) {
         this.gauge = gauge;
-//        setInterpolation(Interpolation.Bicubic);
-//        setAlphaInterpolation(AlphaInterpolation.Quality);
-//        setAntialiasing(Antialiasing.On);
-//        setFractionalMetrics(Fractional.On);
-//        setTextAntialising(TextAntialiasing.On);
-//        setDithering(Dithering.On);
+        setInterpolation(Interpolation.Bicubic);
+        setAlphaInterpolation(AlphaInterpolation.Quality);
+        setAntialiasing(Antialiasing.On);
+        setFractionalMetrics(Fractional.On);
+        setTextAntialising(TextAntialiasing.On);
+        setDithering(Dithering.On);
         
         setInterpolation(Interpolation.Bicubic);
         System.out.println("ok");
@@ -51,22 +53,20 @@ public class RadialGaugePlugin extends AbstractPlugin {
         if (gauge.getBackground() != null) {
             gauge.getBackground().paintGauge(g2d, gauge);
         }
-
+        
         if (gauge.getBody() != null) {
             gauge.getBody().paintGauge(g2d, gauge);
         }
-
-//        if (gauge.getNeedle() != null) {
-//            gauge.getNeedle().paintGauge(g2d, gauge);
-//        }
+        
+        if (gauge.getConstructor() != null) {
+            gauge.getConstructor().paintGauge(g2d, gauge);
+        }
 
         if (gauge.getEffect() != null) {
             gauge.getEffect().paintGauge(g2d, gauge);
         }
 
-        if (gauge.getConstructor() != null) {
-            gauge.getConstructor().paintGauge(g2d, gauge);
-        }
+       
 
     }
 
