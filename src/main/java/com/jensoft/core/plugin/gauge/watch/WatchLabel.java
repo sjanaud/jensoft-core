@@ -16,7 +16,9 @@ import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.glyphmetrics.GlyphUtil;
+import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.InputFonts;
+import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.ConstructorGaugePainter;
@@ -44,7 +46,7 @@ public class WatchLabel extends ConstructorGaugePainter {
         GeometryPath geometry = new GeometryPath(arc2d);
 
         Font f = InputFonts.getFont(InputFonts.SANSATION_BOLD, 10);
-        String copyright = "jensoft instrument - Watch";
+        String copyright = "jensoft API - Watch";
 
         GlyphVector glyphVector = f.createGlyphVector(
                                                       g2d.getFontRenderContext(), copyright);
@@ -81,7 +83,7 @@ public class WatchLabel extends ConstructorGaugePainter {
 
             Shape ts = af.createTransformedShape(glyph);
 
-            g2d.setColor(Color.WHITE);
+            g2d.setColor(ColorPalette.alpha(NanoChromatique.WHITE.brighter(),180));
 
 //            if (j >= c_p && j < c_p + 15) {
 //                g2d.setColor(TangoPalette.CHAMELEON1);

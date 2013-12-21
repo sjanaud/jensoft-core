@@ -256,7 +256,7 @@ public class WatchNeedle extends NeedleGaugePainter {
 		LinearGradientPaint shader = new LinearGradientPaint(start, end, new float[]{0,1}, new Color[]{Color.WHITE,NanoChromatique.BLUE});
 		g2d.setPaint(shader);
 		g2d.fill(path1);
-		g2d.setColor(NanoChromatique.BLUE);
+		g2d.setColor(NanoChromatique.WHITE);
 		g2d.draw(path1);
 		//g2d.fill(path1);
 		
