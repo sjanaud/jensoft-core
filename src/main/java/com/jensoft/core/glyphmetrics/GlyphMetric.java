@@ -219,7 +219,26 @@ public class GlyphMetric {
 	}
 	
 	/**
-	 * get the orthogonal right point
+	 * get the orthogonal left point shift
+	 * 
+	 * @param div
+	 *            the divergence from the path
+	 * @return the ortho point
+	 */
+	public Point2D getOrthoLeftPoint(int div,int shift) {
+		if (metricPointRef == null) {
+			return null;
+		}
+
+		double px;
+		double py;
+		px = metricPointRef.getX()+shift* Math.sin(metricAngle) + div * Math.sin(metricAngle+Math.PI/2);
+		py = metricPointRef.getY()-shift* Math.cos(metricAngle)  - div * Math.cos(metricAngle+Math.PI/2);
+		return new Point2D.Double(px, py);
+	}
+	
+	/**
+	 * get the orthogonal right point 
 	 * 
 	 * @param div
 	 *            the divergence from the path
@@ -236,6 +255,27 @@ public class GlyphMetric {
 		py = metricPointRef.getY() - div * Math.cos(metricAngle-Math.PI/2);
 		return new Point2D.Double(px, py);
 	}
+	
+	/**
+	 * get the orthogonal right point shift
+	 * 
+	 * @param div
+	 *            the divergence from the path
+	 * @return the ortho point
+	 */
+	public Point2D getOrthoRightPoint(int div,int shift) {
+		if (metricPointRef == null) {
+			return null;
+		}
+
+		double px;
+		double py;
+		px = metricPointRef.getX()+shift* Math.sin(metricAngle) + div * Math.sin(metricAngle-Math.PI/2);
+		py = metricPointRef.getY()-shift* Math.cos(metricAngle) - div * Math.cos(metricAngle-Math.PI/2);
+		return new Point2D.Double(px, py);
+	}
+	
+	
 
 	/**
 	 * get the radial point

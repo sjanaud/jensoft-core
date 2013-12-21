@@ -25,15 +25,14 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
 
     @Override
     public void paintGlyphMetricMarker(Graphics2D g2d, GlyphMetric glyphMetric) {
-
        
 
-        Point2D pLeft = glyphMetric.getOrthoLeftPoint(divergenceOrtho);
+        Point2D pLeft = glyphMetric.getOrthoLeftPoint(divergenceOrtho,5);
         if (pLeft == null) {
             return;
         }
         
-        Point2D pRight = glyphMetric.getOrthoRightPoint(divergenceOrtho);
+        Point2D pRight = glyphMetric.getOrthoRightPoint(divergenceOrtho,5);
         if (pRight == null) {
             return;
         }
@@ -42,15 +41,6 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
         if (pAnchor == null) {
             return;
         }
-        
-        g2d.setColor(Color.RED);
-        g2d.drawRect((int)pLeft.getX(),(int)pLeft.getY(),4,4);
-        
-        g2d.setColor(Color.BLUE);
-        g2d.drawRect((int)pRight.getX(),(int)pRight.getY(),4,4);
-        
-        g2d.setColor(Color.YELLOW);
-        g2d.drawRect((int)pAnchor.getX(),(int)pAnchor.getY(),4,4);
         
         GeneralPath path = new GeneralPath();
         path.moveTo(pLeft.getX(), pLeft.getY());
