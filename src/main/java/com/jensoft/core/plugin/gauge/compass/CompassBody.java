@@ -30,6 +30,7 @@ import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.BodyGaugePainter;
+import com.jensoft.core.plugin.gauge.core.GaugePartBuffer;
 
 /**
  * <code>CompassBody</code>
@@ -45,7 +46,7 @@ public class CompassBody extends BodyGaugePainter {
 
 	private double capDegree = 90;
 	
-	private PartBuffer metricsPart;
+	private GaugePartBuffer metricsPart;
 	private SailCompassTick compass;
 
 	/**
@@ -341,11 +342,10 @@ public class CompassBody extends BodyGaugePainter {
 
 		if (metricsPart == null) {
 
-			metricsPart = new PartBuffer(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
-
-			Graphics2D g2dPart = metricsPart.getBuffer().createGraphics();
+			
+			metricsPart = new GaugePartBuffer(getGauge());
+			Graphics2D g2dPart = metricsPart.getGraphics();
 			g2dPart.setRenderingHints(g2d.getRenderingHints());
-			g2dPart.translate(-centerX + radius, -centerY + radius);
 			g2dPart.setStroke(new BasicStroke(0.4f));
 			g2dPart.setColor(Color.BLACK);
 

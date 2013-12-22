@@ -5,7 +5,6 @@
  */
 package com.jensoft.core.plugin.gauge.speedometer;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -14,7 +13,6 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.device.PartBuffer;
 import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
@@ -26,116 +24,103 @@ import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.BodyGaugePainter;
-import com.jensoft.core.plugin.gauge.core.NeedleGaugePainter;
+import com.jensoft.core.plugin.gauge.core.GaugePartBuffer;
 
+/**
+ * <code>SpeedometerBody</code>
+ * 
+ * @author sebastien janaud
+ * 
+ */
 public class SpeedometerBody extends BodyGaugePainter {
 
+	/**gauge part buffer to paint reuse*/
+	private GaugePartBuffer metricsPart;
+	
+	/**metrics manager to manage value and metrics*/
+	private GeneralMetricsPath metricsManager;
+	
+	/**delegate needle*/
+	private SpeedometerNeedle needle;
+
+	/**
+	 * create speedometer body
+	 */
 	public SpeedometerBody() {
 		metricsManager = new GeneralMetricsPath();
 		metricsManager.setProjectionNature(ProjectionNature.DEVICE);
 
 		metricsManager.setMin(0);
 		metricsManager.setMax(280);
-		
+
 		GlyphFill gf = new GlyphFill(Color.WHITE, NanoChromatique.RED.brighter());
 		TicTacMarker ttm = new TicTacMarker(NanoChromatique.GREEN);
 		ttm.setSize(3);
 		ttm.setDivergence(3);
-		Font f= InputFonts.getFont(InputFonts.ELEMENT, 14);
-		
-		for(int i = 20;i < 250;i=i+20){
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 14);
+
+		for (int i = 20; i < 250; i = i + 20) {
 			GlyphMetric metric = new GlyphMetric();
 			metric.setValue(i);
 			metric.setStylePosition(StylePosition.Default);
-			//metric.setMetricsNature(GlyphMetricsNature.Major);
-			metric.setMetricsLabel(i+"");
-	
+			metric.setMetricsLabel(i + "");
 			metric.setDivergence(16);
 			metric.setGlyphMetricFill(gf);
 			metric.setGlyphMetricMarkerPainter(ttm);
 			metric.setFont(f);
-			
 			metricsManager.addMetric(metric);
 		}
-		
-		
-		//add legend
+
+		// add legend
 		GlyphMetric metric = new GlyphMetric();
 		metric.setValue(280);
 		metric.setStylePosition(StylePosition.Default);
-		//metric.setMetricsNature(GlyphMetricsNature.Major);
 		metric.setMetricsLabel("Km/h");
-
 		metric.setDivergence(30);
-		GlyphFill legendFill = new GlyphFill(Color.WHITE, NanoChromatique.RED);
-		metric.setGlyphMetricFill(legendFill);
-		metric.setGlyphMetricMarkerPainter(null);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
 		metric.setFont(InputFonts.getFont(InputFonts.NEUROPOL, 16));
-		
 		metricsManager.addMetric(metric);
 
-
-
 		needle = new SpeedometerNeedle();
-		needle.setPathManager(getMetricsManager());
-
+		needle.setPathManager(metricsManager);
 		needle.setCurentValue(180);
 	}
 
-	private Arc2D arc2d;
-	private int startAngleDegreee = 0;
-	private int extendsAngleDegree = 220;
-	private PartBuffer metricsPart;
-	private GeneralMetricsPath metricsManager;
-	private NeedleGaugePainter needle;
-
-	public GeneralMetricsPath getMetricsManager() {
-		return metricsManager;
-	}
-
+	
+	/**
+	 * paint metrics
+	 * @param g2d
+	 */
 	private void paintMetrics(Graphics2D g2d) {
 
 		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
 		double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
-		
+
 		int radius = getGauge().getRadius() - 10;
 
-		// startAngleDegreee = 210;
-		// endAngleDegree = -30;
+		int startAngleDegreee = 260;
+		int extendsAngleDegree = -340;
 
-		// startAngleDegreee = 260;
-		// endAngleDegree = 0;
+		Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
 
-		startAngleDegreee = 260;
-		extendsAngleDegree = -340;
+		// DEBUG ARC
+		// g2d.setColor(Color.RED);
+		// g2d.draw(arc2d);
 
-		GeneralMetricsPath pathManager = getMetricsManager();
-		pathManager.setWindow2d(getGauge().getWindow2D());
-
-		pathManager.resetPath();
-
-		arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
-
-		g2d.setColor(Color.RED);
-		//g2d.draw(arc2d);
-
-		pathManager.append(arc2d);
+		metricsManager.setWindow2d(getGauge().getWindow2D());
+		metricsManager.resetPath();
+		metricsManager.append(arc2d);
 
 		radius = getGauge().getRadius();
 		if (metricsPart == null) {
 
-			metricsPart = new PartBuffer(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
+			metricsPart = new GaugePartBuffer(getGauge());
 
-			Graphics2D g2dPart = metricsPart.getBuffer().createGraphics();
+			Graphics2D g2dPart = metricsPart.getGraphics();
 			g2dPart.setRenderingHints(g2d.getRenderingHints());
-			g2dPart.translate(-centerX + radius, -centerY + radius);
+			metricsManager.setFontRenderContext(g2d.getFontRenderContext());
 
-			g2dPart.setStroke(new BasicStroke(0.4f));
-			g2dPart.setColor(Color.BLACK);
-
-			pathManager.setFontRenderContext(g2dPart.getFontRenderContext());
-
-			List<GlyphMetric> metrics = pathManager.getMetrics();
+			List<GlyphMetric> metrics = metricsManager.getMetrics();
 			for (GlyphMetric m : metrics) {
 
 				if (m.getGlyphMetricMarkerPainter() != null) {
@@ -151,18 +136,16 @@ public class SpeedometerBody extends BodyGaugePainter {
 				if (m.getGlyphMetricEffect() != null) {
 					m.getGlyphMetricEffect().paintGlyphMetric(g2dPart, m);
 				}
-
 			}
-
-			g2d.drawImage(metricsPart.getBuffer(), (int) centerX - radius, (int) centerY - radius, 2 * radius, 2 * radius, null);
-
-		} else {
-
-			g2d.drawImage(metricsPart.getBuffer(), (int) centerX - radius, (int) centerY - radius, 2 * radius, 2 * radius, null);
 		}
-
+		g2d.drawImage(metricsPart.getBuffer(), (int) centerX - radius, (int) centerY - radius, 2 * radius, 2 * radius, null);
 	}
 
+	/**
+	 * paint textured body background
+	 * 
+	 * @param g2d
+	 */
 	private void paintBase(Graphics2D g2d) {
 
 		double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
@@ -175,7 +158,23 @@ public class SpeedometerBody extends BodyGaugePainter {
 		g2d.fill(baseShape);
 
 	}
+	
+	/**
+	 * paint delegate needle
+	 * @param g2d
+	 */
+	private void paintNeedle(Graphics2D g2d) {
+		needle.setGauge(getGauge());
+		needle.paintGauge(g2d, getGauge());
+	}
 
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.gauge.core.BodyGaugePainter#paintBody(java.awt
+	 * .Graphics2D, com.jensoft.core.plugin.gauge.RadialGauge)
+	 */
 	@Override
 	public void paintBody(Graphics2D g2d, RadialGauge radialGauge) {
 		paintBase(g2d);
@@ -183,9 +182,6 @@ public class SpeedometerBody extends BodyGaugePainter {
 		paintNeedle(g2d);
 	}
 
-	private void paintNeedle(Graphics2D g2d) {
-		needle.setGauge(getGauge());
-		needle.paintGauge(g2d, getGauge());
-	}
+	
 
 }
