@@ -57,13 +57,13 @@ public class RadialGaugePlugin extends AbstractPlugin {
 		if (gauge.getBody() != null) {
 			gauge.getBody().paintGauge(g2d, gauge);
 		}
-
-		if (gauge.getConstructor() != null) {
-			gauge.getConstructor().paintGauge(g2d, gauge);
-		}
+		
 
 		if (gauge.getEffect() != null) {
 			gauge.getEffect().paintGauge(g2d, gauge);
+		}
+		if (gauge.getConstructor() != null) {
+			gauge.getConstructor().paintGauge(g2d, gauge);
 		}
 
 	}
