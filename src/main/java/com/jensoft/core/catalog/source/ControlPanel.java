@@ -5,10 +5,6 @@
  */
 package com.jensoft.core.catalog.source;
 
-import java.awt.AWTError;
-import java.awt.HeadlessException;
-import java.awt.Toolkit;
-import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

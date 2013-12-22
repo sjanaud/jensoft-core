@@ -17,7 +17,6 @@ import com.jensoft.core.device.PartBuffer;
 import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.glyphmetrics.Side;
 import com.jensoft.core.glyphmetrics.StylePosition;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.DefaultMarker;
@@ -67,21 +66,20 @@ public class WatchBody extends BodyGaugePainter {
 		createMainTicks();
 		createMainMetrics();
 
-		// //add legend
-		// GlyphMetric metric = new GlyphMetric();
-		// metric.setValue(280);
-		// metric.setStylePosition(StylePosition.Default);
-		// //metric.setMetricsNature(GlyphMetricsNature.Major);
-		// metric.setMetricsLabel("Km/h");
-		//
-		// metric.setDivergence(30);
-		// GlyphFill legendFill = new GlyphFill(Color.WHITE,
-		// NanoChromatique.RED);
-		// metric.setGlyphMetricFill(legendFill);
-		// metric.setGlyphMetricMarkerPainter(null);
-		// metric.setFont(InputFonts.getFont(InputFonts.NEUROPOL, 16));
-		//
-		// metricsManager.addMetric(metric);
+		// add legend
+		GlyphMetric metric = new GlyphMetric();
+		metric.setValue(6);
+		metric.setStylePosition(StylePosition.Default);
+		// metric.setMetricsNature(GlyphMetricsNature.Major);
+		metric.setMetricsLabel("JenSoft API");
+
+		metric.setDivergence(50);
+		GlyphFill legendFill = new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter());
+		metric.setGlyphMetricFill(legendFill);
+		metric.setGlyphMetricMarkerPainter(null);
+		metric.setFont(InputFonts.getFont(InputFonts.SANSATION_REGULAR, 10));
+
+		metricsManager.addMetric(metric);
 
 		needle = new WatchNeedle();
 		needle.setPathManager(getMetricsManager());
@@ -118,12 +116,12 @@ public class WatchBody extends BodyGaugePainter {
 			}
 
 		}
-		
+
 		for (int i = 0; i < 60; i++) {
 			GlyphMetric metric = new GlyphMetric();
 			metric.setValue(i);
-			//metric.setDivergence(16);
-			
+			// metric.setDivergence(16);
+
 			metric.setGlyphMetricMarkerPainter(new DefaultMarker(NanoChromatique.PURPLE.brighter(), 2));
 			minuteMetricsManager.addMetric(metric);
 		}
@@ -155,34 +153,34 @@ public class WatchBody extends BodyGaugePainter {
 		metric.setGlyphMetricFill(gf);
 		metric.setFont(f);
 		metricsManager.addMetric(metric);
-		
+
 		// 3 o'clock
-				metric = new GlyphMetric();
-				metric.setValue(4.4);
-				metric.setStylePosition(StylePosition.Default);
-				metric.setMetricsLabel("3");
-				metric.setDivergence(5);
-				
-				//triangle marker
-				TriangleMarker triangle = new TriangleMarker(Color.WHITE,NanoChromatique.GREEN);
-				triangle.setDirection(TriangleDirection.Out);
-				triangle.setGlobalRadialShift(-20);
-				metric.setGlyphMetricMarkerPainter(triangle);
-				metric.setFont(f);
-				metricsManager.addMetric(metric);
-				
-				//rectangle
-				metric = new GlyphMetric();
-				metric.setValue(8.5);
-				metric.setStylePosition(StylePosition.Default);
-				metric.setMetricsLabel("3");
-				metric.setDivergence(5);
-				//metric.setGlyphMetricFill(gf);
-				
-				RectangleMarker rectangle = new RectangleMarker(Color.WHITE,NanoChromatique.GREEN,3,8);
-				metric.setGlyphMetricMarkerPainter(rectangle);
-				metric.setFont(f);
-				metricsManager.addMetric(metric);
+		metric = new GlyphMetric();
+		metric.setValue(4.4);
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsLabel("3");
+		metric.setDivergence(5);
+
+		// triangle marker
+		TriangleMarker triangle = new TriangleMarker(Color.WHITE, NanoChromatique.GREEN);
+		triangle.setDirection(TriangleDirection.Out);
+		triangle.setGlobalRadialShift(-20);
+		metric.setGlyphMetricMarkerPainter(triangle);
+		metric.setFont(f);
+		metricsManager.addMetric(metric);
+
+		// rectangle
+		metric = new GlyphMetric();
+		metric.setValue(8.5);
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsLabel("3");
+		metric.setDivergence(5);
+		// metric.setGlyphMetricFill(gf);
+
+		RectangleMarker rectangle = new RectangleMarker(Color.WHITE, NanoChromatique.GREEN, 3, 8);
+		metric.setGlyphMetricMarkerPainter(rectangle);
+		metric.setFont(f);
+		metricsManager.addMetric(metric);
 
 		// 6
 		metric = new GlyphMetric();
@@ -231,12 +229,9 @@ public class WatchBody extends BodyGaugePainter {
 
 		int radius = getGauge().getRadius() - 10;
 
-		
-
 		startAngleDegreee = 90;
 		extendsAngleDegree = -360;
 
-		
 		Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
 		Arc2D arc2d1 = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
 		Arc2D arc2d2 = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
@@ -245,15 +240,15 @@ public class WatchBody extends BodyGaugePainter {
 		metricsManager.setWindow2d(getGauge().getWindow2D());
 		metricsManager.resetPath();
 		metricsManager.append(arc2d);
-		
+
 		hourMetricsManager.setWindow2d(getGauge().getWindow2D());
 		hourMetricsManager.resetPath();
 		hourMetricsManager.append(arc2d1);
-		
+
 		minuteMetricsManager.setWindow2d(getGauge().getWindow2D());
 		minuteMetricsManager.resetPath();
 		minuteMetricsManager.append(arc2d2);
-		
+
 		secondMetricsManager.setWindow2d(getGauge().getWindow2D());
 		secondMetricsManager.resetPath();
 		secondMetricsManager.append(arc2d3);
@@ -267,9 +262,9 @@ public class WatchBody extends BodyGaugePainter {
 			g2dPart.setRenderingHints(g2d.getRenderingHints());
 			g2dPart.translate(-centerX + radius, -centerY + radius);
 
-			//g2dPart.setStroke(new BasicStroke(0.4f));
-			//g2dPart.setColor(Color.BLACK);
-			
+			// g2dPart.setStroke(new BasicStroke(0.4f));
+			// g2dPart.setColor(Color.BLACK);
+
 			//
 			minuteMetricsManager.setFontRenderContext(g2dPart.getFontRenderContext());
 			List<GlyphMetric> metrics2 = minuteMetricsManager.getMetrics();
@@ -301,11 +296,6 @@ public class WatchBody extends BodyGaugePainter {
 				}
 
 			}
-			
-			
-			
-			
-			
 
 			g2d.drawImage(metricsPart.getBuffer(), (int) centerX - radius, (int) centerY - radius, 2 * radius, 2 * radius, null);
 

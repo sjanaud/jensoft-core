@@ -5,18 +5,6 @@
  */
 package com.jensoft.core.plugin.gauge.tachometer.v1;
 
-import java.awt.Color;
-import java.util.Random;
-
-import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
-import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
-import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
-import com.jensoft.core.glyphmetrics.StylePosition;
-import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
-import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
-import com.jensoft.core.palette.InputFonts;
-import com.jensoft.core.palette.PetalPalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.Glass1;

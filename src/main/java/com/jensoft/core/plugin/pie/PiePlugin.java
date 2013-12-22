@@ -10,10 +10,8 @@ import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.graphics.AlphaInterpolation;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
-import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel;

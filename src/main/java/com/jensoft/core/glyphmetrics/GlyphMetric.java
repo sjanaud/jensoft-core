@@ -15,7 +15,6 @@ import com.jensoft.core.glyphmetrics.painter.GlyphMetricEffect;
 import com.jensoft.core.glyphmetrics.painter.GlyphMetricFill;
 import com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
 import com.jensoft.core.glyphmetrics.painter.MetricsPathPainter;
-import com.jensoft.core.plugin.function.MetricsPathFunction;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 
 /**

@@ -14,8 +14,6 @@ import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
-import org.w3c.dom.Document;
-
 /**
  * <code>View2DEmitter</code>
  * <p>

@@ -11,7 +11,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.plugin.pie.PiePlugin;
 import com.jensoft.core.plugin.symbol.BarSymbol;
 import com.jensoft.core.plugin.symbol.BarSymbol.MorpheStyle;
 import com.jensoft.core.plugin.symbol.BarSymbolGroup;

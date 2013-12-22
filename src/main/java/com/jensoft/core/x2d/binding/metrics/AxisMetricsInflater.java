@@ -11,7 +11,6 @@ import java.awt.Font;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.jensoft.core.plugin.legend.LegendPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FlowMetrics;

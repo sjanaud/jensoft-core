@@ -23,7 +23,6 @@ import com.jensoft.core.palette.FilPalette;
 import com.jensoft.core.palette.JennyPalette;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.x2d.X2D;
-import com.jensoft.core.x2d.X2DException;
 
 /**
  * <code>ViewDemoFrameUI</code>

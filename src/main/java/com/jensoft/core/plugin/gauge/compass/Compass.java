@@ -11,7 +11,6 @@ import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
-import com.jensoft.core.plugin.gauge.core.glass.Glass1;
 
 public class Compass extends RadialGauge {
 

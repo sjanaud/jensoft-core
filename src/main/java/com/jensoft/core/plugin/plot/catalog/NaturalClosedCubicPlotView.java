@@ -9,9 +9,6 @@ import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsMode
 import com.jensoft.core.plugin.outline.OutlinePlugin;
 import com.jensoft.core.plugin.plot.PlotAnchorsPlugin;
 import com.jensoft.core.plugin.plot.PlotPlugin;
-import com.jensoft.core.plugin.plot.spline.BSpline;
-import com.jensoft.core.plugin.plot.spline.CatmullRom;
-import com.jensoft.core.plugin.plot.spline.NatCubic;
 import com.jensoft.core.plugin.plot.spline.NatCubicClosed;
 import com.jensoft.core.plugin.zoom.wheel.ZoomWheelPlugin;
 import com.jensoft.core.view.View2D;

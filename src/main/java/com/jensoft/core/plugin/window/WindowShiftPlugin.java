@@ -11,7 +11,6 @@ import javax.swing.JMenuItem;
 
 import com.jensoft.core.device.ContextEntry;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.sharedicon.SharedIcon;
 import com.jensoft.core.sharedicon.common.Common;
 import com.jensoft.core.view.View2D;
