@@ -26,9 +26,9 @@ public class Speedometer extends RadialGauge {
         GaugeGlass g2 = new GaugeGlass.Glass2();
         GaugeGlass g3 = new GaugeGlass.Glass3();
         GaugeGlass g4 = new GaugeGlass.Glass4();
-        GaugeGlass g5 = new GaugeGlass.Glass5();
+       
         
-        addEffect(g1,g2,g3,g4,g5);
+        addEffect(g1,g2,g3,g4);
        
         SpeedometerLabel v1c = new SpeedometerLabel();
         setConstructor(v1c);
