@@ -12,9 +12,9 @@ import com.jensoft.core.plugin.gauge.core.bg.RoundGradientBackground;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
-public class V2Gauge extends RadialGauge {
+public class Tachometer extends RadialGauge {
 
-    public V2Gauge() {
+    public Tachometer() {
         super(0, 0, 100);
 
         CiseroEnvelop e1 = new CiseroEnvelop();
@@ -23,7 +23,7 @@ public class V2Gauge extends RadialGauge {
         RoundGradientBackground bg1 = new RoundGradientBackground();
         setBackground(bg1);
 
-        V2Body b1 = new V2Body();
+        TachometerBody b1 = new TachometerBody();
         setBody(b1);
 
         GaugeGlass g1 = new GaugeGlass.Glass1();
@@ -35,7 +35,7 @@ public class V2Gauge extends RadialGauge {
         addEffect(g1,g2,g3,g4);
         
 
-        V2Constructor constructor = new V2Constructor();
+        TachometerLabel constructor = new TachometerLabel();
         setConstructor(constructor);
 
         // Thread demo = new Thread(needleAnimator,"needle animator");
