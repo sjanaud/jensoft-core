@@ -40,6 +40,11 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
 	/** direction */
 	private TriangleDirection direction = TriangleDirection.In;
 
+	/**
+	 * 
+	 * triangle go to gauge center in/out
+	 *
+	 */
 	public enum TriangleDirection {
 		In, Out
 	}
@@ -208,12 +213,11 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
 		//g2d.setColor(Color.RED);
 		// g2d.drawRect((int)pLeft.getX(),(int)pLeft.getY(),2,2);
 		//g2d.setColor(Color.RED);
-		// g2d.drawRect((int)pRight.getX(),(int)pRight.getY(),2,2);
+		//g2d.drawRect((int)pRight.getX(),(int)pRight.getY(),2,2);
 		//g2d.setColor(Color.YELLOW);
 		//g2d.drawRect((int) pStart.getX(), (int) pStart.getY(), 2, 2);
-
-		g2d.setColor(Color.CYAN);
-		g2d.drawRect((int) pEnd.getX(), (int) pEnd.getY(), 2, 2);
+		//g2d.setColor(Color.CYAN);
+		//g2d.drawRect((int) pEnd.getX(), (int) pEnd.getY(), 2, 2);
 	}
 
 }

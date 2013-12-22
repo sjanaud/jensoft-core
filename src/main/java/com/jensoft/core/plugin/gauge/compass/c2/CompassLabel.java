@@ -17,13 +17,14 @@ import java.awt.geom.Point2D;
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.palette.InputFonts;
+import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.ConstructorGaugePainter;
 
-public class C2Constructor extends ConstructorGaugePainter {
+public class CompassLabel extends ConstructorGaugePainter {
 
-    public C2Constructor() {
+    public CompassLabel() {
 
     }
 
@@ -46,7 +47,7 @@ public class C2Constructor extends ConstructorGaugePainter {
 
         // Font f = new Font("Dialog", Font.PLAIN, 10);
         Font f = InputFonts.getFont(InputFonts.SANSATION_BOLD, 10);
-        String copyright = "C1 Black/JENSOFT INSTRUMENT/all right reserved.";
+        String copyright = "jensoft instrument - sail compass";
 
         GlyphVector glyphVector = f.createGlyphVector(
                                                       g2d.getFontRenderContext(), copyright);
@@ -58,7 +59,8 @@ public class C2Constructor extends ConstructorGaugePainter {
 
         float startLength = geometry.lengthOfPath() / 2 - gvWidth / 2;
 
-        int c_p = copyright.indexOf("JENSOFT");
+        String s = "jensoft instrument";
+        int c_p = copyright.indexOf(s);
 
         for (int j = 0; j < glyphVector.getNumGlyphs(); j++) {
 
@@ -86,8 +88,8 @@ public class C2Constructor extends ConstructorGaugePainter {
 
             g2d.setColor(Color.WHITE);
 
-            if (j >= c_p && j < c_p + 15) {
-                g2d.setColor(TangoPalette.CHAMELEON1);
+            if (j >= c_p && j < c_p + s.length()) {
+                g2d.setColor(NanoChromatique.GREEN);
             }
 
             g2d.fill(ts);

@@ -1,5 +1,5 @@
 /**
- * Gauge incubator
+ * Gauge compass incubator
  * 
  * @author sebastien janaud
  * @since 1.0

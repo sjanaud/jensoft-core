@@ -303,7 +303,7 @@ public class C2Glass extends GlassGaugePainter {
         }
     }
 
-    private void paintDeco3(Graphics2D g2d) {
+	private void paintDeco3(Graphics2D g2d) {
         double centerX = getGauge().getWindow2D()
                 .userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
         double centerY = getGauge().getWindow2D()
@@ -540,7 +540,10 @@ public class C2Glass extends GlassGaugePainter {
     @Override
     public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
-        paintDeco1(g2d);
+       // paintDeco1(g2d);
+       // paintDeco2(g2d);
+        paintDeco3(g2d);
+       // paintDeco4(g2d);
 
     }
 

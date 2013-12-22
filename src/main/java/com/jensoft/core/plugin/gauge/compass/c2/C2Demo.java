@@ -30,7 +30,7 @@ public class C2Demo extends View2D {
         Window2D w2d = new Window2D.Linear(-3000, 3000, -2500, 2500);
         w2d.setName("velocity gauge window");
 
-        C2CompassGauge gauge = new C2CompassGauge();
+        Compass gauge = new Compass();
         RadialGaugePlugin layout = new RadialGaugePlugin(gauge);
 
         w2d.registerPlugin(layout);
