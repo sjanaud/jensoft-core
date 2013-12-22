@@ -11,6 +11,7 @@ import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
+import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
 public class Compass extends RadialGauge {
 
@@ -28,11 +29,16 @@ public class Compass extends RadialGauge {
         CompassBody b1 = new CompassBody();
         setBody(b1);
 
-        C2Glass glass = new C2Glass();
+       
+       //GaugeGlass glass = new GaugeGlass.GlassCubicEffect();
+       //GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
+       // GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
+       // GaugeGlass glass = new GaugeGlass.Donut2DGlass();
+        GaugeGlass glass = new GaugeGlass.Glass6();
+        
         addEffect(glass);
         
-        //Glass1 effect = new Glass1();
-        //setEffect(effect);
+       
 
 
         CompassLabel constructor = new CompassLabel();

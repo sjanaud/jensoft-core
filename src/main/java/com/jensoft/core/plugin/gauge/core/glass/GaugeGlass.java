@@ -32,6 +32,16 @@ import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.GaugePartBuffer;
 import com.jensoft.core.plugin.gauge.core.GlassGaugePainter;
+import com.jensoft.core.plugin.pie.Pie;
+import com.jensoft.core.plugin.pie.Pie.PieNature;
+import com.jensoft.core.plugin.pie.PiePlugin;
+import com.jensoft.core.plugin.pie.PieSlice;
+import com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect;
+import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
+import com.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
+import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
+import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
+import com.jensoft.core.window.Window2D;
 
 /**
  * <code>GaugeGlass</code>
@@ -317,7 +327,13 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 	}
 
-	public static class Glass5 extends GaugeGlass {
+	/**
+	 * <code>Donut2DGlass</code>
+	 * 
+	 * @author sebastien janaud
+	 *
+	 */
+	public static class Donut2DGlass extends GaugeGlass {
 
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
@@ -328,8 +344,8 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			Donut2D donut1 = new Donut2D();
 			donut1.setCenterX((int) centerX);
 			donut1.setCenterY((int) centerY);
+			donut1.setStartAngleDegree(270);
 			donut1.setInnerRadius(radius - 20);
-			// donut1.setInternalRadius(0);
 			donut1.setOuterRadius(radius);
 			donut1.setStartAngleDegree(130);
 			donut1.setExplose(5);
@@ -360,9 +376,6 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			donut1.addSlice(s4);
 			donut1.addSlice(s5);
 
-			donut1.setStartAngleDegree(270);
-
-			// donut.buildDonut();
 			Point2D center = new Point2D.Double(centerX, centerY);
 
 			float[] dist = { 0.0f, 0.8f, 1.0f };
@@ -370,23 +383,16 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			RadialGradientPaint p = new RadialGradientPaint(center, radius, dist, colors);
 
 			donut1.solveGeometry();
-			// g2d.setPaint(rgp2);
 			g2d.setPaint(p);
 			List<Donut2DSlice> sections = donut1.getSlices();
 
 			for (int j = 0; j < sections.size(); j++) {
-
 				Donut2DSlice s = sections.get(j);
-
 				g2d.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, s.getAlpha()));
-
 				g2d.fill(s.getSlicePath());
 				g2d.setComposite(java.awt.AlphaComposite.getInstance(java.awt.AlphaComposite.SRC_OVER, 1f));
-
 			}
-
 		}
-
 	}
 
 	public static class Glass6 extends GaugeGlass {
@@ -403,9 +409,7 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 			Arc2D arc2d2 = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, 90, 360, Arc2D.OPEN);
 
-			// g2d.setStroke(new BasicStroke(0.8f));
 			g2d.setColor(TangoPalette.PLUM2);
-			// g2d.draw(arc2d);
 
 			GeometryPath geometry = new GeometryPath(arc2d);
 			GeometryPath geometry2 = new GeometryPath(arc2d2);
@@ -523,6 +527,112 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 		}
 
+	}
+	
+	public static abstract class PieGaugeGlass extends GaugeGlass{
+		
+		public abstract AbstractPieEffect getEffectInstance();
+		
+		
+		@Override
+		public final void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
+			
+			
+			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
+			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
+			int radius = getGauge().getRadius();
+			
+			Pie pie = new Pie();
+			pie.setPieNature(PieNature.Device);
+			pie.setCenterX(centerX);
+			pie.setCenterY(centerY);
+			pie.setRadius(radius);
+			
+			pie.addSlice(new PieSlice("slice", Color.WHITE));
+			
+			PiePlugin piePlugin = new PiePlugin();
+			piePlugin.setWindow2D(getGauge().getWindow2D());
+			piePlugin.addPie(pie);
+			
+			AbstractPieEffect fx = getEffectInstance();
+			
+			pie.setPieEffect(fx);
+			pie.build();
+			
+			fx.paintPie(g2d, pie);//paintPieEffect(g2d, pie);
+		}
+	}
+	
+	/**
+	 * <code>GlassCubicEffect</code>
+	 *
+	 */
+	public static class GlassLinearEffect extends PieGaugeGlass {
+
+		@Override
+		public AbstractPieEffect getEffectInstance() {
+			PieLinearEffect fx = new PieLinearEffect();
+			return fx;
+		}
+		
+	}
+	
+	/**
+	 * <code>GlassRadialEffect</code>
+	 *
+	 */
+	public static class GlassRadialEffect extends PieGaugeGlass {
+
+		@Override
+		public AbstractPieEffect getEffectInstance() {
+			PieRadialEffect fx = new PieRadialEffect();
+			return fx;
+		}
+		
+	}
+	
+	
+	/**
+	 * <code>GlassCubicEffect</code>
+	 *
+	 */
+	public static class GlassCubicEffect extends PieGaugeGlass {
+
+		@Override
+		public AbstractPieEffect getEffectInstance() {
+			PieCubicEffect fx = new PieCubicEffect();
+			fx.setCubicKey(CubicEffectFrame.Round4.getKeyFrame());
+			return fx;
+		}
+		
+//		@Override
+//		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
+//			
+//			
+//			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
+//			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
+//			int radius = getGauge().getRadius();
+//			
+//			Pie pie = new Pie();
+//			pie.setPieNature(PieNature.Device);
+//			pie.setCenterX(centerX);
+//			pie.setCenterY(centerY);
+//			pie.setRadius(radius);
+//			
+//			pie.addSlice(new PieSlice("slice", Color.WHITE));
+//			
+//			PiePlugin piePlugin = new PiePlugin();
+//			piePlugin.setWindow2D(getGauge().getWindow2D());
+//			piePlugin.addPie(pie);
+//			
+//			PieCubicEffect fx = new PieCubicEffect();
+//			fx.setCubicKey(CubicEffectFrame.Round4.getKeyFrame());
+//			pie.setPieEffect(fx);
+//			pie.build();
+//			
+//			fx.paintPieEffect(g2d, pie);
+//		}
+		
 	}
 
 }
