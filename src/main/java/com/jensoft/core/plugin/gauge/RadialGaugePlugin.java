@@ -17,57 +17,55 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 
+/**
+ * <code>RadialGaugePlugin</code> incubator gauge plugin
+ * 
+ * @author sebastien janaud
+ * 
+ */
 public class RadialGaugePlugin extends AbstractPlugin {
 
-    private RadialGauge gauge;
+	private RadialGauge gauge;
 
-    public RadialGaugePlugin(RadialGauge gauge) {
-        this.gauge = gauge;
-        setInterpolation(Interpolation.Bicubic);
-        setAlphaInterpolation(AlphaInterpolation.Quality);
-        setAntialiasing(Antialiasing.On);
-        setFractionalMetrics(Fractional.On);
-        setTextAntialising(TextAntialiasing.On);
-        setDithering(Dithering.On);
-        
-        setInterpolation(Interpolation.Bicubic);
-        System.out.println("ok");
-        setAntialiasing(Antialiasing.On);
-        setTextAntialising(TextAntialiasing.On);
-        setDithering(Dithering.On);
-    }
+	public RadialGaugePlugin(RadialGauge gauge) {
+		this.gauge = gauge;
+		setInterpolation(Interpolation.Bicubic);
+		setAlphaInterpolation(AlphaInterpolation.Quality);
+		setAntialiasing(Antialiasing.On);
+		setFractionalMetrics(Fractional.On);
+		setTextAntialising(TextAntialiasing.On);
+		setDithering(Dithering.On);
+	}
 
-    @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	@Override
+	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
 
-        if (windowPart != WindowPart.Device) {
-            return;
-        }
+		if (windowPart != WindowPart.Device) {
+			return;
+		}
 
-        gauge.setWindow2D(getWindow2D());
+		gauge.setWindow2D(getWindow2D());
 
-        if (gauge.getEnvelop() != null) {
-            gauge.getEnvelop().paintGauge(g2d, gauge);
-        }
+		if (gauge.getEnvelop() != null) {
+			gauge.getEnvelop().paintGauge(g2d, gauge);
+		}
 
-        if (gauge.getBackground() != null) {
-            gauge.getBackground().paintGauge(g2d, gauge);
-        }
-        
-        if (gauge.getBody() != null) {
-            gauge.getBody().paintGauge(g2d, gauge);
-        }
-        
-        if (gauge.getConstructor() != null) {
-            gauge.getConstructor().paintGauge(g2d, gauge);
-        }
+		if (gauge.getBackground() != null) {
+			gauge.getBackground().paintGauge(g2d, gauge);
+		}
 
-        if (gauge.getEffect() != null) {
-            gauge.getEffect().paintGauge(g2d, gauge);
-        }
+		if (gauge.getBody() != null) {
+			gauge.getBody().paintGauge(g2d, gauge);
+		}
 
-       
+		if (gauge.getConstructor() != null) {
+			gauge.getConstructor().paintGauge(g2d, gauge);
+		}
 
-    }
+		if (gauge.getEffect() != null) {
+			gauge.getEffect().paintGauge(g2d, gauge);
+		}
+
+	}
 
 }

@@ -1164,6 +1164,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 
 			Font f = m.getFont();
 
+			if(m.getMetricsLabel() == null)
+				m.setMetricsLabel(vm.getValue()+"");
+			
 			GlyphVector glyphVector = f.createGlyphVector(getFontRenderContext(), m.getMetricsLabel());
 
 			if (m.getStylePosition() == StylePosition.Tangent) {

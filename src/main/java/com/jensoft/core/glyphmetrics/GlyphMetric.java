@@ -192,13 +192,14 @@ public class GlyphMetric {
 			px = metricPointRef.getX() - div * Math.sin(metricAngle);
 			py = metricPointRef.getY() + div * Math.cos(metricAngle);
 		} else {
-
 			px = metricPointRef.getX() + div * Math.sin(metricAngle);
 			py = metricPointRef.getY() - div * Math.cos(metricAngle);
 		}
 		return new Point2D.Double(px, py);
 	}
+
 	
+
 	/**
 	 * get the orthogonal left point
 	 * 
@@ -207,75 +208,59 @@ public class GlyphMetric {
 	 * @return the ortho point
 	 */
 	public Point2D getOrthoLeftPoint(int div) {
-		if (metricPointRef == null) {
-			return null;
-		}
-
-		double px;
-		double py;
-		px = metricPointRef.getX() + div * Math.sin(metricAngle+Math.PI/2);
-		py = metricPointRef.getY() - div * Math.cos(metricAngle+Math.PI/2);
-		return new Point2D.Double(px, py);
+		return getOrthoLeftPoint(div, 0);
 	}
-	
+
 	/**
 	 * get the orthogonal left point shift
 	 * 
-	 * @param div
+	 * @param divOrtho
 	 *            the divergence from the path
+	 * @param divRadial
 	 * @return the ortho point
 	 */
-	public Point2D getOrthoLeftPoint(int div,int shift) {
+	public Point2D getOrthoLeftPoint(int divOrtho, int divRadial) {
 		if (metricPointRef == null) {
 			return null;
 		}
 
 		double px;
 		double py;
-		px = metricPointRef.getX()+shift* Math.sin(metricAngle) + div * Math.sin(metricAngle+Math.PI/2);
-		py = metricPointRef.getY()-shift* Math.cos(metricAngle)  - div * Math.cos(metricAngle+Math.PI/2);
+		px = metricPointRef.getX() + divRadial * Math.sin(metricAngle) + divOrtho * Math.sin(metricAngle + Math.PI / 2);
+		py = metricPointRef.getY() - divRadial * Math.cos(metricAngle) - divOrtho * Math.cos(metricAngle + Math.PI / 2);
 		return new Point2D.Double(px, py);
 	}
-	
+
 	/**
-	 * get the orthogonal right point 
+	 * get the orthogonal right point
 	 * 
-	 * @param div
+	 * @param divOrtho
 	 *            the divergence from the path
 	 * @return the ortho point
 	 */
-	public Point2D getOrthoRightPoint(int div) {
-		if (metricPointRef == null) {
-			return null;
-		}
-
-		double px;
-		double py;
-		px = metricPointRef.getX() + div * Math.sin(metricAngle-Math.PI/2);
-		py = metricPointRef.getY() - div * Math.cos(metricAngle-Math.PI/2);
-		return new Point2D.Double(px, py);
+	public Point2D getOrthoRightPoint(int divOrtho) {
+		return getOrthoRightPoint(divOrtho, 0);
 	}
-	
+
 	/**
 	 * get the orthogonal right point shift
 	 * 
-	 * @param div
+	 * @param divOrtho
 	 *            the divergence from the path
+	 * @param divRadial
 	 * @return the ortho point
 	 */
-	public Point2D getOrthoRightPoint(int div,int shift) {
+	public Point2D getOrthoRightPoint(int divOrtho, int divRadial) {
 		if (metricPointRef == null) {
 			return null;
 		}
 
 		double px;
 		double py;
-		px = metricPointRef.getX()+shift* Math.sin(metricAngle) + div * Math.sin(metricAngle-Math.PI/2);
-		py = metricPointRef.getY()-shift* Math.cos(metricAngle) - div * Math.cos(metricAngle-Math.PI/2);
+		px = metricPointRef.getX() + divRadial * Math.sin(metricAngle) + divOrtho * Math.sin(metricAngle - Math.PI / 2);
+		py = metricPointRef.getY() - divRadial * Math.cos(metricAngle) - divOrtho * Math.cos(metricAngle - Math.PI / 2);
 		return new Point2D.Double(px, py);
 	}
-	
-	
 
 	/**
 	 * get the radial point

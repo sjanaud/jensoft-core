@@ -26,8 +26,8 @@ public class Watch extends RadialGauge {
         setEffect(effect);
 
        
-        WatchLabel v1c = new WatchLabel();
-        setConstructor(v1c);
+        //WatchLabel v1c = new WatchLabel();
+        //setConstructor(v1c);
         // Thread demo = new Thread(needleAnimator,"needle animator");
         // demo.start();
     }

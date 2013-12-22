@@ -12,15 +12,16 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
+import com.jensoft.core.glyphmetrics.Side;
 import com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
 
 /**
- * <code>TriangleMarker</code>
+ * <code>RectangleMarker</code>
  * 
  * @author sebastien janaud
  * 
  */
-public class TriangleMarker extends GlyphMetricMarkerPainter {
+public class RectangleMarker extends GlyphMetricMarkerPainter {
 
 	/** start radial paint color */
 	private Color startColor = Color.WHITE;
@@ -32,39 +33,32 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
 	private int divergenceOrtho = 10;
 
 	/** divergence radial */
-	private int divergenceRadial = 10;
+	private int divergenceRadial = 5;
 
 	/** global radial shift */
 	private int globalRadialShift = 0;
 
-	/** direction */
-	private TriangleDirection direction = TriangleDirection.In;
-
-	public enum TriangleDirection {
-		In, Out
-	}
-
 	/**
-	 * create triangle marker with given parameters
+	 * create rectangle marker with given parameters
 	 * 
 	 * @param startColor
 	 * @param endColor
 	 */
-	public TriangleMarker(Color startColor, Color endColor) {
+	public RectangleMarker(Color startColor, Color endColor) {
 		super();
 		this.startColor = startColor;
 		this.endColor = endColor;
 	}
 
 	/**
-	 * create triangle marker with given parameters
+	 * create rectangle marker with given parameters
 	 * 
 	 * @param startColor
 	 * @param endColor
 	 * @param divergenceOrtho
 	 * @param divergenceRadial
 	 */
-	public TriangleMarker(Color startColor, Color endColor, int divergenceOrtho, int divergenceRadial) {
+	public RectangleMarker(Color startColor, Color endColor, int divergenceOrtho, int divergenceRadial) {
 		super();
 		this.startColor = startColor;
 		this.endColor = endColor;
@@ -73,7 +67,7 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
 	}
 
 	/**
-	 * create triangle marker with given parameters
+	 * create rectangle marker with given parameters
 	 * 
 	 * @param startColor
 	 * @param endColor
@@ -81,7 +75,7 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
 	 * @param divergenceRadial
 	 * @param globalRadialShift
 	 */
-	public TriangleMarker(Color startColor, Color endColor, int divergenceOrtho, int divergenceRadial, int globalRadialShift) {
+	public RectangleMarker(Color startColor, Color endColor, int divergenceOrtho, int divergenceRadial, int globalRadialShift) {
 		super();
 		this.startColor = startColor;
 		this.endColor = endColor;
@@ -89,34 +83,8 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
 		this.divergenceRadial = divergenceRadial;
 		this.globalRadialShift = globalRadialShift;
 	}
-
-	/**
-	 * create triangle marker with given parameters
-	 * 
-	 * @param startColor
-	 * @param endColor
-	 * @param divergenceOrtho
-	 * @param divergenceRadial
-	 * @param globalRadialShift
-	 * @param direction
-	 */
-	public TriangleMarker(Color startColor, Color endColor, int divergenceOrtho, int divergenceRadial, int globalRadialShift, TriangleDirection direction) {
-		super();
-		this.startColor = startColor;
-		this.endColor = endColor;
-		this.divergenceOrtho = divergenceOrtho;
-		this.divergenceRadial = divergenceRadial;
-		this.globalRadialShift = globalRadialShift;
-		this.direction = direction;
-	}
-
-	public TriangleDirection getDirection() {
-		return direction;
-	}
-
-	public void setDirection(TriangleDirection direction) {
-		this.direction = direction;
-	}
+	
+	
 
 	public Color getStartColor() {
 		return startColor;
@@ -168,52 +136,40 @@ public class TriangleMarker extends GlyphMetricMarkerPainter {
 	@Override
 	public void paintGlyphMetricMarker(Graphics2D g2d, GlyphMetric glyphMetric) {
 
-		Point2D pLeft = glyphMetric.getOrthoLeftPoint(divergenceOrtho, globalRadialShift);
+		Point2D pLeft = glyphMetric.getOrthoLeftPoint(divergenceOrtho, globalRadialShift + divergenceRadial);
 		if (pLeft == null) {
 			return;
 		}
 
-		Point2D pRight = glyphMetric.getOrthoRightPoint(divergenceOrtho, globalRadialShift);
+		Point2D pRight = glyphMetric.getOrthoRightPoint(divergenceOrtho, globalRadialShift + divergenceRadial);
 		if (pRight == null) {
 			return;
 		}
 
-		Point2D pAnchor;
-		if (direction == TriangleDirection.Out)
-			pAnchor = glyphMetric.getRadialPoint(globalRadialShift + divergenceRadial);
-		else
-			pAnchor = glyphMetric.getRadialPoint(globalRadialShift - divergenceRadial);
+		Point2D pLeft2 = glyphMetric.getOrthoLeftPoint(divergenceOrtho, globalRadialShift - divergenceRadial);
+		if (pLeft2 == null) {
+			return;
+		}
 
-		
+		Point2D pRight2 = glyphMetric.getOrthoRightPoint(divergenceOrtho, globalRadialShift - divergenceRadial);
+		if (pRight2 == null) {
+			return;
+		}
 
 		GeneralPath path = new GeneralPath();
 		path.moveTo(pLeft.getX(), pLeft.getY());
 		path.lineTo(pRight.getX(), pRight.getY());
-		path.lineTo(pAnchor.getX(), pAnchor.getY());
+		path.lineTo(pRight2.getX(), pRight2.getY());
+		path.lineTo(pLeft2.getX(), pLeft2.getY());
 		path.closePath();
 
-		Point2D pStart = glyphMetric.getRadialPoint(globalRadialShift);
-		Point2D pEnd = pAnchor;
+		Point2D pStart = glyphMetric.getRadialPoint(globalRadialShift + divergenceRadial, Side.SideLeft);
+		Point2D pEnd = glyphMetric.getRadialPoint(globalRadialShift + divergenceRadial, Side.SideRight);
 
 		LinearGradientPaint lgp = new LinearGradientPaint(pStart, pEnd, new float[] { 0, 1 }, new Color[] { startColor, endColor });
 
 		g2d.setPaint(lgp);
-
 		g2d.fill(path);
-
-		
-		//DEBUG POINTS
-		//g2d.setColor(Color.RED);
-		// g2d.drawRect((int)pAnchor.getX(),(int)pAnchor.getY(),2,2);
-		//g2d.setColor(Color.RED);
-		// g2d.drawRect((int)pLeft.getX(),(int)pLeft.getY(),2,2);
-		//g2d.setColor(Color.RED);
-		// g2d.drawRect((int)pRight.getX(),(int)pRight.getY(),2,2);
-		//g2d.setColor(Color.YELLOW);
-		//g2d.drawRect((int) pStart.getX(), (int) pStart.getY(), 2, 2);
-
-		g2d.setColor(Color.CYAN);
-		g2d.drawRect((int) pEnd.getX(), (int) pEnd.getY(), 2, 2);
 	}
 
 }
