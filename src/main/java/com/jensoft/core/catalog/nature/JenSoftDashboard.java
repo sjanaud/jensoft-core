@@ -22,5 +22,6 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JenSoftDashboard {
 	Class[] views();
+	Class[] see() default {};
 	String description() default "";
 }

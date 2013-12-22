@@ -24,6 +24,7 @@ import com.jensoft.core.view.background.NoBackground;
 public @interface JenSoftView {	
 	Dim dimension() default @Dim(width=600,height=400);
 	Class background() default NoBackground.class;
+	Class[] see() default {};
 	String description() default "";
 	boolean ignore() default false;
 }
