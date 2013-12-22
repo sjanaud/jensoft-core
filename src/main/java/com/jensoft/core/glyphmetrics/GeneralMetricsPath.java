@@ -783,7 +783,6 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 			System.out.println("process entry : "+entry);
 			entry.validEntry(path);
 		}
-		// setPath(path);
 		return path;
 	}
 
@@ -809,6 +808,14 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		}
 		volatileMetrics.add(metric);
 	}
+	
+	/**
+	 * clear metrics
+	 */
+	public void clearMetric() {
+		volatileMetrics.clear();
+	}
+
 
 	/**
 	 * get the device metrics point for the given metrics value

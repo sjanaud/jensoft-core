@@ -11,7 +11,7 @@ import java.awt.geom.Arc2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
-public class Cap {
+public class CompassCapTicker {
 
     private String name;
     private double theta = 0;
@@ -34,7 +34,7 @@ public class Cap {
     public static int MILI = 3;
     private int nature = MAJOR;
 
-    public Cap() {
+    public CompassCapTicker() {
 
     }
 
@@ -90,12 +90,12 @@ public class Cap {
         return needlePath.contains(p2d);
     }
 
-    public Cap(double theta) {
+    public CompassCapTicker(double theta) {
         super();
         this.theta = theta;
     }
 
-    public Cap(int alphaProjection, double theta) {
+    public CompassCapTicker(int alphaProjection, double theta) {
         super();
         this.alphaProjection = alphaProjection;
         this.theta = theta;

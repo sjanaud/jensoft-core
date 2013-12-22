@@ -5,27 +5,17 @@
  */
 package com.jensoft.core.plugin.gauge.compass.c2;
 
-import java.awt.Color;
 import java.util.Random;
 
-import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
-import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
-import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
-import com.jensoft.core.glyphmetrics.StylePosition;
-import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
-import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
-import com.jensoft.core.palette.InputFonts;
-import com.jensoft.core.palette.JennyPalette;
-import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
+import com.jensoft.core.plugin.gauge.core.glass.Glass1;
 
-public class C2CompassGauge extends RadialGauge {
+public class Compass extends RadialGauge {
 
-    public C2CompassGauge() {
+    public Compass() {
         super(0, 0, 110);
 
        
@@ -36,14 +26,18 @@ public class C2CompassGauge extends RadialGauge {
         TextureBackground textureBackground = new TextureBackground(TexturePalette.getT3());
         setBackground(textureBackground);
 
-        C2Body b1 = new C2Body();
+        CompassBody b1 = new CompassBody();
         setBody(b1);
 
         C2Glass glass = new C2Glass();
         setEffect(glass);
+        
+        //Glass1 effect = new Glass1();
+        //setEffect(effect);
 
-    
-       
+
+        CompassLabel constructor = new CompassLabel();
+       setConstructor(constructor);
 
     }
 

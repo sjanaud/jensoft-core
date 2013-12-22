@@ -15,7 +15,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.Vector;
 
-public class SailCompass {
+public class SailCompassTick {
 
     private int centerX;
     private int centerY;
@@ -33,23 +33,23 @@ public class SailCompass {
     private double deltaMinorBaseRadius = 10;
     private double deltaMiliBaseRadius = 1;
 
-    public SailCompass(int centerX, int centerY, int baseRadius) {
+    public SailCompassTick(int centerX, int centerY, int baseRadius) {
         super();
         this.centerX = centerX;
         this.centerY = centerY;
         this.baseRadius = baseRadius;
     }
 
-    private Vector<Cap> caps = new Vector<Cap>();
+    private Vector<CompassCapTicker> caps = new Vector<CompassCapTicker>();
 
-    public void addNeedle(Cap needle) {
+    public void addNeedle(CompassCapTicker needle) {
         if (!isAlreadyRegister(needle)) {
             caps.add(needle);
         }
     }
 
-    private boolean isAlreadyRegister(Cap cap) {
-        for (Cap n : caps) {
+    private boolean isAlreadyRegister(CompassCapTicker cap) {
+        for (CompassCapTicker n : caps) {
             if (n.getTheta() == cap.getTheta()) {
                 return true;
             }
@@ -57,7 +57,7 @@ public class SailCompass {
         return false;
     }
 
-    public Cap getNeedle(int index) {
+    public CompassCapTicker getNeedle(int index) {
         return caps.get(index);
     }
 
@@ -92,7 +92,7 @@ public class SailCompass {
 
     private void buildNeedles() {
         for (int i = 0; i < caps.size(); i++) {
-            Cap n = caps.get(i);
+            CompassCapTicker n = caps.get(i);
 
             // System.out.println("build needle : "+n.getTheta());
 
@@ -120,16 +120,16 @@ public class SailCompass {
             n.setRefPoint(new Point2D.Double(Xbase, Ybase));
 
             double deltaRadius = 0;
-            if (n.getNature() == Cap.MAJOR) {
+            if (n.getNature() == CompassCapTicker.MAJOR) {
                 deltaRadius = deltaMajorBaseRadius;
             }
-            if (n.getNature() == Cap.MEDIAN) {
+            if (n.getNature() == CompassCapTicker.MEDIAN) {
                 deltaRadius = deltaMedianBaseRadius;
             }
-            if (n.getNature() == Cap.MINOR) {
+            if (n.getNature() == CompassCapTicker.MINOR) {
                 deltaRadius = deltaMinorBaseRadius;
             }
-            if (n.getNature() == Cap.MILI) {
+            if (n.getNature() == CompassCapTicker.MILI) {
                 deltaRadius = deltaMiliBaseRadius;
             }
 
@@ -180,11 +180,11 @@ public class SailCompass {
         this.baseShape = baseShape;
     }
 
-    public Vector<Cap> getNeedles() {
+    public Vector<CompassCapTicker> getNeedles() {
         return caps;
     }
 
-    public void setNeedles(Vector<Cap> needles) {
+    public void setNeedles(Vector<CompassCapTicker> needles) {
         caps = needles;
     }
 
