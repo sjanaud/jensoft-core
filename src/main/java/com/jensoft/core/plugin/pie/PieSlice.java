@@ -32,7 +32,7 @@ public class PieSlice {
     private String name;
 
     /** slice value */
-    private double value;
+    private double value = 1;
 
     /** slice percent value */
     private double percent;
