@@ -29,7 +29,7 @@ public class Compass extends RadialGauge {
         setBody(b1);
 
         C2Glass glass = new C2Glass();
-        setEffect(glass);
+        addEffect(glass);
         
         //Glass1 effect = new Glass1();
         //setEffect(effect);

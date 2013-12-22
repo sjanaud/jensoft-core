@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.gauge.tachometer.v1;
 
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
-import com.jensoft.core.plugin.gauge.core.glass.Glass1;
+import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
 public class V1Gauge extends RadialGauge {
 
@@ -20,8 +20,13 @@ public class V1Gauge extends RadialGauge {
         V1Body b1 = new V1Body();
         setBody(b1);
 
-        Glass1 effect = new Glass1();
-        setEffect(effect);
+        GaugeGlass g1 = new GaugeGlass.Glass1();
+        GaugeGlass g2 = new GaugeGlass.Glass2();
+        GaugeGlass g3 = new GaugeGlass.Glass3();
+        GaugeGlass g4 = new GaugeGlass.Glass4();
+        GaugeGlass g5 = new GaugeGlass.Glass5();
+        
+        addEffect(g1,g2,g3,g4,g5);
 
         V1Constructor v1c = new V1Constructor();
         setConstructor(v1c);
