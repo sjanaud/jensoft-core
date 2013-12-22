@@ -9,7 +9,6 @@ import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.painter.GlyphMetricFill;
 import com.jensoft.core.glyphmetrics.painter.MetricsPathPainter;
-import com.jensoft.core.plugin.function.MetricsPathFunction;
 
 /**
  * Marker defines a point

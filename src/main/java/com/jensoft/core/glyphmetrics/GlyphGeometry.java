@@ -8,8 +8,6 @@ package com.jensoft.core.glyphmetrics;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.plugin.function.MetricsPathFunction;
-
 /**
  * <code>package-info.java</code> defines the glyph metrics geometry
  * 

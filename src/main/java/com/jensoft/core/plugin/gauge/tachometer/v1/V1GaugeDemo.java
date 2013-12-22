@@ -5,8 +5,6 @@
  */
 package com.jensoft.core.plugin.gauge.tachometer.v1;
 
-import java.awt.Color;
-
 import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;

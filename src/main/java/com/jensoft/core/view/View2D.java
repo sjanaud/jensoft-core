@@ -29,7 +29,6 @@ import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.device.DevicePartComponent;
 import com.jensoft.core.view.background.BackgroundPainter;
-import com.jensoft.core.view.deflater.AbstractViewDeflater;
 import com.jensoft.core.widget.WidgetFolder;
 import com.jensoft.core.window.Window2D;
 import com.jensoft.core.window.Window2DEvent;

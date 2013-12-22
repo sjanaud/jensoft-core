@@ -8,7 +8,6 @@ package com.jensoft.core.plugin.gauge.tachometer.v2;
 import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
-import com.jensoft.core.plugin.zoom.wheel.ZoomWheelPlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 

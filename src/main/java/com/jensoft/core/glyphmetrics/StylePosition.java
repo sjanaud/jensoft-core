@@ -7,7 +7,6 @@ package com.jensoft.core.glyphmetrics;
 
 import com.jensoft.core.glyphmetrics.painter.GlyphMetricFill;
 import com.jensoft.core.glyphmetrics.painter.MetricsPathPainter;
-import com.jensoft.core.plugin.function.MetricsPathFunction;
 
 /**
  * metrics style are Tangent Radial Orthogonal or default
