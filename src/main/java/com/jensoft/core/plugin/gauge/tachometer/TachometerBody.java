@@ -168,11 +168,11 @@ public class TachometerBody extends BodyGaugePainter {
          metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
          pathManager.addMetric(metric);
          
-         needle = new V2Needle();
+         needle = new TachometerNeedle();
          needle.setPathManager(pathManager);
          
     }
-    private V2Needle needle;
+    private TachometerNeedle needle;
     private GeneralMetricsPath pathManager;
     private Arc2D arc2d;
     private int startAngleDegreee = 0;
