@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.compass.c2;
+package com.jensoft.core.plugin.gauge.compass;
 
 import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
@@ -14,13 +14,13 @@ import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
 @JenSoftAPIDemo
-public class C2Demo extends View2D {
+public class CompassDemo extends View2D {
 
     private static final long serialVersionUID = 156889765687899L;
 
    
 
-    public C2Demo() {
+    public CompassDemo() {
     super(10);
 
         
@@ -48,7 +48,7 @@ public class C2Demo extends View2D {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        final ViewFrameUI demoFrame = new ViewFrameUI(new C2Demo());
+        final ViewFrameUI demoFrame = new ViewFrameUI(new CompassDemo());
         
 
     }
