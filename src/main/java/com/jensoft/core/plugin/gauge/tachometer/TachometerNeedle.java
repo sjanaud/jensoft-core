@@ -28,7 +28,7 @@ import com.jensoft.core.plugin.gauge.core.NeedleGaugePainter;
 import com.jensoft.core.plugin.gauge.core.TimingEngine;
 import com.jensoft.core.plugin.gauge.core.TimingListener;
 
-public class V2Needle extends NeedleGaugePainter {
+public class TachometerNeedle extends NeedleGaugePainter {
 
 	private int curentValue;
 
