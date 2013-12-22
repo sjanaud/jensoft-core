@@ -5,7 +5,6 @@
  */
 package com.jensoft.core.device;
 
-import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 
 /**
@@ -18,14 +17,13 @@ public class PartBuffer {
     private double width;
     private double height;
     private BufferedImage part;
-    private Graphics2D graphics2D;
+   
 
     public PartBuffer(double x, double y, int w, int h) {
         this.x = x;
         this.y = y;
         width = w;
         height = h;
-
         part = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
     }
 
