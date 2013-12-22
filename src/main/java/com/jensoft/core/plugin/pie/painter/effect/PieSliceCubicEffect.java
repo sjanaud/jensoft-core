@@ -263,7 +263,6 @@ public class PieSliceCubicEffect extends AbstractPieSliceEffect {
 
         double centerX = pie.getCenterX();
         double centerY = pie.getCenterY();
-
         Point2D c = null;
         if (pie.getPieNature() == PieNature.User) {
             c = pie.getHostPlugin().getWindow2D()
@@ -272,7 +271,6 @@ public class PieSliceCubicEffect extends AbstractPieSliceEffect {
         if (pie.getPieNature() == PieNature.Device) {
             c = new Point2D.Double(centerX, centerY);
         }
-
         double deltaDegree = pieSection.getPercent() * 360;
         double medianDegree = pieSection.getStartAngleDegree() + deltaDegree
                 / 2;
