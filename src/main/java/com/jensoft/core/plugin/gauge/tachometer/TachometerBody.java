@@ -25,9 +25,9 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.BodyGaugePainter;
 
-public class V2Body extends BodyGaugePainter {
+public class TachometerBody extends BodyGaugePainter {
 
-    public V2Body() {
+    public TachometerBody() {
     	 pathManager = new GeneralMetricsPath();
          pathManager.setProjectionNature(ProjectionNature.DEVICE);
 

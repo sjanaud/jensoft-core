@@ -21,9 +21,9 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.ConstructorGaugePainter;
 
-public class V2Constructor extends ConstructorGaugePainter {
+public class TachometerLabel extends ConstructorGaugePainter {
 
-    public V2Constructor() {
+    public TachometerLabel() {
 
     }
 

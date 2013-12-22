@@ -1,5 +1,5 @@
 /**
- * Gauge incubator
+ * Gauge tachometer incubator
  * 
  * @author sebastien janaud
  * @since 1.0

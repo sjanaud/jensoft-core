@@ -12,13 +12,13 @@ import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
 @JenSoftAPIDemo
-public class V2GaugeDemo extends View2D {
+public class TachometerDemo extends View2D {
 
     private static final long serialVersionUID = 156889765687899L;
 
    
 
-    public V2GaugeDemo() {
+    public TachometerDemo() {
     super();
 
      
@@ -32,7 +32,7 @@ public class V2GaugeDemo extends View2D {
         Window2D w2d = new Window2D.Linear(-3000, 3000, -2500, 2500);
         w2d.setName("velocity gauge window");
 
-        V2Gauge gauge = new V2Gauge();
+        Tachometer gauge = new Tachometer();
         RadialGaugePlugin layout = new RadialGaugePlugin(gauge);
         w2d.registerPlugin(layout);
        
@@ -59,7 +59,7 @@ public class V2GaugeDemo extends View2D {
      * @param args
      */
     public static void main(String[] args) throws Exception {
-        final ViewFrameUI demoFrame = new ViewFrameUI(new V2GaugeDemo());       
+        final ViewFrameUI demoFrame = new ViewFrameUI(new TachometerDemo());       
     }
 
 }
