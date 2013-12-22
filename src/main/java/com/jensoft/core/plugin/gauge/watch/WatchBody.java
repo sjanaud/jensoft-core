@@ -5,7 +5,6 @@
  */
 package com.jensoft.core.plugin.gauge.watch;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -18,20 +17,23 @@ import com.jensoft.core.device.PartBuffer;
 import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
+import com.jensoft.core.glyphmetrics.Side;
 import com.jensoft.core.glyphmetrics.StylePosition;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
+import com.jensoft.core.glyphmetrics.painter.marker.DefaultMarker;
+import com.jensoft.core.glyphmetrics.painter.marker.RectangleMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
+import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker;
+import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker.TriangleDirection;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.BodyGaugePainter;
-import com.jensoft.core.plugin.gauge.core.NeedleGaugePainter;
 
 public class WatchBody extends BodyGaugePainter {
 
-	//private Arc2D arc2d;
 	private int startAngleDegreee = 90;
 	private int extendsAngleDegree = 220;
 	private PartBuffer metricsPart;
@@ -116,6 +118,15 @@ public class WatchBody extends BodyGaugePainter {
 			}
 
 		}
+		
+		for (int i = 0; i < 60; i++) {
+			GlyphMetric metric = new GlyphMetric();
+			metric.setValue(i);
+			//metric.setDivergence(16);
+			
+			metric.setGlyphMetricMarkerPainter(new DefaultMarker(NanoChromatique.PURPLE.brighter(), 2));
+			minuteMetricsManager.addMetric(metric);
+		}
 	}
 
 	private void createMainMetrics() {
@@ -144,6 +155,34 @@ public class WatchBody extends BodyGaugePainter {
 		metric.setGlyphMetricFill(gf);
 		metric.setFont(f);
 		metricsManager.addMetric(metric);
+		
+		// 3 o'clock
+				metric = new GlyphMetric();
+				metric.setValue(4.4);
+				metric.setStylePosition(StylePosition.Default);
+				metric.setMetricsLabel("3");
+				metric.setDivergence(5);
+				
+				//triangle marker
+				TriangleMarker triangle = new TriangleMarker(Color.WHITE,NanoChromatique.GREEN);
+				triangle.setDirection(TriangleDirection.Out);
+				triangle.setGlobalRadialShift(-20);
+				metric.setGlyphMetricMarkerPainter(triangle);
+				metric.setFont(f);
+				metricsManager.addMetric(metric);
+				
+				//rectangle
+				metric = new GlyphMetric();
+				metric.setValue(8.5);
+				metric.setStylePosition(StylePosition.Default);
+				metric.setMetricsLabel("3");
+				metric.setDivergence(5);
+				//metric.setGlyphMetricFill(gf);
+				
+				RectangleMarker rectangle = new RectangleMarker(Color.WHITE,NanoChromatique.GREEN,3,8);
+				metric.setGlyphMetricMarkerPainter(rectangle);
+				metric.setFont(f);
+				metricsManager.addMetric(metric);
 
 		// 6
 		metric = new GlyphMetric();
@@ -228,8 +267,19 @@ public class WatchBody extends BodyGaugePainter {
 			g2dPart.setRenderingHints(g2d.getRenderingHints());
 			g2dPart.translate(-centerX + radius, -centerY + radius);
 
-			g2dPart.setStroke(new BasicStroke(0.4f));
-			g2dPart.setColor(Color.BLACK);
+			//g2dPart.setStroke(new BasicStroke(0.4f));
+			//g2dPart.setColor(Color.BLACK);
+			
+			//
+			minuteMetricsManager.setFontRenderContext(g2dPart.getFontRenderContext());
+			List<GlyphMetric> metrics2 = minuteMetricsManager.getMetrics();
+			for (GlyphMetric m : metrics2) {
+
+				if (m.getGlyphMetricMarkerPainter() != null) {
+					m.getGlyphMetricMarkerPainter().paintGlyphMetric(g2dPart, m);
+				}
+
+			}
 
 			metricsManager.setFontRenderContext(g2dPart.getFontRenderContext());
 
@@ -251,6 +301,11 @@ public class WatchBody extends BodyGaugePainter {
 				}
 
 			}
+			
+			
+			
+			
+			
 
 			g2d.drawImage(metricsPart.getBuffer(), (int) centerX - radius, (int) centerY - radius, 2 * radius, 2 * radius, null);
 
