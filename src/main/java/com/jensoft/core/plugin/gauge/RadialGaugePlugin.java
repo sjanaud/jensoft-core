@@ -14,6 +14,7 @@ import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
+import com.jensoft.core.plugin.gauge.core.GlassGaugePainter;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 
@@ -57,10 +58,12 @@ public class RadialGaugePlugin extends AbstractPlugin {
 		if (gauge.getBody() != null) {
 			gauge.getBody().paintGauge(g2d, gauge);
 		}
-		
 
-		if (gauge.getEffect() != null) {
-			gauge.getEffect().paintGauge(g2d, gauge);
+		if (gauge.getEffects() != null) {
+			for (GlassGaugePainter glass : gauge.getEffects()) {
+				glass.paintGauge(g2d, gauge);
+			}
+
 		}
 		if (gauge.getConstructor() != null) {
 			gauge.getConstructor().paintGauge(g2d, gauge);

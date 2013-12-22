@@ -9,7 +9,7 @@ import java.util.Random;
 
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
-import com.jensoft.core.plugin.gauge.core.glass.Glass1;
+import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
 public class Watch extends RadialGauge {
 
@@ -22,8 +22,13 @@ public class Watch extends RadialGauge {
         WatchBody b1 = new WatchBody();
         setBody(b1);
 
-        Glass1 effect = new Glass1();
-        setEffect(effect);
+        GaugeGlass g1 = new GaugeGlass.Glass1();
+        GaugeGlass g2 = new GaugeGlass.Glass2();
+        GaugeGlass g3 = new GaugeGlass.Glass3();
+        GaugeGlass g4 = new GaugeGlass.Glass4();
+        GaugeGlass g5 = new GaugeGlass.Glass5();
+        
+        addEffect(g1,g2,g3,g4,g5);
 
        
         //WatchLabel v1c = new WatchLabel();
