@@ -19,6 +19,7 @@ public class WatchDemo extends View2D {
 	public WatchDemo() {
 		super(10);
 
+		
 		Window2D w2d = new Window2D.Linear(-3000, 3000, -2500, 2500);
 
 		Watch gauge = new Watch();
@@ -35,7 +36,6 @@ public class WatchDemo extends View2D {
 	 */
 	public static void main(String[] args) throws Exception {
 		final ViewFrameUI demoFrame = new ViewFrameUI(new WatchDemo());
-
 	}
 
 }
