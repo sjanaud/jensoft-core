@@ -15,7 +15,6 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.device.PartBuffer;
 import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
@@ -90,36 +89,37 @@ public class CompassBody extends BodyGaugePainter {
 
 	private void createLabel2() {
 		GlyphMetric metric;
-		Font f = InputFonts.getFont(InputFonts.ELEMENT, 34);
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 40);
 
+		//east
 		metric = new GlyphMetric();
 		metric.setValue(0);
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsNature(GlyphMetricsNature.Major);
 		metric.setMetricsLabel("E");
-		metric.setDivergence(-10);
+		metric.setDivergence(-15);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
 		metric.setFont(f);
 		pathManager.addMetric(metric);
 
-		// north
+		//north
 		metric = new GlyphMetric();
 		metric.setValue(90);
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsNature(GlyphMetricsNature.Major);
 		metric.setMetricsLabel("N");
-		metric.setDivergence(-10);
+		metric.setDivergence(-15);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
 		metric.setFont(f);
 		pathManager.addMetric(metric);
 
-		// west
+		//west
 		metric = new GlyphMetric();
 		metric.setValue(180);
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsNature(GlyphMetricsNature.Major);
 		metric.setMetricsLabel("W");
-		metric.setDivergence(-10);
+		metric.setDivergence(-15);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE));
 		metric.setFont(f);
 		pathManager.addMetric(metric);
@@ -130,7 +130,7 @@ public class CompassBody extends BodyGaugePainter {
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsNature(GlyphMetricsNature.Major);
 		metric.setMetricsLabel("S");
-		metric.setDivergence(-10);
+		metric.setDivergence(-15);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
 		metric.setFont(f);
 		pathManager.addMetric(metric);

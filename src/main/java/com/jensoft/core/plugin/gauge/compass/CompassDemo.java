@@ -5,6 +5,8 @@
  */
 package com.jensoft.core.plugin.gauge.compass;
 
+import java.awt.Color;
+
 import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
@@ -23,9 +25,7 @@ public class CompassDemo extends View2D {
     public CompassDemo() {
     super(10);
 
-        
-
-        // view.setDeviceBackground(Color.WHITE);
+       
 
         Window2D w2d = new Window2D.Linear(-3000, 3000, -2500, 2500);
         w2d.setName("velocity gauge window");
