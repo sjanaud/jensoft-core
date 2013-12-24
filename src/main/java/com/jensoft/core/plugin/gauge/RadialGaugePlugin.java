@@ -31,7 +31,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	public RadialGaugePlugin(RadialGauge gauge) {
 		this.gauge = gauge;
 		setInterpolation(Interpolation.Bicubic);
-		setAlphaInterpolation(AlphaInterpolation.Quality);
+		//setAlphaInterpolation(AlphaInterpolation.Quality);
 		setAntialiasing(Antialiasing.On);
 		setFractionalMetrics(Fractional.On);
 		setTextAntialising(TextAntialiasing.On);

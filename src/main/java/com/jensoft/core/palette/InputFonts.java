@@ -43,12 +43,16 @@ public class InputFonts {
 	public static String MAC_TYPE = "MacType.TTF";
 	public static String PHOENIX = "PHOES___.TTF";
 	public static String SAXMONO = "saxmono.ttf";
+	public static String PENULTIMATE = "MerriweatherSans-Regular.otf";
+	public static String MYRIAD = "MYRIADPRO-REGULAR.OTF";
+	public static String SREDA = "Sreda.otf";
+	
 
 	public static void main(String[] args) {
 		InputFonts.getFont("fusion.ttf");
 	}
 
-	private static String[] names = { ELEMENT, PTF_NORDIC, FUSION, NEUROPOL, NO_MOVE, YORKVILLE, SANSATION_REGULAR, SANSATION_BOLD, SANSATION_LIGHT, ROADWAY, N_GAGE, MODE_NINE, FATSANS, STASMIC, STREET, STREET_ITALIC, SUPREME, X_SCALE, XIROD, XOIREQE, ZRNIC, MAC_TYPE, PHOENIX, SAXMONO
+	private static String[] names = { ELEMENT, PTF_NORDIC, FUSION, NEUROPOL, NO_MOVE, YORKVILLE, SANSATION_REGULAR, SANSATION_BOLD, SANSATION_LIGHT, ROADWAY, N_GAGE, MODE_NINE, FATSANS, STASMIC, STREET, STREET_ITALIC, SUPREME, X_SCALE, XIROD, XOIREQE, ZRNIC, MAC_TYPE, PHOENIX, SAXMONO,PENULTIMATE,MYRIAD
 
 	};
 
@@ -79,6 +83,21 @@ public class InputFonts {
 		return getFont("No-move.ttf").deriveFont(AffineTransform.getScaleInstance(size, size));
 
 	}
+	
+	public static Font getPenultimate(int size) {
+		return getFont(PENULTIMATE).deriveFont(AffineTransform.getScaleInstance(size, size));
+	}
+	
+	public static Font getMyriad(int size) {
+		return getFont(MYRIAD).deriveFont(AffineTransform.getScaleInstance(size, size));
+	}
+	
+	public static Font getSreda(int size) {
+		return getFont(SREDA).deriveFont(AffineTransform.getScaleInstance(size, size));
+	}
+	
+	
+	
 
 	public static Font getNeuropol(int size) {
 		return getFont("NEUROPOL.ttf").deriveFont(AffineTransform.getScaleInstance(size, size));
