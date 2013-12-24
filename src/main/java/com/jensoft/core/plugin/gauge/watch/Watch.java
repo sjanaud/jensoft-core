@@ -27,7 +27,7 @@ public class Watch extends RadialGauge {
         GaugeGlass g3 = new GaugeGlass.Glass3();
         GaugeGlass g4 = new GaugeGlass.Glass4();
         GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
-        GaugeGlass g6 = new GaugeGlass.Glass6();
+        GaugeGlass g6 = new GaugeGlass.GlassLabel();
         
         //GaugeGlass g5 = new GaugeGlass.GlassLinearEffect();
        

@@ -34,7 +34,7 @@ public class Compass extends RadialGauge {
        //GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
        // GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
        // GaugeGlass glass = new GaugeGlass.Donut2DGlass();
-        GaugeGlass glass = new GaugeGlass.Glass6();
+        GaugeGlass glass = new GaugeGlass.GlassLabel();
         
         addEffect(glass);
         
@@ -42,7 +42,7 @@ public class Compass extends RadialGauge {
 
 
         CompassLabel constructor = new CompassLabel();
-       setConstructor(constructor);
+       //setConstructor(constructor);
 
     }
 

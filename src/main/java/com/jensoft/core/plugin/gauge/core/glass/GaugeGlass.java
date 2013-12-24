@@ -25,6 +25,7 @@ import java.util.List;
 import com.jensoft.core.device.PartBuffer;
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.glyphmetrics.GlyphUtil;
+import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.PetalPalette;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.donut2d.Donut2D;
@@ -395,8 +396,10 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 		}
 	}
 
-	public static class Glass6 extends GaugeGlass {
+	public static class GlassLabel extends GaugeGlass {
 
+		
+		
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
@@ -409,29 +412,26 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 			Arc2D arc2d2 = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, 90, 360, Arc2D.OPEN);
 
-			g2d.setColor(TangoPalette.PLUM2);
+			g2d.setColor(TangoPalette.WHITE);
 
 			GeometryPath geometry = new GeometryPath(arc2d);
 			GeometryPath geometry2 = new GeometryPath(arc2d2);
 
-			Font f = new Font("Dialog", Font.PLAIN, 10);
-			Font f2 = new Font("Dialog", Font.PLAIN, 8);
-			String copyright = "- Compass Carbon  *** Sail Instrument ***  all right reserved JENSOFT -";
-			String madein = "Stainless steel - Made in France";
+			//Font f = new Font("Dialog", Font.PLAIN, 10);
+			//Font f2 = new Font("Dialog", Font.PLAIN, 8);
+			Font f = InputFonts.getSreda(10);
+			
+			
+			
+			String copyright = "Compass Carbon  *** Sail Instrument ***  JENSOFT API";
 			GlyphVector glyphVector = f.createGlyphVector(g2d.getFontRenderContext(), copyright);
-			GlyphVector glyphVector2 = f2.createGlyphVector(g2d.getFontRenderContext(), madein);
 			AffineTransform af = new AffineTransform();
-			AffineTransform af2 = new AffineTransform();
 
 			float gvWidth = GlyphUtil.getGlyphWidth(glyphVector);
-			float gvWidth2 = GlyphUtil.getGlyphWidth(glyphVector2);
 
 			float startLength = geometry.lengthOfPath() / 2 - gvWidth / 2;
-			float startLength2 = geometry2.lengthOfPath() / 2 - gvWidth2 / 2;
 
-			// int c_p = 49;
 			int c_p = copyright.indexOf("JENSOFT");
-			int c_p2 = copyright.lastIndexOf("-");
 
 			for (int j = 0; j < glyphVector.getNumGlyphs(); j++) {
 
@@ -454,21 +454,7 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 				Shape ts = af.createTransformedShape(glyph);
 
-				g2d.setColor(Color.WHITE);
 
-				if (j == c_p2) {
-					g2d.setColor(Color.RED);
-				}
-				if (j == c_p2 + 1) {
-					g2d.setColor(Color.RED);
-				}
-
-				if (j == c_p - 6 || j == c_p - 7 || j == c_p - 8 || j == c_p - 9) {
-					g2d.setColor(Color.WHITE);
-				}
-				if (j == c_p - 1 || j == c_p - 2 || j == c_p - 3 || j == c_p - 4 || j == c_p - 5) {
-					g2d.setColor(PetalPalette.PETAL4_HC);
-				}
 				if (j == c_p) {
 					g2d.setColor(PetalPalette.PETAL5_HC);
 				}
@@ -498,32 +484,6 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 			}
 
-			for (int j = 0; j < glyphVector2.getNumGlyphs(); j++) {
-
-				Point2D p = glyphVector2.getGlyphPosition(j);
-				float px = (float) p.getX();
-				float py = (float) p.getY();
-				Point2D pointGlyph;
-
-				pointGlyph = geometry2.pointAtLength(startLength2 + GlyphUtil.getGlyphWidthAtToken(glyphVector2, j));
-
-				if (pointGlyph == null) {
-					continue;
-				}
-				Shape glyph = glyphVector2.getGlyphOutline(j);
-
-				float angle = geometry2.angleAtLength(startLength2 + GlyphUtil.getGlyphWidthAtToken(glyphVector2, j));
-				af2.setToTranslation(pointGlyph.getX(), pointGlyph.getY());
-				af2.rotate(angle);
-				af2.translate(-px, -py + glyphVector2.getVisualBounds().getHeight() / 2 - 10);
-
-				Shape ts = af2.createTransformedShape(glyph);
-
-				g2d.setColor(PetalPalette.PETAL8_HC);
-
-				g2d.fill(ts);
-
-			}
 
 		}
 

@@ -46,7 +46,9 @@ public class CompassLabel extends ConstructorGaugePainter {
         GeometryPath geometry = new GeometryPath(arc2d);
 
         // Font f = new Font("Dialog", Font.PLAIN, 10);
-        Font f = InputFonts.getFont(InputFonts.SANSATION_BOLD, 10);
+        //Font f = InputFonts.getFont(InputFonts.SANSATION_BOLD, 10);
+        Font f = InputFonts.getSreda(10);
+        
         String copyright = "jensoft instrument - sail compass";
 
         GlyphVector glyphVector = f.createGlyphVector(
