@@ -314,7 +314,7 @@ public class WatchBody extends BodyGaugePainter {
 
 		Ellipse2D baseShape = new Ellipse2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius);
 
-		g2d.setPaint(TexturePalette.getT3());
+		g2d.setPaint(TexturePalette.getSquareCarbonFiber());
 		g2d.fill(baseShape);
 
 	}

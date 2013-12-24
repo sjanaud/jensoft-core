@@ -23,7 +23,7 @@ public class Compass extends RadialGauge {
         CiseroEnvelop e1 = new CiseroEnvelop();
         setEnvelop(e1);
 
-        TextureBackground textureBackground = new TextureBackground(TexturePalette.getT3());
+        TextureBackground textureBackground = new TextureBackground(TexturePalette.getPerforatedCircleSurface());
         setBackground(textureBackground);
 
         CompassBody b1 = new CompassBody();
