@@ -14,7 +14,7 @@ public class TextureTest extends View2D {
 
 	private static final long serialVersionUID = -2875434568800741512L;
 
-	private int rowCount = 4;
+	private int rowCount = 5;
 	private int colCount = 2;
 	private Window2D w ;
 	public TextureTest(){
@@ -34,8 +34,8 @@ public class TextureTest extends View2D {
 					paintCell(g2d, TexturePalette.getPerforatedPolygonSurface(), 2, 1);
 					paintCell(g2d, TexturePalette.getSquareCarbonFiber(), 3, 0);
 					paintCell(g2d, TexturePalette.getTriangleCarbonFiber(), 3, 1);
-					
-		        			        	
+					paintCell(g2d, TexturePalette.getInterlacedCarbon1(), 4, 0);
+					paintCell(g2d, TexturePalette.getInterlacedCarbon2(), 4, 1);
 				}
 				
 			}

@@ -27,9 +27,9 @@ import java.awt.image.BufferedImage;
  */
 public class TexturePalette {
 
-	
 	/**
 	 * get textured carbon fiber with triangle pattern
+	 * 
 	 * @return carbon texture
 	 */
 	public static TexturePaint getTriangleCarbonFiber() {
@@ -67,6 +67,7 @@ public class TexturePalette {
 
 	/**
 	 * get textured carbon fiber with square pattern
+	 * 
 	 * @return carbon texture
 	 */
 	public static TexturePaint getSquareCarbonFiber() {
@@ -94,7 +95,7 @@ public class TexturePalette {
 				Point2D end1 = new Point2D.Float(x + w / 2, y + h);
 				float[] dist1 = { 0.0f, 1.0f };
 				Color[] colors1 = { Color.BLACK, Color.DARK_GRAY };
-				LinearGradientPaint p1 =new LinearGradientPaint(start1, end1, dist1, colors1);
+				LinearGradientPaint p1 = new LinearGradientPaint(start1, end1, dist1, colors1);
 				g2d.setPaint(p1);
 				g2d.fill(rect1);
 				Rectangle2D rect0 = new Rectangle2D.Double(x, y, w, h / 2);
@@ -102,7 +103,7 @@ public class TexturePalette {
 				Point2D end0 = new Point2D.Float(x + w, y / 4);
 				float[] dist0 = { 0.0f, 1.0f };
 				Color[] colors0 = { Color.BLACK, Color.DARK_GRAY };
-				LinearGradientPaint p0 =new LinearGradientPaint(start0, end0, dist0, colors0);
+				LinearGradientPaint p0 = new LinearGradientPaint(start0, end0, dist0, colors0);
 				g2d.setPaint(p0);
 				g2d.fill(rect0);
 				x = x + w / 2;
@@ -118,6 +119,7 @@ public class TexturePalette {
 
 	/**
 	 * get textured carbon fiber with circle perforated surface pattern
+	 * 
 	 * @return carbon texture
 	 */
 	public static TexturePaint getPerforatedCircleSurface() {
@@ -142,6 +144,7 @@ public class TexturePalette {
 
 	/**
 	 * get textured carbon fiber with polygon perforated surface pattern
+	 * 
 	 * @return carbon texture
 	 */
 	public static TexturePaint getPerforatedPolygonSurface() {
@@ -182,9 +185,9 @@ public class TexturePalette {
 		return new TexturePaint(bi, r);
 	}
 
-	
 	/**
 	 * get textured carbon fiber with bee cell surface pattern
+	 * 
 	 * @return carbon texture
 	 */
 	public static TexturePaint getBeeCarbonTexture0() {
@@ -193,6 +196,7 @@ public class TexturePalette {
 
 	/**
 	 * get textured carbon fiber with bee cell surface pattern
+	 * 
 	 * @return carbon texture
 	 */
 	public static TexturePaint getBeeCarbonTexture1() {
@@ -201,8 +205,9 @@ public class TexturePalette {
 
 	/**
 	 * get textured carbon fiber with bee cell surface pattern
+	 * 
 	 * @param radius
-	 * 			the texture pattern radius
+	 *            the texture pattern radius
 	 * @return carbon texture
 	 */
 	private static TexturePaint getBeeCarbonTexture1Base(float radius) {
@@ -262,14 +267,16 @@ public class TexturePalette {
 
 	/**
 	 * get textured carbon fiber with bee cell surface pattern
+	 * 
 	 * @return carbon texture
 	 */
 	public static TexturePaint getBeeCarbonTexture2() {
 		return getBeeCarbonTexture2Base(4);
 	}
-	
+
 	/**
 	 * get textured carbon fiber with bee cell surface pattern
+	 * 
 	 * @return carbon texture
 	 */
 	public static TexturePaint getBeeCarbonTexture3() {
@@ -278,8 +285,9 @@ public class TexturePalette {
 
 	/**
 	 * get textured carbon fiber with bee cell surface pattern
+	 * 
 	 * @param radius
-	 * 			the texture pattern radius
+	 *            the texture pattern radius
 	 * @return carbon texture
 	 */
 	private static TexturePaint getBeeCarbonTexture2Base(float radius) {
@@ -327,6 +335,102 @@ public class TexturePalette {
 		Rectangle2D r = new Rectangle(0, 0, width, height);
 		g2d.dispose();
 		return new TexturePaint(bi, r);
+	}
+
+	/**
+	 * get interlaced carbon fiber texture with default thickness and colors
+	 * 
+	 * @return interlaced carbon fiber
+	 */
+	public static TexturePaint getInterlacedCarbon1() {
+		Color vstart = new Color(71, 72, 76);
+		Color vend = new Color(21, 22, 26);
+		return getInterlacedCarbonTextureBase(5, vstart, vend, vstart, vend);
+	}
+
+	/**
+	 * get interlaced carbon fiber texture with default thickness and colors
+	 * 
+	 * @return interlaced carbon fiber
+	 */
+	public static TexturePaint getInterlacedCarbon2() {
+		Color vstart = new Color(71, 72, 76);
+		Color vend = new Color(21, 22, 26);
+		return getInterlacedCarbonTextureBase(10, vstart, vend, vstart, vend);
+	}
+
+	/**
+	 * get interlaced carbon fiber texture with default thickness and colors
+	 * 
+	 * @return interlaced carbon fiber
+	 */
+	public static TexturePaint getInterlacedCarbonTextureBase(double thicknessPattern, Color hstart, Color hend, Color vstart, Color vend) {
+
+		int width = (int) (4 * thicknessPattern);
+		int height = (int) (4 * thicknessPattern);
+		BufferedImage bi = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
+		Graphics2D g2d = bi.createGraphics();
+		RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		hints.put(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+		hints.put(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+		hints.put(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+		g2d.setRenderingHints(hints);
+
+		// horizontal
+
+		paintHInterlacedFiber(g2d, thicknessPattern, -thicknessPattern, 0, hstart, hend);
+		paintHInterlacedFiber(g2d, thicknessPattern, 0, 3 * thicknessPattern, hstart, hend);
+		paintHInterlacedFiber(g2d, thicknessPattern, thicknessPattern, 2 * thicknessPattern, hstart, hend);
+		paintHInterlacedFiber(g2d, thicknessPattern, 2 * thicknessPattern, thicknessPattern, hstart, hend);
+		paintHInterlacedFiber(g2d, thicknessPattern, 3 * thicknessPattern, 0, hstart, hend);
+
+		// vertical
+
+		paintVInterlacedFiber(g2d, thicknessPattern, 0, thicknessPattern, vstart, vend);
+		paintVInterlacedFiber(g2d, thicknessPattern, thicknessPattern, 0, vstart, vend);
+		paintVInterlacedFiber(g2d, thicknessPattern, 2 * thicknessPattern, -thicknessPattern, vstart, vend);
+		paintVInterlacedFiber(g2d, thicknessPattern, 2 * thicknessPattern, 3 * thicknessPattern, vstart, vend);
+		paintVInterlacedFiber(g2d, thicknessPattern, 3 * thicknessPattern, 2 * thicknessPattern, vstart, vend);
+
+		Rectangle2D model = new Rectangle(0, 0, width, height);
+		g2d.dispose();
+		return new TexturePaint(bi, model);
+	}
+
+	/**
+	 * paint horizontal interlaced fiber
+	 * @param g2d
+	 * @param thicknessPattern
+	 * @param px
+	 * @param py
+	 * @param start
+	 * @param end
+	 */
+	private static void paintHInterlacedFiber(Graphics2D g2d, double thicknessPattern, double px, double py, Color start, Color end) {
+		double hw = 2 * thicknessPattern;
+		double hh = thicknessPattern;
+		Rectangle2D r = new Rectangle2D.Double(px, py, hw, hh);
+		LinearGradientPaint p = new LinearGradientPaint(new Point2D.Double(px, py), new Point2D.Double(px + 2 * thicknessPattern, py), new float[] { 0f, 1f }, new Color[] { start, end });
+		g2d.setPaint(p);
+		g2d.fill(r);
+	}
+
+	/**
+	 * paint vertical interlaced fiber
+	 * @param g2d
+	 * @param thicknessPattern
+	 * @param px
+	 * @param py
+	 * @param start
+	 * @param end
+	 */
+	private static void paintVInterlacedFiber(Graphics2D g2d, double thicknessPattern, double px, double py, Color start, Color end) {
+		double vw = thicknessPattern;
+		double vh = 2 * thicknessPattern;
+		Rectangle2D r = new Rectangle2D.Double(px, py, vw, vh);
+		LinearGradientPaint p = new LinearGradientPaint(new Point2D.Double(px, py), new Point2D.Double(px, py + 2 * thicknessPattern), new float[] { 0f, 1f }, new Color[] { start, end });
+		g2d.setPaint(p);
+		g2d.fill(r);
 	}
 
 }
