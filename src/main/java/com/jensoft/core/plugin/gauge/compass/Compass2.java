@@ -5,17 +5,22 @@
  */
 package com.jensoft.core.plugin.gauge.compass;
 
+import java.awt.Color;
 import java.util.Random;
 
+import com.jensoft.core.drawable.text.TextPath.TextPosition;
+import com.jensoft.core.palette.InputFonts;
+import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
+import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass.GlassTextPath;
 
-public class Compass extends RadialGauge {
+public class Compass2 extends RadialGauge {
 
-    public Compass() {
+    public Compass2() {
         super(0, 0, 110);
 
        
@@ -23,7 +28,11 @@ public class Compass extends RadialGauge {
         CiseroEnvelop e1 = new CiseroEnvelop();
         setEnvelop(e1);
 
-        TextureBackground textureBackground = new TextureBackground(TexturePalette.getSquareCarbonFiber());
+        Color vstart = new Color(71, 72, 76);
+		Color vend = new Color(11, 12, 16);
+		Color hstart =new Color(71, 72, 76);
+		Color hend = new Color(11, 12, 16);
+        TextureBackground textureBackground = new TextureBackground(TexturePalette.getInterlacedCarbonTextureBase(5, hstart, hend, vstart, vend));
         setBackground(textureBackground);
 
         CompassBody b1 = new CompassBody();
@@ -34,9 +43,20 @@ public class Compass extends RadialGauge {
        //GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
        // GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
        // GaugeGlass glass = new GaugeGlass.Donut2DGlass();
-        GaugeGlass glass = new GaugeGlass.GlassLabel();
+        GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
+        GaugeGlass glass2 = new GaugeGlass.GlassLabel();
+        addEffect(glass,glass2);
         
-        addEffect(glass);
+        GlassTextPath glassTextPath = new GaugeGlass.GlassTextPath();
+        glassTextPath.setArcDef(0, 180);
+        glassTextPath.setText("Sailing API");
+        glassTextPath.setOffsetLeft(0);
+        glassTextPath.setOffsetRight(30);
+        glassTextPath.setTextPosition(TextPosition.Left);
+        glassTextPath.setTextFont(InputFonts.getSreda(12));
+        glassTextPath.setShader(new float[]{0f,1f}, new Color[]{NanoChromatique.WHITE,NanoChromatique.YELLOW.brighter()});
+        
+        addEffect(glassTextPath);
         
        
 

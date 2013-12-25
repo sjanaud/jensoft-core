@@ -42,6 +42,7 @@ import com.jensoft.core.plugin.pie.PiePlugin;
 import com.jensoft.core.plugin.pie.PieSlice;
 import com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect;
 import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
+import com.jensoft.core.plugin.pie.painter.effect.CubicEffectKey;
 import com.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
@@ -432,7 +433,8 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 		 */
 		public GlassTextPath() {
 			textPath = new TextPath();
-			// do not disturb developer. angle, offset, path side, text position, etc ... can result in
+			// do not disturb developer. angle, offset, path side, text
+			// position, etc ... can result in
 			// headache!
 			textPath.setDivergence(0);
 			textPath.setOffsetLeft(0);
@@ -829,47 +831,99 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 	}
 
 	/**
-	 * <code>GlassCubicEffect</code>
+	 * <code>GlassCubicEffect</code> provides a cubic glass effect
 	 * 
 	 */
 	public static class GlassCubicEffect extends PieGaugeGlass {
 
-		@Override
-		public AbstractPieEffect getEffectInstance() {
-			PieCubicEffect fx = new PieCubicEffect();
-			fx.setCubicKey(CubicEffectFrame.Round4.getKeyFrame());
-			return fx;
+		/**frame preset key*/
+		private CubicEffectFrame frame;
+		
+		/**key*/
+		private CubicEffectKey key;
+		
+		/**pie cubic effect*/
+		private PieCubicEffect fx;
+
+		/**
+		 * create cubic glass effect
+		 */
+		public GlassCubicEffect() {
+			fx = new PieCubicEffect();
 		}
 
-		// @Override
-		// public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-		//
-		//
-		// double centerX = getGauge().getWindow2D().userToPixel(new
-		// Point2D.Double(getGauge().getX(), 0)).getX();
-		// double centerY = getGauge().getWindow2D().userToPixel(new
-		// Point2D.Double(0, getGauge().getY())).getY();
-		// int radius = getGauge().getRadius();
-		//
-		// Pie pie = new Pie();
-		// pie.setPieNature(PieNature.Device);
-		// pie.setCenterX(centerX);
-		// pie.setCenterY(centerY);
-		// pie.setRadius(radius);
-		//
-		// pie.addSlice(new PieSlice("slice", Color.WHITE));
-		//
-		// PiePlugin piePlugin = new PiePlugin();
-		// piePlugin.setWindow2D(getGauge().getWindow2D());
-		// piePlugin.addPie(pie);
-		//
-		// PieCubicEffect fx = new PieCubicEffect();
-		// fx.setCubicKey(CubicEffectFrame.Round4.getKeyFrame());
-		// pie.setPieEffect(fx);
-		// pie.build();
-		//
-		// fx.paintPieEffect(g2d, pie);
-		// }
+		/**
+		 * create effect with the given frame
+		 * 
+		 * @param frame
+		 */
+		public GlassCubicEffect(CubicEffectFrame frame) {
+			super();
+			this.frame = frame;
+			setKey(frame.getKeyFrame());
+		}
+
+		/**
+		 * create effect with the given key
+		 * 
+		 * @param key
+		 */
+		public GlassCubicEffect(CubicEffectKey key) {
+			super();
+			this.key = key;
+		}
+
+		/**
+		 * get cubic frame
+		 * 
+		 * @return cubic frame
+		 */
+		public CubicEffectFrame getFrame() {
+			return frame;
+		}
+
+		/**
+		 * set key of the given frame
+		 * 
+		 * @param frame
+		 */
+		public void setFrame(CubicEffectFrame frame) {
+			this.frame = frame;
+			setKey(frame.getKeyFrame());
+		}
+
+		/**
+		 * get cubic key
+		 * 
+		 * @return cubic key
+		 */
+		public CubicEffectKey getKey() {
+			return key;
+		}
+
+		/**
+		 * set cubic key
+		 * 
+		 * @param key
+		 */
+		public void setKey(CubicEffectKey key) {
+			this.key = key;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlass.PieGaugeGlass
+		 * #getEffectInstance()
+		 */
+		@Override
+		public AbstractPieEffect getEffectInstance() {
+			if (key != null) {
+				fx.setCubicKey(key);
+			}
+			return fx;
+		}
 
 	}
 
