@@ -23,6 +23,9 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.device.PartBuffer;
+import com.jensoft.core.drawable.text.TextPath;
+import com.jensoft.core.drawable.text.TextPath.PathSide;
+import com.jensoft.core.drawable.text.TextPath.TextPosition;
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.palette.InputFonts;
@@ -42,7 +45,6 @@ import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
 import com.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
-import com.jensoft.core.window.Window2D;
 
 /**
  * <code>GaugeGlass</code>
@@ -71,7 +73,6 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 	public static class Glass1 extends GaugeGlass {
 
-
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
@@ -79,14 +80,15 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			int radius = getGauge().getRadius() - 5;
 
 			if (getGlassPartBuffer() == null) {
-				
+
 				GaugePartBuffer buffer = new GaugePartBuffer(getGauge());
 				setGlassPartBuffer(buffer);
-				//partDeco1 = new PartBuffer(centerX - radius / 2, centerY - radius / 2, 2 * radius, 2 * radius);
+				// partDeco1 = new PartBuffer(centerX - radius / 2, centerY -
+				// radius / 2, 2 * radius, 2 * radius);
 
 				Graphics2D g2dPart = buffer.getGraphics();
 				g2dPart.setRenderingHints(g2d.getRenderingHints());
-				//g2dPart.translate(-centerX + radius, -centerY + radius);
+				// g2dPart.translate(-centerX + radius, -centerY + radius);
 
 				int startAngleDegreee = 30;
 				int endAngleDegree = 175;
@@ -95,10 +97,9 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 				g2dPart.setColor(Color.WHITE);
 
-
 				Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, endAngleDegree - startAngleDegreee, Arc2D.OPEN);
 
-				//DEBUG ARC
+				// DEBUG ARC
 				// g2d.setColor(Color.RED);
 				// g2d.draw(arc2d);
 
@@ -110,11 +111,9 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 				Point2D ctrl2 = new Point2D.Double(centerX + radius / 3, centerY);
 
-
 				CubicCurve2D cubicCurve = new CubicCurve2D.Double(p1.getX(), p1.getY(), ctrl1.getX(), ctrl1.getY(), ctrl2.getX(), ctrl2.getY(), p2.getX(), p2.getY());
 
 				g2dPart.setColor(Color.GREEN);
-
 
 				GeneralPath path = new GeneralPath();
 
@@ -126,7 +125,7 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 				Point2D pG1 = new Point2D.Double(path.getBounds().getX() + path.getBounds().getWidth(), path.getBounds().getY() + path.getBounds().getHeight() / 2);
 				Point2D pG2 = new Point2D.Double(path.getBounds().getX(), path.getBounds().getY() + path.getBounds().getHeight() / 2);
-				
+
 				GradientPaint gPaint = new GradientPaint(
 
 				pG1, new Color(255, 255, 255, 80),
@@ -139,10 +138,8 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 				g2dPart.fill(path);
 
-				
+			}
 
-			} 
-			
 			g2d.drawImage(getGlassPartBuffer().getBuffer(), (int) centerX - radius, (int) centerY - radius, 2 * radius, 2 * radius, null);
 
 		}
@@ -332,7 +329,7 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 	 * <code>Donut2DGlass</code>
 	 * 
 	 * @author sebastien janaud
-	 *
+	 * 
 	 */
 	public static class Donut2DGlass extends GaugeGlass {
 
@@ -396,10 +393,289 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 		}
 	}
 
+	/**
+	 * create text path on glass layer. text path component draws text on a path
+	 * defines by an arc. the arc is defined by start angle degree and extends
+	 * degree on gauge frame.
+	 * 
+	 * <p>
+	 * You should define the arc definition (0,360 is default preset ) and
+	 * define text position at left, middle or right. You can set offset to
+	 * adjust position and divergence from the arc. Do not set large divergence
+	 * to keep glyph good accuracy.
+	 * </p>
+	 * 
+	 * <p>
+	 * You can choose shader color for label and text font
+	 * </p>
+	 * 
+	 * <p>
+	 * To reverse text on demand, use auto reverse or lock reverse option
+	 * </p>
+	 * 
+	 * @author sebastien janaud
+	 * 
+	 */
+	public static class GlassTextPath extends GaugeGlass {
+
+		/** text path */
+		private TextPath textPath;
+
+		/** arc start angle degree */
+		private int startAngleDegree = 0;
+
+		/** arc extends angle degree */
+		private int extendsDegree = 360;
+
+		/**
+		 * create text path label on glass layer
+		 */
+		public GlassTextPath() {
+			textPath = new TextPath();
+			// do not disturb developer. angle, offset, path side, text position, etc ... can result in
+			// headache!
+			textPath.setDivergence(0);
+			textPath.setOffsetLeft(0);
+			textPath.setOffsetRight(0);
+		}
+
+		/**
+		 * create text path label on glass layer with given text
+		 * 
+		 * @param text
+		 *            the label text
+		 */
+		public GlassTextPath(String text) {
+			this();
+			setText(text);
+		}
+
+		/**
+		 * defines the arc definition for the text path arc shape
+		 * 
+		 * @param startAngleDegree
+		 * @param extendsDegree
+		 */
+		public void setArcDef(int startAngleDegree, int extendsDegree) {
+			this.startAngleDegree = startAngleDegree;
+			this.extendsDegree = extendsDegree;
+		}
+
+		/**
+		 * get text font
+		 * 
+		 * @return text font
+		 */
+		public Font getTextFont() {
+			return textPath.getLabelFont();
+		}
+
+		/**
+		 * set text font
+		 * 
+		 * @param textFont
+		 */
+		public void setTextFont(Font textFont) {
+			this.textPath.setLabelFont(textFont);
+		}
+
+		/**
+		 * get label text
+		 * 
+		 * @return label text
+		 */
+		public String getText() {
+			return textPath.getLabel();
+		}
+
+		/**
+		 * set label text
+		 * 
+		 * @param text
+		 */
+		public void setText(String text) {
+			this.textPath.setLabel(text);
+		}
+
+		/**
+		 * get lock reverse flag option
+		 * 
+		 * @return
+		 */
+		public boolean isLockReverse() {
+			return textPath.isLockReverse();
+		}
+
+		/**
+		 * for text to be reverse according to the original position
+		 * 
+		 * @param lockReverse
+		 */
+		public void setLockReverse(boolean lockReverse) {
+			this.textPath.setLockReverse(lockReverse);
+		}
+
+		/**
+		 * get auto reverse flag option
+		 * 
+		 * @return auto reverse
+		 */
+		public boolean isAutoReverse() {
+			return textPath.isAutoReverse();
+		}
+
+		/**
+		 * reverse text for doing it readable.
+		 * 
+		 * @param autoReverse
+		 */
+		public void setAutoReverse(boolean autoReverse) {
+			this.textPath.setAutoReverse(autoReverse);
+		}
+
+		/**
+		 * set text position
+		 * 
+		 * @param textPosition
+		 */
+		public void setTextPosition(TextPosition textPosition) {
+			this.textPath.setTextPosition(textPosition);
+		}
+
+		/**
+		 * get text position
+		 * 
+		 * @return text position
+		 */
+		public TextPosition getTextPosition() {
+			return textPath.getTextPosition();
+		}
+
+		/**
+		 * get text divergence from path
+		 * 
+		 * @return text divergence
+		 */
+		public int getDivergence() {
+			return textPath.getDivergence();
+		}
+
+		/**
+		 * set text divergence from path
+		 * 
+		 * @param divergence
+		 */
+		public void setDivergence(int divergence) {
+			this.textPath.setDivergence(divergence);
+		}
+
+		/**
+		 * get left offset
+		 * 
+		 * @return left offset
+		 */
+		public float getOffsetLeft() {
+			return textPath.getOffsetLeft();
+		}
+
+		/**
+		 * set offset left when text in on the left. text right or middle
+		 * position ignore this property.
+		 * 
+		 * @param offsetLeft
+		 */
+		public void setOffsetLeft(float offsetLeft) {
+			this.textPath.setOffsetLeft(offsetLeft);
+		}
+
+		/**
+		 * get offset right
+		 * 
+		 * @return offset right
+		 */
+		public float getOffsetRight() {
+			return textPath.getOffsetRight();
+		}
+
+		/**
+		 * set offset right when text in on the right. text left or middle
+		 * position ignore this property.
+		 * 
+		 * @param offsetRight
+		 */
+		public void setOffsetRight(float offsetRight) {
+			this.textPath.setOffsetRight(offsetRight);
+		}
+
+		/**
+		 * simple uniform text color
+		 * 
+		 * @return text uniform color
+		 */
+		public Color getTextColor() {
+			return textPath.getTextColor();
+		}
+
+		/**
+		 * set simple uniform text color
+		 * 
+		 * @param textColor
+		 */
+		public void setTextColor(Color textColor) {
+			this.textPath.setTextColor(textColor);
+		}
+
+		/**
+		 * get text path side
+		 * 
+		 * @return pathSide
+		 */
+		public PathSide getTextPathSide() {
+			return textPath.getPathSide();
+		}
+
+		/**
+		 * set text path side
+		 * 
+		 * @param pathSide
+		 */
+		public void setTextPathSide(PathSide pathSide) {
+			this.textPath.setPathSide(pathSide);
+		}
+
+		/**
+		 * set text shader
+		 * 
+		 * @param fractions
+		 * @param colors
+		 */
+		public void setShader(float[] fractions, Color[] colors) {
+			this.textPath.setShader(fractions, colors);
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.plugin.gauge.core.GlassGaugePainter#paintGlass(java
+		 * .awt.Graphics2D, com.jensoft.core.plugin.gauge.RadialGauge)
+		 */
+		@Override
+		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
+
+			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
+			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
+			int radius = getGauge().getRadius();
+
+			Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegree, extendsDegree, Arc2D.OPEN);
+			textPath.setPath(arc2d);
+			textPath.draw(g2d);
+		}
+
+	}
+
 	public static class GlassLabel extends GaugeGlass {
 
-		
-		
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
@@ -417,12 +693,10 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			GeometryPath geometry = new GeometryPath(arc2d);
 			GeometryPath geometry2 = new GeometryPath(arc2d2);
 
-			//Font f = new Font("Dialog", Font.PLAIN, 10);
-			//Font f2 = new Font("Dialog", Font.PLAIN, 8);
+			// Font f = new Font("Dialog", Font.PLAIN, 10);
+			// Font f2 = new Font("Dialog", Font.PLAIN, 8);
 			Font f = InputFonts.getSreda(10);
-			
-			
-			
+
 			String copyright = "Compass Carbon  *** Sail Instrument ***  JENSOFT API";
 			GlyphVector glyphVector = f.createGlyphVector(g2d.getFontRenderContext(), copyright);
 			AffineTransform af = new AffineTransform();
@@ -454,7 +728,6 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 				Shape ts = af.createTransformedShape(glyph);
 
-
 				if (j == c_p) {
 					g2d.setColor(PetalPalette.PETAL5_HC);
 				}
@@ -484,62 +757,66 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 			}
 
-
 		}
 
 	}
-	
-	public static abstract class PieGaugeGlass extends GaugeGlass{
-		
+
+	public static abstract class PieGaugeGlass extends GaugeGlass {
+
 		public abstract AbstractPieEffect getEffectInstance();
-		
-		
+
 		@Override
 		public final void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			
-			
+
 			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
 			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
 			int radius = getGauge().getRadius();
-			
+
 			Pie pie = new Pie();
 			pie.setPieNature(PieNature.Device);
 			pie.setCenterX(centerX);
 			pie.setCenterY(centerY);
 			pie.setRadius(radius);
-			
+
 			pie.addSlice(new PieSlice("slice", Color.WHITE));
-			
+
 			PiePlugin piePlugin = new PiePlugin();
 			piePlugin.setWindow2D(getGauge().getWindow2D());
 			piePlugin.addPie(pie);
-			
+
 			AbstractPieEffect fx = getEffectInstance();
-			
+
 			pie.setPieEffect(fx);
 			pie.build();
-			
-			fx.paintPie(g2d, pie);//paintPieEffect(g2d, pie);
+
+			fx.paintPie(g2d, pie);// paintPieEffect(g2d, pie);
 		}
 	}
-	
+
 	/**
 	 * <code>GlassCubicEffect</code>
-	 *
+	 * 
 	 */
 	public static class GlassLinearEffect extends PieGaugeGlass {
+
+		private float[] fractions = { 0.0f, 0.49f, 0.51f, 1.0f };
+
+		private Color[] colors = { new Color(60, 60, 60, 150), new Color(255, 255, 255, 0), new Color(255, 255, 255, 0), new Color(255, 255, 255, 100) };
 
 		@Override
 		public AbstractPieEffect getEffectInstance() {
 			PieLinearEffect fx = new PieLinearEffect();
+			fx.setShader(fractions, colors);
+			fx.setOffsetRadius(2);
+			fx.setIncidenceAngleDegree(60);
 			return fx;
 		}
-		
+
 	}
-	
+
 	/**
 	 * <code>GlassRadialEffect</code>
-	 *
+	 * 
 	 */
 	public static class GlassRadialEffect extends PieGaugeGlass {
 
@@ -548,13 +825,12 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			PieRadialEffect fx = new PieRadialEffect();
 			return fx;
 		}
-		
+
 	}
-	
-	
+
 	/**
 	 * <code>GlassCubicEffect</code>
-	 *
+	 * 
 	 */
 	public static class GlassCubicEffect extends PieGaugeGlass {
 
@@ -564,35 +840,37 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			fx.setCubicKey(CubicEffectFrame.Round4.getKeyFrame());
 			return fx;
 		}
-		
-//		@Override
-//		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-//			
-//			
-//			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
-//			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
-//			int radius = getGauge().getRadius();
-//			
-//			Pie pie = new Pie();
-//			pie.setPieNature(PieNature.Device);
-//			pie.setCenterX(centerX);
-//			pie.setCenterY(centerY);
-//			pie.setRadius(radius);
-//			
-//			pie.addSlice(new PieSlice("slice", Color.WHITE));
-//			
-//			PiePlugin piePlugin = new PiePlugin();
-//			piePlugin.setWindow2D(getGauge().getWindow2D());
-//			piePlugin.addPie(pie);
-//			
-//			PieCubicEffect fx = new PieCubicEffect();
-//			fx.setCubicKey(CubicEffectFrame.Round4.getKeyFrame());
-//			pie.setPieEffect(fx);
-//			pie.build();
-//			
-//			fx.paintPieEffect(g2d, pie);
-//		}
-		
+
+		// @Override
+		// public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
+		//
+		//
+		// double centerX = getGauge().getWindow2D().userToPixel(new
+		// Point2D.Double(getGauge().getX(), 0)).getX();
+		// double centerY = getGauge().getWindow2D().userToPixel(new
+		// Point2D.Double(0, getGauge().getY())).getY();
+		// int radius = getGauge().getRadius();
+		//
+		// Pie pie = new Pie();
+		// pie.setPieNature(PieNature.Device);
+		// pie.setCenterX(centerX);
+		// pie.setCenterY(centerY);
+		// pie.setRadius(radius);
+		//
+		// pie.addSlice(new PieSlice("slice", Color.WHITE));
+		//
+		// PiePlugin piePlugin = new PiePlugin();
+		// piePlugin.setWindow2D(getGauge().getWindow2D());
+		// piePlugin.addPie(pie);
+		//
+		// PieCubicEffect fx = new PieCubicEffect();
+		// fx.setCubicKey(CubicEffectFrame.Round4.getKeyFrame());
+		// pie.setPieEffect(fx);
+		// pie.build();
+		//
+		// fx.paintPieEffect(g2d, pie);
+		// }
+
 	}
 
 }
