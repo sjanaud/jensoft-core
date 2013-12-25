@@ -150,6 +150,22 @@ public class TextPath implements Drawable {
             return Below;
         }
     }
+    
+    /**
+     * create the text path with the specified shape
+     * 
+     * @param shape
+     */
+    public TextPath() { 
+    }
+    
+    /**
+     * set the shape on this text path
+     * @param shape
+     */
+    public void setPath(Shape shape){
+    	  geometryPath = new GeometryPath(shape);
+    }
 
     /**
      * create the text path with the specified shape

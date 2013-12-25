@@ -146,7 +146,7 @@ public class CompassBody extends BodyGaugePainter {
 		metric.setMetricsNature(GlyphMetricsNature.Median);
 		metric.setMetricsLabel("30");
 		metric.setDivergence(0);
-		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
 		metric.setFont(f);
 		pathManagerLabel.addMetric(metric);
 
@@ -176,7 +176,7 @@ public class CompassBody extends BodyGaugePainter {
 		metric.setMetricsNature(GlyphMetricsNature.Median);
 		metric.setMetricsLabel("150");
 		metric.setDivergence(0);
-		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE.brighter()));
 		metric.setFont(f);
 		pathManagerLabel.addMetric(metric);
 
@@ -186,7 +186,7 @@ public class CompassBody extends BodyGaugePainter {
 		metric.setMetricsNature(GlyphMetricsNature.Median);
 		metric.setMetricsLabel("210");
 		metric.setDivergence(0);
-		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE.brighter()));
 		metric.setFont(f);
 		pathManagerLabel.addMetric(metric);
 
@@ -196,7 +196,7 @@ public class CompassBody extends BodyGaugePainter {
 		metric.setMetricsNature(GlyphMetricsNature.Median);
 		metric.setMetricsLabel("240");
 		metric.setDivergence(0);
-		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
 		metric.setFont(f);
 		pathManagerLabel.addMetric(metric);
 
@@ -206,7 +206,7 @@ public class CompassBody extends BodyGaugePainter {
 		metric.setMetricsNature(GlyphMetricsNature.Median);
 		metric.setMetricsLabel("300");
 		metric.setDivergence(0);
-		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
 		metric.setFont(f);
 		pathManagerLabel.addMetric(metric);
 
@@ -216,7 +216,7 @@ public class CompassBody extends BodyGaugePainter {
 		metric.setMetricsNature(GlyphMetricsNature.Median);
 		metric.setMetricsLabel("330");
 		metric.setDivergence(0);
-		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
 		metric.setFont(f);
 		pathManagerLabel.addMetric(metric);
 	}

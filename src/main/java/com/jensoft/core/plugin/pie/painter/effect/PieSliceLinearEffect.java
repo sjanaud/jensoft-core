@@ -91,7 +91,6 @@ public class PieSliceLinearEffect extends AbstractPieSliceEffect {
 	 * @param shadeColors
 	 */
 	public PieSliceLinearEffect(int incidenceAngleDegree, int offsetRadius, float[] shadeFractions, Color[] shadeColors) {
-		
 		this(incidenceAngleDegree,offsetRadius);
 		this.shadeFractions = shadeFractions;
 		this.shadeColors = shadeColors;
