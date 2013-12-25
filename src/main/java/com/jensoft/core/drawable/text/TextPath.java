@@ -515,8 +515,7 @@ public class TextPath implements Drawable {
 
                 if (ptDstNorth != null && ptDstSouth != null
                         && !ptDstNorth.equals(ptDstSouth)) {
-                    LinearGradientPaint p2 = new LinearGradientPaint(
-                                                                     ptDstNorth, ptDstSouth, fractions, colors);
+                    LinearGradientPaint p2 = new LinearGradientPaint(ptDstNorth, ptDstSouth, fractions, colors);
                     g2d.setPaint(p2);
                 }
             }
