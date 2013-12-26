@@ -13,6 +13,8 @@ import java.util.List;
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
+import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedlePainter;
 
 /**
@@ -21,10 +23,6 @@ import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedlePainter;
  * 
  * @since 1.0
  * @author sebastien janaud
- * 
- */
-/**
- * @author sebastien
  * 
  */
 public class GaugeMetricsPath extends GeneralMetricsPath {
@@ -53,7 +51,7 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	/** debug arc color */
 	private Color debugPathColor = NanoChromatique.RED;
 
-	/**gauge needle painter*/
+	/** gauge needle painter */
 	private GaugeNeedlePainter gaugeNeedlePainter;
 
 	/**

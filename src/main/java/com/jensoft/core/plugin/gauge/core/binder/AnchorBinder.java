@@ -3,9 +3,11 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.core;
+package com.jensoft.core.plugin.gauge.core.binder;
 
 import java.awt.geom.Point2D;
+
+import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 /**
  * <code>AnchorBinder</code> takes the responsibility to bind anchor point to owner

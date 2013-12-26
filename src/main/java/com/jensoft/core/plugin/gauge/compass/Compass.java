@@ -18,9 +18,10 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
-import com.jensoft.core.plugin.gauge.core.PathBinder;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
+import com.jensoft.core.plugin.gauge.core.binder.GaugeArcPathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
@@ -30,9 +31,12 @@ public class Compass extends RadialGauge {
 	private GaugeMetricsPath pathManager;
 	private GaugeMetricsPath pathManagerNeedle;
 	
+	private static int gaugeRadius = 110;
+	private static int centerUserX = 0;
+	private static int centerUserY = 0;
 	
 	public Compass() {
-		super(0, 0, 110);
+		super(centerUserX, centerUserY, gaugeRadius);
 
 		CiseroEnvelop e1 = new CiseroEnvelop();
 		setEnvelop(e1);
@@ -53,18 +57,19 @@ public class Compass extends RadialGauge {
 		pathManager.setAutoReverseGlyph(false);
 		pathManager.setReverseAll(true);
 		pathManager.setRange(0,360);
-		pathManager.setPathBinder(new PathBinder() {
-			@Override
-			public Shape bindPath(RadialGauge gauge) {
-				double centerX = getCenterDevice().getX();
-				double centerY = getCenterDevice().getY();
-				int startAngleDegreee = 0;
-				int extendsDegree = 360;
-				int radius1 = getRadius() - 10;
-				Arc2D arc = new Arc2D.Double(centerX - radius1, centerY - radius1, 2 * radius1, 2 * radius1, startAngleDegreee, extendsDegree, Arc2D.OPEN);
-				return arc;
-			}
-		});
+		pathManager.setPathBinder(new GaugeArcPathBinder(gaugeRadius-10, 0, 360));
+//		pathManager.setPathBinder(new PathBinder() {
+//			@Override
+//			public Shape bindPath(RadialGauge gauge) {
+//				double centerX = getCenterDevice().getX();
+//				double centerY = getCenterDevice().getY();
+//				int startAngleDegree = 0;
+//				int extendsDegree = 360;
+//				int radius1 = getRadius() - 10;
+//				Arc2D arc = new Arc2D.Double(centerX - radius1, centerY - radius1, 2 * radius1, 2 * radius1, startAngleDegree, extendsDegree, Arc2D.OPEN);
+//				return arc;
+//			}
+//		});
 		//pathManager.setDebugPath(true);
 		registerGaugeMetricsPath(pathManager);
 		
@@ -73,18 +78,19 @@ public class Compass extends RadialGauge {
 		pathManagerLabel.setAutoReverseGlyph(false);
 		pathManagerLabel.setReverseAll(true);
 		pathManagerLabel.setRange(0,360);
-		pathManagerLabel.setPathBinder(new PathBinder() {
-			@Override
-			public Shape bindPath(RadialGauge gauge) {
-				double centerX = getCenterDevice().getX();
-				double centerY = getCenterDevice().getY();
-				int startAngleDegreee = 0;
-				int extendsDegree = 360;
-				int radius2 = getRadius() - 50;
-				Arc2D arc = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, startAngleDegreee, extendsDegree, Arc2D.OPEN);
-				return arc;
-			}
-		});
+		pathManagerLabel.setPathBinder(new GaugeArcPathBinder(gaugeRadius-50, 0, 360));
+//		pathManagerLabel.setPathBinder(new PathBinder() {
+//			@Override
+//			public Shape bindPath(RadialGauge gauge) {
+//				double centerX = getCenterDevice().getX();
+//				double centerY = getCenterDevice().getY();
+//				int startAngleDegreee = 0;
+//				int extendsDegree = 360;
+//				int radius2 = getRadius() - 50;
+//				Arc2D arc = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, startAngleDegreee, extendsDegree, Arc2D.OPEN);
+//				return arc;
+//			}
+//		});
 		registerGaugeMetricsPath(pathManagerLabel);
 		
 
@@ -92,18 +98,19 @@ public class Compass extends RadialGauge {
 		pathManagerNeedle.setAutoReverseGlyph(false);
 		pathManagerNeedle.setReverseAll(true);
 		pathManagerNeedle.setRange(0,360);
-		pathManagerNeedle.setPathBinder(new PathBinder() {
-			@Override
-			public Shape bindPath(RadialGauge gauge) {
-				double centerX = getCenterDevice().getX();
-				double centerY = getCenterDevice().getY();
-				int startAngleDegreee = 0;
-				int extendsDegree = 360;
-				int radius2 = getRadius() - 80;
-				Arc2D arc = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, startAngleDegreee,extendsDegree, Arc2D.OPEN);
-				return arc;
-			}
-		});
+		pathManagerNeedle.setPathBinder(new GaugeArcPathBinder(gaugeRadius-80, 0, 360));
+//		pathManagerNeedle.setPathBinder(new PathBinder() {
+//			@Override
+//			public Shape bindPath(RadialGauge gauge) {
+//				double centerX = getCenterDevice().getX();
+//				double centerY = getCenterDevice().getY();
+//				int startAngleDegreee = 0;
+//				int extendsDegree = 360;
+//				int radius2 = getRadius() - 80;
+//				Arc2D arc = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, startAngleDegreee,extendsDegree, Arc2D.OPEN);
+//				return arc;
+//			}
+//		});
 		registerGaugeMetricsPath(pathManagerNeedle);
 		
 		
