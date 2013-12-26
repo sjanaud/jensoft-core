@@ -5,17 +5,9 @@
  */
 package com.jensoft.core.plugin.gauge.compass;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Point2D;
-import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
-import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker;
-import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker.TriangleDirection;
-import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.GaugePartBuffer;
 
 /**

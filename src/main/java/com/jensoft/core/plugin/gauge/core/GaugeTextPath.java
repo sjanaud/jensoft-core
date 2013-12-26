@@ -7,10 +7,8 @@ package com.jensoft.core.plugin.gauge.core;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import java.util.List;
 
 import com.jensoft.core.drawable.text.TextPath;
-import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.palette.NanoChromatique;
 
 /**
