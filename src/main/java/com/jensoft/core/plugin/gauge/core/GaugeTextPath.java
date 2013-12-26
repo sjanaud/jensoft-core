@@ -10,6 +10,7 @@ import java.awt.Graphics2D;
 
 import com.jensoft.core.drawable.text.TextPath;
 import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 
 /**
  * <code>GaugeTextPath</code> takes the responsibility to draw text along path

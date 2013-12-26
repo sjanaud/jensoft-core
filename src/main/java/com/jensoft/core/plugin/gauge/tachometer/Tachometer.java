@@ -17,21 +17,28 @@ import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.TangoPalette;
-import com.jensoft.core.plugin.gauge.core.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
-import com.jensoft.core.plugin.gauge.core.PathBinder;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.RoundGradientBackground;
+import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
+import com.jensoft.core.plugin.gauge.core.binder.GaugeArcPathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
+import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
 public class Tachometer extends RadialGauge {
 
 	/** tacho meter gauge metrics */
 	private GaugeMetricsPath metricsManager;
 
+	private static int gaugeRadius = 90;
+	private static int centerUserX = 0;
+	private static int centerUserY = 0;
+	
+	
 	public Tachometer() {
-		super(0, 0, 100);
+		super(centerUserX, centerUserY, gaugeRadius);
 
 		CiseroEnvelop e1 = new CiseroEnvelop();
 		setEnvelop(e1);
@@ -61,18 +68,21 @@ public class Tachometer extends RadialGauge {
 		metricsManager.setMax(8);
 		metricsManager.setCurrentValue(5.7);
 
-		metricsManager.setPathBinder(new PathBinder() {
-			@Override
-			public Arc2D bindPath(RadialGauge gauge) {
-				double centerX = getCenterDevice().getX();
-				double centerY = getCenterDevice().getY();
-				int radius = getRadius() - 10;
-				int startAngleDegreee = 210;
-				int endAngleDegree = -30;
-				Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, endAngleDegree - startAngleDegreee, Arc2D.OPEN);
-				return arc;
-			}
-		});
+		metricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
+		metricsManager.setPathBinder(new GaugeArcPathBinder(gaugeRadius-10, 210, -240));
+		
+//		metricsManager.setPathBinder(new PathBinder() {
+//			@Override
+//			public Arc2D bindPath(RadialGauge gauge) {
+//				double centerX = getCenterDevice().getX();
+//				double centerY = getCenterDevice().getY();
+//				int radius = getRadius() - 10;
+//				int startAngleDegreee = 210;
+//				int endAngleDegree = -240;
+//				Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, endAngleDegree - startAngleDegreee, Arc2D.OPEN);
+//				return arc;
+//			}
+//		});
 
 		metricsManager.setNeedleBaseAnchorBinder(new AnchorBinder() {
 			@Override

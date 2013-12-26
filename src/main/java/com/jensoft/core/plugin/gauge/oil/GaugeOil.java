@@ -23,12 +23,12 @@ import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker.TriangleDirec
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
-import com.jensoft.core.plugin.gauge.core.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.GaugeTextPath;
-import com.jensoft.core.plugin.gauge.core.PathBinder;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
+import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
+import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
