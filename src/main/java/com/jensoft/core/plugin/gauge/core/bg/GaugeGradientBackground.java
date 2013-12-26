@@ -13,12 +13,27 @@ import java.awt.geom.Point2D;
 
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
-public class RoundGradientBackground extends BackgroundGaugePainter {
+/**
+ * <code>GaugeGradientBackground</code> takes the responsibility to paint gauge
+ * background with gradient paint
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ * 
+ */
+public class GaugeGradientBackground extends BackgroundGaugePainter {
 
-    public RoundGradientBackground() {
+	
+	/**
+	 * create gauge gradient background
+	 */
+    public GaugeGradientBackground() {
 
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter#paintBackground(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+     */
     @Override
     public void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {
         double centerX = radialGauge.getWindow2D()

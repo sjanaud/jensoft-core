@@ -1,5 +1,5 @@
 /**
- * Gauge incubator
+ * JenSoft API Gauge background
  * 
  * @author sebastien janaud
  * @since 1.0
