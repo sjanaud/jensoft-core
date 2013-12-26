@@ -772,11 +772,11 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	 */
 	@Override
 	protected GeneralPath createPathMetrics() {
-		System.out.println("create metrics path");
+		//System.out.println("create metrics path");
 		GeneralPath path = new GeneralPath();
 		// TODO check is first segment is move to
 		for (SegmentEntry entry : entries) {
-			System.out.println("process entry : "+entry);
+			//System.out.println("process entry : "+entry);
 			entry.validEntry(path);
 		}
 		return path;
@@ -859,7 +859,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		float metricAngle = geometry.angleAtLength((float) deviceLength);
 		double px;
 		double py;
-		System.out.println("metrics angle : "+metricAngle);
+		//System.out.println("metrics angle : "+metricAngle);
 		if (side == Side.SideRight) {
 			px = p.getX() - radius * Math.sin(metricAngle);
 			py = p.getY() + radius * Math.cos(metricAngle);
