@@ -14,17 +14,17 @@ import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
 @JenSoftAPIDemo
-public class CompassDemo extends View2D {
+public class GaugeCompassDemo extends View2D {
 
 	private static final long serialVersionUID = 156889765687899L;
 
-	public CompassDemo() {
+	public GaugeCompassDemo() {
 		super(10);
 
 		Window2D w2d = new Window2D.Linear.Identity();
 		registerWindow2D(w2d);
 		
-		Compass gauge = new Compass();
+		GaugeCompass gauge = new GaugeCompass();
 		RadialGaugePlugin gaugePlugin = new RadialGaugePlugin(gauge);
 		w2d.registerPlugin(gaugePlugin);
 
@@ -37,7 +37,7 @@ public class CompassDemo extends View2D {
 	 * @param args
 	 */
 	public static void main(String[] args) throws Exception {
-		final ViewFrameUI demoFrame = new ViewFrameUI(new CompassDemo());
+		final ViewFrameUI demoFrame = new ViewFrameUI(new GaugeCompassDemo());
 	}
 
 }
