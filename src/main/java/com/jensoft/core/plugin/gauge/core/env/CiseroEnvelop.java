@@ -27,28 +27,35 @@ import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 /**
- * <code>CiseroEnvelop</code>
+ * <code>CiseroEnvelop</code> is define by an extends ratio. this ratio defines
+ * the radius divide factor to get the thickness of the Cisero envelop.
  * 
+ * @since 1.0
  * @author sebastien janaud
  * 
  */
 public class CiseroEnvelop extends EnvelopGaugePainter {
 
+	/**extends ratio*/
+	private double extendsRatio = 3;
 	
-	private double extendsRatio = 3; 
+	/**alpha angle degree to crew place holder*/
 	private double alpha = 10;
-	
+
+	/**
+	 * create default Cisero envelop
+	 */
 	public CiseroEnvelop() {
 	}
-	
-	
 
+	/**
+	 * create Cisero with given parameters
+	 * 
+	 * @param extendsRatio
+	 */
 	public CiseroEnvelop(double extendsRatio) {
-		super();
 		this.extendsRatio = extendsRatio;
 	}
-
-
 
 	private PartBuffer envelopPart;
 
@@ -61,7 +68,7 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 	 * @param externalRadius
 	 * @return cisero fragment
 	 */
-	private Shape createFragment(double theta, double alpha, double internalRadius, double externalRadius,RadialGauge radialGauge) {
+	private Shape createFragment(double theta, double alpha, double internalRadius, double externalRadius, RadialGauge radialGauge) {
 		GeneralPath path = new GeneralPath();
 
 		double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
@@ -108,38 +115,41 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 	 * @param externalRadius
 	 * @return cisero arc
 	 */
-	private Shape createArcFragment(double theta1, double theta2, double alpha, double internalRadius, double externalRadius,RadialGauge radialGauge) {
+	private Shape createArcFragment(double theta1, double theta2, double alpha, double internalRadius, double externalRadius, RadialGauge radialGauge) {
 		double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
 		double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 		Arc2D a = new Arc2D.Double(centerX - internalRadius, centerY - internalRadius, 2 * internalRadius, 2 * internalRadius, theta1 + alpha + alpha / 2, theta2 - theta1 - 3 * alpha, Arc2D.OPEN);
 		return a;
 	}
-	
-	
-	
 
-	
-
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.gauge.core.env.EnvelopGaugePainter#paintEnvelop
+	 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 */
 	@Override
 	public void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge) {
-		//System.out.println("paint cisero env.");
+		// System.out.println("paint cisero env.");
 		double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
 		double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
-		
-		int deltaExternal = (int)(radialGauge.getRadius()/extendsRatio);
+
+		int deltaExternal = (int) (radialGauge.getRadius() / extendsRatio);
 		if (envelopPart == null) {
 
-			
 			int radiusExternal = radialGauge.getRadius() + deltaExternal;
-			
+
 			envelopPart = new PartBuffer(centerX - radiusExternal, centerY - radiusExternal, 2 * radiusExternal, 2 * radiusExternal);
 			Graphics2D g2dPart = envelopPart.getBuffer().createGraphics();
 			g2dPart.setRenderingHints(g2d.getRenderingHints());
 			g2dPart.translate(-centerX + radiusExternal, -centerY + radiusExternal);
-			
+
 			// base
 
-//			Ellipse2D eInternal = new Ellipse2D.Double(centerX - radialGauge.getRadius(), centerY - radialGauge.getRadius(), 2 * radialGauge.getRadius(), 2 * radialGauge.getRadius());
+			// Ellipse2D eInternal = new Ellipse2D.Double(centerX -
+			// radialGauge.getRadius(), centerY - radialGauge.getRadius(), 2 *
+			// radialGauge.getRadius(), 2 * radialGauge.getRadius());
 			Ellipse2D eExternal = new Ellipse2D.Double(centerX - radiusExternal, centerY - radiusExternal, 2 * radiusExternal, 2 * radiusExternal);
 
 			Point2D start = new Point2D.Double(centerX, centerY - radiusExternal);
@@ -151,39 +161,37 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 			g2dPart.setPaint(p);
 			g2dPart.fill(eExternal);
 
-			
-//			Point2D start2 = new Point2D.Double(centerX, centerY - radiusExternal);
-//			Point2D end2 = new Point2D.Double(centerX, centerY + radiusExternal);
-//			float[] dist2 = { 0.0f, 1.0f };
-//			Color[] colors2 = { Color.BLACK, Color.WHITE };
-//			LinearGradientPaint p2 = new LinearGradientPaint(start2, end2, dist2, colors2);
-//
-//			g2dPart.setPaint(p2);
-//			g2dPart.fill(eInternal);
+			// Point2D start2 = new Point2D.Double(centerX, centerY -
+			// radiusExternal);
+			// Point2D end2 = new Point2D.Double(centerX, centerY +
+			// radiusExternal);
+			// float[] dist2 = { 0.0f, 1.0f };
+			// Color[] colors2 = { Color.BLACK, Color.WHITE };
+			// LinearGradientPaint p2 = new LinearGradientPaint(start2, end2,
+			// dist2, colors2);
+			//
+			// g2dPart.setPaint(p2);
+			// g2dPart.fill(eInternal);
 
-			
 			int epsilonPixel = 2;
-			
-			int baseRadius = radialGauge.getRadius() + deltaExternal/2;
-			//int radiusExternal2 = radialGauge.getRadius() + deltaExternal2;
+
+			int baseRadius = radialGauge.getRadius() + deltaExternal / 2;
+			// int radiusExternal2 = radialGauge.getRadius() + deltaExternal2;
 			int extendsRadius = radialGauge.getRadius() + deltaExternal - epsilonPixel;
 
-			
-			Shape s0 = createFragment(30, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape s1 = createFragment(90, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape s2 = createFragment(90 + 60, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape s3 = createFragment(180 + 30, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape s4 = createFragment(270, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape s5 = createFragment(270 + 60, alpha, baseRadius, extendsRadius,radialGauge);
-		
+			Shape s0 = createFragment(30, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape s1 = createFragment(90, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape s2 = createFragment(90 + 60, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape s3 = createFragment(180 + 30, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape s4 = createFragment(270, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape s5 = createFragment(270 + 60, alpha, baseRadius, extendsRadius, radialGauge);
 
-			Shape a0 = createArcFragment(-30, 30, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape a1 = createArcFragment(30, 90, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape a2 = createArcFragment(90, 90 + 60, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape a3 = createArcFragment(90 + 60, 180 + 30, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape a4 = createArcFragment(180 + 30, 270, alpha, baseRadius, extendsRadius,radialGauge);
-			Shape a5 = createArcFragment(270, 270 + 60, alpha, baseRadius, extendsRadius,radialGauge);
-			
+			Shape a0 = createArcFragment(-30, 30, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape a1 = createArcFragment(30, 90, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape a2 = createArcFragment(90, 90 + 60, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape a3 = createArcFragment(90 + 60, 180 + 30, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape a4 = createArcFragment(180 + 30, 270, alpha, baseRadius, extendsRadius, radialGauge);
+			Shape a5 = createArcFragment(270, 270 + 60, alpha, baseRadius, extendsRadius, radialGauge);
 
 			GeneralPath path1 = new GeneralPath();
 			path1.append(s0, false);
@@ -229,7 +237,7 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 			g2dPart.fill(area1);
 			g2dPart.setStroke(new BasicStroke(1f));
 			g2dPart.setColor(NanoChromatique.GREEN);
-			//g2dPart.draw(path1);
+			// g2dPart.draw(path1);
 
 			// test blurr
 			PartBuffer envelopPart2 = new PartBuffer(centerX - radiusExternal, centerY - radiusExternal, 2 * radiusExternal, 2 * radiusExternal);
@@ -240,31 +248,31 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 			g2dPart2.setStroke(new BasicStroke(1.2f));
 			g2dPart.setColor(NanoChromatique.BLACK);
 			g2dPart.draw(path1);
-			
-			float blur[] = { 0.0625f, 0.125f, 0.0625f, 0.125f, 0.25f, 0.125f,0.0625f, 0.125f, 0.0625f };
-			float sharpen[] = { -1.0f, -1.0f, -1.0f, -1.0f, 9.0f, -1.0f, -1.0f, -1.0f, -1.0f };    
-			
-			Kernel kernel = new Kernel(3, 3,blur);
 
-			BufferedImageOp op = new ConvolveOp(kernel,ConvolveOp.EDGE_NO_OP,null);
+			float blur[] = { 0.0625f, 0.125f, 0.0625f, 0.125f, 0.25f, 0.125f, 0.0625f, 0.125f, 0.0625f };
+			float sharpen[] = { -1.0f, -1.0f, -1.0f, -1.0f, 9.0f, -1.0f, -1.0f, -1.0f, -1.0f };
+
+			Kernel kernel = new Kernel(3, 3, blur);
+
+			BufferedImageOp op = new ConvolveOp(kernel, ConvolveOp.EDGE_NO_OP, null);
 
 			BufferedImage imgBlurr = op.filter(envelopPart2.getBuffer(), null);
-			//g2dPart.drawImage(imgBlurr, (int)centerX-imgBlurr.getWidth()/2, (int)centerY-imgBlurr.getHeight()/2, imgBlurr.getWidth(), imgBlurr.getHeight(), null);
-			
+			// g2dPart.drawImage(imgBlurr, (int)centerX-imgBlurr.getWidth()/2,
+			// (int)centerY-imgBlurr.getHeight()/2, imgBlurr.getWidth(),
+			// imgBlurr.getHeight(), null);
+
 			// test bkur end
 
-			
+			double splitRadius = (new Double(deltaExternal) - 2d * new Double(epsilonPixel)) / 2.8d;
 
-			double splitRadius =  (new Double(deltaExternal) - 2d*new Double(epsilonPixel))/2.8d;
-			
-			double x,y;
+			double x, y;
 			Split s;
-			
+
 			x = centerX + (baseRadius) * Math.cos(Math.toRadians(90));
 			y = centerY - (baseRadius) * Math.sin(Math.toRadians(90));
 			s = new Split(x, y, splitRadius, 90);
 			s.draw(g2dPart);
-			
+
 			x = centerX + (baseRadius) * Math.cos(Math.toRadians(30));
 			y = centerY - (baseRadius) * Math.sin(Math.toRadians(30));
 			s = new Split(x, y, splitRadius, 30);
@@ -274,7 +282,6 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 			y = centerY - (baseRadius) * Math.sin(Math.toRadians(90 + 60));
 			s = new Split(x, y, splitRadius, 90 + 60);
 			s.draw(g2dPart);
-			
 
 			x = centerX + (baseRadius) * Math.cos(Math.toRadians(180 + 30));
 			y = centerY - (baseRadius) * Math.sin(Math.toRadians(180 + 30));
@@ -286,7 +293,6 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 			s = new Split(x, y, splitRadius, 270 + 60);
 			s.draw(g2dPart);
 
-			
 			x = centerX + (baseRadius) * Math.cos(Math.toRadians(270));
 			y = centerY - (baseRadius) * Math.sin(Math.toRadians(270));
 			s = new Split(x, y, splitRadius, 270);
@@ -296,13 +302,10 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 			g2d.drawImage(envelopPart.getBuffer(), (int) centerX - envelopPart.getBuffer().getWidth() / 2, (int) centerY - envelopPart.getBuffer().getHeight() / 2, envelopPart.getBuffer().getWidth(), envelopPart.getBuffer().getHeight(), null);
 
 		} else {
-			
+
 			g2d.drawImage(envelopPart.getBuffer(), (int) centerX - envelopPart.getBuffer().getWidth() / 2, (int) centerY - envelopPart.getBuffer().getHeight() / 2, envelopPart.getBuffer().getWidth(), envelopPart.getBuffer().getHeight(), null);
 
 		}
-
-
-		
 
 	}
 
