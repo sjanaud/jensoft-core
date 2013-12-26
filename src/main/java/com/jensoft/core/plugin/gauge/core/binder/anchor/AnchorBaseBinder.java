@@ -3,11 +3,12 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.core.binder;
+package com.jensoft.core.plugin.gauge.core.binder.anchor;
 
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 
 /**
  * <code>GaugeBaseAnchorBinder</code> binds to a static anchor point build from
@@ -17,7 +18,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  * @author sebastien janaud
  * 
  */
-public class StaticAnchorBinder extends AnchorBinder {
+public class AnchorBaseBinder extends AnchorBinder {
 
 	private int radius;
 	private float angleDegree;
@@ -25,7 +26,7 @@ public class StaticAnchorBinder extends AnchorBinder {
 	/**
 	 * create binder to the gauge center (default radius = 0)
 	 */
-	public StaticAnchorBinder() {
+	public AnchorBaseBinder() {
 		radius = 0;
 		angleDegree = 0;
 	}
@@ -36,7 +37,7 @@ public class StaticAnchorBinder extends AnchorBinder {
 	 * @param radius
 	 * @param angleDegree
 	 */
-	public StaticAnchorBinder(int radius, float angleDegree) {
+	public AnchorBaseBinder(int radius, float angleDegree) {
 		super();
 		this.radius = radius;
 		this.angleDegree = angleDegree;
