@@ -358,6 +358,17 @@ public class TexturePalette {
 		Color vend = new Color(21, 22, 26);
 		return getInterlacedCarbonTextureBase(10, vstart, vend, vstart, vend);
 	}
+	
+	/**
+	 * get interlaced carbon fiber texture with given thickness and default colors
+	 * 
+	 * @return interlaced carbon fiber
+	 */
+	public static TexturePaint getInterlacedCarbon(double thicknessPattern) {
+		Color vstart = new Color(71, 72, 76);
+		Color vend = new Color(21, 22, 26);
+		return getInterlacedCarbonTextureBase(thicknessPattern, vstart, vend, vstart, vend);
+	}
 
 	/**
 	 * get interlaced carbon fiber texture with default thickness and colors

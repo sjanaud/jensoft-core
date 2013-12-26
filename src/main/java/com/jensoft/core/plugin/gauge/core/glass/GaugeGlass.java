@@ -33,9 +33,8 @@ import com.jensoft.core.palette.PetalPalette;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.donut2d.Donut2D;
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;
-import com.jensoft.core.plugin.gauge.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.GaugePartBuffer;
-import com.jensoft.core.plugin.gauge.core.GlassGaugePainter;
+import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.Pie.PieNature;
 import com.jensoft.core.plugin.pie.PiePlugin;
@@ -76,13 +75,13 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
-			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
-			int radius = getGauge().getRadius() - 5;
+			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
+			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
+			int radius = radialGauge.getRadius() - 5;
 
 			if (getGlassPartBuffer() == null) {
 
-				GaugePartBuffer buffer = new GaugePartBuffer(getGauge());
+				GaugePartBuffer buffer = new GaugePartBuffer(radialGauge);
 				setGlassPartBuffer(buffer);
 				// partDeco1 = new PartBuffer(centerX - radius / 2, centerY -
 				// radius / 2, 2 * radius, 2 * radius);
@@ -141,7 +140,7 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 			}
 
-			g2d.drawImage(getGlassPartBuffer().getBuffer(), (int) centerX - radius, (int) centerY - radius, 2 * radius, 2 * radius, null);
+			g2d.drawImage(getGlassPartBuffer().getBuffer(), (int) getGlassPartBuffer().getX(),(int) getGlassPartBuffer().getY(), (int)getGlassPartBuffer().getWidth(),(int) getGlassPartBuffer().getHeight(), null);
 
 		}
 
@@ -153,9 +152,9 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
-			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
-			int radius = getGauge().getRadius() - 5;
+			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
+			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
+			int radius = radialGauge.getRadius() - 5;
 
 			if (partDeco2 == null) {
 				// System.out.println("null");
@@ -221,9 +220,9 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
-			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
-			int gaugeRadius = getGauge().getRadius();
+			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
+			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
+			int gaugeRadius = radialGauge.getRadius();
 
 			Point2D p1 = new Point2D.Double(centerX, centerY + gaugeRadius);
 			Ellipse2D e1 = new Ellipse2D.Double(p1.getX() - 2, p1.getY() - 2, 4, 4);
@@ -254,9 +253,9 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
-			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
-			int radius = getGauge().getRadius() - 5;
+			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
+			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
+			int radius = radialGauge.getRadius() - 5;
 
 			if (partDeco4 == null) {
 				// System.out.println("null");
@@ -336,9 +335,9 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
-			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
-			int radius = getGauge().getRadius() - 5;
+			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
+			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
+			int radius = radialGauge.getRadius() - 5;
 
 			Donut2D donut1 = new Donut2D();
 			donut1.setCenterX((int) centerX);
@@ -665,9 +664,9 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
-			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
-			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
-			int radius = getGauge().getRadius();
+			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			int radius = radialGauge.getRadius();
 
 			Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegree, extendsDegree, Arc2D.OPEN);
 			textPath.setPath(arc2d);
@@ -681,10 +680,10 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
-			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
-			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
-			int radius = getGauge().getRadius();
-			int radius2 = getGauge().getRadius() + 5;
+			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			int radius = radialGauge.getRadius();
+			int radius2 = radialGauge.getRadius() + 5;
 
 			Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, 90, 360, Arc2D.OPEN);
 
@@ -770,9 +769,9 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 		@Override
 		public final void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
-			double centerX = getGauge().getWindow2D().userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
-			double centerY = getGauge().getWindow2D().userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
-			int radius = getGauge().getRadius();
+			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			int radius = radialGauge.getRadius();
 
 			Pie pie = new Pie();
 			pie.setPieNature(PieNature.Device);
@@ -783,7 +782,7 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			pie.addSlice(new PieSlice("slice", Color.WHITE));
 
 			PiePlugin piePlugin = new PiePlugin();
-			piePlugin.setWindow2D(getGauge().getWindow2D());
+			piePlugin.setWindow2D(radialGauge.getWindow2D());
 			piePlugin.addPie(pie);
 
 			AbstractPieEffect fx = getEffectInstance();

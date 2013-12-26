@@ -5,7 +5,10 @@
  */
 package com.jensoft.core.plugin.gauge.compass;
 
+import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
@@ -13,9 +16,15 @@ import java.awt.geom.Area;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
+import java.util.List;
 import java.util.Vector;
 
-public class SailCompassTick {
+import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.plugin.gauge.core.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
+
+public class SailCompassTick extends BackgroundGaugePainter{
 
     private int centerX;
     private int centerY;
@@ -211,5 +220,56 @@ public class SailCompassTick {
     public void setBaseRadius(double baseRadius) {
         this.baseRadius = baseRadius;
     }
+
+	@Override
+	public void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {
+		double centerX = radialGauge.getCenterDevice().getX();
+		double centerY = radialGauge.getCenterDevice().getY();
+		int radius = radialGauge.getRadius() - 10;
+
+		setCenterX((int) centerX);
+		setCenterY((int) centerY);
+		setBaseRadius(radius - 30);
+		builCompass();
+		
+
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.6f));
+
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+		List<CompassCapTicker> needles = getNeedles();
+
+		g2d.setColor(radialGauge.getWindow2D().getThemeColor().darker());
+		g2d.setStroke(new BasicStroke(1f));
+		Color blue = new Color(68, 155, 180);
+		
+
+		for (CompassCapTicker n : needles) {
+
+			Line2D needlePath = n.getNeedlePath();
+
+			if (n.getNature() == CompassCapTicker.MAJOR) {
+				g2d.setStroke(new BasicStroke(1.5f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND));
+				g2d.setColor(blue);
+			}
+			if (n.getNature() == CompassCapTicker.MEDIAN) {
+				g2d.setStroke(new BasicStroke(1.5f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND));
+				g2d.setColor(ColorPalette.brighter(TangoPalette.CHAMELEON1, 0.8f));
+			}
+			if (n.getNature() == CompassCapTicker.MINOR) {
+				g2d.setStroke(new BasicStroke(1f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_ROUND));
+				g2d.setColor(TangoPalette.CHAMELEON3);
+			}
+			if (n.getNature() == CompassCapTicker.MILI) {
+				g2d.setColor(TangoPalette.CHAMELEON3);
+				g2d.setStroke(new BasicStroke(2f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL));
+			}
+
+			g2d.draw(needlePath);
+		}
+
+		
+	}
+    
+    
 
 }

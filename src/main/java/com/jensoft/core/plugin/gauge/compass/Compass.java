@@ -5,72 +5,286 @@
  */
 package com.jensoft.core.plugin.gauge.compass;
 
-import java.util.Random;
+import java.awt.AlphaComposite;
+import java.awt.BasicStroke;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics2D;
+import java.awt.Shape;
+import java.awt.geom.Arc2D;
+import java.awt.geom.Line2D;
+import java.awt.geom.Point2D;
+import java.util.List;
 
+import com.jensoft.core.glyphmetrics.GlyphMetric;
+import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
+import com.jensoft.core.glyphmetrics.StylePosition;
+import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
+import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.InputFonts;
+import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.palette.TexturePalette;
-import com.jensoft.core.plugin.gauge.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
+import com.jensoft.core.plugin.gauge.core.PathBinder;
+import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
 public class Compass extends RadialGauge {
 
-    public Compass() {
-        super(0, 0, 110);
+	private GaugeMetricsPath pathManagerLabel;
+	private GaugeMetricsPath pathManager;
+	private GaugeMetricsPath pathManagerNeedle;
+	private SailCompassTick compass;
+	
+	public Compass() {
+		super(0, 0, 110);
 
-       
+		CiseroEnvelop e1 = new CiseroEnvelop();
+		setEnvelop(e1);
 
-        CiseroEnvelop e1 = new CiseroEnvelop();
-        setEnvelop(e1);
+		TextureBackground textureBackground = new TextureBackground(TexturePalette.getSquareCarbonFiber());
+		addGaugeBackground(textureBackground);
+		
+		createCompass();
+		// GaugeGlass glass = new GaugeGlass.GlassCubicEffect();
+		// GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
+		// GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
+		// GaugeGlass glass = new GaugeGlass.Donut2DGlass();
+		GaugeGlass glass = new GaugeGlass.GlassLabel();
 
-        TextureBackground textureBackground = new TextureBackground(TexturePalette.getSquareCarbonFiber());
-        setBackground(textureBackground);
+		addEffect(glass);
+		
+		pathManager = new GaugeMetricsPath();
+		pathManager.setAutoReverseGlyph(false);
+		pathManager.setReverseAll(true);
+		pathManager.setRange(0,360);
+		pathManager.setPathBinder(new PathBinder() {
+			@Override
+			public Shape bindPath(RadialGauge gauge) {
+				double centerX = getCenterDevice().getX();
+				double centerY = getCenterDevice().getY();
+				int startAngleDegreee = 0;
+				int extendsDegree = 360;
+				int radius1 = getRadius() - 10;
+				Arc2D arc = new Arc2D.Double(centerX - radius1, centerY - radius1, 2 * radius1, 2 * radius1, startAngleDegreee, extendsDegree, Arc2D.OPEN);
+				return arc;
+			}
+		});
+		//pathManager.setDebugPath(true);
+		registerGaugeMetricsPath(pathManager);
+		
 
-        CompassBody b1 = new CompassBody();
-        setBody(b1);
+		pathManagerLabel = new GaugeMetricsPath();
+		pathManagerLabel.setAutoReverseGlyph(false);
+		pathManagerLabel.setReverseAll(true);
+		pathManagerLabel.setRange(0,360);
+		pathManagerLabel.setPathBinder(new PathBinder() {
+			@Override
+			public Shape bindPath(RadialGauge gauge) {
+				double centerX = getCenterDevice().getX();
+				double centerY = getCenterDevice().getY();
+				int startAngleDegreee = 0;
+				int extendsDegree = 360;
+				int radius2 = getRadius() - 50;
+				Arc2D arc = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, startAngleDegreee, extendsDegree, Arc2D.OPEN);
+				return arc;
+			}
+		});
+		registerGaugeMetricsPath(pathManagerLabel);
+		
 
-       
-       //GaugeGlass glass = new GaugeGlass.GlassCubicEffect();
-       //GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
-       // GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
-       // GaugeGlass glass = new GaugeGlass.Donut2DGlass();
-        GaugeGlass glass = new GaugeGlass.GlassLabel();
-        
-        addEffect(glass);
-        
-       
+		pathManagerNeedle = new GaugeMetricsPath();
+		pathManagerNeedle.setAutoReverseGlyph(false);
+		pathManagerNeedle.setReverseAll(true);
+		pathManagerNeedle.setRange(0,360);
+		pathManagerNeedle.setPathBinder(new PathBinder() {
+			@Override
+			public Shape bindPath(RadialGauge gauge) {
+				double centerX = getCenterDevice().getX();
+				double centerY = getCenterDevice().getY();
+				int startAngleDegreee = 0;
+				int extendsDegree = 360;
+				int radius2 = getRadius() - 80;
+				Arc2D arc = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, startAngleDegreee,extendsDegree, Arc2D.OPEN);
+				return arc;
+			}
+		});
+		registerGaugeMetricsPath(pathManagerNeedle);
+		
+		
+		createLabel1();
+		createLabel2();
 
+	}
+	
+	public void createCompass() {
 
-        CompassLabel constructor = new CompassLabel();
-       //setConstructor(constructor);
+		SailCompassTick compass = new SailCompassTick(0, 0, 150);
+		compass.setPaint(Color.DARK_GRAY);
 
-    }
+		for (int i = 0; i <= 360; i += 30) {
+			CompassCapTicker needlenorth = new CompassCapTicker(i);
+			needlenorth.setNature(CompassCapTicker.MAJOR);
+			compass.addNeedle(needlenorth);
+		}
 
-   
-    Random random = new Random();
-    Runnable needleAnimator = new Runnable() {
+		for (int i = 0; i <= 360; i += 10) {
+			CompassCapTicker needlenorth = new CompassCapTicker(i);
+			needlenorth.setNature(CompassCapTicker.MEDIAN);
+			compass.addNeedle(needlenorth);
+		}
 
-        @Override
-        public void run() {
-            while (true) {
+		for (int i = 0; i <= 360; i += 5) {
+			CompassCapTicker needlenorth = new CompassCapTicker(i);
+			needlenorth.setNature(CompassCapTicker.MINOR);
+			compass.addNeedle(needlenorth);
+		}
+		for (double i = 0; i <= 360; i += 2.5) {
+			CompassCapTicker needlenorth = new CompassCapTicker(i);
+			needlenorth.setNature(CompassCapTicker.MILI);
+			compass.addNeedle(needlenorth);
+		}
+		
+		addGaugeBackground(compass);
 
-                int i = random.nextInt(200) + 20;
-                System.out.println("set new value :" + i);
-               // needle.setCurentValue(i);
-                if (getWindow2D() != null) {
-                    getWindow2D().getDevice2D().repaintDevice();
-                }
+	}
+	
+	private void createLabel2() {
+		GlyphMetric metric;
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 40);
 
-                try {
-                    Thread.sleep(1000);
-                }
-                catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+		//east
+		metric = new GlyphMetric();
+		metric.setValue(0);
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsNature(GlyphMetricsNature.Major);
+		metric.setMetricsLabel("E");
+		metric.setDivergence(-15);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
+		metric.setFont(f);
+		pathManager.addMetric(metric);
 
-            }
+		//north
+		metric = new GlyphMetric();
+		metric.setValue(90);
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsNature(GlyphMetricsNature.Major);
+		metric.setMetricsLabel("N");
+		metric.setDivergence(-15);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setFont(f);
+		pathManager.addMetric(metric);
 
-        }
-    };
+		//west
+		metric = new GlyphMetric();
+		metric.setValue(180);
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsNature(GlyphMetricsNature.Major);
+		metric.setMetricsLabel("W");
+		metric.setDivergence(-15);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE));
+		metric.setFont(f);
+		pathManager.addMetric(metric);
+
+		// south
+		metric = new GlyphMetric();
+		metric.setValue(270);
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsNature(GlyphMetricsNature.Major);
+		metric.setMetricsLabel("S");
+		metric.setDivergence(-15);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
+		metric.setFont(f);
+		pathManager.addMetric(metric);
+	}
+
+	private void createLabel1() {
+
+		GlyphMetric metric;
+		Font f = InputFonts.getElements(12);
+		metric = new GlyphMetric();
+		metric.setValue(30);
+		metric.setStylePosition(StylePosition.Tangent);
+		metric.setMetricsNature(GlyphMetricsNature.Median);
+		metric.setMetricsLabel("30");
+		metric.setDivergence(0);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
+		metric.setFont(f);
+		pathManagerLabel.addMetric(metric);
+
+		metric = new GlyphMetric();
+		metric.setValue(60);
+		metric.setStylePosition(StylePosition.Tangent);
+		metric.setMetricsNature(GlyphMetricsNature.Median);
+		metric.setMetricsLabel("60");
+		metric.setDivergence(0);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setFont(f);
+		pathManagerLabel.addMetric(metric);
+
+		metric = new GlyphMetric();
+		metric.setValue(120);
+		metric.setStylePosition(StylePosition.Tangent);
+		metric.setMetricsNature(GlyphMetricsNature.Median);
+		metric.setMetricsLabel("120");
+		metric.setDivergence(0);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
+		metric.setFont(f);
+		pathManagerLabel.addMetric(metric);
+
+		metric = new GlyphMetric();
+		metric.setValue(150);
+		metric.setStylePosition(StylePosition.Tangent);
+		metric.setMetricsNature(GlyphMetricsNature.Median);
+		metric.setMetricsLabel("150");
+		metric.setDivergence(0);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE.brighter()));
+		metric.setFont(f);
+		pathManagerLabel.addMetric(metric);
+
+		metric = new GlyphMetric();
+		metric.setValue(210);
+		metric.setStylePosition(StylePosition.Tangent);
+		metric.setMetricsNature(GlyphMetricsNature.Median);
+		metric.setMetricsLabel("210");
+		metric.setDivergence(0);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE.brighter()));
+		metric.setFont(f);
+		pathManagerLabel.addMetric(metric);
+
+		metric = new GlyphMetric();
+		metric.setValue(240);
+		metric.setStylePosition(StylePosition.Tangent);
+		metric.setMetricsNature(GlyphMetricsNature.Median);
+		metric.setMetricsLabel("240");
+		metric.setDivergence(0);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
+		metric.setFont(f);
+		pathManagerLabel.addMetric(metric);
+
+		metric = new GlyphMetric();
+		metric.setValue(300);
+		metric.setStylePosition(StylePosition.Tangent);
+		metric.setMetricsNature(GlyphMetricsNature.Median);
+		metric.setMetricsLabel("300");
+		metric.setDivergence(0);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
+		metric.setFont(f);
+		pathManagerLabel.addMetric(metric);
+
+		metric = new GlyphMetric();
+		metric.setValue(330);
+		metric.setStylePosition(StylePosition.Tangent);
+		metric.setMetricsNature(GlyphMetricsNature.Median);
+		metric.setMetricsLabel("330");
+		metric.setDivergence(0);
+		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
+		metric.setFont(f);
+		pathManagerLabel.addMetric(metric);
+	}
+	
 
 }

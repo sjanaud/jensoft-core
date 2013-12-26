@@ -3,25 +3,21 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.core;
+package com.jensoft.core.plugin.gauge.core.env;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.gauge.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 /**
  * EnvelopGaugePainter
  */
-public abstract class EnvelopGaugePainter extends AbstractGaugePainter {
+public abstract class EnvelopGaugePainter {
 
     public EnvelopGaugePainter() {
     }
 
     public abstract void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge);
 
-    @Override
-    public final void paintGauge(Graphics2D g2d, RadialGauge radialGauge) {
-        paintEnvelop(g2d, radialGauge);
-    }
 
 }

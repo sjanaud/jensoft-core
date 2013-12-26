@@ -11,8 +11,7 @@ import java.awt.RadialGradientPaint;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.plugin.gauge.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.BackgroundGaugePainter;
+import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 public class RoundGradientBackground extends BackgroundGaugePainter {
 
@@ -22,11 +21,11 @@ public class RoundGradientBackground extends BackgroundGaugePainter {
 
     @Override
     public void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {
-        double centerX = getGauge().getWindow2D()
-                .userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();// (int)getGauge().getX();
-        double centerY = getGauge().getWindow2D()
-                .userToPixel(new Point2D.Double(0, getGauge().getY())).getY();// (int)getGauge().getY();
-        int radius = getGauge().getRadius();
+        double centerX = radialGauge.getWindow2D()
+                .userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+        double centerY = radialGauge.getWindow2D()
+                .userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+        int radius = radialGauge.getRadius();
 
         Ellipse2D baseShape = new Ellipse2D.Double(centerX - radius, centerY
                 - radius, 2 * radius, 2 * radius);

@@ -17,8 +17,7 @@ import java.awt.geom.Point2D;
 import com.jensoft.core.device.PartBuffer;
 import com.jensoft.core.drawable.screw.Posidrive;
 import com.jensoft.core.drawable.screw.Torx;
-import com.jensoft.core.plugin.gauge.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.EnvelopGaugePainter;
+import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 public class ClassicEnvelop extends EnvelopGaugePainter {
 
@@ -28,13 +27,16 @@ public class ClassicEnvelop extends EnvelopGaugePainter {
 
     private PartBuffer envelopPart;
 
-    public void paint1(Graphics2D g2d) {
+  
 
-        double centerX = getGauge().getWindow2D()
-                .userToPixel(new Point2D.Double(getGauge().getX(), 0)).getX();
-        double centerY = getGauge().getWindow2D()
-                .userToPixel(new Point2D.Double(0, getGauge().getY())).getY();
-        int radius = getGauge().getRadius();
+    @Override
+    public void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge) {
+        System.out.println("paint cisero env.");
+        double centerX = radialGauge.getWindow2D()
+                .userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+        double centerY = radialGauge.getWindow2D()
+                .userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+        int radius = radialGauge.getRadius();
         int deltaInternal = 4;
         int deltaExternal = 40;
         int radiusInternal = radius + deltaInternal;
@@ -229,13 +231,6 @@ public class ClassicEnvelop extends EnvelopGaugePainter {
             g2d.drawImage(envelopPart.getBuffer(), (int) centerX - radius,
                           (int) centerY - radius, 2 * radius, 2 * radius, null);
         }
-
-    }
-
-    @Override
-    public void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge) {
-        System.out.println("paint cisero env.");
-        paint1(g2d);
 
     }
 
