@@ -354,21 +354,17 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	 * @return true if path is empty, false otherwise
 	 */
 	public boolean isEmpty(Shape s) {
-
 		PathIterator pi = s.getPathIterator(null);
-
 		while (pi.isDone() == false) {
 			double[] coordinates = new double[6];
 			int type = pi.currentSegment(coordinates);
 
 			if (type == PathIterator.SEG_MOVETO) {
-				
 				return false;
 			}
-
 			pi.next();
 		}
-		System.out.println("empty path ");
+		//System.out.println("empty path ");
 		return true;
 	}
 
@@ -401,7 +397,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 * @param nature
 		 */
 		public void validCurentSegment(PathIterator pi, GeneralPath path, ProjectionNature nature) {
-			System.out.println("valid segment");
+			//System.out.println("valid segment");
 			
 			double[] coordinates = new double[6];
 			int type = pi.currentSegment(coordinates);
@@ -409,7 +405,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 			switch (type) {
 
 			case PathIterator.SEG_MOVETO:
-				System.out.println("move to "+coordinates[0]+","+ coordinates[1]);
+				//System.out.println("move to "+coordinates[0]+","+ coordinates[1]);
 				Point2D pm = null;
 				if (getProjectionNature() == ProjectionNature.USER) {
 					pm = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
@@ -451,7 +447,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 				Point2D pc1;
 				Point2D pc2;
 				Point2D pc3;
-				System.out.println("cubic to "+coordinates[0]+","+coordinates[1]+","+coordinates[2]+","+coordinates[3]+","+coordinates[4]+","+coordinates[5]);
+				//System.out.println("cubic to "+coordinates[0]+","+coordinates[1]+","+coordinates[2]+","+coordinates[3]+","+coordinates[4]+","+coordinates[5]);
 				if (getProjectionNature() == ProjectionNature.USER) {
 					pc1 = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
 					pc2 = getWindow2d().userToPixel(new Point2D.Double(coordinates[2], coordinates[3]));
@@ -472,7 +468,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 				path.curveTo(pc1.getX(), pc1.getY(), pc2.getX(), pc2.getY(), pc3.getX(), pc3.getY());
 				break;
 			case PathIterator.SEG_CLOSE:
-				System.out.println("close to");
+				//System.out.println("close to");
 				path.closePath();
 				break;
 			default:
@@ -856,7 +852,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	 * @return radial point
 	 */
 	public Point2D getRadialPoint(double metricsValue, int radius, Side side) {
-		System.out.println("get radial point for value : "+metricsValue);
+		//System.out.println("get radial point for value : "+metricsValue);
 		scalePath();
 		double deviceLength = unitUserToDevice * metricsValue;
 		Point2D p = geometry.pointAtLength((float) deviceLength);
