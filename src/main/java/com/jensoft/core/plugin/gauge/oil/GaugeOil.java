@@ -22,12 +22,14 @@ import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker.TriangleDirection;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.RosePalette;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.GaugeTextPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
+import com.jensoft.core.plugin.gauge.core.binder.ArcPathShiftBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
@@ -35,6 +37,11 @@ import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
 public class GaugeOil extends RadialGauge {
 
+	
+	private static int gaugeRadius = 90;
+	private static int centerUserX = 0;
+	private static int centerUserY = 0;
+	
 	/** metrics manager to manage value and metrics */
 	private GaugeMetricsPath metricsPath1;
 
@@ -50,12 +57,12 @@ public class GaugeOil extends RadialGauge {
 	private GaugeTextPath legend2;
 
 	public GaugeOil() {
-		super(0, 0, 90);
+		super(centerUserX, centerUserY, gaugeRadius);
 
 		CiseroEnvelop e1 = new CiseroEnvelop();
 		setEnvelop(e1);
 
-		addGaugeBackground(new TextureBackground(TexturePalette.getBeeCarbonTexture1()));
+		addGaugeBackground(new TextureBackground(TexturePalette.getInterlacedCarbon1()));
 		
 		GaugeGlass g1 = new GaugeGlass.Glass1();
 		GaugeGlass g2 = new GaugeGlass.Glass2();
@@ -256,22 +263,40 @@ public class GaugeOil extends RadialGauge {
 	}
 
 	private void createPath1() {
+		
+
+
+// or something like that with linear approach
+//		metricsPath1.setPathBinder(new PathBinder() {
+//			@Override
+//			public Arc2D bindPath(RadialGauge gauge) {
+//				double centerX = getCenterDevice().getX();
+//				double centerY = getCenterDevice().getY();
+//				int radius = getRadius();
+//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius - 2 * radius - radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, -25, 50, Arc2D.OPEN);
+//				return arc;
+//			}
+//		});
+
+		//or see impl	GaugeArcPathShiftBinder with polar angle/radius approach
+
 
 		metricsPath1 = new GaugeMetricsPath();
 		metricsPath1.setMin(0);
 		metricsPath1.setMax(120);
 		metricsPath1.setCurrentValue(47);
-
-		metricsPath1.setPathBinder(new PathBinder() {
-			@Override
-			public Arc2D bindPath(RadialGauge gauge) {
-				double centerX = getCenterDevice().getX();
-				double centerY = getCenterDevice().getY();
-				int radius = getRadius();
-				Arc2D arc = new Arc2D.Double(centerX - 2 * radius - 2 * radius - radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, -25, 50, Arc2D.OPEN);
-				return arc;
-			}
-		});
+		//metricsPath1.setDebugPath(true);
+		metricsPath1.setPathBinder(new ArcPathShiftBinder(2*gaugeRadius - gaugeRadius/4, -25, 50, 2*gaugeRadius, 180));
+//		metricsPath1.setPathBinder(new PathBinder() {
+//			@Override
+//			public Arc2D bindPath(RadialGauge gauge) {
+//				double centerX = getCenterDevice().getX();
+//				double centerY = getCenterDevice().getY();
+//				int radius = getRadius();
+//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius - 2 * radius - radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, -25, 50, Arc2D.OPEN);
+//				return arc;
+//			}
+//		});
 		
 		metricsPath1.setNeedleBaseAnchorBinder(new AnchorBinder() {
 			@Override
@@ -348,17 +373,20 @@ public class GaugeOil extends RadialGauge {
 		metricsPath2.setMin(0);
 		metricsPath2.setMax(120);
 		metricsPath2.setCurrentValue(80);
-		metricsPath2.setPathBinder(new PathBinder() {
-
-			@Override
-			public Arc2D bindPath(RadialGauge gauge) {
-				double centerX = getCenterDevice().getX();
-				double centerY = getCenterDevice().getY();
-				int radius = getRadius();
-				Arc2D arc = new Arc2D.Double(centerX - 2 * radius + 2 * radius + radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, 205, -50, Arc2D.OPEN);
-				return arc;
-			}
-		});
+		
+		metricsPath2.setPathBinder(new ArcPathShiftBinder(2*gaugeRadius - gaugeRadius/4, 205, -50, 2*gaugeRadius, 0));
+		
+//		metricsPath2.setPathBinder(new PathBinder() {
+//
+//			@Override
+//			public Arc2D bindPath(RadialGauge gauge) {
+//				double centerX = getCenterDevice().getX();
+//				double centerY = getCenterDevice().getY();
+//				int radius = getRadius();
+//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius + 2 * radius + radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, 205, -50, Arc2D.OPEN);
+//				return arc;
+//			}
+//		});
 		
 		metricsPath2.setNeedleBaseAnchorBinder(new AnchorBinder() {
 			@Override
@@ -380,7 +408,7 @@ public class GaugeOil extends RadialGauge {
 		
 		metricsPath2.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
 
-		metricsPath2.setDebugPath(true);
+		//metricsPath2.setDebugPath(true);
 		registerGaugeMetricsPath(metricsPath2);
 
 		GlyphMetric metric;

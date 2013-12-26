@@ -21,7 +21,7 @@ import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.RoundGradientBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
-import com.jensoft.core.plugin.gauge.core.binder.GaugeArcPathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
@@ -69,7 +69,7 @@ public class Tachometer extends RadialGauge {
 		metricsManager.setCurrentValue(5.7);
 
 		metricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
-		metricsManager.setPathBinder(new GaugeArcPathBinder(gaugeRadius-10, 210, -240));
+		metricsManager.setPathBinder(new ArcPathBinder(gaugeRadius-10, 210, -240));
 		
 //		metricsManager.setPathBinder(new PathBinder() {
 //			@Override

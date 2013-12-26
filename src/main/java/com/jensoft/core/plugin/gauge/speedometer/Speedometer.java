@@ -7,7 +7,6 @@ package com.jensoft.core.plugin.gauge.speedometer;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.geom.Arc2D;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
@@ -22,8 +21,7 @@ import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
-import com.jensoft.core.plugin.gauge.core.binder.GaugeArcPathBinder;
-import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
@@ -78,7 +76,7 @@ public class Speedometer extends RadialGauge {
 		metricsManager.setCurrentValue(186);
 		
 		metricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
-		metricsManager.setPathBinder(new GaugeArcPathBinder(gaugeRadius-10, 260, -340));
+		metricsManager.setPathBinder(new ArcPathBinder(gaugeRadius-10, 260, -340));
 		
 //		metricsManager.setPathBinder(new PathBinder() {
 //			@Override

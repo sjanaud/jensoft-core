@@ -5,6 +5,7 @@
  */
 package com.jensoft.core.plugin.gauge.core;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
@@ -155,6 +156,7 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	 * @param needleAnchorBinder
 	 */
 	public void setNeedleBaseAnchorBinder(AnchorBinder needleAnchorBinder) {
+		needleAnchorBinder.setMetricsPath(this);
 		this.needleBaseAnchorBinder = needleAnchorBinder;
 	}
 
@@ -173,6 +175,7 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	 * @param needleValueAnchorBinder
 	 */
 	public void setNeedleValueAnchorBinder(AnchorBinder needleValueAnchorBinder) {
+		needleValueAnchorBinder.setMetricsPath(this);
 		this.needleValueAnchorBinder = needleValueAnchorBinder;
 	}
 
@@ -216,6 +219,7 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 		setFontRenderContext(g2d.getFontRenderContext());
 
 		if (debugPath) {
+			g2dPart.setStroke(new BasicStroke(2f));
 			g2dPart.setColor(debugPathColor);
 			// g2dPart.draw(getOrCreateGeometry().getPath());
 			// or
