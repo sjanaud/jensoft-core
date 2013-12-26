@@ -10,14 +10,20 @@ import java.awt.Graphics2D;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 /**
- * EnvelopGaugePainter
+ * <code>EnvelopGaugePainter</code> defines an envelop that extends around the
+ * gauge.
+ * 
+ * @since 1.0
+ * @author sebastien janaud
  */
 public abstract class EnvelopGaugePainter {
 
-    public EnvelopGaugePainter() {
-    }
-
-    public abstract void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge);
-
+	/**
+	 * implements to paint gauge envelop
+	 * 
+	 * @param g2d
+	 * @param radialGauge
+	 */
+	public abstract void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge);
 
 }
