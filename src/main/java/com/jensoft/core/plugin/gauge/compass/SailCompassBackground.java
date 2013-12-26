@@ -24,7 +24,7 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
 
-public class SailCompassTick extends BackgroundGaugePainter{
+public class SailCompassBackground extends BackgroundGaugePainter{
 
     private int centerX;
     private int centerY;
@@ -42,11 +42,33 @@ public class SailCompassTick extends BackgroundGaugePainter{
     private double deltaMinorBaseRadius = 10;
     private double deltaMiliBaseRadius = 1;
 
-    public SailCompassTick(int centerX, int centerY, int baseRadius) {
+    public SailCompassBackground(int centerX, int centerY, int baseRadius) {
         super();
         this.centerX = centerX;
         this.centerY = centerY;
         this.baseRadius = baseRadius;
+        for (int i = 0; i <= 360; i += 30) {
+			CompassCapTicker needlenorth = new CompassCapTicker(i);
+			needlenorth.setNature(CompassCapTicker.MAJOR);
+			addNeedle(needlenorth);
+		}
+
+		for (int i = 0; i <= 360; i += 10) {
+			CompassCapTicker needlenorth = new CompassCapTicker(i);
+			needlenorth.setNature(CompassCapTicker.MEDIAN);
+			addNeedle(needlenorth);
+		}
+
+		for (int i = 0; i <= 360; i += 5) {
+			CompassCapTicker needlenorth = new CompassCapTicker(i);
+			needlenorth.setNature(CompassCapTicker.MINOR);
+			addNeedle(needlenorth);
+		}
+		for (double i = 0; i <= 360; i += 2.5) {
+			CompassCapTicker needlenorth = new CompassCapTicker(i);
+			needlenorth.setNature(CompassCapTicker.MILI);
+			addNeedle(needlenorth);
+		}
     }
 
     private Vector<CompassCapTicker> caps = new Vector<CompassCapTicker>();
@@ -270,6 +292,167 @@ public class SailCompassTick extends BackgroundGaugePainter{
 		
 	}
     
+	
+	public static class CompassCapTicker {
+
+	    private String name;
+	    private double theta = 0;
+	    private Paint paint = new Color(0, 0, 0, 150);
+	    private Color colorTheme = Color.WHITE;
+	    private int alphaProjection = 20;
+
+	    private boolean lockNeedle = false;
+	    private boolean lockRollover = false;
+	    private boolean lockPressed = false;
+
+	    private Arc2D needleArc;
+	    private Line2D needlePath;
+	    private Line2D baseLine;;
+	    private Point2D refPoint;
+
+	    public static int MAJOR = 0;
+	    public static int MEDIAN = 1;
+	    public static int MINOR = 2;
+	    public static int MILI = 3;
+	    private int nature = MAJOR;
+
+	    public CompassCapTicker() {
+
+	    }
+
+	    public Point2D getRefPoint() {
+	        return refPoint;
+	    }
+
+	    public void setRefPoint(Point2D refPoint) {
+	        this.refPoint = refPoint;
+	    }
+
+	    public int getAlphaProjection() {
+	        return alphaProjection;
+	    }
+
+	    public void setAlphaProjection(int alphaProjection) {
+	        this.alphaProjection = alphaProjection;
+	    }
+
+	    public Arc2D getNeedleArc() {
+	        return needleArc;
+	    }
+
+	    public void setNeedleArc(Arc2D needleArc) {
+	        this.needleArc = needleArc;
+	    }
+
+	    public int getNature() {
+	        return nature;
+	    }
+
+	    public void setNature(int nature) {
+	        this.nature = nature;
+	    }
+
+	    public Line2D getBaseLine() {
+	        return baseLine;
+	    }
+
+	    public void setBaseLine(Line2D baseLine) {
+	        this.baseLine = baseLine;
+	    }
+
+	    public String getName() {
+	        return name;
+	    }
+
+	    public void setName(String name) {
+	        this.name = name;
+	    }
+
+	    public boolean contains(Point2D p2d) {
+	        return needlePath.contains(p2d);
+	    }
+
+	    public CompassCapTicker(double theta) {
+	        super();
+	        this.theta = theta;
+	    }
+
+	    public CompassCapTicker(int alphaProjection, double theta) {
+	        super();
+	        this.alphaProjection = alphaProjection;
+	        this.theta = theta;
+	    }
+
+	    public double getTheta() {
+	        return theta;
+	    }
+
+	    public void setTheta(double theta) {
+	        this.theta = theta;
+	    }
+
+	    public Paint getPaint() {
+	        return paint;
+	    }
+
+	    public void setPaint(Paint paint) {
+	        this.paint = paint;
+	    }
+
+	    public Color getColorTheme() {
+	        return colorTheme;
+	    }
+
+	    public void setColorTheme(Color colorTheme) {
+	        this.colorTheme = colorTheme;
+	    }
+
+	    public Line2D getNeedlePath() {
+	        return needlePath;
+	    }
+
+	    public void setNeedlePath(Line2D needlePath) {
+	        this.needlePath = needlePath;
+	    }
+
+	    public void lockNeedle() {
+	        lockNeedle = true;
+	    }
+
+	    public void unlockNeedle() {
+	        lockNeedle = false;
+	    }
+
+	    public boolean isLockNeedle() {
+	        return lockNeedle;
+	    }
+
+	    public void lockRollover() {
+	        lockRollover = true;
+	    }
+
+	    public void unlockRollover() {
+	        lockRollover = false;
+	    }
+
+	    public boolean isLockRollover() {
+	        return lockRollover;
+	    }
+
+	    public void lockPressed() {
+	        lockPressed = true;
+	    }
+
+	    public void unlockPressed() {
+	        lockPressed = false;
+	    }
+
+	    public boolean isLockPressed() {
+	        return lockPressed;
+	    }
+
+	}
+
     
 
 }

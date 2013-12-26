@@ -7,8 +7,6 @@ package com.jensoft.core.plugin.gauge.compass;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Shape;
-import java.awt.geom.Arc2D;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
@@ -20,7 +18,6 @@ import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
-import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
@@ -44,7 +41,9 @@ public class Compass extends RadialGauge {
 		TextureBackground textureBackground = new TextureBackground(TexturePalette.getSquareCarbonFiber());
 		addGaugeBackground(textureBackground);
 		
-		createCompass();
+		SailCompassBackground compass = new SailCompassBackground(0, 0, 150);
+		addGaugeBackground(compass);
+		
 		// GaugeGlass glass = new GaugeGlass.GlassCubicEffect();
 		// GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
 		// GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
@@ -119,37 +118,6 @@ public class Compass extends RadialGauge {
 
 	}
 	
-	public void createCompass() {
-
-		SailCompassTick compass = new SailCompassTick(0, 0, 150);
-		compass.setPaint(Color.DARK_GRAY);
-
-		for (int i = 0; i <= 360; i += 30) {
-			CompassCapTicker needlenorth = new CompassCapTicker(i);
-			needlenorth.setNature(CompassCapTicker.MAJOR);
-			compass.addNeedle(needlenorth);
-		}
-
-		for (int i = 0; i <= 360; i += 10) {
-			CompassCapTicker needlenorth = new CompassCapTicker(i);
-			needlenorth.setNature(CompassCapTicker.MEDIAN);
-			compass.addNeedle(needlenorth);
-		}
-
-		for (int i = 0; i <= 360; i += 5) {
-			CompassCapTicker needlenorth = new CompassCapTicker(i);
-			needlenorth.setNature(CompassCapTicker.MINOR);
-			compass.addNeedle(needlenorth);
-		}
-		for (double i = 0; i <= 360; i += 2.5) {
-			CompassCapTicker needlenorth = new CompassCapTicker(i);
-			needlenorth.setNature(CompassCapTicker.MILI);
-			compass.addNeedle(needlenorth);
-		}
-		
-		addGaugeBackground(compass);
-
-	}
 	
 	private void createLabel2() {
 		GlyphMetric metric;
