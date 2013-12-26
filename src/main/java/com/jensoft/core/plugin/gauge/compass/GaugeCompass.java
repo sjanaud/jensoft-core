@@ -46,7 +46,7 @@ public class GaugeCompass extends RadialGauge {
 		TextureBackground textureBackground = new TextureBackground(TexturePalette.getSquareCarbonFiber());
 		addGaugeBackground(textureBackground);
 		
-		SailCompassBackground compass = new SailCompassBackground(0, 0, 150);
+		GaugeCompassBackground compass = new GaugeCompassBackground(0, 0, 150);
 		addGaugeBackground(compass);
 		
 		// GaugeGlass glass = new GaugeGlass.GlassCubicEffect();
