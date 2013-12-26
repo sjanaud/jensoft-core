@@ -22,7 +22,13 @@ import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
-public class Compass extends RadialGauge {
+
+/**
+ * Compass
+ * @author sebastien
+ *
+ */
+public class GaugeCompass extends RadialGauge {
 
 	private GaugeMetricsPath secondaryPathManager;
 	private GaugeMetricsPath primaryPathManager;
@@ -31,7 +37,7 @@ public class Compass extends RadialGauge {
 	private static int centerUserX = 0;
 	private static int centerUserY = 0;
 	
-	public Compass() {
+	public GaugeCompass() {
 		super(centerUserX, centerUserY, gaugeRadius);
 
 		CiseroEnvelop cisero = new CiseroEnvelop();
