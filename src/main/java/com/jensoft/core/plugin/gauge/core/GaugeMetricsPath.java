@@ -198,6 +198,14 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	}
 
 	/**
+	 * @param partBuffer
+	 *            the partBuffer to set
+	 */
+	public void setPartBuffer(GaugePartBuffer partBuffer) {
+		this.partBuffer = partBuffer;
+	}
+
+	/**
 	 * get part buffer of this metrics path
 	 * 
 	 * @return part buffer
@@ -217,7 +225,7 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 		Graphics2D g2dPart = partBuffer.getGraphics();
 		g2dPart.setRenderingHints(g2d.getRenderingHints());
 		setFontRenderContext(g2d.getFontRenderContext());
-
+		setSolveGeometryRequest(true);
 		if (debugPath) {
 			g2dPart.setStroke(new BasicStroke(2f));
 			g2dPart.setColor(debugPathColor);

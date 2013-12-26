@@ -24,13 +24,13 @@ public class GaugeTextPath extends TextPath {
 
 	/** gauge host this metrics path */
 	private RadialGauge gauge;
-	
+
 	/** gauge part buffer to paint reuse */
 	private GaugePartBuffer partBuffer;
 
 	/** path binder */
 	private PathBinder pathBinder;
-	
+
 	/** debug flag arc for paint arc */
 	private boolean debugPath = false;
 
@@ -57,10 +57,23 @@ public class GaugeTextPath extends TextPath {
 		this.gauge = gauge;
 	}
 
+	/**
+	 * @param partBuffer
+	 *            the partBuffer to set
+	 */
+	public void setPartBuffer(GaugePartBuffer partBuffer) {
+		this.partBuffer = partBuffer;
+	}
+
+	/**
+	 * get part buffer of this gauge text path
+	 * 
+	 * @return
+	 */
 	public GaugePartBuffer getPartBuffer() {
 		return partBuffer;
 	}
-	
+
 	/**
 	 * create part buffer of this text path from original context.
 	 * 
@@ -71,7 +84,7 @@ public class GaugeTextPath extends TextPath {
 
 		Graphics2D g2dPart = partBuffer.getGraphics();
 		g2dPart.setRenderingHints(g2d.getRenderingHints());
-		//setFontRenderContext(g2d.getFontRenderContext());
+		// setFontRenderContext(g2d.getFontRenderContext());
 
 		if (debugPath) {
 			g2dPart.setColor(debugPathColor);
@@ -82,7 +95,5 @@ public class GaugeTextPath extends TextPath {
 
 		draw(g2dPart);
 	}
-	
-	
 
 }

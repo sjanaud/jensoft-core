@@ -122,7 +122,7 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 
 	@Override
 	public void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge) {
-		System.out.println("paint cisero env.");
+		//System.out.println("paint cisero env.");
 		double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
 		double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 		
@@ -291,31 +291,18 @@ public class CiseroEnvelop extends EnvelopGaugePainter {
 			y = centerY - (baseRadius) * Math.sin(Math.toRadians(270));
 			s = new Split(x, y, splitRadius, 270);
 			s.draw(g2dPart);
-
-			
-			
-			
-			
 			g2dPart.dispose();
 
-			System.out.println(" paint first");
 			g2d.drawImage(envelopPart.getBuffer(), (int) centerX - envelopPart.getBuffer().getWidth() / 2, (int) centerY - envelopPart.getBuffer().getHeight() / 2, envelopPart.getBuffer().getWidth(), envelopPart.getBuffer().getHeight(), null);
 
 		} else {
-			// g2d.drawImage(icon.getImage(), (int) centerX - radius, (int)
-			// centerY - radius, 2 * radius, 2 * radius, null);
-			// g2d.setColor(Color.RED);
-			// g2d.drawRect(40, 40, 100, 100);
-			System.out.println(" paint cache");
-			// g2d.drawImage(envelopPart.getPart(), (int) centerX - radius,
-			// (int) centerY - radius, 2 * radius, 2 * radius, null);
+			
 			g2d.drawImage(envelopPart.getBuffer(), (int) centerX - envelopPart.getBuffer().getWidth() / 2, (int) centerY - envelopPart.getBuffer().getHeight() / 2, envelopPart.getBuffer().getWidth(), envelopPart.getBuffer().getHeight(), null);
 
 		}
 
-		//
 
-		System.out.println("after draw image");
+		
 
 	}
 

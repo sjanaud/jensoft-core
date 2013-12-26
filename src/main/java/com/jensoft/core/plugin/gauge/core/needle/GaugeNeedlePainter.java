@@ -9,10 +9,22 @@ import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 
-public abstract class GaugeNeedlePainter  {
+/**
+ * <code>GaugeNeedlePainter</code> takes the responsibility to paint a needle
+ * based on anchor binder declared in gauge path metrics
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ * 
+ */
+public abstract class GaugeNeedlePainter {
 
-
+	/**
+	 * paint needle for the given gauge metrics path anchor configuration
+	 * 
+	 * @param g2d
+	 * @param gaugeMetricsPath
+	 */
 	public abstract void paintNeedle(Graphics2D g2d, GaugeMetricsPath gaugeMetricsPath);
 
-	
 }

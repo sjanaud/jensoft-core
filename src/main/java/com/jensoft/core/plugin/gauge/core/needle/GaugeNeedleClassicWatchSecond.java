@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
 package com.jensoft.core.plugin.gauge.core.needle;
 
 import java.awt.BasicStroke;
@@ -13,8 +18,22 @@ import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 
+/**
+ * <code>GaugeNeedleClassicWatchMinute</code>
+ * 
+ * <p>
+ * second watch style
+ * <p>
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ *
+ */
 public class GaugeNeedleClassicWatchSecond extends GaugeNeedlePainter {
 
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.gauge.core.needle.GaugeNeedlePainter#paintNeedle(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.GaugeMetricsPath)
+	 */
 	@Override
 	public void paintNeedle(Graphics2D g2d, GaugeMetricsPath gaugeMetricsPath) {
 

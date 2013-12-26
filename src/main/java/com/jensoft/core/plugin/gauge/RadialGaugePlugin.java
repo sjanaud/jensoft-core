@@ -21,11 +21,14 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
 import com.jensoft.core.plugin.gauge.core.glass.GlassGaugePainter;
 import com.jensoft.core.view.View2D;
+import com.jensoft.core.window.Window2DEvent;
+import com.jensoft.core.window.Window2DListener;
 import com.jensoft.core.window.WindowPart;
 
 /**
  * <code>RadialGaugePlugin</code> incubator gauge plugin
  * 
+ * @since 1.0
  * @author sebastien janaud
  * 
  */
@@ -33,6 +36,10 @@ public class RadialGaugePlugin extends AbstractPlugin {
 
 	private RadialGauge gauge;
 
+	/**
+	 * create radial gauge plugin
+	 * @param gauge
+	 */
 	public RadialGaugePlugin(RadialGauge gauge) {
 		this.gauge = gauge;
 		setInterpolation(Interpolation.Bicubic);
@@ -40,7 +47,52 @@ public class RadialGaugePlugin extends AbstractPlugin {
 		setAntialiasing(Antialiasing.On);
 		setFractionalMetrics(Fractional.On);
 		setTextAntialising(TextAntialiasing.On);
-		setDithering(Dithering.On);
+		setDithering(Dithering.On);		
+	}
+	
+	
+	/**
+	 * invalidate part buffer of gauges
+	 */
+	private void invalidateParts(){
+		for(GaugeMetricsPath path : gauge.getGaugeMetricsPath()){
+			path.setPartBuffer(null);
+		}
+		
+		for(GaugeTextPath path : gauge.getGaugeTextPaths()){
+			path.setPartBuffer(null);
+		}
+	}
+	
+	/**
+	 * on window change or window resized, invalidate part buffer of gauges.
+	 * <p>
+	 * add a window listener and call {@link #invalidateParts()}
+	 * <p>
+	 */
+	@Override
+	public void onWindowRegister() {
+		super.onWindowRegister();
+		getWindow2D().addWindow2DListener(new Window2DListener() {
+			
+			@Override
+			public void window2DUnlockActive(Window2DEvent w2dEvent) {
+			}
+			
+			@Override
+			public void window2DResized(Window2DEvent w2dEvent) {
+				invalidateParts();
+			}
+			
+			@Override
+			public void window2DLockActive(Window2DEvent w2dEvent) {
+			}
+			
+			@Override
+			public void window2DBoundChanged(Window2DEvent w2dEvent) {
+				invalidateParts();				
+			}
+		});
 	}
 	
 	
@@ -53,6 +105,9 @@ public class RadialGaugePlugin extends AbstractPlugin {
 		g2d.drawImage(buffer.getBuffer(),(int)buffer.getX(),(int)buffer.getY(),(int)buffer.getWidth(),(int)buffer.getHeight(),null);
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	 */
 	@Override
 	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
 
