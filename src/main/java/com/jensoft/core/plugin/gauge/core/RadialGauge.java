@@ -102,7 +102,7 @@ public class RadialGauge {
 	 * 
 	 * @return path metrics list
 	 */
-	public List<GaugeMetricsPath> getGaugeMetricsPath() {
+	public List<GaugeMetricsPath> getMetricsPaths() {
 		return gaugeMetricsPaths;
 	}
 
@@ -134,7 +134,7 @@ public class RadialGauge {
 	 * 
 	 * @return gauge text paths
 	 */
-	public List<GaugeTextPath> getGaugeTextPaths() {
+	public List<GaugeTextPath> getTextPaths() {
 		return gaugeTextPaths;
 	}
 

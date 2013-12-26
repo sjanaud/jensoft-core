@@ -46,20 +46,21 @@ public class RadialGaugePlugin extends AbstractPlugin {
 		setAlphaInterpolation(AlphaInterpolation.Quality);
 		setAntialiasing(Antialiasing.On);
 		setFractionalMetrics(Fractional.On);
+		
 		setTextAntialising(TextAntialiasing.On);
 		setDithering(Dithering.On);		
 	}
 	
 	
 	/**
-	 * invalidate part buffer of gauges
+	 * invalidate part buffer of gauges metrics paths, text paths and glasses
 	 */
 	private void invalidateParts(){
-		for(GaugeMetricsPath path : gauge.getGaugeMetricsPath()){
+		for(GaugeMetricsPath path : gauge.getMetricsPaths()){
 			path.setPartBuffer(null);
 		}
 		
-		for(GaugeTextPath path : gauge.getGaugeTextPaths()){
+		for(GaugeTextPath path : gauge.getTextPaths()){
 			path.setPartBuffer(null);
 		}
 		
@@ -139,7 +140,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 			}
 		}
 
-		for(GaugeMetricsPath path : gauge.getGaugeMetricsPath()){
+		for(GaugeMetricsPath path : gauge.getMetricsPaths()){
 			if(path.getPartBuffer() == null){
 				path.setWindow2d(getWindow2D());
 				path.resetPath();
@@ -149,7 +150,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 			paintPart(g2d, path.getPartBuffer());
 		}
 		
-		for(GaugeTextPath path : gauge.getGaugeTextPaths()){
+		for(GaugeTextPath path : gauge.getTextPaths()){
 			if(path.getPartBuffer() == null){
 				path.setPath(path.getPathBinder().bindPath(gauge));
 				path.createPartBuffer(g2d);
@@ -157,7 +158,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 			paintPart(g2d, path.getPartBuffer());
 		}
 		
-		for(GaugeMetricsPath path : gauge.getGaugeMetricsPath()){
+		for(GaugeMetricsPath path : gauge.getMetricsPaths()){
 			if(path.getGaugeNeedlePainter() != null){
 				path.getGaugeNeedlePainter().paintNeedle(g2d, path);
 			}

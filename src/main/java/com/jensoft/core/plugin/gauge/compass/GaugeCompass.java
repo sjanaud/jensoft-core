@@ -21,6 +21,7 @@ import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
+import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
 
 /**
  * <code>GaugeCompass</code> base model helps developer to learn gauge modeling.
@@ -61,12 +62,13 @@ public class GaugeCompass extends RadialGauge {
 		GaugeCompassBackground compass = new GaugeCompassBackground(0, 0, 150);
 		addGaugeBackground(compass);
 
-		// GaugeGlass glass = new GaugeGlass.GlassCubicEffect();
-		// GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
-		// GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
-		// GaugeGlass glass = new GaugeGlass.Donut2DGlass();
-		GaugeGlass glass = new GaugeGlass.GlassLabel();
-		addGlass(glass);
+		GaugeGlass cubicEffect = new GaugeGlass.GlassCubicEffect(CubicEffectFrame.Moon1);
+		GaugeGlass linearEffect = new GaugeGlass.GlassLinearEffect();
+		GaugeGlass radialEffect = new GaugeGlass.GlassRadialEffect();
+		GaugeGlass donutEffect = new GaugeGlass.Donut2DGlass();
+		GaugeGlass textEffect = new GaugeGlass.GlassTextPath();
+		GaugeGlass glassLabel = new GaugeGlass.JenSoftAPILabel();
+		addGlass(cubicEffect,glassLabel);
 
 		createPrimaryMetrics();
 		createSecondaryMetrics();

@@ -24,6 +24,18 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
 
+
+/**
+ * <code>GaugeCompassBackground</code>
+ * 
+ * <p>
+ * When I was young, i was on the  boat Tham-A-Tam.
+ * </p>
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ *
+ */
 public class GaugeCompassBackground extends BackgroundGaugePainter{
 
     private int centerX;
