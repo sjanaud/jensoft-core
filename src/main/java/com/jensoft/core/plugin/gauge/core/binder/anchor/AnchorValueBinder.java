@@ -12,7 +12,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 
 /**
- * <code>ValueAnchorBinder</code> binds to a value anchor solved from path and
+ * <code>AnchorValueBinder</code> binds to a value anchor solved from path and
  * value according to the given side of path and radial offset from path
  * 
  * @since 1.0

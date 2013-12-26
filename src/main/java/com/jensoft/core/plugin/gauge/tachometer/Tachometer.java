@@ -17,7 +17,7 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.RoundGradientBackground;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeGradientBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
@@ -41,7 +41,7 @@ public class Tachometer extends RadialGauge {
 		CiseroEnvelop e1 = new CiseroEnvelop();
 		setEnvelop(e1);
 
-		RoundGradientBackground bg1 = new RoundGradientBackground();
+		GaugeGradientBackground bg1 = new GaugeGradientBackground();
 		addGaugeBackground(bg1);
 
 		GaugeGlass g1 = new GaugeGlass.Glass1();
@@ -53,7 +53,7 @@ public class Tachometer extends RadialGauge {
 
 		// GaugeGlass g5 = new GaugeGlass.GlassLinearEffect();
 
-		addEffect(g1, g2, g4, g5);
+		addGlass(g1, g2, g4, g5);
 
 		createBody();
 

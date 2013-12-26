@@ -11,7 +11,7 @@ import java.awt.geom.Arc2D;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 /**
- * <code>GaugeArcPathBinder</code> binds a centered arc which is define by
+ * <code>ArcPathShiftBinder</code> binds a centered arc which is define by
  * radius, start angle degree end extend angle degree.
  * 
  * @since 1.0

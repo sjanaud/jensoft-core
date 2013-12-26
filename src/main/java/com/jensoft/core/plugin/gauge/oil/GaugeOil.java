@@ -27,7 +27,7 @@ import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.GaugeTextPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathShiftBinder;
@@ -62,7 +62,7 @@ public class GaugeOil extends RadialGauge {
 		CiseroEnvelop e1 = new CiseroEnvelop();
 		setEnvelop(e1);
 
-		addGaugeBackground(new TextureBackground(TexturePalette.getInterlacedCarbon1()));
+		addGaugeBackground(new GaugeTextureBackground(TexturePalette.getInterlacedCarbon1()));
 		
 		GaugeGlass g1 = new GaugeGlass.Glass1();
 		GaugeGlass g2 = new GaugeGlass.Glass2();
@@ -73,7 +73,7 @@ public class GaugeOil extends RadialGauge {
 
 		GaugeGlass g8 = new GaugeGlass.GlassLinearEffect();
 
-		addEffect(g1, g8);
+		addGlass(g1, g8);
 
 		createStyle();
 		createPath1();

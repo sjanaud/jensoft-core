@@ -37,22 +37,45 @@ public class GaugeTextPath extends TextPath {
 	/** debug arc color */
 	private Color debugPathColor = NanoChromatique.RED;
 
+	/**
+	 * create gauge text path
+	 */
 	public GaugeTextPath() {
 		super();
 	}
 
+	/**
+	 * get path binder of this gauge path
+	 * 
+	 * @return path binder
+	 */
 	public PathBinder getPathBinder() {
 		return pathBinder;
 	}
 
+	/**
+	 * set path binder of this gauge text path
+	 * 
+	 * @param pathBinder
+	 */
 	public void setPathBinder(PathBinder pathBinder) {
 		this.pathBinder = pathBinder;
 	}
 
+	/**
+	 * get gauge
+	 * 
+	 * @return gauge
+	 */
 	public RadialGauge getGauge() {
 		return gauge;
 	}
 
+	/**
+	 * set gauge
+	 * 
+	 * @param gauge
+	 */
 	public void setGauge(RadialGauge gauge) {
 		this.gauge = gauge;
 	}
@@ -68,7 +91,7 @@ public class GaugeTextPath extends TextPath {
 	/**
 	 * get part buffer of this gauge text path
 	 * 
-	 * @return
+	 * @return part
 	 */
 	public GaugePartBuffer getPartBuffer() {
 		return partBuffer;
@@ -84,7 +107,6 @@ public class GaugeTextPath extends TextPath {
 
 		Graphics2D g2dPart = partBuffer.getGraphics();
 		g2dPart.setRenderingHints(g2d.getRenderingHints());
-		// setFontRenderContext(g2d.getFontRenderContext());
 
 		if (debugPath) {
 			g2dPart.setColor(debugPathColor);
@@ -95,5 +117,4 @@ public class GaugeTextPath extends TextPath {
 
 		draw(g2dPart);
 	}
-
 }

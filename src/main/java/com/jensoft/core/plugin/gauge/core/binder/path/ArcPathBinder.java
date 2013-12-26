@@ -12,8 +12,8 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 
 /**
- * <code>GaugeArcPathBinder</code> binds a centered arc which is define by
- * radius, start angle degree end extend angle degree.
+ * <code>ArcPathBinder</code> binds a centered arc which is define by radius,
+ * start angle degree end extend angle degree.
  * 
  * @since 1.0
  * @author sebastien janaud
@@ -21,8 +21,13 @@ import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
  */
 public class ArcPathBinder extends PathBinder {
 
+	/** binder radius */
 	private int radius;
+
+	/** binder start angle degree */
 	private float startAngleDegree;
+
+	/** binder extends angle degree */
 	private float extendsAngleDegree;
 
 	/**
@@ -39,26 +44,56 @@ public class ArcPathBinder extends PathBinder {
 		this.extendsAngleDegree = extendsAngleDegree;
 	}
 
+	/**
+	 * get binder radius
+	 * 
+	 * @return binder radius
+	 */
 	public int getRadius() {
 		return radius;
 	}
 
+	/**
+	 * set binder radius
+	 * 
+	 * @param radius
+	 */
 	public void setRadius(int radius) {
 		this.radius = radius;
 	}
 
+	/**
+	 * set start angle degree
+	 * 
+	 * @return start angle degree
+	 */
 	public float getStartAngleDegree() {
 		return startAngleDegree;
 	}
 
+	/**
+	 * set start angle degree
+	 * 
+	 * @param startAngleDegree
+	 */
 	public void setStartAngleDegree(float startAngleDegree) {
 		this.startAngleDegree = startAngleDegree;
 	}
 
+	/**
+	 * get extends angle degree
+	 * 
+	 * @return extends angle degree
+	 */
 	public float getExtendsAngleDegree() {
 		return extendsAngleDegree;
 	}
 
+	/**
+	 * set extends angle radius
+	 * 
+	 * @param extendsAngleDegree
+	 */
 	public void setExtendsAngleDegree(float extendsAngleDegree) {
 		this.extendsAngleDegree = extendsAngleDegree;
 	}
@@ -77,5 +112,4 @@ public class ArcPathBinder extends PathBinder {
 		Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegree, extendsAngleDegree, Arc2D.OPEN);
 		return arc;
 	}
-
 }

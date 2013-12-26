@@ -13,6 +13,8 @@ import com.jensoft.core.device.PartBuffer;
 /**
  * <code>GaugePartBuffer</code>
  * 
+ * 
+ * @since 1.0
  * @author sebastien janaud
  * 
  */

@@ -11,7 +11,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 
 /**
- * <code>GaugeBaseAnchorBinder</code> binds to a static anchor point build from
+ * <code>AnchorBaseBinder</code> binds to a static anchor point build from
  * radius and angle degree.
  * 
  * @since 1.0
