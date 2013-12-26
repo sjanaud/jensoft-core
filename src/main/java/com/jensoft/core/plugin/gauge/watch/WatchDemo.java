@@ -8,6 +8,8 @@ package com.jensoft.core.plugin.gauge.watch;
 import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
+import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
+import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
@@ -18,17 +20,17 @@ public class WatchDemo extends View2D {
 
 	public WatchDemo() {
 		super(10);
-
 		
-		Window2D w2d = new Window2D.Linear(-3000, 3000, -2500, 2500);
-
-		Watch gauge = new Watch();
-		RadialGaugePlugin layout = new RadialGaugePlugin(gauge);
-
-		w2d.registerPlugin(layout);
-
+		Window2D w2d = new Window2D.Linear.Identity();
 		registerWindow2D(w2d);
+		
+		Watch gauge = new Watch();
+		RadialGaugePlugin gaugePlugin = new RadialGaugePlugin(gauge);
+		w2d.registerPlugin(gaugePlugin);
 
+		TranslatePlugin translate = new TranslatePlugin();
+		translate.registerContext(new TranslateDefaultDeviceContext());
+		w2d.registerPlugin(translate);
 	}
 
 	/**
