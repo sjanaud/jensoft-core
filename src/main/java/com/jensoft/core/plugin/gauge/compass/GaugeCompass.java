@@ -22,21 +22,33 @@ import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
-
 /**
- * Compass
- * @author sebastien
- *
+ * <code>GaugeCompass</code> base model helps developer to learn gauge modeling.
+ * 
+ * @since1.0
+ * @author sebastien janaud
+ * 
  */
 public class GaugeCompass extends RadialGauge {
 
+	/** primary gauge path */
 	private GaugeMetricsPath secondaryPathManager;
+
+	/** secondary gauge path */
 	private GaugeMetricsPath primaryPathManager;
-	
+
+	/** gauge radius parameters */
 	private static int gaugeRadius = 110;
+
+	/** gauge center x coordinate in user window projection */
 	private static int centerUserX = 0;
+
+	/** gauge center y coordinate in user window projection */
 	private static int centerUserY = 0;
-	
+
+	/**
+	 * create gauge compass
+	 */
 	public GaugeCompass() {
 		super(centerUserX, centerUserY, gaugeRadius);
 
@@ -45,34 +57,36 @@ public class GaugeCompass extends RadialGauge {
 
 		TextureBackground textureBackground = new TextureBackground(TexturePalette.getSquareCarbonFiber());
 		addGaugeBackground(textureBackground);
-		
+
 		GaugeCompassBackground compass = new GaugeCompassBackground(0, 0, 150);
 		addGaugeBackground(compass);
-		
+
 		// GaugeGlass glass = new GaugeGlass.GlassCubicEffect();
 		// GaugeGlass glass = new GaugeGlass.GlassLinearEffect();
 		// GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
 		// GaugeGlass glass = new GaugeGlass.Donut2DGlass();
 		GaugeGlass glass = new GaugeGlass.GlassLabel();
 		addEffect(glass);
-		
+
 		createPrimaryMetrics();
 		createSecondaryMetrics();
 	}
-	
-	
+
+	/**
+	 * create primary metrics labels
+	 */
 	private void createPrimaryMetrics() {
 		primaryPathManager = new GaugeMetricsPath();
 		primaryPathManager.setAutoReverseGlyph(false);
 		primaryPathManager.setReverseAll(true);
-		primaryPathManager.setRange(0,360);
-		primaryPathManager.setPathBinder(new ArcPathBinder(gaugeRadius-10, 0, 360));
+		primaryPathManager.setRange(0, 360);
+		primaryPathManager.setPathBinder(new ArcPathBinder(gaugeRadius - 10, 0, 360));
 		registerGaugeMetricsPath(primaryPathManager);
-		
+
 		GlyphMetric metric;
 		Font f = InputFonts.getFont(InputFonts.ELEMENT, 40);
 
-		//east
+		// east
 		metric = new GlyphMetric();
 		metric.setValue(0);
 		metric.setStylePosition(StylePosition.Default);
@@ -83,7 +97,7 @@ public class GaugeCompass extends RadialGauge {
 		metric.setFont(f);
 		primaryPathManager.addMetric(metric);
 
-		//north
+		// north
 		metric = new GlyphMetric();
 		metric.setValue(90);
 		metric.setStylePosition(StylePosition.Default);
@@ -94,7 +108,7 @@ public class GaugeCompass extends RadialGauge {
 		metric.setFont(f);
 		primaryPathManager.addMetric(metric);
 
-		//west
+		// west
 		metric = new GlyphMetric();
 		metric.setValue(180);
 		metric.setStylePosition(StylePosition.Default);
@@ -117,15 +131,18 @@ public class GaugeCompass extends RadialGauge {
 		primaryPathManager.addMetric(metric);
 	}
 
+	/**
+	 * create secondary metrics label
+	 */
 	private void createSecondaryMetrics() {
 
 		secondaryPathManager = new GaugeMetricsPath();
 		secondaryPathManager.setAutoReverseGlyph(false);
 		secondaryPathManager.setReverseAll(true);
-		secondaryPathManager.setRange(0,360);
-		secondaryPathManager.setPathBinder(new ArcPathBinder(gaugeRadius-50, 0, 360));
+		secondaryPathManager.setRange(0, 360);
+		secondaryPathManager.setPathBinder(new ArcPathBinder(gaugeRadius - 50, 0, 360));
 		registerGaugeMetricsPath(secondaryPathManager);
-		
+
 		GlyphMetric metric;
 		Font f = InputFonts.getElements(12);
 		metric = new GlyphMetric();
@@ -208,6 +225,5 @@ public class GaugeCompass extends RadialGauge {
 		metric.setFont(f);
 		secondaryPathManager.addMetric(metric);
 	}
-	
 
 }
