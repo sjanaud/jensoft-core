@@ -24,9 +24,8 @@ import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 
 public class Compass extends RadialGauge {
 
-	private GaugeMetricsPath pathManagerLabel;
-	private GaugeMetricsPath pathManager;
-	private GaugeMetricsPath pathManagerNeedle;
+	private GaugeMetricsPath secondaryPathManager;
+	private GaugeMetricsPath primaryPathManager;
 	
 	private static int gaugeRadius = 110;
 	private static int centerUserX = 0;
@@ -35,8 +34,8 @@ public class Compass extends RadialGauge {
 	public Compass() {
 		super(centerUserX, centerUserY, gaugeRadius);
 
-		CiseroEnvelop e1 = new CiseroEnvelop();
-		setEnvelop(e1);
+		CiseroEnvelop cisero = new CiseroEnvelop();
+		setEnvelop(cisero);
 
 		TextureBackground textureBackground = new TextureBackground(TexturePalette.getSquareCarbonFiber());
 		addGaugeBackground(textureBackground);
@@ -49,77 +48,21 @@ public class Compass extends RadialGauge {
 		// GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
 		// GaugeGlass glass = new GaugeGlass.Donut2DGlass();
 		GaugeGlass glass = new GaugeGlass.GlassLabel();
-
 		addEffect(glass);
 		
-		pathManager = new GaugeMetricsPath();
-		pathManager.setAutoReverseGlyph(false);
-		pathManager.setReverseAll(true);
-		pathManager.setRange(0,360);
-		pathManager.setPathBinder(new ArcPathBinder(gaugeRadius-10, 0, 360));
-//		pathManager.setPathBinder(new PathBinder() {
-//			@Override
-//			public Shape bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int startAngleDegree = 0;
-//				int extendsDegree = 360;
-//				int radius1 = getRadius() - 10;
-//				Arc2D arc = new Arc2D.Double(centerX - radius1, centerY - radius1, 2 * radius1, 2 * radius1, startAngleDegree, extendsDegree, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
-		//pathManager.setDebugPath(true);
-		registerGaugeMetricsPath(pathManager);
-		
-
-		pathManagerLabel = new GaugeMetricsPath();
-		pathManagerLabel.setAutoReverseGlyph(false);
-		pathManagerLabel.setReverseAll(true);
-		pathManagerLabel.setRange(0,360);
-		pathManagerLabel.setPathBinder(new ArcPathBinder(gaugeRadius-50, 0, 360));
-//		pathManagerLabel.setPathBinder(new PathBinder() {
-//			@Override
-//			public Shape bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int startAngleDegreee = 0;
-//				int extendsDegree = 360;
-//				int radius2 = getRadius() - 50;
-//				Arc2D arc = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, startAngleDegreee, extendsDegree, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
-		registerGaugeMetricsPath(pathManagerLabel);
-		
-
-		pathManagerNeedle = new GaugeMetricsPath();
-		pathManagerNeedle.setAutoReverseGlyph(false);
-		pathManagerNeedle.setReverseAll(true);
-		pathManagerNeedle.setRange(0,360);
-		pathManagerNeedle.setPathBinder(new ArcPathBinder(gaugeRadius-80, 0, 360));
-//		pathManagerNeedle.setPathBinder(new PathBinder() {
-//			@Override
-//			public Shape bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int startAngleDegreee = 0;
-//				int extendsDegree = 360;
-//				int radius2 = getRadius() - 80;
-//				Arc2D arc = new Arc2D.Double(centerX - radius2, centerY - radius2, 2 * radius2, 2 * radius2, startAngleDegreee,extendsDegree, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
-		registerGaugeMetricsPath(pathManagerNeedle);
-		
-		
-		createLabel1();
-		createLabel2();
-
+		createPrimaryMetrics();
+		createSecondaryMetrics();
 	}
 	
 	
-	private void createLabel2() {
+	private void createPrimaryMetrics() {
+		primaryPathManager = new GaugeMetricsPath();
+		primaryPathManager.setAutoReverseGlyph(false);
+		primaryPathManager.setReverseAll(true);
+		primaryPathManager.setRange(0,360);
+		primaryPathManager.setPathBinder(new ArcPathBinder(gaugeRadius-10, 0, 360));
+		registerGaugeMetricsPath(primaryPathManager);
+		
 		GlyphMetric metric;
 		Font f = InputFonts.getFont(InputFonts.ELEMENT, 40);
 
@@ -132,7 +75,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(-15);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
 		metric.setFont(f);
-		pathManager.addMetric(metric);
+		primaryPathManager.addMetric(metric);
 
 		//north
 		metric = new GlyphMetric();
@@ -143,7 +86,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(-15);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
 		metric.setFont(f);
-		pathManager.addMetric(metric);
+		primaryPathManager.addMetric(metric);
 
 		//west
 		metric = new GlyphMetric();
@@ -154,7 +97,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(-15);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE));
 		metric.setFont(f);
-		pathManager.addMetric(metric);
+		primaryPathManager.addMetric(metric);
 
 		// south
 		metric = new GlyphMetric();
@@ -165,11 +108,18 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(-15);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
 		metric.setFont(f);
-		pathManager.addMetric(metric);
+		primaryPathManager.addMetric(metric);
 	}
 
-	private void createLabel1() {
+	private void createSecondaryMetrics() {
 
+		secondaryPathManager = new GaugeMetricsPath();
+		secondaryPathManager.setAutoReverseGlyph(false);
+		secondaryPathManager.setReverseAll(true);
+		secondaryPathManager.setRange(0,360);
+		secondaryPathManager.setPathBinder(new ArcPathBinder(gaugeRadius-50, 0, 360));
+		registerGaugeMetricsPath(secondaryPathManager);
+		
 		GlyphMetric metric;
 		Font f = InputFonts.getElements(12);
 		metric = new GlyphMetric();
@@ -180,7 +130,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
 		metric.setFont(f);
-		pathManagerLabel.addMetric(metric);
+		secondaryPathManager.addMetric(metric);
 
 		metric = new GlyphMetric();
 		metric.setValue(60);
@@ -190,7 +140,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
 		metric.setFont(f);
-		pathManagerLabel.addMetric(metric);
+		secondaryPathManager.addMetric(metric);
 
 		metric = new GlyphMetric();
 		metric.setValue(120);
@@ -200,7 +150,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.BLUE));
 		metric.setFont(f);
-		pathManagerLabel.addMetric(metric);
+		secondaryPathManager.addMetric(metric);
 
 		metric = new GlyphMetric();
 		metric.setValue(150);
@@ -210,7 +160,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE.brighter()));
 		metric.setFont(f);
-		pathManagerLabel.addMetric(metric);
+		secondaryPathManager.addMetric(metric);
 
 		metric = new GlyphMetric();
 		metric.setValue(210);
@@ -220,7 +170,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.ORANGE.brighter()));
 		metric.setFont(f);
-		pathManagerLabel.addMetric(metric);
+		secondaryPathManager.addMetric(metric);
 
 		metric = new GlyphMetric();
 		metric.setValue(240);
@@ -230,7 +180,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
 		metric.setFont(f);
-		pathManagerLabel.addMetric(metric);
+		secondaryPathManager.addMetric(metric);
 
 		metric = new GlyphMetric();
 		metric.setValue(300);
@@ -240,7 +190,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
 		metric.setFont(f);
-		pathManagerLabel.addMetric(metric);
+		secondaryPathManager.addMetric(metric);
 
 		metric = new GlyphMetric();
 		metric.setValue(330);
@@ -250,7 +200,7 @@ public class Compass extends RadialGauge {
 		metric.setDivergence(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
 		metric.setFont(f);
-		pathManagerLabel.addMetric(metric);
+		secondaryPathManager.addMetric(metric);
 	}
 	
 
