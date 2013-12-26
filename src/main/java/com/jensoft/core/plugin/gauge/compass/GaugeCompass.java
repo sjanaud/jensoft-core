@@ -17,7 +17,7 @@ import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
@@ -55,7 +55,7 @@ public class GaugeCompass extends RadialGauge {
 		CiseroEnvelop cisero = new CiseroEnvelop();
 		setEnvelop(cisero);
 
-		TextureBackground textureBackground = new TextureBackground(TexturePalette.getSquareCarbonFiber());
+		GaugeTextureBackground textureBackground = new GaugeTextureBackground(TexturePalette.getSquareCarbonFiber());
 		addGaugeBackground(textureBackground);
 
 		GaugeCompassBackground compass = new GaugeCompassBackground(0, 0, 150);
@@ -66,7 +66,7 @@ public class GaugeCompass extends RadialGauge {
 		// GaugeGlass glass = new GaugeGlass.GlassRadialEffect();
 		// GaugeGlass glass = new GaugeGlass.Donut2DGlass();
 		GaugeGlass glass = new GaugeGlass.GlassLabel();
-		addEffect(glass);
+		addGlass(glass);
 
 		createPrimaryMetrics();
 		createSecondaryMetrics();

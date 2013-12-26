@@ -15,8 +15,16 @@ import com.jensoft.core.plugin.gauge.core.glass.GlassGaugePainter;
 import com.jensoft.core.window.Window2D;
 
 /**
- * <code>RadialGauge</code>
+ * <code>RadialGauge</code> is defined by a center in user coordinate projection
+ * by its center and radius, in pixel from this center.
  * 
+ * <p>
+ * gauge has an envelop, set of background, set of gauge metrics path, set of
+ * gauge text path, set of glasses
+ * </p>
+ * 
+ * 
+ * @since 1.0
  * @author sebastien janaud
  * 
  */
@@ -43,10 +51,10 @@ public class RadialGauge {
 	/** gauge backgrounds */
 	private List<BackgroundGaugePainter> gaugeBackgrounds;
 
-	/**gauges metrics paths*/
+	/** gauges metrics paths */
 	private List<GaugeMetricsPath> gaugeMetricsPaths;
-	
-	/**gauges texts paths*/
+
+	/** gauges texts paths */
 	private List<GaugeTextPath> gaugeTextPaths;
 
 	/**
@@ -242,39 +250,49 @@ public class RadialGauge {
 		this.y = y;
 	}
 
+	/**
+	 * get gauge envelop
+	 * 
+	 * @return gauge envelop
+	 */
 	public EnvelopGaugePainter getEnvelop() {
 		return envelop;
 	}
 
+	/**
+	 * set gauge envelop
+	 * 
+	 * @param envelop
+	 */
 	public void setEnvelop(EnvelopGaugePainter envelop) {
 		this.envelop = envelop;
 	}
 
 	/**
-	 * get all effects
+	 * get all glasses
 	 * 
-	 * @return effects
+	 * @return glasses
 	 */
-	public List<GlassGaugePainter> getEffects() {
+	public List<GlassGaugePainter> getGlasses() {
 		return glasses;
 	}
 
 	/**
-	 * set effects list
+	 * set glasses list
 	 * 
-	 * @param effects
+	 * @param glasses
 	 */
-	public void setEffects(List<GlassGaugePainter> effects) {
-		this.glasses = effects;
+	public void setGlasses(List<GlassGaugePainter> glasses) {
+		this.glasses = glasses;
 	}
 
 	/**
-	 * add given effect
+	 * add given glass
 	 * 
 	 * @param effect
 	 */
-	public void addEffect(GlassGaugePainter effect) {
-		glasses.add(effect);
+	public void addGlass(GlassGaugePainter glass) {
+		glasses.add(glass);
 	}
 
 	/**
@@ -282,9 +300,9 @@ public class RadialGauge {
 	 * 
 	 * @param effects
 	 */
-	public void addEffect(GlassGaugePainter... effects) {
-		for (int i = 0; i < effects.length; i++) {
-			this.glasses.add(effects[i]);
+	public void addGlass(GlassGaugePainter... glasses) {
+		for (int i = 0; i < glasses.length; i++) {
+			this.glasses.add(glasses[i]);
 		}
 	}
 

@@ -23,7 +23,7 @@ import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
@@ -53,7 +53,7 @@ public class Watch extends RadialGauge {
         CiseroEnvelop e1 = new CiseroEnvelop(4);
         setEnvelop(e1);
         
-        addGaugeBackground(new TextureBackground(TexturePalette.getSquareCarbonFiber()));
+        addGaugeBackground(new GaugeTextureBackground(TexturePalette.getSquareCarbonFiber()));
 
         GaugeGlass g1 = new GaugeGlass.Glass1();
         GaugeGlass g2 = new GaugeGlass.Glass2();
@@ -65,7 +65,7 @@ public class Watch extends RadialGauge {
         //GaugeGlass g5 = new GaugeGlass.GlassLinearEffect();
        
         
-        addEffect(g1,g2,g4,g5);
+        addGlass(g1,g2,g4,g5);
        
         
         createWatch();

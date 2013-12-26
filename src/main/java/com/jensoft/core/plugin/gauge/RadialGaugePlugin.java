@@ -129,8 +129,8 @@ public class RadialGaugePlugin extends AbstractPlugin {
 
 	
 
-		if (gauge.getEffects() != null) {
-			for (GlassGaugePainter glass : gauge.getEffects()) {
+		if (gauge.getGlasses() != null) {
+			for (GlassGaugePainter glass : gauge.getGlasses()) {
 				glass.paintGlass(g2d, gauge);
 			}
 		}

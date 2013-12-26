@@ -19,7 +19,7 @@ import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
@@ -43,7 +43,7 @@ public class Speedometer extends RadialGauge {
         CiseroEnvelop e1 = new CiseroEnvelop();
         setEnvelop(e1);
         
-        addGaugeBackground(new TextureBackground(TexturePalette.getSquareCarbonFiber()));
+        addGaugeBackground(new GaugeTextureBackground(TexturePalette.getSquareCarbonFiber()));
 
 
         GaugeGlass g1 = new GaugeGlass.Glass1();
@@ -56,7 +56,7 @@ public class Speedometer extends RadialGauge {
         //GaugeGlass g5 = new GaugeGlass.GlassLinearEffect();
        
         
-        addEffect(g1,g2,g4,g5);
+        addGlass(g1,g2,g4,g5);
        
        
         
