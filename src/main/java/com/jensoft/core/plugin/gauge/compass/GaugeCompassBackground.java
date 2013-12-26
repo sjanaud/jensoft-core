@@ -24,7 +24,7 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
 
-public class SailCompassBackground extends BackgroundGaugePainter{
+public class GaugeCompassBackground extends BackgroundGaugePainter{
 
     private int centerX;
     private int centerY;
@@ -42,7 +42,7 @@ public class SailCompassBackground extends BackgroundGaugePainter{
     private double deltaMinorBaseRadius = 10;
     private double deltaMiliBaseRadius = 1;
 
-    public SailCompassBackground(int centerX, int centerY, int baseRadius) {
+    public GaugeCompassBackground(int centerX, int centerY, int baseRadius) {
         super();
         this.centerX = centerX;
         this.centerY = centerY;
