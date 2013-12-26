@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
 import com.jensoft.core.plugin.gauge.core.env.EnvelopGaugePainter;
-import com.jensoft.core.plugin.gauge.core.glass.GlassGaugePainter;
+import com.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter;
 import com.jensoft.core.window.Window2D;
 
 /**
@@ -46,7 +46,7 @@ public class RadialGauge {
 	private EnvelopGaugePainter envelop;
 
 	/** gauge glass effects */
-	private List<GlassGaugePainter> glasses;
+	private List<GaugeGlassPainter> glasses;
 
 	/** gauge backgrounds */
 	private List<BackgroundGaugePainter> gaugeBackgrounds;
@@ -69,7 +69,7 @@ public class RadialGauge {
 		this.x = x;
 		this.y = y;
 		gaugeBackgrounds = new ArrayList<BackgroundGaugePainter>();
-		glasses = new ArrayList<GlassGaugePainter>();
+		glasses = new ArrayList<GaugeGlassPainter>();
 		gaugeMetricsPaths = new ArrayList<GaugeMetricsPath>();
 		gaugeTextPaths = new ArrayList<GaugeTextPath>();
 	}
@@ -273,7 +273,7 @@ public class RadialGauge {
 	 * 
 	 * @return glasses
 	 */
-	public List<GlassGaugePainter> getGlasses() {
+	public List<GaugeGlassPainter> getGlasses() {
 		return glasses;
 	}
 
@@ -282,7 +282,7 @@ public class RadialGauge {
 	 * 
 	 * @param glasses
 	 */
-	public void setGlasses(List<GlassGaugePainter> glasses) {
+	public void setGlasses(List<GaugeGlassPainter> glasses) {
 		this.glasses = glasses;
 	}
 
@@ -291,7 +291,7 @@ public class RadialGauge {
 	 * 
 	 * @param effect
 	 */
-	public void addGlass(GlassGaugePainter glass) {
+	public void addGlass(GaugeGlassPainter glass) {
 		glasses.add(glass);
 	}
 
@@ -300,7 +300,7 @@ public class RadialGauge {
 	 * 
 	 * @param effects
 	 */
-	public void addGlass(GlassGaugePainter... glasses) {
+	public void addGlass(GaugeGlassPainter... glasses) {
 		for (int i = 0; i < glasses.length; i++) {
 			this.glasses.add(glasses[i]);
 		}

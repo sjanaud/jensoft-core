@@ -49,13 +49,12 @@ import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
 /**
  * <code>GaugeGlass</code>
  * 
+ * @since 1.0
  * @author sebastien janaud
  * 
  */
-public abstract class GaugeGlass extends GlassGaugePainter {
+public abstract class GaugeGlass extends GaugeGlassPainter {
 
-	/** glass part buffer */
-	private GaugePartBuffer glassPartBuffer;
 
 	/**
 	 * create abstract gauge glass
@@ -63,14 +62,14 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 	public GaugeGlass() {
 	}
 
-	public GaugePartBuffer getGlassPartBuffer() {
-		return glassPartBuffer;
-	}
+	
 
-	public void setGlassPartBuffer(GaugePartBuffer glassPartBuffer) {
-		this.glassPartBuffer = glassPartBuffer;
-	}
-
+	/**
+	 * <code>Glass1</code>
+	 * @since 1.0
+	 * @author sebastien
+	 *
+	 */
 	public static class Glass1 extends GaugeGlass {
 
 		@Override
@@ -79,10 +78,10 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
 			int radius = radialGauge.getRadius() - 5;
 
-			if (getGlassPartBuffer() == null) {
+			if (getPartBuffer() == null) {
 
 				GaugePartBuffer buffer = new GaugePartBuffer(radialGauge);
-				setGlassPartBuffer(buffer);
+				setPartBuffer(buffer);
 				// partDeco1 = new PartBuffer(centerX - radius / 2, centerY -
 				// radius / 2, 2 * radius, 2 * radius);
 
@@ -140,7 +139,7 @@ public abstract class GaugeGlass extends GlassGaugePainter {
 
 			}
 
-			g2d.drawImage(getGlassPartBuffer().getBuffer(), (int) getGlassPartBuffer().getX(),(int) getGlassPartBuffer().getY(), (int)getGlassPartBuffer().getWidth(),(int) getGlassPartBuffer().getHeight(), null);
+			g2d.drawImage(getPartBuffer().getBuffer(), (int) getPartBuffer().getX(),(int) getPartBuffer().getY(), (int)getPartBuffer().getWidth(),(int) getPartBuffer().getHeight(), null);
 
 		}
 
