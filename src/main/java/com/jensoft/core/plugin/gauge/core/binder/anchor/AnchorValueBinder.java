@@ -3,12 +3,13 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.core.binder;
+package com.jensoft.core.plugin.gauge.core.binder.anchor;
 
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.Side;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 
 /**
  * <code>ValueAnchorBinder</code> binds to a value anchor solved from path and
@@ -18,7 +19,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  * @author sebastien janaud
  * 
  */
-public class ValueAnchorBinder extends AnchorBinder {
+public class AnchorValueBinder extends AnchorBinder {
 
 	private int radialOffset;
 	private Side side;
@@ -26,7 +27,7 @@ public class ValueAnchorBinder extends AnchorBinder {
 	/**
 	 * create binder to the gauge center (default radius = 0)
 	 */
-	public ValueAnchorBinder() {
+	public AnchorValueBinder() {
 		radialOffset = 0;
 		side = Side.SideLeft;
 	}
@@ -37,7 +38,7 @@ public class ValueAnchorBinder extends AnchorBinder {
 	 * @param radius
 	 * @param angleDegree
 	 */
-	public ValueAnchorBinder(int offsetRadiusFromPath, Side side) {
+	public AnchorValueBinder(int offsetRadiusFromPath, Side side) {
 		super();
 		this.radialOffset = offsetRadiusFromPath;
 		this.side = side;

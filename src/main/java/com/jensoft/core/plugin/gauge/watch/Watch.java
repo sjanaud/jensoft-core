@@ -25,10 +25,10 @@ import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
-import com.jensoft.core.plugin.gauge.core.binder.ArcPathBinder;
-import com.jensoft.core.plugin.gauge.core.binder.StaticAnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
-import com.jensoft.core.plugin.gauge.core.binder.ValueAnchorBinder;
+import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
+import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicWatchHour;
@@ -110,7 +110,7 @@ public class Watch extends RadialGauge {
 //		};
     	
     	//or use model anchor gauge 
-    	AnchorBinder needleBase = new StaticAnchorBinder();
+    	AnchorBinder needleBase = new AnchorBaseBinder();
 		
     	
 //		AnchorBinder needleHourAnchor = new AnchorBinder() {
@@ -122,7 +122,7 @@ public class Watch extends RadialGauge {
 //		};
     	
     	//use model anchor based on current value on the path
-    	AnchorBinder needleHourAnchor = new ValueAnchorBinder(50, Side.SideRight);
+    	AnchorBinder needleHourAnchor = new AnchorValueBinder(50, Side.SideRight);
 		
     	
 		
@@ -135,7 +135,7 @@ public class Watch extends RadialGauge {
 //		};
     	
     	//use model anchor based on current value on the path
-    	AnchorBinder needleMinuteAnchor = new ValueAnchorBinder(20, Side.SideRight);
+    	AnchorBinder needleMinuteAnchor = new AnchorValueBinder(20, Side.SideRight);
     	
 		
 //		AnchorBinder needleSecondAnchor = new AnchorBinder() {
@@ -147,7 +147,7 @@ public class Watch extends RadialGauge {
 //		};
     	
     	//use model anchor based on current value on the path
-    	AnchorBinder needleSecondAnchor = new ValueAnchorBinder(20, Side.SideRight);
+    	AnchorBinder needleSecondAnchor = new AnchorValueBinder(20, Side.SideRight);
 		
     	
     	metricsManager = new GaugeMetricsPath();

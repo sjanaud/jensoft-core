@@ -3,12 +3,13 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.gauge.core.binder;
+package com.jensoft.core.plugin.gauge.core.binder.path;
 
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
 
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 
 /**
  * <code>GaugeArcPathBinder</code> binds a centered arc which is define by
