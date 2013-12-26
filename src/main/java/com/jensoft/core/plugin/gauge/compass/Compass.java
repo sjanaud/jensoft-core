@@ -5,25 +5,17 @@
  */
 package com.jensoft.core.plugin.gauge.compass;
 
-import java.awt.AlphaComposite;
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
-import java.awt.geom.Line2D;
-import java.awt.geom.Point2D;
-import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
 import com.jensoft.core.glyphmetrics.StylePosition;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
-import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
-import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.PathBinder;
@@ -37,7 +29,7 @@ public class Compass extends RadialGauge {
 	private GaugeMetricsPath pathManagerLabel;
 	private GaugeMetricsPath pathManager;
 	private GaugeMetricsPath pathManagerNeedle;
-	private SailCompassTick compass;
+	
 	
 	public Compass() {
 		super(0, 0, 110);
