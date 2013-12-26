@@ -21,6 +21,8 @@ import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
+import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
+import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
@@ -90,21 +92,27 @@ public class Speedometer extends RadialGauge {
 //				return arc;
 //			}
 //		});
+	
+		AnchorBinder baseNeedleBinder = new AnchorBaseBinder();
+		AnchorValueBinder valueNeedleBinder = new AnchorValueBinder(20, Side.SideRight);
+		metricsManager.setNeedleBaseAnchorBinder(baseNeedleBinder);
+		metricsManager.setNeedleValueAnchorBinder(valueNeedleBinder);
 		
-		metricsManager.setNeedleBaseAnchorBinder(new AnchorBinder() {
-			@Override
-			public Point2D bindAnchor(RadialGauge gauge) {
-				return getCenterDevice();
-			}
-		});
 		
-		metricsManager.setNeedleValueAnchorBinder(new AnchorBinder() {
-			@Override
-			public Point2D bindAnchor(RadialGauge gauge) {
-				Point2D anchorValue = metricsManager.getRadialPoint(metricsManager.getCurrentValue(), 20, Side.SideRight);
-				return anchorValue;
-			}
-		});
+//		metricsManager.setNeedleBaseAnchorBinder(new AnchorBinder() {
+//			@Override
+//			public Point2D bindAnchor(RadialGauge gauge) {
+//				return getCenterDevice();
+//			}
+//		});
+//		
+//		metricsManager.setNeedleValueAnchorBinder(new AnchorBinder() {
+//			@Override
+//			public Point2D bindAnchor(RadialGauge gauge) {
+//				Point2D anchorValue = metricsManager.getRadialPoint(metricsManager.getCurrentValue(), 20, Side.SideRight);
+//				return anchorValue;
+//			}
+//		});
 
 		registerGaugeMetricsPath(metricsManager);
 

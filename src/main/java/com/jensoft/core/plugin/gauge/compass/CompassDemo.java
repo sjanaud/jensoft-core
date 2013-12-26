@@ -16,39 +16,29 @@ import com.jensoft.core.window.Window2D;
 @JenSoftAPIDemo
 public class CompassDemo extends View2D {
 
-    private static final long serialVersionUID = 156889765687899L;
+	private static final long serialVersionUID = 156889765687899L;
 
-   
+	public CompassDemo() {
+		super(10);
 
-    public CompassDemo() {
-    super(10);
+		Window2D w2d = new Window2D.Linear.Identity();
+		registerWindow2D(w2d);
+		
+		Compass gauge = new Compass();
+		RadialGaugePlugin gaugePlugin = new RadialGaugePlugin(gauge);
+		w2d.registerPlugin(gaugePlugin);
 
-       
+		TranslatePlugin translate = new TranslatePlugin();
+		translate.registerContext(new TranslateDefaultDeviceContext());
+		w2d.registerPlugin(translate);
+	}
 
-        Window2D w2d = new Window2D.Linear(-3000, 3000, -2500, 2500);
-        w2d.setName("velocity gauge window");
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws Exception {
+		final ViewFrameUI demoFrame = new ViewFrameUI(new CompassDemo());
 
-        Compass gauge = new Compass();
-        RadialGaugePlugin layout = new RadialGaugePlugin(gauge);
-
-        w2d.registerPlugin(layout);
-        
-        TranslatePlugin translate = new TranslatePlugin();
-        translate.registerContext(new TranslateDefaultDeviceContext());
-        w2d.registerPlugin(translate);
-
-        registerWindow2D(w2d);
-
-       
-    }
-
-    /**
-     * @param args
-     */
-    public static void main(String[] args) throws Exception {
-        final ViewFrameUI demoFrame = new ViewFrameUI(new CompassDemo());
-        
-
-    }
+	}
 
 }

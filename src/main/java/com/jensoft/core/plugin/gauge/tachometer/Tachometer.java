@@ -6,8 +6,6 @@
 package com.jensoft.core.plugin.gauge.tachometer;
 
 import java.awt.Color;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
@@ -21,7 +19,8 @@ import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.RoundGradientBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
-import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
+import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
@@ -35,8 +34,7 @@ public class Tachometer extends RadialGauge {
 	private static int gaugeRadius = 90;
 	private static int centerUserX = 0;
 	private static int centerUserY = 0;
-	
-	
+
 	public Tachometer() {
 		super(centerUserX, centerUserY, gaugeRadius);
 
@@ -57,7 +55,6 @@ public class Tachometer extends RadialGauge {
 
 		addEffect(g1, g2, g4, g5);
 
-		
 		createBody();
 
 	}
@@ -69,36 +66,46 @@ public class Tachometer extends RadialGauge {
 		metricsManager.setCurrentValue(5.7);
 
 		metricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
-		metricsManager.setPathBinder(new ArcPathBinder(gaugeRadius-10, 210, -240));
-		
-//		metricsManager.setPathBinder(new PathBinder() {
-//			@Override
-//			public Arc2D bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int radius = getRadius() - 10;
-//				int startAngleDegreee = 210;
-//				int endAngleDegree = -240;
-//				Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, endAngleDegree - startAngleDegreee, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
+		metricsManager.setPathBinder(new ArcPathBinder(gaugeRadius - 10, 210, -240));
 
-		metricsManager.setNeedleBaseAnchorBinder(new AnchorBinder() {
-			@Override
-			public Point2D bindAnchor(RadialGauge gauge) {
-				return getCenterDevice();
-			}
-		});
+		// metricsManager.setPathBinder(new PathBinder() {
+		// @Override
+		// public Arc2D bindPath(RadialGauge gauge) {
+		// double centerX = getCenterDevice().getX();
+		// double centerY = getCenterDevice().getY();
+		// int radius = getRadius() - 10;
+		// int startAngleDegreee = 210;
+		// int endAngleDegree = -240;
+		// Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 *
+		// radius, 2 * radius, startAngleDegreee, endAngleDegree -
+		// startAngleDegreee, Arc2D.OPEN);
+		// return arc;
+		// }
+		// });
 
-		metricsManager.setNeedleValueAnchorBinder(new AnchorBinder() {
-			@Override
-			public Point2D bindAnchor(RadialGauge gauge) {
-				Point2D anchorValue = metricsManager.getRadialPoint(metricsManager.getCurrentValue(), 40, Side.SideRight);
-				return anchorValue;
-			}
-		});
-		
+		AnchorBinder baseNeedleBinder = new AnchorBaseBinder();
+		AnchorValueBinder valueNeedleBinder = new AnchorValueBinder(40, Side.SideRight);
+		metricsManager.setNeedleBaseAnchorBinder(baseNeedleBinder);
+		metricsManager.setNeedleValueAnchorBinder(valueNeedleBinder);
+
+		// or create anonymous binder, idempotent with base and value binders
+		// metricsManager.setNeedleBaseAnchorBinder(new AnchorBinder() {
+		// @Override
+		// public Point2D bindAnchor(RadialGauge gauge) {
+		// return getCenterDevice();
+		// }
+		// });
+		//
+		// metricsManager.setNeedleValueAnchorBinder(new AnchorBinder() {
+		// @Override
+		// public Point2D bindAnchor(RadialGauge gauge) {
+		// Point2D anchorValue =
+		// metricsManager.getRadialPoint(metricsManager.getCurrentValue(), 40,
+		// Side.SideRight);
+		// return anchorValue;
+		// }
+		// });
+
 		registerGaugeMetricsPath(metricsManager);
 
 		GlyphMetric metric = new GlyphMetric();
@@ -216,7 +223,6 @@ public class Tachometer extends RadialGauge {
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
 		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
 		metricsManager.addMetric(metric);
-
 
 	}
 }
