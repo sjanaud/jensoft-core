@@ -38,7 +38,6 @@ public class CompassDemo extends View2D {
 	 */
 	public static void main(String[] args) throws Exception {
 		final ViewFrameUI demoFrame = new ViewFrameUI(new CompassDemo());
-
 	}
 
 }
