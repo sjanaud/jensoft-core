@@ -55,20 +55,18 @@ import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
  */
 public abstract class GaugeGlass extends GaugeGlassPainter {
 
-
 	/**
 	 * create abstract gauge glass
 	 */
 	public GaugeGlass() {
 	}
 
-	
-
 	/**
 	 * <code>Glass1</code>
+	 * 
 	 * @since 1.0
 	 * @author sebastien
-	 *
+	 * 
 	 */
 	public static class Glass1 extends GaugeGlass {
 
@@ -139,7 +137,7 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 
 			}
 
-			g2d.drawImage(getPartBuffer().getBuffer(), (int) getPartBuffer().getX(),(int) getPartBuffer().getY(), (int)getPartBuffer().getWidth(),(int) getPartBuffer().getHeight(), null);
+			g2d.drawImage(getPartBuffer().getBuffer(), (int) getPartBuffer().getX(), (int) getPartBuffer().getY(), (int) getPartBuffer().getWidth(), (int) getPartBuffer().getHeight(), null);
 
 		}
 
@@ -325,13 +323,27 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 	}
 
 	/**
-	 * <code>Donut2DGlass</code>
+	 * <code>Donut2DGlass</code> define a donut 2D style glass
 	 * 
+	 * @since 1.0
 	 * @author sebastien janaud
 	 * 
 	 */
 	public static class Donut2DGlass extends GaugeGlass {
 
+		/**
+		 * create donut 2D style glass
+		 */
+		public Donut2DGlass() {
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter#paintGlass
+		 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+		 */
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
@@ -674,8 +686,40 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 
 	}
 
-	public static class GlassLabel extends GaugeGlass {
+	/**
+	 * 
+	 * <code>JenSoftAPILabel</code>
+	 * 
+	 * @since 1.0
+	 * @author sebastien janaud
+	 * 
+	 */
+	public static class JenSoftAPILabel extends GaugeGlass {
 
+		private String label = "***JenSoft Marine ***";
+
+		/**
+		 * create default label
+		 */
+		public JenSoftAPILabel() {
+		}
+
+		/**
+		 * create glass with given label
+		 * 
+		 * @param label
+		 */
+		public JenSoftAPILabel(String label) {
+			this.label = label;
+		}
+
+		/*
+		 * (non-Javadoc)
+		 * 
+		 * @see
+		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter#paintGlass
+		 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+		 */
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
@@ -697,7 +741,7 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 			// Font f2 = new Font("Dialog", Font.PLAIN, 8);
 			Font f = InputFonts.getSreda(10);
 
-			String copyright = "Compass Carbon  *** Sail Instrument ***  JENSOFT API";
+			String copyright = label + " - JENSOFT API";
 			GlyphVector glyphVector = f.createGlyphVector(g2d.getFontRenderContext(), copyright);
 			AffineTransform af = new AffineTransform();
 
@@ -834,13 +878,13 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 	 */
 	public static class GlassCubicEffect extends PieGaugeGlass {
 
-		/**frame preset key*/
+		/** frame preset key */
 		private CubicEffectFrame frame;
-		
-		/**key*/
+
+		/** key */
 		private CubicEffectKey key;
-		
-		/**pie cubic effect*/
+
+		/** pie cubic effect */
 		private PieCubicEffect fx;
 
 		/**
@@ -856,9 +900,8 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 		 * @param frame
 		 */
 		public GlassCubicEffect(CubicEffectFrame frame) {
-			super();
+			this();
 			this.frame = frame;
-			setKey(frame.getKeyFrame());
 		}
 
 		/**
@@ -867,7 +910,7 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 		 * @param key
 		 */
 		public GlassCubicEffect(CubicEffectKey key) {
-			super();
+			this();
 			this.key = key;
 		}
 
@@ -887,7 +930,6 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 		 */
 		public void setFrame(CubicEffectFrame frame) {
 			this.frame = frame;
-			setKey(frame.getKeyFrame());
 		}
 
 		/**
@@ -917,6 +959,9 @@ public abstract class GaugeGlass extends GaugeGlassPainter {
 		 */
 		@Override
 		public AbstractPieEffect getEffectInstance() {
+			if (frame != null) {
+				setKey(frame.getKeyFrame());
+			}
 			if (key != null) {
 				fx.setCubicKey(key);
 			}

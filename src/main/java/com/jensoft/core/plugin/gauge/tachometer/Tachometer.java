@@ -49,7 +49,7 @@ public class Tachometer extends RadialGauge {
 		GaugeGlass g3 = new GaugeGlass.Glass3();
 		GaugeGlass g4 = new GaugeGlass.Glass4();
 		GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
-		GaugeGlass g6 = new GaugeGlass.GlassLabel();
+		GaugeGlass g6 = new GaugeGlass.JenSoftAPILabel();
 
 		// GaugeGlass g5 = new GaugeGlass.GlassLinearEffect();
 
