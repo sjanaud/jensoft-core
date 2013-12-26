@@ -17,7 +17,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  * @author sebastien janaud
  * 
  */
-public interface PathBinder {
+public abstract class PathBinder {
 
 	/**
 	 * Process to force calculate shape at runtime in device coordinate system.
@@ -27,6 +27,6 @@ public interface PathBinder {
 	 *            the gauge
 	 * @return the given geometry shape
 	 */
-	Shape bindPath(RadialGauge gauge);
+	public abstract Shape bindPath(RadialGauge gauge);
 
 }

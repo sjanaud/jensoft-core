@@ -25,7 +25,10 @@ import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
+import com.jensoft.core.plugin.gauge.core.binder.ArcPathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.StaticAnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.ValueAnchorBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicWatchHour;
@@ -34,6 +37,10 @@ import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicWatchSecond;
 
 public class Watch extends RadialGauge {
 
+	private static int gaugeRadius = 90;
+	private static int centerUserX = 0;
+	private static int centerUserY = 0;
+	
 	private GaugeMetricsPath hourMetricsManager;
 	private GaugeMetricsPath minuteMetricsManager;
 	private GaugeMetricsPath secondMetricsManager;
@@ -41,7 +48,7 @@ public class Watch extends RadialGauge {
 	private GaugeMetricsPath metricsManager;
 	
     public Watch() {
-        super(0, 0, 90);
+    	super(centerUserX, centerUserY, gaugeRadius);
 
         CiseroEnvelop e1 = new CiseroEnvelop(4);
         setEnvelop(e1);
@@ -71,49 +78,76 @@ public class Watch extends RadialGauge {
     
     private void createWatch(){
     	
-    	PathBinder pathBinder = new PathBinder() {		
-			@Override
-			public Shape bindPath(RadialGauge gauge) {
-				double centerX = getCenterDevice().getX();
-				double centerY = getCenterDevice().getY();
-				int radius = getRadius() - 10;
-				int startAngleDegreee = 90;
-				int extendsAngleDegree = -360;
-				Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
-				return arc;
-			}
-		};
+    	/**
+    	 * PATH BINDER
+    	 */
+    	
+//    	PathBinder pathBinder = new PathBinder() {		
+//			@Override
+//			public Shape bindPath(RadialGauge gauge) {
+//				double centerX = getCenterDevice().getX();
+//				double centerY = getCenterDevice().getY();
+//				int radius = getRadius() - 10;
+//				int startAngleDegreee = 90;
+//				int extendsAngleDegree = -360;
+//				Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
+//				return arc;
+//			}
+//		};
+		//or use preset arc path binder
+    	PathBinder pathBinder = new ArcPathBinder(gaugeRadius-10, 90, -360);
+    	
+    	
+    	/**
+    	 * ANCHORS
+    	 */
+    	
+//		AnchorBinder needleBase = new AnchorBinder() {
+//			@Override
+//			public Point2D bindAnchor(RadialGauge gauge) {
+//				return getCenterDevice();
+//			}
+//		};
+    	
+    	//or use model anchor gauge 
+    	AnchorBinder needleBase = new StaticAnchorBinder();
 		
-		AnchorBinder needleBase = new AnchorBinder() {
-			@Override
-			public Point2D bindAnchor(RadialGauge gauge) {
-				return getCenterDevice();
-			}
-		};
+    	
+//		AnchorBinder needleHourAnchor = new AnchorBinder() {
+//			@Override
+//			public Point2D bindAnchor(RadialGauge gauge) {
+//				Point2D needle = hourMetricsManager.getRadialPoint(hourMetricsManager.getCurrentValue(), 50, Side.SideRight);
+//				return needle;
+//			}
+//		};
+    	
+    	//use model anchor based on current value on the path
+    	AnchorBinder needleHourAnchor = new ValueAnchorBinder(50, Side.SideRight);
 		
-		AnchorBinder needleHourAnchor = new AnchorBinder() {
-			@Override
-			public Point2D bindAnchor(RadialGauge gauge) {
-				Point2D needle = hourMetricsManager.getRadialPoint(hourMetricsManager.getCurrentValue(), 50, Side.SideRight);
-				return needle;
-			}
-		};
+    	
 		
-		AnchorBinder needleMinuteAnchor = new AnchorBinder() {
-			@Override
-			public Point2D bindAnchor(RadialGauge gauge) {
-				Point2D needle = minuteMetricsManager.getRadialPoint(minuteMetricsManager.getCurrentValue(), 20, Side.SideRight);
-				return needle;
-			}
-		};
+//		AnchorBinder needleMinuteAnchor = new AnchorBinder() {
+//			@Override
+//			public Point2D bindAnchor(RadialGauge gauge) {
+//				Point2D needle = minuteMetricsManager.getRadialPoint(minuteMetricsManager.getCurrentValue(), 20, Side.SideRight);
+//				return needle;
+//			}
+//		};
+    	
+    	//use model anchor based on current value on the path
+    	AnchorBinder needleMinuteAnchor = new ValueAnchorBinder(20, Side.SideRight);
+    	
 		
-		AnchorBinder needleSecondAnchor = new AnchorBinder() {
-			@Override
-			public Point2D bindAnchor(RadialGauge gauge) {
-				Point2D needle = secondMetricsManager.getRadialPoint(secondMetricsManager.getCurrentValue(), 20, Side.SideRight);
-				return needle;
-			}
-		};
+//		AnchorBinder needleSecondAnchor = new AnchorBinder() {
+//			@Override
+//			public Point2D bindAnchor(RadialGauge gauge) {
+//				Point2D needle = secondMetricsManager.getRadialPoint(secondMetricsManager.getCurrentValue(), 20, Side.SideRight);
+//				return needle;
+//			}
+//		};
+    	
+    	//use model anchor based on current value on the path
+    	AnchorBinder needleSecondAnchor = new ValueAnchorBinder(20, Side.SideRight);
 		
     	
     	metricsManager = new GaugeMetricsPath();
@@ -216,11 +250,11 @@ public class Watch extends RadialGauge {
 		metricsManager.addMetric(metric);
 
 		// 3 o'clock
-		metric = new GlyphMetric();
-		metric.setValue(4.4);
-		metric.setStylePosition(StylePosition.Default);
-		metric.setMetricsLabel("3");
-		metric.setDivergence(5);
+//		metric = new GlyphMetric();
+//		metric.setValue(4.4);
+//		metric.setStylePosition(StylePosition.Default);
+//		metric.setMetricsLabel("3");
+//		metric.setDivergence(5);
 
 //		// triangle marker
 //		TriangleMarker triangle = new TriangleMarker(Color.WHITE, NanoChromatique.GREEN);

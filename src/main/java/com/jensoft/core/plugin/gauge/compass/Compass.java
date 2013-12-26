@@ -20,7 +20,7 @@ import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.bg.TextureBackground;
-import com.jensoft.core.plugin.gauge.core.binder.GaugeArcPathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
@@ -57,7 +57,7 @@ public class Compass extends RadialGauge {
 		pathManager.setAutoReverseGlyph(false);
 		pathManager.setReverseAll(true);
 		pathManager.setRange(0,360);
-		pathManager.setPathBinder(new GaugeArcPathBinder(gaugeRadius-10, 0, 360));
+		pathManager.setPathBinder(new ArcPathBinder(gaugeRadius-10, 0, 360));
 //		pathManager.setPathBinder(new PathBinder() {
 //			@Override
 //			public Shape bindPath(RadialGauge gauge) {
@@ -78,7 +78,7 @@ public class Compass extends RadialGauge {
 		pathManagerLabel.setAutoReverseGlyph(false);
 		pathManagerLabel.setReverseAll(true);
 		pathManagerLabel.setRange(0,360);
-		pathManagerLabel.setPathBinder(new GaugeArcPathBinder(gaugeRadius-50, 0, 360));
+		pathManagerLabel.setPathBinder(new ArcPathBinder(gaugeRadius-50, 0, 360));
 //		pathManagerLabel.setPathBinder(new PathBinder() {
 //			@Override
 //			public Shape bindPath(RadialGauge gauge) {
@@ -98,7 +98,7 @@ public class Compass extends RadialGauge {
 		pathManagerNeedle.setAutoReverseGlyph(false);
 		pathManagerNeedle.setReverseAll(true);
 		pathManagerNeedle.setRange(0,360);
-		pathManagerNeedle.setPathBinder(new GaugeArcPathBinder(gaugeRadius-80, 0, 360));
+		pathManagerNeedle.setPathBinder(new ArcPathBinder(gaugeRadius-80, 0, 360));
 //		pathManagerNeedle.setPathBinder(new PathBinder() {
 //			@Override
 //			public Shape bindPath(RadialGauge gauge) {

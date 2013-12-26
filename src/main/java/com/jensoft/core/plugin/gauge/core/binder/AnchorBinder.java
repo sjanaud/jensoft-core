@@ -7,6 +7,7 @@ package com.jensoft.core.plugin.gauge.core.binder;
 
 import java.awt.geom.Point2D;
 
+import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 /**
@@ -16,9 +17,21 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  * @author sebastien janaud
  * 
  */
-public interface AnchorBinder {
+public abstract class AnchorBinder {
 
+	private GaugeMetricsPath metricsPath;
 	
+	
+	public GaugeMetricsPath getMetricsPath() {
+		return metricsPath;
+	}
+
+
+	public void setMetricsPath(GaugeMetricsPath metricsPath) {
+		this.metricsPath = metricsPath;
+	}
+
+
 	/**
 	 * Process to force calculate anchor at runtime in device coordinate system.
 	 * because projected center is required and anchor is refer to this center.
@@ -26,6 +39,6 @@ public interface AnchorBinder {
 	 * 			the gauge
 	 * @return the given anchor point
 	 */
-	Point2D bindAnchor(RadialGauge gauge);
+	public abstract Point2D bindAnchor(RadialGauge gauge);
 	
 }

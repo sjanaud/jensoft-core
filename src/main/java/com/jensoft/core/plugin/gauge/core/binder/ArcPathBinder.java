@@ -18,7 +18,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  * @author sebastien janaud
  * 
  */
-public class GaugeArcPathBinder implements PathBinder {
+public class ArcPathBinder extends PathBinder {
 
 	private int radius;
 	private float startAngleDegree;
@@ -26,19 +26,48 @@ public class GaugeArcPathBinder implements PathBinder {
 
 	/**
 	 * create binder for center the arc define by given values.
+	 * 
 	 * @param radius
 	 * @param startAngleDegree
 	 * @param extendsAngleDegree
 	 */
-	public GaugeArcPathBinder(int radius, float startAngleDegree, float extendsAngleDegree) {
+	public ArcPathBinder(int radius, float startAngleDegree, float extendsAngleDegree) {
 		super();
 		this.radius = radius;
 		this.startAngleDegree = startAngleDegree;
 		this.extendsAngleDegree = extendsAngleDegree;
 	}
 
-	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.gauge.core.binder.PathBinder#bindPath(com.jensoft.core.plugin.gauge.core.RadialGauge)
+	public int getRadius() {
+		return radius;
+	}
+
+	public void setRadius(int radius) {
+		this.radius = radius;
+	}
+
+	public float getStartAngleDegree() {
+		return startAngleDegree;
+	}
+
+	public void setStartAngleDegree(float startAngleDegree) {
+		this.startAngleDegree = startAngleDegree;
+	}
+
+	public float getExtendsAngleDegree() {
+		return extendsAngleDegree;
+	}
+
+	public void setExtendsAngleDegree(float extendsAngleDegree) {
+		this.extendsAngleDegree = extendsAngleDegree;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.gauge.core.binder.PathBinder#bindPath(com.jensoft
+	 * .core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override
 	public Shape bindPath(RadialGauge gauge) {
