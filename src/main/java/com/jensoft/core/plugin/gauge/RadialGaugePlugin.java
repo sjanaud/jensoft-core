@@ -14,12 +14,12 @@ import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
+import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.GaugePartBuffer;
 import com.jensoft.core.plugin.gauge.core.GaugeTextPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.GaugeBackground;
-import com.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2DEvent;
 import com.jensoft.core.window.Window2DListener;
@@ -64,7 +64,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 			path.setPartBuffer(null);
 		}
 		
-		for(GaugeGlassPainter glass : gauge.getGlasses()){
+		for(GaugeGlass glass : gauge.getGlasses()){
 			glass.setPartBuffer(null);
 		}
 	}
@@ -132,10 +132,8 @@ public class RadialGaugePlugin extends AbstractPlugin {
 			}
 		}
 
-	
-
 		if (gauge.getGlasses() != null) {
-			for (GaugeGlassPainter glass : gauge.getGlasses()) {
+			for (GaugeGlass glass : gauge.getGlasses()) {
 				glass.paintGlass(g2d, gauge);
 			}
 		}

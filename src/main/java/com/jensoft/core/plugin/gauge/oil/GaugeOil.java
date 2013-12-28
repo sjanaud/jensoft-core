@@ -22,17 +22,16 @@ import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TriangleMarker.TriangleDirection;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
-import com.jensoft.core.palette.RosePalette;
 import com.jensoft.core.palette.TexturePalette;
+import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.GaugeTextPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathShiftBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
-import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
 public class GaugeOil extends RadialGauge {
@@ -62,7 +61,9 @@ public class GaugeOil extends RadialGauge {
 		CiseroEnvelop e1 = new CiseroEnvelop();
 		setEnvelop(e1);
 
-		addGaugeBackground(new GaugeTextureBackground(TexturePalette.getInterlacedCarbon1()));
+		
+		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getInterlacedCarbon1());
+		addGaugeBackground(bg);
 		
 		GaugeGlass g1 = new GaugeGlass.Glass1();
 		GaugeGlass g2 = new GaugeGlass.Glass2();

@@ -21,8 +21,8 @@ import java.util.Vector;
 
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.plugin.gauge.core.GaugeBackground;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.GaugeBackground;
 
 
 /**

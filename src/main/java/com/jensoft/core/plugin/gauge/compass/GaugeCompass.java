@@ -15,12 +15,12 @@ import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
+import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
-import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
 
 /**
@@ -56,8 +56,9 @@ public class GaugeCompass extends RadialGauge {
 		CiseroEnvelop cisero = new CiseroEnvelop();
 		setEnvelop(cisero);
 
-		GaugeTextureBackground textureBackground = new GaugeTextureBackground(TexturePalette.getSquareCarbonFiber());
-		addGaugeBackground(textureBackground);
+		
+		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getSquareCarbonFiber());
+		addGaugeBackground(bg);
 
 		GaugeCompassBackground compass = new GaugeCompassBackground(0, 0, 150);
 		addGaugeBackground(compass);

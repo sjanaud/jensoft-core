@@ -7,7 +7,6 @@ package com.jensoft.core.plugin.gauge.speedometer;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.glyphmetrics.Side;
@@ -17,15 +16,15 @@ import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
+import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
-import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
 public class Speedometer extends RadialGauge {
@@ -43,8 +42,8 @@ public class Speedometer extends RadialGauge {
         CiseroEnvelop e1 = new CiseroEnvelop();
         setEnvelop(e1);
         
-        addGaugeBackground(new GaugeTextureBackground(TexturePalette.getSquareCarbonFiber()));
-
+    	GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getSquareCarbonFiber());
+		addGaugeBackground(bg);
 
         GaugeGlass g1 = new GaugeGlass.Glass1();
         GaugeGlass g2 = new GaugeGlass.Glass2();
