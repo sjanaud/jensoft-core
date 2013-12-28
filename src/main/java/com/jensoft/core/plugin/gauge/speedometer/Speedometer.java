@@ -32,40 +32,28 @@ public class Speedometer extends RadialGauge {
 	private static int gaugeRadius = 90;
 	private static int centerUserX = 0;
 	private static int centerUserY = 0;
-	
-	/**speedo meter gauge metrics*/
-	private GaugeMetricsPath metricsManager;
-		
-    public Speedometer() {
-    	super(centerUserX, centerUserY, gaugeRadius);
 
-        CiseroEnvelop e1 = new CiseroEnvelop();
-        setEnvelop(e1);
-        
-    	GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getSquareCarbonFiber());
+	/** speedo meter gauge metrics */
+	private GaugeMetricsPath metricsManager;
+
+	public Speedometer() {
+		super(centerUserX, centerUserY, gaugeRadius);
+
+		CiseroEnvelop e1 = new CiseroEnvelop();
+		setEnvelop(e1);
+
+		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getSquareCarbonFiber());
 		addBackground(bg);
 
-        GaugeGlass g1 = new GaugeGlass.Glass1();
-        GaugeGlass g2 = new GaugeGlass.Glass2();
-        GaugeGlass g3 = new GaugeGlass.Glass3();
-        GaugeGlass g4 = new GaugeGlass.Glass4();
-        GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
-        GaugeGlass g6 = new GaugeGlass.JenSoftAPILabel();
-        
-        //GaugeGlass g5 = new GaugeGlass.GlassLinearEffect();
-       
-        
-        addGlass(g1,g2,g4,g5);
-       
-       
-        
-        
-        createBody();
-    }
+		GaugeGlass g3 = new GaugeGlass.GlassIncubator();
+		GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
+		GaugeGlass g6 = new GaugeGlass.JenSoftAPILabel();
 
-   
-	
-	
+
+		addGlass(g5);
+
+		createBody();
+	}
 
 	/**
 	 * create speedometer body
@@ -75,43 +63,46 @@ public class Speedometer extends RadialGauge {
 		metricsManager.setMin(0);
 		metricsManager.setMax(280);
 		metricsManager.setCurrentValue(186);
-		
+
 		metricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
-		metricsManager.setPathBinder(new ArcPathBinder(gaugeRadius-10, 260, -340));
-		
-//		metricsManager.setPathBinder(new PathBinder() {
-//			@Override
-//			public Arc2D bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int radius = getRadius() - 10;
-//				int startAngleDegreee = 260;
-//				int extendsAngleDegree = -340;
-//				Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegreee, extendsAngleDegree, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
-	
+		metricsManager.setPathBinder(new ArcPathBinder(gaugeRadius - 10, 260, -340));
+
+		// metricsManager.setPathBinder(new PathBinder() {
+		// @Override
+		// public Arc2D bindPath(RadialGauge gauge) {
+		// double centerX = getCenterDevice().getX();
+		// double centerY = getCenterDevice().getY();
+		// int radius = getRadius() - 10;
+		// int startAngleDegreee = 260;
+		// int extendsAngleDegree = -340;
+		// Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 *
+		// radius, 2 * radius, startAngleDegreee, extendsAngleDegree,
+		// Arc2D.OPEN);
+		// return arc;
+		// }
+		// });
+
 		AnchorBinder baseNeedleBinder = new AnchorBaseBinder();
 		AnchorValueBinder valueNeedleBinder = new AnchorValueBinder(20, Side.SideRight);
 		metricsManager.setNeedleBaseAnchorBinder(baseNeedleBinder);
 		metricsManager.setNeedleValueAnchorBinder(valueNeedleBinder);
-		
-		
-//		metricsManager.setNeedleBaseAnchorBinder(new AnchorBinder() {
-//			@Override
-//			public Point2D bindAnchor(RadialGauge gauge) {
-//				return getCenterDevice();
-//			}
-//		});
-//		
-//		metricsManager.setNeedleValueAnchorBinder(new AnchorBinder() {
-//			@Override
-//			public Point2D bindAnchor(RadialGauge gauge) {
-//				Point2D anchorValue = metricsManager.getRadialPoint(metricsManager.getCurrentValue(), 20, Side.SideRight);
-//				return anchorValue;
-//			}
-//		});
+
+		// metricsManager.setNeedleBaseAnchorBinder(new AnchorBinder() {
+		// @Override
+		// public Point2D bindAnchor(RadialGauge gauge) {
+		// return getCenterDevice();
+		// }
+		// });
+		//
+		// metricsManager.setNeedleValueAnchorBinder(new AnchorBinder() {
+		// @Override
+		// public Point2D bindAnchor(RadialGauge gauge) {
+		// Point2D anchorValue =
+		// metricsManager.getRadialPoint(metricsManager.getCurrentValue(), 20,
+		// Side.SideRight);
+		// return anchorValue;
+		// }
+		// });
 
 		registerGaugeMetricsPath(metricsManager);
 
@@ -143,7 +134,6 @@ public class Speedometer extends RadialGauge {
 		metric.setFont(InputFonts.getFont(InputFonts.NEUROPOL, 16));
 		metricsManager.addMetric(metric);
 
-		
 	}
 
 }
