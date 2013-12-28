@@ -43,7 +43,7 @@ public class Tachometer extends RadialGauge {
 
 		
 		GaugeBackground bg = new GaugeBackground.Circular.Gradient();
-		addGaugeBackground(bg);
+		addBackground(bg);
 
 		GaugeGlass g1 = new GaugeGlass.Glass1();
 		GaugeGlass g2 = new GaugeGlass.Glass2();

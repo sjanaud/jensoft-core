@@ -58,7 +58,7 @@ public class Watch extends RadialGauge {
 
 
 		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getSquareCarbonFiber());
-		addGaugeBackground(bg);
+		addBackground(bg);
 		
 
 		GaugeBackground bg1 = new GaugeBackground.Circular.Gradient();
@@ -128,7 +128,7 @@ public class Watch extends RadialGauge {
 	private void createMiniGauge() {
 		
 		GaugeBackground bg = new GaugeBackground.Circular.Gradient(gaugeRadius / 6, (int) (gaugeRadius / 2.3), 145);
-		addGaugeBackground(bg);
+		addBackground(bg);
 		
 		miniMetricsManager = new GaugeMetricsPath();
 		miniMetricsManager.setRange(0, 24);

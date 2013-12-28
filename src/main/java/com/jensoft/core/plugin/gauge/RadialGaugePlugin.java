@@ -126,8 +126,8 @@ public class RadialGaugePlugin extends AbstractPlugin {
 			gauge.getEnvelop().paintEnvelop(g2d, gauge);
 		}
 
-		if (gauge.getGaugeBackgrounds() != null) {
-			for (GaugeBackground background : gauge.getGaugeBackgrounds()) {
+		if (gauge.getBackgrounds() != null) {
+			for (GaugeBackground background : gauge.getBackgrounds()) {
 				background.paintBackground(g2d, gauge);
 			}
 		}
