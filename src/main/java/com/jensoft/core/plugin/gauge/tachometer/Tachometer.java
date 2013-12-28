@@ -15,15 +15,15 @@ import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.GaugeGradientBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
-import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
 public class Tachometer extends RadialGauge {
@@ -41,8 +41,9 @@ public class Tachometer extends RadialGauge {
 		CiseroEnvelop e1 = new CiseroEnvelop();
 		setEnvelop(e1);
 
-		GaugeGradientBackground bg1 = new GaugeGradientBackground();
-		addGaugeBackground(bg1);
+		
+		GaugeBackground bg = new GaugeBackground.Circular.Gradient();
+		addGaugeBackground(bg);
 
 		GaugeGlass g1 = new GaugeGlass.Glass1();
 		GaugeGlass g2 = new GaugeGlass.Glass2();
