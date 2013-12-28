@@ -39,7 +39,6 @@ public abstract class GaugeEnvelope {
 	 * <code>Classic</code> is a classic envelope
 	 * 
 	 * @since 1.0
-	 * @author sebastien janaud
 	 * 
 	 */
 	public static class Classic extends GaugeEnvelope {
@@ -212,7 +211,6 @@ public abstract class GaugeEnvelope {
 	 * radius divide factor to get the thickness of the Cisero envelop.
 	 * 
 	 * @since 1.0
-	 * @author sebastien janaud
 	 * 
 	 */
 	public static class Cisero extends GaugeEnvelope {
