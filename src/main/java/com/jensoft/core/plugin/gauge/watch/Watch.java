@@ -61,19 +61,14 @@ public class Watch extends RadialGauge {
 		addBackground(bg);
 		
 
-		GaugeBackground bg1 = new GaugeBackground.Circular.Gradient();
 
-		GaugeGlass g1 = new GaugeGlass.Glass1();
-		GaugeGlass g2 = new GaugeGlass.Glass2();
-		GaugeGlass g3 = new GaugeGlass.Glass3();
-		GaugeGlass g4 = new GaugeGlass.Glass4();
+		GaugeGlass g3 = new GaugeGlass.GlassIncubator();
 		GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
 		GaugeGlass g6 = new GaugeGlass.JenSoftAPILabel();
 
-		// GaugeGlass g5 = new GaugeGlass.GlassLinearEffect();
 		GlassCubicEffect gCubic = new GaugeGlass.GlassCubicEffect(CubicEffectFrame.Wave6);
 		gCubic.setIncidenceAngleDegree(60);
-		addGlass(g3);
+		addGlass(gCubic);
 
 		createWatch();
 		
@@ -127,7 +122,7 @@ public class Watch extends RadialGauge {
 
 	private void createMiniGauge() {
 		
-		GaugeBackground bg = new GaugeBackground.Circular.Gradient(gaugeRadius / 6, (int) (gaugeRadius / 2.3), 145);
+		GaugeBackground bg = new GaugeBackground.Circular.RadialGradient(gaugeRadius / 6, (int) (gaugeRadius / 2.3), 145);
 		addBackground(bg);
 		
 		miniMetricsManager = new GaugeMetricsPath();

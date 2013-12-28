@@ -42,19 +42,14 @@ public class Tachometer extends RadialGauge {
 		setEnvelop(e1);
 
 		
-		GaugeBackground bg = new GaugeBackground.Circular.Gradient();
+		GaugeBackground bg = new GaugeBackground.Circular.RadialGradient();
 		addBackground(bg);
 
-		GaugeGlass g1 = new GaugeGlass.Glass1();
-		GaugeGlass g2 = new GaugeGlass.Glass2();
-		GaugeGlass g3 = new GaugeGlass.Glass3();
-		GaugeGlass g4 = new GaugeGlass.Glass4();
+		GaugeGlass g3 = new GaugeGlass.GlassIncubator();
 		GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
 		GaugeGlass g6 = new GaugeGlass.JenSoftAPILabel();
 
-		// GaugeGlass g5 = new GaugeGlass.GlassLinearEffect();
-
-		addGlass(g1, g2, g4, g5);
+		addGlass( g5);
 
 		createBody();
 

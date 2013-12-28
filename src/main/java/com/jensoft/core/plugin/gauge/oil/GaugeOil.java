@@ -65,16 +65,13 @@ public class GaugeOil extends RadialGauge {
 		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getInterlacedCarbon1());
 		addBackground(bg);
 		
-		GaugeGlass g1 = new GaugeGlass.Glass1();
-		GaugeGlass g2 = new GaugeGlass.Glass2();
-		GaugeGlass g3 = new GaugeGlass.Glass3();
-		GaugeGlass g4 = new GaugeGlass.Glass4();
+		GaugeGlass g3 = new GaugeGlass.GlassIncubator();
 		GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
 		GaugeGlass g6 = new GaugeGlass.JenSoftAPILabel();
 
-		GaugeGlass g8 = new GaugeGlass.GlassLinearEffect();
+		GaugeGlass linearGlass = new GaugeGlass.GlassLinearEffect();
 
-		addGlass(g1, g8);
+		addGlass(linearGlass);
 
 		createStyle();
 		createPath1();
