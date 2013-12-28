@@ -5,6 +5,7 @@
  */
 package com.jensoft.core.plugin.gauge.core.needle;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.LinearGradientPaint;
@@ -110,6 +111,7 @@ public class GaugeNeedleClassicWatchHour extends GaugeNeedlePainter {
 		LinearGradientPaint shader = new LinearGradientPaint(start, end, new float[]{0,1}, new Color[]{Color.WHITE,NanoChromatique.BLUE});
 		g2d.setPaint(shader);
 		g2d.fill(path1);
+		g2d.setStroke(new BasicStroke());
 		g2d.setColor(NanoChromatique.WHITE);
 		g2d.draw(path1);
 		//g2d.fill(path1);

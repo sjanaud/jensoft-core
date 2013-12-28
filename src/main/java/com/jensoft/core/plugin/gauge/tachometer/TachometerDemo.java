@@ -5,8 +5,6 @@
  */
 package com.jensoft.core.plugin.gauge.tachometer;
 
-import java.awt.Color;
-
 import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
@@ -24,8 +22,8 @@ public class TachometerDemo extends View2D {
 		super();
 
 		Window2D w2d = new Window2D.Linear.Identity();
-		w2d.setName("velocity gauge window");
-
+		registerWindow2D(w2d);
+		
 		Tachometer gauge = new Tachometer();
 		RadialGaugePlugin gaugePlugin = new RadialGaugePlugin(gauge);
 		w2d.registerPlugin(gaugePlugin);

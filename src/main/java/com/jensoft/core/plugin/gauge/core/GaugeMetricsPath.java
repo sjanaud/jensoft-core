@@ -5,7 +5,6 @@
  */
 package com.jensoft.core.plugin.gauge.core;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
@@ -226,13 +225,18 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 		g2dPart.setRenderingHints(g2d.getRenderingHints());
 		setFontRenderContext(g2d.getFontRenderContext());
 		setSolveGeometryRequest(true);
-		if (debugPath) {
-			g2dPart.setStroke(new BasicStroke(2f));
-			g2dPart.setColor(debugPathColor);
-			// g2dPart.draw(getOrCreateGeometry().getPath());
-			// or
-			g2dPart.draw(getPathBinder().bindPath(getGauge()));
+//		if (debugPath) {
+//			g2dPart.setStroke(new BasicStroke(2f));
+//			g2dPart.setColor(debugPathColor);
+//			// g2dPart.draw(getOrCreateGeometry().getPath());
+//			// or
+//			g2dPart.draw(getPathBinder().bindPath(getGauge()));
+//		}
+		
+		if(getPathPainter() != null){
+			getPathPainter().paintPath(g2dPart, this);	
 		}
+		
 
 		List<GlyphMetric> metrics = getMetrics();
 		for (GlyphMetric m : metrics) {

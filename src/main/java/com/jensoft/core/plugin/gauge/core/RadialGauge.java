@@ -5,11 +5,12 @@
  */
 package com.jensoft.core.plugin.gauge.core;
 
+import java.awt.geom.Arc2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeBackground;
 import com.jensoft.core.plugin.gauge.core.env.EnvelopGaugePainter;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter;
 import com.jensoft.core.window.Window2D;
@@ -49,7 +50,7 @@ public class RadialGauge {
 	private List<GaugeGlassPainter> glasses;
 
 	/** gauge backgrounds */
-	private List<BackgroundGaugePainter> gaugeBackgrounds;
+	private List<GaugeBackground> gaugeBackgrounds;
 
 	/** gauges metrics paths */
 	private List<GaugeMetricsPath> gaugeMetricsPaths;
@@ -68,7 +69,7 @@ public class RadialGauge {
 		this.radius = radius;
 		this.x = x;
 		this.y = y;
-		gaugeBackgrounds = new ArrayList<BackgroundGaugePainter>();
+		gaugeBackgrounds = new ArrayList<GaugeBackground>();
 		glasses = new ArrayList<GaugeGlassPainter>();
 		gaugeMetricsPaths = new ArrayList<GaugeMetricsPath>();
 		gaugeTextPaths = new ArrayList<GaugeTextPath>();
@@ -84,6 +85,14 @@ public class RadialGauge {
 		double centerX = getWindow2D().userToPixel(new Point2D.Double(getX(), 0)).getX();
 		double centerY = getWindow2D().userToPixel(new Point2D.Double(0, getY())).getY();
 		return new Point2D.Double(centerX, centerY);
+	}
+	
+	public Point2D getRadialPointAt(double radius,float angleDegree){
+		double centerX = getCenterDevice().getX();
+		double centerY = getCenterDevice().getY();
+		double shiftCenterX = centerX + radius*Math.cos(Math.toRadians(angleDegree));
+		double shiftCenterY = centerY - radius*Math.sin(Math.toRadians(angleDegree));
+		return new Point2D.Double(shiftCenterX, shiftCenterY);
 	}
 
 	/**
@@ -155,7 +164,7 @@ public class RadialGauge {
 	 * 
 	 * @return gauge backgrounds
 	 */
-	public List<BackgroundGaugePainter> getGaugeBackgrounds() {
+	public List<GaugeBackground> getGaugeBackgrounds() {
 		return gaugeBackgrounds;
 	}
 
@@ -164,7 +173,7 @@ public class RadialGauge {
 	 * 
 	 * @param gaugeBackgrounds
 	 */
-	public void setGaugeBackgrounds(List<BackgroundGaugePainter> gaugeBackgrounds) {
+	public void setGaugeBackgrounds(List<GaugeBackground> gaugeBackgrounds) {
 		this.gaugeBackgrounds = gaugeBackgrounds;
 	}
 
@@ -173,7 +182,7 @@ public class RadialGauge {
 	 * 
 	 * @param gaugeBackground
 	 */
-	public void addGaugeBackground(BackgroundGaugePainter gaugeBackground) {
+	public void addGaugeBackground(GaugeBackground gaugeBackground) {
 		this.gaugeBackgrounds.add(gaugeBackground);
 	}
 

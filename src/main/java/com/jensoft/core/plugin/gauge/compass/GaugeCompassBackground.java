@@ -22,7 +22,7 @@ import java.util.Vector;
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeBackground;
 
 
 /**
@@ -36,7 +36,7 @@ import com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter;
  * @author sebastien janaud
  *
  */
-public class GaugeCompassBackground extends BackgroundGaugePainter{
+public class GaugeCompassBackground extends GaugeBackground{
 
     private int centerX;
     private int centerY;
