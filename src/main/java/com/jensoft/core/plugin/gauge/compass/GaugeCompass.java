@@ -58,10 +58,10 @@ public class GaugeCompass extends RadialGauge {
 
 		
 		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getSquareCarbonFiber());
-		addGaugeBackground(bg);
+		addBackground(bg);
 
 		GaugeCompassBackground compass = new GaugeCompassBackground(0, 0, 150);
-		addGaugeBackground(compass);
+		addBackground(compass);
 
 		GaugeGlass cubicEffect = new GaugeGlass.GlassCubicEffect(CubicEffectFrame.Moon1);
 		GaugeGlass linearEffect = new GaugeGlass.GlassLinearEffect();
