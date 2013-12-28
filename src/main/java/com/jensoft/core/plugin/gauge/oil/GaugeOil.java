@@ -63,7 +63,7 @@ public class GaugeOil extends RadialGauge {
 
 		
 		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getInterlacedCarbon1());
-		addGaugeBackground(bg);
+		addBackground(bg);
 		
 		GaugeGlass g1 = new GaugeGlass.Glass1();
 		GaugeGlass g2 = new GaugeGlass.Glass2();

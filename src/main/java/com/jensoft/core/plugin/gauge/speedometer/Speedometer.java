@@ -43,7 +43,7 @@ public class Speedometer extends RadialGauge {
         setEnvelop(e1);
         
     	GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getSquareCarbonFiber());
-		addGaugeBackground(bg);
+		addBackground(bg);
 
         GaugeGlass g1 = new GaugeGlass.Glass1();
         GaugeGlass g2 = new GaugeGlass.Glass2();
