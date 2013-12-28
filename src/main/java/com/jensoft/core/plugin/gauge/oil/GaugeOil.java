@@ -24,6 +24,7 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.GaugeTextPath;
@@ -31,9 +32,15 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathShiftBinder;
-import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
+/**
+ * <code>GaugeOil</code> base model helps developer to learn gauge modeling.
+ * 
+ * @since1.0
+ * @author sebastien janaud
+ * 
+ */
 public class GaugeOil extends RadialGauge {
 
 	
@@ -58,8 +65,8 @@ public class GaugeOil extends RadialGauge {
 	public GaugeOil() {
 		super(centerUserX, centerUserY, gaugeRadius);
 
-		CiseroEnvelop e1 = new CiseroEnvelop();
-		setEnvelop(e1);
+		GaugeEnvelope cisero = new GaugeEnvelope.Cisero();
+		setEnvelop(cisero);
 
 		
 		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getInterlacedCarbon1());

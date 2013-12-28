@@ -444,11 +444,9 @@ public abstract class GaugeGlass{
 		 */
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-
 			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
 			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 			int radius = radialGauge.getRadius();
-
 			Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegree, extendsDegree, Arc2D.OPEN);
 			textPath.setPath(arc2d);
 			textPath.draw(g2d);

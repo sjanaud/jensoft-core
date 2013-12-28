@@ -17,6 +17,7 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
@@ -24,9 +25,15 @@ import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
-import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
+/**
+ * <code>Speedometer</code> base model helps developer to learn gauge modeling.
+ * 
+ * @since1.0
+ * @author sebastien janaud
+ * 
+ */
 public class Speedometer extends RadialGauge {
 
 	private static int gaugeRadius = 90;
@@ -39,8 +46,8 @@ public class Speedometer extends RadialGauge {
 	public Speedometer() {
 		super(centerUserX, centerUserY, gaugeRadius);
 
-		CiseroEnvelop e1 = new CiseroEnvelop();
-		setEnvelop(e1);
+		GaugeEnvelope cisero = new GaugeEnvelope.Cisero();
+		setEnvelop(cisero);
 
 		GaugeBackground bg = new GaugeBackground.Circular.Texture(TexturePalette.getSquareCarbonFiber());
 		addBackground(bg);
@@ -48,7 +55,6 @@ public class Speedometer extends RadialGauge {
 		GaugeGlass g3 = new GaugeGlass.GlassIncubator();
 		GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
 		GaugeGlass g6 = new GaugeGlass.JenSoftAPILabel();
-
 
 		addGlass(g5);
 
