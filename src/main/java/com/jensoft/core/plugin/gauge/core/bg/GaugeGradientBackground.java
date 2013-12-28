@@ -21,38 +21,55 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  * @author sebastien janaud
  * 
  */
-public class GaugeGradientBackground extends BackgroundGaugePainter {
+public class GaugeGradientBackground extends GaugeBackground {
 
-	
+	private int radius = 0;
+
+	private double shiftRadius = 0;
+	private float shiftAlpha = 0;
+
 	/**
-	 * create gauge gradient background
+	 * create gauge default gradient background
 	 */
-    public GaugeGradientBackground() {
+	public GaugeGradientBackground() {
+	}
 
-    }
+	/**
+	 * create background for the given circle define by given parameters
+	 * @param radius
+	 * @param shiftRadius
+	 * @param shiftAlpha
+	 */
+	public GaugeGradientBackground(int radius, double shiftRadius, float shiftAlpha) {
+		super();
+		this.radius = radius;
+		this.shiftRadius = shiftRadius;
+		this.shiftAlpha = shiftAlpha;
+	}
 
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter#paintBackground(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
-     */
-    @Override
-    public void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {
-        double centerX = radialGauge.getWindow2D()
-                .userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-        double centerY = radialGauge.getWindow2D()
-                .userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
-        int radius = radialGauge.getRadius();
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.gauge.core.bg.BackgroundGaugePainter#paintBackground
+	 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 */
+	@Override
+	public void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {
 
-        Ellipse2D baseShape = new Ellipse2D.Double(centerX - radius, centerY
-                - radius, 2 * radius, 2 * radius);
+		Point2D centerDef = radialGauge.getRadialPointAt(shiftRadius, shiftAlpha);
 
-        RadialGradientPaint rgp = new RadialGradientPaint(new Point2D.Double(
-                                                                             centerX, centerY), 3 * radius / 4,
-                                                          new float[] { 0f, 1f },
-                                                          new Color[] { Color.BLACK, new Color(50, 50, 50) });
+		// if radius is not set, take gauge radius as the default value
+		if (radius == 0) {
+			radius = radialGauge.getRadius();
+		}
+		
+		RadialGradientPaint rgp = new RadialGradientPaint(centerDef, 3 * radius / 4, new float[] { 0f, 1f }, new Color[] { Color.BLACK, new Color(50, 50, 50) });
 
-        g2d.setPaint(rgp);
-        g2d.fill(baseShape);
+		Ellipse2D baseShape = new Ellipse2D.Double(centerDef.getX() - radius, centerDef.getY() - radius, 2 * radius, 2 * radius);
+		g2d.setPaint(rgp);
+		g2d.fill(baseShape);
 
-    }
+	}
 
 }

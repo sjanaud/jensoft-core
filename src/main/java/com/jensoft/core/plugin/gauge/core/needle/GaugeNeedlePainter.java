@@ -11,7 +11,7 @@ import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 
 /**
  * <code>GaugeNeedlePainter</code> takes the responsibility to paint a needle
- * based on anchor binder declared in gauge path metrics
+ * which is based on anchors binders declared in gauge path metrics
  * 
  * @since 1.0
  * @author sebastien janaud

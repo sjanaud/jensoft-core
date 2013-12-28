@@ -5,11 +5,9 @@
  */
 package com.jensoft.core.plugin.gauge.watch;
 
+import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Shape;
-import java.awt.geom.Arc2D;
-import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.glyphmetrics.Side;
@@ -18,17 +16,21 @@ import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.DefaultMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
+import com.jensoft.core.glyphmetrics.painter.path.MetricsPathDefaultDraw;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.bg.GaugeGradientBackground;
 import com.jensoft.core.plugin.gauge.core.bg.GaugeTextureBackground;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathShiftBinder;
 import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.glass.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicWatchHour;
@@ -47,6 +49,8 @@ public class Watch extends RadialGauge {
 
 	private GaugeMetricsPath metricsManager;
 	
+	private GaugeMetricsPath miniMetricsManager;
+	
     public Watch() {
     	super(centerUserX, centerUserY, gaugeRadius);
 
@@ -55,6 +59,11 @@ public class Watch extends RadialGauge {
         
         addGaugeBackground(new GaugeTextureBackground(TexturePalette.getSquareCarbonFiber()));
 
+       // addGaugeBackground(new GaugeTextureBackground(TexturePalette.getInterlacedCarbon(3), gaugeRadius/6, (int)(gaugeRadius/2.3), 145));
+        addGaugeBackground(new GaugeGradientBackground( gaugeRadius/6, (int)(gaugeRadius/2.3), 145));
+       
+        GaugeBackground bg1 = new GaugeBackground.Circular.Gradient();
+        
         GaugeGlass g1 = new GaugeGlass.Glass1();
         GaugeGlass g2 = new GaugeGlass.Glass2();
         GaugeGlass g3 = new GaugeGlass.Glass3();
@@ -175,11 +184,53 @@ public class Watch extends RadialGauge {
 		secondMetricsManager.setNeedleBaseAnchorBinder(needleBase);
 		secondMetricsManager.setNeedleValueAnchorBinder(needleSecondAnchor);
 		secondMetricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicWatchSecond());
+		
+		miniMetricsManager = new GaugeMetricsPath();
+		miniMetricsManager.setRange(0, 24);
+		miniMetricsManager.setPathBinder(pathBinder);
+		//miniMetricsManager.setPathPainter(new MetricsPathDefaultDraw(NanoChromatique.ORANGE.brighter(), new BasicStroke(1.8f)));
+		miniMetricsManager.setPathBinder(new ArcPathShiftBinder(gaugeRadius/6, 0, 360, (int)(gaugeRadius/2.3), 145));
+		
+		AnchorBinder needleMiniBaseAnchor = new AnchorBaseBinder((int)(gaugeRadius/2.3), 145);
+		miniMetricsManager.setNeedleBaseAnchorBinder(needleMiniBaseAnchor);
+		
+		AnchorBinder needleMiniValueAnchor = new AnchorValueBinder(5, Side.SideLeft);
+		miniMetricsManager.setNeedleValueAnchorBinder(needleMiniValueAnchor);
+		miniMetricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicWatchSecond(Color.WHITE));
+		
+		GlyphMetric metric = new GlyphMetric();
+		metric.setValue(0);
+		metric.setGlyphMetricFill( new GlyphFill(Color.WHITE, NanoChromatique.RED.brighter()));
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsLabel("12");
+		metric.setDivergence(-5);		
+		metric.setFont(InputFonts.getPTFNordic(8));
+		miniMetricsManager.addMetric(metric);
+		
+		metric = new GlyphMetric();
+		metric.setValue(6);
+		metric.setGlyphMetricFill( new GlyphFill(Color.WHITE, NanoChromatique.YELLOW.brighter()));
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsLabel("24");
+		metric.setDivergence(-5);		
+		metric.setFont(InputFonts.getPTFNordic(8));
+		miniMetricsManager.addMetric(metric);
+		
+		metric = new GlyphMetric();
+		metric.setValue(12);
+		metric.setGlyphMetricFill( new GlyphFill(Color.GRAY, NanoChromatique.BLUE.brighter()));
+		metric.setStylePosition(StylePosition.Default);
+		metric.setMetricsLabel("18");
+		metric.setDivergence(-5);		
+		metric.setFont(InputFonts.getPTFNordic(8));
+		miniMetricsManager.addMetric(metric);
 
+		registerGaugeMetricsPath(miniMetricsManager);
 		registerGaugeMetricsPath(metricsManager);
 		registerGaugeMetricsPath(hourMetricsManager);
 		registerGaugeMetricsPath(minuteMetricsManager);
 		registerGaugeMetricsPath(secondMetricsManager);
+		
 		
 		createMainMetrics();
 		createMainTicks();
