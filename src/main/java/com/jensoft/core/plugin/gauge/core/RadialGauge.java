@@ -47,7 +47,7 @@ public class RadialGauge {
 	private List<GaugeGlass> glasses;
 
 	/** gauge backgrounds */
-	private List<GaugeBackground> gaugeBackgrounds;
+	private List<GaugeBackground> backgrounds;
 
 	/** gauges metrics paths */
 	private List<GaugeMetricsPath> gaugeMetricsPaths;
@@ -66,7 +66,7 @@ public class RadialGauge {
 		this.radius = radius;
 		this.x = x;
 		this.y = y;
-		gaugeBackgrounds = new ArrayList<GaugeBackground>();
+		backgrounds = new ArrayList<GaugeBackground>();
 		glasses = new ArrayList<GaugeGlass>();
 		gaugeMetricsPaths = new ArrayList<GaugeMetricsPath>();
 		gaugeTextPaths = new ArrayList<GaugeTextPath>();
@@ -161,26 +161,26 @@ public class RadialGauge {
 	 * 
 	 * @return gauge backgrounds
 	 */
-	public List<GaugeBackground> getGaugeBackgrounds() {
-		return gaugeBackgrounds;
+	public List<GaugeBackground> getBackgrounds() {
+		return backgrounds;
 	}
 
 	/**
 	 * set gauge backgrounds
 	 * 
-	 * @param gaugeBackgrounds
+	 * @param backgrounds
 	 */
-	public void setGaugeBackgrounds(List<GaugeBackground> gaugeBackgrounds) {
-		this.gaugeBackgrounds = gaugeBackgrounds;
+	public void setBackgrounds(List<GaugeBackground> backgrounds) {
+		this.backgrounds = backgrounds;
 	}
 
 	/**
 	 * add gauge background
 	 * 
-	 * @param gaugeBackground
+	 * @param background
 	 */
-	public void addGaugeBackground(GaugeBackground gaugeBackground) {
-		this.gaugeBackgrounds.add(gaugeBackground);
+	public void addBackground(GaugeBackground background) {
+		this.backgrounds.add(background);
 	}
 
 	/**
