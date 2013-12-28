@@ -16,6 +16,7 @@ import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
@@ -23,25 +24,35 @@ import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
-import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
+/**
+ * <code>Tachometer</code> base model helps developer to learn gauge modeling.
+ * 
+ * @since1.0
+ * @author sebastien janaud
+ * 
+ */
 public class Tachometer extends RadialGauge {
 
 	/** tacho meter gauge metrics */
 	private GaugeMetricsPath metricsManager;
 
+	/**gauge radius*/
 	private static int gaugeRadius = 90;
+	
+	/**gauge center x in user system coodinate*/
 	private static int centerUserX = 0;
+	
+	/**gauge center y in user system coordinate*/
 	private static int centerUserY = 0;
 
 	public Tachometer() {
 		super(centerUserX, centerUserY, gaugeRadius);
 
-		CiseroEnvelop e1 = new CiseroEnvelop();
-		setEnvelop(e1);
+		GaugeEnvelope cisero = new GaugeEnvelope.Cisero();
+		setEnvelop(cisero);
 
-		
 		GaugeBackground bg = new GaugeBackground.Circular.RadialGradient();
 		addBackground(bg);
 
@@ -49,10 +60,9 @@ public class Tachometer extends RadialGauge {
 		GaugeGlass g5 = new GaugeGlass.Donut2DGlass();
 		GaugeGlass g6 = new GaugeGlass.JenSoftAPILabel();
 
-		addGlass( g5);
+		addGlass(g5);
 
 		createBody();
-
 	}
 
 	public void createBody() {

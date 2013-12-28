@@ -9,7 +9,6 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.plugin.gauge.core.env.EnvelopGaugePainter;
 import com.jensoft.core.window.Window2D;
 
 /**
@@ -41,7 +40,7 @@ public class RadialGauge {
 	private Window2D window2D;
 
 	/** gauge envelop */
-	private EnvelopGaugePainter envelop;
+	private GaugeEnvelope envelop;
 
 	/** gauge glass effects */
 	private List<GaugeGlass> glasses;
@@ -261,7 +260,7 @@ public class RadialGauge {
 	 * 
 	 * @return gauge envelop
 	 */
-	public EnvelopGaugePainter getEnvelop() {
+	public GaugeEnvelope getEnvelop() {
 		return envelop;
 	}
 
@@ -270,7 +269,7 @@ public class RadialGauge {
 	 * 
 	 * @param envelop
 	 */
-	public void setEnvelop(EnvelopGaugePainter envelop) {
+	public void setEnvelop(GaugeEnvelope envelop) {
 		this.envelop = envelop;
 	}
 

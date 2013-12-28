@@ -16,11 +16,11 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
-import com.jensoft.core.plugin.gauge.core.env.CiseroEnvelop;
 import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
 
 /**
@@ -53,7 +53,7 @@ public class GaugeCompass extends RadialGauge {
 	public GaugeCompass() {
 		super(centerUserX, centerUserY, gaugeRadius);
 
-		CiseroEnvelop cisero = new CiseroEnvelop();
+		GaugeEnvelope cisero = new GaugeEnvelope.Cisero();
 		setEnvelop(cisero);
 
 		

@@ -1,5 +1,5 @@
 /**
- * Gauge tachometer incubator
+ * JenSoft API Tachometer Gauge
  * 
  * @author sebastien janaud
  * @since 1.0

@@ -1,5 +1,5 @@
 /**
- * Gauge incubator
+ * JenSoft API Compass Gauge
  * 
  * @author sebastien janaud
  * @since 1.0
