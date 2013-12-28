@@ -106,19 +106,19 @@ public class ViewFrameUI extends JFrame {
 		tabSet.addComandTab(viewSourceTab, viewSource);
 		viewSource.loadSource(view.getClass());
 		
-		DemoTab x2dSourceTab = new DemoTab("X2D");
-		x2dSourceTab.setTabColor(JennyPalette.JENNY6);
-		ImageIcon icon3 = ImageResource.getInstance().createImageIcon("source.png", "");
-		viewSourceTab.setTabIcon(icon3);
-		X2DSourcePane x2dSourcePane = new X2DSourcePane();
-		tabSet.addComandTab(x2dSourceTab, x2dSourcePane);		
-		X2D x2d = new X2D();
-		try {
-			x2d.registerView(view);
-		} catch (Throwable e) {
-			e.printStackTrace();
-		}
-		x2dSourcePane.loadX2DSource(x2d);
+//		DemoTab x2dSourceTab = new DemoTab("X2D");
+//		x2dSourceTab.setTabColor(JennyPalette.JENNY6);
+//		ImageIcon icon3 = ImageResource.getInstance().createImageIcon("source.png", "");
+//		viewSourceTab.setTabIcon(icon3);
+//		X2DSourcePane x2dSourcePane = new X2DSourcePane();
+//		tabSet.addComandTab(x2dSourceTab, x2dSourcePane);		
+//		X2D x2d = new X2D();
+//		try {
+//			x2d.registerView(view);
+//		} catch (Throwable e) {
+//			e.printStackTrace();
+//		}
+//		x2dSourcePane.loadX2DSource(x2d);
 		
 		
 

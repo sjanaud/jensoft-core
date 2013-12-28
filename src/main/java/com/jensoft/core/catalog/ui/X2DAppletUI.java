@@ -111,18 +111,18 @@ public abstract class X2DAppletUI extends JApplet {
 		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
 		uisourceTab.setTabIcon(icon2);
 
-		X2D x2d = null;
-		try {
-			InputStream inputStream = getClass().getResourceAsStream(getX2DResourcePath());
-			x2d = new X2D();
-			x2d.registerX2D(inputStream);
-		} catch (X2DException e) {
-			e.printStackTrace();
-		}
-		View2D view2d = x2d.getView2D();
-
-		tabSet.addComandTab(demoTab, view2d);
-		final X2D fx2d = x2d;
+//		X2D x2d = null;
+//		try {
+//			InputStream inputStream = getClass().getResourceAsStream(getX2DResourcePath());
+//			x2d = new X2D();
+//			x2d.registerX2D(inputStream);
+//		} catch (X2DException e) {
+//			e.printStackTrace();
+//		}
+//		View2D view2d = x2d.getView2D();
+//
+//		tabSet.addComandTab(demoTab, view2d);
+//		final X2D fx2d = x2d;
 
 		JavaSourcePane uiSourcePane = new JavaSourcePane();
 		tabSet.addComandTab(uisourceTab, uiSourcePane);
@@ -131,7 +131,7 @@ public abstract class X2DAppletUI extends JApplet {
 		
 
 		uiSourcePane.loadSource(this.getClass());
-		x2dSourcePane.loadX2DSource(fx2d);
+		//x2dSourcePane.loadX2DSource(fx2d);
 
 		demoTab.setSelected(true);
 
