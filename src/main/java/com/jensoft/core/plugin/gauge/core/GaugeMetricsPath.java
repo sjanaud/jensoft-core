@@ -137,6 +137,7 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	 * @param pathBinder
 	 */
 	public void setPathBinder(PathBinder pathBinder) {
+		pathBinder.setMetricsPath(this);
 		this.pathBinder = pathBinder;
 	}
 

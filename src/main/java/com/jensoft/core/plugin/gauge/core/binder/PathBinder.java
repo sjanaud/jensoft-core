@@ -5,8 +5,10 @@
  */
 package com.jensoft.core.plugin.gauge.core.binder;
 
+import java.awt.Graphics2D;
 import java.awt.Shape;
 
+import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 /**
@@ -19,6 +21,23 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  */
 public abstract class PathBinder {
 
+	private GaugeMetricsPath metricsPath;
+
+	/**
+	 * @return the metricsPath
+	 */
+	public GaugeMetricsPath getMetricsPath() {
+		return metricsPath;
+	}
+
+	/**
+	 * @param metricsPath
+	 *            the metricsPath to set
+	 */
+	public void setMetricsPath(GaugeMetricsPath metricsPath) {
+		this.metricsPath = metricsPath;
+	}
+
 	/**
 	 * Process to force calculate shape at runtime in device coordinate system.
 	 * because projected center is required.
@@ -28,5 +47,8 @@ public abstract class PathBinder {
 	 * @return the given geometry shape
 	 */
 	public abstract Shape bindPath(RadialGauge gauge);
+
+	public void debug(Graphics2D g2d, RadialGauge gauge) {
+	};
 
 }

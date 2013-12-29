@@ -145,6 +145,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 				path.append(path.getPathBinder().bindPath(gauge));
 				path.createPartBuffer(g2d);
 			}
+			path.getPathBinder().debug(g2d, gauge);
 			paintPart(g2d, path.getPartBuffer());
 		}
 		

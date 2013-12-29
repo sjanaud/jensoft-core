@@ -5,6 +5,7 @@
  */
 package com.jensoft.core.plugin.gauge.core.binder.path;
 
+import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
 
@@ -18,6 +19,10 @@ import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
  * @since 1.0
  * @author sebastien janaud
  * 
+ */
+/**
+ * @author sebastien
+ *
  */
 public class ArcPathBinder extends PathBinder {
 
@@ -112,4 +117,15 @@ public class ArcPathBinder extends PathBinder {
 		Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegree, extendsAngleDegree, Arc2D.OPEN);
 		return arc;
 	}
+
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.gauge.core.binder.PathBinder#debug(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 */
+	@Override
+	public void debug(Graphics2D g2d,RadialGauge gauge) {
+		//use path painter instead
+	}
+	
+	
 }
