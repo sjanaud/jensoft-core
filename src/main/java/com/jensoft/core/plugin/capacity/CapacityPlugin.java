@@ -33,6 +33,10 @@ import com.jensoft.core.window.WindowPart;
  * An exception is thrown if a unit is exceeded total capacity count,
  * </p>
  * 
+ * <p>
+ * capacity do not use window projection. it is only design as component.
+ * </p>
+ * 
  * @since 1.0
  * @author sebastien janaud
  * 
