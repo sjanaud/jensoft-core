@@ -1,4 +1,4 @@
-package com.jensoft.core.plugin.gauge.arcautobinder;
+package com.jensoft.core.plugin.gauge.core.binder.path.test;
 
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
@@ -7,19 +7,18 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.path.PathArcAutoBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder.Direction;
-import com.jensoft.core.plugin.gauge.core.binder.path.PathQuadAutoBinder;
 import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
 import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
-public class GaugeQuadraticAutoBinderAnimatorDemo extends View2D {
+public class GaugeArcAutoBinderAnimatorDemo extends View2D {
 
 	private class GaugeArcAutoBinder extends RadialGauge {
 		public GaugeArcAutoBinder() {
 			super(0, 0, 90);
 			GaugeMetricsPath path = new GaugeMetricsPath();
-			PathAutoBinder autoArcBinder = new PathQuadAutoBinder(120, 140, 0);
+			PathAutoBinder autoArcBinder = new PathArcAutoBinder(120, 140, 0);
 			path.setPathBinder(autoArcBinder);
 			registerGaugeMetricsPath(path);
 
@@ -49,21 +48,19 @@ public class GaugeQuadraticAutoBinderAnimatorDemo extends View2D {
 				while (true) {
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							PathQuadAutoBinder quadBinder = new PathQuadAutoBinder(radius, 200, polarAngle);
-							quadBinder.setControlOffsetRadius(100);
-							path.setPathBinder(quadBinder);
+							PathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle);
+							path.setPathBinder(autoArcBinder);
 							repaintView();
-							Thread.sleep(40);
+							Thread.sleep(50);
 						}
 
 					}
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							PathQuadAutoBinder quadBinder = new PathQuadAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
-							quadBinder.setControlOffsetRadius(100);
-							path.setPathBinder(quadBinder);
+							PathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
+							path.setPathBinder(autoArcBinder);
 							repaintView();
-							Thread.sleep(40);
+							Thread.sleep(50);
 						}
 
 					}
@@ -77,10 +74,10 @@ public class GaugeQuadraticAutoBinderAnimatorDemo extends View2D {
 	}
 
 	public static void main(String[] args) {
-		final ViewFrameUI demoFrame = new ViewFrameUI(new GaugeQuadraticAutoBinderAnimatorDemo());
+		final ViewFrameUI demoFrame = new ViewFrameUI(new GaugeArcAutoBinderAnimatorDemo());
 	}
 
-	public GaugeQuadraticAutoBinderAnimatorDemo() {
+	public GaugeArcAutoBinderAnimatorDemo() {
 		super(20);
 
 		Window2D w2d = new Window2D.Linear.Identity();

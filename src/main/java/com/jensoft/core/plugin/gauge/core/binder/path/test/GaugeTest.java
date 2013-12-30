@@ -1,4 +1,4 @@
-package com.jensoft.core.plugin.gauge.arcautobinder;
+package com.jensoft.core.plugin.gauge.core.binder.path.test;
 
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
