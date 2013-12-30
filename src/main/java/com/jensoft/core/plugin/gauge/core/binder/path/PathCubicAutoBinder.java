@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
 package com.jensoft.core.plugin.gauge.core.binder.path;
 
 import java.awt.Graphics2D;
@@ -10,6 +15,18 @@ import com.jensoft.core.palette.Alpha;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
+/**
+ * <code>PathCubicAutoBinder</code> binds automatically a cubic curve path
+ * segment that intersect the gauge circle model.
+ * 
+ * <p>
+ * clockwise or anti clockwise direction.
+ * </p>
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ * 
+ */
 public class PathCubicAutoBinder extends AbstractPathAutoBinder {
 
 	/** the cubic curve which is bind by this binder */
@@ -22,7 +39,7 @@ public class PathCubicAutoBinder extends AbstractPathAutoBinder {
 	private double controlOffsetAngleDegree = 10;
 
 	/**
-	 * create auto path arc binder according to the given parameters
+	 * create auto path cubic curve binder according to the given parameters
 	 * 
 	 * @param radius
 	 * @param polarRadius
@@ -33,7 +50,7 @@ public class PathCubicAutoBinder extends AbstractPathAutoBinder {
 	}
 
 	/**
-	 * create auto path arc binder according to the given parameters
+	 * create auto path cubic curve binder according to the given parameters
 	 * 
 	 * @param radius
 	 * @param polarRadius
@@ -94,20 +111,20 @@ public class PathCubicAutoBinder extends AbstractPathAutoBinder {
 	}
 
 	/**
-	 * create quadratic segment from start to end point
+	 * create cubic curve segment from start to end point
 	 * 
-	 * @return quadratic segment
+	 * @return cubic curve segment
 	 */
-	private CubicCurve2D createQuadStart2End() {
+	private CubicCurve2D createCubicStart2End() {
 		return new CubicCurve2D.Double(intersectionPointStart.getX(), intersectionPointStart.getY(), getControlPoint1().getX(), getControlPoint1().getY(), getControlPoint2().getX(), getControlPoint2().getY(), intersectionPointEnd.getX(), intersectionPointEnd.getY());
 	}
 
 	/**
-	 * create quadratic segment from end to start point
+	 * create cubic curve segment from end to start point
 	 * 
-	 * @return quadratic segment
+	 * @return cubic curve segment
 	 */
-	private CubicCurve2D createQuadEnd2Start() {
+	private CubicCurve2D createCubicEnd2Start() {
 		return new CubicCurve2D.Double(intersectionPointEnd.getX(), intersectionPointEnd.getY(), getControlPoint1().getX(), getControlPoint1().getY(), getControlPoint2().getX(), getControlPoint2().getY(), intersectionPointStart.getX(), intersectionPointStart.getY());
 	}
 
@@ -124,15 +141,15 @@ public class PathCubicAutoBinder extends AbstractPathAutoBinder {
 			return null;
 		if (polarDegree >= 0 && polarDegree < 180) {
 			if (direction == Direction.AntiClockwise) {
-				intersectionCubicCurve = createQuadStart2End();
+				intersectionCubicCurve = createCubicStart2End();
 			} else if (direction == Direction.Clockwise) {
-				intersectionCubicCurve = createQuadEnd2Start();
+				intersectionCubicCurve = createCubicEnd2Start();
 			}
 		} else if (polarDegree >= 180 && polarDegree < 360) {
 			if (direction == Direction.AntiClockwise) {
-				intersectionCubicCurve = createQuadEnd2Start();
+				intersectionCubicCurve = createCubicEnd2Start();
 			} else if (direction == Direction.Clockwise) {
-				intersectionCubicCurve = createQuadStart2End();
+				intersectionCubicCurve = createCubicStart2End();
 			}
 
 		}

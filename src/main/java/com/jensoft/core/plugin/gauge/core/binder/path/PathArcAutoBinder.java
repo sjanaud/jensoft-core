@@ -1,8 +1,25 @@
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
 package com.jensoft.core.plugin.gauge.core.binder.path;
 
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
 
+/**
+ * <code>PathAutoBinder</code> binds automatically an arc path segment that intersect
+ * the gauge circle model.
+ 
+ * <p>
+ * clockwise or anti clockwise direction.
+ * </p>
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ * 
+ */
 public class PathArcAutoBinder extends AbstractPathAutoBinder {
 
 	/** the arc which is bind by this binder */
