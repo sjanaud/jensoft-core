@@ -385,6 +385,8 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 *            the shape to set for this geometry
 		 */
 		public ShapeGeometry(Shape shape) {
+			if(shape == null)
+				throw new IllegalArgumentException("shape is null, shape should be supplied.");
 			this.shape = shape;
 			setType(EntryType.SEG_SHAPE);
 		}
@@ -485,8 +487,10 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 */
 		@Override
 		protected void validEntry(GeneralPath path) {
+			if(shape == null)
+				throw new IllegalArgumentException("shape should be supplied.");
 			if (getProjectionNature() == ProjectionNature.DEVICE) {
-				//path.append(shape, true);
+	//			path.append(shape, true);
 				PathIterator pi = shape.getPathIterator(new AffineTransform());
 				while (pi.isDone() == false) {
 					validCurentSegment(pi, path, getProjectionNature());
@@ -776,7 +780,6 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		GeneralPath path = new GeneralPath();
 		// TODO check is first segment is move to
 		for (SegmentEntry entry : entries) {
-			//System.out.println("process entry : "+entry);
 			entry.validEntry(path);
 		}
 		return path;
