@@ -271,23 +271,6 @@ public class GaugeOil2 extends RadialGauge {
 
 	private void createPath1() {
 		
-
-
-// or something like that with linear approach
-//		metricsPath1.setPathBinder(new PathBinder() {
-//			@Override
-//			public Arc2D bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int radius = getRadius();
-//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius - 2 * radius - radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, -25, 50, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
-
-		//or see impl	GaugeArcPathShiftBinder with polar angle/radius approach
-
-
 		metricsPath1 = new GaugeMetricsPath();
 		metricsPath1.setAutoReverseGlyph(true);
 		metricsPath1.setMin(0);
@@ -295,26 +278,7 @@ public class GaugeOil2 extends RadialGauge {
 		metricsPath1.setCurrentValue(47);
 		//metricsPath1.setDebugPath(true);
 		metricsPath1.setPathBinder(new PathArcManualBinder(2*gaugeRadius - gaugeRadius/4, -70, 50, 2*gaugeRadius, 135));
-//		metricsPath1.setPathBinder(new PathBinder() {
-//			@Override
-//			public Arc2D bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int radius = getRadius();
-//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius - 2 * radius - radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, -25, 50, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
-		
-//		metricsPath1.setNeedleBaseAnchorBinder(new AnchorBinder() {
-//			@Override
-//			public Point2D bindAnchor(RadialGauge gauge) {
-//				int radius = getRadius();
-//				double anchorX = getWindow2D().userToPixel(new Point2D.Double(getX(), 0)).getX() - radius + radius / 4;// (int)getGauge().getX();
-//				double anchorY = getWindow2D().userToPixel(new Point2D.Double(0,getY())).getY();// (int)getGauge().getY();
-//				return new Point2D.Double(anchorX, anchorY);
-//			}
-//		});
+
 		metricsPath1.setNeedleBaseAnchorBinder(new AnchorBaseBinder(getRadius()-20, 135));
 		
 		metricsPath1.setNeedleValueAnchorBinder(new AnchorBinder() {
@@ -391,28 +355,6 @@ public class GaugeOil2 extends RadialGauge {
 		metricsPath2.setCurrentValue(80);
 		
 		metricsPath2.setPathBinder(new PathArcManualBinder(2*gaugeRadius - gaugeRadius/4, 160, -50, 2*gaugeRadius, 315));
-		
-//		metricsPath2.setPathBinder(new PathBinder() {
-//
-//			@Override
-//			public Arc2D bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int radius = getRadius();
-//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius + 2 * radius + radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, 205, -50, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
-		
-//		metricsPath2.setNeedleBaseAnchorBinder(new AnchorBinder() {
-//			@Override
-//			public Point2D bindAnchor(RadialGauge gauge) {
-//				int radius = getRadius();
-//				double anchorX = getWindow2D().userToPixel(new Point2D.Double(getX(), 0)).getX() + radius - radius / 4;
-//				double anchorY = getWindow2D().userToPixel(new Point2D.Double(0, getY())).getY();
-//				return new Point2D.Double(anchorX, anchorY);
-//			}
-//		});
 		metricsPath2.setNeedleBaseAnchorBinder(new AnchorBaseBinder(getRadius()-20, -45));
 		
 		metricsPath2.setNeedleValueAnchorBinder(new AnchorBinder() {

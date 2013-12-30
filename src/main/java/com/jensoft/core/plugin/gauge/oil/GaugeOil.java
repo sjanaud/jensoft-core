@@ -271,20 +271,6 @@ public class GaugeOil extends RadialGauge {
 		
 
 
-// or something like that with linear approach
-//		metricsPath1.setPathBinder(new PathBinder() {
-//			@Override
-//			public Arc2D bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int radius = getRadius();
-//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius - 2 * radius - radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, -25, 50, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
-
-		//or see impl	GaugeArcPathShiftBinder with polar angle/radius approach
-
 
 		metricsPath1 = new GaugeMetricsPath();
 		metricsPath1.setMin(0);
@@ -292,16 +278,7 @@ public class GaugeOil extends RadialGauge {
 		metricsPath1.setCurrentValue(47);
 		//metricsPath1.setDebugPath(true);
 		metricsPath1.setPathBinder(new PathArcManualBinder(2*gaugeRadius - gaugeRadius/4, -25, 50, 2*gaugeRadius, 180));
-//		metricsPath1.setPathBinder(new PathBinder() {
-//			@Override
-//			public Arc2D bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int radius = getRadius();
-//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius - 2 * radius - radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, -25, 50, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
+
 		
 		metricsPath1.setNeedleBaseAnchorBinder(new AnchorBinder() {
 			@Override
@@ -381,17 +358,7 @@ public class GaugeOil extends RadialGauge {
 		
 		metricsPath2.setPathBinder(new PathArcManualBinder(2*gaugeRadius - gaugeRadius/4, 205, -50, 2*gaugeRadius, 0));
 		
-//		metricsPath2.setPathBinder(new PathBinder() {
-//
-//			@Override
-//			public Arc2D bindPath(RadialGauge gauge) {
-//				double centerX = getCenterDevice().getX();
-//				double centerY = getCenterDevice().getY();
-//				int radius = getRadius();
-//				Arc2D arc = new Arc2D.Double(centerX - 2 * radius + 2 * radius + radius / 4, centerY - 2 * radius, 4 * radius, 4 * radius, 205, -50, Arc2D.OPEN);
-//				return arc;
-//			}
-//		});
+
 		
 		metricsPath2.setNeedleBaseAnchorBinder(new AnchorBinder() {
 			@Override
