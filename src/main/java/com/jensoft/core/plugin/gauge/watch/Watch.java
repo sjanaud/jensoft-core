@@ -83,14 +83,12 @@ public class Watch extends RadialGauge {
 	}
 
 	private void createWatch() {
-
 		
 		PathBinder pathBinder = new PathArcManualBinder(gaugeRadius - 10, 90, -360);
 		AnchorBinder needleBase = new AnchorBaseBinder();
 		AnchorBinder needleHourAnchor = new AnchorValueBinder(50, Side.SideRight);
 		AnchorBinder needleMinuteAnchor = new AnchorValueBinder(20, Side.SideRight);
 		AnchorBinder needleSecondAnchor = new AnchorValueBinder(20, Side.SideRight);
-
 
 		hourMetricsManager = new GaugeMetricsPath();
 		hourMetricsManager.setRange(0, 12);
