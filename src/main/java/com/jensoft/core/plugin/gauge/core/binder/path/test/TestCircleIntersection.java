@@ -1,4 +1,4 @@
-package com.jensoft.core.plugin.gauge.arcautobinder;
+package com.jensoft.core.plugin.gauge.core.binder.path.test;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
