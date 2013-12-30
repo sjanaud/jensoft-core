@@ -5,19 +5,20 @@ import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.path.PathArcAutoBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.PathArcAutoBinder.Direction;
+import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder.Direction;
 import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
 import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
-public class GaugeArcAutoBinder_0Demo extends View2D {
+public class GaugeArcAutoBinderAnimatorDemo extends View2D {
 
 	private class GaugeArcAutoBinder extends RadialGauge {
 		public GaugeArcAutoBinder() {
 			super(0, 0, 90);
 			GaugeMetricsPath path = new GaugeMetricsPath();
-			PathArcAutoBinder autoArcBinder = new PathArcAutoBinder(120, 140, 0);
+			PathAutoBinder autoArcBinder = new PathArcAutoBinder(120, 140, 0);
 			path.setPathBinder(autoArcBinder);
 			registerGaugeMetricsPath(path);
 
@@ -47,8 +48,7 @@ public class GaugeArcAutoBinder_0Demo extends View2D {
 				while (true) {
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							PathArcAutoBinder autoArcBinder = new PathArcAutoBinder(
-									radius, 200, polarAngle);
+							PathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle);
 							path.setPathBinder(autoArcBinder);
 							repaintView();
 							Thread.sleep(50);
@@ -57,9 +57,7 @@ public class GaugeArcAutoBinder_0Demo extends View2D {
 					}
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							PathArcAutoBinder autoArcBinder = new PathArcAutoBinder(
-									radius, 200, polarAngle,
-									Direction.AntiClockwise);
+							PathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
 							path.setPathBinder(autoArcBinder);
 							repaintView();
 							Thread.sleep(50);
@@ -76,10 +74,10 @@ public class GaugeArcAutoBinder_0Demo extends View2D {
 	}
 
 	public static void main(String[] args) {
-		final ViewFrameUI demoFrame = new ViewFrameUI(new GaugeArcAutoBinder_0Demo());
+		final ViewFrameUI demoFrame = new ViewFrameUI(new GaugeArcAutoBinderAnimatorDemo());
 	}
 
-	public GaugeArcAutoBinder_0Demo() {
+	public GaugeArcAutoBinderAnimatorDemo() {
 		super(20);
 
 		Window2D w2d = new Window2D.Linear.Identity();

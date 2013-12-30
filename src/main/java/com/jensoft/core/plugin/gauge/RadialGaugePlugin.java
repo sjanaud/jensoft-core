@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.gauge;
 
 import java.awt.Graphics2D;
+import java.awt.Shape;
 
 import com.jensoft.core.graphics.AlphaInterpolation;
 import com.jensoft.core.graphics.Antialiasing;
@@ -107,6 +108,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	 * @param buffer
 	 */
 	private void paintPart(Graphics2D g2d,GaugePartBuffer buffer){
+		if(buffer != null && buffer.getBuffer() != null)
 		g2d.drawImage(buffer.getBuffer(),(int)buffer.getX(),(int)buffer.getY(),(int)buffer.getWidth(),(int)buffer.getHeight(),null);
 	}
 
@@ -142,8 +144,11 @@ public class RadialGaugePlugin extends AbstractPlugin {
 			if(path.getPartBuffer() == null){
 				path.setWindow2d(getWindow2D());
 				path.resetPath();
-				path.append(path.getPathBinder().bindPath(gauge));
-				path.createPartBuffer(g2d);
+				Shape s = path.getPathBinder().bindPath(gauge);
+				if(s != null){
+					path.append(path.getPathBinder().bindPath(gauge));
+					path.createPartBuffer(g2d);	
+				}
 			}
 			path.getPathBinder().debug(g2d, gauge);
 			paintPart(g2d, path.getPartBuffer());
