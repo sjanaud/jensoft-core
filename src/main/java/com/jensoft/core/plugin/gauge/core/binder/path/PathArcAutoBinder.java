@@ -9,8 +9,10 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
+import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
+import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.palette.InputFonts;
@@ -312,19 +314,27 @@ public class PathArcAutoBinder extends PathBinder {
 
 		solve();
 		
+		
+		
 		g2d.setColor(NanoChromatique.BLACK);
 		g2d.draw(arc0);
 		
 		g2d.setColor(NanoChromatique.YELLOW.brighter());
 		g2d.draw(arc1);
-
 		
-		
+		Color color=null;
 		if(direction == Direction.Clockwise)
-			drawPath(g2d, intersectionArc, NanoChromatique.BLUE.brighter());
+			color = NanoChromatique.BLUE.brighter();
 		else
-			drawPath(g2d, intersectionArc, NanoChromatique.RED);
-		// return arc;
+			color = NanoChromatique.RED.brighter();
+		
+		if(intersectionPointStart == null  || intersectionPointEnd == null)
+			return;
+		
+		g2d.setColor(color);
+		g2d.fill(new Ellipse2D.Double(intersectionPointStart.getX()-3, intersectionPointStart.getY()-3, 6, 6));
+		g2d.fill(new Ellipse2D.Double(intersectionPointEnd.getX()-3, intersectionPointEnd.getY()-3, 6, 6));
+		drawPath(g2d, intersectionArc, color);
 		
 		g2d.setColor(NanoChromatique.YELLOW.brighter());
 		g2d.setFont(InputFonts.getSansation(14));
