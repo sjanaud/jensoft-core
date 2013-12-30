@@ -74,43 +74,13 @@ public class Tachometer extends RadialGauge {
 		metricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
 		metricsManager.setPathBinder(new PathArcManualBinder(gaugeRadius - 10, 210, -240));
 
-		// metricsManager.setPathBinder(new PathBinder() {
-		// @Override
-		// public Arc2D bindPath(RadialGauge gauge) {
-		// double centerX = getCenterDevice().getX();
-		// double centerY = getCenterDevice().getY();
-		// int radius = getRadius() - 10;
-		// int startAngleDegreee = 210;
-		// int endAngleDegree = -240;
-		// Arc2D arc = new Arc2D.Double(centerX - radius, centerY - radius, 2 *
-		// radius, 2 * radius, startAngleDegreee, endAngleDegree -
-		// startAngleDegreee, Arc2D.OPEN);
-		// return arc;
-		// }
-		// });
 
 		AnchorBinder baseNeedleBinder = new AnchorBaseBinder();
 		AnchorValueBinder valueNeedleBinder = new AnchorValueBinder(40, Side.SideRight);
 		metricsManager.setNeedleBaseAnchorBinder(baseNeedleBinder);
 		metricsManager.setNeedleValueAnchorBinder(valueNeedleBinder);
 
-		// or create anonymous binder, idempotent with base and value binders
-		// metricsManager.setNeedleBaseAnchorBinder(new AnchorBinder() {
-		// @Override
-		// public Point2D bindAnchor(RadialGauge gauge) {
-		// return getCenterDevice();
-		// }
-		// });
-		//
-		// metricsManager.setNeedleValueAnchorBinder(new AnchorBinder() {
-		// @Override
-		// public Point2D bindAnchor(RadialGauge gauge) {
-		// Point2D anchorValue =
-		// metricsManager.getRadialPoint(metricsManager.getCurrentValue(), 40,
-		// Side.SideRight);
-		// return anchorValue;
-		// }
-		// });
+		
 
 		registerGaugeMetricsPath(metricsManager);
 
