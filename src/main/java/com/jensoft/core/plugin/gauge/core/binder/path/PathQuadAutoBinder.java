@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
 package com.jensoft.core.plugin.gauge.core.binder.path;
 
 import java.awt.Graphics2D;
@@ -10,6 +15,19 @@ import com.jensoft.core.palette.Alpha;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
+
+/**
+ * <code>PathQuadAutoBinder</code> binds automatically a quadratic path segment that intersect
+ * the gauge circle model.
+ 
+ * <p>
+ * clockwise or anti clockwise direction.
+ * </p>
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ * 
+ */
 public class PathQuadAutoBinder extends AbstractPathAutoBinder {
 
 	/** the quadratic curve which is bind by this binder */
@@ -19,7 +37,7 @@ public class PathQuadAutoBinder extends AbstractPathAutoBinder {
 	private double controlOffsetRadius = 10;
 
 	/**
-	 * create auto path arc binder according to the given parameters
+	 * create auto path quadratic binder according to the given parameters
 	 * 
 	 * @param radius
 	 * @param polarRadius
@@ -30,7 +48,7 @@ public class PathQuadAutoBinder extends AbstractPathAutoBinder {
 	}
 
 	/**
-	 * create auto path arc binder according to the given parameters
+	 * create auto path quadratic binder according to the given parameters
 	 * 
 	 * @param radius
 	 * @param polarRadius

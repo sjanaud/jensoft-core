@@ -12,8 +12,9 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 
 /**
- * <code>ArcPathShiftBinder</code> binds a centered arc which is define by
- * radius, start angle degree end extend angle degree.
+ * <code>PathArcManualBinder</code> binds a an arc which is define by radius,
+ * start angle degree end extend angle degree and possibly shifted from gauge
+ * center with shift radius and shift angle degree.
  * 
  * @since 1.0
  * @author sebastien janaud
