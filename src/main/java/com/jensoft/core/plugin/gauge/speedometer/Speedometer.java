@@ -24,7 +24,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.PathArcManualBinder;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
 /**
@@ -71,7 +71,7 @@ public class Speedometer extends RadialGauge {
 		metricsManager.setCurrentValue(186);
 
 		metricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
-		metricsManager.setPathBinder(new ArcPathBinder(gaugeRadius - 10, 260, -340));
+		metricsManager.setPathBinder(new PathArcManualBinder(gaugeRadius - 10, 260, -340));
 
 		// metricsManager.setPathBinder(new PathBinder() {
 		// @Override

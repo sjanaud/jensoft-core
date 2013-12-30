@@ -5,8 +5,8 @@ import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.path.PathArcAutoBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder.Direction;
+import com.jensoft.core.plugin.gauge.core.binder.path.AbstractPathAutoBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.AbstractPathAutoBinder.Direction;
 import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
 import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.view.View2D;
@@ -18,7 +18,7 @@ public class GaugeArcAutoBinderAnimatorDemo extends View2D {
 		public GaugeArcAutoBinder() {
 			super(0, 0, 90);
 			GaugeMetricsPath path = new GaugeMetricsPath();
-			PathAutoBinder autoArcBinder = new PathArcAutoBinder(120, 140, 0);
+			AbstractPathAutoBinder autoArcBinder = new PathArcAutoBinder(120, 140, 0);
 			path.setPathBinder(autoArcBinder);
 			registerGaugeMetricsPath(path);
 
@@ -48,7 +48,7 @@ public class GaugeArcAutoBinderAnimatorDemo extends View2D {
 				while (true) {
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							PathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle);
+							AbstractPathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle);
 							path.setPathBinder(autoArcBinder);
 							repaintView();
 							Thread.sleep(50);
@@ -57,7 +57,7 @@ public class GaugeArcAutoBinderAnimatorDemo extends View2D {
 					}
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							PathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
+							AbstractPathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
 							path.setPathBinder(autoArcBinder);
 							repaintView();
 							Thread.sleep(50);

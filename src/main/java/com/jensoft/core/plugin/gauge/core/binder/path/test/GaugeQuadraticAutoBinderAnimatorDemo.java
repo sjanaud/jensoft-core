@@ -5,8 +5,8 @@ import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.path.PathArcAutoBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder.Direction;
+import com.jensoft.core.plugin.gauge.core.binder.path.AbstractPathAutoBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.AbstractPathAutoBinder.Direction;
 import com.jensoft.core.plugin.gauge.core.binder.path.PathQuadAutoBinder;
 import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
 import com.jensoft.core.plugin.translate.TranslatePlugin;
@@ -19,7 +19,7 @@ public class GaugeQuadraticAutoBinderAnimatorDemo extends View2D {
 		public GaugeArcAutoBinder() {
 			super(0, 0, 90);
 			GaugeMetricsPath path = new GaugeMetricsPath();
-			PathAutoBinder autoArcBinder = new PathQuadAutoBinder(120, 140, 0);
+			AbstractPathAutoBinder autoArcBinder = new PathQuadAutoBinder(120, 140, 0);
 			path.setPathBinder(autoArcBinder);
 			registerGaugeMetricsPath(path);
 

@@ -3,7 +3,7 @@ package com.jensoft.core.plugin.gauge.core.binder.path;
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
 
-public class PathArcAutoBinder extends PathAutoBinder {
+public class PathArcAutoBinder extends AbstractPathAutoBinder {
 
 	/** the arc which is bind by this binder */
 	private Arc2D intersectionArc;

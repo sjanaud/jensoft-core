@@ -3,7 +3,7 @@ package com.jensoft.core.plugin.gauge.core.binder.path.test;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.path.PathArcAutoBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.AbstractPathAutoBinder;
 
 public class GaugeTest extends RadialGauge {
 
@@ -18,7 +18,7 @@ public class GaugeTest extends RadialGauge {
 		//PathAutoArcBinder autoArcBinder = new PathAutoArcBinder(120, 140, 0);
 		
 		//path on 180°
-		PathAutoBinder autoArcBinder = new PathArcAutoBinder(60, 60, 180);
+		AbstractPathAutoBinder autoArcBinder = new PathArcAutoBinder(60, 60, 180);
 		
 		//quart 1 : 0 à 90
 		//PathAutoArcBinder autoArcBinder = new PathAutoArcBinder(120, 140, 35);

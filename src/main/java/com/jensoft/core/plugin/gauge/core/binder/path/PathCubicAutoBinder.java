@@ -10,7 +10,7 @@ import com.jensoft.core.palette.Alpha;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
-public class PathCubicAutoBinder extends PathAutoBinder {
+public class PathCubicAutoBinder extends AbstractPathAutoBinder {
 
 	/** the cubic curve which is bind by this binder */
 	private CubicCurve2D intersectionCubicCurve;

@@ -48,7 +48,12 @@ public abstract class PathBinder {
 	 */
 	public abstract Shape bindPath(RadialGauge gauge);
 
-	public void debug(Graphics2D g2d, RadialGauge gauge) {
-	};
+	/**
+	 * debug paint path binder
+	 * @param g2d
+	 * @param gauge
+	 */
+	public void debug(Graphics2D g2d, RadialGauge gauge) {};
+	
 
 }
