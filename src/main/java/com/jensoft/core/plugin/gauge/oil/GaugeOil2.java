@@ -33,7 +33,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathShiftBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.PathArcManualBinder;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicPainter;
 
 /**
@@ -294,7 +294,7 @@ public class GaugeOil2 extends RadialGauge {
 		metricsPath1.setMax(120);
 		metricsPath1.setCurrentValue(47);
 		//metricsPath1.setDebugPath(true);
-		metricsPath1.setPathBinder(new ArcPathShiftBinder(2*gaugeRadius - gaugeRadius/4, -70, 50, 2*gaugeRadius, 135));
+		metricsPath1.setPathBinder(new PathArcManualBinder(2*gaugeRadius - gaugeRadius/4, -70, 50, 2*gaugeRadius, 135));
 //		metricsPath1.setPathBinder(new PathBinder() {
 //			@Override
 //			public Arc2D bindPath(RadialGauge gauge) {
@@ -390,7 +390,7 @@ public class GaugeOil2 extends RadialGauge {
 		metricsPath2.setMax(120);
 		metricsPath2.setCurrentValue(80);
 		
-		metricsPath2.setPathBinder(new ArcPathShiftBinder(2*gaugeRadius - gaugeRadius/4, 160, -50, 2*gaugeRadius, 315));
+		metricsPath2.setPathBinder(new PathArcManualBinder(2*gaugeRadius - gaugeRadius/4, 160, -50, 2*gaugeRadius, 315));
 		
 //		metricsPath2.setPathBinder(new PathBinder() {
 //

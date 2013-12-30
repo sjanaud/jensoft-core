@@ -29,8 +29,7 @@ import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorBaseBinder;
 import com.jensoft.core.plugin.gauge.core.binder.anchor.AnchorValueBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
-import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathShiftBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.PathArcManualBinder;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicWatchHour;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicWatchMinute;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedleClassicWatchSecond;
@@ -86,7 +85,7 @@ public class Watch extends RadialGauge {
 	private void createWatch() {
 
 		
-		PathBinder pathBinder = new ArcPathBinder(gaugeRadius - 10, 90, -360);
+		PathBinder pathBinder = new PathArcManualBinder(gaugeRadius - 10, 90, -360);
 		AnchorBinder needleBase = new AnchorBaseBinder();
 		AnchorBinder needleHourAnchor = new AnchorValueBinder(50, Side.SideRight);
 		AnchorBinder needleMinuteAnchor = new AnchorValueBinder(20, Side.SideRight);
@@ -135,7 +134,7 @@ public class Watch extends RadialGauge {
 		// miniMetricsManager.setPathPainter(new
 		// MetricsPathDefaultDraw(NanoChromatique.ORANGE.brighter(), new
 		// BasicStroke(1.8f)));
-		miniMetricsManager.setPathBinder(new ArcPathShiftBinder(gaugeRadius / 6, 0, 360, (int) (gaugeRadius / 2.3), 145));
+		miniMetricsManager.setPathBinder(new PathArcManualBinder(gaugeRadius / 6, 0, 360, (int) (gaugeRadius / 2.3), 145));
 
 		AnchorBinder needleMiniBaseAnchor = new AnchorBaseBinder((int) (gaugeRadius / 2.3), 145);
 		miniMetricsManager.setNeedleBaseAnchorBinder(needleMiniBaseAnchor);

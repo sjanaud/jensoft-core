@@ -20,7 +20,7 @@ import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.binder.path.ArcPathBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.PathArcManualBinder;
 import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
 
 /**
@@ -83,7 +83,7 @@ public class GaugeCompass extends RadialGauge {
 		primaryPathManager.setAutoReverseGlyph(false);
 		primaryPathManager.setReverseAll(true);
 		primaryPathManager.setRange(0, 360);
-		primaryPathManager.setPathBinder(new ArcPathBinder(gaugeRadius - 10, 0, 360));
+		primaryPathManager.setPathBinder(new PathArcManualBinder(gaugeRadius - 10, 0, 360));
 		registerGaugeMetricsPath(primaryPathManager);
 
 		GlyphMetric metric;
@@ -143,7 +143,7 @@ public class GaugeCompass extends RadialGauge {
 		secondaryPathManager.setAutoReverseGlyph(false);
 		secondaryPathManager.setReverseAll(true);
 		secondaryPathManager.setRange(0, 360);
-		secondaryPathManager.setPathBinder(new ArcPathBinder(gaugeRadius - 50, 0, 360));
+		secondaryPathManager.setPathBinder(new PathArcManualBinder(gaugeRadius - 50, 0, 360));
 		registerGaugeMetricsPath(secondaryPathManager);
 
 		GlyphMetric metric;

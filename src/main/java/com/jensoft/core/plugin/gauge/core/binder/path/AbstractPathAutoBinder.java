@@ -36,7 +36,7 @@ import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
  * @author sebastien janaud
  * 
  */
-public abstract class PathAutoBinder extends PathBinder {
+public abstract class AbstractPathAutoBinder extends PathBinder {
 
 	/** binder radius */
 	protected int radius;
@@ -77,7 +77,7 @@ public abstract class PathAutoBinder extends PathBinder {
 	 * @param polarDegree
 	 * 
 	 */
-	public PathAutoBinder(int radius, int polarRadius, float polarDegree) {
+	public AbstractPathAutoBinder(int radius, int polarRadius, float polarDegree) {
 		this.radius = radius;
 		this.polarRadius = polarRadius;
 		this.polarDegree = polarDegree;
@@ -91,7 +91,7 @@ public abstract class PathAutoBinder extends PathBinder {
 	 * @param polarDegree
 	 * @param direction
 	 */
-	public PathAutoBinder(int radius, int polarRadius, float polarDegree, Direction direction) {
+	public AbstractPathAutoBinder(int radius, int polarRadius, float polarDegree, Direction direction) {
 		super();
 		this.radius = radius;
 		this.polarRadius = polarRadius;
