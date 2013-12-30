@@ -322,6 +322,16 @@ public class PathArcAutoBinder extends PathBinder {
 		g2d.setColor(NanoChromatique.YELLOW.brighter());
 		g2d.draw(arc1);
 		
+		g2d.setColor(NanoChromatique.YELLOW.brighter());
+		g2d.setColor(NanoChromatique.YELLOW.brighter());
+		g2d.setFont(InputFonts.getSansation(14));
+		g2d.drawString("PATH BINDER : "+PathArcAutoBinder.class.getSimpleName(), 20, 60);
+		g2d.drawString("GAUGE RADIUS : "+getMetricsPath().getGauge().getRadius(), 20, 80);
+		g2d.drawString("BINDER RADIUS : "+radius, 20, 100);
+		g2d.drawString("BINDER POLAR RADIUS : "+polarRadius, 20, 120);
+		g2d.drawString("BINDER POLAR DEGREE : "+polarDegree, 20, 140);
+		g2d.drawString("BINDER DIRECTION : "+direction.name(), 20, 160);
+		
 		Color color=null;
 		if(direction == Direction.Clockwise)
 			color = NanoChromatique.BLUE.brighter();
@@ -336,14 +346,7 @@ public class PathArcAutoBinder extends PathBinder {
 		g2d.fill(new Ellipse2D.Double(intersectionPointEnd.getX()-3, intersectionPointEnd.getY()-3, 6, 6));
 		drawPath(g2d, intersectionArc, color);
 		
-		g2d.setColor(NanoChromatique.YELLOW.brighter());
-		g2d.setFont(InputFonts.getSansation(14));
-		g2d.drawString("PATH BINDER : "+PathArcAutoBinder.class.getSimpleName(), 20, 60);
-		g2d.drawString("GAUGE RADIUS : "+getMetricsPath().getGauge().getRadius(), 20, 80);
-		g2d.drawString("BINDER RADIUS : "+radius, 20, 100);
-		g2d.drawString("BINDER POLAR RADIUS : "+polarRadius, 20, 120);
-		g2d.drawString("BINDER POLAR DEGREE : "+polarDegree, 20, 140);
-		g2d.drawString("BINDER DIRECTION : "+direction.name(), 20, 160);
+		
 	}
 
 	private void drawPath(Graphics2D g2d, Arc2D arc, Color c) {
