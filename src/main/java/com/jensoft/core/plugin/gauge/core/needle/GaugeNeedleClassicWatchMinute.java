@@ -14,7 +14,6 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GeometryPath;
-import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 
@@ -41,8 +40,8 @@ public class GaugeNeedleClassicWatchMinute extends GaugeNeedlePainter {
 	 */
 	@Override
 	public void paintNeedle(Graphics2D g2d, GaugeMetricsPath gaugeMetricsPath) {
-		Point2D needleBase = gaugeMetricsPath.getNeedleBaseAnchorBinder().bindAnchor(gaugeMetricsPath.getGauge());
-		Point2D needleValue = gaugeMetricsPath.getNeedleValueAnchorBinder().bindAnchor(gaugeMetricsPath.getGauge());
+		Point2D needleBase = gaugeMetricsPath.getNeedleBaseAnchorBinder().bindAnchor(gaugeMetricsPath.getBody().getGauge());
+		Point2D needleValue = gaugeMetricsPath.getNeedleValueAnchorBinder().bindAnchor(gaugeMetricsPath.getBody().getGauge());
 
 		Line2D needleLineBase = new Line2D.Double(needleBase, needleValue);
 		GeometryPath geomPath1 = new GeometryPath(needleLineBase);

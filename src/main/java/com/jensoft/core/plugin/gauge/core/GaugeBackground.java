@@ -30,7 +30,7 @@ import com.jensoft.core.palette.NanoChromatique;
  * @author sebastien janaud
  * 
  */
-public abstract class GaugeBackground {
+public abstract class GaugeBackground extends GaugePart {
 
 	/**
 	 * Abstract definition of circular area background to paint (whole gauge or
@@ -463,15 +463,22 @@ public abstract class GaugeBackground {
 		@Override
 		public final void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {
 
-			Point2D centerDef = radialGauge.getRadialPointAt(getPolarRadius(), getPolarAngle());
+			GaugePartBuffer part = getPartBuffer();
+			if (part == null) {
+				Point2D centerDef = radialGauge.getRadialPointAt(getPolarRadius(), getPolarAngle());
 
-			// if radius is not set, take gauge radius as the default value
-			if (getRadius() == 0) {
-				setRadius(radialGauge.getRadius());
+				// if radius is not set, take gauge radius as the default value
+				if (getRadius() == 0) {
+					setRadius(radialGauge.getRadius());
+				}
+
+				Ellipse2D baseShape = new Ellipse2D.Double(centerDef.getX() - radius, centerDef.getY() - radius, 2 * radius, 2 * radius);
+
+				part = new GaugePartBuffer(radialGauge);
+				setPartBuffer(part);
+				fill(part.getGraphics(), radialGauge, baseShape);
 			}
-
-			Ellipse2D baseShape = new Ellipse2D.Double(centerDef.getX() - radius, centerDef.getY() - radius, 2 * radius, 2 * radius);
-			fill(g2d, radialGauge, baseShape);
+			g2d.drawImage(part.getBuffer(), (int) part.getX(), (int) part.getY(), (int) part.getWidth(), (int) part.getHeight(), null);
 		}
 
 		/**
@@ -483,6 +490,14 @@ public abstract class GaugeBackground {
 		public abstract void fill(Graphics2D g2d, RadialGauge radialGauge, Shape shape);
 
 	}
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
+	 */
+	@Override
+	public void invalidate() {
+		setPartBuffer(null);		
+	}
 
 	/**
 	 * implements this method to create background painter
@@ -490,6 +505,18 @@ public abstract class GaugeBackground {
 	 * @param g2d
 	 * @param radialGauge
 	 */
-	public abstract void paintBackground(Graphics2D g2d, RadialGauge radialGauge);
+	protected abstract void paintBackground(Graphics2D g2d, RadialGauge radialGauge);
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D
+	 * , com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 */
+	@Override
+	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {
+		paintBackground(g2d, radialGauge);
+	}
 
 }

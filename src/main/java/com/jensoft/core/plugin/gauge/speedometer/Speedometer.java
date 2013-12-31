@@ -17,6 +17,7 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
@@ -65,6 +66,10 @@ public class Speedometer extends RadialGauge {
 	 * create speedometer body
 	 */
 	public void createBody() {
+		
+		GaugeBody body = new GaugeBody();
+		addBody(body);
+		
 		metricsManager = new GaugeMetricsPath();
 		metricsManager.setMin(0);
 		metricsManager.setMax(280);
@@ -80,7 +85,7 @@ public class Speedometer extends RadialGauge {
 		metricsManager.setNeedleValueAnchorBinder(valueNeedleBinder);
 
 
-		registerGaugeMetricsPath(metricsManager);
+		body.registerGaugeMetricsPath(metricsManager);
 
 		GlyphFill gf = new GlyphFill(Color.WHITE, NanoChromatique.RED.brighter());
 		TicTacMarker ttm = new TicTacMarker(NanoChromatique.GREEN);

@@ -2,6 +2,7 @@ package com.jensoft.core.plugin.gauge.core.binder.path.test;
 
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
+import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.path.AbstractPathAutoBinder;
@@ -19,10 +20,14 @@ public class GaugeCubicAutoBinderAnimatorDemo extends View2D {
 	private class GaugeArcAutoBinder extends RadialGauge {
 		public GaugeArcAutoBinder() {
 			super(0, 0, 90);
+			
+			GaugeBody body = new GaugeBody();
+			addBody(body);
+			
 			GaugeMetricsPath path = new GaugeMetricsPath();
 			AbstractPathAutoBinder autoArcBinder = new PathCubicAutoBinder(120, 140, 0);
 			path.setPathBinder(autoArcBinder);
-			registerGaugeMetricsPath(path);
+			body.registerGaugeMetricsPath(path);
 
 			PathAnimator animator = new PathAnimator(path);
 			animator.start();

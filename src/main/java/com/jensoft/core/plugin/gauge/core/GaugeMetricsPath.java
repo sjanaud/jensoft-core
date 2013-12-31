@@ -36,8 +36,8 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	/** needle value anchor binder */
 	private AnchorBinder needleValueAnchorBinder;
 
-	/** gauge host this metrics path */
-	private RadialGauge gauge;
+	/** gauge body this metrics path */
+	private GaugeBody body;
 
 	/** gauge part buffer to paint reuse */
 	private GaugePartBuffer partBuffer;
@@ -179,22 +179,20 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 		this.needleValueAnchorBinder = needleValueAnchorBinder;
 	}
 
+	
+
 	/**
-	 * get host gauge of this path
-	 * 
-	 * @return host gauge
+	 * @return the body
 	 */
-	public RadialGauge getGauge() {
-		return gauge;
+	public GaugeBody getBody() {
+		return body;
 	}
 
 	/**
-	 * set host gauge
-	 * 
-	 * @param gauge
+	 * @param body the body to set
 	 */
-	public void setGauge(RadialGauge gauge) {
-		this.gauge = gauge;
+	public void setBody(GaugeBody body) {
+		this.body = body;
 	}
 
 	/**
@@ -220,7 +218,7 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	 * @param g2d
 	 */
 	public void createPartBuffer(Graphics2D g2d) {
-		partBuffer = new GaugePartBuffer(getGauge());
+		partBuffer = new GaugePartBuffer(getBody().getGauge());
 
 		Graphics2D g2dPart = partBuffer.getGraphics();
 		g2dPart.setRenderingHints(g2d.getRenderingHints());

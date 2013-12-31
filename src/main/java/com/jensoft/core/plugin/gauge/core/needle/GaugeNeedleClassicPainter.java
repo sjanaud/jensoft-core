@@ -39,8 +39,8 @@ public class GaugeNeedleClassicPainter extends GaugeNeedlePainter {
 	@Override
 	public void paintNeedle(Graphics2D g2d, GaugeMetricsPath gaugeMetricsPath) {
 
-		Point2D needleBase = gaugeMetricsPath.getNeedleBaseAnchorBinder().bindAnchor(gaugeMetricsPath.getGauge());
-		Point2D needleValue = gaugeMetricsPath.getNeedleValueAnchorBinder().bindAnchor(gaugeMetricsPath.getGauge());
+		Point2D needleBase = gaugeMetricsPath.getNeedleBaseAnchorBinder().bindAnchor(gaugeMetricsPath.getBody().getGauge());
+		Point2D needleValue = gaugeMetricsPath.getNeedleValueAnchorBinder().bindAnchor(gaugeMetricsPath.getBody().getGauge());
 
 		Line2D lNeedle = new Line2D.Double(needleBase, needleValue);
 

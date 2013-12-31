@@ -25,6 +25,7 @@ import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
@@ -49,6 +50,8 @@ public class GaugeOil2 extends RadialGauge {
 	private static int gaugeRadius = 90;
 	private static int centerUserX = 0;
 	private static int centerUserY = 0;
+	
+	private GaugeBody body;
 	
 	/** metrics manager to manage value and metrics */
 	private GaugeMetricsPath metricsPath1;
@@ -82,6 +85,10 @@ public class GaugeOil2 extends RadialGauge {
 
 		addGlass(linearGlass);
 
+		
+		body = new GaugeBody();
+		addBody(body);
+		
 		createStyle();
 		createPath1();
 		createPath2();
@@ -191,7 +198,7 @@ public class GaugeOil2 extends RadialGauge {
 		legend1.setLabel("PSI");
 		// legend1.setTextPosition(TextPosition.Right);
 		
-		registerGaugeTextPath(legend1);
+		body.registerGaugeTextPath(legend1);
 
 		legend2 = new GaugeTextPath();
 		legend2.setPathBinder(new PathBinder() {
@@ -215,7 +222,7 @@ public class GaugeOil2 extends RadialGauge {
 		legend2.setDivergence(4);
 		legend2.setOffsetLeft(0);
 		legend2.setOffsetRight(0);
-		registerGaugeTextPath(legend2);
+		body.registerGaugeTextPath(legend2);
 
 		legendTop = new GaugeTextPath();
 		legendTop.setPathBinder(new PathBinder() {
@@ -241,7 +248,7 @@ public class GaugeOil2 extends RadialGauge {
 		legendTop.setOffsetRight(0);
 		legendTop.setShader(fractions3, colors3);
 		legendTop.setLabel("*** jensoft avionics ***");
-		registerGaugeTextPath(legendTop);
+		body.registerGaugeTextPath(legendTop);
 
 		legendBottom = new GaugeTextPath();
 		legendBottom.setPathBinder(new PathBinder() {
@@ -289,7 +296,7 @@ public class GaugeOil2 extends RadialGauge {
 			}
 		});
 
-		registerGaugeMetricsPath(metricsPath1);
+		body.registerGaugeMetricsPath(metricsPath1);
 
 		
 		GlyphFill fill = new GlyphFill(Color.WHITE, TangoPalette.CHOCOLATE3);
@@ -368,7 +375,7 @@ public class GaugeOil2 extends RadialGauge {
 		metricsPath2.setGaugeNeedlePainter(new GaugeNeedleClassicPainter());
 
 		//metricsPath2.setDebugPath(true);
-		registerGaugeMetricsPath(metricsPath2);
+		body.registerGaugeMetricsPath(metricsPath2);
 
 		GlyphFill fill = new GlyphFill(Color.WHITE, TangoPalette.ORANGE3);
 		TriangleMarker marker = new TriangleMarker(Color.WHITE, TangoPalette.ORANGE3);

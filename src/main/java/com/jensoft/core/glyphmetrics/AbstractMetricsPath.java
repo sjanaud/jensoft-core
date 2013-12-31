@@ -14,8 +14,10 @@ import com.jensoft.core.glyphmetrics.painter.MetricsPathPainter;
 import com.jensoft.core.window.Window2D;
 
 /**
- * <code>AbstractMetricsPath</code>
+ * <code>AbstractMetricsPath</code> is an abstract definition of a path with
+ * metrics associated to this path.
  * 
+ * @since 1.0
  * @author Sebastien Janaud
  */
 public abstract class AbstractMetricsPath {

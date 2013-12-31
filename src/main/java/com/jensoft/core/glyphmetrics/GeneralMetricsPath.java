@@ -83,14 +83,9 @@ import java.util.List;
  * <center><img src="doc-files/white-tachometer.png"></center><br>
  * <center><img src="doc-files/white-compass.png"></center><br>
  * <center><img src="doc-files/general-metrics1.png"></center><br>
- * </p>
+ * </p> 
  * 
- * @see AbstractMetricsPath
- * @see GlyphMetric
- * @see GlyphGeometry
- * @see GlyphMetricsToolkit
- * 
- * 
+ * @since 1.0
  * @author Sebastien Janaud
  */
 public class GeneralMetricsPath extends AbstractMetricsPath {

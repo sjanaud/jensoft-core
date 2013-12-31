@@ -22,8 +22,8 @@ import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
  */
 public class GaugeTextPath extends TextPath {
 
-	/** gauge host this metrics path */
-	private RadialGauge gauge;
+	/** gauge body this metrics path */
+	private GaugeBody body;
 
 	/** gauge part buffer to paint reuse */
 	private GaugePartBuffer partBuffer;
@@ -63,21 +63,18 @@ public class GaugeTextPath extends TextPath {
 	}
 
 	/**
-	 * get gauge
-	 * 
-	 * @return gauge
+	 * @return the body
 	 */
-	public RadialGauge getGauge() {
-		return gauge;
+	public GaugeBody getBody() {
+		return body;
 	}
 
 	/**
-	 * set gauge
-	 * 
-	 * @param gauge
+	 * @param body
+	 *            the body to set
 	 */
-	public void setGauge(RadialGauge gauge) {
-		this.gauge = gauge;
+	public void setBody(GaugeBody body) {
+		this.body = body;
 	}
 
 	/**
@@ -103,7 +100,7 @@ public class GaugeTextPath extends TextPath {
 	 * @param g2d
 	 */
 	public void createPartBuffer(Graphics2D g2d) {
-		partBuffer = new GaugePartBuffer(getGauge());
+		partBuffer = new GaugePartBuffer(getBody().getGauge());
 
 		Graphics2D g2dPart = partBuffer.getGraphics();
 		g2dPart.setRenderingHints(g2d.getRenderingHints());
@@ -112,7 +109,7 @@ public class GaugeTextPath extends TextPath {
 			g2dPart.setColor(debugPathColor);
 			// g2dPart.draw(getOrCreateGeometry().getPath());
 			// or
-			g2dPart.draw(getPathBinder().bindPath(getGauge()));
+			g2dPart.draw(getPathBinder().bindPath(getBody().getGauge()));
 		}
 
 		draw(g2dPart);

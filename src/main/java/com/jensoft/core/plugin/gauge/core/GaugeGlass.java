@@ -5,10 +5,8 @@
  */
 package com.jensoft.core.plugin.gauge.core;
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GradientPaint;
 import java.awt.Graphics2D;
 import java.awt.MultipleGradientPaint.CycleMethod;
 import java.awt.RadialGradientPaint;
@@ -16,13 +14,10 @@ import java.awt.Shape;
 import java.awt.font.GlyphVector;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.Arc2D;
-import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Ellipse2D;
-import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.device.PartBuffer;
 import com.jensoft.core.drawable.text.TextPath;
 import com.jensoft.core.drawable.text.TextPath.PathSide;
 import com.jensoft.core.drawable.text.TextPath.TextPosition;
@@ -51,7 +46,7 @@ import com.jensoft.core.plugin.pie.painter.effect.PieRadialEffect;
  * @author sebastien janaud
  * 
  */
-public abstract class GaugeGlass{
+public abstract class GaugeGlass extends GaugePart {
 
 	/**
 	 * create abstract gauge glass
@@ -76,15 +71,16 @@ public abstract class GaugeGlass{
 			float radius = 60;
 			Point2D focus = new Point2D.Double(centerX, centerY + gaugeRadius - 20);
 			float[] dist = { 0.0f, 1.0f };
-			//Color[] colors = { new Color(255, 255, 255, 100), new Color(255, 255, 255, 0) };
+			// Color[] colors = { new Color(255, 255, 255, 100), new Color(255,
+			// 255, 255, 0) };
 			Color[] colors = { Color.RED, new Color(255, 255, 255, 0) };
-			//AffineTransform af = new AffineTransform();
-			//af.scale(1, 0.5);
+			// AffineTransform af = new AffineTransform();
+			// af.scale(1, 0.5);
 			RadialGradientPaint p = new RadialGradientPaint(center, radius, focus, dist, colors, CycleMethod.NO_CYCLE);
 
 			g2d.setPaint(p);
 			g2d.fillOval((int) (centerX - gaugeRadius), (int) (centerY - gaugeRadius), 2 * gaugeRadius, 2 * gaugeRadius);
-			
+
 			g2d.setColor(Color.YELLOW);
 			g2d.drawOval((int) (centerX - gaugeRadius), (int) (centerY - gaugeRadius), 2 * gaugeRadius, 2 * gaugeRadius);
 
@@ -899,30 +895,34 @@ public abstract class GaugeGlass{
 
 	}
 	
-	/** glass part buffer */
-	private GaugePartBuffer partBuffer;
 	
-	/**
-	 * get glass part buffer
-	 * @return glass part buffer
+
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
 	 */
-	public GaugePartBuffer getPartBuffer() {
-		return partBuffer;
+	@Override
+	public void invalidate() {
+		setPartBuffer(null);		
 	}
 
 	/**
-	 * set class part buffer
-	 * @param partBuffer
-	 */
-	public void setPartBuffer(GaugePartBuffer partBuffer) {
-		this.partBuffer = partBuffer;
-	}
-	
-	/**
 	 * paint glass on gauge
+	 * 
 	 * @param g2d
 	 * @param radialGauge
 	 */
-	public abstract void paintGlass(Graphics2D g2d, RadialGauge radialGauge);
+	protected abstract void paintGlass(Graphics2D g2d, RadialGauge radialGauge);
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D
+	 * , com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 */
+	@Override
+	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {
+		paintGlass(g2d, radialGauge);
+	}
 
 }
