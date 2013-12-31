@@ -16,6 +16,7 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
@@ -32,6 +33,9 @@ import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
  */
 public class GaugeCompass extends RadialGauge {
 
+	/**gauge body*/
+	private GaugeBody body;
+	
 	/** primary gauge path */
 	private GaugeMetricsPath secondaryPathManager;
 
@@ -71,6 +75,10 @@ public class GaugeCompass extends RadialGauge {
 		GaugeGlass glassLabel = new GaugeGlass.JenSoftAPILabel();
 		addGlass(cubicEffect,glassLabel);
 
+		
+		body = new GaugeBody();
+		addBody(body);
+		
 		createPrimaryMetrics();
 		createSecondaryMetrics();
 	}
@@ -84,7 +92,7 @@ public class GaugeCompass extends RadialGauge {
 		primaryPathManager.setReverseAll(true);
 		primaryPathManager.setRange(0, 360);
 		primaryPathManager.setPathBinder(new PathArcManualBinder(gaugeRadius - 10, 0, 360));
-		registerGaugeMetricsPath(primaryPathManager);
+		body.registerGaugeMetricsPath(primaryPathManager);
 
 		GlyphMetric metric;
 		Font f = InputFonts.getFont(InputFonts.ELEMENT, 40);
@@ -144,7 +152,7 @@ public class GaugeCompass extends RadialGauge {
 		secondaryPathManager.setReverseAll(true);
 		secondaryPathManager.setRange(0, 360);
 		secondaryPathManager.setPathBinder(new PathArcManualBinder(gaugeRadius - 50, 0, 360));
-		registerGaugeMetricsPath(secondaryPathManager);
+		body.registerGaugeMetricsPath(secondaryPathManager);
 
 		GlyphMetric metric;
 		Font f = InputFonts.getElements(12);

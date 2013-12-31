@@ -48,11 +48,8 @@ public class RadialGauge {
 	/** gauge backgrounds */
 	private List<GaugeBackground> backgrounds;
 
-	/** gauges metrics paths */
-	private List<GaugeMetricsPath> gaugeMetricsPaths;
-
-	/** gauges texts paths */
-	private List<GaugeTextPath> gaugeTextPaths;
+	/** gauge bodies */
+	private List<GaugeBody> bodies;
 
 	/**
 	 * create radial gauge
@@ -67,8 +64,7 @@ public class RadialGauge {
 		this.y = y;
 		backgrounds = new ArrayList<GaugeBackground>();
 		glasses = new ArrayList<GaugeGlass>();
-		gaugeMetricsPaths = new ArrayList<GaugeMetricsPath>();
-		gaugeTextPaths = new ArrayList<GaugeTextPath>();
+		bodies = new ArrayList<GaugeBody>();
 	}
 
 	/**
@@ -82,77 +78,13 @@ public class RadialGauge {
 		double centerY = getWindow2D().userToPixel(new Point2D.Double(0, getY())).getY();
 		return new Point2D.Double(centerX, centerY);
 	}
-	
-	public Point2D getRadialPointAt(double radius,float angleDegree){
+
+	public Point2D getRadialPointAt(double radius, float angleDegree) {
 		double centerX = getCenterDevice().getX();
 		double centerY = getCenterDevice().getY();
-		double shiftCenterX = centerX + radius*Math.cos(Math.toRadians(angleDegree));
-		double shiftCenterY = centerY - radius*Math.sin(Math.toRadians(angleDegree));
+		double shiftCenterX = centerX + radius * Math.cos(Math.toRadians(angleDegree));
+		double shiftCenterY = centerY - radius * Math.sin(Math.toRadians(angleDegree));
 		return new Point2D.Double(shiftCenterX, shiftCenterY);
-	}
-
-	/**
-	 * register a gauge metrics path in this gauge
-	 * 
-	 * @param pathMetrics
-	 *            path metrics to register
-	 */
-	public void registerGaugeMetricsPath(GaugeMetricsPath pathMetrics) {
-		pathMetrics.setGauge(this);
-		this.gaugeMetricsPaths.add(pathMetrics);
-	}
-
-	/**
-	 * get gauge registered path metrics list
-	 * 
-	 * @return path metrics list
-	 */
-	public List<GaugeMetricsPath> getMetricsPaths() {
-		return gaugeMetricsPaths;
-	}
-
-	/**
-	 * register gauge metrics path list to this gauge
-	 * 
-	 * @param gaugePathMetrics
-	 *            the gauge path list to register
-	 */
-	public void setGaugeMetricsPath(List<GaugeMetricsPath> gaugePathMetrics) {
-		for (GaugeMetricsPath path : gaugePathMetrics) {
-			registerGaugeMetricsPath(path);
-		}
-	}
-
-	/**
-	 * register a gauge text path in this gauge
-	 * 
-	 * @param textPath
-	 *            text path to register
-	 */
-	public void registerGaugeTextPath(GaugeTextPath textPath) {
-		textPath.setGauge(this);
-		this.gaugeTextPaths.add(textPath);
-	}
-
-	/**
-	 * get gauge text paths
-	 * 
-	 * @return gauge text paths
-	 */
-	public List<GaugeTextPath> getTextPaths() {
-		return gaugeTextPaths;
-	}
-
-	/**
-	 * register gauge text path list
-	 * 
-	 * @param gaugeTextPaths
-	 *            text path list to register
-	 */
-	public void setGaugeTextPaths(List<GaugeTextPath> gaugeTextPaths) {
-		for (GaugeTextPath path : gaugeTextPaths) {
-			registerGaugeTextPath(path);
-		}
 	}
 
 	/**
@@ -270,6 +202,7 @@ public class RadialGauge {
 	 * @param envelop
 	 */
 	public void setEnvelop(GaugeEnvelope envelop) {
+		envelop.setGauge(this);
 		this.envelop = envelop;
 	}
 
@@ -288,7 +221,9 @@ public class RadialGauge {
 	 * @param glasses
 	 */
 	public void setGlasses(List<GaugeGlass> glasses) {
-		this.glasses = glasses;
+		for (GaugeGlass gaugeGlass : glasses) {
+			addGlass(gaugeGlass);
+		}
 	}
 
 	/**
@@ -297,6 +232,7 @@ public class RadialGauge {
 	 * @param effect
 	 */
 	public void addGlass(GaugeGlass glass) {
+		glass.setGauge(this);
 		glasses.add(glass);
 	}
 
@@ -307,7 +243,45 @@ public class RadialGauge {
 	 */
 	public void addGlass(GaugeGlass... glasses) {
 		for (int i = 0; i < glasses.length; i++) {
-			this.glasses.add(glasses[i]);
+			addGlass(glasses[i]);
+		}
+	}
+
+	/**
+	 * @return the bodies
+	 */
+	public List<GaugeBody> getBodies() {
+		return bodies;
+	}
+
+	/**
+	 * @param bodies
+	 *            the bodies to set
+	 */
+	public void setBodies(List<GaugeBody> bodies) {
+		for (GaugeBody body : bodies) {
+			addBody(body);
+		}
+	}
+
+	/**
+	 * add given body
+	 * 
+	 * @param body
+	 */
+	public void addBody(GaugeBody body) {
+		body.setGauge(this);
+		bodies.add(body);
+	}
+
+	/**
+	 * add given body array
+	 * 
+	 * @param bodies
+	 */
+	public void addBody(GaugeBody... bodies) {
+		for (int i = 0; i < bodies.length; i++) {
+			addBody(bodies[i]);
 		}
 	}
 

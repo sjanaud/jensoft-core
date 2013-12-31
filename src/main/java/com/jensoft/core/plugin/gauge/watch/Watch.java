@@ -20,6 +20,7 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.palette.TexturePalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass.GlassCubicEffect;
@@ -44,6 +45,7 @@ import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
  */
 public class Watch extends RadialGauge {
 
+	private GaugeBody body;
 	private static int gaugeRadius = 90;
 	private static int centerUserX = 0;
 	private static int centerUserY = 0;
@@ -84,6 +86,9 @@ public class Watch extends RadialGauge {
 
 	private void createWatch() {
 		
+		body = new GaugeBody();
+		addBody(body);
+		
 		PathBinder pathBinder = new PathArcManualBinder(gaugeRadius - 10, 90, -360);
 		AnchorBinder needleBase = new AnchorBaseBinder();
 		AnchorBinder needleHourAnchor = new AnchorValueBinder(50, Side.SideRight);
@@ -112,9 +117,9 @@ public class Watch extends RadialGauge {
 		secondMetricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicWatchSecond(NanoChromatique.ORANGE));
 
 		
-		registerGaugeMetricsPath(hourMetricsManager);
-		registerGaugeMetricsPath(minuteMetricsManager);
-		registerGaugeMetricsPath(secondMetricsManager);
+		body.registerGaugeMetricsPath(hourMetricsManager);
+		body.registerGaugeMetricsPath(minuteMetricsManager);
+		body.registerGaugeMetricsPath(secondMetricsManager);
 		
 
 		createMainTicks();
@@ -168,7 +173,7 @@ public class Watch extends RadialGauge {
 		metric.setFont(InputFonts.getPTFNordic(8));
 		miniMetricsManager.addMetric(metric);
 
-		registerGaugeMetricsPath(miniMetricsManager);
+		body.registerGaugeMetricsPath(miniMetricsManager);
 
 	}
 

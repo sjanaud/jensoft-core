@@ -149,7 +149,7 @@ public abstract class AbstractPathAutoBinder extends PathBinder {
 	 * solve the arc0 (gauge arc) and arc1(path arc) intersection
 	 */
 	private void solveIntersectionPoints() {
-		RadialGauge gauge = getMetricsPath().getGauge();
+		RadialGauge gauge = getMetricsPath().getBody().getGauge();
 
 		// define first circle which is gauge outline circle
 		x0 = gauge.getCenterDevice().getX();
@@ -241,7 +241,7 @@ public abstract class AbstractPathAutoBinder extends PathBinder {
 		g2d.setColor(NanoChromatique.YELLOW.brighter());
 		g2d.setFont(InputFonts.getSansation(14));
 		g2d.drawString("PATH BINDER : " + this.getClass().getSimpleName(), 20, 60);
-		g2d.drawString("GAUGE RADIUS : " + getMetricsPath().getGauge().getRadius(), 20, 80);
+		g2d.drawString("GAUGE RADIUS : " + getMetricsPath().getBody().getGauge().getRadius(), 20, 80);
 		g2d.drawString("BINDER RADIUS : " + radius, 20, 100);
 		g2d.drawString("BINDER POLAR RADIUS : " + polarRadius, 20, 120);
 		g2d.drawString("BINDER POLAR DEGREE : " + polarDegree, 20, 140);

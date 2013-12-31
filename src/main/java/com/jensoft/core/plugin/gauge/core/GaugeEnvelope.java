@@ -33,7 +33,7 @@ import com.jensoft.core.palette.NanoChromatique;
  * @since 1.0
  * @author sebastien janaud
  */
-public abstract class GaugeEnvelope {
+public abstract class GaugeEnvelope extends GaugePart{
 
 	/**
 	 * <code>Classic</code> is a classic envelope
@@ -51,7 +51,7 @@ public abstract class GaugeEnvelope {
 		 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
 		 */
 		@Override
-		public void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge) {
+		public void paintEnvelope(Graphics2D g2d, RadialGauge radialGauge) {
 			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
 			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 			int radius = radialGauge.getRadius();
@@ -333,7 +333,7 @@ public abstract class GaugeEnvelope {
 		 * @see com.jensoft.core.plugin.gauge.core.env.GaugeEnvelope#paintEnvelop(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
 		 */
 		@Override
-		public void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge) {
+		public void paintEnvelope(Graphics2D g2d, RadialGauge radialGauge) {
 			// System.out.println("paint cisero env.");
 			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
 			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
@@ -507,25 +507,12 @@ public abstract class GaugeEnvelope {
 
 	}
 
-	/** envelope part buffer */
-	private GaugePartBuffer partBuffer;
-
-	/**
-	 * get glass part buffer
-	 * 
-	 * @return glass part buffer
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
 	 */
-	public GaugePartBuffer getPartBuffer() {
-		return partBuffer;
-	}
-
-	/**
-	 * set class part buffer
-	 * 
-	 * @param partBuffer
-	 */
-	public void setPartBuffer(GaugePartBuffer partBuffer) {
-		this.partBuffer = partBuffer;
+	@Override
+	public void invalidate() {
+		setPartBuffer(null);		
 	}
 
 	/**
@@ -534,6 +521,14 @@ public abstract class GaugeEnvelope {
 	 * @param g2d
 	 * @param radialGauge
 	 */
-	public abstract void paintEnvelop(Graphics2D g2d, RadialGauge radialGauge);
+	protected abstract void paintEnvelope(Graphics2D g2d, RadialGauge radialGauge);
 
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 */
+	@Override
+	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {
+		paintEnvelope(g2d, radialGauge);		
+	}
+	
 }

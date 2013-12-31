@@ -16,6 +16,7 @@ import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
@@ -66,6 +67,10 @@ public class Tachometer extends RadialGauge {
 	}
 
 	public void createBody() {
+		
+		GaugeBody body = new GaugeBody();
+		addBody(body);
+		
 		metricsManager = new GaugeMetricsPath();
 		metricsManager.setMin(0);
 		metricsManager.setMax(8);
@@ -80,9 +85,8 @@ public class Tachometer extends RadialGauge {
 		metricsManager.setNeedleBaseAnchorBinder(baseNeedleBinder);
 		metricsManager.setNeedleValueAnchorBinder(valueNeedleBinder);
 
-		
 
-		registerGaugeMetricsPath(metricsManager);
+		body.registerGaugeMetricsPath(metricsManager);
 
 		GlyphMetric metric = new GlyphMetric();
 		metric.setValue(0);

@@ -6,7 +6,6 @@
 package com.jensoft.core.plugin.gauge;
 
 import java.awt.Graphics2D;
-import java.awt.Shape;
 
 import com.jensoft.core.graphics.AlphaInterpolation;
 import com.jensoft.core.graphics.Antialiasing;
@@ -16,10 +15,9 @@ import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
+import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
-import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
-import com.jensoft.core.plugin.gauge.core.GaugePartBuffer;
-import com.jensoft.core.plugin.gauge.core.GaugeTextPath;
+import com.jensoft.core.plugin.gauge.core.GaugePart;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2DEvent;
@@ -54,19 +52,20 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	
 	
 	/**
-	 * invalidate part buffer of gauges metrics paths, text paths and glasses
+	 * invalidate parts
 	 */
 	private void invalidateParts(){
-		for(GaugeMetricsPath path : gauge.getMetricsPaths()){
-			path.setPartBuffer(null);
-		}
 		
-		for(GaugeTextPath path : gauge.getTextPaths()){
-			path.setPartBuffer(null);
-		}
+		gauge.getEnvelop().invalidate();
 		
 		for(GaugeGlass glass : gauge.getGlasses()){
-			glass.setPartBuffer(null);
+			glass.invalidate();
+		}
+		for(GaugeBody body : gauge.getBodies()){
+			body.invalidate();
+		}
+		for(GaugeBackground background : gauge.getBackgrounds()){
+			background.invalidate();
 		}
 	}
 	
@@ -102,15 +101,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	}
 	
 	
-	/**
-	 * draw given buffer in the given graphics context
-	 * @param g2d
-	 * @param buffer
-	 */
-	private void paintPart(Graphics2D g2d,GaugePartBuffer buffer){
-		if(buffer != null && buffer.getBuffer() != null)
-		g2d.drawImage(buffer.getBuffer(),(int)buffer.getX(),(int)buffer.getY(),(int)buffer.getWidth(),(int)buffer.getHeight(),null);
-	}
+	
 
 	/* (non-Javadoc)
 	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
@@ -125,48 +116,27 @@ public class RadialGaugePlugin extends AbstractPlugin {
 		gauge.setWindow2D(getWindow2D());
 
 		if (gauge.getEnvelop() != null) {
-			gauge.getEnvelop().paintEnvelop(g2d, gauge);
+			gauge.getEnvelop().paintPart(g2d, gauge);
 		}
 
 		if (gauge.getBackgrounds() != null) {
-			for (GaugeBackground background : gauge.getBackgrounds()) {
-				background.paintBackground(g2d, gauge);
+			for (GaugePart background : gauge.getBackgrounds()) {
+				background.paintPart(g2d, gauge);
 			}
 		}
 
 		if (gauge.getGlasses() != null) {
-			for (GaugeGlass glass : gauge.getGlasses()) {
-				glass.paintGlass(g2d, gauge);
+			for (GaugePart glass : gauge.getGlasses()) {
+				glass.paintPart(g2d, gauge);
+			}
+		}
+		
+		if (gauge.getBodies() != null) {
+			for (GaugePart body : gauge.getBodies()) {
+				body.paintPart(g2d, gauge);
 			}
 		}
 
-		for(GaugeMetricsPath path : gauge.getMetricsPaths()){
-			if(path.getPartBuffer() == null){
-				path.setWindow2d(getWindow2D());
-				path.resetPath();
-				Shape s = path.getPathBinder().bindPath(gauge);
-				if(s != null){
-					path.append(path.getPathBinder().bindPath(gauge));
-					path.createPartBuffer(g2d);	
-				}
-			}
-			path.getPathBinder().debug(g2d, gauge);
-			paintPart(g2d, path.getPartBuffer());
-		}
-		
-		for(GaugeTextPath path : gauge.getTextPaths()){
-			if(path.getPartBuffer() == null){
-				path.setPath(path.getPathBinder().bindPath(gauge));
-				path.createPartBuffer(g2d);
-			}
-			paintPart(g2d, path.getPartBuffer());
-		}
-		
-		for(GaugeMetricsPath path : gauge.getMetricsPaths()){
-			if(path.getGaugeNeedlePainter() != null){
-				path.getGaugeNeedlePainter().paintNeedle(g2d, path);
-			}
-		}
 	}
 
 }

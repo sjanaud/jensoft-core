@@ -1,16 +1,19 @@
 package com.jensoft.core.plugin.gauge.core.binder.path.test;
 
+import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.plugin.gauge.core.binder.path.PathArcAutoBinder;
 import com.jensoft.core.plugin.gauge.core.binder.path.AbstractPathAutoBinder;
+import com.jensoft.core.plugin.gauge.core.binder.path.PathArcAutoBinder;
 
 public class GaugeTest extends RadialGauge {
 
 	public GaugeTest() {
 		super(0, 0, 90);
 		
-				
+		GaugeBody body = new GaugeBody();
+		addBody(body);
+		
 		GaugeMetricsPath path = new GaugeMetricsPath();
 		//path.setPathPainter(new MetricsPathDefaultDraw(NanoChromatique.LIGHT_GRAY));
 		
@@ -34,7 +37,7 @@ public class GaugeTest extends RadialGauge {
 		
 		path.setPathBinder(autoArcBinder);
 		
-		registerGaugeMetricsPath(path);
+		body.registerGaugeMetricsPath(path);
 		
 		
 	}

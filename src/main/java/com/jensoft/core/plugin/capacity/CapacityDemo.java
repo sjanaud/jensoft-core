@@ -11,8 +11,6 @@ import java.awt.Color;
 import com.jensoft.core.catalog.nature.JenSoftView;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.palette.PetalPalette;
-import com.jensoft.core.plugin.capacity.CapacityPlugin;
-import com.jensoft.core.plugin.capacity.CapacityUnit;
 import com.jensoft.core.plugin.outline.OutlinePlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.view.background.DarkViewBackground;
