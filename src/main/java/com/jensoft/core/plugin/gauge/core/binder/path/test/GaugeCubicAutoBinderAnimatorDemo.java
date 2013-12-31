@@ -58,6 +58,7 @@ public class GaugeCubicAutoBinderAnimatorDemo extends View2D {
 							PathCubicAutoBinder binder = new PathCubicAutoBinder(radius, 200, polarAngle);
 							binder.setControlOffsetRadius(40);
 							binder.setControlOffsetAngleDegree(10);
+							binder.setDebug(true);
 							path.setPathBinder(binder);
 							repaintView();
 							Thread.sleep(40);
@@ -69,6 +70,7 @@ public class GaugeCubicAutoBinderAnimatorDemo extends View2D {
 							PathCubicAutoBinder binder = new PathCubicAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
 							binder.setControlOffsetRadius(40);
 							binder.setControlOffsetAngleDegree(10);
+							binder.setDebug(true);
 							path.setPathBinder(binder);
 							repaintView();
 							Thread.sleep(40);

@@ -53,8 +53,9 @@ public class GaugeArcAutoBinderAnimatorDemo extends View2D {
 				while (true) {
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							AbstractPathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle);
-							path.setPathBinder(autoArcBinder);
+							AbstractPathAutoBinder binder = new PathArcAutoBinder(radius, 200, polarAngle);
+							binder.setDebug(true);
+							path.setPathBinder(binder);
 							repaintView();
 							Thread.sleep(50);
 						}
@@ -62,8 +63,9 @@ public class GaugeArcAutoBinderAnimatorDemo extends View2D {
 					}
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							AbstractPathAutoBinder autoArcBinder = new PathArcAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
-							path.setPathBinder(autoArcBinder);
+							AbstractPathAutoBinder binder = new PathArcAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
+							binder.setDebug(true);
+							path.setPathBinder(binder);
 							repaintView();
 							Thread.sleep(50);
 						}
