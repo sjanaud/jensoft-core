@@ -21,9 +21,29 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  */
 public abstract class PathBinder {
 
+	private boolean debug = false;
+
+	/**
+	 * @return the debug
+	 */
+	public boolean isDebug() {
+		return debug;
+	}
+
+	/**
+	 * @param debug
+	 *            the debug to set
+	 */
+	public void setDebug(boolean debug) {
+		this.debug = debug;
+	}
+
+	/** the metrics path that own this binder */
 	private GaugeMetricsPath metricsPath;
 
 	/**
+	 * get metrics path that own this binder
+	 * 
 	 * @return the metricsPath
 	 */
 	public GaugeMetricsPath getMetricsPath() {
@@ -31,6 +51,8 @@ public abstract class PathBinder {
 	}
 
 	/**
+	 * set metrics path owner
+	 * 
 	 * @param metricsPath
 	 *            the metricsPath to set
 	 */
@@ -49,7 +71,8 @@ public abstract class PathBinder {
 	public abstract Shape bindPath(RadialGauge gauge);
 
 	/**
-	 * debug paint path binder
+	 * debug paint path binder 
+	 * 
 	 * @param g2d
 	 * @param gauge
 	 */
