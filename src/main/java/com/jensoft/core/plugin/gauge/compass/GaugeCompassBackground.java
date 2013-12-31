@@ -29,7 +29,7 @@ import com.jensoft.core.plugin.gauge.core.RadialGauge;
  * <code>GaugeCompassBackground</code>
  * 
  * <p>
- * When I was young, i was on the  boat Tham-A-Tam.
+ * In memory of boat Tham-A-Tam.
  * </p>
  * 
  * @since 1.0
@@ -255,6 +255,9 @@ public class GaugeCompassBackground extends GaugeBackground{
         this.baseRadius = baseRadius;
     }
 
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.gauge.core.GaugeBackground#paintBackground(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 */
 	@Override
 	public void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {
 		double centerX = radialGauge.getCenterDevice().getX();
