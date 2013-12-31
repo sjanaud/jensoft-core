@@ -53,9 +53,10 @@ public class GaugeQuadraticAutoBinderAnimatorDemo extends View2D {
 				while (true) {
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							PathQuadAutoBinder quadBinder = new PathQuadAutoBinder(radius, 200, polarAngle);
-							quadBinder.setControlOffsetRadius(100);
-							path.setPathBinder(quadBinder);
+							PathQuadAutoBinder binder = new PathQuadAutoBinder(radius, 200, polarAngle);
+							binder.setControlOffsetRadius(100);
+							binder.setDebug(true);
+							path.setPathBinder(binder);
 							repaintView();
 							Thread.sleep(40);
 						}
@@ -63,9 +64,10 @@ public class GaugeQuadraticAutoBinderAnimatorDemo extends View2D {
 					}
 					for (int polarAngle = 0; polarAngle < 360; polarAngle = polarAngle + 30) {
 						for (int radius = 0; radius < 300; radius = radius + 5) {
-							PathQuadAutoBinder quadBinder = new PathQuadAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
-							quadBinder.setControlOffsetRadius(100);
-							path.setPathBinder(quadBinder);
+							PathQuadAutoBinder binder = new PathQuadAutoBinder(radius, 200, polarAngle, Direction.AntiClockwise);
+							binder.setControlOffsetRadius(100);
+							binder.setDebug(true);
+							path.setPathBinder(binder);
 							repaintView();
 							Thread.sleep(40);
 						}
