@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
 package com.jensoft.core.plugin.gauge.core;
 
 import java.awt.Graphics2D;
@@ -5,6 +10,14 @@ import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * <code>GaugeBody</code> defines the gauge body that contains metrics path or
+ * text path.
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ * 
+ */
 public class GaugeBody extends GaugePart {
 
 	/** gauges metrics paths */
@@ -81,24 +94,27 @@ public class GaugeBody extends GaugePart {
 			registerGaugeTextPath(path);
 		}
 	}
-	
+
 	/**
 	 * draw given buffer in the given graphics context
+	 * 
 	 * @param g2d
 	 * @param buffer
 	 */
-	private void paintPart(Graphics2D g2d,GaugePartBuffer buffer){
-		if(buffer != null && buffer.getBuffer() != null)
-		g2d.drawImage(buffer.getBuffer(),(int)buffer.getX(),(int)buffer.getY(),(int)buffer.getWidth(),(int)buffer.getHeight(),null);
+	private void paintPart(Graphics2D g2d, GaugePartBuffer buffer) {
+		if (buffer != null && buffer.getBuffer() != null)
+			g2d.drawImage(buffer.getBuffer(), (int) buffer.getX(), (int) buffer.getY(), (int) buffer.getWidth(), (int) buffer.getHeight(), null);
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
 	 */
 	@Override
 	public void invalidate() {
 		setPartBuffer(null);
-		
+
 		for (GaugeMetricsPath path : getMetricsPaths()) {
 			path.setPartBuffer(null);
 		}
@@ -117,34 +133,34 @@ public class GaugeBody extends GaugePart {
 	 */
 	@Override
 	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {
-		for(GaugeMetricsPath path : getMetricsPaths()){
-			if(path.getPartBuffer() == null){
+		for (GaugeMetricsPath path : getMetricsPaths()) {
+			if (path.getPartBuffer() == null) {
 				path.setWindow2d(getGauge().getWindow2D());
 				path.resetPath();
 				Shape s = path.getPathBinder().bindPath(radialGauge);
-				if(s != null){
+				if (s != null) {
 					path.append(path.getPathBinder().bindPath(radialGauge));
-					path.createPartBuffer(g2d);	
+					path.createPartBuffer(g2d);
 				}
 			}
 			paintPart(g2d, path.getPartBuffer());
-			
-			//DEBUG PATH BINDER
-			if(path.getPathBinder().isDebug()){
+
+			// DEBUG PATH BINDER
+			if (path.getPathBinder().isDebug()) {
 				path.getPathBinder().debug(g2d, radialGauge);
 			}
 		}
-		
-		for(GaugeTextPath path : getTextPaths()){
-			if(path.getPartBuffer() == null){
+
+		for (GaugeTextPath path : getTextPaths()) {
+			if (path.getPartBuffer() == null) {
 				path.setPath(path.getPathBinder().bindPath(radialGauge));
 				path.createPartBuffer(g2d);
 			}
 			paintPart(g2d, path.getPartBuffer());
 		}
-		
-		for(GaugeMetricsPath path : getMetricsPaths()){
-			if(path.getGaugeNeedlePainter() != null){
+
+		for (GaugeMetricsPath path : getMetricsPaths()) {
+			if (path.getGaugeNeedlePainter() != null) {
 				path.getGaugeNeedlePainter().paintNeedle(g2d, path);
 			}
 		}
