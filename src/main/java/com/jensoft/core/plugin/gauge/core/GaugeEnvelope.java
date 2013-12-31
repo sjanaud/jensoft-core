@@ -339,13 +339,14 @@ public abstract class GaugeEnvelope extends GaugePart{
 			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 
 			int deltaExternal = (int) (radialGauge.getRadius() / extendsRatio);
-			if (getPartBuffer() == null) {
+			GaugePartBuffer part = getPartBuffer();
+			if (part == null) {
 
 				int radiusExternal = radialGauge.getRadius() + deltaExternal;
 
-				GaugePartBuffer envelopPart = new GaugePartBuffer(radialGauge);
-				setPartBuffer(envelopPart);
-				Graphics2D g2dPart = envelopPart.getGraphics();
+				part = new GaugePartBuffer(radialGauge);
+				setPartBuffer(part);
+				Graphics2D g2dPart = part.getGraphics();
 				g2dPart.setRenderingHints(g2d.getRenderingHints());
 
 				// base
@@ -502,9 +503,9 @@ public abstract class GaugeEnvelope extends GaugePart{
 				g2dPart.dispose();
 
 			}
-			if(getPartBuffer() != null && getPartBuffer().getBuffer() != null){
-				g2d.drawImage(getPartBuffer().getBuffer(), (int) getPartBuffer().getX(), (int) getPartBuffer().getY(), (int) getPartBuffer().getWidth(), (int) getPartBuffer().getHeight(), null);
-			}
+			//if(getPartBuffer() != null && getPartBuffer().getBuffer() != null){
+				g2d.drawImage(part.getBuffer(), (int) part.getX(), (int) part.getY(), (int) part.getWidth(), (int) part.getHeight(), null);
+			//}
 		}
 
 	}
