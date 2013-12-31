@@ -55,8 +55,9 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	 * invalidate parts
 	 */
 	private void invalidateParts(){
-		
-		gauge.getEnvelop().invalidate();
+		if(gauge.getEnvelop() != null){
+			gauge.getEnvelop().invalidate();
+		}
 		
 		for(GaugeGlass glass : gauge.getGlasses()){
 			glass.invalidate();

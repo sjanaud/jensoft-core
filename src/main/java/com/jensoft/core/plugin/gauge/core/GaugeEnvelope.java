@@ -502,7 +502,9 @@ public abstract class GaugeEnvelope extends GaugePart{
 				g2dPart.dispose();
 
 			}
-			g2d.drawImage(getPartBuffer().getBuffer(), (int) getPartBuffer().getX(), (int) getPartBuffer().getY(), (int) getPartBuffer().getWidth(), (int) getPartBuffer().getHeight(), null);
+			if(getPartBuffer() != null && getPartBuffer().getBuffer() != null){
+				g2d.drawImage(getPartBuffer().getBuffer(), (int) getPartBuffer().getX(), (int) getPartBuffer().getY(), (int) getPartBuffer().getWidth(), (int) getPartBuffer().getHeight(), null);
+			}
 		}
 
 	}
