@@ -98,6 +98,7 @@ public class GaugeBody extends GaugePart {
 	@Override
 	public void invalidate() {
 		setPartBuffer(null);
+		
 		for (GaugeMetricsPath path : getMetricsPaths()) {
 			path.setPartBuffer(null);
 		}
@@ -126,8 +127,12 @@ public class GaugeBody extends GaugePart {
 					path.createPartBuffer(g2d);	
 				}
 			}
-			path.getPathBinder().debug(g2d, radialGauge);
 			paintPart(g2d, path.getPartBuffer());
+			
+			//DEBUG PATH BINDER
+			if(path.getPathBinder().isDebug()){
+				path.getPathBinder().debug(g2d, radialGauge);
+			}
 		}
 		
 		for(GaugeTextPath path : getTextPaths()){
