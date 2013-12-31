@@ -335,13 +335,12 @@ public abstract class GaugeEnvelope extends GaugePart{
 		@Override
 		public void paintEnvelope(Graphics2D g2d, RadialGauge radialGauge) {
 			// System.out.println("paint cisero env.");
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
-
-			int deltaExternal = (int) (radialGauge.getRadius() / extendsRatio);
 			GaugePartBuffer part = getPartBuffer();
 			if (part == null) {
+				double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+				double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 
+				int deltaExternal = (int) (radialGauge.getRadius() / extendsRatio);
 				int radiusExternal = radialGauge.getRadius() + deltaExternal;
 
 				part = new GaugePartBuffer(radialGauge);
