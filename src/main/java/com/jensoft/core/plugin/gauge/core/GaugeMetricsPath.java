@@ -45,12 +45,6 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	/** path binder */
 	private PathBinder pathBinder;
 
-	/** debug flag arc for paint arc */
-	private boolean debugPath = false;
-
-	/** debug arc color */
-	private Color debugPathColor = NanoChromatique.RED;
-
 	/** gauge needle painter */
 	private GaugeNeedlePainter gaugeNeedlePainter;
 
@@ -79,7 +73,9 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 		super();
 
 		// gauge can not be zoomed in simple linear zooming mode
-		// only gauge center is projected.then all vector transforms
+		// only gauge center is projected.all expression is relative to the
+		// center gauge in pixel dimension.
+		// then all vector transforms or evaluation
 		// should be achieve and evaluate by another process, from radius
 		// reference for example.
 		setProjectionNature(ProjectionNature.DEVICE);
@@ -119,6 +115,8 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	 * @param currentValue
 	 */
 	public void setCurrentValue(double currentValue) {
+		if (currentValue < getMin() || currentValue > getMax())
+			throw new IllegalArgumentException("metrics of of range. " + currentValue + " is outside [min,max] path range. ");
 		this.currentValue = currentValue;
 	}
 
@@ -179,8 +177,6 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 		this.needleValueAnchorBinder = needleValueAnchorBinder;
 	}
 
-	
-
 	/**
 	 * @return the body
 	 */
@@ -189,7 +185,8 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	}
 
 	/**
-	 * @param body the body to set
+	 * @param body
+	 *            the body to set
 	 */
 	public void setBody(GaugeBody body) {
 		this.body = body;
@@ -213,6 +210,13 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 	}
 
 	/**
+	 * invalidate the part buffer
+	 */
+	public void invalidate() {
+		setPartBuffer(null);
+	}
+
+	/**
 	 * create part buffer of this metrics path from original context.
 	 * 
 	 * @param g2d
@@ -224,18 +228,11 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 		g2dPart.setRenderingHints(g2d.getRenderingHints());
 		setFontRenderContext(g2d.getFontRenderContext());
 		setSolveGeometryRequest(true);
-//		if (debugPath) {
-//			g2dPart.setStroke(new BasicStroke(2f));
-//			g2dPart.setColor(debugPathColor);
-//			// g2dPart.draw(getOrCreateGeometry().getPath());
-//			// or
-//			g2dPart.draw(getPathBinder().bindPath(getGauge()));
-//		}
 		
-		if(getPathPainter() != null){
-			getPathPainter().paintPath(g2dPart, this);	
+
+		if (getPathPainter() != null) {
+			getPathPainter().paintPath(g2dPart, this);
 		}
-		
 
 		List<GlyphMetric> metrics = getMetrics();
 		for (GlyphMetric m : metrics) {
@@ -255,20 +252,6 @@ public class GaugeMetricsPath extends GeneralMetricsPath {
 		}
 	}
 
-	public boolean isDebugPath() {
-		return debugPath;
-	}
-
-	public void setDebugPath(boolean debugPath) {
-		this.debugPath = debugPath;
-	}
-
-	public Color getDebugPathColor() {
-		return debugPathColor;
-	}
-
-	public void setDebugPathColor(Color debugPathColor) {
-		this.debugPathColor = debugPathColor;
-	}
+	
 
 }

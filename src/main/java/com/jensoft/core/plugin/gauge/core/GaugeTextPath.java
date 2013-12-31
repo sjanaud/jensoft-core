@@ -93,6 +93,14 @@ public class GaugeTextPath extends TextPath {
 	public GaugePartBuffer getPartBuffer() {
 		return partBuffer;
 	}
+	
+	/**
+	 * invalidate the part buffer
+	 */
+	public void invalidate(){
+		setPartBuffer(null);
+	}
+
 
 	/**
 	 * create part buffer of this text path from original context.

@@ -83,7 +83,7 @@ import java.util.List;
  * <center><img src="doc-files/white-tachometer.png"></center><br>
  * <center><img src="doc-files/white-compass.png"></center><br>
  * <center><img src="doc-files/general-metrics1.png"></center><br>
- * </p> 
+ * </p>
  * 
  * @since 1.0
  * @author Sebastien Janaud
@@ -128,7 +128,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		pmetrics = new ArrayList<GlyphMetric>();
 		entries = new ArrayList<SegmentEntry>();
 	}
-	
+
 	/**
 	 * set the ranges values of the path *
 	 * 
@@ -136,7 +136,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	 *            the minimum user metrics value for this path to set
 	 * @param max
 	 *            the maximum user metrics value for this path to set
-	 *            
+	 * 
 	 */
 	public void setRange(double min, double max) {
 		this.min = min;
@@ -359,7 +359,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 			}
 			pi.next();
 		}
-		//System.out.println("empty path ");
+		// System.out.println("empty path ");
 		return true;
 	}
 
@@ -380,7 +380,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 *            the shape to set for this geometry
 		 */
 		public ShapeGeometry(Shape shape) {
-			if(shape == null)
+			if (shape == null)
 				throw new IllegalArgumentException("shape is null, shape should be supplied.");
 			this.shape = shape;
 			setType(EntryType.SEG_SHAPE);
@@ -394,19 +394,21 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 * @param nature
 		 */
 		public void validCurentSegment(PathIterator pi, GeneralPath path, ProjectionNature nature) {
-			//System.out.println("valid segment");
-			
+			// System.out.println("valid segment");
+
 			double[] coordinates = new double[6];
 			int type = pi.currentSegment(coordinates);
-			
+
 			switch (type) {
 
 			case PathIterator.SEG_MOVETO:
-				//System.out.println("move to "+coordinates[0]+","+ coordinates[1]);
+				// System.out.println("move to "+coordinates[0]+","+
+				// coordinates[1]);
 				Point2D pm = null;
 				if (getProjectionNature() == ProjectionNature.USER) {
 					pm = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
-					//pm = getWindow2d().userToPixel(new Point2D.Double(coordinates[1], coordinates[0]));
+					// pm = getWindow2d().userToPixel(new
+					// Point2D.Double(coordinates[1], coordinates[0]));
 				} else {
 					pm = new Point2D.Double(coordinates[0], coordinates[1]);
 				}
@@ -444,19 +446,23 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 				Point2D pc1;
 				Point2D pc2;
 				Point2D pc3;
-				//System.out.println("cubic to "+coordinates[0]+","+coordinates[1]+","+coordinates[2]+","+coordinates[3]+","+coordinates[4]+","+coordinates[5]);
+				// System.out.println("cubic to "+coordinates[0]+","+coordinates[1]+","+coordinates[2]+","+coordinates[3]+","+coordinates[4]+","+coordinates[5]);
 				if (getProjectionNature() == ProjectionNature.USER) {
 					pc1 = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
 					pc2 = getWindow2d().userToPixel(new Point2D.Double(coordinates[2], coordinates[3]));
 					pc3 = getWindow2d().userToPixel(new Point2D.Double(coordinates[4], coordinates[5]));
-					
-					//seems Arc2D get reverse path iterator!? --> send mail to Jim Grapham?
-					//pc1 = getWindow2d().userToPixel(new Point2D.Double(coordinates[1], coordinates[0]));
-					//pc2 = getWindow2d().userToPixel(new Point2D.Double(coordinates[3], coordinates[2]));
-					//pc3 = getWindow2d().userToPixel(new Point2D.Double(coordinates[5], coordinates[4]));
-					
+
+					// seems Arc2D get reverse path iterator!? --> send mail to
+					// Jim Grapham?
+					// pc1 = getWindow2d().userToPixel(new
+					// Point2D.Double(coordinates[1], coordinates[0]));
+					// pc2 = getWindow2d().userToPixel(new
+					// Point2D.Double(coordinates[3], coordinates[2]));
+					// pc3 = getWindow2d().userToPixel(new
+					// Point2D.Double(coordinates[5], coordinates[4]));
+
 				} else {
-					
+
 					pc1 = new Point2D.Double(coordinates[0], coordinates[1]);
 					pc2 = new Point2D.Double(coordinates[2], coordinates[3]);
 					pc3 = new Point2D.Double(coordinates[4], coordinates[5]);
@@ -465,7 +471,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 				path.curveTo(pc1.getX(), pc1.getY(), pc2.getX(), pc2.getY(), pc3.getX(), pc3.getY());
 				break;
 			case PathIterator.SEG_CLOSE:
-				//System.out.println("close to");
+				// System.out.println("close to");
 				path.closePath();
 				break;
 			default:
@@ -482,10 +488,10 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 */
 		@Override
 		protected void validEntry(GeneralPath path) {
-			if(shape == null)
+			if (shape == null)
 				throw new IllegalArgumentException("shape should be supplied.");
 			if (getProjectionNature() == ProjectionNature.DEVICE) {
-	//			path.append(shape, true);
+				// path.append(shape, true);
 				PathIterator pi = shape.getPathIterator(new AffineTransform());
 				while (pi.isDone() == false) {
 					validCurentSegment(pi, path, getProjectionNature());
@@ -771,7 +777,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	 */
 	@Override
 	protected GeneralPath createPathMetrics() {
-		//System.out.println("create metrics path");
+		// System.out.println("create metrics path");
 		GeneralPath path = new GeneralPath();
 		// TODO check is first segment is move to
 		for (SegmentEntry entry : entries) {
@@ -792,7 +798,12 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	}
 
 	/**
-	 * add pre initialized metric {@link GlyphMetric} to this general path
+	 * add pre initialized metric {@link GlyphMetric} to this general path.
+	 * 
+	 * <p>
+	 * WARNING : tangent metrics can be exclude near from start and end point.
+	 * Indeed, text should lay out along path and cannot be outside of path.
+	 * <p>
 	 * 
 	 * @param metric
 	 */
@@ -802,14 +813,13 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		}
 		volatileMetrics.add(metric);
 	}
-	
+
 	/**
 	 * clear metrics
 	 */
 	public void clearMetric() {
 		volatileMetrics.clear();
 	}
-
 
 	/**
 	 * get the device metrics point for the given metrics value
@@ -850,14 +860,14 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	 * @return radial point
 	 */
 	public Point2D getRadialPoint(double metricsValue, int radius, Side side) {
-		//System.out.println("get radial point for value : "+metricsValue);
+		// System.out.println("get radial point for value : "+metricsValue);
 		scalePath();
 		double deviceLength = unitUserToDevice * metricsValue;
 		Point2D p = geometry.pointAtLength((float) deviceLength);
 		float metricAngle = geometry.angleAtLength((float) deviceLength);
 		double px;
 		double py;
-		//System.out.println("metrics angle : "+metricAngle);
+		// System.out.println("metrics angle : "+metricAngle);
 		if (side == Side.SideRight) {
 			px = p.getX() - radius * Math.sin(metricAngle);
 			py = p.getY() + radius * Math.cos(metricAngle);
@@ -1135,7 +1145,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 
 		for (GlyphMetric vm : volatileMetrics) {
 			if (vm.getValue() < getMin() || vm.getValue() > getMax()) {
-				throw new IllegalArgumentException("metrics value out of path range :"+vm.getValue());
+				throw new IllegalArgumentException("metrics value out of path range :" + vm.getValue());
 			}
 
 			GlyphMetric m = new GlyphMetric();
@@ -1165,9 +1175,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 
 			Font f = m.getFont();
 
-			if(m.getMetricsLabel() == null)
-				m.setMetricsLabel(vm.getValue()+"");
-			
+			if (m.getMetricsLabel() == null)
+				m.setMetricsLabel(vm.getValue() + "");
+
 			GlyphVector glyphVector = f.createGlyphVector(getFontRenderContext(), m.getMetricsLabel());
 
 			if (m.getStylePosition() == StylePosition.Tangent) {
