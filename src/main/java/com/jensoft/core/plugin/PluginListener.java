@@ -8,21 +8,25 @@ package com.jensoft.core.plugin;
 import java.util.EventListener;
 
 /**
- * PluginListener takes the responsibility to broadcast a plug lock/unlock event
+ * <code>PluginListener</code> takes the responsibility to broadcast a plug
+ * lock/unlock event
+ * 
+ * @since 1.0
+ * @author sebastien janaud
  */
 public interface PluginListener<T extends AbstractPlugin> extends EventListener {
 
-    /**
-     * call when the plugin is selected
-     * 
-     * @param pluginEvent
-     */
-    public void pluginSelected(PluginEvent<T> pluginEvent);
+	/**
+	 * call when the plugin is selected
+	 * 
+	 * @param pluginEvent
+	 */
+	public void pluginSelected(PluginEvent<T> pluginEvent);
 
-    /**
-     * call when a plugin is unlock selected
-     * 
-     * @param pluginEvent
-     */
-    public void pluginUnlockSelected(PluginEvent<T> pluginEvent);
+	/**
+	 * call when a plugin is unlock selected
+	 * 
+	 * @param pluginEvent
+	 */
+	public void pluginUnlockSelected(PluginEvent<T> pluginEvent);
 }

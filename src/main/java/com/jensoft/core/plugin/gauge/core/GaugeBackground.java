@@ -475,6 +475,7 @@ public abstract class GaugeBackground extends GaugePart {
 				Ellipse2D baseShape = new Ellipse2D.Double(centerDef.getX() - radius, centerDef.getY() - radius, 2 * radius, 2 * radius);
 
 				part = new GaugePartBuffer(radialGauge);
+				part.getGraphics().setRenderingHints(g2d.getRenderingHints());
 				setPartBuffer(part);
 				fill(part.getGraphics(), radialGauge, baseShape);
 			}
