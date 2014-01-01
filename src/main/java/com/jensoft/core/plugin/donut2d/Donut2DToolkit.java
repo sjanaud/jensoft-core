@@ -27,9 +27,7 @@ import com.jensoft.core.plugin.donut2d.painter.label.Donut2DRadialLabel;
  * <br>
  * <img src="doc-files/donut2d.png"> <br>
  * 
- * @see Donut2D
- * @see Donut2DSlice
- * @see Donut2DPlugin
+ * @since 1.0
  * @author Sebastien Janaud
  */
 public class Donut2DToolkit extends Toolkit {
