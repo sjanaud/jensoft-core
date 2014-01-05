@@ -50,6 +50,18 @@ public class DashboardFrameUI extends JFrame {
 		pack();
 		setSize(1024, 700);
 	}
+	
+	public static void main(String[] args) {
+		System.out.println("FRAME UI ARGS : "+args);
+		try {
+			Class viewClass = Class.forName(args[0]);
+			Dashboard d = (Dashboard)viewClass.newInstance();
+			DashboardFrameUI ui = new DashboardFrameUI(d);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	private void create() {
 		try {
@@ -79,13 +91,13 @@ public class DashboardFrameUI extends JFrame {
 		demoTab.setTabIcon(icon1);
 		tabSet.addComandTab(demoTab, dashboard);
 
-		DemoTab uiTab = new DemoTab("Frame UI");
-		uiTab.setTabColor(FilPalette.GREEN3);
-		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
-		uiTab.setTabIcon(icon2);
-		JavaSourcePane uiSourcePane = new JavaSourcePane();
-		tabSet.addComandTab(uiTab, uiSourcePane);
-		uiSourcePane.loadSource(this.getClass());
+//		DemoTab uiTab = new DemoTab("Frame UI");
+//		uiTab.setTabColor(FilPalette.GREEN3);
+//		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
+//		uiTab.setTabIcon(icon2);
+//		JavaSourcePane uiSourcePane = new JavaSourcePane();
+//		tabSet.addComandTab(uiTab, uiSourcePane);
+//		uiSourcePane.loadSource(this.getClass());
 
 		DemoTab dashboardTab = new DemoTab("Dashboard");
 		dashboardTab.setTabColor(JennyPalette.JENNY6);

@@ -29,7 +29,7 @@ import com.jensoft.core.view.View2D;
  * @author sebastien janaud
  * 
  */
-public abstract class DashboardAppletUI extends JApplet {
+public class DashboardAppletUI extends JApplet {
 
 	/**
 	 * serial version UID
@@ -39,6 +39,7 @@ public abstract class DashboardAppletUI extends JApplet {
 	private String inset;
 	private String drawOutline;
 	private String cornerRadius;
+	private String className;
 
 	/**
 	 * in Applet UI
@@ -47,6 +48,7 @@ public abstract class DashboardAppletUI extends JApplet {
 		inset = getParameter("inset");
 		drawOutline = getParameter("drawOutline");
 		cornerRadius = getParameter("cornerRadius");
+		className = getParameter("dashboardName");
 		try {
 			javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
@@ -58,12 +60,7 @@ public abstract class DashboardAppletUI extends JApplet {
 		}
 	}
 
-	/**
-	 * get the view demo class
-	 * 
-	 * @return view class
-	 */
-	public abstract Class getDemoClass();
+	
 
 	private void create() {
 		try {
@@ -106,20 +103,21 @@ public abstract class DashboardAppletUI extends JApplet {
 
 		Dashboard dashboard = null;
 		try {
-			dashboard = (Dashboard) getDemoClass().newInstance();
+			Class dashboardClass = Class.forName(className);
+			dashboard = (Dashboard)dashboardClass.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		tabSet.addComandTab(demoTab, dashboard);
 
-		DemoTab uiTab = new DemoTab("Applet UI");
-		uiTab.setTabColor(FilPalette.GREEN3);
-		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
-		uiTab.setTabIcon(icon2);
-		JavaSourcePane uiSourcePane = new JavaSourcePane();
-		tabSet.addComandTab(uiTab, uiSourcePane);
-		uiSourcePane.loadSource(this.getClass());
+//		DemoTab uiTab = new DemoTab("Applet UI");
+//		uiTab.setTabColor(FilPalette.GREEN3);
+//		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
+//		uiTab.setTabIcon(icon2);
+//		JavaSourcePane uiSourcePane = new JavaSourcePane();
+//		tabSet.addComandTab(uiTab, uiSourcePane);
+//		uiSourcePane.loadSource(this.getClass());
 
 		DemoTab dashboardTab = new DemoTab("Dashboard");
 		dashboardTab.setTabColor(JennyPalette.JENNY6);
