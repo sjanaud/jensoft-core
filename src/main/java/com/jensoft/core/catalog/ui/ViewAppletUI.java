@@ -21,7 +21,6 @@ import javax.swing.UIManager;
 import com.jensoft.core.catalog.component.DemoTab;
 import com.jensoft.core.catalog.component.DemoTabSet;
 import com.jensoft.core.catalog.source.JavaSourcePane;
-import com.jensoft.core.palette.FilPalette;
 import com.jensoft.core.palette.JennyPalette;
 import com.jensoft.core.view.View2D;
 
@@ -30,7 +29,7 @@ import com.jensoft.core.view.View2D;
  * 
  * @author sebastien janaud
  */
-public abstract class ViewAppletUI extends JApplet {
+public class ViewAppletUI extends JApplet {
 
 	/**
 	 * serial version UID
@@ -40,16 +39,11 @@ public abstract class ViewAppletUI extends JApplet {
 	/** JNLP clip board service */
 	private ClipboardService cs = null;
 
-	/**
-	 * get the view demo class
-	 * 
-	 * @return view class
-	 */
-	public abstract Class getDemoClass();
-
+	
 	private String inset;
 	private String drawOutline;
 	private String cornerRadius;
+	private String className;
 	
 
 	/**
@@ -59,6 +53,7 @@ public abstract class ViewAppletUI extends JApplet {
 		inset = getParameter("inset");
 		drawOutline = getParameter("drawOutline");
 		cornerRadius = getParameter("cornerRadius");
+		className = getParameter("viewName");
 		try {
 			javax.swing.SwingUtilities.invokeAndWait(new Runnable() {
 				public void run() {
@@ -121,19 +116,20 @@ public abstract class ViewAppletUI extends JApplet {
 
 		View2D view = null;
 		try {
-			view = (View2D) getDemoClass().newInstance();
+			Class viewClass = Class.forName(className);
+			view = (View2D) viewClass.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		tabSet.addComandTab(demoTab, view);
 
-		DemoTab appletUITab = new DemoTab("Applet UI");
-		appletUITab.setTabColor(FilPalette.GREEN3);
-		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
-		appletUITab.setTabIcon(icon2);
-		JavaSourcePane appletUISourcePane = new JavaSourcePane();
-		tabSet.addComandTab(appletUITab, appletUISourcePane);
-		appletUISourcePane.loadSource(this.getClass());
+//		DemoTab appletUITab = new DemoTab("Applet UI");
+//		appletUITab.setTabColor(FilPalette.GREEN3);
+//		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
+//		appletUITab.setTabIcon(icon2);
+//		JavaSourcePane appletUISourcePane = new JavaSourcePane();
+//		tabSet.addComandTab(appletUITab, appletUISourcePane);
+//		appletUISourcePane.loadSource(this.getClass());
 
 		DemoTab viewSourceTab = new DemoTab("View");
 		viewSourceTab.setTabColor(JennyPalette.JENNY6);

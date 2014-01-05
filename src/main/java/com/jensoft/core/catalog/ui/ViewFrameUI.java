@@ -53,6 +53,18 @@ public class ViewFrameUI extends JFrame {
 		pack();
 		setSize(1024, 700);
 	}
+	
+	public static void main(String[] args) {
+		System.out.println("FRAME UI ARGS : "+args);
+		try {
+			Class viewClass = Class.forName(args[0]);
+			View2D v = (View2D)viewClass.newInstance();
+			ViewFrameUI ui = new ViewFrameUI(v);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
 	/**
 	 * show the given demo in the demo frame
@@ -88,13 +100,13 @@ public class ViewFrameUI extends JFrame {
 		demoTab.setTabIcon(icon1);
 		tabSet.addComandTab(demoTab, view);
 
-		DemoTab frameUITab = new DemoTab("Frame UI");
-		frameUITab.setTabColor(FilPalette.GREEN3);
-		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
-		frameUITab.setTabIcon(icon2);
-		JavaSourcePane frameUISourcePane = new JavaSourcePane();
-		tabSet.addComandTab(frameUITab, frameUISourcePane);
-		frameUISourcePane.loadSource(this.getClass());
+//		DemoTab frameUITab = new DemoTab("Frame UI");
+//		frameUITab.setTabColor(FilPalette.GREEN3);
+//		ImageIcon icon2 = ImageResource.getInstance().createImageIcon("source.png", "");
+//		frameUITab.setTabIcon(icon2);
+//		JavaSourcePane frameUISourcePane = new JavaSourcePane();
+//		tabSet.addComandTab(frameUITab, frameUISourcePane);
+//		frameUISourcePane.loadSource(this.getClass());
 
 		DemoTab viewSourceTab = new DemoTab("View");
 		viewSourceTab.setTabColor(JennyPalette.JENNY6);
