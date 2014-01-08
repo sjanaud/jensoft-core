@@ -1,5 +1,5 @@
 /**
- * JenSoft API Speedometer Gauge
+ * JenSoft API Speedometer Gauge model
  * 
  * @author sebastien janaud
  * @since 1.0
