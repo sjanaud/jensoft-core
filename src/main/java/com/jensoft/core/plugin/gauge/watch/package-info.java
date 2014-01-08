@@ -1,5 +1,5 @@
 /**
- * JenSoft API Watch Gauge
+ * JenSoft API Watch Gauge model
  * 
  * @author sebastien janaud
  * @since 1.0
