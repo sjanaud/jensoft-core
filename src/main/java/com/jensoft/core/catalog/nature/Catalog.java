@@ -25,4 +25,5 @@ public @interface Catalog {
 	String artifact();
 	String version();
 	String description() default "";
+	String core();
 }
