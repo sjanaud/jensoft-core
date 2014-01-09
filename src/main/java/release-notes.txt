@@ -1,8 +1,11 @@
 JenSoft API Core : Release Notes
 -----------------------------------------------------------------------
 
+group    : com.jensoft
+artifact : jensoft-core
+version  : 1.0.0
 
-
-Release 1.0.0
+Notes
 -----------------------------------------------------------------------
-Core classes
+JenSoft API Core classes first version
+09 Juin 2013, Bordeaux FRANCE.
