@@ -283,7 +283,7 @@ public class PieSliceCubicEffect extends AbstractPieSliceEffect {
         centerY = c.getY() - pieSection.getDivergence()
                 * Math.sin(Math.toRadians(medianDegree));
 
-        System.out.println("paint pie slice cubic fx : "+centerX+","+centerY);
+       // System.out.println("paint pie slice cubic fx : "+centerX+","+centerY);
         double radius = pie.getRadius() - offsetRadius;
 
         double controlStartX = centerX

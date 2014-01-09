@@ -19,7 +19,10 @@ import java.lang.annotation.Target;
 @Documented
 @Target({ ElementType.PACKAGE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Catalog {	
+public @interface Catalog {
+	String name();
+	String group();
+	String artifact();
 	String version();
 	String description() default "";
 }
