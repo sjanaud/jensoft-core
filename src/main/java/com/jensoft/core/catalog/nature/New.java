@@ -11,20 +11,13 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jensoft.core.view.background.NoBackground;
-
 /**
- * <code>JenSoftView</code>
+ *<code>New/code>
  * 
  * @author Sebastien Janaud
  */
 @Documented
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface JenSoftView {	
-	Dim dimension() default @Dim(width=600,height=400);
-	Class<?> background() default NoBackground.class;
-	Class<?>[] see() default {};
-	String description() default "";
-	boolean ignore() default false;
+public @interface New {
 }
