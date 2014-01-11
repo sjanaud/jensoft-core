@@ -17,7 +17,7 @@ import java.lang.annotation.Target;
  * @author Sebastien Janaud
  */
 @Documented
-@Target({ ElementType.TYPE })
+@Target({ ElementType.PACKAGE, ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface New {
 	String comment();

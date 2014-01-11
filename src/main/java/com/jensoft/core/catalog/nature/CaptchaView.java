@@ -11,15 +11,20 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * <code>AppletUI/code>
- * 
+import com.jensoft.core.catalog.nature.Dim;
+import com.jensoft.core.view.background.NoBackground;
 
+/**
+ * <code>JenSoftView</code>
  * 
  * @author Sebastien Janaud
  */
 @Documented
 @Target({ ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)
-public @interface AppletUI {
+public @interface CaptchaView {	
+	String question() ;
+	String anwser();
+	Dim dimension() default @Dim(width=600,height=400);
+	Class background() default NoBackground.class;
 }
