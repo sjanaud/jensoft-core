@@ -20,7 +20,7 @@ import com.jensoft.core.view.background.NoBackground;
  * @author Sebastien Janaud
  */
 @Documented
-@Target({ ElementType.TYPE })
+@Target({  })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface CaptchaView {	
 	String question() ;
