@@ -23,6 +23,7 @@ import com.jensoft.core.view.background.NoBackground;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JenSoftView {	
 	Dim dimension() default @Dim(width=600,height=400);
+	CaptchaView[] captchas() default {};
 	Class<?> background() default NoBackground.class;
 	Class<?>[] see() default {};
 	String description() default "";
