@@ -18,9 +18,10 @@ import javax.swing.UIManager;
 import com.jensoft.core.catalog.component.DemoTab;
 import com.jensoft.core.catalog.component.DemoTabSet;
 import com.jensoft.core.catalog.source.JavaSourcePane;
-import com.jensoft.core.palette.FilPalette;
+import com.jensoft.core.catalog.source.X2DSourcePane;
 import com.jensoft.core.palette.JennyPalette;
 import com.jensoft.core.view.View2D;
+import com.jensoft.core.x2d.X2D;
 
 /**
  * <code>ViewDemoFrameUI</code>
@@ -116,19 +117,20 @@ public class ViewFrameUI extends JFrame {
 		tabSet.addComandTab(viewSourceTab, viewSource);
 		viewSource.loadSource(view.getClass());
 		
-//		DemoTab x2dSourceTab = new DemoTab("X2D");
-//		x2dSourceTab.setTabColor(JennyPalette.JENNY6);
-//		ImageIcon icon3 = ImageResource.getInstance().createImageIcon("source.png", "");
-//		viewSourceTab.setTabIcon(icon3);
-//		X2DSourcePane x2dSourcePane = new X2DSourcePane();
-//		tabSet.addComandTab(x2dSourceTab, x2dSourcePane);		
-//		X2D x2d = new X2D();
-//		try {
-//			x2d.registerView(view);
-//		} catch (Throwable e) {
-//			e.printStackTrace();
-//		}
-//		x2dSourcePane.loadX2DSource(x2d);
+		
+		DemoTab x2dSourceTab = new DemoTab("X2D");
+		x2dSourceTab.setTabColor(JennyPalette.JENNY6);
+		ImageIcon icon3 = ImageResource.getInstance().createImageIcon("source.png", "");
+		viewSourceTab.setTabIcon(icon3);
+		X2DSourcePane x2dSourcePane = new X2DSourcePane();
+		tabSet.addComandTab(x2dSourceTab, x2dSourcePane);		
+		X2D x2d = new X2D();
+		try {
+			x2d.registerView(view);
+		} catch (Throwable e) {
+			e.printStackTrace();
+		}
+		x2dSourcePane.loadX2DSource(x2d);
 		
 		
 
