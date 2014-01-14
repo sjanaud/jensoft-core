@@ -539,7 +539,8 @@ public class Pie {
         double deltaDegree = slice.getPercent() * 360;
 
         if (startAngleDegree > 360) {
-            startAngleDegree = startAngleDegree - 360;
+        	int intPart = (int)startAngleDegree/360;        	
+            startAngleDegree = startAngleDegree - intPart*360;
         }
 
         double medianDegree = startAngleDegree + deltaDegree / 2;

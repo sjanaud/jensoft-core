@@ -441,6 +441,20 @@ public class X2D {
 	public View2D getView2D() {
 		return view2D;
 	}
+	
+	/**
+	 * @return the view2D width
+	 */
+	public int getX2DViewWidth() {
+		return x2dInflater.getWidth();
+	}
+	
+	/**
+	 * @return the view2D height
+	 */
+	public int getX2DViewHeight() {
+		return x2dInflater.getHeight();
+	}
 
 	/**
 	 * get view key
