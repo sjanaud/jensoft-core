@@ -5,7 +5,6 @@
  */
 package com.jensoft.core.plugin.gauge.speedometer;
 
-import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
 import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
@@ -13,7 +12,6 @@ import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
-@JenSoftAPIDemo
 public class SpeedometerDemo extends View2D {
 
 	private static final long serialVersionUID = 156889765687899L;

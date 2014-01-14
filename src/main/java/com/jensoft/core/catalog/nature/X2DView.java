@@ -11,7 +11,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jensoft.core.catalog.nature.Dim;
 import com.jensoft.core.view.background.NoBackground;
 
 /**

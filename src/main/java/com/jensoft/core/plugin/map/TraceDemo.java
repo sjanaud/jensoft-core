@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.map.layer.highway.GroupRenderingProperties;
@@ -27,7 +26,7 @@ import com.jensoft.core.view.View2D;
 import com.jensoft.core.view.background.RoundViewFill;
 import com.jensoft.core.window.Window2D;
 
-@JenSoftAPIDemo
+
 public class TraceDemo extends View2D {
 
 	// GeoPosition g1 = new GeoPosition(25.8575551, -80.1284813);
