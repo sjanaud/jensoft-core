@@ -32,6 +32,12 @@ import com.jensoft.core.view.background.BackgroundPainter;
 import com.jensoft.core.view.background.RoundViewFill;
 import com.jensoft.core.view.deflater.AbstractViewDeflater;
 import com.jensoft.core.window.Window2D;
+import com.jensoft.core.window.Window2D.Linear;
+import com.jensoft.core.window.Window2D.Log;
+import com.jensoft.core.window.Window2D.LogX;
+import com.jensoft.core.window.Window2D.LogY;
+import com.jensoft.core.window.Window2D.TimeX;
+import com.jensoft.core.window.Window2D.TimeY;
 import com.jensoft.core.x2d.lang.X2DView2DElement;
 
 /**
@@ -147,23 +153,26 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 			List<Window2D> windows = getView2D().getRegisterWindow();
 			
 			for (Window2D window2d : windows) {
+				
+				System.out.println("assignable from " +Linear.class.isAssignableFrom(window2d.getClass()));
+				
 				Element window2DElement = x2dDocument.createElement(ELEMENT_VIEW_WINDOW2D);
-				if(window2d.getClass().getName().equals(Window2D.Linear.class.getName())){
+				if(Linear.class.isAssignableFrom(window2d.getClass())){
 					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_LINEAR);
 				}
-				else if(window2d.getClass().getName().equals(Window2D.LogX.class.getName())){
+				else if(LogX.class.isAssignableFrom(window2d.getClass())){
 					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_LOGX);
 				}
-				else if(window2d.getClass().getName().equals(Window2D.LogY.class.getName())){
+				else if(LogY.class.isAssignableFrom(window2d.getClass())){
 					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_LOGY);
 				}
-				else if(window2d.getClass().getName().equals(Window2D.Log.class.getName())){
+				else if(Log.class.isAssignableFrom(window2d.getClass())){
 					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_LOG);
 				}
-				else if(window2d.getClass().getName().equals(Window2D.TimeX.class.getName())){
+				else if(TimeX.class.isAssignableFrom(window2d.getClass())){
 					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_TIMEX);
 				}
-				else if(window2d.getClass().getName().equals(Window2D.TimeY.class.getName())){
+				else if(TimeY.class.isAssignableFrom(window2d.getClass())){
 					window2DElement.setAttribute("xsi:type", ELEMENT_VIEW_WINDOW2D_TYPE_TIMEY);
 				}
 				
