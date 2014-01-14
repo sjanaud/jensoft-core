@@ -10,14 +10,13 @@ import java.awt.Color;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.shell.Shell;
 import com.jensoft.core.plugin.shell.ShellPlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
-@JenSoftAPIDemo
+
 public class ShellTest extends View2D {
 
 	public ShellTest() {

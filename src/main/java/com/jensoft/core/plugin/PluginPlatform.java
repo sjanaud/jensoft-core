@@ -18,7 +18,6 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
-import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.Portfolio.ImageType;
 import com.jensoft.core.view.View2D;
@@ -268,44 +267,9 @@ public class PluginPlatform {
 
     }
 
-    /**
-     * return all {@link JenSoftAPIDemo} classes for the given package
-     * 
-     * @param packageName
-     * @return scanned jensoft demo
-     */
-    public static List<Class<?>> scanJenSoftViewDemo(String packageName) {
-        List<Class<?>> classes = scanJenSoftDemo(packageName);       
-        return classes;
-    }
+
 
    
-
-    /**
-     * return jensoft demo
-     * 
-     * @param packageName
-     * @return jensoft demos
-     */
-    public static List<Class<?>> scanJenSoftDemo(String packageName) {
-        List<Class<?>> demoClasses = new ArrayList<Class<?>>();
-        try {
-            Iterable<Class<?>> classes = getClasses(packageName);
-            for (Class<?> c : classes) {
-                if (c.isAnnotationPresent(JenSoftAPIDemo.class)) {
-                    demoClasses.add(c);
-                }
-            }
-        }
-        catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-        return demoClasses;
-
-    }
 
     /**
      * return all {@link AbstractX2DPluginInflater} annotated with {@link X2DBinding} for the given package
@@ -416,12 +380,6 @@ public class PluginPlatform {
     }
 
     public static void main(String[] args) {
-        List<Class<?>> demos = PluginPlatform.scanJenSoftDemo("com.jensoft.demo");
-        System.out.println("found demo number : " + demos.size());
-        List<Class<?>> viewdemos = PluginPlatform.scanJenSoftViewDemo("com.jensoft.demo");
-        System.out.println("found view demo number : " + viewdemos.size());
-        
-      
         List<Class<?>> x2dinflaters = PluginPlatform.scanX2DInflater(X2DBinding.class.getPackage().getName());
         System.out.println("found x2d inflaters number : " + x2dinflaters.size());
         

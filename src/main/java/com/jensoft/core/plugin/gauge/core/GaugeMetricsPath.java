@@ -5,14 +5,12 @@
  */
 package com.jensoft.core.plugin.gauge.core;
 
-import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.geom.Arc2D;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.binder.AnchorBinder;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 import com.jensoft.core.plugin.gauge.core.needle.GaugeNeedlePainter;

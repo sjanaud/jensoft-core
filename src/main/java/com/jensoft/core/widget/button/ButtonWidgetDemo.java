@@ -10,7 +10,6 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import com.jensoft.core.catalog.nature.JenSoftAPIDemo;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.palette.Alpha;
@@ -39,7 +38,6 @@ import com.jensoft.core.sharedicon.marker.Marker;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.Window2D;
 
-@JenSoftAPIDemo
 public class ButtonWidgetDemo extends View2D {
 
    
