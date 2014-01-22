@@ -16,7 +16,8 @@ import com.jensoft.core.view.background.NoBackground;
 /**
  * <code>JenSoftView</code>
  * 
- * @author Sebastien Janaud
+ * @since 1.0
+ * @author sebastien janaud
  */
 @Documented
 @Target({ ElementType.TYPE })
