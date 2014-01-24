@@ -381,7 +381,7 @@ public class PluginPlatform {
 
     public static void main(String[] args) {
         List<Class<?>> x2dinflaters = PluginPlatform.scanX2DInflater(X2DBinding.class.getPackage().getName());
-        System.out.println("found x2d inflaters number : " + x2dinflaters.size());
+        //System.out.println("found x2d inflaters number : " + x2dinflaters.size());
         
     }
 

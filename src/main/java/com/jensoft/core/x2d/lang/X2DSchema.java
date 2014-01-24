@@ -154,10 +154,8 @@ public class X2DSchema {
             validator.setErrorHandler(handler);
             validator.validate(source);
         } catch (SAXException e) {
-        	System.out.println("err 1");
 			throw new X2DException("valid failed with exception : "+e.getMessage());
 		} catch (IOException e) {
-			System.out.println("err 2");
 			throw new X2DException("valid failed with exception : "+e.getMessage());
 		}
     }

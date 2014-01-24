@@ -99,7 +99,7 @@ public class ButtonWidgetDemo extends View2D {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("lock zoom box");
+                //System.out.println("lock zoom box");
 
             }
         });
@@ -110,7 +110,7 @@ public class ButtonWidgetDemo extends View2D {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                System.out.println("lock zoom lens");
+                //System.out.println("lock zoom lens");
             }
         });
 

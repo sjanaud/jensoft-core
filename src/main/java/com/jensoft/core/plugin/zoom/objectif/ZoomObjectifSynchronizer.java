@@ -106,7 +106,7 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
             ZoomObjectifPlugin sourceObjectif = (ZoomObjectifPlugin) pluginEvent.getSource();
             for (ZoomObjectifPlugin targetObjectif : zoomObjectifsList) {
                 if (!targetObjectif.equals(sourceObjectif)) {
-                    System.out.println("source process nature : " + sourceObjectif.getProcessNature());
+                    //System.out.println("source process nature : " + sourceObjectif.getProcessNature());
                     targetObjectif.zoomIn(sourceObjectif.getProcessNature());
                 }
             }

@@ -115,7 +115,7 @@ public class PieAlphaAnimator extends AbstractPieAnimator {
 
     @Override
     protected void onPressed(PieSlice slice) {
-        System.out.println("on press slice : " + slice.getName());
+       // System.out.println("on press slice : " + slice.getName());
         if (t == null) {
             t = new Thread(getAnimator(slice));
             t.start();

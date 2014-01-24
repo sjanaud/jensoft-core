@@ -268,7 +268,7 @@ public class X2D {
 	 *            the xml source document
 	 */
 	public void registerX2DDocument(Document xmlDocument) throws X2DException {
-		System.out.println("register document");
+		//System.out.println("register document");
 		X2DSchemaErrorHandler errorHandler = new X2DSchemaErrorHandler();
 
 		X2DSchema.validX2D(xmlDocument, errorHandler);
@@ -325,7 +325,7 @@ public class X2D {
 			throw new X2DException(e);
 		}
 
-		System.out.println("X2D : register x2d template : " + x2dFile.getName() + " completed");
+		//System.out.println("X2D : register x2d template : " + x2dFile.getName() + " completed");
 	}
 
 	/**
@@ -397,7 +397,7 @@ public class X2D {
 			throw new X2DException(e);
 		}
 
-		System.out.println("X2D : register x2d input stream template  completed");
+		//System.out.println("X2D : register x2d input stream template  completed");
 	}
 
 	/**

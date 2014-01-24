@@ -173,7 +173,7 @@ public abstract class AbstractPathAutoBinder extends PathBinder {
 			double delta = Math.sqrt(B * B - 4 * A * C);
 
 			if (delta < 0) {
-				System.out.println("no solution");
+				//System.out.println("no solution");
 			} else if (delta >= 0) {
 
 				// p1
@@ -200,7 +200,7 @@ public abstract class AbstractPathAutoBinder extends PathBinder {
 			double delta = Math.sqrt(B * B - 4 * A * C);
 
 			if (delta < 0) {
-				System.out.println("no solution");
+				//System.out.println("no solution");
 			} else if (delta >= 0) {
 
 				// p1

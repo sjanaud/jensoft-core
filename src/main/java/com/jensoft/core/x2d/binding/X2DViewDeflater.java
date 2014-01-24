@@ -154,7 +154,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 			
 			for (Window2D window2d : windows) {
 				
-				System.out.println("assignable from " +Linear.class.isAssignableFrom(window2d.getClass()));
+				//System.out.println("assignable from " +Linear.class.isAssignableFrom(window2d.getClass()));
 				
 				Element window2DElement = x2dDocument.createElement(ELEMENT_VIEW_WINDOW2D);
 				if(Linear.class.isAssignableFrom(window2d.getClass())){

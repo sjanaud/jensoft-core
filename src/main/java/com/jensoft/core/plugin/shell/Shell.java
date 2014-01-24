@@ -678,12 +678,12 @@ public abstract class Shell extends JComponent {
 
             if (newBound.getX() < 5
                     || newBound.getX() + newBound.getWidth() > getHost().getWindow2D().getDevice2D().getDeviceWidth() - 5) {
-                System.out.println("return 3");
+                //System.out.println("return 3");
                 return;
             }
             if (newBound.getY() < 5
                     || newBound.getY() + newBound.getHeight() > getHost().getWindow2D().getDevice2D().getDeviceHeight() - 5) {
-                System.out.println("return 4");
+                //System.out.println("return 4");
                 return;
             }
 

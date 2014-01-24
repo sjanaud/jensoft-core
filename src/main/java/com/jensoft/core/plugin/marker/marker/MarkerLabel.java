@@ -35,7 +35,7 @@ public class MarkerLabel extends AbstractMarker {
     @Override
     public final void paintMarker(View2D view2d, Graphics2D g2d) {
 
-        System.out.println("paint marker");
+        //System.out.println("paint marker");
         view2d.getDevice2D().remove(jlabel);
         jlabel.setText(label);
         jlabel.setForeground(Color.RED);

@@ -173,7 +173,7 @@ public class ClassSearchUtils {
      * @param archive Jar or zip to be searched for classes or other resources.
      */
     private void lookInArchive(File archive) {
-       System.out.println("look in archive :"+archive.getName() );
+      // System.out.println("look in archive :"+archive.getName() );
         JarFile jarFile = null;
         try {
             jarFile = new JarFile(archive);
@@ -227,24 +227,5 @@ public class ClassSearchUtils {
         }
     }
     
-    public static void main(String[] args) {
-		List<ClassPathEntry> entries = ClassSearchUtils.searchClassPath("com.jensoft.demo.x2d.donut3d",".class");
-		System.out.println("classes list size : "+entries.size());
-		for (ClassPathEntry cpe : entries) {
-			try {
-				if(cpe.entry instanceof Class){
-					System.out.println("entry object  : "+cpe.entry);
-					System.out.println("entry class : "+((Class)cpe.entry).getCanonicalName());
-					System.out.println("entry file : "+cpe.entryFile.getCanonicalPath());
-				}
-				else{
-					
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-	}
+
 }
