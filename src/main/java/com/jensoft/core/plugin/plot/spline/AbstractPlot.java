@@ -231,7 +231,7 @@ public abstract class AbstractPlot {
 				selectedAnchor = anchor;
 			}
 		}
-		System.out.println("select root anchor : "+selectedAnchor);
+		//System.out.println("select root anchor : "+selectedAnchor);
 		return selectedAnchor;
 	}
 	
@@ -285,7 +285,7 @@ public abstract class AbstractPlot {
 				userPoints.get(index).setLocation(newPoint);
 			}
 		}else{
-			System.out.println("no selection, no update");
+			//System.out.println("no selection, no update");
 		}
 	}
 

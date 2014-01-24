@@ -56,7 +56,7 @@ public class ViewFrameUI extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("FRAME UI ARGS : "+args);
+		//System.out.println("FRAME UI ARGS : "+args);
 		try {
 			Class viewClass = Class.forName(args[0]);
 			View2D v = (View2D)viewClass.newInstance();

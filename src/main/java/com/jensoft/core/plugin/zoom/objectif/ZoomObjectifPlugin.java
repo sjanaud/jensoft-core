@@ -361,7 +361,7 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 			}
 			
 		}else{
-			System.out.println("not implemented");
+			//System.out.println("not implemented");
 		}
 
 	}

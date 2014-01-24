@@ -51,7 +51,7 @@ public class DashboardFrameUI extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		System.out.println("FRAME UI ARGS : "+args);
+		//System.out.println("FRAME UI ARGS : "+args);
 		try {
 			Class viewClass = Class.forName(args[0]);
 			Dashboard d = (Dashboard)viewClass.newInstance();

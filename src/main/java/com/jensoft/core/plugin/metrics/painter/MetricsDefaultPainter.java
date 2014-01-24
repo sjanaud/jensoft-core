@@ -213,7 +213,7 @@ public class MetricsDefaultPainter extends AbstractMetricsPainter {
 
         g2d.setStroke(new BasicStroke());
         for (int i = 0; i < metrics.size(); i++) {
-            System.out.println("paint metrics : "+metrics.get(i));
+            //System.out.println("paint metrics : "+metrics.get(i));
             paintMetricsIndicator(g2d, metrics.get(i));
             paintMetricsLabel(g2d, metrics.get(i));
         }

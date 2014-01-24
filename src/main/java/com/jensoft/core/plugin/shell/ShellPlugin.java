@@ -836,9 +836,9 @@ public class ShellPlugin extends AbstractPlugin implements
      * show next message in stack
      */
     public void nextMessage() {
-        System.out.println("next message with current index : " + getCurrentIndex());
+       // System.out.println("next message with current index : " + getCurrentIndex());
         currentIndex++;
-        System.out.println("increment current index : " + getCurrentIndex());
+        //System.out.println("increment current index : " + getCurrentIndex());
         if (currentIndex > messages.size() - 1) {
             currentIndex = messages.size() - 1;
         }

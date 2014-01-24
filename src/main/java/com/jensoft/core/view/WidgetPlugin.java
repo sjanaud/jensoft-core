@@ -985,8 +985,7 @@ public class WidgetPlugin extends AbstractPlugin implements
                                                           widgetFolder.getY(), widgetFolder.getWidth(),
                                                           widgetFolder.getHeight());
                 if (rec0.intersects(rec1)) {
-                    System.out.println("drag widget intercept other widget : "
-                            + pluginWidget.getId());
+                   // System.out.println("drag widget intercept other widget : "+ pluginWidget.getId());
                     return false;
 
                 }

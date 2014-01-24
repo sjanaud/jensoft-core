@@ -174,7 +174,7 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
         else {
             getMessagePlugin().previousMessage();
         }
-        System.out.println("onButton1Press index message : " + getMessagePlugin().getCurrentIndex());
+        //System.out.println("onButton1Press index message : " + getMessagePlugin().getCurrentIndex());
         super.onButton1Press();
     }
 
@@ -204,7 +204,7 @@ public class MessageSelecterWidget extends AbstractBackwardForwardBarWidget {
         else {
             getMessagePlugin().nextMessage();
         }
-        System.out.println("onButton2Press index message : " + getMessagePlugin().getCurrentIndex());
+        //System.out.println("onButton2Press index message : " + getMessagePlugin().getCurrentIndex());
         super.onButton2Press();
     }
 

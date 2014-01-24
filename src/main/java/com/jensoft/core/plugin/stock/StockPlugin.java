@@ -138,7 +138,7 @@ public class StockPlugin extends AbstractPlugin {
 	 */
 	@Override
 	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		System.out.println("paint layer "+windowPart.name());
+		//System.out.println("paint layer "+windowPart.name());
 		for (StockLayer<?> layer : stockLayers) {
 			layer.solveLayer();
 			layer.paintLayer(v2d, g2d, windowPart);

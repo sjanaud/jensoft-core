@@ -37,7 +37,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 
 	private void selectPlot(String key) {
 		selectedPlot = mapping.get(key);
-		System.out.println("select plot : " + key + " -->" + selectedPlot);
+		//System.out.println("select plot : " + key + " -->" + selectedPlot);
 	}
 
 	class PlotAnchorContext extends ContextEntry<PlotAnchorsPlugin> {

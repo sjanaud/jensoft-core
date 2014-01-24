@@ -539,8 +539,8 @@ public class LineSymbolPlugin extends AbstractPlugin implements
 
         lockScroll();
 
-        System.out.println("start scroll x " + startScrollX);
-        System.out.println("start scroll y " + startScrollY);
+        //System.out.println("start scroll x " + startScrollX);
+        //System.out.println("start scroll y " + startScrollY);
 
     }
 
@@ -635,10 +635,10 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         currentScrollX = x;
         currentScrollY = y;
 
-        System.out.println("scroll start x " + startScrollX);
-        System.out.println("scroll start y " + startScrollY);
-        System.out.println("scroll cur   x " + currentScrollX);
-        System.out.println("scroll cur   y " + currentScrollY);
+        //System.out.println("scroll start x " + startScrollX);
+        //System.out.println("scroll start y " + startScrollY);
+        //System.out.println("scroll cur   x " + currentScrollX);
+        //System.out.println("scroll cur   y " + currentScrollY);
 
         double deltaDeviceX = currentScrollX - startScrollX;
         double deltaDeviceY = currentScrollY - startScrollY;
