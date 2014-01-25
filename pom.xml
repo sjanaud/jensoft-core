@@ -10,9 +10,15 @@
 	<parent>
 		<groupId>com.jensoft</groupId>
 		<artifactId>jensoft-root</artifactId>
-		<version>1.0.0-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 
+	<scm>
+		<connection>scm:svn:http://svn.jensoft.org/trunk/jensoft-core</connection>
+		<developerConnection>scm:svn:http://svn.jensoft.org/trunk/jensoft-core</developerConnection>
+		<url>http://svn.jensoft.org/trunk/jensoft-core</url>
+	</scm>
+	
 	<dependencies>
 
 		<!-- you need to install system lib jnlp.jar in local repository , can 
