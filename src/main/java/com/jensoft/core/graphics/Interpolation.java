@@ -8,6 +8,13 @@ package com.jensoft.core.graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 
+
+/**
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ *
+ */
 public enum Interpolation {
 
     Bicubic(RenderingHints.VALUE_INTERPOLATION_BICUBIC), Bilinear(

@@ -18,8 +18,10 @@ import java.awt.image.ColorModel;
  * Provides an abstract implementation of the <code>BufferedImageOp</code> interface. This class can be used to created
  * new image filters based on <code>BufferedImageOp</code>.
  * </p>
+ * 
+ * @since 1.0
+ * @author sebastien janaud
  */
-
 public abstract class AbstractFilter implements BufferedImageOp {
 
     @Override

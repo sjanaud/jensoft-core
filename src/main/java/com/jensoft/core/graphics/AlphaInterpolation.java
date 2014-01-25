@@ -11,7 +11,8 @@ import java.awt.RenderingHints;
 /**
  * define the alpha interpolation option for {@link RenderingHints}
  * 
- * @author Sebastien Janaud
+ * @since 1.0
+ * @author sebastien janaud
  */
 public enum AlphaInterpolation {
     Quality(RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY), Speed(

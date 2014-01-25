@@ -11,7 +11,8 @@ import java.awt.RenderingHints;
 /**
  * define the fractional metrics option for {@link RenderingHints}
  * 
- * @author Sebastien Janaud
+ * @since 1.0
+ * @author sebastien janaud
  */
 public enum Fractional {
     On(RenderingHints.VALUE_FRACTIONALMETRICS_ON), Off(

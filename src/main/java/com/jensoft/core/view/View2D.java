@@ -1062,7 +1062,6 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 
 	@Override
 	protected void paintChildren(Graphics g) {
-		// System.out.println("paint children!");
 		super.paintChildren(g);
 	}
 

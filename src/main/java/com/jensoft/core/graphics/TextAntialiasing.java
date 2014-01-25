@@ -11,7 +11,8 @@ import java.awt.RenderingHints;
 /**
  * define the text antialiasing option for {@link RenderingHints}
  * 
- * @author Sebastien Janaud
+ * @since 1.0
+ * @author sebastien janaud
  */
 public enum TextAntialiasing {
     On(RenderingHints.VALUE_TEXT_ANTIALIAS_ON), Off(

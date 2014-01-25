@@ -11,7 +11,8 @@ import java.awt.geom.Point2D;
  * <code>GeometryUtil</code> contains static methods for calculating intersections, angles, areas and
  * distances.
  * 
- * @author Sebastien Janaud
+ * @since 1.0
+ * @author sebastien janaud
  */
 public final class GeometryUtil {
 
