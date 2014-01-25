@@ -13,6 +13,13 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 
+
+/**
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ *
+ */
 public final class Reflection {
 
     public static BufferedImage createReflectedPicture(BufferedImage avatar,

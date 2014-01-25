@@ -11,7 +11,8 @@ import java.awt.RenderingHints;
 /**
  * define the dithering option for {@link RenderingHints}
  * 
- * @author Sebastien Janaud
+ * @since 1.0
+ * @author sebastien janaud
  */
 public enum Dithering {
     On(RenderingHints.VALUE_DITHER_ENABLE), Off(

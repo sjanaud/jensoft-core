@@ -122,7 +122,7 @@ public class Relio {
         boolean flag = true;
         int count = 0;
         while (flag) {
-            System.out.println(count++);
+           // (count++);
             Object compatibleInput = getCompatibleInput(output);
 
             if (compatibleInput != null) {

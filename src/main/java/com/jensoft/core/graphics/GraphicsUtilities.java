@@ -20,6 +20,13 @@ import java.net.URL;
 
 import javax.imageio.ImageIO;
 
+
+/**
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ *
+ */
 public class GraphicsUtilities {
 
     private GraphicsUtilities() {
