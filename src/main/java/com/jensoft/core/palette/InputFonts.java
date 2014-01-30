@@ -6,7 +6,11 @@
 package com.jensoft.core.palette;
 
 import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.geom.AffineTransform;
+import java.io.File;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -142,10 +146,15 @@ public class InputFonts {
 
 			font = Font.createFont(Font.TRUETYPE_FONT, is);
 			cache.put(name, font);
+			
+			//register font to local system
+		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		    ge.registerFont(font);
+			
 		} catch (Exception ex) {
 			// ex.printStackTrace();
 			System.err.println(fName + " not loaded.  Using serif font.");
-			font = new Font("serif", Font.PLAIN, 12);
+			font = new Font("Dialog", Font.PLAIN, 12);
 		}
 		return font;
 	}
