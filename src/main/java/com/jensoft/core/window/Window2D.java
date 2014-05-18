@@ -369,9 +369,9 @@ public abstract class Window2D implements PluginListener {
 		 * @see com.jensoft.core.window.Window2D#pixelToUserX(double)
 		 */
 		@Override
-		public double pixelToUserX(double userX) {
+		public double pixelToUserX(double pixelX) {
 			double scaleX = getDevice2D().getDeviceWidth() / (getMaxX() - getMinX());
-			return userX / scaleX + getMinX();
+			return pixelX / scaleX + getMinX();
 		}
 
 		/*
@@ -380,9 +380,9 @@ public abstract class Window2D implements PluginListener {
 		 * @see com.jensoft.core.window.Window2D#pixelToUserY(double)
 		 */
 		@Override
-		public double pixelToUserY(double userY) {
+		public double pixelToUserY(double pixelY) {
 			double scaleY = getDevice2D().getDeviceHeight() / (getMaxY() - getMinY());
-			return -(userY / scaleY - getMaxY());
+			return -(pixelY / scaleY - getMaxY());
 		}
 
 		private static final long serialVersionUID = 5202790832488044493L;
@@ -1665,7 +1665,7 @@ public abstract class Window2D implements PluginListener {
 	 * 
 	 * @return the pixel x coordinate of this x user.
 	 */
-	public abstract double pixelToUserX(double userX);
+	public abstract double pixelToUserX(double pixelX);
 
 	/**
 	 * Returns the pixel y coordinate of this y user in <code>double</code>
