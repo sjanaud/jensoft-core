@@ -30,12 +30,6 @@
 	</licenses>
 
 
-<!-- 	<properties> -->
-<!-- 		<maven.build.timestamp.format>EEE MMM dd HH:mm:ss zzz yyyy</maven.build.timestamp.format> -->
-<!-- 		<build.timestamp>${maven.build.timestamp}</build.timestamp> -->
-<!-- 	</properties> -->
-
-
 	<dependencies>
 
 		<!-- you need to install system lib jnlp.jar in local repository , can 
@@ -145,14 +139,14 @@
 
 			<distributionManagement>
 				<repository>
-					<id>jensoft-internal</id>
-					<name>Internal releases repository for Jensoft artifacts</name>
-					<url>http://nexus.jensoft.org/content/repositories/internal</url>
+					<id>jensoft-releases-commercial</id>
+					<name>Releases repository for Jensoft artifacts for commercial purpose</name>
+					<url>http://nexus.jensoft.org/content/repositories/releases-commercial</url>
 				</repository>
 				<snapshotRepository>
-					<id>jensoft-snapshots</id>
-					<name>Snapshots repository for Jensoft artifacts</name>
-					<url>http://nexus.jensoft.org/content/repositories/snapshots</url>
+					<id>jensoft-snapshots-commercial</id>
+					<name>Snapshots repository for Jensoft artifacts for commercial purpose</name>
+					<url>http://nexus.jensoft.org/content/repositories/snapshots-commercial</url>
 				</snapshotRepository>
 			</distributionManagement>
 
