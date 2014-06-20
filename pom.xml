@@ -100,6 +100,19 @@
 			</plugin>
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
 				<groupId>com.github.goldin</groupId>
 				<artifactId>timestamp-maven-plugin</artifactId>
 				<version>0.2.5</version>
@@ -121,6 +134,25 @@
 					</execution>
 				</executions>
 			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<pomFile>target/classes/META-INF/maven/com.jensoft/jensoft-core/pom.xml</pomFile>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-deploy-plugin</artifactId>
+				<version>2.7</version>
+				<configuration>
+					<pomFile>target/classes/META-INF/maven/com.jensoft/jensoft-core/pom.xml</pomFile>
+				</configuration>
+			</plugin>
+
 		</plugins>
 	</build>
 
@@ -205,7 +237,7 @@
 									<tasks>
 										<mkdir dir="src/main/generated" />
 										<move file="src/main/java/${java.class.to.modify.full.path}"
-											tofile="src/main/java/${java.class.to.modify.full.path}.bak" />
+											tofile="src/main/generated/${java.class.to.modify.full.path}.bak" />
 										<copy file="src/main/generated/${java.class.to.modify.full.path}"
 											todir="src/main/java/${java.class.to.modify.package}/" />
 									</tasks>
@@ -216,10 +248,10 @@
 							</execution>
 							<execution>
 								<id>restore-source-file</id>
-								<phase>compile</phase>
+								<phase>package</phase>
 								<configuration>
 									<tasks>
-										<move file="src/main/java/${java.class.to.modify.full.path}.bak"
+										<move file="src/main/generated/${java.class.to.modify.full.path}.bak"
 											tofile="src/main/java/${java.class.to.modify.full.path}" />
 									</tasks>
 								</configuration>
@@ -229,6 +261,7 @@
 							</execution>
 						</executions>
 					</plugin>
+
 				</plugins>
 			</build>
 
