@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>${project.artifactId}</artifactId>
+	<version>${project.version}</version>
+	<name>${project.name}</name>
+
+	<url>${project.url}</url>
+
+	<parent>
+		<groupId>${project.parent.groupId}</groupId>
+		<artifactId>${project.parent.artifactId}</artifactId>
+		<version>${project.parent.version}</version>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>GNU Affero General Public License, Version 3.0</name>
+			<url>http://www.gnu.org/licenses/agpl-3.0.html</url>
+			<distribution>repo</distribution>
+			<comments>Ideal if you are creating an open source application under a license compatible with the Affero GPL license.</comments>
+		</license>
+	</licenses>
+
+	<dependencies>
+
+		<!-- you need to install system lib jnlp.jar in local repository , can 
+			be found in java jdk sample pack, download separately -->
+		<!-- mvn install:install-file -Dfile=C:\usr\Java\jdk1.6.0_38\sample\jnlp\servlet\jnlp.jar 
+			-DgroupId=javax.jnlp -DartifactId=jnlp-api -Dversion=6.0 -Dpackaging=jar 
+			-DlocalRepositoryPath=C:\Users\sebastien\.m2\repository -->
+		<dependency>
+			<groupId>javax.jnlp</groupId>
+			<artifactId>jnlp-api</artifactId>
+			<version>6.0</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.0.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+</project>
