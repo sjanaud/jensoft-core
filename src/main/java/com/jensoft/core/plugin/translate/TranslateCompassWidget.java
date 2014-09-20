@@ -76,8 +76,8 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
      * as square size.
      */
     public TranslateCompassWidget() {
-        super(translateCompassWidgetID, compassSquareSize, compassSquareSize,
-              100, 0);
+        super(translateCompassWidgetID, compassSquareSize, compassSquareSize,100, 0);
+              
         compassWidget = new CompassGeometry(0, 0, compassSquareSize / 2 - 10,
                                             compassSquareSize / 2 - 4);
 
