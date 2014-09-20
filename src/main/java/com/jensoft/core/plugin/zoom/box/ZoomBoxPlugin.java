@@ -199,7 +199,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
 
     /**
      * <code>UserZoomBox</code>
-     * create a user zoom which can be
+     * create a user zoom
      * 
      * @author sebastien janaud
      */
@@ -1138,6 +1138,15 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         // new
         fireZoomBounded();
     }
+    
+    /**
+     * get the zoom box start point in device coordinate
+     * 
+     * @return device start point
+     */
+    public Point2D getBoxStartDevicePoint() {
+        return new Point2D.Double(zoomBoxStartX, zoomBoxStartY);
+    }
 
     /**
      * get Bound Box current device point
@@ -1146,6 +1155,15 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
      */
     public Point2D getBoxCurrentDevicePoint() {
         return new Point2D.Double(zoomBoxCurrentX, zoomBoxCurrentY);
+    }
+    
+    /**
+     * get the zoom box start point in user coordinate
+     * 
+     * @return device start point
+     */
+    public Point2D getBoxStartUserPoint() {
+        return getWindow2D().pixelToUser(getBoxStartDevicePoint());
     }
 
     /**
@@ -1156,6 +1174,8 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
     public Point2D getBoxCurrentUserPoint() {
         return getWindow2D().pixelToUser(getBoxCurrentDevicePoint());
     }
+    
+    
 
    
     /* (non-Javadoc)
@@ -1218,14 +1238,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         lockZoomingTransaction();
     }
 
-    /**
-     * get the zoom box start point in device coordinate
-     * 
-     * @return device start point
-     */
-    public Point2D getBoxStartDevicePoint() {
-        return new Point2D.Double(zoomBoxStartX, zoomBoxStartY);
-    }
+    
 
     // /**
     // * get the zoom box start x in user coordinate
@@ -1245,14 +1258,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
     // return getBoxStartUserPoint().getY();
     // }
 
-    /**
-     * get the zoom box start point in user coordinate
-     * 
-     * @return device start point
-     */
-    public Point2D getBoxStartUserPoint() {
-        return getWindow2D().pixelToUser(getBoxStartDevicePoint());
-    }
+    
 
    
     /* (non-Javadoc)
