@@ -11,9 +11,9 @@ import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.symbol.BarSymbol;
 
-public class AbstractBarDefaultFill extends BarFill {
+public class BarDefaultFill extends AbstractBarFill {
 
-    public AbstractBarDefaultFill() {
+    public BarDefaultFill() {
 
     }
 

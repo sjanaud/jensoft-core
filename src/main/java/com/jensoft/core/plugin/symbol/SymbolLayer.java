@@ -225,6 +225,11 @@ public abstract class SymbolLayer<S extends SymbolComponent> {
      * @return component x location
      */
     protected double getComponentXLocation(SymbolComponent symbol) {
+    	//System.out.println("symbol class : "+symbol.getClass().getSimpleName());
+    	if(symbol instanceof Stack){
+    		//System.out.println("location for stack"+((Stack)symbol).getHostSymbol());
+    		symbol = ((Stack)symbol).getHostSymbol();
+    	}
         List<? extends SymbolComponent> flattenSymbols = getFlattenSymbolComponents();
         double total = 0;
         List<SymbolComponent> glues = new ArrayList<SymbolComponent>();
