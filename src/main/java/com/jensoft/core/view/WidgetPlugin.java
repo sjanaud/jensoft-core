@@ -1083,7 +1083,7 @@ public class WidgetPlugin extends AbstractPlugin implements
         g2d.setColor(Color.GREEN);
         g2d.draw(r);
 
-        widgetFolder.setCurentDragBound(r.getBounds());
+        //widgetFolder.setCurentDragBound(r.getBounds());
 
         WidgetFolder widgetPotentialFolder = getView2D()
                 .newFolderIntanceByPosition(widgetFolder.getId(),
