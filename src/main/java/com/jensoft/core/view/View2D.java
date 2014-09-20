@@ -1142,6 +1142,9 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 
 		Graphics2D g2d = (Graphics2D) viewGraphics;
 
+		
+		Dimension old = getSize();
+		
 		setSize(new Dimension(width, height));
 
 		// component part
@@ -1254,6 +1257,9 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 		g2d.dispose();
 		viewImage.flush();
 
+		
+		if(old != null)
+			setSize(old);
 		return viewImage;
 	}
 
