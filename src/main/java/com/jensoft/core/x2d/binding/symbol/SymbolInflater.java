@@ -28,7 +28,7 @@ import com.jensoft.core.plugin.symbol.painter.effect.BarEffect1;
 import com.jensoft.core.plugin.symbol.painter.effect.BarEffect2;
 import com.jensoft.core.plugin.symbol.painter.effect.BarEffect3;
 import com.jensoft.core.plugin.symbol.painter.effect.BarEffect4;
-import com.jensoft.core.plugin.symbol.painter.fill.AbstractBarDefaultFill;
+import com.jensoft.core.plugin.symbol.painter.fill.BarDefaultFill;
 import com.jensoft.core.plugin.symbol.painter.fill.BarFill1;
 import com.jensoft.core.plugin.symbol.painter.fill.BarFill2;
 import com.jensoft.core.plugin.symbol.painter.label.BarSymbolRelativeLabel;
@@ -167,7 +167,7 @@ public class SymbolInflater extends AbstractX2DPluginInflater<SymbolPlugin> {
             }
         }
         else {
-            barGroup.setBarFill(new AbstractBarDefaultFill());
+            barGroup.setBarFill(new BarDefaultFill());
         }
 
         if (effect != null && !effect.equals("undefined")) {
@@ -287,7 +287,7 @@ public class SymbolInflater extends AbstractX2DPluginInflater<SymbolPlugin> {
             }
         }
         else {
-            bar.setBarFill(new AbstractBarDefaultFill());
+            bar.setBarFill(new BarDefaultFill());
         }
 
         if (effect != null && !effect.equals("undefined")) {
@@ -535,7 +535,7 @@ public class SymbolInflater extends AbstractX2DPluginInflater<SymbolPlugin> {
             }
         }
         else {
-            bar.setBarFill(new AbstractBarDefaultFill());
+            bar.setBarFill(new BarDefaultFill());
         }
         if (effect != null && !effect.equals("undefined")) {
             if (effect.equals("fx1")) {
