@@ -16,7 +16,7 @@ import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 import com.jensoft.core.plugin.symbol.painter.draw.AbstractBarDraw;
 import com.jensoft.core.plugin.symbol.painter.effect.AbstractBarEffect;
-import com.jensoft.core.plugin.symbol.painter.fill.BarFill;
+import com.jensoft.core.plugin.symbol.painter.fill.AbstractBarFill;
 
 /**
  * <code>BarSymbolGroup</code> is a symbol that host other symbol, it has two
@@ -70,7 +70,7 @@ public class BarSymbolGroup extends BarSymbol {
     private boolean isBarDrawSet = false;
 
     /** Bar fill */
-    private BarFill barFill;
+    private AbstractBarFill barFill;
 
     /** flag on bar fill set */
     private boolean isBarFillSet = false;
@@ -527,7 +527,7 @@ public class BarSymbolGroup extends BarSymbol {
      * get the bar fill
      */
     @Override
-    public BarFill getBarFill() {
+    public AbstractBarFill getBarFill() {
         return barFill;
     }
 
@@ -552,7 +552,7 @@ public class BarSymbolGroup extends BarSymbol {
      * @param barFill
      */
     @Override
-    public void setBarFill(BarFill barFill) {
+    public void setBarFill(AbstractBarFill barFill) {
         this.barFill = barFill;
         setBarFillSet(true);
     }
@@ -563,7 +563,7 @@ public class BarSymbolGroup extends BarSymbol {
      * @param barFill
      *            the bar fill to copy
      */
-    public void copyFillStyleToBar(BarFill barFill) {
+    public void copyFillStyleToBar(AbstractBarFill barFill) {
         if (!isBarFillSet()) {
             return;
         }

@@ -16,7 +16,7 @@ import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.plugin.symbol.BarSymbol;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 
-public class BarFill1 extends BarFill {
+public class BarFill1 extends AbstractBarFill {
 
     public BarFill1() {
 
@@ -36,8 +36,6 @@ public class BarFill1 extends BarFill {
 
     private void paintBackgroundVBar_bg1(Graphics2D g2d, BarSymbol bar) {
 
-        // Graphics2D partGraphics =bar.getPart().getGraphics2D();
-
         Rectangle2D boun2D = bar.getBarShape().getBounds2D();
 
         // g1
@@ -55,10 +53,8 @@ public class BarFill1 extends BarFill {
                                                         colors);
 
         g2d.setPaint(p);
-        // partGraphics.setPaint(p);
 
         g2d.fill(bar.getBarShape());
-        // partGraphics.fill(bar.getBarShape());
 
     }
 

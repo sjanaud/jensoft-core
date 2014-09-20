@@ -12,7 +12,7 @@ import com.jensoft.core.plugin.symbol.SymbolComponent;
 import com.jensoft.core.plugin.symbol.painter.AbstractSymbolPainter;
 import com.jensoft.core.window.WindowPart;
 
-public abstract class BarFill extends AbstractSymbolPainter {
+public abstract class AbstractBarFill extends AbstractSymbolPainter {
 
     protected abstract void paintBarFill(Graphics2D g2d, BarSymbol bar);
 

@@ -17,8 +17,8 @@ import com.jensoft.core.plugin.symbol.painter.draw.AbstractBarDraw;
 import com.jensoft.core.plugin.symbol.painter.draw.BarDefaultDraw;
 import com.jensoft.core.plugin.symbol.painter.effect.AbstractBarEffect;
 import com.jensoft.core.plugin.symbol.painter.effect.BarEffect1;
-import com.jensoft.core.plugin.symbol.painter.fill.AbstractBarDefaultFill;
-import com.jensoft.core.plugin.symbol.painter.fill.BarFill;
+import com.jensoft.core.plugin.symbol.painter.fill.BarDefaultFill;
+import com.jensoft.core.plugin.symbol.painter.fill.AbstractBarFill;
 import com.jensoft.core.plugin.symbol.painter.fill.BarFill1;
 import com.jensoft.core.plugin.symbol.painter.fill.BarFill2;
 import com.jensoft.core.plugin.symbol.painter.label.AbstractBarLabel;
@@ -43,7 +43,7 @@ import com.jensoft.core.plugin.symbol.painter.label.AbstractBarLabel;
  * @see StackedBarSymbol
  * @see BarSymbolGroup
  * @see BarSymbolLayer
- * @see BarFill
+ * @see AbstractBarFill
  * @see AbstractBarDraw
  * @see AbstractBarAxisLabel
  * @see AbstractBarLabel
@@ -140,7 +140,7 @@ public class SymbolToolkit extends Toolkit {
      * @return bar symbol group
      */
     public final static BarSymbolGroup createBarGroup(String nameSymbol,
-            double base, double thickness, AbstractBarDraw barDraw, BarFill barFill,
+            double base, double thickness, AbstractBarDraw barDraw, AbstractBarFill barFill,
             AbstractBarEffect barEffect) {
 
         BarSymbolGroup group = new BarSymbolGroup(nameSymbol, nameSymbol);
@@ -496,7 +496,7 @@ public class SymbolToolkit extends Toolkit {
 
         b1.setMorpheStyle(MorpheStyle.Round);
         b1.setBarDraw(new BarDefaultDraw(new Color(255, 255, 255)));
-        b1.setBarFill(new AbstractBarDefaultFill());
+        b1.setBarFill(new BarDefaultFill());
         b1.setBarEffect(new BarEffect1());
 
         return b1;
@@ -543,7 +543,7 @@ public class SymbolToolkit extends Toolkit {
 
         b1.setMorpheStyle(MorpheStyle.Round);
         b1.setBarDraw(new BarDefaultDraw(new Color(255, 255, 255)));
-        b1.setBarFill(new AbstractBarDefaultFill());
+        b1.setBarFill(new BarDefaultFill());
         b1.setBarEffect(new BarEffect1());
 
         return b1;
@@ -575,7 +575,7 @@ public class SymbolToolkit extends Toolkit {
     public final static BarSymbol createBarSymbol(String nameSymbol,
             Color themeColor, double thickness, double base,
             SymbolInflate symbolInflate, double symbolInflateValue,
-            AbstractBarDraw barDraw, BarFill barFill, AbstractBarEffect barEffect) {
+            AbstractBarDraw barDraw, AbstractBarFill barFill, AbstractBarEffect barEffect) {
 
         BarSymbol b1 = new BarSymbol(nameSymbol, nameSymbol);
         b1.setThemeColor(themeColor);

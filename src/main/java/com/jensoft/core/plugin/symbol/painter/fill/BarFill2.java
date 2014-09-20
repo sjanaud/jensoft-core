@@ -15,7 +15,7 @@ import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.plugin.symbol.BarSymbol;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 
-public class BarFill2 extends BarFill {
+public class BarFill2 extends AbstractBarFill {
 
     public BarFill2() {
 

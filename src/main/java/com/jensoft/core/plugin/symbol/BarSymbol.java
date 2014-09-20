@@ -13,7 +13,7 @@ import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 import com.jensoft.core.plugin.symbol.painter.axis.AbstractBarAxisLabel;
 import com.jensoft.core.plugin.symbol.painter.draw.AbstractBarDraw;
 import com.jensoft.core.plugin.symbol.painter.effect.AbstractBarEffect;
-import com.jensoft.core.plugin.symbol.painter.fill.BarFill;
+import com.jensoft.core.plugin.symbol.painter.fill.AbstractBarFill;
 import com.jensoft.core.plugin.symbol.painter.label.AbstractBarLabel;
 import com.jensoft.core.view.View2D.DeviceBand;
 
@@ -59,7 +59,7 @@ public class BarSymbol extends SymbolComponent {
 	private AbstractBarDraw barDraw;
 
 	/** bar fill */
-	private BarFill barFill;
+	private AbstractBarFill barFill;
 
 	/** bar effect */
 	private AbstractBarEffect barEffect;
@@ -623,7 +623,7 @@ public class BarSymbol extends SymbolComponent {
 	 * 
 	 * @return the bar fill
 	 */
-	public BarFill getBarFill() {
+	public AbstractBarFill getBarFill() {
 		return barFill;
 	}
 
@@ -633,7 +633,7 @@ public class BarSymbol extends SymbolComponent {
 	 * @param barFill
 	 *            the bar fill to ser
 	 */
-	public void setBarFill(BarFill barFill) {
+	public void setBarFill(AbstractBarFill barFill) {
 		this.barFill = barFill;
 	}
 
