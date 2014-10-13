@@ -122,21 +122,24 @@ public class RadarSurface {
         if(getAnchors().size() == 0){
             return;
         }
-        
+        System.out.println("radar:"+getHost());
+       int x = getHost().getBuildCenterX();
+       int y = getHost().getBuildCenterY();
         List<RadarSurfaceAnchor> anchors = getAnchors();
         surfacePath = new GeneralPath();
+        surfacePath.moveTo(x, y);
         for (int i = 0; i < anchors.size(); i++) {
             RadarSurfaceAnchor anchor = anchors.get(i);
             Point2D point = anchor.getDimension().getMetricsPoint(
                                                                   anchor.getRadarMetrics().getValue());
 
             if (point != null) {
-                if (i == 0) {
-                    surfacePath.moveTo(point.getX(), point.getY());
-                }
-                else {
+//                if (i == 0) {
+//                    surfacePath.moveTo(point.getX(), point.getY());
+//                }
+ //               else {
                     surfacePath.lineTo(point.getX(), point.getY());
-                }
+ //               }
             }
         }
 

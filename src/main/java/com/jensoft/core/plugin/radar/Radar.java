@@ -91,6 +91,7 @@ public class Radar {
      *            the surface to add
      */
     public void addSurface(RadarSurface radarSurface) {
+    	radarSurface.setHost(this);
         surfaces.add(radarSurface);
     }
 

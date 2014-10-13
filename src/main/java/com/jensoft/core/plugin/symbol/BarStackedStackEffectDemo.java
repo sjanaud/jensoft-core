@@ -87,6 +87,7 @@ public class BarStackedStackEffectDemo extends View2D {
 		//global bar, no draw
 		b1.setBarDraw(null);
 		
+		//global fill, but can set on each stack in case different fill need on stack	
 		b1.setBarFill(new BarDefaultFill());
 		
 		//no effect on global bar

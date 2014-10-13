@@ -17,7 +17,7 @@ public class RadarSurfaceAnchor {
     private RadarMetrics radarMetrics;
     
     /**metrics enable flag*/
-    private boolean metricsEnable = true;
+    private boolean metricsEnable = false;
 
     public RadarSurfaceAnchor(RadarDimension dimension,
             AnchorMetrics radarMetrics) {
