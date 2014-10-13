@@ -1,0 +1,11 @@
+JenSoftAPI CORE
+--------------------------------
+
+
+-Corporate Server Licenses for application within an organizations network to be accessed by employees of the company for generation and manipulation of charts. Server licenses are sold by the server or in virtualized environment by the VM.
+-Desktop License for standalone application which is run on Desktop VM. Desktop licenses are by quantities of desktops.
+-SaaS/Hosted License for a hosted solution within an organization to be accessed by external users. Licensing is based on volumes of charts generated.
+-OEM Licenses for independent software vendors who wish to include the JenSoft API library within their applications. The license is based on volume categories of licenses to be distributed.
+
+
+  
