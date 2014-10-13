@@ -220,9 +220,6 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 			}
 			fragment.setPainted(true);
 		}
-
-		
-
 	}
 
 	public void paintDonut3DFill2(Graphics2D g2d, Donut3D donut3d, Donut3DSlice s) {

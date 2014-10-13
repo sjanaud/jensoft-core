@@ -308,9 +308,12 @@ public class RadarDimensionDefaultLabel extends AbstractRadarDimensionLabel {
 
         Point2D pointRef = radar.getDimensionPointAtRadius(radarDimension,
                                                            radar.getRadius() + offsetRadius);
+        
+      
         int x = (int) pointRef.getX();
         int y = (int) pointRef.getY();
-
+        g2d.setColor(Color.RED);
+        g2d.drawRect(x-2, y-2, 4, 4);
         if (radarDimension.getAngleDegree() >= 270 && radarDimension
                 .getAngleDegree() <= 360
                 || radarDimension.getAngleDegree() >= 0 && radarDimension
