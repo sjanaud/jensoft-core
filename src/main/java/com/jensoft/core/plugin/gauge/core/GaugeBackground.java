@@ -14,8 +14,12 @@ import java.awt.Shape;
 import java.awt.TexturePaint;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
+import java.util.List;
 
 import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.plugin.donut2d.Donut2D;
+import com.jensoft.core.plugin.donut2d.Donut2DSlice;
+import com.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel;
 
 /**
  * <code>GaugeBackgroundPainter</code> takes the responsibility to paint gauge
@@ -312,6 +316,58 @@ public abstract class GaugeBackground extends GaugePart {
 				return rgp;
 			}
 
+		}
+		
+		/**
+		 * create circular background with donut paint
+		 * 
+		 */
+		public static class Donut extends Circular {
+			
+			private Donut2D donut2D;
+			/**
+			 * create gauge texture paint with the given texture
+			 * 
+			 * @param texturePaint
+			 */
+			public Donut() {
+				super();
+			}
+			
+			public void setDonut(Donut2D donut2D) {
+				this.donut2D = donut2D;
+			}
+			
+			/*
+			 * (non-Javadoc)
+			 * 
+			 * @see
+			 * com.jensoft.core.plugin.gauge.core.bg.GaugeBackgroundPainter.
+			 * Circular#fill(java.awt.Graphics2D, java.awt.Shape)
+			 */
+			@Override
+			public void fill(Graphics2D g2d, RadialGauge radialGauge, Shape shape) {
+				//System.out.println(radialGauge);
+				//System.out.println(radialGauge.getHost());
+				donut2D.setHostPlugin(radialGauge.getHost());
+				donut2D.solveGeometry();
+				if (donut2D.getDonut2DFill() != null) {
+	                donut2D.getDonut2DFill().paintDonut2D(g2d, donut2D);
+	            }
+	            if (donut2D.getDonut2DDraw() != null) {
+	                donut2D.getDonut2DDraw().paintDonut2D(g2d, donut2D);
+	            }
+	            if (donut2D.getDonut2DEffect() != null) {
+	                donut2D.getDonut2DEffect().paintDonut2D(g2d, donut2D);
+	            }
+
+	            List<Donut2DSlice> slices = donut2D.getSlices();
+	            for (Donut2DSlice donut2DSlice : slices) {
+	                for (AbstractDonut2DSliceLabel label : donut2DSlice.getSliceLabels()) {
+	                    label.paintDonut2DSlice(g2d, donut2D, donut2DSlice);
+	                }
+	            }
+			}
 		}
 
 		/**
