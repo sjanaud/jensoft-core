@@ -115,7 +115,7 @@ public class RadialGaugePlugin extends AbstractPlugin {
 		}
 
 		gauge.setWindow2D(getWindow2D());
-
+		gauge.setHost(this);
 		if (gauge.getEnvelop() != null) {
 			gauge.getEnvelop().paintPart(g2d, gauge);
 		}

@@ -9,6 +9,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
 import com.jensoft.core.window.Window2D;
 
 /**
@@ -38,6 +39,9 @@ public class RadialGauge {
 
 	/** gauge window */
 	private Window2D window2D;
+	
+	/**host plugin*/
+	private RadialGaugePlugin host;
 
 	/** gauge envelop */
 	private GaugeEnvelope envelop;
@@ -86,6 +90,23 @@ public class RadialGauge {
 		double shiftCenterY = centerY - radius * Math.sin(Math.toRadians(angleDegree));
 		return new Point2D.Double(shiftCenterX, shiftCenterY);
 	}
+	
+	
+	/**
+	 * get host plugin
+	 * @return host
+	 */
+	public RadialGaugePlugin getHost() {
+		return host;
+	}
+
+	/**
+	 * set host plugin
+	 * @param host
+	 */
+	public void setHost(RadialGaugePlugin host) {
+		this.host = host;
+	}
 
 	/**
 	 * get gauge backgrounds
@@ -102,7 +123,9 @@ public class RadialGauge {
 	 * @param backgrounds
 	 */
 	public void setBackgrounds(List<GaugeBackground> backgrounds) {
-		this.backgrounds = backgrounds;
+		for (GaugeBackground gaugeBackground : backgrounds) {
+			addBackground(gaugeBackground);
+		}
 	}
 
 	/**
@@ -111,6 +134,7 @@ public class RadialGauge {
 	 * @param background
 	 */
 	public void addBackground(GaugeBackground background) {
+		background.setGauge(this);
 		this.backgrounds.add(background);
 	}
 
