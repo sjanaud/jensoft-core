@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.copyright;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
@@ -38,7 +39,8 @@ public class PoweredPlugin extends AbstractPlugin {
             return;
         }
 
-        g2d.setFont(InputFonts.getNoMove(9));
+       // g2d.setFont(InputFonts.getNoMove(9));
+        g2d.setFont(new Font("Verdana", Font.PLAIN, 10));
         g2d.setColor(textColor);
         FontMetrics fm = g2d.getFontMetrics();
         fm.stringWidth("Powered by JenSoft");

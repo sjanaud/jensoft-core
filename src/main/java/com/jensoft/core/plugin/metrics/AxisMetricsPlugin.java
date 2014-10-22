@@ -26,6 +26,8 @@ import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
+import com.jensoft.core.plugin.metrics.manager.Modeled2MetricsManager;
+import com.jensoft.core.plugin.metrics.manager.Modeled2MetricsManager.MetricsModel2;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelCollections;
@@ -849,6 +851,95 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 			}
 		}
 	}
+	
+	/**
+	 * <code>ModeledMetrics</code> takes the responsibility to manage metrics
+	 * from models
+	 * 
+	 * @author sebastien janaud
+	 */
+	public static class Modeled2Metrics extends AxisMetricsPlugin<Modeled2MetricsManager> {
+
+		/**
+		 * <code>W</code> manages {@link ModeledMetrics} for
+		 * {@link Axis#AxisWest}
+		 */
+		public static class W extends Modeled2Metrics {
+
+			/**
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisWest}
+			 */
+			public W() {
+				super(Axis.AxisWest);
+			}
+		}
+
+		/**
+		 * <code>E</code> manages {@link ModeledMetrics} for
+		 * {@link Axis#AxisEast}
+		 */
+		public static class E extends Modeled2Metrics {
+
+			/**
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisEast}
+			 */
+			public E() {
+				super(Axis.AxisEast);
+			}
+		}
+
+		/**
+		 * <code>N</code> manages {@link ModeledMetrics} for
+		 * {@link Axis#AxisNorth}
+		 */
+		public static class N extends Modeled2Metrics {
+
+			/**
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisNorth}
+			 */
+			public N() {
+				super(Axis.AxisNorth);
+			}
+		}
+
+		/**
+		 * <code>S</code> manages {@link ModeledMetrics} for
+		 * {@link Axis#AxisSouth}
+		 */
+		public static class S extends Modeled2Metrics {
+
+			/**
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisSouth}
+			 */
+			public S() {
+				super(Axis.AxisSouth);
+			}
+		}
+
+		/**
+		 * create ModeledMetrics with the given {@link Axis}
+		 */
+		public Modeled2Metrics(Axis axis) {
+			super(new Modeled2MetricsManager(), axis);
+			setName(ModeledMetrics.class.getCanonicalName());
+			setMetricsPainter(new MetricsGlyphPainter());
+		}
+
+	
+
+
+		/**
+		 * get all registered {@link MetricsModel}
+		 * 
+		 * @return models
+		 */
+		public List<MetricsModel2> getMetricsModels() {
+			return getMetricsManager().getMetricsModels();
+		}
+
+		
+
+	}
 
 	/**
 	 * <code>ModeledMetrics</code> takes the responsibility to manage metrics
@@ -1465,6 +1556,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		try {
 			metrics = metricsManager.getDeviceMetrics();
 		} catch (Throwable e) {
+			e.printStackTrace();
 			return;
 		}
 

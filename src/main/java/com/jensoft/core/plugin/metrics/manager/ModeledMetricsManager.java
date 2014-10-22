@@ -510,9 +510,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
                 pixelSize = new BigDecimal(window.getPixelHeight());
                 maxUserValue = new BigDecimal(window.getMaxY());
             }
-
            
-
             int compare = (userSize.divide(factor, RoundingMode.HALF_EVEN))
                     .multiply(new BigDecimal(getPixelLabelHolder())).compareTo(pixelSize);
 

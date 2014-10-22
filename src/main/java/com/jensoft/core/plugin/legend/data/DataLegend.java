@@ -3,12 +3,14 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend;
+package com.jensoft.core.plugin.legend.data;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.jensoft.core.window.WindowPart;
 
 /**
  * <code>DataLegend</code> defines a group of item based on texts and colors
@@ -30,6 +32,9 @@ public class DataLegend {
     /**defines the interval between square colored marker and legend text, default is 10 pixels*/
     private int markerTextInterval = 10;
     
+    /**defines the location of legend, east, south, west, north or device, Default is device location*/
+    private WindowPart part = WindowPart.Device;
+    
     /**
      * Defines data legend orientation, Row or column.
      * 
@@ -44,6 +49,15 @@ public class DataLegend {
      */
 	public DataLegend(){
 		items = new ArrayList<DataLegend.Item>();
+	}
+	
+	/**
+     * Create Data legend on the given location
+     * @param part legend location
+     */
+	public DataLegend(WindowPart part){
+		this();
+		this.part = part;
 	}
 	
 	/**
@@ -109,6 +123,24 @@ public class DataLegend {
 	public List<Item> getItems() {
 		return items;
 	}
+
+	/**
+	 * get legend location part
+	 * @return part location
+	 */
+	public WindowPart getPart() {
+		return part;
+	}
+
+	/**
+	 * set legend part location
+	 * @param part
+	 */
+	public void setPart(WindowPart part) {
+		this.part = part;
+	}
+
+
 
 
 	/**
