@@ -68,8 +68,8 @@ public class DataLegendPlugin extends AbstractPlugin {
 			int  height = metrics.getHeight();
 			int ascent = metrics.getAscent();
 			
-			int startX = 30;
-			int startY = 30;
+			int startX = legend.getMarginX();
+			int startY = legend.getMarginY();
 			int squareSize = 5;
 			
 			int currentX = startX;
@@ -128,6 +128,7 @@ public class DataLegendPlugin extends AbstractPlugin {
 						currentX = startX ;
 						currentY = currentY + height;
 						g2d.setColor(item.getColor());
+						
 						g2d.fillRect(currentX, currentY-squareSize, squareSize, squareSize);
 						
 						if(item.getTextColor() != null)

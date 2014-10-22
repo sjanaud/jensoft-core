@@ -35,6 +35,12 @@ public class DataLegend {
     /**defines the location of legend, east, south, west, north or device, Default is device location*/
     private WindowPart part = WindowPart.Device;
     
+    /**data legend margin x from upper corner left of part component*/
+    private int marginX = 30;
+    
+    /**data legend margin y from upper corner left of part component*/
+    private int marginY = 30;
+    
     /**
      * Defines data legend orientation, Row or column.
      * 
@@ -140,8 +146,37 @@ public class DataLegend {
 		this.part = part;
 	}
 
+	/**
+	 * get the margin x of data legend from upper left corner part component
+	 * @return margin x
+	 */
+	public int getMarginX() {
+		return marginX;
+	}
 
+	/**
+	 * set the margin x of data legend from upper left corner part component
+	 * @param marginX margin x
+	 */
+	public void setMarginX(int marginX) {
+		this.marginX = marginX;
+	}
 
+	/**
+	 * get the margin y of data legend from upper left corner part component
+	 * @return margin y
+	 */
+	public int getMarginY() {
+		return marginY;
+	}
+
+	/**
+	 * set the margin y of data legend from upper left corner part component
+	 * @param marginX margin y
+	 */
+	public void setMarginY(int marginY) {
+		this.marginY = marginY;
+	}
 
 	/**
 	 * Defines the data legend item, simple structure with color, text , and text color.
