@@ -39,7 +39,8 @@ public class CopyrightPlugin extends AbstractPlugin {
         }
         g2d.setColor(textColor);
         //g2d.setFont(InputFonts.getNoMove(9));
-        g2d.setFont(new Font("console",Font.PLAIN,10));
+        //g2d.setFont(new Font("console",Font.PLAIN,10));
+        g2d.setFont(new Font("Verdana", Font.PLAIN, 10));
         g2d.drawString(copyright, 10, 10);
 
     }

@@ -7,6 +7,7 @@ package com.jensoft.core.plugin.metrics.geom;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
+import java.math.BigDecimal;
 import java.util.Comparator;
 
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
@@ -24,6 +25,9 @@ public class Metrics {
     /** device value */
     private double deviceValue;
 
+    /** big decimal user value */
+    private BigDecimal userValueAsBigDecimal;
+    
     /** user value */
     private double userValue;
 
@@ -385,8 +389,18 @@ public class Metrics {
         }
 
     }
+    
+    
 
-    /**
+    public BigDecimal getUserValueAsBigDecimal() {
+		return userValueAsBigDecimal;
+	}
+
+	public void setUserValueAsBigDecimal(BigDecimal userValueAsBigDecimal) {
+		this.userValueAsBigDecimal = userValueAsBigDecimal;
+	}
+
+	/**
      * @return the visible
      */
     public boolean isVisible() {

@@ -3,8 +3,9 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend;
+package com.jensoft.core.plugin.legend.data;
 
+import java.awt.Component;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 import java.util.List;
@@ -13,7 +14,7 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.plugin.legend.DataLegend.Orientation;
+import com.jensoft.core.plugin.legend.data.DataLegend.Orientation;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 
@@ -58,7 +59,7 @@ public class DataLegendPlugin extends AbstractPlugin {
 	 */
 	@Override
 	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		if(windowPart != WindowPart.Device) return;
+		if(windowPart != legend.getPart()) return;
 		
 			if(legend.getFont() != null){
 				g2d.setFont(legend.getFont());
@@ -74,12 +75,17 @@ public class DataLegendPlugin extends AbstractPlugin {
 			int currentX = startX;
 			int currentY = startY;
 			
+			Component legendHolder = getWindow2D().getView2D().getWindowComponent(legend.getPart());
+			int partWidth = legendHolder.getWidth();
+			int partHeight = legendHolder.getHeight();
+			
 			if(legend.getOrientation() == Orientation.Column){
 				List<DataLegend.Item> items = legend.getItems();
 				int maxWidth = 0;
 				for (DataLegend.Item item : items) {
 					maxWidth = Math.max(maxWidth, metrics.stringWidth(item.getText()));
-					if((currentY + height) < getWindow2D().getDevice2D().getDeviceHeight()){
+					//if((currentY + height) < getWindow2D().getDevice2D().getDeviceHeight()){
+					if((currentY + height) < partHeight){
 						g2d.setColor(item.getColor());
 						g2d.fillRect(currentX, currentY-squareSize, squareSize, squareSize);
 						
@@ -108,7 +114,8 @@ public class DataLegendPlugin extends AbstractPlugin {
 				int itemHInterval = 20;
 				for (DataLegend.Item item : items) {
 					
-					if((currentX + legend.getMarkerTextInterval() + metrics.stringWidth(item.getText())) < getWindow2D().getDevice2D().getDeviceWidth()){
+					//if((currentX + legend.getMarkerTextInterval() + metrics.stringWidth(item.getText())) < getWindow2D().getDevice2D().getDeviceWidth()){
+					if((currentX + legend.getMarkerTextInterval() + metrics.stringWidth(item.getText())) < partWidth){
 						g2d.setColor(item.getColor());
 						g2d.fillRect(currentX, currentY-squareSize, squareSize, squareSize);
 						
