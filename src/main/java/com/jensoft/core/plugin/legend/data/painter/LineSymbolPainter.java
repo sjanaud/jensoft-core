@@ -17,10 +17,10 @@ import com.jensoft.core.plugin.legend.data.DataLegend.Item;
  * <code>LineSymbolPainter</code> paints a line symbol for data legend item
  * 
  * @author sebastien janaud
- * 
  */
 public class LineSymbolPainter extends AbstractDataItemSymbolPainter {
 
+	/**line stroke*/
 	private Stroke stroke = new BasicStroke();
 
 	/**
@@ -73,5 +73,4 @@ public class LineSymbolPainter extends AbstractDataItemSymbolPainter {
 		Line2D line = new Line2D.Double(symbolBound.getX(), symbolBound.getY() + symbolBound.getHeight() / 2, symbolBound.getX() + symbolBound.getWidth(), symbolBound.getY() + symbolBound.getHeight() / 2);
 		g2d.draw(line);
 	}
-
 }
