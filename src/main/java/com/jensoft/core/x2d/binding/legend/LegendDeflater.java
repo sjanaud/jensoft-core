@@ -7,7 +7,7 @@ package com.jensoft.core.x2d.binding.legend;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.legend.LegendPlugin;
+import com.jensoft.core.plugin.legend.title.LegendPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import com.jensoft.core.x2d.binding.X2DBinding;
 

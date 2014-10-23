@@ -9,7 +9,6 @@ import java.awt.AlphaComposite;
 import java.awt.Graphics2D;
 import java.util.List;
 
-import com.jensoft.core.palette.Alpha;
 import com.jensoft.core.plugin.donut2d.Donut2D;
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 

@@ -13,7 +13,6 @@ import java.awt.Graphics2D;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.ColorPalette;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
