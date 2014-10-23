@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
 import com.jensoft.core.plugin.legend.title.painter.LegendDraw;
 import com.jensoft.core.plugin.legend.title.painter.LegendFill;
 import com.jensoft.core.plugin.legend.title.painter.LegendPainter;
@@ -21,15 +21,15 @@ import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
 /**
  * Legend defines a simple text legend on the view
  * 
- * @see LegendConstraints
- * @see LegendToolkit
- * @see LegendPlugin
+ * @see TitleLegendConstraints
+ * @see TitleLegendPlugin
+ * @see TitleLegendPlugin
  * @see LegendPainter
  * @see LegendFill
  * @see LegendDraw
  * @author Sebastien Janaud
  */
-public class Legend {
+public class TitleLegend {
 
     /** legend label */
     private String text;
@@ -41,10 +41,10 @@ public class Legend {
     private Color themeColor;
 
     /** legend constraints */
-    private LegendConstraints constraints = new LegendConstraints(LegendPosition.South, 0.8f, LegendAlignment.Rigth);                                                                  
+    private TitleLegendConstraints constraints = new TitleLegendConstraints(LegendPosition.South, 0.8f, LegendAlignment.Rigth);                                                                  
 
     /** legend host plugin */
-    private LegendPlugin host;
+    private TitleLegendPlugin host;
 
     /** legend fill */
     private LegendFill legendFill = new LegendGradientFill();
@@ -61,7 +61,7 @@ public class Legend {
      * 
      * @param text
      */
-    public Legend(String text) {
+    public TitleLegend(String text) {
         this.text = text;
         this.legendGlyphs = new ArrayList<GlyphGeometry>();
     }
@@ -90,7 +90,7 @@ public class Legend {
      * 
      * @return legend constraints
      */
-    public LegendConstraints getConstraints() {
+    public TitleLegendConstraints getConstraints() {
         return constraints;
     }
 
@@ -99,7 +99,7 @@ public class Legend {
      * 
      * @param constraints
      */
-    public void setConstraints(LegendConstraints constraints) {
+    public void setConstraints(TitleLegendConstraints constraints) {
         this.constraints = constraints;
     }
 
@@ -148,7 +148,7 @@ public class Legend {
      * 
      * @return host plugin
      */
-    public LegendPlugin getHost() {
+    public TitleLegendPlugin getHost() {
         return host;
     }
 
@@ -158,7 +158,7 @@ public class Legend {
      * @param host
      *            the host plugin to set
      */
-    public void setHost(LegendPlugin host) {
+    public void setHost(TitleLegendPlugin host) {
         this.host = host;
     }
 

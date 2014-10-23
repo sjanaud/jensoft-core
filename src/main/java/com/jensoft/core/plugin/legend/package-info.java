@@ -1,5 +1,5 @@
 /**
- * Provides legend plug-in classes
+ * Provides chart view legend plug-in classes like Title legend and Data Legend
  * 
  * @since 1.0
  */

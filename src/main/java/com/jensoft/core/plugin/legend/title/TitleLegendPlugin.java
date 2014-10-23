@@ -5,6 +5,8 @@
  */
 package com.jensoft.core.plugin.legend.title;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.font.FontRenderContext;
@@ -21,9 +23,11 @@ import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.TextAntialiasing;
+import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 
@@ -32,23 +36,23 @@ import com.jensoft.core.window.WindowPart;
  * 
  * @author Sebastien Janaud
  */
-public class LegendPlugin extends AbstractPlugin {
+public class TitleLegendPlugin extends AbstractPlugin {
     
     
     
 
     /** legend registry */
-    private List<Legend> legends;
+    private List<TitleLegend> legends;
 
     /**
      * create legend plugin
      */
-    public LegendPlugin() {
+    public TitleLegendPlugin() {
     	setAntialiasing(Antialiasing.On);
         setTextAntialising(TextAntialiasing.On);
         setDithering(Dithering.On);
-        setName(LegendPlugin.class.getCanonicalName());
-        legends = new ArrayList<Legend>();
+        setName(TitleLegendPlugin.class.getCanonicalName());
+        legends = new ArrayList<TitleLegend>();
     }
 
     /**
@@ -57,7 +61,7 @@ public class LegendPlugin extends AbstractPlugin {
      * @param legend
      *            the legend to add
      */
-    public LegendPlugin(Legend legend) {
+    public TitleLegendPlugin(TitleLegend legend) {
         this();
         addLegend(legend);
     }
@@ -68,7 +72,7 @@ public class LegendPlugin extends AbstractPlugin {
      * @param legend
      *            the legend to add
      */
-    public void addLegend(Legend legend) {
+    public void addLegend(TitleLegend legend) {
         legend.setHost(this);
         if (!legends.contains(legend)) {
             legends.add(legend);
@@ -85,9 +89,9 @@ public class LegendPlugin extends AbstractPlugin {
      *            the legend
      * @return true if the context is accessible, false otherwise
      */
-    private boolean isAccessible(WindowPart windowPart, Legend legend) {
+    private boolean isAccessible(WindowPart windowPart, TitleLegend legend) {
 
-        LegendConstraints contraints = legend.getConstraints();
+        TitleLegendConstraints contraints = legend.getConstraints();
         if (contraints == null) {
             return false;
         }
@@ -122,8 +126,8 @@ public class LegendPlugin extends AbstractPlugin {
      * @param g2d
      * @param legend
      */
-    private void solveLegends(View2D view2D, Graphics2D g2d, Legend legend) {
-        LegendConstraints contraints = legend.getConstraints();
+    private void solveLegends(View2D view2D, Graphics2D g2d, TitleLegend legend) {
+        TitleLegendConstraints contraints = legend.getConstraints();
         legend.clearLegendGlyph();
         String labelLegend = legend.getText();
         g2d.setFont(legend.getFont());
@@ -317,7 +321,7 @@ public class LegendPlugin extends AbstractPlugin {
      */
     public void paintLegend(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
 
-        for (Legend legend : legends) {
+        for (TitleLegend legend : legends) {
 
             if (isAccessible(windowPart, legend)) {
 
@@ -336,10 +340,250 @@ public class LegendPlugin extends AbstractPlugin {
     }
     
    
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     */
     @Override
     public final void paintPlugin(View2D v2d, Graphics2D g2d,
             WindowPart windowPart) {
         paintLegend(v2d, g2d, windowPart);
+    }
+    
+    
+    /**
+     * create default black legend with default constraints, south on the right
+     * 
+     * @param label
+     *            the label legend to draw
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setLegendFill(new LegendGradientFill());
+        legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
+                                                    LegendAlignment.Rigth));
+        return legend;
+    }
+
+    /**
+     * create default black legend with default constraints, south on the right
+     * 
+     * @param label
+     *            the legend label
+     * @param constraints
+     *            the legend constraints
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label,
+            TitleLegendConstraints constraints) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setLegendFill(new LegendGradientFill());
+        legend.setConstraints(constraints);
+        return legend;
+    }
+
+    /**
+     * create default black legend with default constraints, south on the right
+     * 
+     * @param label
+     *            the legend label
+     * @param font
+     *            the legend font
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Font font) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setFont(font);
+        legend.setLegendFill(new LegendGradientFill());
+        legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
+                                                    LegendAlignment.Rigth));
+        return legend;
+    }
+
+    /**
+     * create default black legend with default constraints, south on the right
+     * 
+     * @param label
+     *            the legend label
+     * @param font
+     *            the legend font
+     * @param constraints
+     *            the legend constraints
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Font font,
+            TitleLegendConstraints constraints) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setFont(font);
+        legend.setLegendFill(new LegendGradientFill());
+        legend.setConstraints(constraints);
+        return legend;
+    }
+
+    /**
+     * create default black legend with default constraints, south on the right
+     * 
+     * @param label
+     *            the legend label
+     * @param color
+     *            the legend color
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Color color) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setLegendFill(new LegendGradientFill(color, color));
+        legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
+                                                    LegendAlignment.Rigth));
+        return legend;
+    }
+
+    /**
+     * create legend with specified parameters
+     * 
+     * @param label
+     *            the legend label
+     * @param color
+     *            the legend color
+     * @param constraints
+     *            the legend constraints
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Color color,
+            TitleLegendConstraints constraints) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setLegendFill(new LegendGradientFill(color, color));
+        legend.setConstraints(constraints);
+        return legend;
+    }
+
+    /**
+     * create legend with specified parameters
+     * 
+     * @param label
+     *            the legend label
+     * @param font
+     *            the legend font
+     * @param color
+     *            the legend color
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Font font, Color color) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setFont(font);
+        legend.setLegendFill(new LegendGradientFill(color, color));
+        legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
+                                                    LegendAlignment.Rigth));
+        return legend;
+    }
+
+    /**
+     * create legend with specified parameters
+     * 
+     * @param label
+     *            the legend label
+     * @param font
+     *            the legend font
+     * @param color
+     *            the legend color
+     * @param constraints
+     *            the legend constraints
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Font font, Color color,
+            TitleLegendConstraints constraints) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setFont(font);
+        legend.setLegendFill(new LegendGradientFill(color, color));
+        legend.setConstraints(constraints);
+        return legend;
+    }
+
+    /**
+     * create legend with specified parameters
+     * 
+     * @param label
+     *            the legend label
+     * @param color1
+     *            the legend shading start color
+     * @param color2
+     *            the legend shading end color
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Color color1, Color color2) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setLegendFill(new LegendGradientFill(color1, color2));
+        legend.setFont(InputFonts.getNeuropol(12));
+        legend.setConstraints(new TitleLegendConstraints(LegendPosition.North, 0.1f,
+                                                    LegendAlignment.Rigth));
+        return legend;
+    }
+
+    /**
+     * create legend with specified parameters
+     * 
+     * @param label
+     *            the legend label
+     * @param color1
+     *            the legend shading start color
+     * @param color2
+     *            the legend shading end color
+     * @param constraints
+     *            the legend constraints
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Color color1, Color color2,
+            TitleLegendConstraints constraints) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setLegendFill(new LegendGradientFill(color1, color2));
+        legend.setConstraints(constraints);
+        return legend;
+    }
+
+    /**
+     * create legend with specified parameters
+     * 
+     * @param label
+     *            the legend label
+     * @param font
+     *            the legend font
+     * @param color1
+     *            the legend shading start color
+     * @param color2
+     *            the legend shading end color
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Font font, Color color1,
+            Color color2) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setFont(font);
+        legend.setLegendFill(new LegendGradientFill(color1, color2));
+        legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
+                                                    LegendAlignment.Rigth));
+        return legend;
+    }
+
+    /**
+     * create legend with specified parameters
+     * 
+     * @param label
+     *            the legend label
+     * @param font
+     *            the legend font
+     * @param color1
+     *            the legend shading start color
+     * @param color2
+     *            the legend shading end color
+     * @param constraints
+     *            the legend constraints
+     * @return legend
+     */
+    public static TitleLegend createLegend(String label, Font font, Color color1,
+            Color color2, TitleLegendConstraints constraints) {
+        TitleLegend legend = new TitleLegend(label);
+        legend.setFont(font);
+        legend.setLegendFill(new LegendGradientFill(color1, color2));
+        legend.setConstraints(constraints);
+        return legend;
     }
 
 }

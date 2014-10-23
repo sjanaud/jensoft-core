@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.legend.title.painter;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.legend.title.Legend;
+import com.jensoft.core.plugin.legend.title.TitleLegend;
 
 /**
  * LegendDraw defines legend filling operation
@@ -22,14 +22,14 @@ public abstract class LegendFill extends AbstractLegendPainter {
      * @param g2d
      * @param legend
      */
-    protected abstract void paintLegendFill(Graphics2D g2d, Legend legend);
+    protected abstract void paintLegendFill(Graphics2D g2d, TitleLegend legend);
 
     
     /* (non-Javadoc)
      * @see com.jensoft.core.plugin.legend.painter.AbstractLegendPainter#paintLegend(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
      */
     @Override
-    public final void paintLegend(Graphics2D g2d, Legend legend) {
+    public final void paintLegend(Graphics2D g2d, TitleLegend legend) {
         paintLegendFill(g2d, legend);
     }
 
