@@ -18,7 +18,7 @@ import com.jensoft.core.plugin.legend.LegendConstraints.LegendPosition;
 import com.jensoft.core.plugin.legend.painter.LegendDraw;
 
 /**
- * LegendDraw1
+ * <code>LegendDefaultDraw</code>
  * 
  * @author Sebastien Janaud
  */
