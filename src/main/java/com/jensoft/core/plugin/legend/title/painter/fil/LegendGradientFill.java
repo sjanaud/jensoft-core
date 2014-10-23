@@ -12,7 +12,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
-import com.jensoft.core.plugin.legend.title.Legend;
+import com.jensoft.core.plugin.legend.title.TitleLegend;
 import com.jensoft.core.plugin.legend.title.painter.LegendFill;
 
 /**
@@ -81,7 +81,7 @@ public class LegendGradientFill extends LegendFill {
      * @see com.jensoft.core.plugin.legend.painter.LegendFill#paintLegendFill(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
      */
     @Override
-    protected void paintLegendFill(Graphics2D g2d, Legend legend) {
+    protected void paintLegendFill(Graphics2D g2d, TitleLegend legend) {
 
         if (legend.getFont() != null) {
             g2d.setFont(legend.getFont());

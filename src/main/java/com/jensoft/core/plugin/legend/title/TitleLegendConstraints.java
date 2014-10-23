@@ -8,11 +8,11 @@ package com.jensoft.core.plugin.legend.title;
 /**
  * <code>LegendConstraints</code> define the constraints associated to the legend position
  * 
- * @see LegendPlugin
- * @see Legend
+ * @see TitleLegendPlugin
+ * @see TitleLegend
  * @author Sebastien Janaud
  */
-public class LegendConstraints {
+public class TitleLegendConstraints {
 
     /** legend depth fraction */
     private float depth;
@@ -100,7 +100,7 @@ public class LegendConstraints {
      * @param depth
      * @param alignment
      */
-    public LegendConstraints(LegendPosition position, float depth,
+    public TitleLegendConstraints(LegendPosition position, float depth,
             LegendAlignment alignment) {
         setPosition(position);
         setDepth(depth);

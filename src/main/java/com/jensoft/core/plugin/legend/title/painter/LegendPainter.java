@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.legend.title.painter;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.legend.title.Legend;
+import com.jensoft.core.plugin.legend.title.TitleLegend;
 
 /**
  * legend painter defines legend painting operation
@@ -24,5 +24,5 @@ public interface LegendPainter {
      * @param legend
      *            the legend to paint
      */
-    void paintLegend(Graphics2D g2d, Legend legend);
+    void paintLegend(Graphics2D g2d, TitleLegend legend);
 }

@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.legend.title.painter;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.legend.title.Legend;
+import com.jensoft.core.plugin.legend.title.TitleLegend;
 
 /**
  * AbstractLegendPainter
@@ -19,7 +19,7 @@ public abstract class AbstractLegendPainter implements LegendPainter {
      * @see com.jensoft.core.plugin.legend.painter.LegendPainter#paintLegend(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
      */
     @Override
-    public void paintLegend(Graphics2D g2d, Legend legend) {
+    public void paintLegend(Graphics2D g2d, TitleLegend legend) {
     }
 
 }

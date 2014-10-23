@@ -12,9 +12,9 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
-import com.jensoft.core.plugin.legend.title.Legend;
-import com.jensoft.core.plugin.legend.title.LegendConstraints;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.TitleLegend;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
 import com.jensoft.core.plugin.legend.title.painter.LegendDraw;
 
 /**
@@ -57,9 +57,9 @@ public class LegendDefaultDraw extends LegendDraw {
      * @see com.jensoft.core.plugin.legend.painter.LegendDraw#paintLegendDraw(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
      */
     @Override
-    protected void paintLegendDraw(Graphics2D g2d, Legend legend) {
+    protected void paintLegendDraw(Graphics2D g2d, TitleLegend legend) {
 
-        LegendConstraints contraints = legend.getConstraints();
+        TitleLegendConstraints contraints = legend.getConstraints();
 
         g2d.setFont(legend.getFont());
         if (contraints.getPosition() == LegendPosition.West
