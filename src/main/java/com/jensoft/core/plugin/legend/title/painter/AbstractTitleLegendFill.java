@@ -10,17 +10,17 @@ import java.awt.Graphics2D;
 import com.jensoft.core.plugin.legend.title.TitleLegend;
 
 /**
- * LegendDraw defines legend filling operation
+ * <code>AbstractTitleLegendFill</code> defines title legend fill operation
  * 
  * @author Sebastien Janaud
  */
-public abstract class LegendFill extends AbstractLegendPainter {
+public abstract class AbstractTitleLegendFill extends AbstractTitleLegendPainter {
 
     /**
-     * paint legend fill
+     * fill legend 
      * 
      * @param g2d
-     * @param legend
+     * @param title legend
      */
     protected abstract void paintLegendFill(Graphics2D g2d, TitleLegend legend);
 

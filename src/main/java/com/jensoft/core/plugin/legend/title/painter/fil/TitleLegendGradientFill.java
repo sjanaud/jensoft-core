@@ -13,15 +13,15 @@ import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
 import com.jensoft.core.plugin.legend.title.TitleLegend;
-import com.jensoft.core.plugin.legend.title.painter.LegendFill;
+import com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendFill;
 
 /**
- * <code>LegendGradientFill</code>
+ * <code>TitleLegendGradientFill</code> fill legend with gradient given colors
  * 
  * @author Sebastien Janaud
  * @since 1.0
  */
-public class LegendGradientFill extends LegendFill {
+public class TitleLegendGradientFill extends AbstractTitleLegendFill {
 
     private Color startColor;
     private Color endColor;
@@ -29,7 +29,7 @@ public class LegendGradientFill extends LegendFill {
     /**
      * create default fill 1 legend
      */
-    public LegendGradientFill() {
+    public TitleLegendGradientFill() {
     }
 
     /**
@@ -40,7 +40,7 @@ public class LegendGradientFill extends LegendFill {
      * @param endColor
      *            end color to set
      */
-    public LegendGradientFill(Color startColor, Color endColor) {
+    public TitleLegendGradientFill(Color startColor, Color endColor) {
         super();
         this.startColor = startColor;
         this.endColor = endColor;

@@ -21,12 +21,12 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.grid.Grid.GridOrientation;
 import com.jensoft.core.plugin.grid.GridPlugin;
 import com.jensoft.core.plugin.grid.GridPlugin.FreeGrid;
-import com.jensoft.core.plugin.legend.title.Legend;
-import com.jensoft.core.plugin.legend.title.LegendConstraints;
-import com.jensoft.core.plugin.legend.title.LegendPlugin;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
+import com.jensoft.core.plugin.legend.title.TitleLegend;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.TitleLegendPlugin;
+import com.jensoft.core.plugin.legend.title.painter.fil.TitleLegendGradientFill;
 import com.jensoft.core.plugin.stripe.StripePlugin;
 import com.jensoft.core.plugin.stripe.painter.StripePalette;
 import com.jensoft.core.plugin.symbol.BarSymbol.SymbolInflate;
@@ -176,11 +176,11 @@ public class BarStackedStackEffectDemo extends View2D {
 		grids.getGridManager().addGrid(-32, "JenSoft", PetalPalette.PETAL4_HC, 0.001f);
 		w2d.registerPlugin(grids);
 
-		Legend legend = new Legend("Simple Stacked Bar");
-		legend.setLegendFill(new LegendGradientFill(Color.WHITE, JennyPalette.JENNY8));
+		TitleLegend legend = new TitleLegend("Simple Stacked Bar");
+		legend.setLegendFill(new TitleLegendGradientFill(Color.WHITE, JennyPalette.JENNY8));
 		legend.setFont(InputFonts.getFont(InputFonts.ELEMENT, 10));
-		legend.setConstraints(new LegendConstraints(LegendPosition.South, 0.8f, LegendAlignment.Rigth));
-		LegendPlugin lgendL = new LegendPlugin();
+		legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f, LegendAlignment.Rigth));
+		TitleLegendPlugin lgendL = new TitleLegendPlugin();
 		lgendL.addLegend(legend);
 		w2d.registerPlugin(lgendL);
 

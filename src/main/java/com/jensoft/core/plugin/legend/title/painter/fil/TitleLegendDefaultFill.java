@@ -11,16 +11,16 @@ import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
 import com.jensoft.core.plugin.legend.title.TitleLegend;
-import com.jensoft.core.plugin.legend.title.painter.LegendFill;
+import com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendFill;
 
 /**
- * LegendDefaultFill would be fill legend with {@link #fillColor}, but if this
+ * <code>TitleLegendDefaultFill</code> would be fill legend with {@link #fillColor}, but if this
  * property is not set , this fill would be fill legend with legend theme color.
  * if legend theme color is null, window theme color will be used.
  * 
  * @author Sebastien Janaud
  */
-public class LegendDefaultFill extends LegendFill {
+public class TitleLegendDefaultFill extends AbstractTitleLegendFill {
 
     /** default fill color */
     private Color fillColor;
@@ -28,13 +28,13 @@ public class LegendDefaultFill extends LegendFill {
     /**
      * create default fill using window theme color as legend fill color
      */
-    public LegendDefaultFill() {
+    public TitleLegendDefaultFill() {
     }
 
     /**
      * @param fillColor
      */
-    public LegendDefaultFill(Color fillColor) {
+    public TitleLegendDefaultFill(Color fillColor) {
         super();
         this.fillColor = fillColor;
     }
