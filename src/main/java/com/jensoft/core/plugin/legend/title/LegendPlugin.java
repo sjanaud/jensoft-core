@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend;
+package com.jensoft.core.plugin.legend.title;
 
 import java.awt.Graphics2D;
 import java.awt.Shape;
@@ -22,8 +22,8 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendAlignment;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 

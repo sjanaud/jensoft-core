@@ -11,7 +11,6 @@ import java.awt.Stroke;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
-import com.jensoft.core.plugin.legend.data.DataLegend;
 import com.jensoft.core.plugin.legend.data.DataLegend.Item;
 
 /**

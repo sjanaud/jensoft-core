@@ -5,7 +5,6 @@ import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.plugin.legend.data.DataLegend;
-import com.jensoft.core.plugin.legend.data.DataLegend.Item;
 
 /**
  * <code>AbstractDataItemSymbolPainter</code> takes the responsibility to paint

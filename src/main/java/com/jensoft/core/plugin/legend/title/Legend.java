@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend;
+package com.jensoft.core.plugin.legend.title;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -11,12 +11,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.painter.LegendDraw;
-import com.jensoft.core.plugin.legend.painter.LegendFill;
-import com.jensoft.core.plugin.legend.painter.LegendPainter;
-import com.jensoft.core.plugin.legend.painter.fill.LegendGradientFill;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendAlignment;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.painter.LegendDraw;
+import com.jensoft.core.plugin.legend.title.painter.LegendFill;
+import com.jensoft.core.plugin.legend.title.painter.LegendPainter;
+import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
 
 /**
  * Legend defines a simple text legend on the view

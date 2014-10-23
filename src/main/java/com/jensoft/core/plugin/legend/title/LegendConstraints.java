@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend;
+package com.jensoft.core.plugin.legend.title;
 
 /**
  * <code>LegendConstraints</code> define the constraints associated to the legend position

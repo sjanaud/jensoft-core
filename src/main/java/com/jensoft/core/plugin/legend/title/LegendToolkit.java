@@ -3,15 +3,15 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend;
+package com.jensoft.core.plugin.legend.title;
 
 import java.awt.Color;
 import java.awt.Font;
 
 import com.jensoft.core.palette.InputFonts;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.painter.fill.LegendGradientFill;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendAlignment;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
 
 /**
  * legend toolkit help to create legend and related objects.<br>
