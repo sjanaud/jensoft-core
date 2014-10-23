@@ -18,7 +18,6 @@ import com.jensoft.core.window.WindowPart;
  * <code>DataLegend</code> defines a group of item based on texts and colors
  * 
  * @author sebastien janaud
- * 
  */
 public class DataLegend {
 
@@ -85,6 +84,16 @@ public class DataLegend {
 	public DataLegend(WindowPart part) {
 		this();
 		this.part = part;
+	}
+	
+	/**
+	 * Create Data legend on the given location and orientation
+	 * @param orientation
+	 * @param part
+	 */
+	public DataLegend(Orientation orientation, WindowPart part) {
+		this(part);
+		this.orientation = orientation;
 	}
 
 	/**
