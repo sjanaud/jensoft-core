@@ -10,6 +10,8 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.jensoft.core.plugin.legend.data.painter.AbstractDataItemSymbolPainter;
+import com.jensoft.core.plugin.legend.data.painter.LineSymbolPainter;
 import com.jensoft.core.window.WindowPart;
 
 /**
@@ -19,63 +21,120 @@ import com.jensoft.core.window.WindowPart;
  * 
  */
 public class DataLegend {
-	
-	/** legend registry */
-    private List<Item> items;
-    
-    /**legend font*/
-    private Font font;
-    
-    /**data legend orientation, default column*/
-    private Orientation orientation = Orientation.Column;
-    
-    /**defines the interval between square colored marker and legend text, default is 10 pixels*/
-    private int markerTextInterval = 10;
-    
-    /**defines the location of legend, east, south, west, north or device, Default is device location*/
-    private WindowPart part = WindowPart.Device;
-    
-    /**data legend margin x from upper corner left of part component*/
-    private int marginX = 30;
-    
-    /**data legend margin y from upper corner left of part component*/
-    private int marginY = 30;
-    
-    /**
-     * Defines data legend orientation, Row or column.
-     * 
-     */
-    public enum Orientation{
-    	Row,
-    	Column;
-    }
 
-    /**
-     * Create Data legend
-     */
-	public DataLegend(){
+	/** legend registry */
+	private List<Item> items;
+
+	/** legend font */
+	private Font font;
+
+	/** data legend orientation, default column */
+	private Orientation orientation = Orientation.Column;
+
+	/**
+	 * defines the interval between square colored marker and legend text,
+	 * default is 10 pixels
+	 */
+	private int markerTextInterval = 5;
+
+	/**
+	 * defines the location of legend, east, south, west, north or device,
+	 * Default is device location
+	 */
+	private WindowPart part = WindowPart.Device;
+
+	/** data legend margin x from upper corner left of part component */
+	private int marginX = 30;
+
+	/** data legend margin y from upper corner left of part component */
+	private int marginY = 30;
+
+	/**
+	 * symbol bound width is the region width for painting item symbol before
+	 * text legend
+	 */
+	private int symbolBoundWidth = 20;
+
+	/**
+	 * delta wrap line between two legend line if need to wrap line, default in
+	 * 5 pixels more over font height
+	 */
+	private int deltaWrapLine = 5;
+
+	/**
+	 * Defines data legend orientation, Row or column.
+	 * 
+	 */
+	public enum Orientation {
+		Row, Column;
+	}
+
+	/**
+	 * Create Data legend
+	 */
+	public DataLegend() {
 		items = new ArrayList<DataLegend.Item>();
 	}
-	
+
 	/**
-     * Create Data legend on the given location
-     * @param part legend location
-     */
-	public DataLegend(WindowPart part){
+	 * Create Data legend on the given location
+	 * 
+	 * @param part
+	 *            legend location
+	 */
+	public DataLegend(WindowPart part) {
 		this();
 		this.part = part;
 	}
-	
+
 	/**
 	 * add legend item
+	 * 
 	 * @param item
 	 */
-	public void addItem(Item item){
+	public void addItem(Item item) {
 		items.add(item);
 	}
-	
+
+	/**
+	 * get symbol bound width
+	 * 
+	 * @return symbol bound width
+	 */
+	public int getSymbolBoundWidth() {
+		return symbolBoundWidth;
+	}
+
+	/**
+	 * set symbol bound width
+	 * 
+	 * @param symbolBoundWidth
+	 */
+	public void setSymbolBoundWidth(int symbolBoundWidth) {
+		this.symbolBoundWidth = symbolBoundWidth;
+	}
+
+	/**
+	 * get delta wrap line
+	 * 
+	 * @return delta wrap line
+	 */
+	public int getDeltaWrapLine() {
+		return deltaWrapLine;
+	}
+
+	/**
+	 * set delta wrap line
+	 * 
+	 * @param deltaWrapLine
+	 */
+	public void setDeltaWrapLine(int deltaWrapLine) {
+		this.deltaWrapLine = deltaWrapLine;
+	}
+
 	/**
 	 * get marker and text interval
+	 * 
 	 * @return interval
 	 */
 	public int getMarkerTextInterval() {
@@ -84,6 +143,7 @@ public class DataLegend {
 
 	/**
 	 * set maker and text interval
+	 * 
 	 * @param markerTextInterval
 	 */
 	public void setMarkerTextInterval(int markerTextInterval) {
@@ -92,6 +152,7 @@ public class DataLegend {
 
 	/**
 	 * get data legend orientation
+	 * 
 	 * @return orientation
 	 */
 	public Orientation getOrientation() {
@@ -100,6 +161,7 @@ public class DataLegend {
 
 	/**
 	 * set data legend orientation
+	 * 
 	 * @param orientation
 	 */
 	public void setOrientation(Orientation orientation) {
@@ -108,6 +170,7 @@ public class DataLegend {
 
 	/**
 	 * get data legend font
+	 * 
 	 * @return font
 	 */
 	public Font getFont() {
@@ -116,6 +179,7 @@ public class DataLegend {
 
 	/**
 	 * set data legend font
+	 * 
 	 * @param font
 	 */
 	public void setFont(Font font) {
@@ -124,6 +188,7 @@ public class DataLegend {
 
 	/**
 	 * get data legend items
+	 * 
 	 * @return items
 	 */
 	public List<Item> getItems() {
@@ -132,6 +197,7 @@ public class DataLegend {
 
 	/**
 	 * get legend location part
+	 * 
 	 * @return part location
 	 */
 	public WindowPart getPart() {
@@ -140,6 +206,7 @@ public class DataLegend {
 
 	/**
 	 * set legend part location
+	 * 
 	 * @param part
 	 */
 	public void setPart(WindowPart part) {
@@ -148,6 +215,7 @@ public class DataLegend {
 
 	/**
 	 * get the margin x of data legend from upper left corner part component
+	 * 
 	 * @return margin x
 	 */
 	public int getMarginX() {
@@ -156,7 +224,9 @@ public class DataLegend {
 
 	/**
 	 * set the margin x of data legend from upper left corner part component
-	 * @param marginX margin x
+	 * 
+	 * @param marginX
+	 *            margin x
 	 */
 	public void setMarginX(int marginX) {
 		this.marginX = marginX;
@@ -164,6 +234,7 @@ public class DataLegend {
 
 	/**
 	 * get the margin y of data legend from upper left corner part component
+	 * 
 	 * @return margin y
 	 */
 	public int getMarginY() {
@@ -172,51 +243,121 @@ public class DataLegend {
 
 	/**
 	 * set the margin y of data legend from upper left corner part component
-	 * @param marginX margin y
+	 * 
+	 * @param marginX
+	 *            margin y
 	 */
 	public void setMarginY(int marginY) {
 		this.marginY = marginY;
 	}
 
 	/**
-	 * Defines the data legend item, simple structure with color, text , and text color.
-	 *
+	 * Defines the data legend item, simple structure with color, text , and
+	 * text color.
+	 * 
+	 * @author sebastien janaud
 	 */
-	public static class Item{
+	public static class Item {
 		private Color color;
 		private Color textColor;
 		private String text;
+		private AbstractDataItemSymbolPainter symbolPainter = new LineSymbolPainter();
+
+		/**
+		 * create item with given parameters
+		 * 
+		 * @param color
+		 * @param text
+		 */
 		public Item(Color color, String text) {
 			super();
 			this.color = color;
 			this.text = text;
 		}
-		
-		public Item(Color color, Color textColor, String text) {
-			super();
-			this.color = color;
+
+		/**
+		 * create item with given parameters
+		 * 
+		 * @param color
+		 * @param text
+		 * @param textColor
+		 */
+		public Item(Color color, String text, Color textColor) {
+			this(color, text);
 			this.textColor = textColor;
-			this.text = text;
 		}
+
+		/**
+		 * get item theme color
+		 * 
+		 * @return
+		 */
 		public Color getColor() {
 			return color;
 		}
+
+		/**
+		 * set item theme color
+		 * 
+		 * @param color
+		 */
 		public void setColor(Color color) {
 			this.color = color;
 		}
+
+		/**
+		 * get item text
+		 * 
+		 * @return item text
+		 */
 		public String getText() {
 			return text;
 		}
+
+		/**
+		 * set item text
+		 * 
+		 * @param text
+		 */
 		public void setText(String text) {
 			this.text = text;
 		}
 
+		/**
+		 * get text color
+		 * 
+		 * @return text color
+		 */
 		public Color getTextColor() {
 			return textColor;
 		}
+
+		/**
+		 * set text color if change text color is required from base color, for
+		 * example make all text same color
+		 * 
+		 * @param textColor
+		 */
 		public void setTextColor(Color textColor) {
 			this.textColor = textColor;
 		}
-	}
 
+		/**
+		 * get symbol painter
+		 * 
+		 * @return symbol painter
+		 */
+		public AbstractDataItemSymbolPainter getSymbolPainter() {
+			return symbolPainter;
+		}
+
+		/**
+		 * set symbol painter
+		 * 
+		 * @param symbolPainter
+		 */
+		public void setSymbolPainter(AbstractDataItemSymbolPainter symbolPainter) {
+			this.symbolPainter = symbolPainter;
+		}
+	}
 }

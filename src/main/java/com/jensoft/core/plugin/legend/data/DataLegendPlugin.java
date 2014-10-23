@@ -8,6 +8,7 @@ package com.jensoft.core.plugin.legend.data;
 import java.awt.Component;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
+import java.awt.geom.Rectangle2D;
 import java.util.List;
 
 import com.jensoft.core.graphics.Antialiasing;
@@ -66,11 +67,12 @@ public class DataLegendPlugin extends AbstractPlugin {
 			}
 			FontMetrics metrics = g2d.getFontMetrics();
 			int  height = metrics.getHeight();
-			int ascent = metrics.getAscent();
+			int descent = metrics.getDescent();
 			
 			int startX = legend.getMarginX();
 			int startY = legend.getMarginY();
-			int squareSize = 5;
+			int symbolBoundWidth  = legend.getSymbolBoundWidth();
+			int deltaWrapLine = legend.getDeltaWrapLine();
 			
 			int currentX = startX;
 			int currentY = startY;
@@ -84,59 +86,63 @@ public class DataLegendPlugin extends AbstractPlugin {
 				int maxWidth = 0;
 				for (DataLegend.Item item : items) {
 					maxWidth = Math.max(maxWidth, metrics.stringWidth(item.getText()));
-					//if((currentY + height) < getWindow2D().getDevice2D().getDeviceHeight()){
 					if((currentY + height) < partHeight){
 						g2d.setColor(item.getColor());
-						g2d.fillRect(currentX, currentY-squareSize, squareSize, squareSize);
+						
+						Rectangle2D bound = new Rectangle2D.Double(currentX, currentY - height + descent, symbolBoundWidth, height);
+						item.getSymbolPainter().paintSymbol(g2d, bound, item);
 						
 						if(item.getTextColor() != null)
 						g2d.setColor(item.getTextColor());
 						
-						g2d.drawString(item.getText(), currentX + legend.getMarkerTextInterval(), currentY);
+						g2d.drawString(item.getText(), currentX+ symbolBoundWidth + legend.getMarkerTextInterval(), currentY);
 					}
 					else{
-						currentX = currentX + maxWidth + 20;
+						currentX = currentX + maxWidth + symbolBoundWidth + 40;
 						currentY = startY;
 						
 						g2d.setColor(item.getColor());
-						g2d.fillRect(currentX, currentY-squareSize, squareSize, squareSize);
+						
+						Rectangle2D bound = new Rectangle2D.Double(currentX, currentY - height + descent, symbolBoundWidth, height);
+						item.getSymbolPainter().paintSymbol(g2d, bound, item);
 						
 						if(item.getTextColor() != null)
 						g2d.setColor(item.getTextColor());
-						g2d.drawString(item.getText(), currentX + legend.getMarkerTextInterval(), currentY);
+						g2d.drawString(item.getText(), currentX + symbolBoundWidth + legend.getMarkerTextInterval(), currentY);
 					}
 					
-					currentY =  currentY +height;
+					currentY =  currentY + height + deltaWrapLine;
 				}
 			}
 			else if(legend.getOrientation() == Orientation.Row){
 				List<DataLegend.Item> items = legend.getItems();
 				int itemHInterval = 20;
 				for (DataLegend.Item item : items) {
-					
-					//if((currentX + legend.getMarkerTextInterval() + metrics.stringWidth(item.getText())) < getWindow2D().getDevice2D().getDeviceWidth()){
 					if((currentX + legend.getMarkerTextInterval() + metrics.stringWidth(item.getText())) < partWidth){
 						g2d.setColor(item.getColor());
-						g2d.fillRect(currentX, currentY-squareSize, squareSize, squareSize);
+						
+						Rectangle2D bound = new Rectangle2D.Double(currentX, currentY - height + descent, symbolBoundWidth, height);
+						item.getSymbolPainter().paintSymbol(g2d, bound, item);
 						
 						if(item.getTextColor() != null)
 						g2d.setColor(item.getTextColor());
 						
-						g2d.drawString(item.getText(), currentX + legend.getMarkerTextInterval(), currentY);
+						g2d.drawString(item.getText(), currentX + symbolBoundWidth + legend.getMarkerTextInterval(), currentY);
 					}
 					else{
 						currentX = startX ;
-						currentY = currentY + height;
+						currentY = currentY + height + deltaWrapLine;
 						g2d.setColor(item.getColor());
 						
-						g2d.fillRect(currentX, currentY-squareSize, squareSize, squareSize);
+						Rectangle2D bound = new Rectangle2D.Double(currentX, currentY - height + descent, symbolBoundWidth, height);
+						item.getSymbolPainter().paintSymbol(g2d, bound, item);
 						
 						if(item.getTextColor() != null)
 						g2d.setColor(item.getTextColor());
 						
-						g2d.drawString(item.getText(), currentX + legend.getMarkerTextInterval(), currentY);
+						g2d.drawString(item.getText(), currentX + symbolBoundWidth + legend.getMarkerTextInterval(), currentY);
 					}
-					currentX =  currentX + squareSize +legend.getMarkerTextInterval() + metrics.stringWidth(item.getText()) + itemHInterval;
+					currentX =  currentX + symbolBoundWidth +legend.getMarkerTextInterval() + metrics.stringWidth(item.getText()) + itemHInterval;
 				}
 			}
 	}
