@@ -11,13 +11,13 @@ import java.awt.Font;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.jensoft.core.plugin.legend.Legend;
-import com.jensoft.core.plugin.legend.LegendConstraints;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.LegendPlugin;
-import com.jensoft.core.plugin.legend.painter.fill.LegendDefaultFill;
-import com.jensoft.core.plugin.legend.painter.fill.LegendGradientFill;
+import com.jensoft.core.plugin.legend.title.Legend;
+import com.jensoft.core.plugin.legend.title.LegendConstraints;
+import com.jensoft.core.plugin.legend.title.LegendPlugin;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendAlignment;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.painter.fil.LegendDefaultFill;
+import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DBinding;
 
