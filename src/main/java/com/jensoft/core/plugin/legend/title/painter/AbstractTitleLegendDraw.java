@@ -17,16 +17,16 @@ import com.jensoft.core.plugin.legend.title.TitleLegend;
 public abstract class AbstractTitleLegendDraw extends AbstractTitleLegendPainter {
 
     /**
-     * draw title legend
+     * draw title legend, implements this method to draw title legend
      * 
      * @param g2d
      * @param legend
      */
     protected abstract void paintLegendDraw(Graphics2D g2d, TitleLegend legend);
-
+   
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.legend.painter.AbstractLegendPainter#paintLegend(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
+     * @see com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendPainter#paintLegend(java.awt.Graphics2D, com.jensoft.core.plugin.legend.title.TitleLegend)
      */
     @Override
     public final void paintLegend(Graphics2D g2d, TitleLegend legend) {

@@ -27,34 +27,67 @@ public class TitleLegendDefaultDraw extends AbstractTitleLegendDraw {
     private Color color1 = Color.BLACK;
     private Color color2 = Color.BLACK;
 
+    /**
+     * create default draw legend painter with black legend draw
+     */
     public TitleLegendDefaultDraw() {
     }
+    
+    /**
+     * create draw legend with given color
+     * @param color
+     */
+    public TitleLegendDefaultDraw(Color color) {
+    	this.color1 = color;
+        this.color2 = color;
+    }
 
+    /**
+     * create draw legend with given gradient colors
+     * @param color1
+     * @param color2
+     */
     public TitleLegendDefaultDraw(Color color1, Color color2) {
-        super();
         this.color1 = color1;
         this.color2 = color2;
     }
 
+    /**
+     * get color 1
+     * @return color1
+     */
     public Color getColor1() {
         return color1;
     }
 
+    /**
+     * set color 1
+     * @param color1
+     */
     public void setColor1(Color color1) {
         this.color1 = color1;
     }
 
+    /**
+     * get color 2
+     * @return color2
+     */
     public Color getColor2() {
         return color2;
     }
 
+    /**
+     * set color 2
+     * @param color2
+     */
     public void setColor2(Color color2) {
         this.color2 = color2;
     }
 
     
+    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.legend.painter.LegendDraw#paintLegendDraw(java.awt.Graphics2D, com.jensoft.core.plugin.legend.Legend)
+     * @see com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendDraw#paintLegendDraw(java.awt.Graphics2D, com.jensoft.core.plugin.legend.title.TitleLegend)
      */
     @Override
     protected void paintLegendDraw(Graphics2D g2d, TitleLegend legend) {
