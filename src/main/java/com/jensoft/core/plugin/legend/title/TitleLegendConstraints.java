@@ -6,10 +6,11 @@
 package com.jensoft.core.plugin.legend.title;
 
 /**
- * <code>LegendConstraints</code> define the constraints associated to the legend position
+ * <code>TitleLegendConstraints</code> defines the constraints associated to the legend position
  * 
  * @see TitleLegendPlugin
  * @see TitleLegend
+ * 
  * @author Sebastien Janaud
  */
 public class TitleLegendConstraints {

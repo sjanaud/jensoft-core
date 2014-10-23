@@ -11,13 +11,13 @@ import java.awt.Font;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
-import com.jensoft.core.plugin.legend.title.Legend;
-import com.jensoft.core.plugin.legend.title.LegendConstraints;
-import com.jensoft.core.plugin.legend.title.LegendPlugin;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.title.painter.fil.LegendDefaultFill;
-import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
+import com.jensoft.core.plugin.legend.title.TitleLegend;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
+import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.TitleLegendPlugin;
+import com.jensoft.core.plugin.legend.title.painter.fil.TitleLegendDefaultFill;
+import com.jensoft.core.plugin.legend.title.painter.fil.TitleLegendGradientFill;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DBinding;
 
@@ -26,16 +26,16 @@ import com.jensoft.core.x2d.binding.X2DBinding;
  * 
  * @author sebastien janaud
  */
-@X2DBinding(xsi="LegendPlugin",plugin=LegendPlugin.class)
-public class LegendInflater extends AbstractX2DPluginInflater<LegendPlugin> implements X2DLegendElement {
+@X2DBinding(xsi="LegendPlugin",plugin=TitleLegendPlugin.class)
+public class LegendInflater extends AbstractX2DPluginInflater<TitleLegendPlugin> implements X2DLegendElement {
 
 
     /**
-     * inflate into {@link Legend} the given x2d legend element
+     * inflate into {@link TitleLegend} the given x2d legend element
      * @param element
      * @return legend
      */
-    private Legend inflateLegend(Element element) {
+    private TitleLegend inflateLegend(Element element) {
 
         String text = elementText(element, ELEMENT_LEGEND_TEXT);
         Font font = elementFont(element, ELEMENT_LEGEND_TEXT_FONT);
@@ -46,7 +46,7 @@ public class LegendInflater extends AbstractX2DPluginInflater<LegendPlugin> impl
         LegendAlignment alignment = LegendAlignment.parse(elementText(element, ELEMENT_LEGEND_ALIGNMENT));
         Float depth = elementFloat(element, ELEMENT_LEGEND_DEPTH);
 
-        Legend legend = new Legend(text);
+        TitleLegend legend = new TitleLegend(text);
       
 
         if (font != null) {
@@ -57,20 +57,20 @@ public class LegendInflater extends AbstractX2DPluginInflater<LegendPlugin> impl
         }
 
         if (position != null && depth != null && alignment != null) {
-            LegendConstraints constraints = new LegendConstraints(position, depth, alignment);
+            TitleLegendConstraints constraints = new TitleLegendConstraints(position, depth, alignment);
             legend.setConstraints(constraints);
         }
 
         if (color1 != null && color2 != null) {
-            LegendGradientFill fill = new LegendGradientFill(color1, color2);
+            TitleLegendGradientFill fill = new TitleLegendGradientFill(color1, color2);
             legend.setLegendFill(fill);
         }
         else if (color1 != null) {
-            LegendDefaultFill fill = new LegendDefaultFill(color1);
+            TitleLegendDefaultFill fill = new TitleLegendDefaultFill(color1);
             legend.setLegendFill(fill);
         }
         else {
-            LegendDefaultFill fill = new LegendDefaultFill();
+            TitleLegendDefaultFill fill = new TitleLegendDefaultFill();
             legend.setLegendFill(fill);
         }
 
@@ -82,12 +82,12 @@ public class LegendInflater extends AbstractX2DPluginInflater<LegendPlugin> impl
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public LegendPlugin inflate(Element pluginElement) {
-        LegendPlugin plugin = new LegendPlugin();
+    public TitleLegendPlugin inflate(Element pluginElement) {
+        TitleLegendPlugin plugin = new TitleLegendPlugin();
         NodeList legendElements = pluginElement.getElementsByTagName(ELEMENT_LEGEND);
         for (int i = 0; i < legendElements.getLength(); i++) {
             Element element = (Element) legendElements.item(i);
-            Legend legend = inflateLegend(element);
+            TitleLegend legend = inflateLegend(element);
             if(legend != null){
                 plugin.addLegend(legend);
             }

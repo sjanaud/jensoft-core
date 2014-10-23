@@ -1,5 +1,5 @@
 /**
- * Provides legend draw painters
+ * Provides title legend draw painters
  * 
  * @author sebastien janaud
  * @since 1.0

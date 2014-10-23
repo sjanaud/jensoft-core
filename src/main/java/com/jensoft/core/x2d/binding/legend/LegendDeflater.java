@@ -7,7 +7,7 @@ package com.jensoft.core.x2d.binding.legend;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.legend.title.LegendPlugin;
+import com.jensoft.core.plugin.legend.title.TitleLegendPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import com.jensoft.core.x2d.binding.X2DBinding;
 
@@ -16,14 +16,14 @@ import com.jensoft.core.x2d.binding.X2DBinding;
  * @author sebastien janaud
  *
  */
-@X2DBinding(xsi="LegendPlugin",plugin=LegendPlugin.class)
-public class LegendDeflater extends AbstractX2DPluginDeflater<LegendPlugin> {
+@X2DBinding(xsi="LegendPlugin",plugin=TitleLegendPlugin.class)
+public class LegendDeflater extends AbstractX2DPluginDeflater<TitleLegendPlugin> {
 
 	/* (non-Javadoc)
 	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
-	public Element deflate(LegendPlugin plugin) {
+	public Element deflate(TitleLegendPlugin plugin) {
 		Element pluginElement = createPluginRootElement();
 		return pluginElement;
 	}

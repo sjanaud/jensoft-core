@@ -15,22 +15,22 @@ import com.jensoft.core.glyphmetrics.GlyphGeometry;
 import com.jensoft.core.plugin.legend.title.TitleLegend;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.title.painter.LegendDraw;
+import com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendDraw;
 
 /**
- * <code>LegendDefaultDraw</code>
+ * <code>TitleLegendDefaultDraw</code>
  * 
  * @author Sebastien Janaud
  */
-public class LegendDefaultDraw extends LegendDraw {
+public class TitleLegendDefaultDraw extends AbstractTitleLegendDraw {
 
     private Color color1 = Color.BLACK;
     private Color color2 = Color.BLACK;
 
-    public LegendDefaultDraw() {
+    public TitleLegendDefaultDraw() {
     }
 
-    public LegendDefaultDraw(Color color1, Color color2) {
+    public TitleLegendDefaultDraw(Color color1, Color color2) {
         super();
         this.color1 = color1;
         this.color2 = color2;

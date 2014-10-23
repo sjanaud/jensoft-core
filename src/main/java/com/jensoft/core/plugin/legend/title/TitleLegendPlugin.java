@@ -27,20 +27,17 @@ import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
+import com.jensoft.core.plugin.legend.title.painter.fil.TitleLegendGradientFill;
 import com.jensoft.core.view.View2D;
 import com.jensoft.core.window.WindowPart;
 
 /**
- * <code>LegendPlugin</code>
+ * <code>TitleLegendPlugin</code> takes the responsibility to paint title legend within the view
  * 
  * @author Sebastien Janaud
  */
 public class TitleLegendPlugin extends AbstractPlugin {
     
-    
-    
-
     /** legend registry */
     private List<TitleLegend> legends;
 
@@ -359,7 +356,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
      */
     public static TitleLegend createLegend(String label) {
         TitleLegend legend = new TitleLegend(label);
-        legend.setLegendFill(new LegendGradientFill());
+        legend.setLegendFill(new TitleLegendGradientFill());
         legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
                                                     LegendAlignment.Rigth));
         return legend;
@@ -377,7 +374,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
     public static TitleLegend createLegend(String label,
             TitleLegendConstraints constraints) {
         TitleLegend legend = new TitleLegend(label);
-        legend.setLegendFill(new LegendGradientFill());
+        legend.setLegendFill(new TitleLegendGradientFill());
         legend.setConstraints(constraints);
         return legend;
     }
@@ -394,7 +391,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
     public static TitleLegend createLegend(String label, Font font) {
         TitleLegend legend = new TitleLegend(label);
         legend.setFont(font);
-        legend.setLegendFill(new LegendGradientFill());
+        legend.setLegendFill(new TitleLegendGradientFill());
         legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
                                                     LegendAlignment.Rigth));
         return legend;
@@ -415,7 +412,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
             TitleLegendConstraints constraints) {
         TitleLegend legend = new TitleLegend(label);
         legend.setFont(font);
-        legend.setLegendFill(new LegendGradientFill());
+        legend.setLegendFill(new TitleLegendGradientFill());
         legend.setConstraints(constraints);
         return legend;
     }
@@ -431,7 +428,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
      */
     public static TitleLegend createLegend(String label, Color color) {
         TitleLegend legend = new TitleLegend(label);
-        legend.setLegendFill(new LegendGradientFill(color, color));
+        legend.setLegendFill(new TitleLegendGradientFill(color, color));
         legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
                                                     LegendAlignment.Rigth));
         return legend;
@@ -451,7 +448,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
     public static TitleLegend createLegend(String label, Color color,
             TitleLegendConstraints constraints) {
         TitleLegend legend = new TitleLegend(label);
-        legend.setLegendFill(new LegendGradientFill(color, color));
+        legend.setLegendFill(new TitleLegendGradientFill(color, color));
         legend.setConstraints(constraints);
         return legend;
     }
@@ -470,7 +467,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
     public static TitleLegend createLegend(String label, Font font, Color color) {
         TitleLegend legend = new TitleLegend(label);
         legend.setFont(font);
-        legend.setLegendFill(new LegendGradientFill(color, color));
+        legend.setLegendFill(new TitleLegendGradientFill(color, color));
         legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
                                                     LegendAlignment.Rigth));
         return legend;
@@ -493,7 +490,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
             TitleLegendConstraints constraints) {
         TitleLegend legend = new TitleLegend(label);
         legend.setFont(font);
-        legend.setLegendFill(new LegendGradientFill(color, color));
+        legend.setLegendFill(new TitleLegendGradientFill(color, color));
         legend.setConstraints(constraints);
         return legend;
     }
@@ -511,7 +508,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
      */
     public static TitleLegend createLegend(String label, Color color1, Color color2) {
         TitleLegend legend = new TitleLegend(label);
-        legend.setLegendFill(new LegendGradientFill(color1, color2));
+        legend.setLegendFill(new TitleLegendGradientFill(color1, color2));
         legend.setFont(InputFonts.getNeuropol(12));
         legend.setConstraints(new TitleLegendConstraints(LegendPosition.North, 0.1f,
                                                     LegendAlignment.Rigth));
@@ -534,7 +531,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
     public static TitleLegend createLegend(String label, Color color1, Color color2,
             TitleLegendConstraints constraints) {
         TitleLegend legend = new TitleLegend(label);
-        legend.setLegendFill(new LegendGradientFill(color1, color2));
+        legend.setLegendFill(new TitleLegendGradientFill(color1, color2));
         legend.setConstraints(constraints);
         return legend;
     }
@@ -556,7 +553,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
             Color color2) {
         TitleLegend legend = new TitleLegend(label);
         legend.setFont(font);
-        legend.setLegendFill(new LegendGradientFill(color1, color2));
+        legend.setLegendFill(new TitleLegendGradientFill(color1, color2));
         legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f,
                                                     LegendAlignment.Rigth));
         return legend;
@@ -581,7 +578,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
             Color color2, TitleLegendConstraints constraints) {
         TitleLegend legend = new TitleLegend(label);
         legend.setFont(font);
-        legend.setLegendFill(new LegendGradientFill(color1, color2));
+        legend.setLegendFill(new TitleLegendGradientFill(color1, color2));
         legend.setConstraints(constraints);
         return legend;
     }

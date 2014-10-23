@@ -13,20 +13,20 @@ import java.util.List;
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.title.painter.LegendDraw;
-import com.jensoft.core.plugin.legend.title.painter.LegendFill;
-import com.jensoft.core.plugin.legend.title.painter.LegendPainter;
-import com.jensoft.core.plugin.legend.title.painter.fil.LegendGradientFill;
+import com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendDraw;
+import com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendFill;
+import com.jensoft.core.plugin.legend.title.painter.fil.TitleLegendGradientFill;
 
 /**
- * Legend defines a simple text legend on the view
+ * <code>TitleLegend</code> defines a simple text legend on the view
  * 
  * @see TitleLegendConstraints
  * @see TitleLegendPlugin
  * @see TitleLegendPlugin
  * @see LegendPainter
- * @see LegendFill
- * @see LegendDraw
+ * @see AbstractTitleLegendFill
+ * @see AbstractTitleLegendDraw
+ * 
  * @author Sebastien Janaud
  */
 public class TitleLegend {
@@ -47,10 +47,10 @@ public class TitleLegend {
     private TitleLegendPlugin host;
 
     /** legend fill */
-    private LegendFill legendFill = new LegendGradientFill();
+    private AbstractTitleLegendFill legendFill = new TitleLegendGradientFill();
 
     /** legend draw */
-    private LegendDraw legendDraw;
+    private AbstractTitleLegendDraw legendDraw;
 
     /** legend glyphs */
     private List<GlyphGeometry> legendGlyphs;
@@ -167,7 +167,7 @@ public class TitleLegend {
      * 
      * @return legend fill
      */
-    public LegendFill getLegendFill() {
+    public AbstractTitleLegendFill getLegendFill() {
         return legendFill;
     }
 
@@ -177,7 +177,7 @@ public class TitleLegend {
      * @param legendFill
      *            the legend fill to set
      */
-    public void setLegendFill(LegendFill legendFill) {
+    public void setLegendFill(AbstractTitleLegendFill legendFill) {
         this.legendFill = legendFill;
     }
 
@@ -186,7 +186,7 @@ public class TitleLegend {
      * 
      * @return legend draw
      */
-    public LegendDraw getLegendDraw() {
+    public AbstractTitleLegendDraw getLegendDraw() {
         return legendDraw;
     }
 
@@ -196,7 +196,7 @@ public class TitleLegend {
      * @param legendDraw
      *            the legend draw to set
      */
-    public void setLegendDraw(LegendDraw legendDraw) {
+    public void setLegendDraw(AbstractTitleLegendDraw legendDraw) {
         this.legendDraw = legendDraw;
     }
 

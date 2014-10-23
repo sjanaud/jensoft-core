@@ -10,14 +10,14 @@ import java.awt.Graphics2D;
 import com.jensoft.core.plugin.legend.title.TitleLegend;
 
 /**
- * LegendDraw defines legend drawing operation
+ * <code>AbstractTitleLegendDraw</code> defines title legend draw operation
  * 
  * @author Sebastien Janaud
  */
-public abstract class LegendDraw extends AbstractLegendPainter {
+public abstract class AbstractTitleLegendDraw extends AbstractTitleLegendPainter {
 
     /**
-     * paint legend draw
+     * draw title legend
      * 
      * @param g2d
      * @param legend
