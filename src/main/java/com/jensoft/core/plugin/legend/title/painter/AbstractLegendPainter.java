@@ -3,11 +3,11 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend.painter;
+package com.jensoft.core.plugin.legend.title.painter;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.plugin.legend.Legend;
+import com.jensoft.core.plugin.legend.title.Legend;
 
 /**
  * AbstractLegendPainter

@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend.painter.draw;
+package com.jensoft.core.plugin.legend.title.painter.draw;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
@@ -12,10 +12,10 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
-import com.jensoft.core.plugin.legend.Legend;
-import com.jensoft.core.plugin.legend.LegendConstraints;
-import com.jensoft.core.plugin.legend.LegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.painter.LegendDraw;
+import com.jensoft.core.plugin.legend.title.Legend;
+import com.jensoft.core.plugin.legend.title.LegendConstraints;
+import com.jensoft.core.plugin.legend.title.LegendConstraints.LegendPosition;
+import com.jensoft.core.plugin.legend.title.painter.LegendDraw;
 
 /**
  * <code>LegendDefaultDraw</code>

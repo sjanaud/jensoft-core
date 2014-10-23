@@ -3,15 +3,15 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.legend.painter.fill;
+package com.jensoft.core.plugin.legend.title.painter.fil;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphGeometry;
-import com.jensoft.core.plugin.legend.Legend;
-import com.jensoft.core.plugin.legend.painter.LegendFill;
+import com.jensoft.core.plugin.legend.title.Legend;
+import com.jensoft.core.plugin.legend.title.painter.LegendFill;
 
 /**
  * LegendDefaultFill would be fill legend with {@link #fillColor}, but if this

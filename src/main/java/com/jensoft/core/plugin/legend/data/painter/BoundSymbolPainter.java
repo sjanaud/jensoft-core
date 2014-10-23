@@ -3,7 +3,6 @@ package com.jensoft.core.plugin.legend.data.painter;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
-import com.jensoft.core.plugin.legend.data.DataLegend;
 import com.jensoft.core.plugin.legend.data.DataLegend.Item;
 
 public class BoundSymbolPainter extends AbstractDataItemSymbolPainter {
