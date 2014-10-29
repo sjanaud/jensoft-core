@@ -5,7 +5,7 @@ import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.palette.NanoChromatique;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelRangeCollections;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelRangeCollections;
 import com.jensoft.core.plugin.outline.OutlinePlugin;
 import com.jensoft.core.plugin.plot.PlotAnchorsPlugin;
 import com.jensoft.core.plugin.plot.PlotPlugin;

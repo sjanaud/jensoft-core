@@ -26,11 +26,11 @@ import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
-import com.jensoft.core.plugin.metrics.manager.Modeled2MetricsManager;
-import com.jensoft.core.plugin.metrics.manager.Modeled2MetricsManager.MetricsModel2;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelCollections;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelCollections;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelOLD;
 import com.jensoft.core.plugin.metrics.manager.Multiplier3MetricsManager;
 import com.jensoft.core.plugin.metrics.manager.MultiplierMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
@@ -858,7 +858,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class Modeled2Metrics extends AxisMetricsPlugin<Modeled2MetricsManager> {
+	public static class Modeled2Metrics extends AxisMetricsPlugin<ModeledMetricsManager> {
 
 		/**
 		 * <code>W</code> manages {@link ModeledMetrics} for
@@ -920,7 +920,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * create ModeledMetrics with the given {@link Axis}
 		 */
 		public Modeled2Metrics(Axis axis) {
-			super(new Modeled2MetricsManager(), axis);
+			super(new ModeledMetricsManager(), axis);
 			setName(ModeledMetrics.class.getCanonicalName());
 			setMetricsPainter(new MetricsGlyphPainter());
 		}
@@ -933,7 +933,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * 
 		 * @return models
 		 */
-		public List<MetricsModel2> getMetricsModels() {
+		public List<MetricsModel> getMetricsModels() {
 			return getMetricsManager().getMetricsModels();
 		}
 
@@ -947,7 +947,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class ModeledMetrics extends AxisMetricsPlugin<ModeledMetricsManager> {
+	public static class ModeledMetrics extends AxisMetricsPlugin<ModeledMetricsManagerOLD> {
 
 		/**
 		 * <code>W</code> manages {@link ModeledMetrics} for
@@ -1009,7 +1009,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * create ModeledMetrics with the given {@link Axis}
 		 */
 		public ModeledMetrics(Axis axis) {
-			super(new ModeledMetricsManager(), axis);
+			super(new ModeledMetricsManagerOLD(), axis);
 			setName(ModeledMetrics.class.getCanonicalName());
 			setMetricsPainter(new MetricsGlyphPainter());
 		}
@@ -1020,7 +1020,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * @param model
 		 *            the model to register
 		 */
-		public void registerMetricsModel(MetricsModel model) {
+		public void registerMetricsModel(MetricsModelOLD model) {
 			getMetricsManager().registerMetricsModel(model);
 		}
 
@@ -1030,7 +1030,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * @param models
 		 *            the models array to register
 		 */
-		public void registerMetricsModels(MetricsModel... models) {
+		public void registerMetricsModels(MetricsModelOLD... models) {
 			getMetricsManager().registerMetricsModels(models);
 		}
 
@@ -1050,7 +1050,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * @param models
 		 *            the models list to register
 		 */
-		public void registerMetricsModels(List<MetricsModel> models) {
+		public void registerMetricsModels(List<MetricsModelOLD> models) {
 			getMetricsManager().registerMetricsModels(models);
 		}
 
@@ -1060,7 +1060,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * @param model
 		 *            the model to remove
 		 */
-		public void unregisterMetricsModel(MetricsModel model) {
+		public void unregisterMetricsModel(MetricsModelOLD model) {
 			getMetricsManager().unregisterMetricsModel(model);
 		}
 
@@ -1070,7 +1070,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * @param models
 		 *            the metrics models to remove
 		 */
-		public void unregisterMetricsModels(MetricsModel... models) {
+		public void unregisterMetricsModels(MetricsModelOLD... models) {
 			getMetricsManager().unregisterMetricsModels(models);
 		}
 
@@ -1090,7 +1090,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * @param models
 		 *            the metrics models to remove
 		 */
-		public void unregisterMetricsModels(List<MetricsModel> models) {
+		public void unregisterMetricsModels(List<MetricsModelOLD> models) {
 			getMetricsManager().unregisterMetricsModels(models);
 		}
 
@@ -1099,7 +1099,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * 
 		 * @return models
 		 */
-		public List<MetricsModel> getMetricsModels() {
+		public List<MetricsModelOLD> getMetricsModels() {
 			return getMetricsManager().getMetricsModels();
 		}
 
@@ -1115,8 +1115,8 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 			super.createRenderContext(v2d, g2d);
 			super.assignType();
 			int axisSpacing = 0;
-			List<MetricsModel> sequence = getMetricsManager().getSequenceMetrics();
-			for (MetricsModel model : sequence) {
+			List<MetricsModelOLD> sequence = getMetricsManager().getSequenceMetrics();
+			for (MetricsModelOLD model : sequence) {
 				if (model.getRank() > 0 && !sequence.get(0).isMinimal())
 					continue;
 				if (model.getRank() > 1)

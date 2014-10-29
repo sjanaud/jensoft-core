@@ -22,9 +22,9 @@ import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelCollections;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelCollections;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelOLD;
 import com.jensoft.core.plugin.metrics.manager.Multiplier3MetricsManager;
 import com.jensoft.core.plugin.metrics.manager.MultiplierMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
@@ -845,7 +845,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class DeviceModeledMetrics extends DeviceMetricsPlugin<ModeledMetricsManager> {
+	public static class DeviceModeledMetrics extends DeviceMetricsPlugin<ModeledMetricsManagerOLD> {
 
 		/**
 		 * <code>X</code> manages {@link DeviceModeledMetrics} for
@@ -908,7 +908,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param deviceAxis
 		 */
 		public DeviceModeledMetrics(double baseLine, DeviceAxis deviceAxis) {
-			super(new ModeledMetricsManager(), baseLine, deviceAxis);
+			super(new ModeledMetricsManagerOLD(), baseLine, deviceAxis);
 		}
 
 		/**
@@ -919,7 +919,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param deviceAxis
 		 */
 		public DeviceModeledMetrics(double baseLine, MarkerPosition deviceMarkerPosition, DeviceAxis deviceAxis) {
-			super(new ModeledMetricsManager(), baseLine, deviceMarkerPosition, deviceAxis);
+			super(new ModeledMetricsManagerOLD(), baseLine, deviceMarkerPosition, deviceAxis);
 		}
 
 		/**
@@ -928,7 +928,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param model
 		 *            the model to register
 		 */
-		public void registerMetricsModel(MetricsModel model) {
+		public void registerMetricsModel(MetricsModelOLD model) {
 			getMetricsManager().registerMetricsModel(model);
 		}
 
@@ -938,7 +938,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param models
 		 *            the models to register
 		 */
-		public void registerMetricsModels(MetricsModel... models) {
+		public void registerMetricsModels(MetricsModelOLD... models) {
 			getMetricsManager().registerMetricsModels(models);
 		}
 
@@ -958,7 +958,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param models
 		 *            the models to register
 		 */
-		public void registerMetricsModels(List<MetricsModel> models) {
+		public void registerMetricsModels(List<MetricsModelOLD> models) {
 			getMetricsManager().registerMetricsModels(models);
 		}
 
@@ -968,7 +968,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param model
 		 *            the model to remove
 		 */
-		public void unregisterMetricsModel(MetricsModel model) {
+		public void unregisterMetricsModel(MetricsModelOLD model) {
 			getMetricsManager().unregisterMetricsModel(model);
 		}
 
@@ -978,7 +978,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param models
 		 *            the metrics models to remove
 		 */
-		public void unregisterMetricsModels(MetricsModel... models) {
+		public void unregisterMetricsModels(MetricsModelOLD... models) {
 			getMetricsManager().unregisterMetricsModels(models);
 		}
 
@@ -998,7 +998,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param models
 		 *            the metrics models to remove
 		 */
-		public void unregisterMetricsModels(List<MetricsModel> models) {
+		public void unregisterMetricsModels(List<MetricsModelOLD> models) {
 			getMetricsManager().unregisterMetricsModels(models);
 		}
 
@@ -1007,7 +1007,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * 
 		 * @return models
 		 */
-		public List<MetricsModel> getMetricsModels() {
+		public List<MetricsModelOLD> getMetricsModels() {
 			return getMetricsManager().getMetricsModels();
 		}
 
@@ -1027,9 +1027,9 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 			super.createRenderContext(v2d, g2d);
 			super.assignType();
 			int axisSpacing = 0;
-			List<MetricsModel> sequence = getMetricsManager().getSequenceMetrics();
+			List<MetricsModelOLD> sequence = getMetricsManager().getSequenceMetrics();
 			//System.out.println("--SEQUENCE MODELS--");
-			for (MetricsModel model : sequence) {
+			for (MetricsModelOLD model : sequence) {
 				if (model.getRank() > 0 && !sequence.get(0).isMinimal())
 					continue;
 				if (model.getRank() > 1)
