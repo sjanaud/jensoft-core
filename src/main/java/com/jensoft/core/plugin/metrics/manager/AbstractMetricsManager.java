@@ -7,6 +7,7 @@ package com.jensoft.core.plugin.metrics.manager;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Locale;
 
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.format.MetricsDecimalFormat;
@@ -57,15 +58,33 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
 
     /** lock label */
     private boolean lockLabel = true;
+    
+    private Locale locale;
 
     /**
      * create abstract metrics manager
      */
     public AbstractMetricsManager() {
     }
+    
+    /**
+     * get the locale for this manager
+     * @return locale
+     */
+    public Locale getLocale() {
+		return locale;
+	}
 
-   
-    /* (non-Javadoc)
+    /**
+     * set locale for this manager.
+     * @param locale
+     */
+	public void setLocale(Locale locale) {
+		this.locale = locale;
+	}
+
+
+	/* (non-Javadoc)
      * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#lockMarker()
      */
     @Override

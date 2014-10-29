@@ -6,8 +6,6 @@
 package com.jensoft.core.plugin.metrics.manager;
 
 import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontMetrics;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.RoundingMode;
@@ -22,7 +20,10 @@ import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.window.Window2D;
 
 /**
- * <code>IncubatorMetricsManager</code>
+ * <code>ModeledMetricsManager</code>
+ * <p>
+ * Modeled metrics is based on exponent model collection
+ * </p>
  * 
  * @author sebastien janaud
  */
@@ -31,313 +32,111 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
     /** core timing manager */
     private List<MetricsModel> metricsModels;
 
-    /** flag for create minimal model at runtime when a model is registered */
-    private boolean createMinimal = true;
-
+    
     /** model multiplier comparator */
     private MetricsModelComparator modelComparator = new MetricsModelComparator();
 
+    
     /**
-     * <code>MetricsModelCollections</code> tagging interface to provide metrics models
+     * create the modeled manager.
      */
-    public interface MetricsModelCollections {
-
-        /**
-         * get model list of this model collection
-         * @return model collection
-         */
-        public List<MetricsModel> getModels();
+    public ModeledMetricsManager() {
+      this.metricsModels = new ArrayList<MetricsModel>();
+      createDefaultRangeExponentModel(24);
+      Collections.sort(metricsModels, modelComparator);
     }
-
+    
     /**
-     * <code>MetricsModelRangeCollections</code>
+     * create the Default range model. 
+     * <p>
+     * 	create a default symmetric range model for 24 based exponent models collection by calling {@link #createModel(int)}
+     * or the range exponent -24 to +24.
+     * <p>
+     * <p>
+     * 	Override this method to provide your own range model, else override {@link #createModel(int)} for A base (-24,24) range exponent.
+     * <p>
      */
-    public enum MetricsModelRangeCollections implements MetricsModelCollections {
-        YoctoYotta(24),
-        ZeptoZeta(21),
-        AttoExa(18),
-        FemptoPeta(15),
-        PicoTera(12),
-        NanoGiga(9),
-        MicroMega(6),
-        MilliKilo(3),
-        CentiHecto(2),
-        DeciDeca(1),
-        Identity(0);
-
-        /** model list for range model collections */
-        private List<MetricsModel> models = new ArrayList<ModeledMetricsManager.MetricsModel>();
-
-        /**
-         * create a range metrics model collections from the negative given base exponent to positive given base
-         * exponent
-         * 
-         * @param exp
-         *            the base exponent
-         */
-        private MetricsModelRangeCollections(int exp) {
-            for (int i = -Math.abs(exp); i <= Math.abs(exp); i++) {
-                MetricsModel model = ModeledMetricsManager.createExponentModel(i);
-                models.add(model);
-            }
-           
-        }
-
-        /**
-         * get the metrics models
-         * 
-         * @return the models
-         */
-        @Override
-        public List<MetricsModel> getModels() {
-            return models;
-        }
-        
+    protected void createDefaultRangeModels(int exponentLimit){
+    	int exp = exponentLimit;
+        for (int i = -Math.abs(exp); i <= Math.abs(exp); i++) {
+            MetricsModel model = createModel(i);
+            model.setMetricsManager(this);
+            metricsModels.add(model);
+        }   
     }
-
+    
     /**
-     * <code>MetricsModelStandard</code> defines a collection of standard single model for common given exponent
+     * <p>
+     * create the default model for the given exponent.
+     * <p>
+     * <p>
+     * Note : Override this method to create your own model provider for the given exponent.
+     * </p>
+     * @param exponent
+     * @return the metrics model for the given exponents
      */
-    public enum MetricsModelStandard implements MetricsModelCollections {
-        /**
-         * Yocto 'y' defines a model for 1E10-24 or 0.000000000000000000000001 metric system
-         */
-        Yocto(-24),
-
-        /**
-         * Zepto 'z' defines a model for 1E10-21 or 0.000000000000000000001 in the metric system
-         */
-        Zepto(-21),
-        
-        /**
-         * Atto  'a' defines a model for 1E-18 or 0.000000000000000001 in the metric system 
-         */
-        Atto(-18),
-        Fempto(-15),
-        Pico(-12),
-        Nano(-9),
-        Micro(-6),
-        Milli(-3),
-        Centi(-2),
-        Deci(-1),
-        Identity(0),
-        Deca(1),
-        Hecto(2),
-        Kilo(3),
-        Mega(6),
-        Giga(9),
-        Tera(12),
-        Peta(15),
-        Exa(18),
-        Zeta(21),
-        Yotta(24);
-
-        /** model list for range model collections */
-        private List<MetricsModel> models = new ArrayList<ModeledMetricsManager.MetricsModel>();
-
-        /**
-         * create a range metrics model collections for the all given exponent array
-         * 
-         * @param exp
-         *            array
-         *            the base exponent array
-         */
-        private MetricsModelStandard(int... exp) {
-            for (int i = 0; i < exp.length; i++) {
-                MetricsModel model = ModeledMetricsManager.createExponentModel(exp[i]);
-                models.add(model);
-            }
-        }
-
-        /**
-         * @return the models
-         */
-        @Override
-        public List<MetricsModel> getModels() {
-            return models;
-        }
-
-    }
-
-    /**
-     * create symmetric list model for given exponent (from -exponent to +exponent list model)
-     * 
-     * @param exp
-     * @return list models
-     */
-    public static List<MetricsModel> createSymmetricListModel(int exp) {
-        List<MetricsModel> models = new ArrayList<ModeledMetricsManager.MetricsModel>();
-        for (int i = -exp; i <= exp; i++) {
-            MetricsModel m = createExponentModel(i);
-            models.add(m);
-        }
-        return models;
+    protected MetricsModel createModel(int exponent){
+    	return createDefaultRangeExponentModel(exponent);
     }
 
     /**
      * create standard exponent model {@link MetricsModel} with the given exponent
      * 
+     * <p>
+     *  for -24, 0, the base decimal format associated with model is the simple pattern
+     *  0.00000000000000000000000000
+     *  0.0000000000000000000000000
+     *  0.000000000000000000000000
+     *  0.00000000000000000000000
+     *  ..
+     *  0
+     *  ..
+     *  1000000000000000000000000
+     *  10000000000000000000000000
+     *  100000000000000000000000000
+     *  1000000000000000000000000000
+     * </p>
      * @param exp
      *            the reference exponent model
      * @return new model
      */
-    public static MetricsModel createExponentModel(int exp) {
+    public static MetricsModel createDefaultRangeExponentModel(int exp) {
         MetricsModel model = null;
         StringBuffer buffer = new StringBuffer();
         if (exp < 0) {
             buffer.append("0.");
-            for (int j = 1; j < Math.abs(exp); j++) {
-                buffer.append("0");
-            }
+            for (int j = 1; j < Math.abs(exp); j++){buffer.append("0");}
             buffer.append("1");
             String multiplier = buffer.toString();
             String pattern = multiplier.replace('1', '0');
-            model = new MetricsModel(new BigDecimal(multiplier), new DecimalFormat(pattern));
-
+            model = new MetricsModel(exp,new BigDecimal(multiplier),pattern,new DecimalFormat(pattern));
         }
         else if (exp > 0) {
             buffer.append("1");
-            for (int j = 1; j <= Math.abs(exp); j++) {
-                buffer.append("0");
-            }
+            for (int j = 1; j <= Math.abs(exp); j++){buffer.append("0");}
             String multiplier = buffer.toString();
-            model = new MetricsModel(new BigDecimal(multiplier));
-
+            model = new MetricsModel(exp,new BigDecimal(multiplier));
         }
         else if (exp == 0) {
-            model = new MetricsModel(new BigDecimal("1"));
+            model = new MetricsModel(exp,new BigDecimal("1"));
         }
-        // System.out.println("create exponent model :"+model);
         return model;
     }
 
+   
     /**
-     * create the timing manager
+     * base model comparator
+     *
      */
-    public ModeledMetricsManager() {
-        this.metricsModels = new ArrayList<MetricsModel>();
-    }
-
-    /**
-     * create the timing manager with the given array of models
-     */
-    public ModeledMetricsManager(MetricsModel... models) {
-        this();
-        registerMetricsModels(models);
-    }
-
     public class MetricsModelComparator implements Comparator<MetricsModel> {
-
         /*
          * (non-Javadoc)
          * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
          */
         @Override
         public int compare(MetricsModel m1, MetricsModel m2) {
-            int i = m1.getFactor().compareTo(m2.getFactor());
-            if (i != 0) {
-                return i;
-            }
-            else {
-                if (!m1.isMinimal() && m2.isMinimal()) {
-                    return 1;
-                }
-                else if (m1.isMinimal() && m2.isMinimal()) {
-                    return -1;
-                }
-                else {
-                    return 0;
-                }
-            }
+        	return m1.getFactor().compareTo(m2.getFactor());
         }
-
-    }
-
-    /**
-     * add the given model
-     * 
-     * @param model
-     */
-    public void registerMetricsModel(MetricsModel model) {
-        MetricsModel clone = model.cloneModel();
-        clone.setMetricsManager(this);
-        metricsModels.add(clone);
-        if (createMinimal) {
-            MetricsModel minimalModel = clone.cloneModel();
-            minimalModel.setMinimal(true);
-            minimalModel.setMetricsManager(this);
-            metricsModels.add(minimalModel);
-        }
-        Collections.sort(metricsModels, modelComparator);
-    }
-
-    /**
-     * add the given model array
-     * 
-     * @param models
-     */
-    public void registerMetricsModels(MetricsModel... models) {
-        for (int i = 0; i < models.length; i++) {
-            registerMetricsModel(models[i]);
-        }
-    }
-
-    /**
-     * add the given model list
-     * 
-     * @param models
-     */
-    public void registerMetricsModels(List<MetricsModel> models) {
-        MetricsModel[] ma = models.toArray(new MetricsModel[models.size()]);
-        registerMetricsModels(ma);
-    }
-
-    /**
-     * add the given models collection
-     * 
-     * @param modelCollections
-     */
-    public void registerMetricsModels(MetricsModelCollections modelCollections) {
-        registerMetricsModels(modelCollections.getModels());
-    }
-
-    /**
-     * unregister the given model
-     * 
-     * @param model
-     */
-    public void unregisterMetricsModel(MetricsModel model) {
-        metricsModels.remove(model);
-    }
-
-    /**
-     * remove the given model array
-     * 
-     * @param models
-     */
-    public void unregisterMetricsModels(MetricsModel... models) {
-        for (int i = 0; i < models.length; i++) {
-            unregisterMetricsModel(models[i]);
-        }
-    }
-
-    /**
-     * remove the given model list
-     * 
-     * @param models
-     */
-    public void unregisterMetricsModels(List<MetricsModel> models) {
-        MetricsModel[] ma = models.toArray(new MetricsModel[models.size()]);
-        unregisterMetricsModels(ma);
-    }
-
-    /**
-     * remove the given model collection
-     * 
-     * @param modelCollections
-     */
-    public void unregisterMetricsModels(MetricsModelCollections modelCollections) {
-        unregisterMetricsModels(modelCollections.getModels());
     }
 
     /**
@@ -346,80 +145,40 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
     public List<MetricsModel> getMetricsModels() {
         return metricsModels;
     }
-
-    /**
-     * create the {@link MetricsModel} applicable sequence
-     * 
-     * @return applicable models
-     */
-    public List<MetricsModel> getSequenceMetrics() {
-        List<MetricsModel> sequence = new ArrayList<MetricsModel>();
-        Collections.sort(metricsModels, modelComparator);
-        int rank = 0;
-        for (MetricsModel metricsModel : metricsModels) {
-            if (metricsModel.isValid()) {
-                sequence.add(metricsModel);
-            }
-        }
-        List<MetricsModel> remove = new ArrayList<MetricsModel>();
-        for (MetricsModel metricsModel1 : sequence) {
-            if (metricsModel1.isMinimal()) {
-                for (MetricsModel metricsModel2 : sequence) {
-                    if (!metricsModel1.equals(metricsModel2)
-                            && metricsModel1.getFactor().compareTo(metricsModel2.getFactor()) == 0) {
-                        remove.add(metricsModel1);
-                    }
-                }
-            }
-        }
-        for (MetricsModel uselessModel : remove) {
-            sequence.remove(uselessModel);
-        }
-        for (MetricsModel mm : sequence) {
-            mm.setRank(rank++);
-        }
-        return sequence;
-    }
-
+   
     /**
      * generate {@link Metrics} for the given value
-     * 
      * @param userValue
      *            the user value for this metrics
      * @return metrics
      */
-    protected Metrics generateMetrics(double userValue, MetricsModel model) {
-        Metrics metrics = new Metrics(getType());
+    protected Metrics generateMetrics(BigDecimal userValue, MetricsModel model) {
+    	Metrics metrics = new Metrics(getType());
         Window2D window = getRenderContext().getWindow2D();
         double deviceValue = 0;
         double maxPixelValue = 0;
         if (getType() == MetricsType.XMetrics) {
-            deviceValue = window.userToPixelX(userValue);
+            deviceValue = window.userToPixelX(userValue.doubleValue());
             maxPixelValue = window.getPixelWidth();
         }
         else if (getType() == MetricsType.YMetrics) {
-            deviceValue = window.userToPixelY(userValue);
+            deviceValue = window.userToPixelY(userValue.doubleValue());
             maxPixelValue = window.getPixelHeight();
         }
 
         if (deviceValue < 0 || deviceValue > maxPixelValue) {
             return null;
         }
-
+        
         metrics.setDeviceValue(deviceValue);
-        metrics.setUserValue(userValue);
+        metrics.setUserValueAsBigDecimal(userValue);
+        metrics.setUserValue(userValue.doubleValue());
         metrics.setMetricsMarkerColor(getMetricsMarkerColor());
         metrics.setMetricsLabelColor(getMetricsLabelColor());
         metrics.setLockLabel(isLockLabel());
         metrics.setLockMarker(isLockMarker());
-
-        if (model != null && model.isMinimal()) {
-            metrics.setNature(Metrics.MINOR);
-        }
-        else {
-            metrics.setNature(Metrics.MAJOR);
-            metrics.setMetricsLabel(model.formatValue(userValue));
-        }
+        metrics.setMetricsLabel(userValue+"");
+        metrics.setMetricsLabel(model.formatValue(userValue.doubleValue()));
 
         if (model != null) {
             if (model.getMetricsLabelColor() != null) {
@@ -432,13 +191,64 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         return metrics;
     }
 
+    /**
+     * check if the given metric exists in the given collection
+     * @param m
+     * @param metrics
+     * @return true if metrics already exist in collection, false otherwise
+     */
+    private boolean exists(Metrics m, List<Metrics> metrics){
+    	for (Metrics metrics2 : metrics) {
+    		if(m.getUserValueAsBigDecimal().compareTo(metrics2.getUserValueAsBigDecimal()) == 0)
+    				return true;
+		}
+    	return false;
+    }
     
     /* (non-Javadoc)
      * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getDeviceMetrics()
      */
     @Override
-    public List<Metrics> getDeviceMetrics() {
-        return new ArrayList<Metrics>();
+    public final List<Metrics> getDeviceMetrics() {
+    	List<Metrics> metrics= new ArrayList<Metrics>();
+    	for (int i = 0; i < metricsModels.size(); i++) {
+    		MetricsModel model = metricsModels.get(i);
+    		model.solve();
+    		//System.out.println("check "+model.getExponent()+ "for metrics "+ getType() +" density : "+model.getDensity());
+			boolean valid = model.isValid();
+			if(valid){
+				System.out.println("Apply model : "+model.getExponent());
+				//System.out.println(model.getExponent()+ "for metrics "+ getType() +" density : "+model.getDensity());
+				
+				
+				double density = model.getDensity();
+				
+				
+				List<Metrics> majors = model.generateMetrics();
+				metrics.addAll(majors);
+				
+//				if(density < 50){
+//					List<Metrics> medians = model.generateMedianMetrics();
+//					for (Metrics median : medians) {
+//						if(!exists(median, metrics)){
+//							metrics.add(median);
+//						}
+//					}
+//				 }
+				
+				if(density < 80){
+					List<Metrics> minors = model.generateMinorMetrics();
+					for (Metrics minor : minors) {
+						if(!exists(minor, metrics)){
+							metrics.add(minor);
+						}
+					}
+				 }
+				 
+				return metrics;
+			}
+		}
+    	return metrics;
     }
 
     /**
@@ -454,9 +264,21 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         /** decimal format */
         private DecimalFormat decimalFormat = new DecimalFormat();
 
+        /** model exponent */
+        private int exponent;
+        
+        /**decimal pattern*/
+        private String decimalPattern;
+        
         /** metrics factor */
         private BigDecimal factor;
 
+        /** user size  */
+        private BigDecimal userSize;
+        
+        /** pixel size  */
+        private BigDecimal pixelSize;
+        
         /** the start reference to generate metrics */
         private BigDecimal ref;
 
@@ -464,10 +286,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         private BigDecimal maxValue;
 
         /** pixel label holder */
-        private int pixelLabelHolder = 20;
-
-        /** rank of this model */
-        private int rank;
+        private double pixelLabelHolder;
 
         /** metrics label color */
         private Color metricsLabelColor;
@@ -475,82 +294,85 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         /** metrics marker color */
         private Color metricsMarkerColor;
 
-        /** pixelAxisHolder */
-        private int pixelAxisHolder = 20;
-
-        /** minimal tag for this domain */
-        private boolean minimal = false;
-
         /**
-         * return true if this model is applicable, false otherwise
+         * solve manager based on exponent model.
+         * <p>
+         * solve reference
+         * solve user size
+         * solve pixel size
+         * solve max value
+         * </p>
          * 
          * @return true if this model is applicable, false otherwise
          */
-        public boolean isValid() {
-
+        public void solve() {
             Window2D window = getMetricsManager().getRenderContext().getWindow2D();
-            boolean valid = false;
-            BigDecimal userSize = null;
-            BigDecimal startRef = null;
-            BigDecimal pixelSize = null;
-            BigDecimal maxUserValue = null;
+            
             if (getMetricsManager().getType() == MetricsType.XMetrics) {
-                userSize = new BigDecimal(window.getUserWidth());
+                this.userSize = new BigDecimal(window.getUserWidth());
                 BigDecimal bd1 = new BigDecimal(window.getMinX()).divide(factor, RoundingMode.CEILING);
                 BigInteger bi1 = bd1.toBigInteger();
-                startRef = new BigDecimal(bi1).multiply(getFactor());
-                pixelSize = new BigDecimal(window.getPixelWidth());
-                maxUserValue = new BigDecimal(window.getMaxX());
+                this.ref = new BigDecimal(bi1).multiply(getFactor());
+                this.ref = ref.subtract(getFactor());
+                if(this.ref.equals(new BigDecimal("0"))){
+                	this.ref = this.ref.subtract(this.factor);
+                }
+                this.pixelSize = new BigDecimal(window.getPixelWidth());
+                this.maxValue = new BigDecimal(window.getMaxX());
             }
             else if (getMetricsManager().getType() == MetricsType.YMetrics) {
-                userSize = new BigDecimal(window.getUserHeight());
+                this.userSize = new BigDecimal(window.getUserHeight());
                 BigDecimal bd1 = new BigDecimal(window.getMinY()).divide(factor, RoundingMode.CEILING);
                 BigInteger bi1 = bd1.toBigInteger();
-                startRef = new BigDecimal(bi1).multiply(getFactor());
-                pixelSize = new BigDecimal(window.getPixelHeight());
-                maxUserValue = new BigDecimal(window.getMaxY());
+                this.ref = new BigDecimal(bi1).multiply(getFactor());
+                this.ref = ref.subtract(getFactor());
+                if(this.ref.equals(new BigDecimal("0"))){
+                	this.ref = this.ref.subtract(this.factor);
+                }
+                this.pixelSize = new BigDecimal(window.getPixelHeight());
+                this.maxValue = new BigDecimal(window.getMaxY());
             }
-           
-            int compare = (userSize.divide(factor, RoundingMode.HALF_EVEN))
-                    .multiply(new BigDecimal(getPixelLabelHolder())).compareTo(pixelSize);
 
-            if (compare == -1) {
-                setRef(startRef);
-                setMaxValue(maxUserValue);
-                
-                if (minimal) {
-                    setPixelLabelHolder(6);
-                    setPixelAxisHolder(0);
-                }
-                else {
-                    Font f = getMetricsManager().getRenderContext().getMetricsMajorFont();
-                    FontMetrics fm = getMetricsManager().getRenderContext().getGraphics2D().getFontMetrics(f);
-                    String typeString = getDecimalFormat().format(startRef);
-					int typeWidth = fm.stringWidth(typeString);
-                    setPixelLabelHolder(typeWidth + 12);
-                    
-                    //nouveau calcul pour la largeur de la chaine
-                    double max = startRef.doubleValue();
-                    for (double metricsValue = startRef.doubleValue(); metricsValue <= maxUserValue.doubleValue(); metricsValue = metricsValue
-                            + getFactor().doubleValue()) {
-                       max = Math.max(max,metricsValue);
-                    }
-                    
-                    String typeString2 = getDecimalFormat().format(max);
-                    int typeWidth2 = fm.stringWidth(typeString2);
-                    setPixelLabelHolder(typeWidth2 + 12);
-                }
-                valid = true;
-                // System.out.println("start ref : "+startRef);
-            }
-            else {
-                valid = false;
-            }
-            return valid;
+            //TODO : get major and median font size from the best place, ?
+            //TODO, change font size from metrics render context
+            //TODO, change this block in appropriate call method
+            
+            int s = (this.ref.toString()).length();
+            this.pixelLabelHolder = 4/5d*s*12;
         }
+        
+        
+        /**
+         * return approximative density for major metrics
+         * @return approximative density
+         */
+        public double getDensity(){
+        	 int s = (this.ref.toString()).length();
+        	 
+        	 //TODO get font size from external
+        	 double commonHolder =  4/5d*s*12;
+        	 double commonSize = userSize.divide(factor, RoundingMode.HALF_EVEN).multiply(new BigDecimal(commonHolder)).doubleValue();
+        	 return commonSize*100/pixelSize.doubleValue();
+        }
+        
+        
+        
+        
+        /**
+         * return true if this model is applicable, false otherwise
+         * <p>
+         * valid model means that number of metrics, for the common pixel holder value an be include in the pixel size.
+         * </p>
+         * @return true if this model is applicable, false otherwise
+         */
+        public boolean isValid() {
+             int compare = (userSize.divide(factor, RoundingMode.HALF_EVEN)) .multiply(new BigDecimal(getPixelLabelHolder())).compareTo(pixelSize);
+        	 return (compare == -1) ? true: false;
+        }
+        
 
         /**
-         * return the formated given value
+         * return the formated given value with the decimal format associated with this model
          * 
          * @param value
          *            the value to format
@@ -559,41 +381,62 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         protected String formatValue(double value) {
             return decimalFormat.format(value);
         }
-
+       
         /**
-         * @param minimal
-         *            the minimal to set
+         * generates all median metrics for this model
+         * @return {@link Metrics} list
          */
-        public void setMinimal(boolean minimal) {
-            this.minimal = minimal;
+        public List<Metrics> generateMedianMetrics() {
+           BigDecimal originFactor = this.factor;
+           this.factor = this.factor.multiply(new BigDecimal("0.5"));
+           List<Metrics> metrics = generateMetrics();
+           this.factor = originFactor;
+           for (Metrics median : metrics) {
+        	   median.setNature(Metrics.MEDIAN);
+        	   if(getDecimalPattern() != null){ 
+					DecimalFormat format = new DecimalFormat(getDecimalPattern()+"0");
+					median.setMetricsLabel(format.format(median.getUserValue()));
+				}
+           }
+           return metrics;
         }
-
+        
         /**
-         * @return the minimal
+         * generates all minor metrics for this model
+         * @return {@link Metrics} list
          */
-        public boolean isMinimal() {
-            return minimal;
+        public List<Metrics> generateMinorMetrics() {
+           BigDecimal originFactor = this.factor;
+           this.factor = this.factor.multiply(new BigDecimal("0.1"));
+           List<Metrics> metrics = generateMetrics();
+           this.factor = originFactor;
+           for (Metrics metrics2 : metrics) {
+        	   metrics2.setNature(Metrics.MINOR);
+        	   metrics2.setMetricsLabel(null);
+           }
+           return metrics;
         }
-
+        
         /**
-         * generates all metrics for this model
+         * generates all major metrics for this model
          * @return {@link Metrics} list
          */
         public List<Metrics> generateMetrics() {
             List<Metrics> metrics = new ArrayList<Metrics>();
-            // System.out.println("generate metrics:");
-            // System.out.println("start : "+getRef());
-            // System.out.println("to max : "+getMaxValue());
-            // System.out.println("factor : "+getFactor());
-            int count = 0;
-            for (double metricsValue = getRef().doubleValue(); metricsValue <= getMaxValue().doubleValue(); metricsValue = metricsValue
-                    + getFactor().doubleValue()) {
-                // System.out.println("generate metrics iter : "+count++);
-                // System.out.println("metrics value : " + metricsValue);
-                Metrics m = getMetricsManager().generateMetrics(metricsValue, this);
-                if (m != null) {
-                    metrics.add(m);
-                }
+            boolean flag = true;
+            BigDecimal metricsValue = this.ref;
+            Metrics m0 = this.getMetricsManager().generateMetrics(metricsValue, this);
+            if (m0 != null) {
+            	 metrics.add(m0);
+            }
+            while(flag){
+            	metricsValue = metricsValue.add(this.factor);
+            	 Metrics m = this.getMetricsManager().generateMetrics(metricsValue, this);
+                 if (m != null) {
+                     metrics.add(m);
+                 }
+                 if(metricsValue.compareTo(this.maxValue) == 1)
+                	 flag = false;
             }
             return metrics;
         }
@@ -603,8 +446,9 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * 
          * @param factor
          */
-        public MetricsModel(BigDecimal factor) {
+        public MetricsModel(int exponent,BigDecimal factor) {
             super();
+            this.exponent = exponent;
             this.factor = factor;
         }
 
@@ -614,56 +458,14 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * @param factor
          * @param format
          */
-        public MetricsModel(BigDecimal factor, DecimalFormat format) {
+        public MetricsModel(int exponent, BigDecimal factor, String decimalPattern, DecimalFormat format) {
             super();
+            this.exponent = exponent;
             this.factor = factor;
+            this.decimalPattern = decimalPattern;
             this.decimalFormat = format;
         }
 
-        /**
-         * clone this model
-         */
-        public MetricsModel cloneModel() {
-            MetricsModel clone = new MetricsModel(getFactor(), getDecimalFormat());
-            clone.setMinimal(isMinimal());
-            clone.setMetricsMarkerColor(getMetricsMarkerColor());
-            clone.setMetricsLabelColor(getMetricsLabelColor());
-            return clone;
-        }
-
-        /**
-         * get the model rank
-         * 
-         * @return the rank
-         */
-        public int getRank() {
-            return rank;
-        }
-
-        /**
-         * set model rank
-         * 
-         * @param rank
-         *            the rank to set
-         */
-        public void setRank(int rank) {
-            this.rank = rank;
-        }
-
-        /**
-         * @return the pixelAxisHolder
-         */
-        public int getPixelAxisHolder() {
-            return pixelAxisHolder;
-        }
-
-        /**
-         * @param pixelAxisHolder
-         *            the pixelAxisHolder to set
-         */
-        public void setPixelAxisHolder(int pixelAxisHolder) {
-            this.pixelAxisHolder = pixelAxisHolder;
-        }
 
         /**
          * @return the metricsManager
@@ -680,7 +482,24 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
             this.metricsManager = metricsManager;
         }
 
+        
         /**
+         * get exponent value
+         * @return exponent
+         */
+        public int getExponent() {
+			return exponent;
+		}
+
+        /**
+         * set exponent value
+         * @param exponent
+         */
+		public void setExponent(int exponent) {
+			this.exponent = exponent;
+		}
+
+		/**
          * @return the ref
          */
         public BigDecimal getRef() {
@@ -689,7 +508,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
 
         /**
          * @param ref
-         *            the ref to set
+         *            the reference to set
          */
         public void setRef(BigDecimal ref) {
             this.ref = ref;
@@ -735,14 +554,14 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         /**
          * @return the pixelLabelHolder
          */
-        public int getPixelLabelHolder() {
+        public double getPixelLabelHolder() {
             return pixelLabelHolder;
         }
 
         /**
          *@param pixelLabelHolder
          */
-        public void setPixelLabelHolder(int pixelLabelHolder) {
+        public void setPixelLabelHolder(double pixelLabelHolder) {
             this.pixelLabelHolder = pixelLabelHolder;
         }
 
@@ -776,16 +595,20 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
             this.metricsMarkerColor = metricsMarkerColor;
         }
 
-        /*
-         * (non-Javadoc)
-         * @see java.lang.Object#toString()
+        /**
+         * get decimal pattern
+         * @return decimal pattern
          */
-        @Override
-        public String toString() {
-            return "MetricsModel [factor=" + factor + ", pixelLabelHolder=" + pixelLabelHolder + ", pixelAxisHolder="
-                    + pixelAxisHolder + ", decimalFormat=" + decimalFormat.toPattern() + "]";
-        }
+		public String getDecimalPattern() {
+			return decimalPattern;
+		}
 
+		/**
+		 * set decimal pattern
+		 * @param decimalPattern
+		 */
+		public void setDecimalPattern(String decimalPattern) {
+			this.decimalPattern = decimalPattern;
+		}
     }
-
 }
