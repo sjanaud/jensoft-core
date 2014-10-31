@@ -22,6 +22,7 @@ import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelCollections;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelOLD;

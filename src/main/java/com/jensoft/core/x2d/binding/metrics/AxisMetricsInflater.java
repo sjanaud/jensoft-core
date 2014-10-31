@@ -15,12 +15,12 @@ import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FlowMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FreeMetrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.ModeledMetrics;
+import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.ModeledMetricsOLD;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Multiplier3Metrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.MultiplierMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.StaticMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModelRangeCollections;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelRangeCollections;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DBinding;
@@ -200,8 +200,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 	 * 
 	 * @author sebastien janaud
 	 */
-	@X2DBinding(xsi = "AxisModeledMetrics", plugin = ModeledMetrics.class)
-	public static class ModeledMetricsInflater extends AxisMetricsInflater<ModeledMetrics> {
+	@X2DBinding(xsi = "AxisModeledMetrics", plugin = ModeledMetricsOLD.class)
+	public static class ModeledMetricsInflater extends AxisMetricsInflater<ModeledMetricsOLD> {
 
 		/*
 		 * (non-Javadoc)
@@ -211,8 +211,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 		 * .w3c.dom.Element)
 		 */
 		@Override
-		public AxisMetricsPlugin.ModeledMetrics inflate(Element plugin) {
-			AxisMetricsPlugin.ModeledMetrics modeledMetrics = new ModeledMetrics(getAxis(plugin));
+		public AxisMetricsPlugin.ModeledMetricsOLD inflate(Element plugin) {
+			AxisMetricsPlugin.ModeledMetricsOLD modeledMetrics = new ModeledMetricsOLD(getAxis(plugin));
 			modeledMetrics.registerMetricsModels(MetricsModelRangeCollections.YoctoYotta);
 			completeFromAbstract(modeledMetrics, plugin);
 			return modeledMetrics;

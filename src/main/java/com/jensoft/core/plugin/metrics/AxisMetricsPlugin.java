@@ -11,6 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 import javax.swing.JComponent;
 
@@ -858,16 +859,16 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class Modeled2Metrics extends AxisMetricsPlugin<ModeledMetricsManager> {
+	public static class ModeledMetrics extends AxisMetricsPlugin<ModeledMetricsManager> {
 
 		/**
-		 * <code>W</code> manages {@link ModeledMetrics} for
+		 * <code>W</code> manages {@link ModeledMetricsOLD} for
 		 * {@link Axis#AxisWest}
 		 */
-		public static class W extends Modeled2Metrics {
+		public static class W extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisWest}
+			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisWest}
 			 */
 			public W() {
 				super(Axis.AxisWest);
@@ -875,13 +876,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>E</code> manages {@link ModeledMetrics} for
+		 * <code>E</code> manages {@link ModeledMetricsOLD} for
 		 * {@link Axis#AxisEast}
 		 */
-		public static class E extends Modeled2Metrics {
+		public static class E extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisEast}
+			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisEast}
 			 */
 			public E() {
 				super(Axis.AxisEast);
@@ -889,13 +890,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>N</code> manages {@link ModeledMetrics} for
+		 * <code>N</code> manages {@link ModeledMetricsOLD} for
 		 * {@link Axis#AxisNorth}
 		 */
-		public static class N extends Modeled2Metrics {
+		public static class N extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisNorth}
+			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisNorth}
 			 */
 			public N() {
 				super(Axis.AxisNorth);
@@ -903,13 +904,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>S</code> manages {@link ModeledMetrics} for
+		 * <code>S</code> manages {@link ModeledMetricsOLD} for
 		 * {@link Axis#AxisSouth}
 		 */
-		public static class S extends Modeled2Metrics {
+		public static class S extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisSouth}
+			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisSouth}
 			 */
 			public S() {
 				super(Axis.AxisSouth);
@@ -919,14 +920,20 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		/**
 		 * create ModeledMetrics with the given {@link Axis}
 		 */
-		public Modeled2Metrics(Axis axis) {
+		public ModeledMetrics(Axis axis) {
 			super(new ModeledMetricsManager(), axis);
-			setName(ModeledMetrics.class.getCanonicalName());
+			setName(ModeledMetricsOLD.class.getCanonicalName());
 			setMetricsPainter(new MetricsGlyphPainter());
 		}
 
-	
-
+		/**
+		 * set locale
+		 * @param locale
+		 */
+		public void setLocale(Locale locale){
+			getMetricsManager().applyLocalizedMetrics(locale);
+		}
+		
 
 		/**
 		 * get all registered {@link MetricsModel}
@@ -947,16 +954,16 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class ModeledMetrics extends AxisMetricsPlugin<ModeledMetricsManagerOLD> {
+	public static class ModeledMetricsOLD extends AxisMetricsPlugin<ModeledMetricsManagerOLD> {
 
 		/**
-		 * <code>W</code> manages {@link ModeledMetrics} for
+		 * <code>W</code> manages {@link ModeledMetricsOLD} for
 		 * {@link Axis#AxisWest}
 		 */
-		public static class W extends ModeledMetrics {
+		public static class W extends ModeledMetricsOLD {
 
 			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisWest}
+			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisWest}
 			 */
 			public W() {
 				super(Axis.AxisWest);
@@ -964,13 +971,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>E</code> manages {@link ModeledMetrics} for
+		 * <code>E</code> manages {@link ModeledMetricsOLD} for
 		 * {@link Axis#AxisEast}
 		 */
-		public static class E extends ModeledMetrics {
+		public static class E extends ModeledMetricsOLD {
 
 			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisEast}
+			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisEast}
 			 */
 			public E() {
 				super(Axis.AxisEast);
@@ -978,13 +985,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>N</code> manages {@link ModeledMetrics} for
+		 * <code>N</code> manages {@link ModeledMetricsOLD} for
 		 * {@link Axis#AxisNorth}
 		 */
-		public static class N extends ModeledMetrics {
+		public static class N extends ModeledMetricsOLD {
 
 			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisNorth}
+			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisNorth}
 			 */
 			public N() {
 				super(Axis.AxisNorth);
@@ -992,13 +999,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>S</code> manages {@link ModeledMetrics} for
+		 * <code>S</code> manages {@link ModeledMetricsOLD} for
 		 * {@link Axis#AxisSouth}
 		 */
-		public static class S extends ModeledMetrics {
+		public static class S extends ModeledMetricsOLD {
 
 			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisSouth}
+			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisSouth}
 			 */
 			public S() {
 				super(Axis.AxisSouth);
@@ -1008,9 +1015,9 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		/**
 		 * create ModeledMetrics with the given {@link Axis}
 		 */
-		public ModeledMetrics(Axis axis) {
+		public ModeledMetricsOLD(Axis axis) {
 			super(new ModeledMetricsManagerOLD(), axis);
-			setName(ModeledMetrics.class.getCanonicalName());
+			setName(ModeledMetricsOLD.class.getCanonicalName());
 			setMetricsPainter(new MetricsGlyphPainter());
 		}
 
@@ -1406,7 +1413,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	public void setMetricsFont(Font metricsFont) {
 		setMetricsMedianFont(metricsFont);
 		setMetricsMajorFont(metricsFont);
-
 	}
 
 	/**

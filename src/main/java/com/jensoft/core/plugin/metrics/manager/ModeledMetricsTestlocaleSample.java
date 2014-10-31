@@ -9,6 +9,7 @@ package com.jensoft.core.plugin.metrics.manager;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Font;
+import java.util.Locale;
 
 import com.jensoft.core.catalog.nature.JenSoftView;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
@@ -37,17 +38,17 @@ import com.jensoft.core.window.WindowPart;
  * @author JenSoft API
  */
 @JenSoftView(background=DarkViewBackground.class)
-public class Modeled2MetricsSample extends View2D {
+public class ModeledMetricsTestlocaleSample extends View2D {
 
 	
 	public static void main(String[] args) {
-		ViewFrameUI ui = new ViewFrameUI(new Modeled2MetricsSample());
+		ViewFrameUI ui = new ViewFrameUI(new ModeledMetricsTestlocaleSample());
 		//System.out.println(3/4d*29*12);
 	}
 	/**
 	 * create the modeled metrics demo
 	 */
-	public Modeled2MetricsSample() {
+	public ModeledMetricsTestlocaleSample() {
 		super();
 		setPlaceHolder(100, WindowPart.South);
 		setPlaceHolder(80, WindowPart.West);
@@ -77,17 +78,17 @@ public class Modeled2MetricsSample extends View2D {
 		Font font = new Font("lucida console", Font.PLAIN, 10);
 
 		// create modeled axis plug-in in south part
-		AxisMetricsPlugin.Modeled2Metrics southMetrics = new AxisMetricsPlugin.Modeled2Metrics.S();
+		AxisMetricsPlugin.ModeledMetrics southMetrics = new AxisMetricsPlugin.ModeledMetrics.S();
 		//southMetrics.setPaintAxisBaseLine(true);
 		southMetrics.setMetricsBaseLineColor(Color.ORANGE);
 		southMetrics.setAxisSpacing(0);
 		window.registerPlugin(southMetrics);
 		southMetrics.setMetricsFont(font);
 		southMetrics.setMetricsLabelColor(TangoPalette.SCARLETRED3.brighter());
-		// southMetrics.setMetricsMarkerColor(TangoPalette.SCARLETRED3);
+		southMetrics.setLocale(Locale.US);	
 
 		// create modeled axis plug-in in west part
-		AxisMetricsPlugin.Modeled2Metrics westMetrics = new AxisMetricsPlugin.Modeled2Metrics.W();
+		AxisMetricsPlugin.ModeledMetrics westMetrics = new AxisMetricsPlugin.ModeledMetrics.W();
 		//window.registerPlugin(westMetrics);
 		westMetrics.setMetricsFont(font);
 //		westMetrics.setMetricsLabelColor(TangoPalette.SKYBLUE3.brighter());
@@ -100,7 +101,7 @@ public class Modeled2MetricsSample extends View2D {
 
 	@Portfolio(name = "Metrics-Modeled", width = 500, height = 250)
 	public static View2D getPortofolio() {
-		Modeled2MetricsSample demo = new Modeled2MetricsSample();
+		ModeledMetricsTestlocaleSample demo = new ModeledMetricsTestlocaleSample();
 
 		RoundViewFill viewBackground = new RoundViewFill();
 		Shader s = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });

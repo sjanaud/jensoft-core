@@ -59,6 +59,7 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
     /** lock label */
     private boolean lockLabel = true;
     
+    /** locale*/
     private Locale locale;
 
     /**
@@ -72,6 +73,8 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
      * @return locale
      */
     public Locale getLocale() {
+    	if(locale == null)
+    		return Locale.getDefault();
 		return locale;
 	}
 
@@ -79,7 +82,7 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
      * set locale for this manager.
      * @param locale
      */
-	public void setLocale(Locale locale) {
+	public void applyLocalizedMetrics(Locale locale) {
 		this.locale = locale;
 	}
 
