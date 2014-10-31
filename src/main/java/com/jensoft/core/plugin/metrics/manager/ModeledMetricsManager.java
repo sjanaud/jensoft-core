@@ -349,7 +349,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
 			boolean valid = model.isValid();
 			if(valid){
 				
-				System.out.println(model.getExponent()+ "for metrics "+ getType() +" density : "+model.getDensity());
+				//System.out.println(model.getExponent()+ "for metrics "+ getType() +" density : "+model.getDensity());
 				
 				double density = model.getDensity();
 				
