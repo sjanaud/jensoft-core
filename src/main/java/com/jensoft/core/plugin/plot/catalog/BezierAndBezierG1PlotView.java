@@ -35,11 +35,11 @@ public class BezierAndBezierG1PlotView extends View2D {
 		
 		w2d.registerPlugin(new OutlinePlugin());
 		
-		AxisMetricsPlugin.ModeledMetrics metrics = new AxisMetricsPlugin.ModeledMetrics(Axis.AxisSouth);
+		AxisMetricsPlugin.ModeledMetricsOLD metrics = new AxisMetricsPlugin.ModeledMetricsOLD(Axis.AxisSouth);
 		metrics.registerMetricsModels(MetricsModelRangeCollections.FemptoPeta);
 		w2d.registerPlugin(metrics);
 		
-		AxisMetricsPlugin.ModeledMetrics metrics2 = new AxisMetricsPlugin.ModeledMetrics(Axis.AxisWest);
+		AxisMetricsPlugin.ModeledMetricsOLD metrics2 = new AxisMetricsPlugin.ModeledMetricsOLD(Axis.AxisWest);
 		metrics2.registerMetricsModels(MetricsModelRangeCollections.FemptoPeta);
 		w2d.registerPlugin(metrics2);
 		

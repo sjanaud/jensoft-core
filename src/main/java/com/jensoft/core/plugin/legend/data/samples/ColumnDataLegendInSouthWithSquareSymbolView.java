@@ -53,7 +53,7 @@ public class ColumnDataLegendInSouthWithSquareSymbolView extends View2D {
 		Font font = new Font("lucida console", Font.PLAIN, 10);
 
 		// create modeled axis plug-in in south part
-		AxisMetricsPlugin.Modeled2Metrics southMetrics = new AxisMetricsPlugin.Modeled2Metrics.S();
+		AxisMetricsPlugin.ModeledMetrics southMetrics = new AxisMetricsPlugin.ModeledMetrics.S();
 		w2d.registerPlugin(southMetrics);
 		southMetrics.setMetricsFont(font);
 		southMetrics.setMetricsLabelColor(TangoPalette.SCARLETRED3.brighter());
