@@ -202,7 +202,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      * 
      * <p>
      *  for -24, 0, the base decimal format associated with model is the simple pattern to get the real not rounded decimal.
-     *  else, for exponent greater than zero, default pattern is used.
+     *  else, for exponent greater than zero, default decimal format is used.
      *  </p>
      *  <p>
      *  0.000000000000000000000001 (10 EXP -24)<br>
