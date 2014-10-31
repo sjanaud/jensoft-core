@@ -236,7 +236,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         	buffer.append("0.");for (int j = 1; j < Math.abs(exp); j++){buffer.append("0");}buffer.append("1");
             String multiplier = buffer.toString();
             DecimalFormat formater = (DecimalFormat)NumberFormat.getInstance(getLocale());
-            //force decimal digits to exact decimal precision
+            //force decimal format digits to exact decimal precision
             formater.setMinimumFractionDigits(Math.abs(exp));
             formater.setMaximumFractionDigits(Math.abs(exp));
             model = new MetricsModel(exp,new BigDecimal(multiplier),formater);
