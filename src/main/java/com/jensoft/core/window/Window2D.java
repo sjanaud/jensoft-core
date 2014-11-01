@@ -78,6 +78,14 @@ public abstract class Window2D implements PluginListener {
 
 		/** initial bound flag */
 		private boolean initial = true;
+		
+		/** the current scale x */
+		protected Double scaleX;
+
+		/** the current scale y */
+		protected Double scaleY;
+		
+		
 
 		/**
 		 * Constructs and initializes a <code>Linear</code> window projection
@@ -86,10 +94,18 @@ public abstract class Window2D implements PluginListener {
 		public Linear() {
 		}
 
+		/**
+		 * <code>Identity</code> defines the -1,1,-1,1 system projection coordinate
+		 * @author sebastien janaud
+		 *
+		 */
 		public static class Identity extends Linear {
 
 			private static final long serialVersionUID = -3789513878376535416L;
 
+			/**
+			 * create identity projection
+			 */
 			public Identity() {
 				super(-1, 1, -1, 1);
 			}
@@ -147,10 +163,46 @@ public abstract class Window2D implements PluginListener {
 			setMaxX(maxx);
 			setMinY(miny);
 			setMaxY(maxy);
+			
+//			if(getView2D() != null && getView2D().getDevice2D() != null){
+//				this.scaleX = this.getPixelWidth() / this.getUserWidth();
+//				this.scaleY = this.getPixelHeight() / this.getUserHeight();
+//			}
+			
+			//reset scale
+			this.scaleX = null;
+			this.scaleY = null;
 
 			// fire listeners about this window bound
 			super.fireWindow2DBoundChanged();
 
+		}
+		
+		/**
+		 * reset scaling parameters
+		 */
+		protected void  resetScale(){
+			this.scaleX = null;
+			this.scaleY = null;
+		}
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.window.Window2D#onView2DRegister()
+		 */
+		@Override
+		public void onView2DRegister() {
+			super.onView2DRegister();
+			
+			getView2D().addView2DListener(new View2DAdapter() {
+
+				/* (non-Javadoc)
+				 * @see com.jensoft.core.view.View2DAdapter#viewResized(com.jensoft.core.view.View2DEvent)
+				 */
+				@Override
+				public void viewResized(View2DEvent view2dEvent) {
+					resetScale();
+				}
+			});
 		}
 
 		/**
@@ -340,6 +392,26 @@ public abstract class Window2D implements PluginListener {
 		private void setMaxY(double maxY) {
 			this.maxY = maxY;
 		}
+		
+		/**
+		 * get scale X, new solve if null
+		 * @return scale x
+		 */
+		public Double getScaleX(){
+			if(this.scaleX == null)
+				this.scaleX = this.getPixelWidth() / this.getUserWidth();
+			return this.scaleX;
+		}
+		
+		/**
+		 * get scale Y, new solve if null
+		 * @return
+		 */
+		public Double getScaleY(){
+			if(this.scaleY == null)
+				this.scaleY = this.getPixelHeight() / this.getUserHeight();
+			return this.scaleY;
+		}
 
 		/*
 		 * (non-Javadoc)
@@ -348,8 +420,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double userToPixelX(double userX) {
-			double scaleX = getDevice2D().getDeviceWidth() / (getMaxX() - getMinX());
-			return scaleX * (userX - getMinX());
+			//double scaleX = getDevice2D().getDeviceWidth() / (getMaxX() - getMinX());
+			//return scaleX * (userX - getMinX());
+			return getScaleX() * (userX - getMinX());
 		}
 
 		/*
@@ -359,8 +432,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double userToPixelY(double userY) {
-			double scaleY = getDevice2D().getDeviceHeight() / (getMaxY() - getMinY());
-			return -scaleY * (userY - getMaxY());
+			//double scaleY = getDevice2D().getDeviceHeight() / (getMaxY() - getMinY());
+			//return -scaleY * (userY - getMaxY());
+			return -getScaleY() * (userY - getMaxY());
 		}
 
 		/*
@@ -370,8 +444,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
-			double scaleX = getDevice2D().getDeviceWidth() / (getMaxX() - getMinX());
-			return pixelX / scaleX + getMinX();
+			//double scaleX = getDevice2D().getDeviceWidth() / (getMaxX() - getMinX());
+			//return pixelX / scaleX + getMinX();
+			return pixelX / getScaleX() + getMinX();
 		}
 
 		/*
@@ -381,8 +456,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
-			double scaleY = getDevice2D().getDeviceHeight() / (getMaxY() - getMinY());
-			return -(pixelY / scaleY - getMaxY());
+			//double scaleY = getDevice2D().getDeviceHeight() / (getMaxY() - getMinY());
+			//return -(pixelY / scaleY - getMaxY());
+			return -(pixelY / getScaleY() - getMaxY());
 		}
 
 		private static final long serialVersionUID = 5202790832488044493L;
@@ -416,6 +492,17 @@ public abstract class Window2D implements PluginListener {
 			}
 			bound(minx, maxx, miny, maxy);
 		}
+		
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.window.Window2D.Linear#getScaleX()
+		 */
+		@Override
+		public Double getScaleX() {
+			if(this.scaleX == null)
+				this.scaleX = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
+			return this.scaleX;
+		}
 
 		/*
 		 * (non-Javadoc)
@@ -424,8 +511,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double userToPixelX(double userX) {
-			double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			return scaleXLog * (Math.log10(userX) - Math.log10(getMinX()));
+			//double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
+			//return scaleXLog * (Math.log10(userX) - Math.log10(getMinX()));
+			return getScaleX() * (Math.log10(userX) - Math.log10(getMinX()));
 		}
 
 		/*
@@ -435,8 +523,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
-			double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			return Math.pow(10, pixelX / scaleXLog + Math.log10(getMinX()));
+			//double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
+			//return Math.pow(10, pixelX / scaleXLog + Math.log10(getMinX()));
+			return Math.pow(10, pixelX / getScaleX() + Math.log10(getMinX()));
 		}
 
 		private static final long serialVersionUID = -2274590506013668597L;
@@ -468,6 +557,17 @@ public abstract class Window2D implements PluginListener {
 			}
 			bound(minx, maxx, miny, maxy);
 		}
+		
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.window.Window2D.Linear#getScaleY()
+		 */
+		@Override
+		public Double getScaleY() {
+			if(this.scaleY == null)
+				this.scaleY = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
+			return this.scaleY;
+		}
 
 		/*
 		 * (non-Javadoc)
@@ -476,8 +576,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double userToPixelY(double userY) {
-			double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
-			return -scaleYLog * (Math.log10(userY) - Math.log10(getMaxY()));
+			//double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
+			//return -scaleYLog * (Math.log10(userY) - Math.log10(getMaxY()));
+			return -getScaleY() * (Math.log10(userY) - Math.log10(getMaxY()));
 		}
 
 		/*
@@ -487,8 +588,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
-			double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
-			return Math.pow(10, -(pixelY / scaleYLog - Math.log10(getMaxY())));
+			//double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
+			//return Math.pow(10, -(pixelY / scaleYLog - Math.log10(getMaxY())));
+			return Math.pow(10, -(pixelY / getScaleY() - Math.log10(getMaxY())));
 		}
 
 		private static final long serialVersionUID = -2268519178555649250L;
@@ -523,6 +625,26 @@ public abstract class Window2D implements PluginListener {
 			}
 			bound(minx, maxx, miny, maxy);
 		}
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.window.Window2D.Linear#getScaleX()
+		 */
+		@Override
+		public Double getScaleX() {
+			if(this.scaleX == null)
+				this.scaleX = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
+			return this.scaleX;
+		}
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.window.Window2D.Linear#getScaleY()
+		 */
+		@Override
+		public Double getScaleY() {
+			if(this.scaleY == null)
+				this.scaleY = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
+			return this.scaleY;
+		}
 
 		/*
 		 * (non-Javadoc)
@@ -531,8 +653,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double userToPixelX(double userX) {
-			double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			return scaleXLog * (Math.log10(userX) - Math.log10(getMinX()));
+			//double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
+			//return scaleXLog * (Math.log10(userX) - Math.log10(getMinX()));
+			return getScaleX() * (Math.log10(userX) - Math.log10(getMinX()));
 		}
 
 		/*
@@ -542,8 +665,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
-			double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			return Math.pow(10, pixelX / scaleXLog + Math.log10(getMinX()));
+			//double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
+			//return Math.pow(10, pixelX / scaleXLog + Math.log10(getMinX()));
+			return Math.pow(10, pixelX / getScaleX() + Math.log10(getMinX()));
 		}
 
 		/*
@@ -553,8 +677,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double userToPixelY(double userY) {
-			double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
-			return -scaleYLog * (Math.log10(userY) - Math.log10(getMaxY()));
+			//double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
+			//return -scaleYLog * (Math.log10(userY) - Math.log10(getMaxY()));
+			return -getScaleY() * (Math.log10(userY) - Math.log10(getMaxY()));
 		}
 
 		/*
@@ -564,8 +689,9 @@ public abstract class Window2D implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
-			double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
-			return Math.pow(10, -(pixelY / scaleYLog - Math.log10(getMaxY())));
+			//double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
+			//return Math.pow(10, -(pixelY / scaleYLog - Math.log10(getMaxY())));
+			return Math.pow(10, -(pixelY / getScaleY() - Math.log10(getMaxY())));
 		}
 
 		private static final long serialVersionUID = 6040320270911080943L;
@@ -1371,9 +1497,9 @@ public abstract class Window2D implements PluginListener {
 	 */
 	public List<AbstractPlugin> getSelectablePlugins() {
 		List<AbstractPlugin> selectablePlugins = new ArrayList<AbstractPlugin>();
-		for (AbstractPlugin layout : plugins) {
-			if (layout.isSelectable()) {
-				selectablePlugins.add(layout);
+		for (AbstractPlugin plugin : plugins) {
+			if (plugin.isSelectable()) {
+				selectablePlugins.add(plugin);
 			}
 		}
 		return selectablePlugins;
@@ -1588,6 +1714,7 @@ public abstract class Window2D implements PluginListener {
 	public double getPixelHeight() {
 		return getDevice2D().getDeviceHeight();
 	}
+	
 
 	/**
 	 * Returns the user minimum X coordinate of this <code>Window2D</code> in
