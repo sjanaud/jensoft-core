@@ -15,7 +15,7 @@ import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FlowMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FreeMetrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.ModeledMetricsOLD;
+import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.ModeledMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Multiplier3Metrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.MultiplierMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.StaticMetrics;
@@ -200,8 +200,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 	 * 
 	 * @author sebastien janaud
 	 */
-	@X2DBinding(xsi = "AxisModeledMetrics", plugin = ModeledMetricsOLD.class)
-	public static class ModeledMetricsInflater extends AxisMetricsInflater<ModeledMetricsOLD> {
+	@X2DBinding(xsi = "AxisModeledMetrics", plugin = ModeledMetrics.class)
+	public static class ModeledMetricsInflater extends AxisMetricsInflater<ModeledMetrics> {
 
 		/*
 		 * (non-Javadoc)
@@ -211,9 +211,8 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 		 * .w3c.dom.Element)
 		 */
 		@Override
-		public AxisMetricsPlugin.ModeledMetricsOLD inflate(Element plugin) {
-			AxisMetricsPlugin.ModeledMetricsOLD modeledMetrics = new ModeledMetricsOLD(getAxis(plugin));
-			modeledMetrics.registerMetricsModels(MetricsModelRangeCollections.YoctoYotta);
+		public AxisMetricsPlugin.ModeledMetrics inflate(Element plugin) {
+			AxisMetricsPlugin.ModeledMetrics modeledMetrics = new ModeledMetrics(getAxis(plugin));
 			completeFromAbstract(modeledMetrics, plugin);
 			return modeledMetrics;
 		}
