@@ -862,13 +862,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	public static class ModeledMetrics extends AxisMetricsPlugin<ModeledMetricsManager> {
 
 		/**
-		 * <code>W</code> manages {@link ModeledMetricsOLD} for
+		 * <code>W</code> manages {@link ModeledMetrics} for
 		 * {@link Axis#AxisWest}
 		 */
 		public static class W extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisWest}
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisWest}
 			 */
 			public W() {
 				super(Axis.AxisWest);
@@ -876,13 +876,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>E</code> manages {@link ModeledMetricsOLD} for
+		 * <code>E</code> manages {@link ModeledMetrics} for
 		 * {@link Axis#AxisEast}
 		 */
 		public static class E extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisEast}
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisEast}
 			 */
 			public E() {
 				super(Axis.AxisEast);
@@ -890,13 +890,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>N</code> manages {@link ModeledMetricsOLD} for
+		 * <code>N</code> manages {@link ModeledMetrics} for
 		 * {@link Axis#AxisNorth}
 		 */
 		public static class N extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisNorth}
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisNorth}
 			 */
 			public N() {
 				super(Axis.AxisNorth);
@@ -904,13 +904,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>S</code> manages {@link ModeledMetricsOLD} for
+		 * <code>S</code> manages {@link ModeledMetrics} for
 		 * {@link Axis#AxisSouth}
 		 */
 		public static class S extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisSouth}
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisSouth}
 			 */
 			public S() {
 				super(Axis.AxisSouth);
@@ -922,7 +922,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 */
 		public ModeledMetrics(Axis axis) {
 			super(new ModeledMetricsManager(), axis);
-			setName(ModeledMetricsOLD.class.getCanonicalName());
+			setName(ModeledMetrics.class.getCanonicalName());
 			setMetricsPainter(new MetricsGlyphPainter());
 		}
 
@@ -954,16 +954,16 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class ModeledMetricsOLD extends AxisMetricsPlugin<ModeledMetricsManagerOLD> {
+	public static class ModeledMetricsOld extends AxisMetricsPlugin<ModeledMetricsManagerOLD> {
 
 		/**
-		 * <code>W</code> manages {@link ModeledMetricsOLD} for
+		 * <code>W</code> manages {@link ModeledMetrics} for
 		 * {@link Axis#AxisWest}
 		 */
-		public static class W extends ModeledMetricsOLD {
+		public static class W extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisWest}
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisWest}
 			 */
 			public W() {
 				super(Axis.AxisWest);
@@ -971,13 +971,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>E</code> manages {@link ModeledMetricsOLD} for
+		 * <code>E</code> manages {@link ModeledMetrics} for
 		 * {@link Axis#AxisEast}
 		 */
-		public static class E extends ModeledMetricsOLD {
+		public static class E extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisEast}
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisEast}
 			 */
 			public E() {
 				super(Axis.AxisEast);
@@ -985,13 +985,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>N</code> manages {@link ModeledMetricsOLD} for
+		 * <code>N</code> manages {@link ModeledMetrics} for
 		 * {@link Axis#AxisNorth}
 		 */
-		public static class N extends ModeledMetricsOLD {
+		public static class N extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisNorth}
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisNorth}
 			 */
 			public N() {
 				super(Axis.AxisNorth);
@@ -999,13 +999,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}
 
 		/**
-		 * <code>S</code> manages {@link ModeledMetricsOLD} for
+		 * <code>S</code> manages {@link ModeledMetrics} for
 		 * {@link Axis#AxisSouth}
 		 */
-		public static class S extends ModeledMetricsOLD {
+		public static class S extends ModeledMetrics {
 
 			/**
-			 * Create {@link ModeledMetricsOLD} for {@link Axis#AxisSouth}
+			 * Create {@link ModeledMetrics} for {@link Axis#AxisSouth}
 			 */
 			public S() {
 				super(Axis.AxisSouth);
@@ -1015,9 +1015,9 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		/**
 		 * create ModeledMetrics with the given {@link Axis}
 		 */
-		public ModeledMetricsOLD(Axis axis) {
+		public ModeledMetricsOld(Axis axis) {
 			super(new ModeledMetricsManagerOLD(), axis);
-			setName(ModeledMetricsOLD.class.getCanonicalName());
+			setName(ModeledMetrics.class.getCanonicalName());
 			setMetricsPainter(new MetricsGlyphPainter());
 		}
 
