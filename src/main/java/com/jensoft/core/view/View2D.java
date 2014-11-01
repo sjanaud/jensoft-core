@@ -1121,7 +1121,7 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 	}
 
 	/**
-	 * get the view as an image outside swing ui.
+	 * get the view as an image outside swing UI.
 	 * 
 	 * @param width
 	 *            the width to set
@@ -1135,7 +1135,6 @@ public class View2D extends JComponent implements Window2DListener, ComponentLis
 			throw new IllegalArgumentException("view width and view height should be greater than zero");
 		}
 		
-		//Create new View ? clone plugin ?
 
 		// image view
 		BufferedImage viewImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
