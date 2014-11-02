@@ -17,6 +17,7 @@ import com.jensoft.core.window.WindowPart;
 /**
  * <code>DataLegend</code> defines a group of item based on texts and colors
  * 
+ * @since 1.1
  * @author sebastien janaud
  */
 public class DataLegend {

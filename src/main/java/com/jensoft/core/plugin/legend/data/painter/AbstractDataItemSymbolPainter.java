@@ -10,6 +10,7 @@ import com.jensoft.core.plugin.legend.data.DataLegend;
  * <code>AbstractDataItemSymbolPainter</code> takes the responsibility to paint
  * the data symbol from data legend
  * 
+ * @since 1.1
  * @author sebastien janaud
  * 
  */

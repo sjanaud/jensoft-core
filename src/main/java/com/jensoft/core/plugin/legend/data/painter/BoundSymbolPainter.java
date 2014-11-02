@@ -13,6 +13,7 @@ import com.jensoft.core.plugin.legend.data.DataLegend.Item;
 /**
  * <code>BoundSymbolPainter</code> to show bound clip region for item symbol
  * 
+ * @since 1.1
  * @author sebastien janaud
  *
  */
