@@ -13,6 +13,7 @@ import com.jensoft.core.plugin.legend.data.DataLegend.Item;
 /**
  * <code>SquareSymbolPainter</code> paints a square symbol for data legend item
  * 
+ * @since 1.1
  * @author sebastien janaud
  * 
  */

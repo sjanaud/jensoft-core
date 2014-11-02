@@ -16,6 +16,7 @@ import com.jensoft.core.plugin.legend.data.DataLegend.Item;
 /**
  * <code>LineSymbolPainter</code> paints a line symbol for data legend item
  * 
+ * @since 1.1
  * @author sebastien janaud
  */
 public class LineSymbolPainter extends AbstractDataItemSymbolPainter {

@@ -21,6 +21,8 @@ import com.jensoft.core.window.WindowPart;
 
 /**
  * <code>DataLegendPlugin</code> takes the responsibility to paint a legend for an item group based on texts and colors
+ * 
+ * @since 1.1
  * @author sebastien janaud
  *
  */
