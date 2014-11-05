@@ -65,51 +65,48 @@ public class InputFonts {
 		}
 	}
 
-	public static Font getSansation(int size) {
-		return getFont("Sansation_Regular.ttf").deriveFont(AffineTransform.getScaleInstance(size, size));
+	public static Font getSansation(float size) {
+		return getFont("Sansation_Regular.ttf").deriveFont(size);
 
 	}
 
-	public static Font getElements(int size) {
-		return getFont("Elements.ttf").deriveFont(AffineTransform.getScaleInstance(size, size));
+	public static Font getElements(float size) {
+		return getFont("Elements.ttf").deriveFont(size);
 
 	}
 
-	public static Font getYorkville(int size) {
-		return getFont("yorkville.ttf").deriveFont(AffineTransform.getScaleInstance(size, size));
+	public static Font getYorkville(float size) {
+		return getFont("yorkville.ttf").deriveFont(size);
 
 	}
 
-	public static Font getNoMove(int size) {
-		return getFont("No-move.ttf").deriveFont(AffineTransform.getScaleInstance(size, size));
+	public static Font getNoMove(float size) {
+		return getFont("No-move.ttf").deriveFont(size);
 
-	}
-	
-	public static Font getPenultimate(int size) {
-		return getFont(PENULTIMATE).deriveFont(AffineTransform.getScaleInstance(size, size));
 	}
 	
-	public static Font getMyriad(int size) {
-		return getFont(MYRIAD).deriveFont(AffineTransform.getScaleInstance(size, size));
+	public static Font getPenultimate(float size) {
+		return getFont(PENULTIMATE).deriveFont(size);
 	}
 	
-	public static Font getSreda(int size) {
-		return getFont(SREDA).deriveFont(AffineTransform.getScaleInstance(size, size));
+	public static Font getMyriad(float size) {
+		return getFont(MYRIAD).deriveFont(size);
 	}
 	
-	
-	
-
-	public static Font getNeuropol(int size) {
-		return getFont("NEUROPOL.ttf").deriveFont(AffineTransform.getScaleInstance(size, size));
+	public static Font getSreda(float size) {
+		return getFont(SREDA).deriveFont(size);
 	}
 
-	public static Font getPTFNordic(int size) {
-		return getFont("PTF-NORDIC-Rnd.ttf").deriveFont(AffineTransform.getScaleInstance(size, size));
+	public static Font getNeuropol(float size) {
+		return getFont("NEUROPOL.ttf").deriveFont(size);
+	}
+
+	public static Font getPTFNordic(float size) {
+		return getFont("PTF-NORDIC-Rnd.ttf").deriveFont(size);
 
 	}
 
-	public static Font getFont(String name, int size) {
+	public static Font getFont(String name, float size) {
 		Font font = null;
 		if (cache != null) {
 			if ((font = cache.get(name)) != null) {
