@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.plugin.legend.data.painter.AbstractDataItemSymbolPainter;
+import com.jensoft.core.plugin.legend.data.painter.AbstractDataLegendBackgroundPainter;
+import com.jensoft.core.plugin.legend.data.painter.DefaultDataLegendBackgroundPainter;
 import com.jensoft.core.plugin.legend.data.painter.LineSymbolPainter;
 import com.jensoft.core.window.WindowPart;
 
@@ -24,6 +26,9 @@ public class DataLegend {
 
 	/** legend registry */
 	private List<Item> items;
+	
+	/**data legend background painter*/
+	private AbstractDataLegendBackgroundPainter backgroundPainter = new DefaultDataLegendBackgroundPainter();
 
 	/** legend font */
 	private Font font;
@@ -48,6 +53,13 @@ public class DataLegend {
 
 	/** data legend margin y from upper corner left of part component */
 	private int marginY = 30;
+	
+	
+	/**padding*/
+	private int paddingTop;
+	private int paddingBottom;
+	private int paddingLeft;
+	private int paddingRight;
 
 	/**
 	 * symbol bound width is the region width for painting item symbol before
@@ -95,6 +107,58 @@ public class DataLegend {
 	public DataLegend(Orientation orientation, WindowPart part) {
 		this(part);
 		this.orientation = orientation;
+	}
+	
+	
+	public AbstractDataLegendBackgroundPainter getBackgroundPainter() {
+		return backgroundPainter;
+	}
+
+	public void setBackgroundPainter(AbstractDataLegendBackgroundPainter backgroundPainter) {
+		this.backgroundPainter = backgroundPainter;
+	}
+
+	public int getPaddingTop() {
+		return paddingTop;
+	}
+
+	public void setPaddingTop(int paddingTop) {
+		this.paddingTop = paddingTop;
+	}
+
+	public int getPaddingBottom() {
+		return paddingBottom;
+	}
+
+	public void setPaddingBottom(int paddingBottom) {
+		this.paddingBottom = paddingBottom;
+	}
+
+	public int getPaddingLeft() {
+		return paddingLeft;
+	}
+
+	public void setPaddingLeft(int paddingLeft) {
+		this.paddingLeft = paddingLeft;
+	}
+
+	public int getPaddingRight() {
+		return paddingRight;
+	}
+
+	public void setPaddingRight(int paddingRight) {
+		this.paddingRight = paddingRight;
+	}
+
+	/**
+	 * set data legend padding
+	 * @param padding
+	 */
+	public void setPadding(int padding) {
+		this.paddingTop 	= padding;
+		this.paddingBottom 	= padding;
+		this.paddingLeft 	= padding;
+		this.paddingRight	= padding;
 	}
 
 	/**

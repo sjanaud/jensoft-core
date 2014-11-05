@@ -1,7 +1,11 @@
+/*
+ * Copyright (c) JenSoft API
+ * This source file is part of JenSoft API, All rights reserved.
+ * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
 package com.jensoft.core.plugin.legend.data.painter;
 
 import java.awt.Graphics2D;
-import java.awt.Shape;
 import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.plugin.legend.data.DataLegend;
@@ -29,7 +33,7 @@ public abstract class AbstractDataItemSymbolPainter {
 	public abstract void paintItemSymbol(Graphics2D g2d, Rectangle2D symbolBound, DataLegend.Item item);
 
 	/**
-	 * paint the symbol by clipping symbol area and call
+	 * paint data item symbol
 	 * {@link #paintItemSymbol(Graphics2D, Rectangle2D, com.jensoft.core.plugin.legend.data.DataLegend.Item)}
 	 * 
 	 * @param g2d
@@ -37,10 +41,7 @@ public abstract class AbstractDataItemSymbolPainter {
 	 * @param item
 	 */
 	public final void paintSymbol(Graphics2D g2d, Rectangle2D symbolBound, DataLegend.Item item) {
-		Shape s = g2d.getClip();
-		g2d.setClip(symbolBound);
 		paintItemSymbol(g2d, symbolBound, item);
-		g2d.setClip(s);
 	}
 
 }
