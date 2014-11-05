@@ -7,9 +7,43 @@
 
 	group    : com.jensoft
 	artifact : jensoft-core
-	version  : 1.1.0
+	version  : 2.0.0-SNAPSHOT
+	
+    @Author  : Sébastien Janaud
+	
+
+#######################################
+## Notes 2.0.0-SNAPSHOT  -  November 2, 2014  ##
+#######################################
+	
+	
+/todos
+
+-View2D rename to View
+
+-Window2D vs Projection  : rename
+ 	
+ 	rename
+ 		package-rename : com.jensoft.core.window2d to com.jensoft.core.projection
+ 		classes-rename : All  *Window2D* rename to *Projection*
+ 	
+	
+	
+	
+	
+/done
 
 
+
+	DataLegend : 
+		fix
+			package  : com.jensoft.core.plugin.legend.data.painter
+			class    : AbstractDataItemSymbolPainter
+			fix      : remove clip
+		new
+			painter : Data legend Background painter
+			desc    : paint data legend painter with stroking, filling, texture.
+	
 #######################################
 ## Notes 1.1.0  -  November 2, 2014  ##
 #######################################
