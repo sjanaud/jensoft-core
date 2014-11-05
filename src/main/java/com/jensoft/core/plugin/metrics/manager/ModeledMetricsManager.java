@@ -485,6 +485,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
             }
 
             int metricsSize = metricsManager.getMetricsMajorFont().getSize();
+            System.out.println("get size : "+metricsSize);
             int s = (this.ref.toString()).length();
             this.pixelLabelHolder = 4/5d*s*metricsSize+metricsManager.getDensityFactor();
         }
