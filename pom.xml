@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>jensoft-core</artifactId>
 	<version>2.0.0-SNAPSHOT</version>
@@ -155,7 +156,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>
@@ -221,6 +223,13 @@
 				<plugins>
 
 					<plugin>
+						<artifactId>maven-jar-plugin</artifactId>
+						<configuration>
+							<classifier>commercial</classifier>
+						</configuration>
+					</plugin>
+
+					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-clean-plugin</artifactId>
 						<version>2.5</version>
@@ -270,8 +279,10 @@
 								<configuration>
 									<tasks>
 										<mkdir dir="src/main/generated" />
-										<move file="src/main/java/${java.class.to.modify.full.path}" tofile="src/main/generated/${java.class.to.modify.full.path}.bak" />
-										<copy file="src/main/generated/${java.class.to.modify.full.path}" todir="src/main/java/${java.class.to.modify.package}/" />
+										<move file="src/main/java/${java.class.to.modify.full.path}"
+											tofile="src/main/generated/${java.class.to.modify.full.path}.bak" />
+										<copy file="src/main/generated/${java.class.to.modify.full.path}"
+											todir="src/main/java/${java.class.to.modify.package}/" />
 									</tasks>
 								</configuration>
 								<goals>
@@ -283,7 +294,9 @@
 								<phase>package</phase>
 								<configuration>
 									<tasks>
-										<move file="src/main/generated/${java.class.to.modify.full.path}.bak" tofile="src/main/java/${java.class.to.modify.full.path}" />
+										<move
+											file="src/main/generated/${java.class.to.modify.full.path}.bak"
+											tofile="src/main/java/${java.class.to.modify.full.path}" />
 									</tasks>
 								</configuration>
 								<goals>
