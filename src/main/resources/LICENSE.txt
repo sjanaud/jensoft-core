@@ -13,11 +13,5 @@ Java - Saas
 Java - Enterprise
 Java - OEM
 
-JavaScript - Single
-JavaScript - WebSite
-JavaScript - Corporate
-JavaScript - Saas
-JavaScript - Enterprise
-
 
 For more informations, please visit JenSoft API website http://www.jensoftapi.com or contact jensoft at contact@jensoftapi.com
