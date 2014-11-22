@@ -24,7 +24,7 @@ import com.jensoft.core.map.projection.GeoPosition;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.RoundViewFill;
+import com.jensoft.core.view.background.ViewDefaultBackground;
 
 
 public class TraceDemo extends View {
@@ -267,7 +267,7 @@ public class TraceDemo extends View {
 	public static View getPortofolio() {
 		TraceDemo demo = new TraceDemo();
 
-		RoundViewFill viewBackground = new RoundViewFill();
+		ViewDefaultBackground viewBackground = new ViewDefaultBackground();
 		Shader s = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
 		viewBackground.setShader(s);
 		viewBackground.setOutlineStroke(new BasicStroke(2.5f));

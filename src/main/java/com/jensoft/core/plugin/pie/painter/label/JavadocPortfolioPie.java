@@ -30,7 +30,7 @@ import com.jensoft.core.plugin.pie.painter.label.PieBorderLabel.LinkStyle;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.RoundViewFill;
+import com.jensoft.core.view.background.ViewDefaultBackground;
 
 /**
  * <code>JavadocPortfolioPie</code>
@@ -128,7 +128,7 @@ public class JavadocPortfolioPie {
         PiePlugin piePlugin = new PiePlugin();
         window.registerPlugin(piePlugin);
 
-        RoundViewFill viewBackground = new RoundViewFill();
+        ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
         viewBackground.setShader(sb);
         viewBackground.setOutlineStroke(new BasicStroke(2.5f));
@@ -204,7 +204,7 @@ public class JavadocPortfolioPie {
 
         PiePlugin piePlugin = new PiePlugin();
         window.registerPlugin(piePlugin);
-        RoundViewFill viewBackground = new RoundViewFill();
+        ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
         viewBackground.setShader(sb);
         viewBackground.setOutlineStroke(new BasicStroke(2.5f));
@@ -283,7 +283,7 @@ public class JavadocPortfolioPie {
         PiePlugin piePlugin = new PiePlugin();
         window.registerPlugin(piePlugin);
 
-        RoundViewFill viewBackground = new RoundViewFill();
+        ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
         viewBackground.setShader(sb);
         viewBackground.setOutlineStroke(new BasicStroke(2.5f));
