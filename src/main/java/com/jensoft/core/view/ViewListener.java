@@ -8,7 +8,9 @@ package com.jensoft.core.view;
 import java.util.EventListener;
 
 /**
- * <code>ViewListener</code>
+ * <code>ViewListener</code> defines the base listener for view events.
+ * 
+ * @since 1.0
  * 
  * @author Sebastien Janaud
  */

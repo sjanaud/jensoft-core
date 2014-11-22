@@ -21,7 +21,9 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.projection.Projection;
 
 /**
- * WindowPartComponent
+ * <code>WindowPartComponent</code> defines a base view part component
+ * 
+ * @since 1.0
  * 
  * @author Sebastien Janaud
  */

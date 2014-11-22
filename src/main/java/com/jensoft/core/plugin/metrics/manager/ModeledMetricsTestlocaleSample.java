@@ -29,7 +29,7 @@ import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
-import com.jensoft.core.view.background.DarkViewBackground;
+import com.jensoft.core.view.background.ViewDarkBackground;
 import com.jensoft.core.view.background.ViewDefaultBackground;
 
 /**
@@ -37,7 +37,7 @@ import com.jensoft.core.view.background.ViewDefaultBackground;
  * 
  * @author JenSoft API
  */
-@JenSoftView(background=DarkViewBackground.class)
+@JenSoftView(background=ViewDarkBackground.class)
 public class ModeledMetricsTestlocaleSample extends View {
 
 	

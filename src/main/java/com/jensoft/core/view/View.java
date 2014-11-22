@@ -31,7 +31,7 @@ import com.jensoft.core.device.DevicePartComponent;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.projection.ProjectionEvent;
 import com.jensoft.core.projection.ProjectionListener;
-import com.jensoft.core.view.background.BackgroundPainter;
+import com.jensoft.core.view.background.ViewBackgroundPainter;
 import com.jensoft.core.widget.WidgetFolder;
 
 /**
@@ -81,7 +81,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	private JPanel footerContainer;
 
 	/** painter that takes responsibility to paint the view background component */
-	private BackgroundPainter backgroundPainter;
+	private ViewBackgroundPainter backgroundPainter;
 
 	/**
 	 * the widget plug-in is a specific plug-in to handle widget and window meta
@@ -1041,7 +1041,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	/**
 	 * @return the backgroundPainter
 	 */
-	public BackgroundPainter getBackgroundPainter() {
+	public ViewBackgroundPainter getBackgroundPainter() {
 		return backgroundPainter;
 	}
 
@@ -1049,7 +1049,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 * @param backgroundPainter
 	 *            the backgroundPainter to set
 	 */
-	public void setBackgroundPainter(BackgroundPainter backgroundPainter) {
+	public void setBackgroundPainter(ViewBackgroundPainter backgroundPainter) {
 		this.backgroundPainter = backgroundPainter;
 	}
 

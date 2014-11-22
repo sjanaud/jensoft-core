@@ -43,10 +43,10 @@ import com.jensoft.core.plugin.zoom.wheel.ZoomWheelPlugin;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.DarkViewBackground;
+import com.jensoft.core.view.background.ViewDarkBackground;
 import com.jensoft.core.view.background.ViewDefaultBackground;
 
-@JenSoftView(background=DarkViewBackground.class)
+@JenSoftView(background=ViewDarkBackground.class)
 public class BarStackedStackEffectDemo extends View {
 
 	public static void main(String[] args) {

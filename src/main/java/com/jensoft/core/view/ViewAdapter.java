@@ -5,9 +5,10 @@
  */
 package com.jensoft.core.view;
 
-
 /**
  * <code>ViewAdapter</code>
+ * 
+ * @since 1.0
  * 
  * @author sebastien janaud
  *

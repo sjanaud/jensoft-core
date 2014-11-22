@@ -35,6 +35,8 @@ import com.jensoft.core.widget.WidgetFolder;
  * internal view plugin for managing widget this plugin has no host window
  * </p>
  * 
+ * @since 1.0
+ * 
  * @author Sebastien Janaud
  */
 public class WidgetPlugin extends AbstractPlugin implements

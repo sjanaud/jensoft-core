@@ -24,7 +24,7 @@ import com.jensoft.core.view.View;
  * 
  * @author Sebastien Janaud
  */
-public class ViewDefaultBackground extends BackgroundPainter {
+public class ViewDefaultBackground extends ViewBackgroundPainter {
 
 	/** the outline round corner */
 	private int outlineRound = 20;

@@ -35,7 +35,7 @@ import com.jensoft.core.projection.Projection.LogY;
 import com.jensoft.core.projection.Projection.TimeX;
 import com.jensoft.core.projection.Projection.TimeY;
 import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.BackgroundPainter;
+import com.jensoft.core.view.background.ViewBackgroundPainter;
 import com.jensoft.core.view.background.ViewDefaultBackground;
 import com.jensoft.core.view.deflater.AbstractViewDeflater;
 import com.jensoft.core.x2d.lang.X2DView2DElement;
@@ -132,7 +132,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_NORTH, getView2D().getPlaceHolderAxisNorth()));
 			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_SOUTH, getView2D().getPlaceHolderAxisSouth()));
 
-			BackgroundPainter painter = getView2D().getBackgroundPainter();
+			ViewBackgroundPainter painter = getView2D().getBackgroundPainter();
 			if (painter instanceof ViewDefaultBackground) {
 				ViewDefaultBackground rvf = (ViewDefaultBackground) painter;
 				Element view2DBackgroundElement = x2dDocument.createElement(ELEMENT_VIEW_BACKGROUND_BACKGROUND);
