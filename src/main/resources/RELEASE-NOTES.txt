@@ -38,7 +38,10 @@
 	
 /done
 
- 	View2D rename to View
+	RoundViewFill
+		classes-rename : RoundViewFill rename to ViewDefaultBackground
+ 	
+ 	View2D
 		classes-rename : All  *View2D* rename to *View*
 		
 	Window2D
