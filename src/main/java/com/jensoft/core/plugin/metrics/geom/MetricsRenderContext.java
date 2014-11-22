@@ -9,8 +9,8 @@ import java.awt.Font;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
 
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
 
 /**
  * <code>MetricsRenderContext</code>
@@ -20,10 +20,10 @@ import com.jensoft.core.window.Window2D;
 public class MetricsRenderContext {
 
     /** view 2D */
-    private View2D view2D;
+    private View view2D;
 
     /** window 2D */
-    private Window2D window2D;
+    private Projection window2D;
 
     /** graphics context */
     private Graphics2D graphics2D;
@@ -44,7 +44,7 @@ public class MetricsRenderContext {
      * @param graphics2d
      *            the graphics context
      */
-    public MetricsRenderContext(View2D view2d, Window2D window2d,
+    public MetricsRenderContext(View view2d, Projection window2d,
             Graphics2D graphics2d) {
         view2D = view2d;
         window2D = window2d;
@@ -75,7 +75,7 @@ public class MetricsRenderContext {
      * 
      * @return view 2D
      */
-    public View2D getView2D() {
+    public View getView2D() {
         return view2D;
     }
 
@@ -85,7 +85,7 @@ public class MetricsRenderContext {
      * @param view2d
      *            the view 2D to set for this render context
      */
-    public void setView2D(View2D view2d) {
+    public void setView2D(View view2d) {
         view2D = view2d;
     }
 
@@ -94,7 +94,7 @@ public class MetricsRenderContext {
      * 
      * @return the window 2D
      */
-    public Window2D getWindow2D() {
+    public Projection getWindow2D() {
         return window2D;
     }
 
@@ -104,7 +104,7 @@ public class MetricsRenderContext {
      * @param window2d
      *            the window 2D to set
      */
-    public void setWindow2D(Window2D window2d) {
+    public void setWindow2D(Projection window2d) {
         window2D = window2d;
     }
 

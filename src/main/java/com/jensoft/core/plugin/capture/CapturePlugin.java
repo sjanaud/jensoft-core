@@ -17,8 +17,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JFileChooser;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * Capture Plugin
@@ -92,7 +92,7 @@ public class CapturePlugin extends AbstractPlugin {
         String imageFilePath = dir + File.separator + fileName;
 
         File saveFile = new File(imageFilePath);
-        BufferedImage viewImage = getWindow2D().getView2D().getImageView(width,
+        BufferedImage viewImage = getProjection().getView2D().getImageView(width,
                                                                          height);
         viewImage.flush();
         ImageIO.write(viewImage, viewImageFormat.getFormat(), saveFile);
@@ -111,7 +111,7 @@ public class CapturePlugin extends AbstractPlugin {
      */
     public final BufferedImage captureViewAsImage(int width, int height,
             ViewImageFormat viewImageFormat) {
-        BufferedImage viewImage = getWindow2D().getView2D().getImageView(width,
+        BufferedImage viewImage = getProjection().getView2D().getImageView(width,
                                                                          height);
         viewImage.flush();
         return viewImage;
@@ -156,14 +156,14 @@ public class CapturePlugin extends AbstractPlugin {
         public void actionPerformed(ActionEvent e) {
             try {
 
-                View2D v2d = getWindow2D().getView2D();
-                final BufferedImage viewImage = getWindow2D().getView2D()
+                View v2d = getProjection().getView2D();
+                final BufferedImage viewImage = getProjection().getView2D()
                         .getImageView(v2d.getWidth(), v2d.getHeight());
                 viewImage.flush();
                 File saveFile = new File("savedimage." + format);
                 JFileChooser chooser = new JFileChooser();
                 chooser.setSelectedFile(saveFile);
-                int rval = chooser.showSaveDialog(getWindow2D().getView2D());
+                int rval = chooser.showSaveDialog(getProjection().getView2D());
                 if (rval == JFileChooser.APPROVE_OPTION) {
                     saveFile = chooser.getSelectedFile();
 
@@ -181,7 +181,7 @@ public class CapturePlugin extends AbstractPlugin {
     }
 
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
     }
 
 }

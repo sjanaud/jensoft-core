@@ -19,12 +19,14 @@ import javax.swing.event.EventListenerList;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>ZoomWheelPlugin</code>
+ * 
+ * @since 1.0
  * 
  * @author sebastien janaud
  */
@@ -212,8 +214,8 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 	 */
 	private void boundZoomIn() {
 
-		double w = getWindow2D().getDevice2D().getDeviceWidth();
-		double h = getWindow2D().getDevice2D().getDeviceHeight();
+		double w = getProjection().getDevice2D().getDeviceWidth();
+		double h = getProjection().getDevice2D().getDeviceHeight();
 
 		Point2D pMinXMinYDevice = null;
 		Point2D pMaxXMaxYDevice = null;
@@ -229,10 +231,10 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 			pMaxXMaxYDevice = new Point2D.Double(w, h / factor);
 		}
 
-		Point2D pMinXMinYUser = getWindow2D().pixelToUser(pMinXMinYDevice);
-		Point2D pMaxXMaxYUser = getWindow2D().pixelToUser(pMaxXMaxYDevice);
-		if (getWindow2D() instanceof Window2D.Linear) {
-			Window2D.Linear wl = (Window2D.Linear) getWindow2D();
+		Point2D pMinXMinYUser = getProjection().pixelToUser(pMinXMinYDevice);
+		Point2D pMaxXMaxYUser = getProjection().pixelToUser(pMaxXMaxYDevice);
+		if (getProjection() instanceof Projection.Linear) {
+			Projection.Linear wl = (Projection.Linear) getProjection();
 			wl.bound(pMinXMinYUser.getX(), pMaxXMaxYUser.getX(), pMinXMinYUser.getY(), pMaxXMaxYUser.getY());
 		}
 
@@ -243,7 +245,7 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 	 */
 	private void boundZoomOut() {
 
-		Window2D w2d = getWindow2D();
+		Projection w2d = getProjection();
 
 		double w = w2d.getDevice2D().getDeviceWidth();
 		double h = w2d.getDevice2D().getDeviceHeight();
@@ -264,8 +266,8 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 
 		Point2D pMinXMinYUser = w2d.pixelToUser(pMinXMinYDevice);
 		Point2D pMaxXMaxYUser = w2d.pixelToUser(pMaxXMaxYDevice);
-		if (getWindow2D() instanceof Window2D.Linear) {
-			Window2D.Linear wl = (Window2D.Linear) getWindow2D();
+		if (getProjection() instanceof Projection.Linear) {
+			Projection.Linear wl = (Projection.Linear) getProjection();
 			wl.bound(pMinXMinYUser.getX(), pMaxXMaxYUser.getX(), pMinXMinYUser.getY(), pMaxXMaxYUser.getY());
 		}
 
@@ -277,7 +279,7 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 	public void zoomIn() {
 		boundZoomIn();
 		zoomMessage = "ZOOM IN";
-		getWindow2D().getDevice2D().repaintDevice();
+		getProjection().getDevice2D().repaintDevice();
 	}
 
 	/**
@@ -286,7 +288,7 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 	public void zoomOut() {
 		boundZoomOut();
 		zoomMessage = "ZOOM OUT";
-		getWindow2D().getDevice2D().repaintDevice();
+		getProjection().getDevice2D().repaintDevice();
 	}
 
 	/**
@@ -359,8 +361,8 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 				Thread.sleep(1000);
 				unlockWheel();
 				zoomMessage = null;
-				if (getWindow2D() != null && getWindow2D().getView2D() != null) {
-					getWindow2D().getView2D().getWindowComponent(WindowPart.North).repaint();
+				if (getProjection() != null && getProjection().getView2D() != null) {
+					getProjection().getView2D().getWindowComponent(ViewPart.North).repaint();
 				}
 
 			} catch (InterruptedException e) {
@@ -376,12 +378,12 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 	private void paintZooming(Graphics2D g2d) {
 		// if (isLockWheel()) {
 		if (zoomMessage != null) {
-			g2d.setColor(getWindow2D().getThemeColor().darker());
+			g2d.setColor(getProjection().getThemeColor().darker());
 			g2d.setFont(InputFonts.getFont(InputFonts.ELEMENT, 12));
-			JComponent comp = getWindow2D().getView2D().getWindowComponent(WindowPart.North);
+			JComponent comp = getProjection().getView2D().getWindowComponent(ViewPart.North);
 
 			if (zoomMessage != null) {
-				g2d.drawString(zoomMessage, getWindow2D().getView2D().getPlaceHolderAxisWest(), comp.getHeight() - 5);
+				g2d.drawString(zoomMessage, getProjection().getView2D().getPlaceHolderAxisWest(), comp.getHeight() - 5);
 			}
 
 			if (messageCleaner == null) {
@@ -397,14 +399,15 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+	 */
 	@Override
-	public void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-
-		// if (windowPart != WindowPart.North) {
+	public void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+		// if (viewPart != WindowPart.North) {
 		// return;
 		// }
 		// paintZooming(g2d);
-
 	}
 
 }

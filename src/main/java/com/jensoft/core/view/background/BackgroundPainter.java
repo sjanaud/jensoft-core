@@ -7,13 +7,13 @@ package com.jensoft.core.view.background;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * @author Sebastien Janaud
  */
 public abstract class BackgroundPainter {
 
-    public abstract void paintViewBackground(View2D view,int viewWidth,int viewHeight, Graphics2D g2d);
+    public abstract void paintViewBackground(View view,int viewWidth,int viewHeight, Graphics2D g2d);
 
 }

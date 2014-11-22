@@ -16,8 +16,8 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.palette.Alpha;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>CapacityPlugin</code> draw capacity cell grouped in unit.
@@ -183,21 +183,18 @@ public class CapacityPlugin extends AbstractPlugin {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
-	 * .View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
 
-		if (windowPart != WindowPart.Device) {
+		if (viewPart != ViewPart.Device) {
 			return;
 		}
-		int width = getWindow2D().getDevice2D().getDeviceWidth();
-		int height = getWindow2D().getDevice2D().getDeviceHeight();
+		int width = getProjection().getDevice2D().getDeviceWidth();
+		int height = getProjection().getDevice2D().getDeviceHeight();
 		cellWidth = new Double(width) / new Double(col);
 		cellHeight = new Double(height) / new Double(row);
 

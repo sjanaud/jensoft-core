@@ -21,7 +21,7 @@ import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * MetricsDefaultPainter
@@ -165,7 +165,7 @@ public class MetricsDefaultPainter extends AbstractMetricsPainter {
 
                         boolean paintFlag = false;
                         JComponent westPart = getMetricsRenderContext().getView2D()
-                                .getWindowComponent(WindowPart.West);
+                                .getWindowComponent(ViewPart.West);
                         if (metric.getGravity() == Gravity.First) {
                             if (position.getY() < westPart.getHeight() - 6) {
                                 paintFlag = true;

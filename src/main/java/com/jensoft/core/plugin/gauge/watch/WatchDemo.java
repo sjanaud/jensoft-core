@@ -9,19 +9,19 @@ import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
 import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
 import com.jensoft.core.plugin.translate.TranslatePlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
 
 
-public class WatchDemo extends View2D {
+public class WatchDemo extends View {
 
 	private static final long serialVersionUID = 156889765687899L;
 
 	public WatchDemo() {
 		super(10);
 		
-		Window2D w2d = new Window2D.Linear.Identity();
-		registerWindow2D(w2d);
+		Projection w2d = new Projection.Linear.Identity();
+		registerProjection(w2d);
 		
 		Watch gauge = new Watch();
 		RadialGaugePlugin gaugePlugin = new RadialGaugePlugin(gauge);

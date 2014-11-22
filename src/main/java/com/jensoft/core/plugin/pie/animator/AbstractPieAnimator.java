@@ -11,7 +11,7 @@ import com.jensoft.core.plugin.pie.PieListener;
 import com.jensoft.core.plugin.pie.PiePlugin;
 import com.jensoft.core.plugin.pie.PieSlice;
 import com.jensoft.core.plugin.pie.PieToolkit;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>AbstractPieAnimator</code> abstract base class to animate pie
@@ -148,8 +148,8 @@ public abstract class AbstractPieAnimator implements PieListener {
      * @param slice
      * @return host view
      */
-    public View2D getView2D(PieSlice slice) {
-        return slice.getHost().getHostPlugin().getWindow2D().getView2D();
+    public View getView2D(PieSlice slice) {
+        return slice.getHost().getHostPlugin().getProjection().getView2D();
     }
 
 }

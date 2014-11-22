@@ -148,7 +148,7 @@ public class PieShiftStartAngleAnimator extends AbstractPieAnimator {
                 while (!interrupted()) {
                     pie.setStartAngleDegree(pie.getStartAngleDegree() + 1);
                     Thread.sleep(velocity.getVelocity());
-                    pie.getHostPlugin().getWindow2D().getView2D().repaintDevice();
+                    pie.getHostPlugin().getProjection().getView2D().repaintDevice();
                 }
             }
             catch (InterruptedException e) {

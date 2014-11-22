@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class CubicCurve extends Primitive {
 
@@ -46,7 +46,7 @@ public class CubicCurve extends Primitive {
             g2d.draw(cubic);
         }
         else if (getNature() == PrimitiveNature.USER) {
-            Window2D w2d = getHost().getWindow2D();
+            Projection w2d = getHost().getProjection();
 
             Point2D ux1 = w2d.userToPixel(new Point2D.Double(x1, 0));
             Point2D uy1 = w2d.userToPixel(new Point2D.Double(0, y1));

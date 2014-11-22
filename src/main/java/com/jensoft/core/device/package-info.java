@@ -1,5 +1,5 @@
 /**
- * Provides a set of classes related to the {@link com.jensoft.core.device.Device2D}
+ * Provides a set of classes related to the {@link com.jensoft.core.device.Device}
  * 
  * @since 1.0
  */

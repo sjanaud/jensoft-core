@@ -19,7 +19,7 @@ import com.jensoft.core.catalog.component.DemoTab;
 import com.jensoft.core.catalog.component.DemoTabSet;
 import com.jensoft.core.catalog.source.JavaSourcePane;
 import com.jensoft.core.palette.JennyPalette;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>ViewDemoFrameUI</code>
@@ -34,14 +34,14 @@ public class ViewFrameUI extends JFrame {
 	private static final long serialVersionUID = 416596322068922672L;
 
 	/** view 2D */
-	private View2D view;
+	private View view;
 
 	/**
 	 * Create and Show frame UI with the given view
 	 * 
 	 * @param view
 	 */
-	public ViewFrameUI(View2D view) {
+	public ViewFrameUI(View view) {
 		this.view = view;
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
@@ -57,7 +57,7 @@ public class ViewFrameUI extends JFrame {
 		//System.out.println("FRAME UI ARGS : "+args);
 		try {
 			Class viewClass = Class.forName(args[0]);
-			View2D v = (View2D)viewClass.newInstance();
+			View v = (View)viewClass.newInstance();
 			ViewFrameUI ui = new ViewFrameUI(v);
 		} catch (Exception e) {
 			e.printStackTrace();

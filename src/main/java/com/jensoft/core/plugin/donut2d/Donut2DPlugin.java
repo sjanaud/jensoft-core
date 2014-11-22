@@ -15,8 +15,8 @@ import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>Donut2DPlugin</code>
@@ -95,12 +95,12 @@ public class Donut2DPlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
 
-        if (windowPart != WindowPart.Device) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
 

@@ -3,14 +3,14 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.window;
+package com.jensoft.core.projection;
 
 /**
  * defines a window bound
  * 
  * @author Sebastien Janaud
  */
-public class WindowBound {
+public class ProjectionBound {
 
     /** minimum x */
     private double minX;
@@ -29,7 +29,7 @@ public class WindowBound {
      * @param minY
      * @param maxY
      */
-    public WindowBound(double minX, double maxX, double minY, double maxY) {
+    public ProjectionBound(double minX, double maxX, double minY, double maxY) {
         if (minX > maxX) {
             throw new IllegalArgumentException(
                                                "maximum x should be greater or equal than minimum x");

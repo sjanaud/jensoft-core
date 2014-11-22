@@ -23,7 +23,7 @@ public class BubbleEffect1 extends BubbleEffect {
     @Override
     public void paintBubble(Graphics2D g2d, Bubble bubble) {
         Point2D p2dUserCenter = new Point2D.Double(bubble.getX(), bubble.getY());
-        Point2D p2dDeviceCenter = bubble.getHost().getWindow2D()
+        Point2D p2dDeviceCenter = bubble.getHost().getProjection()
                 .userToPixel(p2dUserCenter);
 
         int marginX = 10;

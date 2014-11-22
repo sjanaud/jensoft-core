@@ -28,12 +28,12 @@ import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.AbstractBean;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 import com.jensoft.core.view.WidgetRegistry;
 import com.jensoft.core.widget.Widget;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
 
 /**
  * <code>AbstractPlugin</code> AbstractPlugin is the abstract definition that defines window plug in.
@@ -42,10 +42,10 @@ import com.jensoft.core.window.WindowPart;
 public abstract class AbstractPlugin extends AbstractBean implements Plugin {
 
     /** the view2D */
-    private View2D view2D;
+    private View view2D;
 
-    /** the window2D to lay out */
-    private Window2D window2D;
+    /** the projection */
+    private Projection proj;
 
     /** lock selected */
     private boolean lockSelected = false;
@@ -336,7 +336,7 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
      * delegate method from window and view , repaint the device part component
      */
     public void repaintDevice() {
-        getWindow2D().getView2D().repaintDevice();
+        getProjection().getView2D().repaintDevice();
     }
 
     /**
@@ -435,7 +435,7 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
      * 
      * @return the view2D
      */
-    protected View2D getView2D() {
+    protected View getView() {
         return view2D;
     }
 
@@ -444,7 +444,7 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
      * 
      * @param view2d
      */
-    public void setView2D(View2D view2d) {
+    public void setView2D(View view2d) {
         view2D = view2d;
     }
 
@@ -464,7 +464,7 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
         if (!isLockSelected()) {
             lockSelected = true;
             firePluginLockSelected();
-            if (getWindow2D() != null && getWindow2D().getView2D() != null) {
+            if (getProjection() != null && getProjection().getView2D() != null) {
                 // if (showLockMessage) {
                 // if (lockMessage == null) {
                 // lockMessage = "Lock " + getName();
@@ -475,7 +475,7 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
                 // .pushMessage(lockMessage, this,
                 // PushingBehavior.Fast, Color.BLACK);
                 // }
-                getWindow2D().getView2D().repaint();
+                getProjection().getView2D().repaint();
             }
         }
     }
@@ -488,8 +488,8 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
         if (isLockSelected()) {
             lockSelected = false;
             firePluginUnlockSelected();
-            if (getWindow2D() != null && getWindow2D().getView2D() != null) {
-                getWindow2D().getView2D().repaint();
+            if (getProjection() != null && getProjection().getView2D() != null) {
+                getProjection().getView2D().repaint();
             }
         }
 
@@ -567,27 +567,27 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
     }
 
     /**
-     * get the window2D
+     * get the projection
      * 
-     * @return the window2D
+     * @return projection
      */
-    public Window2D getWindow2D() {
-        return window2D;
+    public Projection getProjection() {
+        return proj;
     }
 
     /**
-     * set the window2D
+     * set projection
      * 
-     * @param window2D
+     * @param projection
      */
-    public void setWindow2D(Window2D window2D) {
-        this.window2D = window2D;
+    public void setProjection(Projection proj) {
+        this.proj = proj;
     }
 
     /**
-     * call on window register
+     * call on projection register
      */
-    public void onWindowRegister() {
+    public void onProjectionRegister() {
     }
 
     /**
@@ -1025,20 +1025,20 @@ public abstract class AbstractPlugin extends AbstractBean implements Plugin {
      *            the view2D
      * @param g2d
      *            the graphics2D context
-     * @param windowPart
-     *            the window part to paint
+     * @param viewPart
+     *            the view part to paint
      */
-    protected abstract void paintPlugin(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart);
+    protected abstract void paintPlugin(View v2d, Graphics2D g2d,
+            ViewPart viewPart);
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.Plugin#paint(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.Plugin#paint(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public final void paint(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    public final void paint(View view, Graphics2D g2d, ViewPart viewPart) {
         configureGraphics(g2d);
-        paintPlugin(v2d, g2d, windowPart);
+        paintPlugin(view, g2d, viewPart);
     }
 
     /**

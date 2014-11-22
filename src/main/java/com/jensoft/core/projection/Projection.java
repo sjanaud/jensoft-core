@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.window;
+package com.jensoft.core.projection;
 
 import java.awt.Color;
 import java.awt.geom.Point2D;
@@ -14,7 +14,7 @@ import java.util.List;
 
 import javax.swing.event.EventListenerList;
 
-import com.jensoft.core.device.Device2D;
+import com.jensoft.core.device.Device;
 import com.jensoft.core.map.projection.DalleProjection;
 import com.jensoft.core.map.projection.GeoPosition;
 import com.jensoft.core.palette.ColorPalette;
@@ -22,12 +22,12 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginEvent;
 import com.jensoft.core.plugin.PluginListener;
 import com.jensoft.core.plugin.copyright.CopyrightPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.view.View2DAdapter;
-import com.jensoft.core.view.View2DEvent;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewAdapter;
+import com.jensoft.core.view.ViewEvent;
 
 /**
- * <code>Window2D</code> takes the responsibility to make user projection for
+ * <code>Projection</code> takes the responsibility to make user projection for
  * hosted plug-ins.
  * <p>
  * The window projection nature are {@link Linear},{@link LogX}, {@link LogY},
@@ -35,7 +35,7 @@ import com.jensoft.core.view.View2DEvent;
  * </p>
  * <ul>
  * <li>a window2D has to be registered in a {@link #view2D} with the
- * {@link View2D#registerWindow2D(Window2D)}
+ * {@link View#registerProjection(Projection)}
  * <li>a window2D should be register plug-ins with
  * {@link #registerPlugin(AbstractPlugin)} method</li>
  * <li>a plug-in developer can be use window projection method
@@ -45,12 +45,12 @@ import com.jensoft.core.view.View2DEvent;
  * 
  * @author sebastien janaud
  */
-public abstract class Window2D implements PluginListener {
+public abstract class Projection implements PluginListener {
 
 	/**
 	 * The <code>Linear</code> class defines a window linear projection.
 	 */
-	public static class Linear extends Window2D implements Serializable {
+	public static class Linear extends Projection implements Serializable {
 
 		/** the initial minimum x */
 		private double initialMinX = 0;
@@ -193,13 +193,13 @@ public abstract class Window2D implements PluginListener {
 		public void onView2DRegister() {
 			super.onView2DRegister();
 			
-			getView2D().addView2DListener(new View2DAdapter() {
+			getView2D().addView2DListener(new ViewAdapter() {
 
 				/* (non-Javadoc)
 				 * @see com.jensoft.core.view.View2DAdapter#viewResized(com.jensoft.core.view.View2DEvent)
 				 */
 				@Override
-				public void viewResized(View2DEvent view2dEvent) {
+				public void viewResized(ViewEvent view2dEvent) {
 					resetScale();
 				}
 			});
@@ -701,7 +701,7 @@ public abstract class Window2D implements PluginListener {
 	/**
 	 * The <code>Map</code> class defines a Mercator projection window.
 	 */
-	public static class Map extends Window2D implements Serializable {
+	public static class Map extends Projection implements Serializable {
 
 		/** dalle projection */
 		private DalleProjection projection;
@@ -1270,15 +1270,15 @@ public abstract class Window2D implements PluginListener {
 	 * and provide a number of formats for storing the information necessary to
 	 * satisfy the various projection methods below.
 	 */
-	protected Window2D() {
+	protected Projection() {
 		registerPlugin(new CopyrightPlugin());
 	}
 
 	/** device component */
-	private Device2D device2D;
+	private Device device2D;
 
 	/** parent view */
-	private View2D view2D;
+	private View view2D;
 
 	/** window2d id */
 	private String windowID;
@@ -1339,7 +1339,7 @@ public abstract class Window2D implements PluginListener {
 	 * 
 	 * @return the device2D
 	 */
-	public Device2D getDevice2D() {
+	public Device getDevice2D() {
 		return device2D;
 	}
 
@@ -1348,7 +1348,7 @@ public abstract class Window2D implements PluginListener {
 	 * 
 	 * @param device2D
 	 */
-	public void setDevice2D(Device2D device2D) {
+	public void setDevice2D(Device device2D) {
 		this.device2D = device2D;
 	}
 
@@ -1357,7 +1357,7 @@ public abstract class Window2D implements PluginListener {
 	 * 
 	 * @return window host.
 	 */
-	public View2D getView2D() {
+	public View getView2D() {
 		return view2D;
 	}
 
@@ -1367,7 +1367,7 @@ public abstract class Window2D implements PluginListener {
 	 * @param view2d
 	 *            the host view 2D
 	 */
-	public void setView2D(View2D view2d) {
+	public void setView2D(View view2d) {
 		view2D = view2d;
 	}
 
@@ -1464,21 +1464,21 @@ public abstract class Window2D implements PluginListener {
 	}
 
 	/**
-	 * add a window2D listener
+	 * add projection listener
 	 * 
 	 * @param listener
 	 */
-	public void addWindow2DListener(Window2DListener listener) {
-		listenerList.add(Window2DListener.class, listener);
+	public void addProjectionListener(ProjectionListener listener) {
+		listenerList.add(ProjectionListener.class, listener);
 	}
 
 	/**
-	 * remove a window2D listener
+	 * remove projection listener
 	 * 
 	 * @param listener
 	 */
-	public void removeWindow2DListener(Window2DListener listener) {
-		listenerList.remove(Window2DListener.class, listener);
+	public void removeProjectionListener(ProjectionListener listener) {
+		listenerList.remove(ProjectionListener.class, listener);
 	}
 
 	/**
@@ -1515,20 +1515,20 @@ public abstract class Window2D implements PluginListener {
 		if (plugins.contains(plugin)) {
 			return;
 		}
-		plugin.setWindow2D(this);
+		plugin.setProjection(this);
 		plugin.addPluginListener(this);
 		plugins.add(plugin);
-		plugin.onWindowRegister();
+		plugin.onProjectionRegister();
 	}
 
 	/**
-	 * call on {@link View2D} register this window
+	 * call on {@link View} register this window
 	 */
 	public void onView2DRegister() {
-		getView2D().addView2DListener(new View2DAdapter() {
+		getView2D().addView2DListener(new ViewAdapter() {
 
 			@Override
-			public void viewResized(View2DEvent view2dEvent) {
+			public void viewResized(ViewEvent view2dEvent) {
 				fireWindow2DResized();
 			}
 		});
@@ -1584,13 +1584,13 @@ public abstract class Window2D implements PluginListener {
 	 * fire listener that the window became active
 	 */
 	private void fireWindow2DActivate() {
-		Window2DEvent w2dEvent = new Window2DEvent(this);
+		ProjectionEvent w2dEvent = new ProjectionEvent(this);
 
 		Object[] listeners = listenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
-				if (listeners[i] == Window2DListener.class) {
-					((Window2DListener) listeners[i + 1]).window2DLockActive(w2dEvent);
+				if (listeners[i] == ProjectionListener.class) {
+					((ProjectionListener) listeners[i + 1]).projectionLockActive(w2dEvent);
 				}
 			}
 		}
@@ -1600,12 +1600,12 @@ public abstract class Window2D implements PluginListener {
 	 * fire listener that the window became passive
 	 */
 	private void fireWindow2DPassivate() {
-		Window2DEvent w2dEvent = new Window2DEvent(this);
+		ProjectionEvent w2dEvent = new ProjectionEvent(this);
 		Object[] listeners = listenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
-				if (listeners[i] == Window2DListener.class) {
-					((Window2DListener) listeners[i + 1]).window2DUnlockActive(w2dEvent);
+				if (listeners[i] == ProjectionListener.class) {
+					((ProjectionListener) listeners[i + 1]).projectionUnlockActive(w2dEvent);
 				}
 			}
 		}
@@ -1615,12 +1615,12 @@ public abstract class Window2D implements PluginListener {
 	 * fire listener that the window has changed
 	 */
 	private void fireWindow2DBoundChanged() {
-		Window2DEvent w2dEvent = new Window2DEvent(this);
+		ProjectionEvent w2dEvent = new ProjectionEvent(this);
 		Object[] listeners = listenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
-				if (listeners[i] == Window2DListener.class) {
-					((Window2DListener) listeners[i + 1]).window2DBoundChanged(w2dEvent);
+				if (listeners[i] == ProjectionListener.class) {
+					((ProjectionListener) listeners[i + 1]).projectionBoundChanged(w2dEvent);
 				}
 			}
 		}
@@ -1630,12 +1630,12 @@ public abstract class Window2D implements PluginListener {
 	 * fire listener that the window has changed
 	 */
 	private void fireWindow2DResized() {
-		Window2DEvent w2dEvent = new Window2DEvent(this);
+		ProjectionEvent w2dEvent = new ProjectionEvent(this);
 		Object[] listeners = listenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
-				if (listeners[i] == Window2DListener.class) {
-					((Window2DListener) listeners[i + 1]).window2DResized(w2dEvent);
+				if (listeners[i] == ProjectionListener.class) {
+					((ProjectionListener) listeners[i + 1]).projectionResized(w2dEvent);
 				}
 			}
 		}

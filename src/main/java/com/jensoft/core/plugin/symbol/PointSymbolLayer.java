@@ -18,9 +18,9 @@ import javax.swing.event.EventListenerList;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 import com.jensoft.core.plugin.symbol.painter.point.AbstractPointSymbolPainter;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * Point layer handles point symbol layout and related point symbol properties
@@ -83,10 +83,10 @@ public class PointSymbolLayer extends SymbolLayer<PointSymbol> {
      * @see com.jensoft.core.plugin.symbol.SymbolLayer#paintLayer(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart, com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest)
      */
     @Override
-    public void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart,
+    public void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart,
             PaintRequest paintRequest) {
 
-        if (windowPart == WindowPart.Device && paintRequest == PaintRequest.SymbolLayer) {
+        if (viewPart == ViewPart.Device && paintRequest == PaintRequest.SymbolLayer) {
             for (PointSymbol ps : getSymbols()) {
 
                 if (!ps.isFiller()) {
@@ -94,14 +94,14 @@ public class PointSymbolLayer extends SymbolLayer<PointSymbol> {
                     if (ps instanceof PointSymbol && !(ps instanceof PolylinePointSymbol)) {
                         if (ps.getPointSymbolPainters() != null) {
                             for (AbstractPointSymbolPainter painter : ps.getPointSymbolPainters()) {
-                                painter.paintSymbol(g2d, ps, windowPart);
+                                painter.paintSymbol(g2d, ps, viewPart);
                             }
 
                         }
                     }
                     else if (ps instanceof PolylinePointSymbol) {
                         if (((PolylinePointSymbol) ps).getPolylinePainter() != null) {
-                            ((PolylinePointSymbol) ps).getPolylinePainter().paintSymbol(g2d, ps, windowPart);
+                            ((PolylinePointSymbol) ps).getPolylinePainter().paintSymbol(g2d, ps, viewPart);
                         }
                     }
 
@@ -169,7 +169,7 @@ public class PointSymbolLayer extends SymbolLayer<PointSymbol> {
      *            the symbol point to solve
      */
     private void solveVPointSymbol(PointSymbol pointSymbol) {
-        Window2D w2d = getHost().getWindow2D();
+        Projection w2d = getHost().getProjection();
         pointSymbol.setHost(getHost());
         Point2D p2dUser = new Point2D.Double(0, pointSymbol.getValue());
         Point2D p2ddevice = w2d.userToPixel(p2dUser);
@@ -194,7 +194,7 @@ public class PointSymbolLayer extends SymbolLayer<PointSymbol> {
      *            the symbol point to solve
      */
     private void solveHPointSymbol(PointSymbol pointSymbol) {
-        Window2D w2d = getHost().getWindow2D();
+        Projection w2d = getHost().getProjection();
         pointSymbol.setHost(getHost());
         Point2D p2dUser = new Point2D.Double(pointSymbol.getValue(), 0);
         Point2D p2ddevice = w2d.userToPixel(p2dUser);

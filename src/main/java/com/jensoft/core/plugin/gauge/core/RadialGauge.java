@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.plugin.gauge.RadialGaugePlugin;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>RadialGauge</code> is defined by a center in user coordinate projection
@@ -38,7 +38,7 @@ public class RadialGauge {
 	private int radius;
 
 	/** gauge window */
-	private Window2D window2D;
+	private Projection window2D;
 	
 	/**host plugin*/
 	private RadialGaugePlugin host;
@@ -143,7 +143,7 @@ public class RadialGauge {
 	 * 
 	 * @return projection
 	 */
-	public Window2D getWindow2D() {
+	public Projection getWindow2D() {
 		return window2D;
 	}
 
@@ -153,7 +153,7 @@ public class RadialGauge {
 	 * @param window2d
 	 *            projection
 	 */
-	public void setWindow2D(Window2D window2d) {
+	public void setWindow2D(Projection window2d) {
 		window2D = window2d;
 	}
 

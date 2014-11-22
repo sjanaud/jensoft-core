@@ -27,17 +27,17 @@ import org.w3c.dom.NodeList;
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginPlatform;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.BackgroundPainter;
 import com.jensoft.core.view.background.RoundViewFill;
-import com.jensoft.core.window.Window2D;
 import com.jensoft.core.x2d.X2DException;
 import com.jensoft.core.x2d.lang.X2DView2DElement;
 
 /**
  * <code>X2DInflater</code>
  * <p>
- * takes the responsibility to inflate X2D XML document into {@link View2D}
+ * takes the responsibility to inflate X2D XML document into {@link View}
  * </p>
  * 
  * @author sebastien janaud
@@ -51,7 +51,7 @@ public class X2DViewInflater implements X2DView2DElement {
 	private Element viewRoot;
 
 	/** the view2D */
-	private View2D view2D;
+	private View view2D;
 
 	/** inflaters */
 	private List<AbstractX2DPluginInflater<?>> inflaters = new ArrayList<AbstractX2DPluginInflater<?>>();
@@ -78,7 +78,7 @@ public class X2DViewInflater implements X2DView2DElement {
 	/**
 	 * inflate
 	 */
-	public View2D inflate() throws X2DException {
+	public View inflate() throws X2DException {
 		this.view2D = generateView2D();
 		return view2D;
 	}
@@ -314,8 +314,8 @@ public class X2DViewInflater implements X2DView2DElement {
 	 * 
 	 * @return a new view instance
 	 */
-	private View2D generateView2D() throws X2DException {
-		View2D view2D = new View2D();
+	private View generateView2D() throws X2DException {
+		View view2D = new View();
 
 		view2D.setSize(new Dimension(getWidth(), getHeight()));
 
@@ -347,35 +347,35 @@ public class X2DViewInflater implements X2DView2DElement {
 				Double maxy = elementDouble(w2dElement, ELEMENT_VIEW_WINDOW2D_MAX_Y);
 				Color themeColor = elementColor(w2dElement, ELEMENT_VIEW_WINDOW2D_THEME_COLOR);
 
-				Window2D w2d = null;
+				Projection w2d = null;
 				String windowType = getType(w2dElement);
 				if (windowType.equals(ELEMENT_VIEW_WINDOW2D_TYPE_LINEAR)) {
-					w2d = new Window2D.Linear(minx, maxx, miny, maxy);
+					w2d = new Projection.Linear(minx, maxx, miny, maxy);
 				} else if (windowType.equals(ELEMENT_VIEW_WINDOW2D_TYPE_LOGX)) {
-					w2d = new Window2D.LogX(minx, maxx, miny, maxy);
+					w2d = new Projection.LogX(minx, maxx, miny, maxy);
 				} else if (windowType.equals(ELEMENT_VIEW_WINDOW2D_TYPE_LOGY)) {
-					w2d = new Window2D.LogY(minx, maxx, miny, maxy);
+					w2d = new Projection.LogY(minx, maxx, miny, maxy);
 				} else if (windowType.equals(ELEMENT_VIEW_WINDOW2D_TYPE_LOG)) {
-					w2d = new Window2D.Log(minx, maxx, miny, maxy);
+					w2d = new Projection.Log(minx, maxx, miny, maxy);
 				} else if (windowType.equals(ELEMENT_VIEW_WINDOW2D_TYPE_TIMEX)) {
 					String minXDate = elementText(w2dElement, ELEMENT_VIEW_WINDOW2D_TIMEX_MIN_X);
 					String maxXDate = elementText(w2dElement, ELEMENT_VIEW_WINDOW2D_TIMEX_MAX_X);
 					Date minDate = DatatypeConverter.parseDateTime(minXDate).getTime();
 					Date maxDate = DatatypeConverter.parseDateTime(maxXDate).getTime();
-					w2d = new Window2D.TimeX(minDate, maxDate, miny, maxy);
+					w2d = new Projection.TimeX(minDate, maxDate, miny, maxy);
 				} else if (windowType.equals(ELEMENT_VIEW_WINDOW2D_TYPE_TIMEY)) {
 					String minYDate = elementText(w2dElement, ELEMENT_VIEW_WINDOW2D_TIMEY_MIN_Y);
 					String maxYDate = elementText(w2dElement, ELEMENT_VIEW_WINDOW2D_TIMEY_MAX_Y);
 					Date minDate = DatatypeConverter.parseDateTime(minYDate).getTime();
 					Date maxDate = DatatypeConverter.parseDateTime(maxYDate).getTime();
-					w2d = new Window2D.TimeY(minx, maxx, minDate, maxDate);
+					w2d = new Projection.TimeY(minx, maxx, minDate, maxDate);
 				}
 
 				w2d.setName(name);
 				w2d.setWindowID(windowID);
 				w2d.setThemeColor(themeColor);
 
-				view2D.registerWindow2D(w2d);
+				view2D.registerProjection(w2d);
 
 				NodeList pluginsElements = w2dElement.getElementsByTagName(ELEMENT_VIEW_PLUGIN);
 				for (int j = 0; j < pluginsElements.getLength(); j++) {

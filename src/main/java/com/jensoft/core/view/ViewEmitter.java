@@ -15,31 +15,31 @@ import java.io.OutputStream;
 import javax.imageio.ImageIO;
 
 /**
- * <code>View2DEmitter</code>
+ * <code>ViewEmitter</code>
  * <p>
  * takes the responsibility to emit view a variety of format
  * </p>
  * 
  * @author sebastien janaud
  */
-public class View2DEmitter {
+public class ViewEmitter {
 
     /** view2D */
-    private View2D view2D;
+    private View view;
 
     /**
      * create empty emitter
      */
-    public View2DEmitter() {
+    public ViewEmitter() {
     }
 
     /**
      * create view emitter for the given view
      * 
-     * @param view2D
+     * @param view
      */
-    public View2DEmitter(View2D view2D) {
-        this.view2D = view2D;
+    public ViewEmitter(View view) {
+        this.view = view;
     }
 
     /**
@@ -48,7 +48,7 @@ public class View2DEmitter {
      * @return the template as buffered image
      */
     public BufferedImage emitAsBufferedImage() {
-        return view2D.getImageView(view2D.getWidth(), view2D.getHeight());
+        return view.getImageView(view.getWidth(), view.getHeight());
     }
 
     /**
@@ -61,7 +61,7 @@ public class View2DEmitter {
      * @return the template as buffered image
      */
     public BufferedImage emitAsBufferedImage(int width, int height) {
-        return view2D.getImageView(width, height);
+        return view.getImageView(width, height);
     }
 
     /**
@@ -94,8 +94,8 @@ public class View2DEmitter {
      * 
      * @return the template as buffered image
      */
-    public View2D emitAsView() {
-        return view2D;
+    public View emitAsView() {
+        return view;
     }
     
     /**

@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.ray.painter;
 import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.ray.Ray;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * base interface to define a operation ray painting
@@ -20,8 +20,8 @@ public interface RayPainter {
 	 * 
 	 * @param g2d
 	 * @param ray
-	 * @param windowPart
+	 * @param viewPart
 	 */
-	public void paintRay(Graphics2D g2d, Ray ray, WindowPart windowPart);
+	public void paintRay(Graphics2D g2d, Ray ray, ViewPart viewPart);
 
 }

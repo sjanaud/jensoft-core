@@ -36,7 +36,7 @@ public class DimensionDefaultPainter extends AbstractDimensionPainter {
         // paint path
         GeneralMetricsPath metricsPath = radarDimension.getMetricsPath();
 
-        metricsPath.setWindow2d(radar.getHost().getWindow2D());
+        metricsPath.setWindow2d(radar.getHost().getProjection());
         metricsPath.setFontRenderContext(g2d.getFontRenderContext());
         metricsPath.setSolveGeometryRequest(true);
         if (radarDimension.getLineColor() != null) {

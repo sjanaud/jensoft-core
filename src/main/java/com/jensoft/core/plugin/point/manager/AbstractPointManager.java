@@ -10,11 +10,11 @@ import java.util.Collections;
 import java.util.List;
 
 import com.jensoft.core.plugin.point.Point;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public abstract class AbstractPointManager implements PointLayoutManager {
 
-    private Window2D window2D;
+    private Projection window2D;
     private int type;
     private Color color;
 
@@ -24,12 +24,12 @@ public abstract class AbstractPointManager implements PointLayoutManager {
     }
 
     @Override
-    public void setWindow2D(Window2D w2d) {
+    public void setWindow2D(Projection w2d) {
         window2D = w2d;
     }
 
     @Override
-    public Window2D getWindow2D() {
+    public Projection getWindow2D() {
         return window2D;
     }
 

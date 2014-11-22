@@ -6,26 +6,26 @@ import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
-public class TextureTest extends View2D {
+public class TextureTest extends View {
 
 	private static final long serialVersionUID = -2875434568800741512L;
 
 	private int rowCount = 5;
 	private int colCount = 2;
-	private Window2D w ;
+	private Projection w ;
 	public TextureTest(){
 		super();
-		w = new Window2D.Linear(-1,1, -1, 1);
-		registerWindow2D(w);
+		w = new Projection.Linear(-1,1, -1, 1);
+		registerProjection(w);
 		AbstractPlugin plugin = new AbstractPlugin() {
 			
 			@Override
-			protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-				if(windowPart == WindowPart.Device){
+			protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+				if(viewPart == ViewPart.Device){
 					paintCell(g2d, TexturePalette.getBeeCarbonTexture0(), 0, 0);
 					paintCell(g2d, TexturePalette.getBeeCarbonTexture1(), 0, 1);
 					paintCell(g2d, TexturePalette.getBeeCarbonTexture2(), 1, 0);

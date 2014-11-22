@@ -5,11 +5,8 @@
  */
 package com.jensoft.core.device;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
-import java.awt.Shape;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
@@ -17,24 +14,19 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
-import java.awt.geom.Area;
-import java.awt.geom.GeneralPath;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
 import javax.swing.JComponent;
 
-import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.message.Message;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.view.View2DEvent;
-import com.jensoft.core.view.View2DListener;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewEvent;
+import com.jensoft.core.view.ViewListener;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>DevicePartComponent</code> is the view part center component.
@@ -42,23 +34,15 @@ import com.jensoft.core.window.WindowPart;
  * @author Sebastien Janaud
  * @since 1.0
  */
-/**
- * @author sebastien
- *
- */
-/**
- * @author sebastien
- *
- */
-public class DevicePartComponent extends JComponent implements Device2D,
-        MouseListener, MouseMotionListener, MouseWheelListener, View2DListener,
+public class DevicePartComponent extends JComponent implements Device,
+        MouseListener, MouseMotionListener, MouseWheelListener, ViewListener,
         FocusListener {
 
     /** serial version UID */
     private static final long serialVersionUID = -4082926837715398005L;
 
     /** parent view component */
-    private View2D view2D;
+    private View view;
 
     /** device menu manager */
     private DeviceMenuManager deviceMenuManager;
@@ -79,21 +63,21 @@ public class DevicePartComponent extends JComponent implements Device2D,
     }
 
     /**
-     * get the view2D
+     * get the view
      * 
      * @return the view
      */
-    public View2D getView2D() {
-        return view2D;
+    public View getView() {
+        return view;
     }
 
     /**
-     * set the view2d
+     * set the view
      * 
-     * @param view2D
+     * @param view
      */
-    public void setView2D(View2D view2D) {
-        this.view2D = view2D;
+    public void setView(View view) {
+        this.view = view;
     }
 
     /**
@@ -123,8 +107,8 @@ public class DevicePartComponent extends JComponent implements Device2D,
      */
     private void checkPopup(MouseEvent e) {
 
-        if (view2D.getActiveWindow() != null) {
-            List<AbstractPlugin> layouts = view2D.getActiveWindow()
+        if (view.getActiveProjection() != null) {
+            List<AbstractPlugin> layouts = view.getActiveProjection()
                     .getPluginRegistry();
             deviceMenuManager.setPlugins(layouts);
         }
@@ -194,8 +178,6 @@ public class DevicePartComponent extends JComponent implements Device2D,
         repaint(x, y, width, height);
     }
 
-    boolean shoot = false;
-    boolean right = true;
 
     /**
      * paint the device component
@@ -205,90 +187,12 @@ public class DevicePartComponent extends JComponent implements Device2D,
      */
     @Override
     public void paintComponent(Graphics g) {
-
         if (!isVisible()) {
             return;
         }
-
         Graphics2D g2d = (Graphics2D) g.create();
-
-        if (!shoot) {
-            paintBackground(g2d);
-            paintPlugins(g2d);
-
-        }
-        else {
-            Rectangle2D deRect = new Rectangle2D.Double(0, 0, getWidth(),
-                                                        getHeight());
-            Area a = new Area(deRect);
-            // RoundRectangle2D clip = new
-            // RoundRectangle2D.Double(100,100,getWidth()-200,getHeight()-200,40,40);
-
-            int startx = 100;
-            int starty = 100;
-            int width = 160;
-            int height = 120;
-            int round = 20;
-            GeneralPath path = new GeneralPath();
-
-            if (right) {
-                path.moveTo(startx, starty);
-                path.lineTo(startx + width - round, starty);
-                path.quadTo(startx + width, starty, startx + width, starty
-                        + round);
-                path.lineTo(startx + width, starty + height - round);
-                path.quadTo(startx + width, starty + height, startx + width
-                        - round, starty + height);
-                path.lineTo(startx, starty + height);
-            }
-
-            if (!right) {
-                path.moveTo(startx + round, starty);
-                path.lineTo(startx + width, starty);
-                // pathLeft.quadTo(startx+width, starty,startx+width,
-                // starty+round);
-                path.lineTo(startx + width, starty + height);
-                // pathLeft.quadTo(startx+width,
-                // starty+height,startx+width-round, starty+height);
-                path.lineTo(startx + round, starty + height);
-                path.quadTo(startx, starty + height, startx, starty + height
-                        - round);
-                path.lineTo(startx, starty + round);
-                path.quadTo(startx, starty, startx + round, starty);
-            }
-            path.closePath();
-
-            Shape clip = path;
-            Antialiasing aa = Antialiasing.On;
-            aa.configureGraphics(g2d);
-            a.subtract(new Area(clip));
-            g2d.setClip(deRect);
-            g2d.setColor(Color.WHITE);
-            g2d.fill(a);
-
-            g2d.setClip(clip);
-            Point2D start = new Point2D.Double(startx, starty);
-            Point2D end = new Point2D.Double(startx, starty + height);
-            float[] dist = { 0.0f, 1.0f };
-            Color[] colors = { new Color(0x202737), Color.BLACK };
-            // Color[] colors = {Color.WHITE,Color.red};
-
-            LinearGradientPaint p = new LinearGradientPaint(start, end, dist,
-                                                            colors);
-
-            g2d.setPaint(p);
-
-            g2d.fill(path);
-
-            g2d.setColor(Color.BLACK);
-            // g2d.setStroke(new BasicStroke(4f));
-            // g2d.draw(path);
-
-            paintPlugins(g2d);
-
-        }
-        // ??
-        // g2d.dispose();
+        paintBackground(g2d);
+        paintPlugins(g2d);
     }
 
     /**
@@ -311,7 +215,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
     }
 
     /** registered windows */
-    private Vector<Window2D> windows = new Vector<Window2D>();
+    private Vector<Projection> windows = new Vector<Projection>();
 
     /**
      * Allow to register the new window in device2D
@@ -319,7 +223,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @param w2d
      *            the window to register in device
      */
-    public void registerWindow(Window2D w2d) {
+    public void registerProjection(Projection w2d) {
         windows.add(w2d);
     }
 
@@ -329,7 +233,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @param w2d
      *            the window to remove in device
      */
-    public void unregisterWindow(Window2D w2d) {
+    public void unregisterProjection(Projection w2d) {
         windows.remove(w2d);
     }
 
@@ -342,14 +246,14 @@ public class DevicePartComponent extends JComponent implements Device2D,
     private void paintPlugins(Graphics2D g2d) {
 
         // paint passives windows first
-        List<Window2D> w2ds = view2D.getRegisterWindow();
-        for (Window2D w2d : w2ds) {
+        List<Projection> w2ds = view.getProjections();
+        for (Projection w2d : w2ds) {
 
             if (!w2d.isVisible()) {
                 continue;
             }
 
-            if (!w2d.equals(view2D.getActiveWindow())) {
+            if (!w2d.equals(view.getActiveProjection())) {
                 List<AbstractPlugin> plugins = w2d.getPluginRegistry();
                 Collections.sort(plugins,
                                  AbstractPlugin.getPriorityComparator());
@@ -357,7 +261,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
                     for (int j = 0; j < plugins.size(); j++) {
                         AbstractPlugin plugin = plugins.get(j);
                         try {
-                            plugin.paint(getView2D(), g2d, WindowPart.Device);
+                            plugin.paint(getView(), g2d, ViewPart.Device);
                         }
                         catch (Throwable e) {
                             e.printStackTrace();
@@ -369,10 +273,10 @@ public class DevicePartComponent extends JComponent implements Device2D,
         }
 
         // paint the active window last
-        if (view2D.getActiveWindow() != null
-                && view2D.getActiveWindow().isVisible()) {
+        if (view.getActiveProjection() != null
+                && view.getActiveProjection().isVisible()) {
 
-            List<AbstractPlugin> plugins = view2D.getActiveWindow()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             Collections.sort(plugins, AbstractPlugin.getPriorityComparator());
             if (plugins != null) {
@@ -380,7 +284,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
                 for (int j = 0; j < plugins.size(); j++) {
                     AbstractPlugin plugin = plugins.get(j);
                     try {
-                        plugin.paint(getView2D(), g2d, WindowPart.Device);
+                        plugin.paint(getView(), g2d, ViewPart.Device);
 
                     }
                     catch (Exception e) {
@@ -391,7 +295,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
         }
 
         try {
-            view2D.getWidgetPlugin().paint(view2D, g2d, WindowPart.Device);
+            view.getWidgetPlugin().paint(view, g2d, ViewPart.Device);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -408,9 +312,9 @@ public class DevicePartComponent extends JComponent implements Device2D,
     @Override
     public void mouseClicked(MouseEvent e) {
         checkPopup(e);
-        if (view2D.getActiveWindow() != null) {
+        if (view.getActiveProjection() != null) {
 
-            List<AbstractPlugin> plugins = view2D.getActiveWindow()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
                 for (int j = 0; j < plugins.size(); j++) {
@@ -433,9 +337,9 @@ public class DevicePartComponent extends JComponent implements Device2D,
      */
     @Override
     public void mouseEntered(MouseEvent e) {
-        if (view2D.getActiveWindow() != null) {
+        if (view.getActiveProjection() != null) {
 
-            List<AbstractPlugin> plugins = view2D.getActiveWindow()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
                 for (int j = 0; j < plugins.size(); j++) {
@@ -458,9 +362,9 @@ public class DevicePartComponent extends JComponent implements Device2D,
      */
     @Override
     public void mouseExited(MouseEvent e) {
-        if (view2D.getActiveWindow() != null) {
+        if (view.getActiveProjection() != null) {
 
-            List<AbstractPlugin> plugins = view2D.getActiveWindow()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
                 for (int j = 0; j < plugins.size(); j++) {
@@ -484,9 +388,9 @@ public class DevicePartComponent extends JComponent implements Device2D,
     @Override
     public void mousePressed(MouseEvent e) {
         checkPopup(e);
-        if (view2D.getActiveWindow() != null) {
+        if (view.getActiveProjection() != null) {
 
-            List<AbstractPlugin> plugins = view2D.getActiveWindow()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
                 for (int j = 0; j < plugins.size(); j++) {
@@ -500,7 +404,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
             }
         }
 
-        view2D.getWidgetPlugin().getOnPressListener().onPress(e);
+        view.getWidgetPlugin().getOnPressListener().onPress(e);
 
     }
 
@@ -513,9 +417,9 @@ public class DevicePartComponent extends JComponent implements Device2D,
     @Override
     public void mouseReleased(MouseEvent e) {
         checkPopup(e);
-        if (view2D.getActiveWindow() != null) {
+        if (view.getActiveProjection() != null) {
 
-            List<AbstractPlugin> plugins = view2D.getActiveWindow()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
                 for (int j = 0; j < plugins.size(); j++) {
@@ -529,7 +433,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
             }
         }
 
-        view2D.getWidgetPlugin().getOnReleaseListener().onRelease(e);
+        view.getWidgetPlugin().getOnReleaseListener().onRelease(e);
 
     }
 
@@ -541,9 +445,9 @@ public class DevicePartComponent extends JComponent implements Device2D,
      */
     @Override
     public void mouseDragged(MouseEvent e) {
-        if (view2D.getActiveWindow() != null) {
+        if (view.getActiveProjection() != null) {
 
-            List<AbstractPlugin> plugins = view2D.getActiveWindow()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
                 for (int j = 0; j < plugins.size(); j++) {
@@ -575,7 +479,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
         //
         // }
 
-        view2D.getWidgetPlugin().getOnDragListener().onDrag(e);
+        view.getWidgetPlugin().getOnDragListener().onDrag(e);
     }
 
     /**
@@ -586,9 +490,9 @@ public class DevicePartComponent extends JComponent implements Device2D,
      */
     @Override
     public void mouseMoved(MouseEvent e) {
-        if (view2D.getActiveWindow() != null) {
+        if (view.getActiveProjection() != null) {
 
-            List<AbstractPlugin> layouts = view2D.getActiveWindow()
+            List<AbstractPlugin> layouts = view.getActiveProjection()
                     .getPluginRegistry();
             if (layouts != null) {
                 for (int j = 0; j < layouts.size(); j++) {
@@ -615,7 +519,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
         // }
         // }
 
-        view2D.getWidgetPlugin().getOnMoveListener().onMove(e);
+        view.getWidgetPlugin().getOnMoveListener().onMove(e);
     }
 
     /**
@@ -626,9 +530,9 @@ public class DevicePartComponent extends JComponent implements Device2D,
      */
     @Override
     public void mouseWheelMoved(MouseWheelEvent e) {
-        if (view2D.getActiveWindow() != null) {
+        if (view.getActiveProjection() != null) {
 
-            List<AbstractPlugin> plugins = view2D.getActiveWindow()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
                 for (int j = 0; j < plugins.size(); j++) {
@@ -648,7 +552,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @see com.jensoft.core.view.View2DListener#viewWindow2DSelected(com.jensoft.core.view.View2DEvent)
      */
     @Override
-    public void viewWindow2DSelected(View2DEvent view2dEvent) {
+    public void viewProjectionSelected(ViewEvent view2dEvent) {
     }
 
     
@@ -656,7 +560,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @see com.jensoft.core.view.View2DListener#viewMoved(com.jensoft.core.view.View2DEvent)
      */
     @Override
-    public void viewMoved(View2DEvent view2dEvent) {
+    public void viewMoved(ViewEvent view2dEvent) {
         // TODO Auto-generated method stub
     }
 
@@ -665,7 +569,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @see com.jensoft.core.view.View2DListener#viewResized(com.jensoft.core.view.View2DEvent)
      */
     @Override
-    public void viewResized(View2DEvent view2dEvent) {
+    public void viewResized(ViewEvent view2dEvent) {
         // TODO Auto-generated method stub
     }
 
@@ -674,7 +578,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @see com.jensoft.core.view.View2DListener#viewHidden(com.jensoft.core.view.View2DEvent)
      */
     @Override
-    public void viewHidden(View2DEvent view2dEvent) {
+    public void viewHidden(ViewEvent view2dEvent) {
         // TODO Auto-generated method stub
     }
 
@@ -683,7 +587,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @see com.jensoft.core.view.View2DListener#viewShown(com.jensoft.core.view.View2DEvent)
      */
     @Override
-    public void viewShown(View2DEvent view2dEvent) {
+    public void viewShown(ViewEvent view2dEvent) {
         // TODO Auto-generated method stub
 
     }
@@ -693,7 +597,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @see com.jensoft.core.view.View2DListener#viewFocusGained(com.jensoft.core.view.View2DEvent)
      */
     @Override
-    public void viewFocusGained(View2DEvent view2dEvent) {
+    public void viewFocusGained(ViewEvent view2dEvent) {
         // TODO Auto-generated method stub
 
     }
@@ -703,7 +607,7 @@ public class DevicePartComponent extends JComponent implements Device2D,
      * @see com.jensoft.core.view.View2DListener#viewFocusLost(com.jensoft.core.view.View2DEvent)
      */
     @Override
-    public void viewFocusLost(View2DEvent view2dEvent) {
+    public void viewFocusLost(ViewEvent view2dEvent) {
         // TODO Auto-generated method stub
 
     }

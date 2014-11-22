@@ -11,7 +11,7 @@ import java.awt.geom.GeneralPath;
 import java.util.List;
 
 import com.jensoft.core.glyphmetrics.painter.MetricsPathPainter;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>AbstractMetricsPath</code> is an abstract definition of a path with
@@ -39,7 +39,7 @@ public abstract class AbstractMetricsPath {
 	private boolean autoReverseGlyph = false;
 
 	/** the window 2D */
-	private Window2D window2d;
+	private Projection window2d;
 
 	/** the geometry path */
 	private GeometryPath geometryPath;
@@ -111,7 +111,7 @@ public abstract class AbstractMetricsPath {
 	/**
 	 * get the window2D
 	 */
-	public Window2D getWindow2d() {
+	public Projection getWindow2d() {
 		return window2d;
 	}
 
@@ -120,7 +120,7 @@ public abstract class AbstractMetricsPath {
 	 * 
 	 * @param window2d
 	 */
-	public void setWindow2d(Window2D window2d) {
+	public void setWindow2d(Projection window2d) {
 		this.window2d = window2d;
 	}
 

@@ -16,11 +16,11 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.bubble.painter.BubbleDraw;
 import com.jensoft.core.plugin.bubble.painter.BubbleEffect;
 import com.jensoft.core.plugin.bubble.painter.BubbleFill;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
- * BubblePlugin
+ * <code>BubblePlugin</code>
  * 
  * @see BubblePlugin
  * @see BubbleDraw
@@ -71,7 +71,7 @@ public class BubblePlugin extends AbstractPlugin {
      * @param g2d
      * @param bubble
      */
-    private void paintBubble(View2D v2d, Graphics2D g2d, Bubble bubble) {
+    private void paintBubble(View v2d, Graphics2D g2d, Bubble bubble) {
 
         if (bubble.getBubbleFill() != null) {
             bubble.getBubbleFill().paintBubble(g2d, bubble);
@@ -94,7 +94,7 @@ public class BubblePlugin extends AbstractPlugin {
         for (Bubble bubble : bubbles) {
             Point2D p2dUserCenter = new Point2D.Double(bubble.getX(),
                                                        bubble.getY());
-            Point2D p2dDeviceCenter = bubble.getHost().getWindow2D()
+            Point2D p2dDeviceCenter = bubble.getHost().getProjection()
                     .userToPixel(p2dUserCenter);
 
             Ellipse2D bubbleShape = new Ellipse2D.Double(p2dDeviceCenter.getX()
@@ -109,21 +109,17 @@ public class BubblePlugin extends AbstractPlugin {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
-
         solveGeometry();
-
         for (Bubble bubble : bubbles) {
-            paintBubble(v2d, g2d, bubble);
+            paintBubble(view, g2d, bubble);
         }
-
     }
 
 }

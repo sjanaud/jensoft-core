@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.ray.painter;
 import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.ray.Ray;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * base class to define a operation ray painting
@@ -19,9 +19,9 @@ public abstract class AbstractRayPainter implements RayPainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.painter.RayPainter#paintRay(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.ray.painter.RayPainter#paintRay(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public abstract void paintRay(Graphics2D g2d, Ray ray, WindowPart windowPart);
+    public abstract void paintRay(Graphics2D g2d, Ray ray, ViewPart viewPart);
 
 }

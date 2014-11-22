@@ -23,7 +23,7 @@ import com.jensoft.core.catalog.source.JavaSourcePane;
 import com.jensoft.core.catalog.source.X2DSourcePane;
 import com.jensoft.core.palette.JennyPalette;
 import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.x2d.X2D;
 import com.jensoft.core.x2d.X2DException;
 
@@ -105,7 +105,7 @@ public abstract class X2DFrameUI extends JFrame {
 		} catch (X2DException e) {
 			e.printStackTrace();
 		}
-		View2D view2d = x2d.getView2D();
+		View view2d = x2d.getView();
 
 		tabSet.addComandTab(demoTab, view2d);
 		final X2D fx2d = x2d;

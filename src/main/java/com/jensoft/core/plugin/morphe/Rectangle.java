@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class Rectangle extends Primitive {
 
@@ -41,7 +41,7 @@ public class Rectangle extends Primitive {
             g2d.draw(rect2DDevice);
         }
         else if (getNature() == PrimitiveNature.USER) {
-            Window2D w2d = getHost().getWindow2D();
+            Projection w2d = getHost().getProjection();
 
             Point2D centerUser = w2d.userToPixel(new Point2D.Double(centerX,
                                                                     centerY));

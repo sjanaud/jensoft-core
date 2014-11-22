@@ -25,12 +25,13 @@ import com.jensoft.core.plugin.grid.manager.MultiplierGridManager;
 import com.jensoft.core.plugin.grid.manager.StaticGridManager;
 import com.jensoft.core.plugin.grid.painter.AbstractGridPainter;
 import com.jensoft.core.plugin.grid.painter.GridDefaultPainter;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>GridPlugin</code> takes the responsibility to paint grids.
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
 public abstract class GridPlugin<M extends AbstractGridManager> extends AbstractPlugin {
@@ -51,15 +52,15 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public final void paintPlugin(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    public final void paintPlugin(View view, Graphics2D g2d,
+            ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
-        paintGrids(v2d, g2d);
+        paintGrids(view, g2d);
     }
 
     /**
@@ -88,11 +89,11 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
      * @param v2d
      * @param g2d
      */
-    protected void paintGrids(View2D v2d, Graphics2D g2d) {
+    protected void paintGrids(View v2d, Graphics2D g2d) {
         if (gridManager == null) {
             return;
         }
-        gridManager.setWindow2D(getWindow2D());
+        gridManager.setWindow2D(getProjection());
         gridPainter.setLayoutManager(gridManager);
         gridPainter.paintGrids(g2d, gridManager.getGrids());
     }
@@ -377,12 +378,12 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
          * @see com.jensoft.core.plugin.grid.GridPlugin#paintGrids(com.jensoft.core.view.View2D, java.awt.Graphics2D)
          */
         @Override
-        protected void paintGrids(View2D v2d, Graphics2D g2d) {
+        protected void paintGrids(View v2d, Graphics2D g2d) {
 
             if (getGridManager() == null) {
                 return;
             }
-            getGridManager().setWindow2D(getWindow2D());
+            getGridManager().setWindow2D(getProjection());
 
             List<GridModel> models = getGridManager().getSequenceGrid();
             for (GridModel gridModel : models) {

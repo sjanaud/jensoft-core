@@ -19,12 +19,14 @@ import com.jensoft.core.plugin.function.area.Area;
 import com.jensoft.core.plugin.function.curve.Curve;
 import com.jensoft.core.plugin.function.scatter.Scatter;
 import com.jensoft.core.plugin.function.scatter.Scatter.ScatterPoint;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2DEvent;
-import com.jensoft.core.window.Window2DListener;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.ProjectionEvent;
+import com.jensoft.core.projection.ProjectionListener;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
+ * <code>FunctionPlugin</code>
+ * 
  * @author sebastien janaud
  */
 public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin {
@@ -63,11 +65,11 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
       
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
          */
         @Override
-        protected void paintFunctions(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-            if (windowPart != WindowPart.Device) {
+        protected void paintFunctions(View view, Graphics2D g2d, ViewPart viewPart) {
+            if (viewPart != ViewPart.Device) {
                 return;
             }
 
@@ -81,7 +83,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
                     area.getPathFunction().setSolveGeometryRequest(true);
                 }
 
-                area.getPathFunction().setWindow2d(getWindow2D());
+                area.getPathFunction().setWindow2d(getProjection());
                 area.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
 
                 area.solveGeometry();
@@ -116,11 +118,11 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
          */
         @Override
-        protected void paintFunctions(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-            if (windowPart != WindowPart.Device) {
+        protected void paintFunctions(View view, Graphics2D g2d, ViewPart viewPart) {
+            if (viewPart != ViewPart.Device) {
                 return;
             }
 
@@ -129,7 +131,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
             
             for (int c = 0; c < getFunctions().size(); c++) {
                 Curve curve = getFunctions().get(c);
-                curve.getPathFunction().setWindow2d(getWindow2D());
+                curve.getPathFunction().setWindow2d(getProjection());
                 curve.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
                 curve.getCurveDraw().paintCurve(g2d, curve);
             }
@@ -150,16 +152,16 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
          */
         @Override
-        protected void paintFunctions(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-            if (windowPart != WindowPart.Device) {
+        protected void paintFunctions(View view, Graphics2D g2d, ViewPart viewPart) {
+            if (viewPart != ViewPart.Device) {
                 return;
             }
             for (int i = 0; i < getFunctions().size(); i++) {
                 Scatter scatterCurve = getFunctions().get(i);
-                scatterCurve.getPathFunction().setWindow2d(getWindow2D());
+                scatterCurve.getPathFunction().setWindow2d(getProjection());
                 scatterCurve.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
                 scatterCurve.solveScatter();
                 for (ScatterPoint scatter : scatterCurve.getScatters()) {
@@ -188,16 +190,16 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
      * @see com.jensoft.core.plugin.AbstractPlugin#onWindowRegister()
      */
     @Override
-    public void onWindowRegister() {
+    public void onProjectionRegister() {
 
-        getWindow2D().addWindow2DListener(new Window2DListener() {
+        getProjection().addProjectionListener(new ProjectionListener() {
 
            
             /* (non-Javadoc)
              * @see com.jensoft.core.window.Window2DListener#window2DUnlockActive(com.jensoft.core.window.Window2DEvent)
              */
             @Override
-            public void window2DUnlockActive(Window2DEvent w2dEvent) {
+            public void projectionUnlockActive(ProjectionEvent w2dEvent) {
             }
 
             
@@ -205,7 +207,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
              * @see com.jensoft.core.window.Window2DListener#window2DLockActive(com.jensoft.core.window.Window2DEvent)
              */
             @Override
-            public void window2DLockActive(Window2DEvent w2dEvent) {
+            public void projectionLockActive(ProjectionEvent w2dEvent) {
             }
 
            
@@ -213,7 +215,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
              * @see com.jensoft.core.window.Window2DListener#window2DBoundChanged(com.jensoft.core.window.Window2DEvent)
              */
             @Override
-            public void window2DBoundChanged(Window2DEvent w2dEvent) {
+            public void projectionBoundChanged(ProjectionEvent w2dEvent) {
                 for (Function function : functions) {
 
                     /*
@@ -233,7 +235,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
              * @see com.jensoft.core.window.Window2DListener#window2DResized(com.jensoft.core.window.Window2DEvent)
              */
             @Override
-            public void window2DResized(Window2DEvent w2dEvent) {
+            public void projectionResized(ProjectionEvent w2dEvent) {
                 for (Function function : functions) {
 
                     /*
@@ -266,19 +268,19 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
     /**
      * @param v2d
      * @param g2d
-     * @param windowPart
+     * @param viewPart
      */
-    protected abstract void paintFunctions(View2D v2d, Graphics2D g2d, WindowPart windowPart);
+    protected abstract void paintFunctions(View v2d, Graphics2D g2d, ViewPart viewPart);
 
     /**
      * paint the {@link GlyphMetric} from {@link MetricsPathFunction}
      * 
      * @param v2d
      * @param g2d
-     * @param windowPart
+     * @param viewPart
      */
-    protected void paintMetricsGlyphFunction(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    protected void paintMetricsGlyphFunction(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
         for (int c = 0; c < functions.size(); c++) {
@@ -309,12 +311,12 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        paintFunctions(v2d, g2d, windowPart);
-        paintMetricsGlyphFunction(v2d, g2d, windowPart);
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        paintFunctions(v2d, g2d, viewPart);
+        paintMetricsGlyphFunction(v2d, g2d, viewPart);
     }
 
 }

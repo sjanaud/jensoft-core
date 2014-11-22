@@ -29,20 +29,20 @@ import com.jensoft.core.plugin.pie.PieSlice;
 import com.jensoft.core.plugin.pie.PieToolkit;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.RoundViewFill;
-import com.jensoft.core.window.Window2D;
 import com.jensoft.core.x2d.X2D;
 import com.jensoft.core.x2d.X2DException;
 
 @JenSoftView
-public class PieDeflateTest extends View2D {
+public class PieDeflateTest extends View {
 
 	private static final long serialVersionUID = 156889765687899L;
 
 	@Portfolio(name = "PieReflectionEffectDemo", width = 800, height = 600)
-	public static View2D getPortofolio() {
+	public static View getPortofolio() {
 		PieDeflateTest demo = new PieDeflateTest();
 
 		RoundViewFill viewBackground = new RoundViewFill();
@@ -97,8 +97,8 @@ public class PieDeflateTest extends View2D {
 		viewBackground.setOutlineStroke(new BasicStroke(2.5f));
 		setBackgroundPainter(viewBackground);
 
-		Window2D window = new Window2D.Linear(-1, 1, -3, 3);
-		registerWindow2D(window);
+		Projection window = new Projection.Linear(-1, 1, -3, 3);
+		registerProjection(window);
 
 		PiePlugin piePlugin = new PiePlugin();
 		window.registerPlugin(piePlugin);

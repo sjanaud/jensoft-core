@@ -18,7 +18,7 @@ import com.jensoft.core.plugin.pie.painter.draw.AbstractPieSliceDraw;
 import com.jensoft.core.plugin.pie.painter.effect.AbstractPieSliceEffect;
 import com.jensoft.core.plugin.pie.painter.fill.AbstractPieSliceFill;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * definition of the pie slice
@@ -124,8 +124,8 @@ public class PieSlice {
      * 
      * @return the host view
      */
-    public View2D getView2D() {
-        return getHost().getHostPlugin().getWindow2D().getView2D();
+    public View getView2D() {
+        return getHost().getHostPlugin().getProjection().getView2D();
     }
 
     /**

@@ -41,7 +41,7 @@ public class PlotDefaultLabel extends AbstractPlotLabel {
 		if (plot.getPlotDrawColor() != null)
 			g2d.setColor(plot.getPlotDrawColor());
 		else
-			g2d.setColor(plot.getHost().getWindow2D().getThemeColor());
+			g2d.setColor(plot.getHost().getProjection().getThemeColor());
 
 //		for (int i = 0; i < plot.getDevicePoints().size(); i++) {
 //			String s = Integer.toString(i);
@@ -57,7 +57,7 @@ public class PlotDefaultLabel extends AbstractPlotLabel {
 			String s = Integer.toString(i);
 			int w = fm.stringWidth(s) / 2;
 			Point2D p = plot.getUserPoints().get(i);
-			Point2D d = plot.getHost().getWindow2D().userToPixel(p);
+			Point2D d = plot.getHost().getProjection().userToPixel(p);
 			g2d.drawString(Integer.toString(i), (int) (d.getX() - w), (int) ( d.getY() + h));
 		}
 	}

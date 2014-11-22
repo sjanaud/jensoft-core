@@ -14,7 +14,7 @@ import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.plugin.ray.Ray;
 import com.jensoft.core.plugin.ray.Ray.RayNature;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class RayEffect2 extends AbstractRayEffect {
 
@@ -38,7 +38,7 @@ public class RayEffect2 extends AbstractRayEffect {
 
     private void paintEffectXRay_ef2(Graphics2D g2d, Ray ray) {
 
-        Window2D w2d = ray.getHost().getWindow2D();
+        Projection w2d = ray.getHost().getProjection();
 
         Point2D p2dUser = null;
         if (ray.isAscent()) {
@@ -96,7 +96,7 @@ public class RayEffect2 extends AbstractRayEffect {
 
     private void paintEffectYRay_ef2(Graphics2D g2d, Ray ray) {
 
-        Window2D w2d = ray.getHost().getWindow2D();
+        Projection w2d = ray.getHost().getProjection();
 
         Point2D p2dUser = null;
         if (ray.isAscent()) {

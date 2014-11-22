@@ -16,9 +16,9 @@ import javax.swing.SwingUtilities;
 
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>ZoomPercentPlugin</code>
@@ -55,8 +55,8 @@ public class ZoomPercentPlugin extends AbstractPlugin implements
     }
 
     public void zoomInit() {
-        if (getWindow2D() instanceof Window2D.Linear) {
-            Window2D.Linear wl = (Window2D.Linear) getWindow2D();
+        if (getProjection() instanceof Projection.Linear) {
+            Projection.Linear wl = (Projection.Linear) getProjection();
             double minx = wl.getInitialMinX();
             double maxx = wl.getInitialMaxX();
 
@@ -126,30 +126,30 @@ public class ZoomPercentPlugin extends AbstractPlugin implements
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (getWindow2D() instanceof Window2D.Linear) {
-                Window2D.Linear wl = (Window2D.Linear) getWindow2D();
+            if (getProjection() instanceof Projection.Linear) {
+                Projection.Linear wl = (Projection.Linear) getProjection();
                 if (zoomPercent != ZoomPercent.Init) {
 
                     float percentFactor = zoomPercent.getPercent();
 
                     Point2D center = wl.getUserCenter();
 
-                    double width = getWindow2D().getUserWidth();
+                    double width = getProjection().getUserWidth();
                     double partX = width / 2;
                     double minx = center.getX() - partX / percentFactor;
                     double maxx = center.getX() + partX / percentFactor;
 
-                    double height = getWindow2D().getUserHeight();
+                    double height = getProjection().getUserHeight();
                     double partY = height / 2;
                     double miny = center.getY() - partY / percentFactor;
                     double maxy = center.getY() + partY / percentFactor;
 
                     wl.bound(minx, maxx, miny, maxy);
-                    getWindow2D().getView2D().repaint();
+                    getProjection().getView2D().repaint();
                 }
                 else {
                     zoomInit();
-                    getWindow2D().getView2D().repaint();
+                    getProjection().getView2D().repaint();
                 }
             }
 
@@ -166,7 +166,7 @@ public class ZoomPercentPlugin extends AbstractPlugin implements
         percent100BoxRollover = false;
         percent100BoxLock = false;
 
-        getView2D().repaintDevice();
+        getView().repaintDevice();
 
     }
 
@@ -195,7 +195,7 @@ public class ZoomPercentPlugin extends AbstractPlugin implements
             percent100BoxLock = false;
         }
 
-        getView2D().repaintDevice();
+        getView().repaintDevice();
 
     }
 
@@ -223,18 +223,18 @@ public class ZoomPercentPlugin extends AbstractPlugin implements
             percent100BoxRollover = false;
         }
 
-        getView2D().repaintDevice();
+        getView().repaintDevice();
 
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
-
-        // drawDragBox(g2d);
     }
 
     private Rectangle2D dragBox;
@@ -253,8 +253,8 @@ public class ZoomPercentPlugin extends AbstractPlugin implements
     boolean percent100BoxLock = false;
 
     private void drawDragBox(Graphics2D g2d) {
-        int dw = getWindow2D().getDevice2D().getDeviceWidth();
-        int dh = getWindow2D().getDevice2D().getDeviceHeight();
+        int dw = getProjection().getDevice2D().getDeviceWidth();
+        int dh = getProjection().getDevice2D().getDeviceHeight();
 
         int dragBoxW = 100;
         int dragBoxH = 40;

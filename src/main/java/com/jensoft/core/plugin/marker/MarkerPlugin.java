@@ -23,10 +23,10 @@ import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.marker.marker.AbstractMarker;
 import com.jensoft.core.plugin.marker.marker.CrossMarker;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 import com.jensoft.core.view.WidgetPlugin.PushingBehavior;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
 
 /**
  * CroosMarker plugin manage marker
@@ -104,7 +104,7 @@ public class MarkerPlugin extends AbstractPlugin implements
     @Override
     public void lockSelected() {
         super.lockSelected();
-        getWindow2D()
+        getProjection()
                 .getView2D()
                 .getWidgetPlugin()
                 .pushMessage("LOCK " + getName().toUpperCase(), this,
@@ -115,7 +115,7 @@ public class MarkerPlugin extends AbstractPlugin implements
     @Override
     public void unlockSelected() {
         super.unlockSelected();
-        getWindow2D().getDevice2D().repaintDevice();
+        getProjection().getDevice2D().repaintDevice();
 
     }
 
@@ -250,7 +250,7 @@ public class MarkerPlugin extends AbstractPlugin implements
 
     private void pasteNewMarker(AbstractMarker marker) {
         marker.setHost(this);
-        Window2D window = getWindow2D();
+        Projection window = getProjection();
         Point2D p2dCross = new Point2D.Double(floatingMarker.getMarkerX(),
                                               floatingMarker.getMarkerY());
         Point2D p2dCrossUser = window.pixelToUser(p2dCross);
@@ -262,12 +262,12 @@ public class MarkerPlugin extends AbstractPlugin implements
 
         markers.add(marker);
 
-        getWindow2D().getDevice2D().repaintDevice();
+        getProjection().getDevice2D().repaintDevice();
     }
 
     private void deleteAllMarkers() {
         markers.clear();
-        getWindow2D().getDevice2D().repaintDevice();
+        getProjection().getDevice2D().repaintDevice();
     }
 
     public void lockCross() {
@@ -329,7 +329,7 @@ public class MarkerPlugin extends AbstractPlugin implements
             floatingMarker.setMarkerX(currentX);
             floatingMarker.setMarkerY(currentY);
             lockCross();
-            getWindow2D().getDevice2D().repaintDevice();
+            getProjection().getDevice2D().repaintDevice();
         }
 
     }
@@ -354,7 +354,7 @@ public class MarkerPlugin extends AbstractPlugin implements
 
         int currentX = me.getX();
         int currentY = me.getY();
-        Window2D w2d = getWindow2D();
+        Projection w2d = getProjection();
         // MANAGE MOVE MARKERS
         for (int i = 0; i < markers.size(); i++) {
 
@@ -364,7 +364,7 @@ public class MarkerPlugin extends AbstractPlugin implements
                 Point2D curentUser = w2d.pixelToUser(curentDevice);
                 cm.setMarkerX(curentUser.getX());
                 cm.setMarkerY(curentUser.getY());
-                getWindow2D().getDevice2D().repaintDevice();
+                getProjection().getDevice2D().repaintDevice();
 
             }
         }
@@ -377,7 +377,7 @@ public class MarkerPlugin extends AbstractPlugin implements
         // floatable is in device coordinate.// take care
         floatingMarker.setMarkerX(currentX);
         floatingMarker.setMarkerY(currentY);
-        getWindow2D().getDevice2D().repaintDevice();
+        getProjection().getDevice2D().repaintDevice();
 
     }
 
@@ -385,7 +385,7 @@ public class MarkerPlugin extends AbstractPlugin implements
 
     private void interceptCrossMarker(MouseEvent e) {
 
-        Window2D window = getWindow2D();
+        Projection window = getProjection();
         for (int i = 0; i < markers.size(); i++) {
 
             AbstractMarker cm = markers.get(i);
@@ -408,12 +408,12 @@ public class MarkerPlugin extends AbstractPlugin implements
             }
 
         }
-        getWindow2D().getDevice2D().repaintDevice();
+        getProjection().getDevice2D().repaintDevice();
     }
 
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
 

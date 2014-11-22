@@ -10,16 +10,16 @@ import java.awt.Color;
 import java.awt.Stroke;
 
 import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.plugin.zoom.objectif.ZoomObjectifPlugin.ZoomNature;
+import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin.ZoomNature;
 import com.jensoft.core.widget.bar.AbstractBarGeometry.BarWidgetOrientation;
 import com.jensoft.core.widget.bar.AbstractPlusMinusBarWidget;
 
 /**
- * <code>ObjectifY</code>
+ * <code>LensY</code> widget for zoom y dimension
  * 
  * @author sebastien janaud
  */
-public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
+public class LensY extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
 
     /** the widget id */
     public final static String widgetBarYObjectifID = "@widget/objectif/y";
@@ -65,7 +65,7 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
     * @param width
     * @param height
     */
-    public ObjectifY(double width, double height) {
+    public LensY(double width, double height) {
         super(widgetBarYObjectifID, width, height, defaultXFolderIndex,
               defaultYFolderIndex, BarWidgetOrientation.Vertical);
         setShader(fractions, colors);
@@ -83,7 +83,7 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
      * @param xIndex
      * @param yIndex
      */
-    public ObjectifY(double width, double height, int xIndex, int yIndex) {
+    public LensY(double width, double height, int xIndex, int yIndex) {
         super(widgetBarYObjectifID, width, height, xIndex, yIndex,
               BarWidgetOrientation.Vertical);
         setShader(fractions, colors);
@@ -97,7 +97,7 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
     /**
      * create default Y Objectif widget
      */
-    public ObjectifY() {
+    public LensY() {
         super(widgetBarYObjectifID, defaultBarWidth, defaultBarHeight,
               defaultXFolderIndex, defaultYFolderIndex,
               BarWidgetOrientation.Vertical);
@@ -115,7 +115,7 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
      */
     @Override
     public final boolean isCompatiblePlugin() {
-        if (getHost() != null && getHost() instanceof ZoomObjectifPlugin) {
+        if (getHost() != null && getHost() instanceof ZoomLensPlugin) {
             return true;
         }
         return false;
@@ -127,7 +127,7 @@ public class ObjectifY extends AbstractPlusMinusBarWidget<ZoomObjectifPlugin> {
      */
     @Override
     public void onButton1Press() {
-        ZoomObjectifPlugin objectif = (ZoomObjectifPlugin) getHost();
+        ZoomLensPlugin objectif = (ZoomLensPlugin) getHost();
         if (!objectif.isLockSelected()) {
             return;
         }

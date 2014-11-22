@@ -56,7 +56,7 @@ public class TitleLegendDefaultFill extends AbstractTitleLegendFill {
                 g2d.setColor(legend.getThemeColor());
             }
             else {
-                g2d.setColor(legend.getHost().getWindow2D().getThemeColor());
+                g2d.setColor(legend.getHost().getProjection().getThemeColor());
             }
         }
         List<GlyphGeometry> legendGlyphs = legend.getLegendGlyphs();

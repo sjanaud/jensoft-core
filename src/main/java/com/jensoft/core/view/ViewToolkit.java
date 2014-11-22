@@ -19,8 +19,8 @@ public class ViewToolkit {
      * 
      * @return view
      */
-    public static View2D createView() {
-        View2D view2D = new View2D();
+    public static View createView() {
+        View view2D = new View();
         return view2D;
     }
 
@@ -37,8 +37,8 @@ public class ViewToolkit {
      *            south height
      * @return view
      */
-    public static View2D createView(int east, int west, int north, int south) {
-        View2D view2D = new View2D();
+    public static View createView(int east, int west, int north, int south) {
+        View view2D = new View();
         view2D.setPlaceHolderAxisNorth(north);
         view2D.setPlaceHolderAxisSouth(south);
         view2D.setPlaceHolderAxisWest(east);
@@ -53,8 +53,8 @@ public class ViewToolkit {
      *            window border size
      * @return view
      */
-    public static View2D createView(int placeHolder) {
-        View2D view2D = new View2D();
+    public static View createView(int placeHolder) {
+        View view2D = new View();
         view2D.setPlaceHolderAxisNorth(placeHolder);
         view2D.setPlaceHolderAxisSouth(placeHolder);
         view2D.setPlaceHolderAxisWest(placeHolder);
@@ -71,8 +71,8 @@ public class ViewToolkit {
      *            view background color
      * @return view
      */
-    public static View2D createView(int placeHolder, Color background) {
-        View2D view2D = new View2D();
+    public static View createView(int placeHolder, Color background) {
+        View view2D = new View();
         view2D.setPlaceHolderAxisNorth(placeHolder);
         view2D.setPlaceHolderAxisSouth(placeHolder);
         view2D.setPlaceHolderAxisWest(placeHolder);

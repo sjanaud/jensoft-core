@@ -421,7 +421,7 @@ public class Donut3DBorderLabel extends AbstractDonut3DSliceLabel {
 
         Point2D c = null;
         if (donut3D.getDonut3DNature() == Donut3DNature.Donut3DUser) {
-            c = donut3D.getHostPlugin().getWindow2D()
+            c = donut3D.getHostPlugin().getProjection()
                     .userToPixel(new Point2D.Double(centerX, centerY));
         }
         if (donut3D.getDonut3DNature() == Donut3DNature.Donut3DDevice) {

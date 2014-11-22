@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /***
  * <code>Widget</code>
@@ -401,7 +401,7 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
      * @param v2d
      * @param g2d
      */
-    protected abstract void paintWidget(View2D v2d, Graphics2D g2d);
+    protected abstract void paintWidget(View v2d, Graphics2D g2d);
 
     /**
      * lay out widget folder
@@ -409,7 +409,7 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
      * @param v2d
      *            the view2D
      */
-    private void layoutFolder(View2D v2d) {
+    private void layoutFolder(View v2d) {
 
         if (getWidgetFolder() == null) {
             setWidgetFolder(v2d.newWidgetFolderIntance(getId(), getWidth(),
@@ -430,9 +430,9 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
      * repaint the widget for the clipping widget area
      */
     public void repaintWidget() {
-        if (getHost() != null && getHost().getWindow2D() != null && getHost().getWindow2D().getView2D() != null
+        if (getHost() != null && getHost().getProjection() != null && getHost().getProjection().getView2D() != null
                 && getWidgetFolder() != null && getWidgetFolder().getBounds() != null) {
-            getHost().getWindow2D().getView2D().repaintDevice(getWidgetFolder().getBounds());
+            getHost().getProjection().getView2D().repaintDevice(getWidgetFolder().getBounds());
         }
     }
 
@@ -444,7 +444,7 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
      * @param g2d
      *            the graphics context
      */
-    public final void paint(View2D v2d, Graphics2D g2d) {
+    public final void paint(View v2d, Graphics2D g2d) {
         if (!isLockWidget()) {
             return;
         }

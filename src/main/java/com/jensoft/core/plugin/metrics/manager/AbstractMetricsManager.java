@@ -45,10 +45,10 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
     private Color metricsBaseLineColor;
 
     /** metrics median font */
-    private Font metricsMedianFont = new Font("Dialog", Font.PLAIN, 10);
+    private Font metricsMedianFont = new Font("Verdana", Font.PLAIN, 10);
 
     /** metrics major font */
-    private Font metricsMajorFont = new Font("Dialog", Font.PLAIN, 12);
+    private Font metricsMajorFont = new Font("Verdana", Font.PLAIN, 12);
 
     /** metrics render context */
     private MetricsRenderContext renderContext;

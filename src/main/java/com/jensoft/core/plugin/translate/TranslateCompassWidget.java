@@ -20,7 +20,7 @@ import java.awt.geom.Point2D;
 import com.jensoft.core.palette.Alpha;
 import com.jensoft.core.palette.RosePalette;
 import com.jensoft.core.plugin.PluginEvent;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.widget.Widget;
 import com.jensoft.core.widget.WidgetFolder;
 
@@ -267,7 +267,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
                     getCompassGeometry().getNeedle().getNeedleVector().endx = averageDx / averageCounter;
                     getCompassGeometry().getNeedle().getNeedleVector().starty = 0;
                     getCompassGeometry().getNeedle().getNeedleVector().endy = averageDy / averageCounter;
-                    getHost().getWindow2D().getView2D().repaintDevice(getWidgetFolder().getBounds());
+                    getHost().getProjection().getView2D().repaintDevice(getWidgetFolder().getBounds());
                     averageCounter = 0;
                     averageDx = 0;
                     averageDy = 0;
@@ -427,7 +427,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
      * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    protected void paintWidget(View2D v2d, Graphics2D g2d) {
+    protected void paintWidget(View v2d, Graphics2D g2d) {
         if (getHost().isLockTranslate()) {
             paintTranslateCompass(g2d);
         }

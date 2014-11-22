@@ -140,7 +140,7 @@ public class QStar extends Primitive {
         else if (getNature() == PrimitiveNature.USER) {
             for (int i = 0; i < branchCount; i++) {
 
-                Point2D u = getHost().getWindow2D().userToPixel(
+                Point2D u = getHost().getProjection().userToPixel(
                                                                 new Point2D.Double(centerX, centerY));
 
                 double pXExternal = u.getX()

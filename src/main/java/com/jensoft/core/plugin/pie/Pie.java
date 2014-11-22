@@ -425,6 +425,18 @@ public class Pie {
         slice.setHost(this);
         slices.add(slice);
     }
+    
+    /**
+     * add slices to this pie
+     * 
+     * @param slices
+     *            the slices array to add
+     */
+    public void addSlices(PieSlice... slices) {
+        for (int i = 0; i < slices.length; i++) {
+			addSlice(slices[i]);
+		}
+    }
 
     /**
      * get the pie nature
@@ -550,7 +562,7 @@ public class Pie {
 
         Point2D c = null;
         if (pieNature == PieNature.User) {
-            c = getHostPlugin().getWindow2D().userToPixel(
+            c = getHostPlugin().getProjection().userToPixel(
                                                           new Point2D.Double(centerX, centerY));
         }
         if (pieNature == PieNature.Device) {

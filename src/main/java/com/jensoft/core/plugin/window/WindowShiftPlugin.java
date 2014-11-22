@@ -11,11 +11,11 @@ import javax.swing.JMenuItem;
 
 import com.jensoft.core.device.ContextEntry;
 import com.jensoft.core.plugin.AbstractPlugin;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.sharedicon.SharedIcon;
 import com.jensoft.core.sharedicon.common.Common;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 public class WindowShiftPlugin extends AbstractPlugin {
 
@@ -47,9 +47,9 @@ public class WindowShiftPlugin extends AbstractPlugin {
 			shiftMenu = new JMenu("Windows");
 			shiftMenu.setIcon(shiftIcon);
 			
-			List<Window2D> windows =  getHost().getWindow2D().getView2D().getRegisterWindow();
+			List<Projection> windows =  getHost().getProjection().getView2D().getProjections();
 			int count =1;
-			for (final Window2D window2d : windows) {
+			for (final Projection window2d : windows) {
 				
 				if(window2d.getName() == null)
 					window2d.setName("window-"+count);
@@ -64,8 +64,8 @@ public class WindowShiftPlugin extends AbstractPlugin {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						getHost().getWindow2D().getView2D().setActiveWindow(window2d);
-						getHost().getWindow2D().getView2D().repaintView();
+						getHost().getProjection().getView2D().setActiveProjection(window2d);
+						getHost().getProjection().getView2D().repaintView();
 					}
 				});
 			}
@@ -86,7 +86,7 @@ public class WindowShiftPlugin extends AbstractPlugin {
 	}
 
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 		
 	}
 

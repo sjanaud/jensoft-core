@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>FlowMetricsManager</code> take the responsibility to generate a flow of metrics.
@@ -114,7 +114,7 @@ public class FlowMetricsManager extends AbstractMetricsManager {
     @Override
     public List<Metrics> getDeviceMetrics() {
         deviceMetrics.clear();
-        Window2D w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getWindow2D();
         double interval = flowEnd - flowStart;
 
         int metricsCount = (int) (interval / flowInterval);

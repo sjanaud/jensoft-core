@@ -22,7 +22,7 @@ import com.jensoft.core.catalog.component.DemoTab;
 import com.jensoft.core.catalog.component.DemoTabSet;
 import com.jensoft.core.catalog.source.JavaSourcePane;
 import com.jensoft.core.palette.JennyPalette;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>ViewDemoFrameUI</code>
@@ -114,10 +114,10 @@ public class ViewAppletUI extends JApplet {
 		ImageIcon icon1 = ImageResource.getInstance().createImageIcon("demo.png", "");
 		demoTab.setTabIcon(icon1);
 
-		View2D view = null;
+		View view = null;
 		try {
 			Class viewClass = Class.forName(className);
-			view = (View2D) viewClass.newInstance();
+			view = (View) viewClass.newInstance();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

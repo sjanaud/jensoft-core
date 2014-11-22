@@ -10,7 +10,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>BSpline</code>
@@ -62,7 +62,7 @@ public class BSpline extends AbstractPlot {
 	 */
 	@Override
 	public void solvePlot() {
-		Window2D w2d = getHost().getWindow2D();
+		Projection w2d = getHost().getProjection();
 		
 		GeneralPath path = new GeneralPath();
 		List<Point2D> devicePoints = new ArrayList<Point2D>();

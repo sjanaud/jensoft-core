@@ -10,7 +10,7 @@ import java.util.List;
 import com.jensoft.core.plugin.stripe.Stripe;
 import com.jensoft.core.plugin.stripe.StripePlugin;
 import com.jensoft.core.plugin.stripe.StripePlugin.StripeOrientation;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>StripeManager</code> defines the interface for stripe manager
@@ -35,14 +35,14 @@ public interface StripeManager {
      * @param w2d
      *            the window2D to set
      */
-    public void setWindow2D(Window2D w2d);
+    public void setWindow2D(Projection w2d);
 
     /**
      * get the window2D
      * 
      * @return the window2D
      */
-    public Window2D getWindow2D();
+    public Projection getWindow2D();
 
     /**
      * set the stripe orientation

@@ -10,9 +10,9 @@ import java.io.File;
 
 import com.jensoft.core.palette.Spectral;
 import com.jensoft.core.plugin.PluginPlatform;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>DocFilesPortfolioDonut3D</code>
@@ -22,12 +22,12 @@ import com.jensoft.core.window.Window2D;
 public class DocFilesPortfolioDonut3D {
 
     @Portfolio(name = "Donut3D_1")
-    public static View2D getDonut3D_1() {
+    public static View getDonut3D_1() {
 
-    	 View2D view = new View2D(0);
-         Window2D window = new Window2D.Linear(-1, 1, -1, 1);
+    	 View view = new View(0);
+         Projection window = new Projection.Linear(-1, 1, -1, 1);
          window.setName("compatible donut3D window");
-         view.registerWindow2D(window);
+         view.registerProjection(window);
 
          Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
          window.registerPlugin(donut3DPlugin);
@@ -47,12 +47,12 @@ public class DocFilesPortfolioDonut3D {
     }
 
     @Portfolio(name = "Donut3D_2")
-    public static View2D getDonut3D_2() {
+    public static View getDonut3D_2() {
 
-    	 View2D view = new View2D(0);
-         Window2D window = new Window2D.Linear(-1, 1, -1, 1);
+    	 View view = new View(0);
+         Projection window = new Projection.Linear(-1, 1, -1, 1);
          window.setName("compatible donut3D window");
-         view.registerWindow2D(window);
+         view.registerProjection(window);
 
          Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
          window.registerPlugin(donut3DPlugin);

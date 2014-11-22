@@ -29,7 +29,7 @@ public class PlotDefaultDraw extends AbstractPlotDraw {
 		if (plot.getPlotDrawColor() != null)
 			g2d.setColor(plot.getPlotDrawColor());
 		else
-			g2d.setColor(plot.getHost().getWindow2D().getThemeColor());
+			g2d.setColor(plot.getHost().getProjection().getThemeColor());
 		
 		g2d.draw(plot.getPlotPath());
 	}

@@ -14,8 +14,8 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 public class PoweredPlugin extends AbstractPlugin {
 
@@ -31,14 +31,14 @@ public class PoweredPlugin extends AbstractPlugin {
         textColor = ColorPalette.getRandomColor();
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
-
-       // g2d.setFont(InputFonts.getNoMove(9));
         g2d.setFont(new Font("Verdana", Font.PLAIN, 10));
         g2d.setColor(textColor);
         FontMetrics fm = g2d.getFontMetrics();

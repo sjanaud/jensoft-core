@@ -15,7 +15,11 @@ import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.plugin.radar.painter.RadarPainter;
 
 /**
- * Radar
+ * <code>Radar</code> defines the radar chart
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public class Radar {
 
@@ -266,7 +270,7 @@ public class Radar {
     public Point2D getDimensionPointAtRadius(RadarDimension dimension,
             double radius) {
         if (nature == RadarNature.User) {
-            Point2D projectedCenter = getHost().getWindow2D().userToPixel(
+            Point2D projectedCenter = getHost().getProjection().userToPixel(
                                                                           new Point2D.Double(centerX, centerY));
             buildCenterX = (int) projectedCenter.getX();
             buildCenterY = (int) projectedCenter.getY();
@@ -290,7 +294,7 @@ public class Radar {
     public void solveGeometry() {
         for (RadarDimension dimension : dimensions) {
             if (nature == RadarNature.User) {
-                Point2D projectedCenter = getHost().getWindow2D().userToPixel(
+                Point2D projectedCenter = getHost().getProjection().userToPixel(
                                                                               new Point2D.Double(centerX, centerY));
                 buildCenterX = (int) projectedCenter.getX();
                 buildCenterY = (int) projectedCenter.getY();

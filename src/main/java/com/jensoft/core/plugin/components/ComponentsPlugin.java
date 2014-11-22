@@ -11,11 +11,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.Window2DAdapter;
-import com.jensoft.core.window.Window2DEvent;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.projection.ProjectionAdapter;
+import com.jensoft.core.projection.ProjectionEvent;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 public class ComponentsPlugin extends AbstractPlugin {
 
@@ -29,12 +29,12 @@ public class ComponentsPlugin extends AbstractPlugin {
      * @see com.jensoft.core.plugin.AbstractPlugin#onWindowRegister()
      */
     @Override
-    public void onWindowRegister() {
-        super.onWindowRegister();
-        getWindow2D().addWindow2DListener(new Window2DAdapter() {
+    public void onProjectionRegister() {
+        super.onProjectionRegister();
+        getProjection().addProjectionListener(new ProjectionAdapter() {
 
             @Override
-            public void window2DBoundChanged(Window2DEvent w2dEvent) {
+            public void projectionBoundChanged(ProjectionEvent w2dEvent) {
                 project();
             }
         });
@@ -42,7 +42,7 @@ public class ComponentsPlugin extends AbstractPlugin {
 
     private void project() {
         for (DeviceComponent uc : userComponents) {
-            Window2D w2d = getWindow2D();
+            Projection w2d = getProjection();
             Point2D deviceLocation = w2d.userToPixel(new Point2D.Double(uc
                     .getUserLocation().getX(), uc.getUserLocation().getY()));
             uc.getComponent().setLocation((int) deviceLocation.getX(),
@@ -66,10 +66,10 @@ public class ComponentsPlugin extends AbstractPlugin {
     int count = 0;
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
 
         if (!init) {
             //System.out.println("init paint layout :" + count++);
@@ -83,9 +83,9 @@ public class ComponentsPlugin extends AbstractPlugin {
                                                            .getWidth(),
                                                    (int) component.getComponent().getPreferredSize()
                                                            .getHeight());
-                getWindow2D().getView2D().getDevice2D()
+                getProjection().getView2D().getDevice2D()
                         .remove(component.getComponent());
-                getWindow2D().getView2D().getDevice2D()
+                getProjection().getView2D().getDevice2D()
                         .add(component.getComponent());
             }
 

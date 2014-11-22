@@ -24,7 +24,7 @@ import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSour
 import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSource;
 
 /**
- * <code>AreaFunction</code> defines an area function 
+ * <code>Area</code> defines an area function 
  * <br>
  * <center><img src="doc-files/simpleAreaCurve.png"/></center> <br>
  * <br>
@@ -228,8 +228,8 @@ public class Area extends Function {
 		//Point2D maxSource = getSourceFunction().last();
 		Point2D minSource = getSourceFunction().getCurrentFunction().get(0);
 		Point2D maxSource = getSourceFunction().getCurrentFunction().get(getSourceFunction().getCurrentFunction().size()-1);
-		Point2D deviceAreaMin = getHost().getWindow2D().userToPixel(minSource);
-		Point2D deviceAreaMax = getHost().getWindow2D().userToPixel(maxSource);
+		Point2D deviceAreaMin = getHost().getProjection().userToPixel(minSource);
+		Point2D deviceAreaMax = getHost().getProjection().userToPixel(maxSource);
 
 		double areaMin;
 		double areaMax;
@@ -240,14 +240,14 @@ public class Area extends Function {
 			areaMin = minSource.getX();
 			areaMax = maxSource.getX();
 
-			deviceBaseMin = getHost().getWindow2D().userToPixel(new Point2D.Double(areaMin, getAreaBase()));
-			deviceBaseMax = getHost().getWindow2D().userToPixel(new Point2D.Double(areaMax, getAreaBase()));
+			deviceBaseMin = getHost().getProjection().userToPixel(new Point2D.Double(areaMin, getAreaBase()));
+			deviceBaseMax = getHost().getProjection().userToPixel(new Point2D.Double(areaMax, getAreaBase()));
 		} else {
 			areaMin = minSource.getY();
 			areaMax = maxSource.getY();
 
-			deviceBaseMin = getHost().getWindow2D().userToPixel(new Point2D.Double(getAreaBase(), areaMin));
-			deviceBaseMax = getHost().getWindow2D().userToPixel(new Point2D.Double(getAreaBase(), areaMax));
+			deviceBaseMin = getHost().getProjection().userToPixel(new Point2D.Double(getAreaBase(), areaMin));
+			deviceBaseMax = getHost().getProjection().userToPixel(new Point2D.Double(getAreaBase(), areaMax));
 		}
 
 		setBaseLine(new Line2D.Double(deviceBaseMin, deviceBaseMax));
@@ -261,8 +261,8 @@ public class Area extends Function {
 
 		setAreaPath(ap);
 
-		int width = getHost().getWindow2D().getDevice2D().getDeviceWidth();
-		int height = getHost().getWindow2D().getDevice2D().getDeviceHeight();
+		int width = getHost().getProjection().getDevice2D().getDeviceWidth();
+		int height = getHost().getProjection().getDevice2D().getDeviceHeight();
 		java.awt.geom.Area area = new java.awt.geom.Area(new Rectangle(0, 0, width, height));
 		area.intersect(new java.awt.geom.Area(ap));
 

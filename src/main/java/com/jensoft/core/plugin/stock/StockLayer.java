@@ -24,8 +24,8 @@ import com.jensoft.core.plugin.stock.geom.StockGeometry;
 import com.jensoft.core.plugin.stock.geom.StockItemGeometry;
 import com.jensoft.core.plugin.stock.geom.VolumeBarGeometry;
 import com.jensoft.core.plugin.stock.geom.WeightedMovingAverageStockGeom;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>StockLayer</code> defines an abstract representation of stocks values.
@@ -131,8 +131,8 @@ public abstract class StockLayer<G extends StockGeometry> {
 		 * com.jensoft.core.window.WindowPart)
 		 */
 		@Override
-		protected void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			if (windowPart == WindowPart.Device) {
+		protected void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			if (viewPart == ViewPart.Device) {
 				for (CandleStickGeom geom : getGeometries()) {
 					g2d.setColor(geom.getLowHighColor());
 					g2d.draw(geom.getDeviceLowHighGap());
@@ -188,8 +188,8 @@ public abstract class StockLayer<G extends StockGeometry> {
 		 * com.jensoft.core.window.WindowPart)
 		 */
 		@Override
-		protected void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			if (windowPart == WindowPart.Device) {
+		protected void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			if (viewPart == ViewPart.Device) {
 				for (OhlcGeom geom : getGeometries()) {
 					g2d.setColor(geom.getLowHighColor());
 					g2d.draw(geom.getDeviceLowHighGap());
@@ -274,8 +274,8 @@ public abstract class StockLayer<G extends StockGeometry> {
 		 * com.jensoft.core.window.WindowPart)
 		 */
 		@Override
-		protected void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			if (windowPart == WindowPart.Device) {
+		protected void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			if (viewPart == ViewPart.Device) {
 				for (VolumeBarGeometry geom : getGeometries()) {
 					g2d.setColor(volumeFillColor);
 					g2d.fill(geom.getDeviceVolumeGap());
@@ -364,14 +364,14 @@ public abstract class StockLayer<G extends StockGeometry> {
 		 * com.jensoft.core.window.WindowPart)
 		 */
 		@Override
-		protected void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			if (windowPart == WindowPart.Device) {
+		protected void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			if (viewPart == ViewPart.Device) {
 				for (CurveStockGeom geom : getGeometries()) {
 
 					g2d.setColor(curveColor);
 
 					geom.getPathFunction().setSolveGeometryRequest(true);
-					geom.getPathFunction().setWindow2d(getHost().getWindow2D());
+					geom.getPathFunction().setWindow2d(getHost().getProjection());
 					geom.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
 
 					Shape s = geom.getPathFunction().getOrCreateGeometry().getPath();
@@ -601,20 +601,20 @@ public abstract class StockLayer<G extends StockGeometry> {
 		 * com.jensoft.core.window.WindowPart)
 		 */
 		@Override
-		protected void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			super.paintLayer(v2d, g2d, windowPart);
-			if (windowPart == WindowPart.Device) {
+		protected void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			super.paintLayer(v2d, g2d, viewPart);
+			if (viewPart == ViewPart.Device) {
 
 				for (CurveStockGeom geom : getGeometries()) {
 
 					BollingerMovingAverageStockGeom bollingerGeom = (BollingerMovingAverageStockGeom) geom;
 
 					bollingerGeom.getPathFunctionUp().setSolveGeometryRequest(true);
-					bollingerGeom.getPathFunctionUp().setWindow2d(getHost().getWindow2D());
+					bollingerGeom.getPathFunctionUp().setWindow2d(getHost().getProjection());
 					bollingerGeom.getPathFunctionUp().setFontRenderContext(g2d.getFontRenderContext());
 
 					bollingerGeom.getPathFunctionBottom().setSolveGeometryRequest(true);
-					bollingerGeom.getPathFunctionBottom().setWindow2d(getHost().getWindow2D());
+					bollingerGeom.getPathFunctionBottom().setWindow2d(getHost().getProjection());
 					bollingerGeom.getPathFunctionBottom().setFontRenderContext(g2d.getFontRenderContext());
 
 					g2d.setColor(bollingerUpLineColor);
@@ -646,9 +646,9 @@ public abstract class StockLayer<G extends StockGeometry> {
 	 *            view
 	 * @param g2d
 	 *            graphics context
-	 * @param windowPart
+	 * @param viewPart
 	 *            part to paint
 	 */
-	protected abstract void paintLayer(View2D v2d, Graphics2D g2d, WindowPart windowPart);
+	protected abstract void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart);
 
 }

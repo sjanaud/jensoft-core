@@ -17,7 +17,7 @@ import com.jensoft.core.plugin.function.analysis.SimpleRegression;
 import com.jensoft.core.plugin.function.analysis.SplineInterpolator;
 import com.jensoft.core.plugin.function.analysis.UnivariateRealFunction;
 import com.jensoft.core.plugin.function.analysis.UnivariateRealInterpolator;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>UserSourceFunction</code> defines kind of sources with user inputs like
@@ -400,7 +400,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 */
 		@Override
 		public Point2D evaluate(double value) {
-			Window2D w2d = getHost().getHost().getWindow2D();
+			Projection w2d = getHost().getHost().getProjection();
 
 			Point2D previous = previous(value);
 			Point2D next = next(value);

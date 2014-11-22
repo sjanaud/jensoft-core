@@ -10,7 +10,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * Between each pair of control points there is a cubic curve. To make sure that
@@ -83,7 +83,7 @@ public class NatCubic extends AbstractPlot {
 	public void solvePlot() {
 		GeneralPath path = new GeneralPath();
 		List<Point2D> devicePoints = new ArrayList<Point2D>();
-		Window2D w2d = getHost().getWindow2D();
+		Projection w2d = getHost().getProjection();
 		if (getUserPoints().size() >= 2) {
 
 			double[] xvals = new double[getUserPoints().size()];

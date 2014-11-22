@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.stock.geom;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.plugin.stock.Stock;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class StockItemGeometry extends StockGeometry {
 
@@ -153,8 +153,8 @@ public class StockItemGeometry extends StockGeometry {
 
 	}
 
-	private Window2D getWindow2D() {
-		return getLayer().getHost().getWindow2D();
+	private Projection getWindow2D() {
+		return getLayer().getHost().getProjection();
 	}
 
 }

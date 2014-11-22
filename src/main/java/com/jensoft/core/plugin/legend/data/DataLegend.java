@@ -14,7 +14,7 @@ import com.jensoft.core.plugin.legend.data.painter.AbstractDataItemSymbolPainter
 import com.jensoft.core.plugin.legend.data.painter.AbstractDataLegendBackgroundPainter;
 import com.jensoft.core.plugin.legend.data.painter.DefaultDataLegendBackgroundPainter;
 import com.jensoft.core.plugin.legend.data.painter.LineSymbolPainter;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>DataLegend</code> defines a group of item based on texts and colors
@@ -46,7 +46,7 @@ public class DataLegend {
 	 * defines the location of legend, east, south, west, north or device,
 	 * Default is device location
 	 */
-	private WindowPart part = WindowPart.Device;
+	private ViewPart part = ViewPart.Device;
 
 	/** data legend margin x from upper corner left of part component */
 	private int marginX = 30;
@@ -94,7 +94,7 @@ public class DataLegend {
 	 * @param part
 	 *            legend location
 	 */
-	public DataLegend(WindowPart part) {
+	public DataLegend(ViewPart part) {
 		this();
 		this.part = part;
 	}
@@ -104,7 +104,7 @@ public class DataLegend {
 	 * @param orientation
 	 * @param part
 	 */
-	public DataLegend(Orientation orientation, WindowPart part) {
+	public DataLegend(Orientation orientation, ViewPart part) {
 		this(part);
 		this.orientation = orientation;
 	}
@@ -274,7 +274,7 @@ public class DataLegend {
 	 * 
 	 * @return part location
 	 */
-	public WindowPart getPart() {
+	public ViewPart getPart() {
 		return part;
 	}
 
@@ -283,7 +283,7 @@ public class DataLegend {
 	 * 
 	 * @param part
 	 */
-	public void setPart(WindowPart part) {
+	public void setPart(ViewPart part) {
 		this.part = part;
 	}
 

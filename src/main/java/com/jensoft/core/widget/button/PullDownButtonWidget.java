@@ -22,7 +22,7 @@ import javax.swing.JPopupMenu;
 
 import com.jensoft.core.device.DevicePartComponent;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * PullDownButtonWidget
@@ -136,7 +136,7 @@ public class PullDownButtonWidget<P extends AbstractPlugin> extends ButtonWidget
      */
     private void pullDown() {
 
-        JPopupMenu popup = getHost().getWindow2D().getDevice2D()
+        JPopupMenu popup = getHost().getProjection().getDevice2D()
                 .getDeviceMenuManager().getContextMenu();
         popup.removeAll();
         sortPull();
@@ -145,7 +145,7 @@ public class PullDownButtonWidget<P extends AbstractPlugin> extends ButtonWidget
         }
         int x = (int) getWidgetFolder().getX();
         int y = (int) getWidgetFolder().getY();
-        DevicePartComponent device = getHost().getWindow2D().getView2D()
+        DevicePartComponent device = getHost().getProjection().getView2D()
                 .getDevice2D();
         popup.show(device, x, y + (int) getWidgetFolder().getHeight());
     }
@@ -198,7 +198,7 @@ public class PullDownButtonWidget<P extends AbstractPlugin> extends ButtonWidget
         this.pullFillColor = pullFillColor;
     }
 
-    public void paintItemButton(View2D v2d, Graphics2D g2d,
+    public void paintItemButton(View v2d, Graphics2D g2d,
             Rectangle2D itemRegion) {
 
         sortPull();
@@ -245,7 +245,7 @@ public class PullDownButtonWidget<P extends AbstractPlugin> extends ButtonWidget
      * @see com.jensoft.core.widget.button.ButtonWidget#paintButton(com.jensoft.core.view.View2D, java.awt.Graphics2D, java.awt.geom.Rectangle2D)
      */
     @Override
-    public void paintButton(View2D v2d, Graphics2D g2d,
+    public void paintButton(View v2d, Graphics2D g2d,
             Rectangle2D buttonDrawingRegion) {
 
         // paint base button

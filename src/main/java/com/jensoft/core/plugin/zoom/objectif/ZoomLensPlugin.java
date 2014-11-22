@@ -16,17 +16,19 @@ import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 import com.jensoft.core.view.WidgetPlugin.PushingBehavior;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
 
 /**
- * <code>ZoomObjectifPlugin</code>
+ * <code>ZoomLensPlugin</code>
+ * 
+ * @since 1.0
  * 
  * @author sebastien janaud
  */
-public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin.OnReleaseListener {
+public class ZoomLensPlugin extends AbstractPlugin implements AbstractPlugin.OnReleaseListener {
 
 	/** zoom int lock flag */
 	private boolean zoomInLock = false;
@@ -107,7 +109,7 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 	/**
 	 * create zoom objectif plugin
 	 */
-	public ZoomObjectifPlugin() {
+	public ZoomLensPlugin() {
 		setName("ObjectifPlugin");
 		setSelectable(true);
 		createProcess();
@@ -122,8 +124,8 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 	 * 
 	 * @param listener
 	 */
-	public void addZoomObjectifListener(ZoomObjectifListener listener) {
-		zoomObjectifListenerList.add(ZoomObjectifListener.class, listener);
+	public void addZoomObjectifListener(ZoomLensListener listener) {
+		zoomObjectifListenerList.add(ZoomLensListener.class, listener);
 	}
 
 	/**
@@ -131,8 +133,8 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 	 * 
 	 * @param listener
 	 */
-	public void removeZoomObjectifListener(ZoomObjectifListener listener) {
-		zoomObjectifListenerList.remove(ZoomObjectifListener.class, listener);
+	public void removeZoomObjectifListener(ZoomLensListener listener) {
+		zoomObjectifListenerList.remove(ZoomLensListener.class, listener);
 	}
 
 	/**
@@ -142,8 +144,8 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 		Object[] listeners = zoomObjectifListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
-				if (listeners[i] == ZoomObjectifListener.class) {
-					((ZoomObjectifListener) listeners[i + 1]).zoomIn(new ZoomObjectifEvent(this));
+				if (listeners[i] == ZoomLensListener.class) {
+					((ZoomLensListener) listeners[i + 1]).zoomIn(new ZoomLensEvent(this));
 				}
 			}
 		}
@@ -156,8 +158,8 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 		Object[] listeners = zoomObjectifListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
-				if (listeners[i] == ZoomObjectifListener.class) {
-					((ZoomObjectifListener) listeners[i + 1]).zoomOut(new ZoomObjectifEvent(this));
+				if (listeners[i] == ZoomLensListener.class) {
+					((ZoomLensListener) listeners[i + 1]).zoomOut(new ZoomLensEvent(this));
 				}
 			}
 		}
@@ -177,8 +179,8 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 	 * 
 	 * @param objectifs
 	 */
-	public static ZoomObjectifSynchronizer createSynchronizer(ZoomObjectifPlugin... objectifs) {
-		ZoomObjectifSynchronizer synchronizer = new ZoomObjectifSynchronizer(objectifs);
+	public static ZoomLensSynchronizer createSynchronizer(ZoomLensPlugin... objectifs) {
+		ZoomLensSynchronizer synchronizer = new ZoomLensSynchronizer(objectifs);
 		return synchronizer;
 	}
 
@@ -212,10 +214,10 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 	@Override
 	public void lockSelected() {
 		super.lockSelected();
-		if (getWindow2D() == null || getWindow2D().getView2D() == null) {
+		if (getProjection() == null || getProjection().getView2D() == null) {
 			return;
 		}
-		getWindow2D().getView2D().getWidgetPlugin().pushMessage("LOCK OBJECTIF", this, PushingBehavior.Fast);
+		getProjection().getView2D().getWidgetPlugin().pushMessage("LOCK OBJECTIF", this, PushingBehavior.Fast);
 
 	}
 
@@ -227,10 +229,10 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 	@Override
 	public void unlockSelected() {
 		super.unlockSelected();
-		if (getWindow2D() == null) {
+		if (getProjection() == null) {
 			return;
 		}
-		getWindow2D().getDevice2D().repaintDevice();
+		getProjection().getDevice2D().repaintDevice();
 
 	}
 
@@ -269,7 +271,7 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 				while (zoomOutLock) {
 					zoomOut(processNature);
 					fireZoomOut();
-					getWindow2D().getDevice2D().repaintDevice();
+					getProjection().getDevice2D().repaintDevice();
 					Thread.sleep(zoomMiliTempo);
 				}
 			} catch (Exception e) {
@@ -303,7 +305,7 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 				while (zoomInLock) {
 					zoomIn(processNature);
 					fireZoomIn();
-					getWindow2D().getDevice2D().repaintDevice();
+					getProjection().getDevice2D().repaintDevice();
 					Thread.sleep(zoomMiliTempo);
 				}
 			} catch (Exception e) {
@@ -321,10 +323,10 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 	 */
 	public void zoomIn(ZoomNature zoomNature) {
 		this.processNature = zoomNature;
-		Window2D w2d = getWindow2D();
+		Projection w2d = getProjection();
 
-		double w = getWindow2D().getDevice2D().getDeviceWidth();
-		double h = getWindow2D().getDevice2D().getDeviceHeight();
+		double w = getProjection().getDevice2D().getDeviceWidth();
+		double h = getProjection().getDevice2D().getDeviceHeight();
 		//System.out.println("w : " + w);
 		//System.out.println("h : " + h);
 
@@ -346,8 +348,8 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 
 		Point2D pMinXMinYUser = w2d.pixelToUser(pMinXMinYDevice);
 		Point2D pMaxXMaxYUser = w2d.pixelToUser(pMaxXMaxYDevice);
-		if (w2d instanceof Window2D.Linear) {
-			Window2D.Linear wl = (Window2D.Linear) w2d;
+		if (w2d instanceof Projection.Linear) {
+			Projection.Linear wl = (Projection.Linear) w2d;
 			if(zoomLensType == ZoomLensType.ZoomXY){
 				wl.bound(pMinXMinYUser.getX(), pMaxXMaxYUser.getX(), pMinXMinYUser.getY(), pMaxXMaxYUser.getY());
 			}
@@ -373,8 +375,8 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 	 */
 	public void zoomOut(ZoomNature zoomNature) {
 		this.processNature = zoomNature;
-		double w = getWindow2D().getDevice2D().getDeviceWidth();
-		double h = getWindow2D().getDevice2D().getDeviceHeight();
+		double w = getProjection().getDevice2D().getDeviceWidth();
+		double h = getProjection().getDevice2D().getDeviceHeight();
 
 		Point2D pMinXMinYDevice = null;
 		Point2D pMaxXMaxYDevice = null;
@@ -392,11 +394,11 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 			pMaxXMaxYDevice = new Point2D.Double(w, -h / factor);
 		}
 
-		Point2D pMinXMinYUser = getWindow2D().pixelToUser(pMinXMinYDevice);
-		Point2D pMaxXMaxYUser = getWindow2D().pixelToUser(pMaxXMaxYDevice);
+		Point2D pMinXMinYUser = getProjection().pixelToUser(pMinXMinYDevice);
+		Point2D pMaxXMaxYUser = getProjection().pixelToUser(pMaxXMaxYDevice);
 
-		if (getWindow2D() instanceof Window2D.Linear) {
-			Window2D.Linear wl = (Window2D.Linear) getWindow2D();
+		if (getProjection() instanceof Projection.Linear) {
+			Projection.Linear wl = (Projection.Linear) getProjection();
 			//wl.bound(pMinXMinYUser.getX(), pMaxXMaxYUser.getX(), pMinXMinYUser.getY(), pMaxXMaxYUser.getY());
 			if(zoomLensType == ZoomLensType.ZoomXY){
 				wl.bound(pMinXMinYUser.getX(), pMaxXMaxYUser.getX(), pMinXMinYUser.getY(), pMaxXMaxYUser.getY());
@@ -482,23 +484,17 @@ public class ZoomObjectifPlugin extends AbstractPlugin implements AbstractPlugin
 		zoomInLock = false;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
-	 * .View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java
-	 * .awt.event.MouseEvent)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void onRelease(MouseEvent me) {

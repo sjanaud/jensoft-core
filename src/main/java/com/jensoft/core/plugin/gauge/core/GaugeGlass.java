@@ -601,7 +601,7 @@ public abstract class GaugeGlass extends GaugePart {
 			pie.addSlice(new PieSlice("slice", Color.WHITE));
 
 			PiePlugin piePlugin = new PiePlugin();
-			piePlugin.setWindow2D(radialGauge.getWindow2D());
+			piePlugin.setProjection(radialGauge.getWindow2D());
 			piePlugin.addPie(pie);
 
 			AbstractPieEffect fx = getEffectInstance();

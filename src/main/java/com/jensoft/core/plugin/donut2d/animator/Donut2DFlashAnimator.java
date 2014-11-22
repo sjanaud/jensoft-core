@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.donut2d.animator;
 import java.util.HashMap;
 
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>Donut2DFlashAnimator</code> creates flash animation on pie slice
@@ -26,7 +26,7 @@ import com.jensoft.core.view.View2D;
 public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
 
     /** host view */
-    private View2D view2D;
+    private View view2D;
 
     /** cache slice animator */
     private HashMap<Donut2DSlice, AlphaRunner> cacheAnimator = new HashMap<Donut2DSlice, AlphaRunner>();
@@ -143,7 +143,7 @@ public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
     @Override
     protected void onPressed(Donut2DSlice slice) {
         if (showFlashBehavior == ShowFlashBehavior.ShowOnSlicePressed) {
-            view2D = slice.getHost().getHostPlugin().getWindow2D().getView2D();
+            view2D = slice.getHost().getHostPlugin().getProjection().getView2D();
             AlphaRunner runner = (AlphaRunner) getAnimator(slice);
             if (!runner.isRunning()) {
                 Thread t = new Thread(getAnimator(slice));
@@ -164,7 +164,7 @@ public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
     @Override
     protected void onEntered(Donut2DSlice slice) {
         if (showFlashBehavior == ShowFlashBehavior.ShowOnSliceRollover) {
-            view2D = slice.getHost().getHostPlugin().getWindow2D().getView2D();
+            view2D = slice.getHost().getHostPlugin().getProjection().getView2D();
             AlphaRunner runner = (AlphaRunner) getAnimator(slice);
             if (!runner.isRunning()) {
                 Thread t = new Thread(getAnimator(slice));

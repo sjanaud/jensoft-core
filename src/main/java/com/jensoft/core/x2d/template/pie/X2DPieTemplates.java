@@ -27,7 +27,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -48,7 +48,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -69,7 +69,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -90,7 +90,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -111,7 +111,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -132,7 +132,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -153,7 +153,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -174,7 +174,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();
@@ -195,7 +195,7 @@ public class X2DPieTemplates {
         String viewKey = x2d.getViewKey();
         String emitPath = System.getProperty("user.dir") + File.separator + "src" + File.separator + packagePath;
         try {
-           x2d.getView2D().createViewEmitter().emitAsImageFile(emitPath, viewKey);
+           x2d.getView().createViewEmitter().emitAsImageFile(emitPath, viewKey);
         }
         catch (Exception e) {
             e.printStackTrace();

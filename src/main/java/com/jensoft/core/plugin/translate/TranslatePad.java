@@ -13,7 +13,7 @@ import java.awt.Stroke;
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.RosePalette;
 import com.jensoft.core.plugin.translate.TranslatePlugin.ShiftDirection;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.widget.pad.AbstractBackwardForwardPadWidget;
 
 /**
@@ -88,7 +88,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
      * @see com.jensoft.core.widget.pad.AbstractPadWidget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    protected void paintWidget(View2D v2d, Graphics2D g2d) {
+    protected void paintWidget(View v2d, Graphics2D g2d) {
         super.paintWidget(v2d, g2d);
     }
 

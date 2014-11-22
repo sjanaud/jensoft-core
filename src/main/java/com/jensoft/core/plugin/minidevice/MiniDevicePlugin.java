@@ -8,18 +8,18 @@ package com.jensoft.core.plugin.minidevice;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import com.jensoft.core.device.Device2D;
+import com.jensoft.core.device.Device;
 import com.jensoft.core.device.DeviceMenuManager;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * MiniDevicePlugin embed a widget display of the current activate window in
  * initial scale mode.
  */
-public class MiniDevicePlugin extends AbstractPlugin implements Device2D {
+public class MiniDevicePlugin extends AbstractPlugin implements Device {
 
     /** the outline color of the current window bound */
     private Color miniCurrentDeviceDrawColor;
@@ -43,7 +43,7 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device2D {
     private DimensionType dimentionType = DimensionType.Ratio;
 
     /** the private device widget window 2D */
-    private Window2D.Linear miniDeviceWindow2D;
+    private Projection.Linear miniDeviceWindow2D;
 
     private MiniDeviceWidget miniDeviceWidget;
 
@@ -219,17 +219,17 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device2D {
      * 
      * @return the device widget private window
      */
-    public Window2D getPrivateWindow() {
+    public Projection getPrivateWindow() {
         if (miniDeviceWindow2D == null) {
-            miniDeviceWindow2D = new Window2D.Linear();
+            miniDeviceWindow2D = new Projection.Linear();
             miniDeviceWindow2D.setName("minidevicewindow");
         }
 
         miniDeviceWindow2D.setDevice2D(this);
         // miniDeviceWindow2D.setProjection(getWindow2D()
         // .getProjection());
-        if (getWindow2D() instanceof Window2D.Linear) {
-            Window2D.Linear wl = (Window2D.Linear) getWindow2D();
+        if (getProjection() instanceof Projection.Linear) {
+            Projection.Linear wl = (Projection.Linear) getProjection();
             double iminX = wl.getInitialMinX();
             double imaxX = wl.getInitialMaxX();
             double iminY = wl.getInitialMinY();
@@ -237,10 +237,10 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device2D {
 
             miniDeviceWindow2D.bound(iminX, imaxX, iminY, imaxY);
 
-            double minX = getWindow2D().getMinX();
-            double maxX = getWindow2D().getMaxX();
-            double minY = getWindow2D().getMinY();
-            double maxY = getWindow2D().getMaxY();
+            double minX = getProjection().getMinX();
+            double maxX = getProjection().getMaxX();
+            double minY = getProjection().getMinY();
+            double maxY = getProjection().getMaxY();
 
             miniDeviceWindow2D.bound(minX, maxX, minY, maxY);
         }
@@ -249,8 +249,8 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device2D {
     }
 
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
 

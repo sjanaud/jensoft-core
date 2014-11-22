@@ -265,7 +265,7 @@ public class PieSliceCubicEffect extends AbstractPieSliceEffect {
         double centerY = pie.getCenterY();
         Point2D c = null;
         if (pie.getPieNature() == PieNature.User) {
-            c = pie.getHostPlugin().getWindow2D()
+            c = pie.getHostPlugin().getProjection()
                     .userToPixel(new Point2D.Double(centerX, centerY));
         }
         if (pie.getPieNature() == PieNature.Device) {

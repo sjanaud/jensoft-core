@@ -11,8 +11,8 @@ import java.util.List;
 
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 public class PrimitivePlugin extends AbstractPlugin {
 
@@ -27,9 +27,9 @@ public class PrimitivePlugin extends AbstractPlugin {
     }
 
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 
-        if (windowPart != WindowPart.Device) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
 

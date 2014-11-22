@@ -174,8 +174,8 @@ public class AreaDefaultDraw extends AbstractAreaDraw {
         else if (areaCurve.getThemeColor() != null) {
             g2d.setColor(areaCurve.getThemeColor());
         }
-        else if (areaCurve.getHost().getWindow2D().getThemeColor() != null) {
-            g2d.setColor(areaCurve.getHost().getWindow2D().getThemeColor());
+        else if (areaCurve.getHost().getProjection().getThemeColor() != null) {
+            g2d.setColor(areaCurve.getHost().getProjection().getThemeColor());
         }
 
         if (getCurveStroke() != null) {
@@ -190,8 +190,8 @@ public class AreaDefaultDraw extends AbstractAreaDraw {
         else if (areaCurve.getThemeColor() != null) {
             g2d.setColor(areaCurve.getThemeColor());
         }
-        else if (areaCurve.getHost().getWindow2D().getThemeColor() != null) {
-            g2d.setColor(areaCurve.getHost().getWindow2D().getThemeColor());
+        else if (areaCurve.getHost().getProjection().getThemeColor() != null) {
+            g2d.setColor(areaCurve.getHost().getProjection().getThemeColor());
         }
 
         if (getBaseStroke() != null) {

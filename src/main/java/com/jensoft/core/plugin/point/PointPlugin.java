@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 import com.jensoft.core.plugin.point.manager.PointLayoutManager;
 import com.jensoft.core.plugin.point.painter.AbstractPointPainter;
 import com.jensoft.core.plugin.point.painter.PointPainter;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * MetricsLayout defines how to lay out the window point
@@ -47,8 +47,8 @@ public class PointPlugin extends AbstractPointPlugin {
     }
 
     @Override
-    public void doPaintPoints(View2D v2d, Graphics2D g2d) {
-        manager.setWindow2D(getWindow2D());
+    public void doPaintPoints(View v2d, Graphics2D g2d) {
+        manager.setWindow2D(getProjection());
         painter.setLayout(manager);
         painter.doPaintPoint(g2d);
     }

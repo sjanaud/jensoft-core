@@ -120,9 +120,9 @@ public class TitleLegendGradientFill extends AbstractTitleLegendFill {
                     else {
                         float[] dist = { 0.0f, 1.0f };
                         Color[] colors = {
-                                legend.getHost().getWindow2D().getThemeColor()
+                                legend.getHost().getProjection().getThemeColor()
                                         .brighter(),
-                                legend.getHost().getWindow2D().getThemeColor()
+                                legend.getHost().getProjection().getThemeColor()
                                         .darker() };
                         LinearGradientPaint pg = new LinearGradientPaint(start,
                                                                          end, dist, colors);

@@ -49,7 +49,7 @@ public class X2DHTTPConnector extends HttpServlet {
             String xmlViewSource = request.getParameter("view");            
             //System.out.println("X2D PNG Connector process View : "+xmlViewSource);            
             x2dProcessor.registerX2DSource(xmlViewSource);            
-            x2dProcessor.getView2D().createViewEmitter().emitPNGImageOnStream(response.getOutputStream());
+            x2dProcessor.getView().createViewEmitter().emitPNGImageOnStream(response.getOutputStream());
             response.setContentType("image/png");
         }
         catch (Exception e) {

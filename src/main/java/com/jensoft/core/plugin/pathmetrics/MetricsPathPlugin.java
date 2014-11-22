@@ -24,8 +24,8 @@ import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>MetricsPathPlugin</code>
@@ -35,6 +35,11 @@ import com.jensoft.core.window.WindowPart;
  * 
  * @see AbstractMetricsPath
  * @see GlyphMetric
+ * 
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public class MetricsPathPlugin extends AbstractPlugin {
 
@@ -64,43 +69,32 @@ public class MetricsPathPlugin extends AbstractPlugin {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
-
         metricsPath.setSolveGeometryRequest(true);
-        metricsPath.setWindow2d(getWindow2D());
+        metricsPath.setWindow2d(getProjection());
         metricsPath.setFontRenderContext(g2d.getFontRenderContext());
-
         // paint path
         if (metricsPath.getPathPainter() != null) {
             metricsPath.getPathPainter().paintPath(g2d, metricsPath);
         }
-
         // paint glyph
         List<GlyphMetric> metrics = metricsPath.getMetrics();
         for (GlyphMetric glyphMetric : metrics) {
-
             if (glyphMetric.getGlyphMetricMarkerPainter() != null) {
-                glyphMetric.getGlyphMetricMarkerPainter().paintGlyphMetric(g2d,
-                                                                           glyphMetric);
+                glyphMetric.getGlyphMetricMarkerPainter().paintGlyphMetric(g2d, glyphMetric);
             }
-
             if (glyphMetric.getGlyphMetricFill() != null) {
-                glyphMetric.getGlyphMetricFill().paintGlyphMetric(g2d,
-                                                                  glyphMetric);
+                glyphMetric.getGlyphMetricFill().paintGlyphMetric(g2d,glyphMetric);
             }
-
             if (glyphMetric.getGlyphMetricDraw() != null) {
-                glyphMetric.getGlyphMetricDraw().paintGlyphMetric(g2d,
-                                                                  glyphMetric);
+                glyphMetric.getGlyphMetricDraw().paintGlyphMetric(g2d, glyphMetric);
             }
-
         }
 
     }

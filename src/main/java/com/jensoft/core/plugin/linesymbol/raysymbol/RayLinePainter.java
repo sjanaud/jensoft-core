@@ -15,7 +15,7 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.linesymbol.LineSymbolPlugin.LineNature;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbolComponent;
 import com.jensoft.core.plugin.linesymbol.painter.AbstractLinePainter;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>RayLinePainter<code> takes the responsibility to paint the ray symbols along the line
@@ -88,7 +88,7 @@ public class RayLinePainter extends AbstractLinePainter {
      */
     private void paintXLineSymbol(Graphics2D g2d,
             LineSymbolComponent lineSymbolComponent) {
-        Window2D w2d = lineSymbolComponent.getHost().getWindow2D();
+        Projection w2d = lineSymbolComponent.getHost().getProjection();
         RayLineSymbol rls = (RayLineSymbol) lineSymbolComponent;
         for (RayEntry entry : rls.getEntries()) {
             double rayStart = entry.getRayStart();
@@ -129,7 +129,7 @@ public class RayLinePainter extends AbstractLinePainter {
         for (RayEntry entry : ils.getEntries()) {
             double value = entry.getRayStart();
 
-            Window2D w2d = lineSymbolComponent.getHost().getWindow2D();
+            Projection w2d = lineSymbolComponent.getHost().getProjection();
             Point2D deviceStartY = w2d
                     .userToPixel(new Point2D.Double(0, value));
             double x = lineSymbolComponent.getLocation();

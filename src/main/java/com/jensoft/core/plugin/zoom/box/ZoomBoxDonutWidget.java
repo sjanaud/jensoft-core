@@ -19,7 +19,7 @@ import com.jensoft.core.plugin.donut2d.Donut2D;
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 import com.jensoft.core.plugin.zoom.box.ZoomBoxPlugin.BoundBox;
 import com.jensoft.core.plugin.zoom.box.ZoomBoxPlugin.ZoomPlayerCallback;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.widget.Widget;
 import com.jensoft.core.widget.WidgetFolder;
 
@@ -365,7 +365,7 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
             unlockAllSection();
             DonutBoundBoxSection dbbs = getDonutBoundBoxSection(bounbdBox);
             dbbs.lockRollover();
-            getHost().getWindow2D().getView2D().getDevice2D().repaint();
+            getHost().getProjection().getView2D().getDevice2D().repaint();
 
         }
 
@@ -414,7 +414,7 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
      * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    protected void paintWidget(View2D v2d, Graphics2D g2d) {
+    protected void paintWidget(View v2d, Graphics2D g2d) {
 
         if (!getHost().isLockSelected()) {
             return;

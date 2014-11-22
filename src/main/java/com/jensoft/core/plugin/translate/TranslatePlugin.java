@@ -20,10 +20,10 @@ import javax.swing.event.EventListenerList;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowBound;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.projection.ProjectionBound;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>TranslatePlugin</code>
@@ -309,16 +309,16 @@ public class TranslatePlugin extends AbstractPlugin implements
             try {
                 fireTranslateStarted();
                 if (boundHistory.size() > 3) {
-                    Window2D w2d = getWindow2D().getView2D().getActiveWindow();
-                    if (w2d instanceof Window2D.Linear) {
+                    Projection w2d = getProjection().getView2D().getActiveProjection();
+                    if (w2d instanceof Projection.Linear) {
                         TimingBoundFrame twb0 = boundHistory.get(0);
-                        Window2D.Linear wl = (Window2D.Linear) w2d;
+                        Projection.Linear wl = (Projection.Linear) w2d;
                         wl.bound(twb0.getMinX(), twb0.getMaxX(), twb0.getMinY(), twb0.getMaxY());
 
                         for (TimingBoundFrame twb : boundHistory) {
                             processTranslate(twb.getDx(), twb.getDy());
                             fireTranslate();
-                            getWindow2D().getView2D().getDevice2D().repaintDevice();
+                            getProjection().getView2D().getDevice2D().repaintDevice();
                             Thread.sleep(twb.getBoundDurationMillis());
                         }
                     }
@@ -340,7 +340,7 @@ public class TranslatePlugin extends AbstractPlugin implements
     /**
      * defines space/timing frame for a dynamic item
      */
-    class TimingBoundFrame extends WindowBound {
+    class TimingBoundFrame extends ProjectionBound {
 
         private long boundDurationMillis = 0;
         private double dx;
@@ -693,7 +693,7 @@ public class TranslatePlugin extends AbstractPlugin implements
             finally {
                 unlockTranslate();
                 unPassiveTranslate();
-                getWindow2D().getView2D().repaintDevice();
+                getProjection().getView2D().repaintDevice();
                 cinematiques.clear();
             }
         }
@@ -751,7 +751,7 @@ public class TranslatePlugin extends AbstractPlugin implements
      * bound with the current time millisecond.
      */
     private void registerTimingBoundSequence() {
-        Window2D w2d = getWindow2D().getView2D().getActiveWindow();
+        Projection w2d = getProjection().getView2D().getActiveProjection();
         TimingBoundFrame translateWindowBound = new TimingBoundFrame(
                                                                      w2d.getMinX(), w2d.getMaxX(), w2d.getMinY(),
                                                                      w2d.getMaxY());
@@ -786,12 +786,12 @@ public class TranslatePlugin extends AbstractPlugin implements
         translateDx = deltaDeviceX;
         translateDy = deltaDeviceY;
 
-        Window2D w2d = getWindow2D();
+        Projection w2d = getProjection();
         if (w2d == null) {
             return;
         }
-        int w = getWindow2D().getView2D().getDevice2D().getDeviceWidth();
-        int h = getWindow2D().getView2D().getDevice2D().getDeviceHeight();
+        int w = getProjection().getView2D().getDevice2D().getDeviceWidth();
+        int h = getProjection().getView2D().getDevice2D().getDeviceHeight();
 
         Point2D pMinXMinYDevice = new Point2D.Double(-deltaDeviceX, h
                 - deltaDeviceY);
@@ -800,8 +800,8 @@ public class TranslatePlugin extends AbstractPlugin implements
 
         Point2D pMinXMinYUser = w2d.pixelToUser(pMinXMinYDevice);
         Point2D pMaxXMaxYUser = w2d.pixelToUser(pMaxXMaxYDevice);
-        if (w2d instanceof Window2D.Linear) {
-            Window2D.Linear wl = (Window2D.Linear) w2d;
+        if (w2d instanceof Projection.Linear) {
+            Projection.Linear wl = (Projection.Linear) w2d;
             wl.bound(pMinXMinYUser.getX(), pMaxXMaxYUser.getX(),
                      pMinXMinYUser.getY(), pMaxXMaxYUser.getY());
         }
@@ -1085,10 +1085,10 @@ public class TranslatePlugin extends AbstractPlugin implements
                 int sleep = velocity.getVelocity();
 
                 int fragment = 20;
-                int deltaY = getWindow2D().getView2D().getDevice2D()
+                int deltaY = getProjection().getView2D().getDevice2D()
                         .getDeviceHeight()
                         / fragment;
-                int deltaX = getWindow2D().getView2D().getDevice2D()
+                int deltaX = getProjection().getView2D().getDevice2D()
                         .getDeviceWidth()
                         / fragment;
 
@@ -1096,7 +1096,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                     for (int i = factor; i > 0; i--) {
                         processTranslate(0, deltaY);
                         fireTranslate();
-                        getWindow2D().getView2D().repaint();
+                        getProjection().getView2D().repaint();
                         Thread.sleep(sleep);
                     }
                     interrupt();
@@ -1105,7 +1105,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                     for (int i = factor; i > 0; i--) {
                         processTranslate(0, -deltaY);
                         fireTranslate();
-                        getWindow2D().getView2D().repaint();
+                        getProjection().getView2D().repaint();
                         Thread.sleep(sleep);
                     }
                     interrupt();
@@ -1114,7 +1114,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                     for (int i = factor; i > 0; i--) {
                         processTranslate(deltaX, 0);
                         fireTranslate();
-                        getWindow2D().getView2D().repaint();
+                        getProjection().getView2D().repaint();
                         Thread.sleep(sleep);
                     }
                     interrupt();
@@ -1123,7 +1123,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                     for (int i = factor; i > 1; i--) {
                         processTranslate(-deltaX, 0);
                         fireTranslate();
-                        getWindow2D().getView2D().repaint();
+                        getProjection().getView2D().repaint();
                         Thread.sleep(sleep);
                     }
                     interrupt();
@@ -1132,7 +1132,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                 setShifting(false);
                 stopTranslate(0, 0);
                 fireTranslateStopped();
-                getWindow2D().getView2D().repaint();
+                getProjection().getView2D().repaint();
 
             }
             catch (InterruptedException e) {
@@ -1146,7 +1146,7 @@ public class TranslatePlugin extends AbstractPlugin implements
 
 
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
     }
 
     /**
@@ -1185,7 +1185,7 @@ public class TranslatePlugin extends AbstractPlugin implements
      * @return translate start user point
      */
     public Point2D getTranslateStartUserPoint() {
-        return getWindow2D().pixelToUser(getTranslateStartDevicePoint());
+        return getProjection().pixelToUser(getTranslateStartDevicePoint());
     }
 
     /**
@@ -1240,7 +1240,7 @@ public class TranslatePlugin extends AbstractPlugin implements
      * @return translate current user point
      */
     public Point2D getTranslateCurrentUserPoint() {
-        return getWindow2D().pixelToUser(getTranslateCurrentDevicePoint());
+        return getProjection().pixelToUser(getTranslateCurrentDevicePoint());
     }
 
     /**

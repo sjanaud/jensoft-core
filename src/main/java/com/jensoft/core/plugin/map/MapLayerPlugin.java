@@ -14,9 +14,9 @@ import com.jensoft.core.map.layer.AbstractMapLayer;
 import com.jensoft.core.map.projection.GeoPosition;
 import com.jensoft.core.map.projection.Projection2D;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>MapLayerPlugin</code> takes the responsibility to paint map layers
@@ -50,8 +50,8 @@ public class MapLayerPlugin extends AbstractPlugin {
      * 
      * @return map window
      */
-    public Window2D.Map getWindowMap() {
-        return (Window2D.Map) getWindow2D();
+    public Projection.Map getWindowMap() {
+        return (Projection.Map) getProjection();
     }
 
     /**
@@ -93,10 +93,10 @@ public class MapLayerPlugin extends AbstractPlugin {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
         for (AbstractMapLayer layer : mapLayers) {
             layer.setProjection2D(projectionAdapter);
             layer.doPaint(g2d);

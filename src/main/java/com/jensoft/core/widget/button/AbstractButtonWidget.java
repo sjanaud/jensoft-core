@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.widget.Widget;
 import com.jensoft.core.widget.WidgetFolder;
 
@@ -168,7 +168,7 @@ public abstract class AbstractButtonWidget<P extends AbstractPlugin> extends Wid
      * @param buttonDrawingRegion
      *            the button bouding region
      */
-    public abstract void paintButton(View2D v2d, Graphics2D g2d,
+    public abstract void paintButton(View v2d, Graphics2D g2d,
             Rectangle2D buttonDrawingRegion);
 
     
@@ -176,7 +176,7 @@ public abstract class AbstractButtonWidget<P extends AbstractPlugin> extends Wid
      * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    public final void paintWidget(View2D v2d, Graphics2D g2d) {
+    public final void paintWidget(View v2d, Graphics2D g2d) {
         Rectangle2D rect = getWidgetFolder().getBounds2D();
         if (rect != null) {
             paintButton(v2d, g2d, rect);

@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 
 import javax.swing.JLabel;
 
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>MarkerLabel</code>
@@ -33,7 +33,7 @@ public class MarkerLabel extends AbstractMarker {
      * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    public final void paintMarker(View2D view2d, Graphics2D g2d) {
+    public final void paintMarker(View view2d, Graphics2D g2d) {
 
         //System.out.println("paint marker");
         view2d.getDevice2D().remove(jlabel);

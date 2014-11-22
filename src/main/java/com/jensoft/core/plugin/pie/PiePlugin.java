@@ -15,8 +15,8 @@ import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>PiePlugin</code>
@@ -24,6 +24,8 @@ import com.jensoft.core.window.WindowPart;
  * <img src="doc-files/pie-radial-label.png"> <br>
  * <br>
  * <img src="doc-files/pie-border-label.png"> <br>
+ * 
+ * @since 1.0
  * 
  * @author Sebastien Janaud
  */
@@ -54,7 +56,6 @@ public class PiePlugin extends AbstractPlugin implements
         setDithering(Dithering.On);
         
         setPriority(100);
-       
     }
 
     /**
@@ -85,39 +86,34 @@ public class PiePlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
-
         // be careful slice can be paint twice !
         for (Pie pie : pies) {
-
             pie.build();
             // pie
-            paintPie(v2d, g2d, pie);
+            paintPie(view, g2d, pie);
             // slice
-            paintSlices(v2d, g2d, pie);
-
+            paintSlices(view, g2d, pie);
         }
-
     }
 
     /**
      * paint the pie
      * 
-     * @param v2d
-     *            the view2D
+     * @param view
+     *            the view
      * @param g2d
      *            the graphics context
      * @param pie
      *            the pie to paint
      */
-    private void paintPie(View2D v2d, Graphics2D g2d, Pie pie) {
+    private void paintPie(View view, Graphics2D g2d, Pie pie) {
         if (pie.getPieFill() != null) {
             pie.getPieFill().paintPie(g2d, pie);
         }
@@ -139,7 +135,7 @@ public class PiePlugin extends AbstractPlugin implements
      * @param pie
      *            the pie to paint
      */
-    private void paintSlices(View2D v2d, Graphics2D g2d, Pie pie) {
+    private void paintSlices(View v2d, Graphics2D g2d, Pie pie) {
         List<PieSlice> slices = pie.getSlices();
         for (PieSlice slice : slices) {
             if (slice.getSliceFill() != null) {

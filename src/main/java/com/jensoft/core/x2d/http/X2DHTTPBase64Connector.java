@@ -62,7 +62,7 @@ public class X2DHTTPBase64Connector extends HttpServlet {
             String xmlViewSource = request.getParameter("view");            
             //System.out.println("X2D Connector process View : "+xmlViewSource);            
             x2dProcessor.registerX2DSource(xmlViewSource);            
-            String image = x2dProcessor.getView2D().createViewEmitter().emitAsImageBase64();
+            String image = x2dProcessor.getView().createViewEmitter().emitAsImageBase64();
             response.setContentType("image/png");            
             PrintWriter out = response.getWriter();
             out.print(image);

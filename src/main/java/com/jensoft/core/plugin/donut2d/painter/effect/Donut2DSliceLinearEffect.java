@@ -247,7 +247,7 @@ public class Donut2DSliceLinearEffect extends AbstractDonut2DSliceEffect {
 
         Point2D c = null;
         if (donut2D.getNature() == Donut2DNature.User) {
-            c = donut2D.getHostPlugin().getWindow2D()
+            c = donut2D.getHostPlugin().getProjection()
                     .userToPixel(new Point2D.Double(centerX, centerY));
         }
         if (donut2D.getNature() == Donut2DNature.Device) {

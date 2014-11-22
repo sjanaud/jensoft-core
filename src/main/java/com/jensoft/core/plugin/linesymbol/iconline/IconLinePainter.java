@@ -15,7 +15,7 @@ import com.jensoft.core.palette.TangoPalette;
 import com.jensoft.core.plugin.linesymbol.LineSymbolPlugin.LineNature;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbolComponent;
 import com.jensoft.core.plugin.linesymbol.painter.AbstractLinePainter;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class IconLinePainter extends AbstractLinePainter {
 
@@ -39,7 +39,7 @@ public class IconLinePainter extends AbstractLinePainter {
         for (LineEntry entry : ils.getEntries()) {
             double value = entry.getValue();
 
-            Window2D w2d = lineSymbolComponent.getHost().getWindow2D();
+            Projection w2d = lineSymbolComponent.getHost().getProjection();
             Point2D devicePoint = w2d.userToPixel(new Point2D.Double(value, 0));
             double y = ils.getGeometry().getBaseLine().getY1();
 
@@ -73,7 +73,7 @@ public class IconLinePainter extends AbstractLinePainter {
         for (LineEntry entry : ils.getEntries()) {
             double value = entry.getValue();
 
-            Window2D w2d = lineSymbolComponent.getHost().getWindow2D();
+            Projection w2d = lineSymbolComponent.getHost().getProjection();
             Point2D devicePoint = w2d.userToPixel(new Point2D.Double(0, value));
             double x = lineSymbolComponent.getLocation();
 

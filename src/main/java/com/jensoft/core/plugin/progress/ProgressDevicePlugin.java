@@ -12,9 +12,9 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>ProgressPlugin</code>
@@ -69,18 +69,18 @@ public class ProgressDevicePlugin extends AbstractPlugin {
      *            the graphics context
      */
     private void paintScanningProcess(Graphics2D g2d) {
-        Window2D w2d = getWindow2D();
+        Projection w2d = getProjection();
 
         Point2D p2dUser = new Point2D.Double(currentProgress, 0);
         Point2D p2ddevice = w2d.userToPixel(p2dUser);
 
         // AREA
         Rectangle2D recZone2D = new Rectangle2D.Double(0, 0, p2ddevice.getX(),
-                                                       getWindow2D().getDevice2D().getDeviceHeight());
+                                                       getProjection().getDevice2D().getDeviceHeight());
 
         // g2d.setPaint(new Color(51,153,255));
 
-        g2d.setPaint(getWindow2D().getThemeColor());
+        g2d.setPaint(getProjection().getThemeColor());
 
         g2d.setComposite(java.awt.AlphaComposite.getInstance(
                                                              java.awt.AlphaComposite.SRC_OVER, 0.3f));
@@ -98,11 +98,11 @@ public class ProgressDevicePlugin extends AbstractPlugin {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
         if (lockProgress) {

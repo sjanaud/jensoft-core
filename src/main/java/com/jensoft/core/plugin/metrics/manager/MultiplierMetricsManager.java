@@ -15,8 +15,8 @@ import java.util.List;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.WidgetPlugin.PushingBehavior;
-import com.jensoft.core.window.Window2D;
 
 /***
  * <code>MultiplierMetricsManager</code> takes the responsibility to manage metrics with one multiplier
@@ -167,7 +167,7 @@ public class MultiplierMetricsManager extends AbstractMetricsManager {
      * @return the metrics
      */
     private Metrics create(double userValue, int nature) {
-        Window2D w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getWindow2D();
         Metrics metrics = new Metrics(getType());
         metrics.setNature(nature);
         double deviceValue = 0;
@@ -205,7 +205,7 @@ public class MultiplierMetricsManager extends AbstractMetricsManager {
      * reboot this manager
      */
     public void reboot() {
-        Window2D w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getWindow2D();
         w2d.getView2D()
                 .getWidgetPlugin()
                 .pushMessage("REBOOT", 0, null,
@@ -223,7 +223,7 @@ public class MultiplierMetricsManager extends AbstractMetricsManager {
         List<Metrics> volatileMetrics = new ArrayList<Metrics>();
         List<Double> reference = new ArrayList<Double>();
 
-        Window2D w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getWindow2D();
 
         int globalCount = 0;
 

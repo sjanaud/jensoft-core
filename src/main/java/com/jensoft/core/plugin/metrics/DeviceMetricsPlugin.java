@@ -11,7 +11,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.device.Device2D;
+import com.jensoft.core.device.Device;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
@@ -33,13 +33,14 @@ import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel;
 import com.jensoft.core.plugin.metrics.painter.AbstractMetricsPainter;
 import com.jensoft.core.plugin.metrics.painter.MetricsGlyphPainter;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>DeviceMetricsPlugin</code> takes the responsibility to manage metrics
- * on {@link Device2D}
+ * on {@link Device}
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
 public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> extends AbstractPlugin {
@@ -810,17 +811,10 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 			return getMetricsManager().getTimingModels();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * com.jensoft.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(
-		 * com.jensoft.core.view.View2D, java.awt.Graphics2D,
-		 * com.jensoft.core.window.WindowPart)
-		 */
+		
 		@Override
-		protected void paintMetrics(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			if (!super.isAccessible(windowPart)) {
+		protected void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			if (!super.isAccessible(viewPart)) {
 				return;
 			}
 			super.createRenderContext(v2d, g2d);
@@ -1021,8 +1015,8 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * com.jensoft.core.window.WindowPart)
 		 */
 		@Override
-		protected void paintMetrics(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			if (!super.isAccessible(windowPart)) {
+		protected void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			if (!super.isAccessible(viewPart)) {
 				return;
 			}
 			super.createRenderContext(v2d, g2d);
@@ -1154,11 +1148,11 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	/**
 	 * true if the context is accessible, false otherwise
 	 * 
-	 * @param windowPart
+	 * @param viewPart
 	 * @return true if the context is accessible, false otherwise
 	 */
-	private boolean isAccessible(WindowPart windowPart) {
-		if (windowPart != WindowPart.Device) {
+	private boolean isAccessible(ViewPart viewPart) {
+		if (viewPart != ViewPart.Device) {
 			return false;
 		}
 		return true;
@@ -1297,8 +1291,8 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * @param v2d
 	 * @param g2d
 	 */
-	private void createRenderContext(View2D v2d, Graphics2D g2d) {
-		MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getWindow2D(), g2d);
+	private void createRenderContext(View v2d, Graphics2D g2d) {
+		MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getProjection(), g2d);
 		renderContext.setMetricsMedianFont(metricsManager.getMetricsMedianFont());
 		renderContext.setMetricsMajorFont(metricsManager.getMetricsMajorFont());
 
@@ -1324,8 +1318,8 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * @param v2d
 	 * @param g2d
 	 */
-	protected void paintMetricsX(View2D v2d, Graphics2D g2d, List<Metrics> metricsX, double baseLine, int offsetPixel) {
-		Point2D deviceBaseLine = getWindow2D().userToPixel(new Point2D.Double(0, baseLine));
+	protected void paintMetricsX(View v2d, Graphics2D g2d, List<Metrics> metricsX, double baseLine, int offsetPixel) {
+		Point2D deviceBaseLine = getProjection().userToPixel(new Point2D.Double(0, baseLine));
 		for (Metrics m : metricsX) {
 			if (MarkerPosition.isXCompatible(deviceMarkerPosition)) {
 				m.setMarkerPosition(deviceMarkerPosition);
@@ -1357,16 +1351,16 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * @param v2d
 	 * @param g2d
 	 */
-	protected void paintMetricsXBaseLine(View2D v2d, Graphics2D g2d, double baseLine) {
+	protected void paintMetricsXBaseLine(View v2d, Graphics2D g2d, double baseLine) {
 
-		Point2D deviceBaseLine = getWindow2D().userToPixel(new Point2D.Double(0, baseLine));
+		Point2D deviceBaseLine = getProjection().userToPixel(new Point2D.Double(0, baseLine));
 		Color axisBaseLineColor;
 		if (metricsManager.getMetricsBaseLineColor() != null) {
 			axisBaseLineColor = metricsManager.getMetricsBaseLineColor();
 		} else {
 			axisBaseLineColor = metricsManager.getRenderContext().getWindow2D().getThemeColor();
 		}
-		metricsPainter.doPaintLineMetrics(g2d, new Point2D.Double(0, deviceBaseLine.getY()), new Point2D.Double(getWindow2D().getDevice2D().getDeviceWidth(), deviceBaseLine.getY()), axisBaseLineColor);
+		metricsPainter.doPaintLineMetrics(g2d, new Point2D.Double(0, deviceBaseLine.getY()), new Point2D.Double(getProjection().getDevice2D().getDeviceWidth(), deviceBaseLine.getY()), axisBaseLineColor);
 
 	}
 
@@ -1376,8 +1370,8 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * @param v2d
 	 * @param g2d
 	 */
-	protected void paintMetricsY(View2D v2d, Graphics2D g2d, List<Metrics> metricsY, double baseLine, int offsetPixel) {
-		Point2D deviceBaseLine = getWindow2D().userToPixel(new Point2D.Double(baseLine, 0));
+	protected void paintMetricsY(View v2d, Graphics2D g2d, List<Metrics> metricsY, double baseLine, int offsetPixel) {
+		Point2D deviceBaseLine = getProjection().userToPixel(new Point2D.Double(baseLine, 0));
 		for (Metrics m : metricsY) {
 			Point2D p = new Point2D.Double();
 			p = new Point2D.Double(deviceBaseLine.getX(), m.getDeviceValue());
@@ -1398,16 +1392,16 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * @param v2d
 	 * @param g2d
 	 */
-	protected void paintMetricsYBaseLine(View2D v2d, Graphics2D g2d, double baseLine) {
+	protected void paintMetricsYBaseLine(View v2d, Graphics2D g2d, double baseLine) {
 
-		Point2D deviceBaseLine = getWindow2D().userToPixel(new Point2D.Double(baseLine, 0));
+		Point2D deviceBaseLine = getProjection().userToPixel(new Point2D.Double(baseLine, 0));
 		Color axisBaseLineColor;
 		if (metricsManager.getMetricsBaseLineColor() != null) {
 			axisBaseLineColor = metricsManager.getMetricsBaseLineColor();
 		} else {
 			axisBaseLineColor = metricsManager.getRenderContext().getWindow2D().getThemeColor();
 		}
-		metricsPainter.doPaintLineMetrics(g2d, new Point2D.Double(deviceBaseLine.getX(), 0), new Point2D.Double(deviceBaseLine.getX(), getWindow2D().getDevice2D().getDeviceHeight()), axisBaseLineColor);
+		metricsPainter.doPaintLineMetrics(g2d, new Point2D.Double(deviceBaseLine.getX(), 0), new Point2D.Double(deviceBaseLine.getX(), getProjection().getDevice2D().getDeviceHeight()), axisBaseLineColor);
 
 	}
 
@@ -1416,11 +1410,11 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * 
 	 * @param g2d
 	 *            the graphics context
-	 * @param windowPart
+	 * @param viewPart
 	 *            the window part
 	 */
-	protected void paintMetrics(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		if (!isAccessible(windowPart)) {
+	protected void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+		if (!isAccessible(viewPart)) {
 			return;
 		}
 		createRenderContext(v2d, g2d);
@@ -1440,16 +1434,13 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
-	 * .View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	public final void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		paintMetrics(v2d, g2d, windowPart);
+	public final void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+		paintMetrics(view, g2d, viewPart);
 	}
 
 }

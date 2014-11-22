@@ -507,7 +507,7 @@ public class Donut2D {
     private void projection() {
         if (getNature() == Donut2DNature.User) {
             Point2D center = getCenter();
-            Point2D projectedCenter = getHostPlugin().getWindow2D().userToPixel(
+            Point2D projectedCenter = getHostPlugin().getProjection().userToPixel(
                                                                                 center);
             buildCenterX = (int) projectedCenter.getX();
             buildCenterY = (int) projectedCenter.getY();

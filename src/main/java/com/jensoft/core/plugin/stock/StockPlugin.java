@@ -13,8 +13,8 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code></code> Stock plug-in takes the responsibility to paint commons stock
@@ -134,14 +134,14 @@ public class StockPlugin extends AbstractPlugin {
 	 * 
 	 * @see
 	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
-	 * .View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	 * .View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 		//System.out.println("paint layer "+windowPart.name());
 		for (StockLayer<?> layer : stockLayers) {
 			layer.solveLayer();
-			layer.paintLayer(v2d, g2d, windowPart);
+			layer.paintLayer(v2d, g2d, viewPart);
 		}
 
 	}

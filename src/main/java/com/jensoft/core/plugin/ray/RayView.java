@@ -9,19 +9,19 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
 import com.jensoft.core.plugin.outline.OutlinePlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
 
 /**
  * Compatible ray view
  */
-public class RayView extends View2D {
+public class RayView extends View {
 
     /** uid */
     private static final long serialVersionUID = 4610374377279625205L;
 
     /** window2D associate to this view and ray plugin */
-    private Window2D.Linear window2DRay;
+    private Projection.Linear window2DRay;
 
     /** ray plug in */
     private RayPlugin rayPlugin;
@@ -89,8 +89,8 @@ public class RayView extends View2D {
      *            the maximum y coordinate value
      */
     private void createWindow(double minx, double maxx, double miny, double maxy) {
-        window2DRay = new Window2D.Linear(minx, maxx, miny, maxy);
-        registerWindow2D(window2DRay);
+        window2DRay = new Projection.Linear(minx, maxx, miny, maxy);
+        registerProjection(window2DRay);
     }
 
     /**
@@ -126,7 +126,7 @@ public class RayView extends View2D {
     /**
      * @return the ray window
      */
-    public Window2D getRayWindow() {
+    public Projection getRayWindow() {
         return window2DRay;
     }
 

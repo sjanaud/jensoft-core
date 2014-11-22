@@ -16,8 +16,8 @@ import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * This SymbolPlugin provides symbol support. <br>
@@ -173,11 +173,11 @@ public class SymbolPlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public final void paintPlugin(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart) {
+    public final void paintPlugin(View v2d, Graphics2D g2d,
+            ViewPart viewPart) {
         // System.out.println("paint symbol plugin for part "+windowPart.name());
         g2d.setComposite(AlphaComposite
                 .getInstance(AlphaComposite.SRC_OVER, 1f));
@@ -186,8 +186,8 @@ public class SymbolPlugin extends AbstractPlugin implements
         // paint layer
         for (int i = 0; i < countLayers(); i++) {
             SymbolLayer<? extends SymbolComponent> layer = getLayer(i);
-            layer.paintLayer(v2d, g2d, windowPart, PaintRequest.SymbolLayer);
-            layer.paintLayer(v2d, g2d, windowPart, PaintRequest.LabelLayer);
+            layer.paintLayer(v2d, g2d, viewPart, PaintRequest.SymbolLayer);
+            layer.paintLayer(v2d, g2d, viewPart, PaintRequest.LabelLayer);
         }
     }
 

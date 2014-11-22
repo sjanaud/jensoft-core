@@ -25,13 +25,15 @@ import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginListener;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.widget.Widget;
 import com.jensoft.core.widget.WidgetFolder;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
 
 /**
+ * <code>WidgetPlugin</code>
+ * <p>
  * internal view plugin for managing widget this plugin has no host window
+ * </p>
  * 
  * @author Sebastien Janaud
  */
@@ -66,8 +68,8 @@ public class WidgetPlugin extends AbstractPlugin implements
     }
 
     @Override
-    public View2D getView2D() {
-        return super.getView2D();
+    public View getView() {
+        return super.getView();
     }
 
     public boolean isLockAboutFolderMessage() {
@@ -136,10 +138,10 @@ public class WidgetPlugin extends AbstractPlugin implements
         @Override
         public void run() {
             try {
-                getView2D().getWindowComponent(WindowPart.North).repaint();
+                getView().getWindowComponent(ViewPart.North).repaint();
                 Thread.sleep(startDelay);
 
-                getView2D().getWindowComponent(WindowPart.North).repaint();
+                getView().getWindowComponent(ViewPart.North).repaint();
                 while (effect) {
 
                     if (alpha < 0) {
@@ -156,7 +158,7 @@ public class WidgetPlugin extends AbstractPlugin implements
                         countCurentEffect = countCurentEffect + 1;
                         if (alpha >= 0 && alpha <= 1) {
 
-                            getView2D().getWindowComponent(WindowPart.North)
+                            getView().getWindowComponent(ViewPart.North)
                                     .repaint();
                             Thread.sleep(behavior.getBehavior());
                         }
@@ -164,13 +166,13 @@ public class WidgetPlugin extends AbstractPlugin implements
 
                 }
 
-                getView2D().getWindowComponent(WindowPart.North).repaint();
+                getView().getWindowComponent(ViewPart.North).repaint();
 
             }
             catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 message = null;
-                getView2D().getWindowComponent(WindowPart.North).repaint();
+                getView().getWindowComponent(ViewPart.North).repaint();
 
             }
         }
@@ -236,10 +238,10 @@ public class WidgetPlugin extends AbstractPlugin implements
                                                                                InputFonts.NEUROPOL, 12));
         }
         else {
-            if (getView2D().getActiveWindow() != null) {
+            if (getView().getActiveProjection() != null) {
 
-                pm = new PushingMessage(message, pushingBehavior, getView2D()
-                        .getActiveWindow().getThemeColor(), InputFonts.getFont(
+                pm = new PushingMessage(message, pushingBehavior, getView()
+                        .getActiveProjection().getThemeColor(), InputFonts.getFont(
                                                                                InputFonts.NEUROPOL, 12));
             }
         }
@@ -278,10 +280,10 @@ public class WidgetPlugin extends AbstractPlugin implements
                                     plugin.getThemeColor(), f);
         }
         else {
-            if (getView2D().getActiveWindow() != null) {
+            if (getView().getActiveProjection() != null) {
 
-                pm = new PushingMessage(message, pushingBehavior, getView2D()
-                        .getActiveWindow().getThemeColor(), f);
+                pm = new PushingMessage(message, pushingBehavior, getView()
+                        .getActiveProjection().getThemeColor(), f);
             }
         }
         if (pm != null) {
@@ -300,10 +302,10 @@ public class WidgetPlugin extends AbstractPlugin implements
                                     plugin.getThemeColor(), f);
         }
         else {
-            if (getView2D().getActiveWindow() != null) {
+            if (getView().getActiveProjection() != null) {
 
                 pm = new PushingMessage(message, startDelay, pushingBehavior,
-                                        getView2D().getActiveWindow().getThemeColor(), f);
+                                        getView().getActiveProjection().getThemeColor(), f);
             }
         }
         if (pm != null) {
@@ -350,7 +352,7 @@ public class WidgetPlugin extends AbstractPlugin implements
 
         northMessage = msg;
         // destroyMessage();
-        getView2D().getWindowComponent(WindowPart.North).repaint();
+        getView().getWindowComponent(ViewPart.North).repaint();
 
         // if(messageCleaner != null && messageCleaner.isAlive())
         // return;
@@ -373,14 +375,14 @@ public class WidgetPlugin extends AbstractPlugin implements
             return;
         }
 
-        if (getView2D().getActiveWindow() == null) {
+        if (getView().getActiveProjection() == null) {
             return;
         }
 
-        g2d.setColor(getView2D().getActiveWindow().getThemeColor().darker());
+        g2d.setColor(getView().getActiveProjection().getThemeColor().darker());
         g2d.setFont(font);
-        JComponent comp = getView2D().getWindowComponent(WindowPart.North);
-        g2d.drawString(northMessage, getView2D().getPlaceHolderAxisWest(),
+        JComponent comp = getView().getWindowComponent(ViewPart.North);
+        g2d.drawString(northMessage, getView().getPlaceHolderAxisWest(),
                        comp.getHeight() - 5);
 
     }
@@ -399,14 +401,14 @@ public class WidgetPlugin extends AbstractPlugin implements
         @Override
         public void run() {
             try {
-                getView2D().getWindowComponent(WindowPart.North).repaint();
+                getView().getWindowComponent(ViewPart.North).repaint();
                 Thread.sleep(delay);
                 northMessage = null;
-                getView2D().getWindowComponent(WindowPart.North).repaint();
+                getView().getWindowComponent(ViewPart.North).repaint();
             }
             catch (InterruptedException e) {
                 northMessage = null;
-                getView2D().getWindowComponent(WindowPart.North).repaint();
+                getView().getWindowComponent(ViewPart.North).repaint();
                 Thread.currentThread().interrupt();
 
             }
@@ -421,7 +423,7 @@ public class WidgetPlugin extends AbstractPlugin implements
     private void paintPushingMessage(Graphics2D g2d) {
         Antialiasing a = Antialiasing.On;
         a.configureGraphics(g2d);
-        int northHeight = getView2D().getWindowComponent(WindowPart.North)
+        int northHeight = getView().getWindowComponent(ViewPart.North)
                 .getHeight();
         synchronized (pushingMessages) {
             for (PushingMessage pm : pushingMessages) {
@@ -439,9 +441,9 @@ public class WidgetPlugin extends AbstractPlugin implements
                                                 (int) (250 * pm.alpha)));
                 g2d.setComposite(AlphaComposite.getInstance(
                                                             AlphaComposite.SRC_OVER, pm.alpha));
-                g2d.drawString(pm.message, getView2D().getPlaceHolderAxisWest()
+                g2d.drawString(pm.message, getView().getPlaceHolderAxisWest()
                         + pm.countCurentEffect
-                        * getView2D().getDevice2D().getDeviceWidth()
+                        * getView().getDevice2D().getDeviceWidth()
                         / pm.countBaseEffect, northHeight - 5);
             }
         }
@@ -450,7 +452,7 @@ public class WidgetPlugin extends AbstractPlugin implements
 
     private void moveWidgetOperationCheckMove(MouseEvent me) {
 
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         for (AbstractPlugin plugin : w2d.getPluginRegistry()) {
 
             if (plugin.isSelectable() && !plugin.isLockSelected()) {
@@ -466,14 +468,14 @@ public class WidgetPlugin extends AbstractPlugin implements
 
                 if (widgetFolder.intercept(me.getX(), me.getY())) {
                     widgetFolder.setLockRollover(true);
-                    getView2D().repaintDevice();
+                    getView().repaintDevice();
                 }
                 else {
 
                     widgetFolder.interruptPress();
                     if (widgetFolder.isLockRollover()) {
                         widgetFolder.setLockRollover(false);
-                        getView2D().repaintDevice();
+                        getView().repaintDevice();
                     }
                 }
             }
@@ -520,7 +522,7 @@ public class WidgetPlugin extends AbstractPlugin implements
 
                     df.setX(x + stepCount * deltaX);
                     df.setY(y + stepCount * deltaY);
-                    getView2D().repaintDevice();
+                    getView().repaintDevice();
                     Thread.sleep(300);
                 }
 
@@ -539,12 +541,12 @@ public class WidgetPlugin extends AbstractPlugin implements
      *            the mouse pressed event
      */
     private void moveWidgetOperationCheckPress(MouseEvent me) {
-        if (getView2D().getActiveWindow() == null) {
+        if (getView().getActiveProjection() == null) {
             return;
         }
 
         // from all plugins
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         for (final AbstractPlugin plugin : w2d.getPluginRegistry()) {
 
             if (plugin.isSelectable() && !plugin.isLockSelected()) {
@@ -571,7 +573,7 @@ public class WidgetPlugin extends AbstractPlugin implements
 
                                                 @Override
                                                 public void folderPress() {
-                                                    getView2D().repaintDevice();
+                                                    getView().repaintDevice();
                                                     setNorthMessage("LOCK WIDGET/"
                                                             + widgetFolder.getId());
                                                     passivePlugins();
@@ -589,7 +591,7 @@ public class WidgetPlugin extends AbstractPlugin implements
             }
         }
 
-        getView2D().repaintDevice();
+        getView().repaintDevice();
 
     }
 
@@ -600,12 +602,12 @@ public class WidgetPlugin extends AbstractPlugin implements
      *            the mouse drag event
      */
     private void moveWidgetOperationCheckDrag(MouseEvent me) {
-        if (getView2D().getActiveWindow() == null) {
+        if (getView().getActiveProjection() == null) {
             return;
         }
 
         // all widget
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         for (AbstractPlugin plugin : w2d.getPluginRegistry()) {
 
             for (Widget widget : plugin.getWidgets()) {
@@ -633,7 +635,7 @@ public class WidgetPlugin extends AbstractPlugin implements
                         // if(r2!=null)
                         // getView2D().repaintDevice((int)(r2.getX()-1),(int)(r2.getY()-1),(int)(r2.getWidth()+2),(int)(r2.getHeight()+2));
 
-                        getView2D().repaintDevice();
+                        getView().repaintDevice();
                     }
                 }
 
@@ -649,12 +651,12 @@ public class WidgetPlugin extends AbstractPlugin implements
      *            the mouse realeased event
      */
     private void moveWidgetOperationCheckRelease(MouseEvent me) {
-        if (getView2D().getActiveWindow() == null) {
+        if (getView().getActiveProjection() == null) {
             return;
         }
 
         setNorthMessage(null);
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         for (AbstractPlugin plugin : w2d.getPluginRegistry()) {
 
             for (Widget widget : plugin.getWidgets()) {
@@ -693,7 +695,7 @@ public class WidgetPlugin extends AbstractPlugin implements
             }
         }
 
-        getView2D().repaintDevice();
+        getView().repaintDevice();
 
     }
 
@@ -716,7 +718,7 @@ public class WidgetPlugin extends AbstractPlugin implements
     private void dispatchMove(MouseEvent me) {
 
         // dispatch for all plugins in active window
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         if (w2d == null) {
             return;
         }
@@ -761,7 +763,7 @@ public class WidgetPlugin extends AbstractPlugin implements
      */
     private void dispatchWheel(MouseWheelEvent mwe) {
 
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         if (w2d == null) {
             return;
         }
@@ -808,7 +810,7 @@ public class WidgetPlugin extends AbstractPlugin implements
     private void dispatchDrag(MouseEvent me) {
 
         // dispatch for all plugins in active window
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         if (w2d == null) {
             return;
         }
@@ -857,7 +859,7 @@ public class WidgetPlugin extends AbstractPlugin implements
     private void dispatchPress(MouseEvent me) {
 
         // dispatch for all plugins in active window
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         if (w2d == null) {
             return;
         }
@@ -907,7 +909,7 @@ public class WidgetPlugin extends AbstractPlugin implements
     private void dispatchRelease(MouseEvent me) {
 
         // dispatch for all plugins in active window
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         if (w2d == null) {
             return;
         }
@@ -965,7 +967,7 @@ public class WidgetPlugin extends AbstractPlugin implements
             }
         }
 
-        for (AbstractPlugin plugin : getView2D().getActiveWindow()
+        for (AbstractPlugin plugin : getView().getActiveProjection()
                 .getPluginRegistry()) {
 
             if (hostPlugin == plugin
@@ -1000,7 +1002,7 @@ public class WidgetPlugin extends AbstractPlugin implements
      */
     private void passivePlugins() {
 
-        for (AbstractPlugin l : getView2D().getActiveWindow()
+        for (AbstractPlugin l : getView().getActiveProjection()
                 .getPluginRegistry()) {
             l.lockPassive();
         }
@@ -1011,16 +1013,16 @@ public class WidgetPlugin extends AbstractPlugin implements
      */
     private void activePlugins() {
         // TODO check which one? only active or all plugins
-        for (AbstractPlugin l : getView2D().getActiveWindow()
+        for (AbstractPlugin l : getView().getActiveProjection()
                 .getPluginRegistry()) {
             l.unlockPassive();
         }
     }
 
-    private void paintRolloverWidget(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart) {
+    private void paintRolloverWidget(View v2d, Graphics2D g2d,
+            ViewPart viewPart) {
 
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         for (AbstractPlugin layout : w2d.getPluginRegistry()) {
             for (Widget widget : layout.getWidgets()) {
 
@@ -1041,10 +1043,10 @@ public class WidgetPlugin extends AbstractPlugin implements
      * @param g2d
      * @param windowPart
      */
-    private void paintDragPhantomWidget(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart) {
+    private void paintDragPhantomWidget(View v2d, Graphics2D g2d,
+            ViewPart viewPart) {
 
-        Window2D w2d = getView2D().getActiveWindow();
+        Projection w2d = getView().getActiveProjection();
         if (w2d == null) {
             return;
         }
@@ -1085,7 +1087,7 @@ public class WidgetPlugin extends AbstractPlugin implements
 
         //widgetFolder.setCurentDragBound(r.getBounds());
 
-        WidgetFolder widgetPotentialFolder = getView2D()
+        WidgetFolder widgetPotentialFolder = getView()
                 .newFolderIntanceByPosition(widgetFolder.getId(),
                                             widgetFolder.getWidth(), widgetFolder.getHeight(),
                                             widgetFolder.getCurrentDragX(),
@@ -1132,11 +1134,11 @@ public class WidgetPlugin extends AbstractPlugin implements
     }
 
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart == WindowPart.Device) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart == ViewPart.Device) {
             // paint all widget for active window
-            if (v2d.getActiveWindow() != null) {
-                List<AbstractPlugin> plugins = v2d.getActiveWindow().getPluginRegistry();
+            if (v2d.getActiveProjection() != null) {
+                List<AbstractPlugin> plugins = v2d.getActiveProjection().getPluginRegistry();
                 for (AbstractPlugin plugin : plugins) {
                     List<Widget> widgets = plugin.getWidgets();
                     for (Widget widget : widgets) {
@@ -1147,9 +1149,9 @@ public class WidgetPlugin extends AbstractPlugin implements
                 }
             }
             // paint phantom during drag operation
-            paintDragPhantomWidget(v2d, g2d, windowPart);
+            paintDragPhantomWidget(v2d, g2d, viewPart);
         }
-        if (windowPart == WindowPart.North) {
+        if (viewPart == ViewPart.North) {
             paintPushingMessage(g2d);
             paintNorthMessage(g2d);
         }

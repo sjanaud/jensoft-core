@@ -12,8 +12,8 @@ import java.util.List;
 
 import com.jensoft.core.plugin.symbol.SymbolComponent.FillerType;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>SymbolLayer</code> defines abstract layer for {@link SymbolComponent}
@@ -131,8 +131,8 @@ public abstract class SymbolLayer<S extends SymbolComponent> {
     /**
      * solve this layer geometry
      */
-    public abstract void paintLayer(View2D v2d, Graphics2D g2d,
-                                    WindowPart windowPart, PaintRequest paintRequest);
+    public abstract void paintLayer(View v2d, Graphics2D g2d,
+                                    ViewPart viewPart, PaintRequest paintRequest);
 
     /**
      * return flatten symbol components in the windowBar2D
@@ -241,8 +241,8 @@ public abstract class SymbolLayer<S extends SymbolComponent> {
                 total = total + bc.getThickness();
             }
         }
-        if (getHost().getWindow2D().getDevice2D().getDeviceWidth() > total) {
-            double reste = getHost().getWindow2D().getDevice2D()
+        if (getHost().getProjection().getDevice2D().getDeviceWidth() > total) {
+            double reste = getHost().getProjection().getDevice2D()
                     .getDeviceWidth()
                            - total;
             int gluesCount = glues.size();
@@ -282,8 +282,8 @@ public abstract class SymbolLayer<S extends SymbolComponent> {
                 total = total + bc.getThickness();
             }
         }
-        if (getHost().getWindow2D().getDevice2D().getDeviceHeight() > total) {
-            double reste = getHost().getWindow2D().getDevice2D()
+        if (getHost().getProjection().getDevice2D().getDeviceHeight() > total) {
+            double reste = getHost().getProjection().getDevice2D()
                     .getDeviceHeight()
                            - total;
             int gluesCount = glues.size();

@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class Ellipse extends Primitive {
 
@@ -40,7 +40,7 @@ public class Ellipse extends Primitive {
             g2d.draw(ellipse2DDevice);
         }
         else if (getNature() == PrimitiveNature.USER) {
-            Window2D w2d = getHost().getWindow2D();
+            Projection w2d = getHost().getProjection();
 
             Point2D centerUser = w2d.userToPixel(new Point2D.Double(centerX,
                                                                     centerY));

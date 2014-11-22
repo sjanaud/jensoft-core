@@ -2,7 +2,7 @@ package com.jensoft.core.view.deflater;
 
 import org.w3c.dom.Document;
 
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>AbstractViewDeflater</code>
@@ -15,7 +15,7 @@ import com.jensoft.core.view.View2D;
 public abstract class AbstractViewDeflater {
 
     /** the deflate view */
-    private View2D view2D;
+    private View view2D;
     
     /**
      * create view Deflater
@@ -28,14 +28,14 @@ public abstract class AbstractViewDeflater {
      * 
      * @param view2D
      */
-    public AbstractViewDeflater(View2D view2D) {
+    public AbstractViewDeflater(View view2D) {
         this.view2D = view2D;
     }
 
     /**
      * @return the view2D
      */
-    public View2D getView2D() {
+    public View getView2D() {
         return view2D;
     }
 
@@ -43,7 +43,7 @@ public abstract class AbstractViewDeflater {
      * @param view2d
      *            the view2D to set
      */
-    public void setView2D(View2D view2d) {
+    public void setView2D(View view2d) {
         view2D = view2d;
     }
 

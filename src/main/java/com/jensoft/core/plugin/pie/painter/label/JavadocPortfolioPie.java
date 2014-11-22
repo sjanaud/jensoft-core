@@ -27,10 +27,10 @@ import com.jensoft.core.plugin.pie.animator.PieDivergenceAnimator;
 import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel.Style;
 import com.jensoft.core.plugin.pie.painter.label.PieBorderLabel.LinkStyle;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.RoundViewFill;
-import com.jensoft.core.window.Window2D;
 
 /**
  * <code>JavadocPortfolioPie</code>
@@ -40,12 +40,12 @@ import com.jensoft.core.window.Window2D;
 public class JavadocPortfolioPie {
 
     @Portfolio(name = "PieRadialLabel", width = 800, height = 800)
-    public static View2D getPieRadialLabel() {
+    public static View getPieRadialLabel() {
 
-        View2D view = new View2D(0);
-        Window2D window = new Window2D.Linear(-1, 1, -1, 1);
+        View view = new View(0);
+        Projection window = new Projection.Linear(-1, 1, -1, 1);
         window.setName("compatible donut3D window");
-        view.registerWindow2D(window);
+        view.registerProjection(window);
 
         PiePlugin piePlugin = new PiePlugin();
         window.registerPlugin(piePlugin);
@@ -118,12 +118,12 @@ public class JavadocPortfolioPie {
     }
 
     @Portfolio(name = "PiePathLabel", width = 800, height = 800)
-    public static View2D createView2D() {
+    public static View createView2D() {
 
-        View2D view = new View2D(0);
-        Window2D window = new Window2D.Linear(-1, 1, -1, 1);
+        View view = new View(0);
+        Projection window = new Projection.Linear(-1, 1, -1, 1);
         window.setName("compatible donut3D window");
-        view.registerWindow2D(window);
+        view.registerProjection(window);
 
         PiePlugin piePlugin = new PiePlugin();
         window.registerPlugin(piePlugin);
@@ -195,12 +195,12 @@ public class JavadocPortfolioPie {
     }
 
     @Portfolio(name = "PieBoundLabel", width = 800, height = 800)
-    public static View2D getPieBoundLabel() {
+    public static View getPieBoundLabel() {
 
-        View2D view = new View2D(0);
-        Window2D window = new Window2D.Linear(-1, 1, -1, 1);
+        View view = new View(0);
+        Projection window = new Projection.Linear(-1, 1, -1, 1);
         window.setName("compatible donut3D window");
-        view.registerWindow2D(window);
+        view.registerProjection(window);
 
         PiePlugin piePlugin = new PiePlugin();
         window.registerPlugin(piePlugin);
@@ -273,12 +273,12 @@ public class JavadocPortfolioPie {
     }
 
     @Portfolio(name = "PieBorderLabel", width = 800, height = 800)
-    public static View2D getPieBorderLabel() {
+    public static View getPieBorderLabel() {
 
-        View2D view = new View2D(0);
-        Window2D window = new Window2D.Linear(-1, 1, -1, 1);
+        View view = new View(0);
+        Projection window = new Projection.Linear(-1, 1, -1, 1);
         window.setName("compatible donut3D window");
-        view.registerWindow2D(window);
+        view.registerProjection(window);
 
         PiePlugin piePlugin = new PiePlugin();
         window.registerPlugin(piePlugin);

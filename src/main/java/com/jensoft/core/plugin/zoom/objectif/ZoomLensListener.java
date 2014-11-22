@@ -8,22 +8,22 @@ package com.jensoft.core.plugin.zoom.objectif;
 import com.jensoft.core.plugin.PluginListener;
 
 /**
- * <code>ZoomObjectifListener</code>
+ * <code>ZoomLensListener</code>
  * 
  * @author sebastien janaud
  */
-public interface ZoomObjectifListener extends PluginListener<ZoomObjectifPlugin> {
+public interface ZoomLensListener extends PluginListener<ZoomLensPlugin> {
 
     /**
      * call on zoom in
      * @param pluginEvent
      */
-    public void zoomIn(ZoomObjectifEvent pluginEvent);
+    public void zoomIn(ZoomLensEvent pluginEvent);
 
     /**
      * call on zoom out
      * @param pluginEvent
      */
-    public void zoomOut(ZoomObjectifEvent pluginEvent);
+    public void zoomOut(ZoomLensEvent pluginEvent);
 
 }

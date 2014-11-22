@@ -5,11 +5,9 @@
  */
 package com.jensoft.core.plugin.legend.data;
 
-import java.awt.Color;
 import java.awt.Component;
 import java.awt.FontMetrics;
 import java.awt.Graphics2D;
-import java.awt.Rectangle;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.HashMap;
@@ -21,8 +19,8 @@ import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.legend.data.DataLegend.Orientation;
 import com.jensoft.core.plugin.legend.data.painter.AbstractDataLegendBackgroundPainter;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>DataLegendPlugin</code> takes the responsibility to paint a legend for an item group based on texts and colors
@@ -65,11 +63,11 @@ public class DataLegendPlugin extends AbstractPlugin {
     
     
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		if(windowPart != legend.getPart()) return;
+	protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+		if(viewPart != legend.getPart()) return;
 			if(legend.getFont() != null){
 				g2d.setFont(legend.getFont());
 			}
@@ -85,7 +83,7 @@ public class DataLegendPlugin extends AbstractPlugin {
 			int currentX = startX;
 			int currentY = startY;
 			
-			Component legendHolder = getWindow2D().getView2D().getWindowComponent(legend.getPart());
+			Component legendHolder = getProjection().getView2D().getWindowComponent(legend.getPart());
 			int partWidth = legendHolder.getWidth();
 			int partHeight = legendHolder.getHeight();
 			

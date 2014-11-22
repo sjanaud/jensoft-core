@@ -69,7 +69,7 @@ public class PieSliceRadialFill extends AbstractPieSliceFill {
 
 		Point2D c = null;
 		if (pie.getPieNature() == PieNature.User) {
-			c = pie.getHostPlugin().getWindow2D().userToPixel(new Point2D.Double(centerX, centerY));
+			c = pie.getHostPlugin().getProjection().userToPixel(new Point2D.Double(centerX, centerY));
 		}
 		if (pie.getPieNature() == PieNature.Device) {
 			c = new Point2D.Double(centerX, centerY);

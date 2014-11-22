@@ -7,10 +7,10 @@ package com.jensoft.core.x2d.binding.zoom;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.zoom.objectif.ObjectifDefaultDeviceContext;
-import com.jensoft.core.plugin.zoom.objectif.ObjectifX;
-import com.jensoft.core.plugin.zoom.objectif.ObjectifY;
-import com.jensoft.core.plugin.zoom.objectif.ZoomObjectifPlugin;
+import com.jensoft.core.plugin.zoom.objectif.LensDefaultDeviceContext;
+import com.jensoft.core.plugin.zoom.objectif.LensX;
+import com.jensoft.core.plugin.zoom.objectif.LensY;
+import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DBinding;
 
@@ -19,8 +19,8 @@ import com.jensoft.core.x2d.binding.X2DBinding;
  * 
  * @author Sebastien Janaud
  */
-@X2DBinding(xsi="ZoomObjectifPlugin",plugin=ZoomObjectifPlugin.class)
-public class ZoomObjectifInflater extends AbstractX2DPluginInflater<ZoomObjectifPlugin> {
+@X2DBinding(xsi="ZoomObjectifPlugin",plugin=ZoomLensPlugin.class)
+public class ZoomObjectifInflater extends AbstractX2DPluginInflater<ZoomLensPlugin> {
 
 	
     
@@ -28,14 +28,14 @@ public class ZoomObjectifInflater extends AbstractX2DPluginInflater<ZoomObjectif
      * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
-    public ZoomObjectifPlugin inflate(Element pluginElement) {
+    public ZoomLensPlugin inflate(Element pluginElement) {
 
-        ZoomObjectifPlugin zoomObjectif = new ZoomObjectifPlugin();
+        ZoomLensPlugin zoomObjectif = new ZoomLensPlugin();
         
-        zoomObjectif.registerContext(new ObjectifDefaultDeviceContext());
+        zoomObjectif.registerContext(new LensDefaultDeviceContext());
         
-        ObjectifX ox = new ObjectifX();
-        ObjectifY oy = new ObjectifY();
+        LensX ox = new LensX();
+        LensY oy = new LensY();
         zoomObjectif.registerWidget(ox,oy);      
 
        

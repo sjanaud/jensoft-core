@@ -11,7 +11,7 @@ import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.PiePlugin;
 import com.jensoft.core.plugin.pie.PieSlice;
 import com.jensoft.core.plugin.pie.PieToolkit;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>PieFlashAnimator</code> creates flash animation on pie slice
@@ -26,7 +26,7 @@ import com.jensoft.core.view.View2D;
 public class PieFlashAnimator extends AbstractPieAnimator {
 
     /** host view */
-    private View2D view2D;
+    private View view2D;
 
     /** minimum alpha to obtain in on state */
     public float alphaMin = 0f;
@@ -140,7 +140,7 @@ public class PieFlashAnimator extends AbstractPieAnimator {
     @Override
     protected void onPressed(PieSlice slice) {
         if (showFlashBehavior == ShowFlashBehavior.ShowOnSlicePressed) {
-            view2D = slice.getHost().getHostPlugin().getWindow2D().getView2D();
+            view2D = slice.getHost().getHostPlugin().getProjection().getView2D();
             AlphaRunner runner = (AlphaRunner) getAnimator(slice);
             if (!runner.isRunning()) {
                 Thread t = new Thread(getAnimator(slice));
@@ -161,7 +161,7 @@ public class PieFlashAnimator extends AbstractPieAnimator {
     @Override
     protected void onEntered(PieSlice slice) {
         if (showFlashBehavior == ShowFlashBehavior.ShowOnSliceRollover) {
-            view2D = slice.getHost().getHostPlugin().getWindow2D().getView2D();
+            view2D = slice.getHost().getHostPlugin().getProjection().getView2D();
             AlphaRunner runner = (AlphaRunner) getAnimator(slice);
             if (!runner.isRunning()) {
                 Thread t = new Thread(getAnimator(slice));

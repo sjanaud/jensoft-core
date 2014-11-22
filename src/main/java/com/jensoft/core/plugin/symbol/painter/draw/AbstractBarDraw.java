@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 import com.jensoft.core.plugin.symbol.BarSymbol;
 import com.jensoft.core.plugin.symbol.SymbolComponent;
 import com.jensoft.core.plugin.symbol.painter.AbstractSymbolPainter;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 public abstract class AbstractBarDraw extends AbstractSymbolPainter {
 
@@ -18,7 +18,7 @@ public abstract class AbstractBarDraw extends AbstractSymbolPainter {
 
     @Override
     public final void paintSymbol(Graphics2D g2d, SymbolComponent symbol,
-            WindowPart windowPart) {
+            ViewPart viewPart) {
         if (symbol.isVisible()) {
             paintBarDraw(g2d, (BarSymbol) symbol);
         }
