@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.zoom.objectif;
+package com.jensoft.core.plugin.zoom.lens;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
@@ -11,8 +11,8 @@ import java.awt.Stroke;
 
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin.ZoomLensType;
-import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin.ZoomNature;
+import com.jensoft.core.plugin.zoom.lens.ZoomLensPlugin.ZoomLensType;
+import com.jensoft.core.plugin.zoom.lens.ZoomLensPlugin.ZoomNature;
 import com.jensoft.core.widget.pad.AbstractPlusMinusPadWidget;
 
 /**

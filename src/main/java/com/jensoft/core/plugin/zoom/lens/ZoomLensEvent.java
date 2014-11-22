@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.zoom.objectif;
+package com.jensoft.core.plugin.zoom.lens;
 
 import com.jensoft.core.plugin.PluginEvent;
 
