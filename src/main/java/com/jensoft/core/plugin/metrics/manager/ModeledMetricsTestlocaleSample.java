@@ -30,7 +30,7 @@ import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 import com.jensoft.core.view.background.DarkViewBackground;
-import com.jensoft.core.view.background.RoundViewFill;
+import com.jensoft.core.view.background.ViewDefaultBackground;
 
 /**
  * <code>ModeledMetricsDemo</code>
@@ -103,7 +103,7 @@ public class ModeledMetricsTestlocaleSample extends View {
 	public static View getPortofolio() {
 		ModeledMetricsTestlocaleSample demo = new ModeledMetricsTestlocaleSample();
 
-		RoundViewFill viewBackground = new RoundViewFill();
+		ViewDefaultBackground viewBackground = new ViewDefaultBackground();
 		Shader s = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
 		viewBackground.setShader(s);
 		viewBackground.setOutlineStroke(new BasicStroke(2.5f));

@@ -30,7 +30,7 @@ import com.jensoft.core.plugin.PluginPlatform;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.BackgroundPainter;
-import com.jensoft.core.view.background.RoundViewFill;
+import com.jensoft.core.view.background.ViewDefaultBackground;
 import com.jensoft.core.x2d.X2DException;
 import com.jensoft.core.x2d.lang.X2DView2DElement;
 
@@ -272,10 +272,10 @@ public class X2DViewInflater implements X2DView2DElement {
 			return null;
 		}
 
-		RoundViewFill roundView = null;
+		ViewDefaultBackground roundView = null;
 		try {
 
-			roundView = new RoundViewFill();
+			roundView = new ViewDefaultBackground();
 
 			String outlineround = background.getElementsByTagName(ELEMENT_VIEW_BACKGROUND_OUTLINEROUND).item(0).getTextContent();
 

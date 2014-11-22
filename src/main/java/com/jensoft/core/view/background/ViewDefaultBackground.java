@@ -17,12 +17,14 @@ import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.view.View;
 
 /**
- * <code>RoundViewFill</code> paints the view background with given shader or
+ * <code>ViewDefaultBackground</code> paints the view background with given shader, color, texture or
  * stroking properties.
+ * 
+ * @since 1.0
  * 
  * @author Sebastien Janaud
  */
-public class RoundViewFill extends BackgroundPainter {
+public class ViewDefaultBackground extends BackgroundPainter {
 
 	/** the outline round corner */
 	private int outlineRound = 20;
@@ -45,7 +47,7 @@ public class RoundViewFill extends BackgroundPainter {
 	/**
 	 * create empty background
 	 */
-	public RoundViewFill() {
+	public ViewDefaultBackground() {
 	}
 
 	/**
@@ -54,7 +56,7 @@ public class RoundViewFill extends BackgroundPainter {
 	 * @param shader
 	 *            the shader to fill the background
 	 */
-	public RoundViewFill(Shader shader) {
+	public ViewDefaultBackground(Shader shader) {
 		super();
 		this.shader = shader;
 	}
@@ -67,7 +69,7 @@ public class RoundViewFill extends BackgroundPainter {
 	 * @param outlineColor
 	 *            the color to stroke the view outline
 	 */
-	public RoundViewFill(Shader shader, Color outlineColor) {
+	public ViewDefaultBackground(Shader shader, Color outlineColor) {
 		super();
 		this.shader = shader;
 		this.outlineColor = outlineColor;
@@ -83,7 +85,7 @@ public class RoundViewFill extends BackgroundPainter {
 	 * @param outlineStroke
 	 *            the view outline stroke
 	 */
-	public RoundViewFill(Shader shader, Color outlineColor, Stroke outlineStroke) {
+	public ViewDefaultBackground(Shader shader, Color outlineColor, Stroke outlineStroke) {
 		super();
 		this.shader = shader;
 		this.outlineColor = outlineColor;
@@ -102,7 +104,7 @@ public class RoundViewFill extends BackgroundPainter {
 	 * @param outlineRound
 	 *            the view outline corner radius
 	 */
-	public RoundViewFill(Shader shader, Color outlineColor, Stroke outlineStroke, int outlineRound) {
+	public ViewDefaultBackground(Shader shader, Color outlineColor, Stroke outlineStroke, int outlineRound) {
 		super();
 		this.shader = shader;
 		this.outlineColor = outlineColor;

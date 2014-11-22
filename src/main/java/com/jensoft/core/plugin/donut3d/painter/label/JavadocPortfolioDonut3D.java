@@ -27,7 +27,7 @@ import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.RoundViewFill;
+import com.jensoft.core.view.background.ViewDefaultBackground;
 
 /**
  * <code>JavadocPortfolioDonut3D</code> doc files API
@@ -47,7 +47,7 @@ public class JavadocPortfolioDonut3D {
         Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
         window.registerPlugin(donut3DPlugin);
 
-        RoundViewFill viewBackground = new RoundViewFill();
+        ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
         viewBackground.setShader(sb);
         viewBackground.setOutlineStroke(new BasicStroke(2.5f));
@@ -130,7 +130,7 @@ public class JavadocPortfolioDonut3D {
         Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
         window.registerPlugin(donut3DPlugin);
 
-        RoundViewFill viewBackground = new RoundViewFill();
+        ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
         viewBackground.setShader(sb);
         viewBackground.setOutlineStroke(new BasicStroke(2.5f));

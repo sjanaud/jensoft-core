@@ -32,7 +32,7 @@ import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.RoundViewFill;
+import com.jensoft.core.view.background.ViewDefaultBackground;
 import com.jensoft.core.x2d.X2D;
 import com.jensoft.core.x2d.X2DException;
 
@@ -45,7 +45,7 @@ public class PieDeflateTest extends View {
 	public static View getPortofolio() {
 		PieDeflateTest demo = new PieDeflateTest();
 
-		RoundViewFill viewBackground = new RoundViewFill();
+		ViewDefaultBackground viewBackground = new ViewDefaultBackground();
 		Shader s = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
 		viewBackground.setShader(s);
 		viewBackground.setOutlineStroke(new BasicStroke(2.5f));
@@ -92,7 +92,7 @@ public class PieDeflateTest extends View {
 
 		
 		setName("pie-deflate");
-		RoundViewFill viewBackground = new RoundViewFill();
+		ViewDefaultBackground viewBackground = new ViewDefaultBackground();
 		viewBackground.setShader(Shader.Night);
 		viewBackground.setOutlineStroke(new BasicStroke(2.5f));
 		setBackgroundPainter(viewBackground);

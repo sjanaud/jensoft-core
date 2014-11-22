@@ -44,7 +44,7 @@ import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.DarkViewBackground;
-import com.jensoft.core.view.background.RoundViewFill;
+import com.jensoft.core.view.background.ViewDefaultBackground;
 
 @JenSoftView(background=DarkViewBackground.class)
 public class BarStackedStackEffectDemo extends View {
@@ -57,7 +57,7 @@ public class BarStackedStackEffectDemo extends View {
 	public static View getPortofolio() {
 		BarStackedStackEffectDemo demo = new BarStackedStackEffectDemo();
 
-		RoundViewFill viewBackground = new RoundViewFill();
+		ViewDefaultBackground viewBackground = new ViewDefaultBackground();
 		Shader s = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
 		viewBackground.setShader(s);
 		viewBackground.setOutlineStroke(new BasicStroke(2.5f));
