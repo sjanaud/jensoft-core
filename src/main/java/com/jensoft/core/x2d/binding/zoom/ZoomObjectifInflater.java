@@ -7,10 +7,10 @@ package com.jensoft.core.x2d.binding.zoom;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.plugin.zoom.objectif.LensDefaultDeviceContext;
-import com.jensoft.core.plugin.zoom.objectif.LensX;
-import com.jensoft.core.plugin.zoom.objectif.LensY;
-import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin;
+import com.jensoft.core.plugin.zoom.lens.LensDefaultDeviceContext;
+import com.jensoft.core.plugin.zoom.lens.LensX;
+import com.jensoft.core.plugin.zoom.lens.LensY;
+import com.jensoft.core.plugin.zoom.lens.ZoomLensPlugin;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DBinding;
 
