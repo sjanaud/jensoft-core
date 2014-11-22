@@ -29,7 +29,6 @@ import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.projection.Projection;
-import com.jensoft.core.view.AbstractBean;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 import com.jensoft.core.view.WidgetRegistry;
@@ -39,7 +38,7 @@ import com.jensoft.core.widget.Widget;
  * <code>AbstractPlugin</code> AbstractPlugin is the abstract definition that defines window plug in.
  */
 @SuppressWarnings("unchecked")
-public abstract class AbstractPlugin extends AbstractBean implements Plugin {
+public abstract class AbstractPlugin implements Plugin {
 
     /** the view2D */
     private View view2D;

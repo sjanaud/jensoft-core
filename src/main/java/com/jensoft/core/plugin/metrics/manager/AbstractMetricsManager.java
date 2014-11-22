@@ -13,7 +13,6 @@ import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.format.MetricsDecimalFormat;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
-import com.jensoft.core.view.AbstractBean;
 
 /**
  * AbstractMetricsManager takes the responsibility to solve and create metrics
@@ -23,7 +22,7 @@ import com.jensoft.core.view.AbstractBean;
  * 
  * @author sebastien janaud
  */
-public abstract class AbstractMetricsManager extends AbstractBean implements
+public abstract class AbstractMetricsManager implements
         MetricsManager {
 
     /** default decimal format */
@@ -155,9 +154,7 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
      */
     @Override
     public void setRenderContext(MetricsRenderContext renderContext) {
-        MetricsRenderContext old = getRenderContext();
         this.renderContext = renderContext;
-        firePropertyChange("renderContext", old, getRenderContext());
     }
 
     /**
@@ -176,9 +173,7 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
      *            the default format
      */
     public void setDefaultFormat(IMetricsFormat defaultFormat) {
-        IMetricsFormat old = getDefaultFormat();
         this.defaultFormat = defaultFormat;
-        firePropertyChange("basicFormater", old, getDefaultFormat());
     }
 
    
@@ -232,9 +227,7 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
      */
     @Override
     public void setMetricsMarkerColor(Color metricsColor) {
-        Color old = getMetricsMarkerColor();
         metricsMarkerColor = metricsColor;
-        firePropertyChange("metricsMarkerColor", old, getMetricsMarkerColor());
     }
 
    
@@ -252,9 +245,7 @@ public abstract class AbstractMetricsManager extends AbstractBean implements
      */
     @Override
     public void setMetricsLabelColor(Color metricsLabelColor) {
-        Color old = getMetricsLabelColor();
         this.metricsLabelColor = metricsLabelColor;
-        firePropertyChange("metricsLabelColor", old, getMetricsLabelColor());
     }
 
    
