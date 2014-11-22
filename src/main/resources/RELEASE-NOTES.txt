@@ -13,27 +13,41 @@
 	
 
 #######################################
-## Notes 2.0.0-SNAPSHOT  -  November 2, 2014  ##
+## Notes 2.0.0  -  November 2, 2014  ##
 #######################################
 	
 	
 /todos
 
--View2D rename to View
 
--Window2D vs Projection  : rename
- 	
- 	rename
- 		package-rename : com.jensoft.core.window2d to com.jensoft.core.projection
- 		classes-rename : All  *Window2D* rename to *Projection*
- 	
-	
+- rename RoundViewFill to ViewDefaultBackground
+
+- View2D backgrounds
+	-add background list
+	-add background clip
+	-add gloss, textured, etc
+
+
+- Metrics
+	update all metrics formater with locale
+	refacto timing metrics like modeled metrics
+	check device for metrics on limit
+	add rotate choice
 	
 	
 	
 /done
 
+ 	View2D rename to View
+		classes-rename : All  *View2D* rename to *View*
+		
+	Window2D
+ 		package-rename : com.jensoft.core.window2d to com.jensoft.core.projection
+ 		classes-rename : All  *Window2D* rename to *Projection*
 
+	ZoomObjectif
+		package-rename : com.jensoft.zoom.objectif to com.jensoft.zoom.lens
+		classes-rename : All  *Objectif* rename to *Lens*
 
 	DataLegend : 
 		fix
@@ -43,6 +57,9 @@
 		new
 			painter : Data legend Background painter
 			desc    : paint data legend painter with stroking, filling, texture.
+			
+			
+			
 	
 #######################################
 ## Notes 1.1.0  -  November 2, 2014  ##
