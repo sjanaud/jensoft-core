@@ -3,4 +3,4 @@
  * 
  * @since 1.0
  */
-package com.jensoft.core.plugin.zoom.objectif;
+package com.jensoft.core.plugin.zoom.lens;

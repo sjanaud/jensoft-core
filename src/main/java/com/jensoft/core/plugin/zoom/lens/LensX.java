@@ -3,38 +3,38 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.plugin.zoom.objectif;
+package com.jensoft.core.plugin.zoom.lens;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Stroke;
 
 import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin.ZoomNature;
+import com.jensoft.core.plugin.zoom.lens.ZoomLensPlugin.ZoomNature;
 import com.jensoft.core.widget.bar.AbstractBarGeometry.BarWidgetOrientation;
 import com.jensoft.core.widget.bar.AbstractPlusMinusBarWidget;
 
 /**
- * <code>LensY</code> widget for zoom y dimension
+ * <code>LensX</code> widget for zoom x dimension
  * 
  * @author sebastien janaud
  */
-public class LensY extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
+public class LensX extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
 
     /** the widget id */
-    public final static String widgetBarYObjectifID = "@widget/objectif/y";
+    public final static String widgetBarXObjectifID = "@widget/objectif/x";
 
     /** default bar width */
-    private final static double defaultBarWidth = 16;
+    private final static double defaultBarWidth = 80;
 
     /** default bar height */
-    private final static double defaultBarHeight = 80;
+    private final static double defaultBarHeight = 16;
 
     /** default x folder index */
-    private final static int defaultXFolderIndex = 1000;
+    private final static int defaultXFolderIndex = 1;
 
     /** default y folder index */
-    private final static int defaultYFolderIndex = 1;
+    private final static int defaultYFolderIndex = 100;
 
     /** default shading fractions */
     private float[] fractions = { 0f, 0.2f, 0.5f, 0.8f, 1f };
@@ -61,13 +61,31 @@ public class LensY extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
     private Color buttonDrawColor = RosePalette.EMERALD;
 
    /**
-    * create Y Objectif
+    * create X Objectif
     * @param width
     * @param height
     */
-    public LensY(double width, double height) {
-        super(widgetBarYObjectifID, width, height, defaultXFolderIndex,
-              defaultYFolderIndex, BarWidgetOrientation.Vertical);
+    public LensX(double width, double height) {
+        super(widgetBarXObjectifID, width, height, defaultXFolderIndex,
+              defaultYFolderIndex, BarWidgetOrientation.Horizontal);
+        setShader(fractions, colors);
+        setOutlineStroke(basicStroke);
+        setOutlineColor(outlineColor);
+        setButtonDrawColor(buttonDrawColor);
+        setButtonRolloverDrawColor(buttonRolloverDrawColor);
+        setOrphanLock(true);
+    }
+
+   /**
+    * create X Objectif
+    * @param width
+    * @param height
+    * @param xIndex
+    * @param yIndex
+    */
+    public LensX(double width, double height, int xIndex, int yIndex) {
+        super(widgetBarXObjectifID, width, height, xIndex, yIndex,
+              BarWidgetOrientation.Horizontal);
         setShader(fractions, colors);
         setOutlineStroke(basicStroke);
         setOutlineColor(outlineColor);
@@ -77,30 +95,12 @@ public class LensY extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
     }
 
     /**
-     * create Y Objectif
-     * @param width
-     * @param height
-     * @param xIndex
-     * @param yIndex
+     * create default objectif x widget
      */
-    public LensY(double width, double height, int xIndex, int yIndex) {
-        super(widgetBarYObjectifID, width, height, xIndex, yIndex,
-              BarWidgetOrientation.Vertical);
-        setShader(fractions, colors);
-        setOutlineStroke(basicStroke);
-        setOutlineColor(outlineColor);
-        setButtonDrawColor(buttonDrawColor);
-        setButtonRolloverDrawColor(buttonRolloverDrawColor);
-        setOrphanLock(true);
-    }
-
-    /**
-     * create default Y Objectif widget
-     */
-    public LensY() {
-        super(widgetBarYObjectifID, defaultBarWidth, defaultBarHeight,
+    public LensX() {
+        super(widgetBarXObjectifID, defaultBarWidth, defaultBarHeight,
               defaultXFolderIndex, defaultYFolderIndex,
-              BarWidgetOrientation.Vertical);
+              BarWidgetOrientation.Horizontal);
         setShader(fractions, colors);
         setOutlineStroke(basicStroke);
         setOutlineColor(outlineColor);
@@ -109,7 +109,7 @@ public class LensY extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
         setOrphanLock(true);
     }
 
-   
+  
     /* (non-Javadoc)
      * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
@@ -127,14 +127,15 @@ public class LensY extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
      */
     @Override
     public void onButton1Press() {
-        ZoomLensPlugin objectif = (ZoomLensPlugin) getHost();
-        if (!objectif.isLockSelected()) {
+        if (!getHost().isLockSelected()) {
             return;
         }
-        objectif.startZoomIn(ZoomNature.ZoomY);
+        getHost().startZoomOut(ZoomNature.ZoomX);
+        super.onButton1Press();
+
     }
 
-   
+  
     /* (non-Javadoc)
      * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton2Press()
      */
@@ -143,15 +144,20 @@ public class LensY extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
         if (!getHost().isLockSelected()) {
             return;
         }
-        getHost().startZoomOut(ZoomNature.ZoomY);
+        getHost().startZoomIn(ZoomNature.ZoomX);
+        super.onButton2Press();
     }
 
-  
+   
     /* (non-Javadoc)
      * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton1Released()
      */
     @Override
     public void onButton1Released() {
+    getHost();
+        if (!getHost().isLockSelected()) {
+            return;
+        }
         getHost().stopZoomIn();
         getHost().stopZoomOut();
         // call a repaint on button framing rectangle
@@ -165,8 +171,10 @@ public class LensY extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
      */
     @Override
     public void onButton2Released() {
-        getHost().stopZoomIn();
-        getHost().stopZoomOut();
+
+        ZoomLensPlugin objectif = (ZoomLensPlugin) getHost();
+        objectif.stopZoomIn();
+        objectif.stopZoomOut();
         // call a repaint on button framing rectangle
         super.onButton2Released();
     }
