@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.donut3d.animator;
 import com.jensoft.core.plugin.donut3d.Donut3DEvent;
 import com.jensoft.core.plugin.donut3d.Donut3DListener;
 import com.jensoft.core.plugin.donut3d.Donut3DSlice;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>AbstractDonut3DAnimator</code> Abstract base definition to animate donut3D
@@ -136,8 +136,8 @@ public abstract class AbstractDonut3DAnimator implements Donut3DListener {
      * @param slice
      * @return host view
      */
-    public View2D getView2D(Donut3DSlice slice) {
-        return slice.getHost().getHostPlugin().getWindow2D().getView2D();
+    public View getView2D(Donut3DSlice slice) {
+        return slice.getHost().getHostPlugin().getProjection().getView2D();
     }
 
 }

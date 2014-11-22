@@ -142,7 +142,7 @@ public class Donut2DRadialLabel extends AbstractDonut2DSliceLabel {
 
         Point2D c = null;
         if (donut2D.getNature() == Donut2DNature.User) {
-            c = donut2D.getHostPlugin().getWindow2D()
+            c = donut2D.getHostPlugin().getProjection()
                     .userToPixel(new Point2D.Double(centerX, centerY));
         }
         if (donut2D.getNature() == Donut2DNature.Device) {

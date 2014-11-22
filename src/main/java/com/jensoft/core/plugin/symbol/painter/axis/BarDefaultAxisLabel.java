@@ -23,8 +23,8 @@ import com.jensoft.core.plugin.symbol.BarSymbolGroup;
 import com.jensoft.core.plugin.symbol.SymbolComponent;
 import com.jensoft.core.plugin.symbol.SymbolPlugin;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>DefaultAxisSymbol<code> know how to paint bar or group symbol in window axis part<br>
@@ -328,15 +328,15 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
 
     @Override
     public void paintAxisLabel(Graphics2D g2d, BarSymbol bar,
-            WindowPart windowPart) {
+            ViewPart viewPart) {
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
                                                     alpha));
 
         if (bar.getHost().getNature() == SymbolNature.Vertical) {
-            paintVSymbol(g2d, bar, windowPart);
+            paintVSymbol(g2d, bar, viewPart);
         }
         if (bar.getHost().getNature() == SymbolNature.Horizontal) {
-            paintHSymbol(g2d, bar, windowPart);
+            paintHSymbol(g2d, bar, viewPart);
         }
 
         g2d.setComposite(AlphaComposite
@@ -347,13 +347,13 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
     * paint vertical symbol
     * @param g2d
     * @param bar
-    * @param windowPart
+    * @param viewPart
     */
     private void paintVSymbol(Graphics2D g2d, BarSymbol bar,
-            WindowPart windowPart) {
+            ViewPart viewPart) {
 
         SymbolPlugin bsp = bar.getHost();
-        View2D v2d = bar.getHost().getWindow2D().getView2D();
+        View v2d = bar.getHost().getProjection().getView2D();
 
         if (font == null) {
             setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -362,7 +362,7 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
         g2d.setFont(getFont());
         FontMetrics fm = g2d.getFontMetrics();
 
-        if (windowPart == WindowPart.South) {
+        if (viewPart == ViewPart.South) {
 
             int margin = v2d.getPlaceHolderAxisWest();
 
@@ -511,13 +511,13 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
     * paint horizontal symbol
     * @param g2d
     * @param bar
-    * @param windowPart
+    * @param viewPart
     */
     private void paintHSymbol(Graphics2D g2d, BarSymbol bar,
-            WindowPart windowPart) {
+            ViewPart viewPart) {
 
         SymbolPlugin bsp = bar.getHost();
-        View2D v2d = bar.getHost().getWindow2D().getView2D();
+        View v2d = bar.getHost().getProjection().getView2D();
 
         if (font == null) {
             setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -526,7 +526,7 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
         g2d.setFont(getFont());
         FontMetrics fm = g2d.getFontMetrics();
 
-        if (windowPart == WindowPart.West) {
+        if (viewPart == ViewPart.West) {
 
             int margin = v2d.getPlaceHolderAxisWest();
 

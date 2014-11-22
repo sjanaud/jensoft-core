@@ -6,44 +6,49 @@
 package com.jensoft.core.plugin.radar;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
 
 /**
- * RadarView
+ * <code>RadarView<code> defines a ready view to hold radar chart
+ * 
+ * @since 1.0
+ *
+ * @author sebastien janaud
  */
-public class RadarView extends View2D {
+public class RadarView extends View {
 
     /** uid */
     private static final long serialVersionUID = -8598481995145789973L;
 
     /** window2D associate to this view and radar plugin */
-    private Window2D.Linear radarWindow2D;
+    private Projection.Linear radarProjection;
 
     /** radar plugin */
     private RadarPlugin radarPlugin;
 
+    /**
+     * create radar view
+     */
     public RadarView() {
-
         setPlaceHolderAxisNorth(60);
         setPlaceHolderAxisSouth(60);
         setPlaceHolderAxisWest(60);
         setPlaceHolderAxisEast(60);
-
-        createWindow();
+        createProjection();
         registerPlugin();
     }
 
-    private void createWindow() {
-        radarWindow2D = new Window2D.Linear(-1, 1, -1, 1);
-        radarWindow2D.setName("compatible pie window");
-        registerWindow2D(radarWindow2D);
+    private void createProjection() {
+        radarProjection = new Projection.Linear(-1, 1, -1, 1);
+        radarProjection.setName("compatible pie window");
+        registerProjection(radarProjection);
     }
 
     private void registerPlugin() {
         radarPlugin = new RadarPlugin();
         radarPlugin.setPriority(100);
-        radarWindow2D.registerPlugin(radarPlugin);
+        radarProjection.registerPlugin(radarPlugin);
     }
 
     /**
@@ -53,7 +58,7 @@ public class RadarView extends View2D {
      *            the plugin to add
      */
     public void registerPlugin(AbstractPlugin plugin) {
-        radarWindow2D.registerPlugin(plugin);
+        radarProjection.registerPlugin(plugin);
     }
 
     /**
@@ -67,10 +72,10 @@ public class RadarView extends View2D {
     }
 
     /**
-     * @return the radar window
+     * @return the radar projection
      */
-    public Window2D.Linear getWindow2D() {
-        return radarWindow2D;
+    public Projection.Linear getProjection() {
+        return radarProjection;
     }
 
     /**

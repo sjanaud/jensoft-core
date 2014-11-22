@@ -16,11 +16,11 @@ import com.jensoft.core.sharedicon.SharedIcon;
 import com.jensoft.core.sharedicon.common.Common;
 
 /**
- * <code>ObjectifDefaultDeviceContext</code>
+ * <code>LensDefaultDeviceContext</code>
  * 
  * @author Sebastien Janaud
  */
-public class ObjectifDefaultDeviceContext extends ContextEntry<ZoomObjectifPlugin> {
+public class LensDefaultDeviceContext extends ContextEntry<ZoomLensPlugin> {
 
     /** objectif menu */
     private JMenu rootMenu;
@@ -36,7 +36,7 @@ public class ObjectifDefaultDeviceContext extends ContextEntry<ZoomObjectifPlugi
     /**
      * create a default device menu context for the capture plugin
      */
-    public ObjectifDefaultDeviceContext() {
+    public LensDefaultDeviceContext() {
     }
 
    
@@ -91,7 +91,7 @@ public class ObjectifDefaultDeviceContext extends ContextEntry<ZoomObjectifPlugi
      */
     @Override
     public boolean isCompatiblePlugin() {
-        if (getHost() != null && getHost() instanceof ZoomObjectifPlugin) {
+        if (getHost() != null && getHost() instanceof ZoomLensPlugin) {
             return true;
         }
         return false;

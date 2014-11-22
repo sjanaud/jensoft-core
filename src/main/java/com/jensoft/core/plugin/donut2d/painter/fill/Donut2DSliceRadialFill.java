@@ -155,7 +155,7 @@ public class Donut2DSliceRadialFill extends AbstractDonut2DSliceFill {
 
         Point2D c = null;
         if (pie.getNature() == Donut2DNature.User) {
-            c = pie.getHostPlugin().getWindow2D()
+            c = pie.getHostPlugin().getProjection()
                     .userToPixel(new Point2D.Double(centerX, centerY));
         }
         if (pie.getNature() == Donut2DNature.Device) {

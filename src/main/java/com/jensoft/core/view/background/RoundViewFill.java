@@ -14,7 +14,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>RoundViewFill</code> paints the view background with given shader or
@@ -208,7 +208,7 @@ public class RoundViewFill extends BackgroundPainter {
 	 * (com.jensoft.core.view.View2D, java.awt.Graphics2D)
 	 */
 	@Override
-	public final void paintViewBackground(View2D view,int viewWidth,int viewHeight, Graphics2D g2d) {
+	public final void paintViewBackground(View view,int viewWidth,int viewHeight, Graphics2D g2d) {
 
 		int width = view.getWidth();
 		int height = view.getHeight();

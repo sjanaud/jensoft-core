@@ -16,8 +16,8 @@ import com.jensoft.core.plugin.stripe.manager.StripeManager;
 import com.jensoft.core.plugin.stripe.painter.AbstractStripePainter;
 import com.jensoft.core.plugin.stripe.painter.StripeDefaultPainter;
 import com.jensoft.core.plugin.stripe.painter.StripePalette;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>StripePlugin</code> takes the responsibility to paints stripes <br>
@@ -273,20 +273,20 @@ public abstract class StripePlugin<M extends AbstractStripeManager> extends Abst
      * @param v2d
      * @param g2d
      */
-    protected void paintStripes(View2D v2d, Graphics2D g2d) {
-        stripeManager.setWindow2D(getWindow2D());
+    protected void paintStripes(View v2d, Graphics2D g2d) {
+        stripeManager.setWindow2D(getProjection());
         stripePainter.setBandManager(stripeManager);
         stripePainter.doPaintStripes(g2d);
     }
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public final void paintPlugin(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart) {
-        if (windowPart == WindowPart.Device) {
+    public final void paintPlugin(View v2d, Graphics2D g2d,
+            ViewPart viewPart) {
+        if (viewPart == ViewPart.Device) {
             paintStripes(v2d, g2d);
         }
     }

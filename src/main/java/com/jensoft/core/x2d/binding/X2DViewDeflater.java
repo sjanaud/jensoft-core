@@ -27,17 +27,17 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.projection.Projection.Linear;
+import com.jensoft.core.projection.Projection.Log;
+import com.jensoft.core.projection.Projection.LogX;
+import com.jensoft.core.projection.Projection.LogY;
+import com.jensoft.core.projection.Projection.TimeX;
+import com.jensoft.core.projection.Projection.TimeY;
+import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.BackgroundPainter;
 import com.jensoft.core.view.background.RoundViewFill;
 import com.jensoft.core.view.deflater.AbstractViewDeflater;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.Window2D.Linear;
-import com.jensoft.core.window.Window2D.Log;
-import com.jensoft.core.window.Window2D.LogX;
-import com.jensoft.core.window.Window2D.LogY;
-import com.jensoft.core.window.Window2D.TimeX;
-import com.jensoft.core.window.Window2D.TimeY;
 import com.jensoft.core.x2d.lang.X2DView2DElement;
 
 /**
@@ -66,7 +66,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 	 * 
 	 * @param view2d
 	 */
-	public X2DViewDeflater(View2D view2d) {
+	public X2DViewDeflater(View view2d) {
 		super(view2d);
 	}
 
@@ -150,9 +150,9 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 				}
 			}
 
-			List<Window2D> windows = getView2D().getRegisterWindow();
+			List<Projection> windows = getView2D().getProjections();
 			
-			for (Window2D window2d : windows) {
+			for (Projection window2d : windows) {
 				
 				//System.out.println("assignable from " +Linear.class.isAssignableFrom(window2d.getClass()));
 				
@@ -226,14 +226,14 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 
 	public static void main(String[] args) {
 		try {
-			View2D view2D = new View2D();
+			View view2D = new View();
 			view2D.setSize(new Dimension(300, 200));
 
-			Window2D w = new Window2D.Linear(-12.4, 22.9, -123, 234);
+			Projection w = new Projection.Linear(-12.4, 22.9, -123, 234);
 			w.setWindowID("myID");
 			w.setName("myWindow name");
 
-			view2D.registerWindow2D(w);
+			view2D.registerProjection(w);
 
 			X2DViewDeflater deflater = new X2DViewDeflater(view2D);
 

@@ -19,7 +19,7 @@ import java.util.List;
 import com.jensoft.core.plugin.PluginException;
 import com.jensoft.core.plugin.grid.Grid;
 import com.jensoft.core.plugin.grid.Grid.GridOrientation;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>IncubatorMetricsManager</code>
@@ -497,7 +497,7 @@ public class ModeledGridManager extends AbstractGridManager {
          */
         public boolean isValid() {
 
-            Window2D window = metricsManager.getWindow2D();
+            Projection window = metricsManager.getWindow2D();
             boolean valid = false;
             BigDecimal userSize = null;
             BigDecimal startRef = null;

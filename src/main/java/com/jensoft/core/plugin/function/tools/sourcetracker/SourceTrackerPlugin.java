@@ -32,9 +32,9 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.function.MetricsPathFunction;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>SourceTrackerPlugin</code> takes the responsibility to draw curve label
@@ -330,7 +330,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		metricsPathFunction.setSolveGeometryRequest(true);
 		int currentX = me.getX();
 		int currentY = me.getY();
-		Window2D w2d = getWindow2D();
+		Projection w2d = getProjection();
 
 		currentTrackDevice = new Point2D.Double(currentX, currentY);
 		currentTrackUser = w2d.pixelToUser(currentTrackDevice);
@@ -372,7 +372,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 			}
 		} catch (IllegalArgumentException e) {
 		}
-		getWindow2D().getDevice2D().repaintDevice();
+		getProjection().getDevice2D().repaintDevice();
 	}
 
 	/*
@@ -429,7 +429,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 			return;
 		}
 		clearMetrics();
-		getWindow2D().getDevice2D().repaintDevice();
+		getProjection().getDevice2D().repaintDevice();
 	}
 
 	/*
@@ -437,11 +437,11 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 * 
 	 * @see
 	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
-	 * .View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	 * .View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		metricsPathFunction.setWindow2d(getWindow2D());
+	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+		metricsPathFunction.setWindow2d(getProjection());
 		metricsPathFunction.setFontRenderContext(g2d.getFontRenderContext());
 		metricsPathFunction.setSolveGeometryRequest(true);
 		List<GlyphMetric> metrics = metricsPathFunction.getMetrics();

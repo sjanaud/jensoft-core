@@ -35,7 +35,7 @@ public class PlotAnchorDefaultPainter extends AbstractPlotAnchorPainter {
 		if (plot.getPlotDrawColor() != null)
 			g2d.setColor(plot.getPlotDrawColor());
 		else
-			g2d.setColor(plot.getHost().getWindow2D().getThemeColor());
+			g2d.setColor(plot.getHost().getProjection().getThemeColor());
 		List<PlotAnchor> anchors = plot.getAnchorsPoints();
 		if (anchors != null) {
 			int count = 0;

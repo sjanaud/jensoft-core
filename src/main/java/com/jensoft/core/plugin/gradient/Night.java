@@ -12,7 +12,7 @@ import java.awt.Color;
  * 
  * @author sebastien janaud
  */
-public class Night extends GradientPlugin {
+public class Night extends DeviceGradientPlugin {
 
     private static final Color color1 = new Color(0x202737);
     private static final Color color2 = Color.BLACK;

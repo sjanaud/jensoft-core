@@ -3,14 +3,14 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.window;
+package com.jensoft.core.view;
 
 /**
- * defines window part component
+ * <code>ViewPart</code> defines view part component
  * 
  * @author Sebastien Janaud
  */
-public enum WindowPart {
+public enum ViewPart {
     North, South, West, East, Device;
 
     /**
@@ -18,7 +18,7 @@ public enum WindowPart {
      * 
      * @return device window part
      */
-    public static WindowPart getIn() {
+    public static ViewPart inner() {
         return Device;
     }
 
@@ -27,8 +27,8 @@ public enum WindowPart {
      * 
      * @return all window parts
      */
-    public static WindowPart[] getAll() {
-        WindowPart[] w = new WindowPart[5];
+    public static ViewPart[] all() {
+        ViewPart[] w = new ViewPart[5];
         w[0] = North;
         w[1] = South;
         w[2] = East;
@@ -42,8 +42,8 @@ public enum WindowPart {
      * 
      * @return outer part
      */
-    public static WindowPart[] getOut() {
-        WindowPart[] w = new WindowPart[4];
+    public static ViewPart[] outers() {
+        ViewPart[] w = new ViewPart[4];
         w[0] = North;
         w[1] = South;
         w[2] = East;

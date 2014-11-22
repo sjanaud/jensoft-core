@@ -106,7 +106,7 @@ public class BezierG1 extends Bezier {
 	 */
 	@Override
 	public void updateAnchorPoint(double x, double y) {
-		Point2D pixelUser = getHost().getWindow2D().pixelToUser(new Point2D.Double(x,y));
+		Point2D pixelUser = getHost().getProjection().pixelToUser(new Point2D.Double(x,y));
 		deltax = pixelUser.getX() - getSelectedAnchor().getUserPoint().getX(); // save previous value
 		deltay = pixelUser.getY() - getSelectedAnchor().getUserPoint().getY(); // save previous value
 		//System.out.println("delta x = "+deltax);

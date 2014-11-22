@@ -16,7 +16,7 @@ import java.awt.geom.Rectangle2D;
 import com.jensoft.core.plugin.symbol.BarSymbol;
 import com.jensoft.core.plugin.symbol.BarSymbol.MorpheStyle;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class BarEffect1 extends AbstractBarEffect {
 
@@ -36,7 +36,7 @@ public class BarEffect1 extends AbstractBarEffect {
 
     private void paintEffectVBar_ef1(Graphics2D g2d, BarSymbol bar) {
 
-        Window2D w2d = bar.getHost().getWindow2D();
+        Projection w2d = bar.getHost().getProjection();
         Point2D p2dUser = null;
         if (bar.isAscent()) {
             p2dUser = new Point2D.Double(0, bar.getBase() + bar.getValue());
@@ -124,7 +124,7 @@ public class BarEffect1 extends AbstractBarEffect {
 
     private void paintEffectHBar_ef1(Graphics2D g2d, BarSymbol bar) {
 
-        Window2D w2d = bar.getHost().getWindow2D();
+        Projection w2d = bar.getHost().getProjection();
 
         Point2D p2dUser = null;
         if (bar.isAscent()) {

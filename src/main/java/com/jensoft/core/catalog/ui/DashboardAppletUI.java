@@ -20,7 +20,7 @@ import com.jensoft.core.catalog.component.DemoTabSet;
 import com.jensoft.core.catalog.nature.JenSoftDashboard;
 import com.jensoft.core.catalog.source.JavaSourcePane;
 import com.jensoft.core.palette.JennyPalette;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>DashboardAppletUI</code>
@@ -130,7 +130,7 @@ public class DashboardAppletUI extends JApplet {
 			JenSoftDashboard dashboardAnnotation = dashboard.getClass().getAnnotation(JenSoftDashboard.class);
 			Class[] views = dashboardAnnotation.views();
 			for (int i = 0; i < views.length; i++) {
-				if (View2D.class.isAssignableFrom(views[i])) {
+				if (View.class.isAssignableFrom(views[i])) {
 					DemoTab viewContributorTab = new DemoTab(views[i].getSimpleName());
 					viewContributorTab.setTabColor(JennyPalette.JENNY6);
 					ImageIcon vIcon = ImageResource.getInstance().createImageIcon("source.png", "");

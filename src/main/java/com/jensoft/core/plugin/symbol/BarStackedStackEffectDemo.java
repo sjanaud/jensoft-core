@@ -40,21 +40,21 @@ import com.jensoft.core.plugin.symbol.painter.label.BarSymbolRelativeLabel.Horiz
 import com.jensoft.core.plugin.symbol.painter.label.BarSymbolRelativeLabel.VerticalAlignment;
 import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.plugin.zoom.wheel.ZoomWheelPlugin;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.DarkViewBackground;
 import com.jensoft.core.view.background.RoundViewFill;
-import com.jensoft.core.window.Window2D;
 
 @JenSoftView(background=DarkViewBackground.class)
-public class BarStackedStackEffectDemo extends View2D {
+public class BarStackedStackEffectDemo extends View {
 
 	public static void main(String[] args) {
 		ViewFrameUI ui = new ViewFrameUI(new BarStackedStackEffectDemo());
 	}
 	
 	@Portfolio(name = "SimpleVerticalBarStackedDemo22", width = 500, height = 250)
-	public static View2D getPortofolio() {
+	public static View getPortofolio() {
 		BarStackedStackEffectDemo demo = new BarStackedStackEffectDemo();
 
 		RoundViewFill viewBackground = new RoundViewFill();
@@ -68,8 +68,8 @@ public class BarStackedStackEffectDemo extends View2D {
 
 	public BarStackedStackEffectDemo() {
 
-		Window2D w2d = new Window2D.Linear(0, 0, -30, 120);
-		registerWindow2D(w2d);
+		Projection w2d = new Projection.Linear(0, 0, -30, 120);
+		registerProjection(w2d);
 
 		SymbolPlugin barPlugin = new SymbolPlugin();
 		barPlugin.setNature(SymbolNature.Vertical);
@@ -215,11 +215,11 @@ public class BarStackedStackEffectDemo extends View2D {
 						BarSymbol symbol = e.getBarSymbol();
 						BarSymbolRelativeLabel rl = new BarSymbolRelativeLabel(VerticalAlignment.Middle, HorizontalAlignment.Middle, Color.WHITE, symbol.getThemeColor(), Color.BLACK);
 						symbol.setBarLabel(rl);
-						symbol.getHost().getWindow2D().getView2D().repaintDevice();
+						symbol.getHost().getProjection().getView2D().repaintDevice();
 					} else {
 						BarSymbol symbol = e.getBarSymbol();
 						symbol.setBarLabel(null);
-						symbol.getHost().getWindow2D().getView2D().repaintDevice();
+						symbol.getHost().getProjection().getView2D().repaintDevice();
 					}
 				}
 			}

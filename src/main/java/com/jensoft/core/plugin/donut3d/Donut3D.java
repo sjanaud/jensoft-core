@@ -314,7 +314,7 @@ public class Donut3D {
 
         Point2D c = null;
         if (getDonut3DNature() == Donut3DNature.Donut3DUser) {
-            c = getHostPlugin().getWindow2D().userToPixel(
+            c = getHostPlugin().getProjection().userToPixel(
                                                           new Point2D.Double(centerX, centerY));
         }
         if (getDonut3DNature() == Donut3DNature.Donut3DDevice) {
@@ -847,7 +847,7 @@ public class Donut3D {
 
         Point2D c = null;
         if (getDonut3DNature() == Donut3DNature.Donut3DUser) {
-            c = getHostPlugin().getWindow2D().userToPixel(
+            c = getHostPlugin().getProjection().userToPixel(
                                                           new Point2D.Double(centerX, centerY));
         }
         if (getDonut3DNature() == Donut3DNature.Donut3DDevice) {

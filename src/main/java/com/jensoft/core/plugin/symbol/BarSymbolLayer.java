@@ -18,9 +18,9 @@ import javax.swing.event.EventListenerList;
 import com.jensoft.core.plugin.symbol.BarSymbol.MorpheStyle;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * Bar layer handles bar symbol layout and related bar properties
@@ -82,9 +82,9 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      * @see com.jensoft.core.plugin.symbol.SymbolLayer#paintLayer(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart, com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest)
      */
     @Override
-    public final void paintLayer(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart, PaintRequest paintRequest) {
-        paintSymbols(g2d, getSymbols(), windowPart, paintRequest);
+    public final void paintLayer(View v2d, Graphics2D g2d,
+            ViewPart viewPart, PaintRequest paintRequest) {
+        paintSymbols(g2d, getSymbols(), viewPart, paintRequest);
     }
 
     /**
@@ -96,31 +96,31 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the symbols components to paint
      */
     private void paintSymbols(Graphics2D g2d, List<BarSymbol> symbols,
-            WindowPart windowPart, PaintRequest paintRequest) {
+            ViewPart viewPart, PaintRequest paintRequest) {
 
         solveGeometry();
-        if (windowPart == WindowPart.Device) {
+        if (viewPart == ViewPart.Device) {
             for (BarSymbol symbol : symbols) {
                 if (symbol instanceof BarSymbol) {
                     if (symbol instanceof BarSymbolGroup) {
-                        paintGroup(g2d, (BarSymbolGroup) symbol, windowPart,
+                        paintGroup(g2d, (BarSymbolGroup) symbol, viewPart,
                                    paintRequest);
                     }
                     else if (symbol instanceof StackedBarSymbol) {
                         paintBarStacked(g2d, (StackedBarSymbol) symbol,
-                                        windowPart, paintRequest);
+                                        viewPart, paintRequest);
                     }
                     else {
-                        paintBar(g2d, symbol, windowPart,
+                        paintBar(g2d, symbol, viewPart,
                                  paintRequest);
                     }
                 }
             }
         }
 
-        if (windowPart != WindowPart.Device
+        if (viewPart != ViewPart.Device
                 && paintRequest == PaintRequest.LabelLayer) {
-            paintSymbolsAxisLabel(g2d, symbols, windowPart);
+            paintSymbolsAxisLabel(g2d, symbols, viewPart);
         }
     }
 
@@ -133,18 +133,18 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the bar group to paint
      */
     private void paintGroup(Graphics2D g2d, BarSymbolGroup barGroup,
-            WindowPart windowPart, PaintRequest paintRequest) {
+            ViewPart viewPart, PaintRequest paintRequest) {
         barGroup.setHost(getHost());
         barGroup.setLayer(this);
 
         // paint only the label for group
         if (paintRequest == PaintRequest.LabelLayer) {
-            paintBar(g2d, barGroup, windowPart, paintRequest);
+            paintBar(g2d, barGroup, viewPart, paintRequest);
         }
 
         // paint children of this group
         List<BarSymbol> barSymbolComponents = barGroup.getSymbolComponents();
-        paintSymbols(g2d, barSymbolComponents, windowPart, paintRequest);
+        paintSymbols(g2d, barSymbolComponents, viewPart, paintRequest);
     }
 
     /**
@@ -154,11 +154,11 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the graphics context to paint
      * @param barSymbolComponents
      *            the symbols components to paint
-     * @param windowPart
+     * @param viewPart
      *            the window zone to paint
      */
     private void paintSymbolsAxisLabel(Graphics2D g2d,
-            List<BarSymbol> barSymbolComponents, WindowPart windowPart) {
+            List<BarSymbol> barSymbolComponents, ViewPart viewPart) {
 
         for (SymbolComponent barComponent : barSymbolComponents) {
             barComponent.setHost(getHost());
@@ -169,15 +169,15 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
                             .getSymbolComponents();
 
                     paintSymbolsAxisLabel(g2d, groupBarSymbolComponents,
-                                          windowPart);
+                                          viewPart);
 
                     if (barGroup.getAxisLabel() != null) {
                         barGroup.getAxisLabel().paintSymbol(g2d, barGroup,
-                                                            windowPart);
+                                                            viewPart);
                     }
                 }
                 else {// simple symbol or stackedSymbol
-                    paintBarAxisLabel(g2d, (BarSymbol) barComponent, windowPart);
+                    paintBarAxisLabel(g2d, (BarSymbol) barComponent, viewPart);
                 }
             }
 
@@ -191,12 +191,12 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the graphics context to paint
      * @param barSymbol
      *            the symbol component
-     * @param windowPart
+     * @param viewPart
      */
     private void paintBarAxisLabel(Graphics2D g2d, BarSymbol barSymbol,
-            WindowPart windowPart) {
+            ViewPart viewPart) {
         if (barSymbol.getAxisLabel() != null) {
-            barSymbol.getAxisLabel().paintSymbol(g2d, barSymbol, windowPart);
+            barSymbol.getAxisLabel().paintSymbol(g2d, barSymbol, viewPart);
         }
     }
 
@@ -208,7 +208,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      * @param bar
      *            the bar to paint
      */
-    private void paintBar(Graphics2D g2d, BarSymbol bar, WindowPart windowPart,
+    private void paintBar(Graphics2D g2d, BarSymbol bar, ViewPart viewPart,
             PaintRequest paintRequest) {
 
         bar.setHost(getHost());
@@ -216,18 +216,18 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
         if (paintRequest == PaintRequest.SymbolLayer) {
             if (bar.getBarFill() != null) {
-                bar.getBarFill().paintSymbol(g2d, bar, windowPart);
+                bar.getBarFill().paintSymbol(g2d, bar, viewPart);
             }
             if (bar.getBarEffect() != null) {
-                bar.getBarEffect().paintSymbol(g2d, bar, windowPart);
+                bar.getBarEffect().paintSymbol(g2d, bar, viewPart);
             }
             if (bar.getBarDraw() != null) {
-                bar.getBarDraw().paintSymbol(g2d, bar, windowPart);
+                bar.getBarDraw().paintSymbol(g2d, bar, viewPart);
             }
         }
         else if (paintRequest == PaintRequest.LabelLayer) {
             if (bar.getBarLabel() != null) {
-                bar.getBarLabel().paintSymbol(g2d, bar, windowPart);
+                bar.getBarLabel().paintSymbol(g2d, bar, viewPart);
             }
         }
 
@@ -284,11 +284,11 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the bar to solve
      */
     private void solveVBarSymbol(BarSymbol bar) {
-        if (getHost() == null || getHost().getWindow2D() == null) {
+        if (getHost() == null || getHost().getProjection() == null) {
             return;
         }
         bar.setHost(getHost());
-        Window2D w2d = getHost().getWindow2D();
+        Projection w2d = getHost().getProjection();
         Point2D p2dUser = null;
         if (bar.isAscent()) {
             p2dUser = new Point2D.Double(0, bar.getBase() + bar.getValue());
@@ -363,12 +363,12 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the stacked bar to solve
      */
     private void solveVStackedBar(StackedBarSymbol stackedBar) {
-        if (getHost() == null || getHost().getWindow2D() == null) {
+        if (getHost() == null || getHost().getProjection() == null) {
             return;
         }
         stackedBar.setHost(getHost());
         stackedBar.normalize();
-        Window2D w2d = getHost().getWindow2D();
+        Projection w2d = getHost().getProjection();
         Point2D p2dUser = null;
         if (stackedBar.isAscent()) {
             p2dUser = new Point2D.Double(0, stackedBar.getBase()
@@ -584,31 +584,31 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the stacked bar to paint
      */
     private void paintBarStacked(Graphics2D g2d, StackedBarSymbol stackedBar,
-            WindowPart windowPart, PaintRequest paintRequest) {
+            ViewPart viewPart, PaintRequest paintRequest) {
         stackedBar.setHost(getHost());
         stackedBar.setLayer(this);
         List<Stack> stacks = stackedBar.getStacks();
         if (paintRequest == PaintRequest.SymbolLayer) {
             for (Stack s : stacks) {
-                paintBar(g2d, s, windowPart, paintRequest);
+                paintBar(g2d, s, viewPart, paintRequest);
             }
             if (stackedBar.getBarEffect() != null) {
                 stackedBar.getBarEffect().paintSymbol(g2d, stackedBar,
-                                                      windowPart);
+                                                      viewPart);
             }
             if (stackedBar.getBarDraw() != null) {
                 stackedBar.getBarDraw()
-                        .paintSymbol(g2d, stackedBar, windowPart);
+                        .paintSymbol(g2d, stackedBar, viewPart);
             }
         }
         else if (paintRequest == PaintRequest.LabelLayer) {
             if (stackedBar.getBarLabel() != null) {
                 stackedBar.getBarLabel().paintSymbol(g2d, stackedBar,
-                                                     windowPart);
+                                                     viewPart);
             }
             for (Stack s : stacks) {
                 if (s.getBarLabel() != null) {
-                    s.getBarLabel().paintSymbol(g2d, s, windowPart);
+                    s.getBarLabel().paintSymbol(g2d, s, viewPart);
                 }
             }
         }
@@ -638,11 +638,11 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the bar to solve
      */
     private void solveHBarSymbol(BarSymbol bar) {
-        if (getHost() == null || getHost().getWindow2D() == null) {
+        if (getHost() == null || getHost().getProjection() == null) {
             return;
         }
         bar.setHost(getHost());
-        Window2D w2d = getHost().getWindow2D();
+        Projection w2d = getHost().getProjection();
 
         Point2D p2dUser = null;
         if (bar.isAscent()) {
@@ -717,12 +717,12 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      *            the stacked bar top solve
      */
     private void solveHStackedBar(StackedBarSymbol stackedBar) {
-        if (getHost() == null || getHost().getWindow2D() == null) {
+        if (getHost() == null || getHost().getProjection() == null) {
             return;
         }
         stackedBar.setHost(getHost());
         stackedBar.normalize();
-        Window2D w2d = getHost().getWindow2D();
+        Projection w2d = getHost().getProjection();
         Point2D p2dUser = null;
         if (stackedBar.isAscent()) {
             p2dUser = new Point2D.Double(stackedBar.getBase()

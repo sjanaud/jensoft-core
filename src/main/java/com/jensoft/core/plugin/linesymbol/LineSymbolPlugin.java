@@ -18,22 +18,15 @@ import com.jensoft.core.plugin.linesymbol.core.LineSymbolComponent;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbolGeometry;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbolGroup;
 import com.jensoft.core.plugin.linesymbol.painter.LineSymbolPainter;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>LineSymbolPlugin</code> host <code>LineSymbol<code>
  * 
  * <br>
- * This button looks like this :
- *  
- * <br>
- * <br>
- * <center><img src="doc-files/LineSymbolPlugin.png"></center>
- * <br>this example show health symbol along time, symbol dimension is along Y dimension, time metrics on X
- * <br><br><br>
- * <code>LineSymbol defines line with a symbolic dimension
+ * LineSymbol defines line with a symbolic dimension
  * <ul>
  * <li>LineX define line along X , metrics on x , symbol on Y</li>
  * <li>LineY define line along Y , metrics on Y , symbol on X</li>
@@ -165,7 +158,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
      */
     public double getComponentXPosition(LineSymbolComponent lineComponent) {
 
-        Window2D wb2d = getWindow2D();
+        Projection wb2d = getProjection();
         List<LineSymbolComponent> barComponents = getLineComponents();
 
         // glues
@@ -413,7 +406,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
      * @param ls
      *            the line symbol
      */
-    protected void paintXLineSymbol(View2D v2d, Graphics2D g2d, LineSymbol ls) {
+    protected void paintXLineSymbol(View v2d, Graphics2D g2d, LineSymbol ls) {
 
         if (ls.getLinePainter() != null) {
             ls.getLinePainter().paintLineSymbol(g2d, ls);
@@ -434,27 +427,26 @@ public class LineSymbolPlugin extends AbstractPlugin implements
      * @param ls
      *            the line symbol
      */
-    protected void paintYLineSymbol(View2D v2d, Graphics2D g2d, LineSymbol ls) {
+    protected void paintYLineSymbol(View v2d, Graphics2D g2d, LineSymbol ls) {
 
     }
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart == WindowPart.Device) {
-            // System.out.println("divergence : "+divergence);
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart == ViewPart.Device) {
             resolveLineGeometry();
 
             for (LineSymbolComponent lsc : getLineComponents()) {
                 if (lsc instanceof LineSymbol) {
                     if (lsc.getLineNature() == LineNature.LineX) {
-                        paintXLineSymbol(v2d, g2d, (LineSymbol) lsc);
+                        paintXLineSymbol(view, g2d, (LineSymbol) lsc);
                     }
                     else if (lsc.getLineNature() == LineNature.LineY) {
-                        paintYLineSymbol(v2d, g2d, (LineSymbol) lsc);
+                        paintYLineSymbol(view, g2d, (LineSymbol) lsc);
                     }
                 }
             }
@@ -736,7 +728,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         // else
         // unPassiveTranslate();
 
-        getWindow2D().getView2D().getDevice2D().repaint();
+        getProjection().getView2D().getDevice2D().repaint();
     }
 
     /** divergence */
@@ -753,7 +745,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
      */
     private void inflate() {
         divergence = divergence + divergenceIncrement;
-        getWindow2D().getDevice2D().repaintDevice();
+        getProjection().getDevice2D().repaintDevice();
     }
 
     /**
@@ -764,7 +756,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
      */
     private void deflate() {
         divergence = divergence - divergenceIncrement;
-        getWindow2D().getDevice2D().repaintDevice();
+        getProjection().getDevice2D().repaintDevice();
     }
 
     /**

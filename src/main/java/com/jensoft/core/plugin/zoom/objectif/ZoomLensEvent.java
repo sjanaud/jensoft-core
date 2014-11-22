@@ -8,11 +8,11 @@ package com.jensoft.core.plugin.zoom.objectif;
 import com.jensoft.core.plugin.PluginEvent;
 
 /**
- * <code>ZoomObjectifEvent</code>
+ * <code>ZoomLensEvent</code>
  * 
  * @author sebastien janaud
  */
-public class ZoomObjectifEvent extends PluginEvent<ZoomObjectifPlugin> {
+public class ZoomLensEvent extends PluginEvent<ZoomLensPlugin> {
 
     private static final long serialVersionUID = -8600817451113657609L;
 
@@ -20,7 +20,7 @@ public class ZoomObjectifEvent extends PluginEvent<ZoomObjectifPlugin> {
      * create zoom objectif event
      * @param plugin
      */
-    public ZoomObjectifEvent(ZoomObjectifPlugin plugin) {
+    public ZoomLensEvent(ZoomLensPlugin plugin) {
         super(plugin);
     }
 

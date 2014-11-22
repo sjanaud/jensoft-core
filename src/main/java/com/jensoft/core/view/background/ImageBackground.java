@@ -8,7 +8,7 @@ package com.jensoft.core.view.background;
 import java.awt.Graphics2D;
 import java.awt.Image;
 
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>ImageBackground</code> paint's the given image in the background.
@@ -82,7 +82,7 @@ public class ImageBackground extends BackgroundPainter {
      * @see com.jensoft.core.view.background.BackgroundPainter#paintViewBackground(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    public void paintViewBackground(View2D view,int viewWidth,int viewHeight, Graphics2D g2d) {
+    public void paintViewBackground(View view,int viewWidth,int viewHeight, Graphics2D g2d) {
         if (rescale) {
             g2d.drawImage(backgroundImage, 0, 0, viewWidth, viewHeight, null);
         }

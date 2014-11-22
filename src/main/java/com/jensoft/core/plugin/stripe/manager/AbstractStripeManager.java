@@ -9,7 +9,7 @@ import com.jensoft.core.plugin.stripe.Stripe;
 import com.jensoft.core.plugin.stripe.StripePlugin;
 import com.jensoft.core.plugin.stripe.StripePlugin.StripeOrientation;
 import com.jensoft.core.plugin.stripe.painter.StripePalette;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>AbstractStripeManager</code> abstract definition for stripe manager
@@ -28,7 +28,7 @@ public abstract class AbstractStripeManager implements StripeManager {
     private StripeOrientation stripeOrientation;
 
     /** window */
-    private Window2D window2D;
+    private Projection window2D;
 
     /** max iteration for solve strip */
     private int iterationMax = 10000;
@@ -96,7 +96,7 @@ public abstract class AbstractStripeManager implements StripeManager {
      * @param windo2D
      */
     @Override
-    public void setWindow2D(Window2D windo2D) {
+    public void setWindow2D(Projection windo2D) {
         window2D = windo2D;
     }
 
@@ -106,7 +106,7 @@ public abstract class AbstractStripeManager implements StripeManager {
      * @return window2D
      */
     @Override
-    public Window2D getWindow2D() {
+    public Projection getWindow2D() {
         return window2D;
     }
 

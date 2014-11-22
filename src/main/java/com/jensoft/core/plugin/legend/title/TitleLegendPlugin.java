@@ -28,12 +28,13 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
 import com.jensoft.core.plugin.legend.title.painter.fil.TitleLegendGradientFill;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>TitleLegendPlugin</code> takes the responsibility to paint title legend within the view
  * 
+ * @since 1.0
  * @author Sebastien Janaud
  */
 public class TitleLegendPlugin extends AbstractPlugin {
@@ -80,36 +81,36 @@ public class TitleLegendPlugin extends AbstractPlugin {
     /**
      * true if the context is accessible for this legend, false otherwise
      * 
-     * @param windowPart
+     * @param viewPart
      *            the window part
      * @param legend
      *            the legend
      * @return true if the context is accessible, false otherwise
      */
-    private boolean isAccessible(WindowPart windowPart, TitleLegend legend) {
+    private boolean isAccessible(ViewPart viewPart, TitleLegend legend) {
 
         TitleLegendConstraints contraints = legend.getConstraints();
         if (contraints == null) {
             return false;
         }
         if (contraints.getPosition() == LegendPosition.South
-                && windowPart != WindowPart.South) {
+                && viewPart != ViewPart.South) {
             return false;
         }
         if (contraints.getPosition() == LegendPosition.North
-                && windowPart != WindowPart.North) {
+                && viewPart != ViewPart.North) {
             return false;
         }
         if (contraints.getPosition() == LegendPosition.West
-                && windowPart != WindowPart.West) {
+                && viewPart != ViewPart.West) {
             return false;
         }
         if (contraints.getPosition() == LegendPosition.East
-                && windowPart != WindowPart.East) {
+                && viewPart != ViewPart.East) {
             return false;
         }
 
-        if (windowPart == WindowPart.Device) {
+        if (viewPart == ViewPart.Device) {
             return false;
         }
 
@@ -123,7 +124,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
      * @param g2d
      * @param legend
      */
-    private void solveLegends(View2D view2D, Graphics2D g2d, TitleLegend legend) {
+    private void solveLegends(View view2D, Graphics2D g2d, TitleLegend legend) {
         TitleLegendConstraints contraints = legend.getConstraints();
         legend.clearLegendGlyph();
         String labelLegend = legend.getText();
@@ -133,7 +134,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
                                                                            labelLegend);
         float legendWidth = GlyphUtil.getGlyphWidth(legendGlyphVector);
 
-        View2D v2d = legend.getHost().getWindow2D().getView2D();
+        View v2d = legend.getHost().getProjection().getView2D();
 
         if (contraints.getPosition() == LegendPosition.West
                 || contraints.getPosition() == LegendPosition.East) {
@@ -141,12 +142,12 @@ public class TitleLegendPlugin extends AbstractPlugin {
             JComponent windowComponent = null;
             double depth = 0;
             if (contraints.getPosition() == LegendPosition.West) {
-                windowComponent = v2d.getWindowComponent(WindowPart.West);
+                windowComponent = v2d.getWindowComponent(ViewPart.West);
                 depth = windowComponent.getWidth()
                         * (1 - contraints.getDepth());
             }
             if (contraints.getPosition() == LegendPosition.East) {
-                windowComponent = v2d.getWindowComponent(WindowPart.East);
+                windowComponent = v2d.getWindowComponent(ViewPart.East);
                 depth = windowComponent.getWidth() * contraints.getDepth();
             }
 
@@ -225,11 +226,11 @@ public class TitleLegendPlugin extends AbstractPlugin {
             int width = 0;
             double depth = 0;
             if (contraints.getPosition() == LegendPosition.South) {
-                windowComponent = v2d.getWindowComponent(WindowPart.South);
+                windowComponent = v2d.getWindowComponent(ViewPart.South);
                 depth = windowComponent.getHeight() * contraints.getDepth();
             }
             else if (contraints.getPosition() == LegendPosition.North) {
-                windowComponent = v2d.getWindowComponent(WindowPart.North);
+                windowComponent = v2d.getWindowComponent(ViewPart.North);
                 depth = windowComponent.getHeight()
                         * (1 - contraints.getDepth());
             }
@@ -314,13 +315,13 @@ public class TitleLegendPlugin extends AbstractPlugin {
      * 
      * @param v2d
      * @param g2d
-     * @param windowPart
+     * @param viewPart
      */
-    public void paintLegend(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    public void paintLegend(View v2d, Graphics2D g2d, ViewPart viewPart) {
 
         for (TitleLegend legend : legends) {
 
-            if (isAccessible(windowPart, legend)) {
+            if (isAccessible(viewPart, legend)) {
 
                 solveLegends(v2d, g2d, legend);
 
@@ -338,12 +339,12 @@ public class TitleLegendPlugin extends AbstractPlugin {
     
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public final void paintPlugin(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart) {
-        paintLegend(v2d, g2d, windowPart);
+    public final void paintPlugin(View view, Graphics2D g2d,
+            ViewPart viewPart) {
+        paintLegend(view, g2d, viewPart);
     }
     
     

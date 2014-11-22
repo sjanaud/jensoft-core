@@ -12,13 +12,15 @@ import java.awt.geom.Rectangle2D;
 
 import javax.swing.JComponent;
 
-import com.jensoft.core.device.Device2D;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.device.Device;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
- * <code>OutlinePlugin</code> OutlineLayout defines how to lay out the window outline
+ * <code>OutlinePlugin</code> 
+ * 
+ * @since 1.0
  * 
  * @author Sebastien Janaud
  */
@@ -197,12 +199,12 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
         public void run() {
             setInflating(true);
             try {
-                Window2D w2d = getWindow2D();
+                Projection w2d = getProjection();
 
                 w2d.getView2D().repaintView();
                 Thread.sleep(startDelay);
 
-                Device2D d2d = w2d.getDevice2D();
+                Device d2d = w2d.getDevice2D();
                 int step = 20;
                 int width = d2d.getDeviceWidth();
                 int height = d2d.getDeviceHeight();
@@ -265,13 +267,13 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
         public void run() {
             setInflating(true);
             try {
-                Window2D w2d = getWindow2D();
+                Projection w2d = getProjection();
                 if (w2d == null) {
                     interrupt();
                 }
                 w2d.getView2D().repaintView();
                 Thread.sleep(startDelay);
-                Device2D d2d = w2d.getDevice2D();
+                Device d2d = w2d.getDevice2D();
                 int step = 20;
                 int width = d2d.getDeviceWidth();
                 int height = d2d.getDeviceHeight();
@@ -317,12 +319,12 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
      *            the view 2D
      * @param g2d
      *            the graphics context
-     * @param windowPart
+     * @param viewPart
      *            the window part
      */
-    private void paintInflating(View2D v2d, Graphics2D g2d,
-            WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    private void paintInflating(View v2d, Graphics2D g2d,
+            ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
         if (inflateOutline != null) {
@@ -330,7 +332,7 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
                 g2d.setColor(themeColor);
             }
             else {
-                g2d.setColor(getWindow2D().getThemeColor());
+                g2d.setColor(getProjection().getThemeColor());
             }
 
             g2d.draw(inflateOutline);
@@ -339,16 +341,16 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.outline.AbstractOutlinePlugin#doPaintOutline(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.outline.AbstractOutlinePlugin#doPaintOutline(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public void doPaintOutline(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    public void doPaintOutline(View v2d, Graphics2D g2d, ViewPart viewPart) {
 
         if (getPaintBehavior() == PaintBehavior.NoPaint) {
             return;
         }
         if (getPaintBehavior() == PaintBehavior.PaintIfHostWindowActive
-                && !getWindow2D().isLockActive()) {
+                && !getProjection().isLockActive()) {
             return;
         }
 
@@ -357,7 +359,7 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
                 painter = new LineOutlinePainter(themeColor);
             }
             else {
-                painter = new LineOutlinePainter(getWindow2D().getThemeColor());
+                painter = new LineOutlinePainter(getProjection().getThemeColor());
             }
 
         }
@@ -366,42 +368,42 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
                 painter.setOutlineColor(themeColor);
             }
             else {
-                painter.setOutlineColor(getWindow2D().getThemeColor());
+                painter.setOutlineColor(getProjection().getThemeColor());
             }
         }
 
-        if (isInflating() && windowPart == WindowPart.Device) {
-            paintInflating(v2d, g2d, windowPart);
+        if (isInflating() && viewPart == ViewPart.Device) {
+            paintInflating(v2d, g2d, viewPart);
         }
         else {
 
             if (!isInflating()) {
-                if (windowPart == WindowPart.South) {
-                    JComponent south = v2d.getWindowComponent(WindowPart.South);
+                if (viewPart == ViewPart.South) {
+                    JComponent south = v2d.getWindowComponent(ViewPart.South);
                     painter.doPaintOutline(south, g2d,
                                            v2d.getPlaceHolderAxisWest() - 1, 0,
                                            south.getWidth() - v2d.getPlaceHolderAxisEast()
                                                    - v2d.getPlaceHolderAxisWest() + 1,
-                                           WindowPart.South);
+                                           ViewPart.South);
                 }
-                if (windowPart == WindowPart.West) {
-                    JComponent west = v2d.getWindowComponent(WindowPart.West);
+                if (viewPart == ViewPart.West) {
+                    JComponent west = v2d.getWindowComponent(ViewPart.West);
                     painter.doPaintOutline(west, g2d, west.getWidth() - 1,
-                                           west.getHeight(), west.getHeight(), WindowPart.West);
+                                           west.getHeight(), west.getHeight(), ViewPart.West);
                 }
-                if (windowPart == WindowPart.East) {
-                    JComponent east = v2d.getWindowComponent(WindowPart.East);
+                if (viewPart == ViewPart.East) {
+                    JComponent east = v2d.getWindowComponent(ViewPart.East);
                     painter.doPaintOutline(east, g2d, 0, east.getHeight(),
-                                           east.getHeight(), WindowPart.East);
+                                           east.getHeight(), ViewPart.East);
                 }
-                if (windowPart == WindowPart.North) {
-                    JComponent north = v2d.getWindowComponent(WindowPart.North);
+                if (viewPart == ViewPart.North) {
+                    JComponent north = v2d.getWindowComponent(ViewPart.North);
                     painter.doPaintOutline(north, g2d,
                                            v2d.getPlaceHolderAxisWest() - 1,
                                            north.getHeight() - 1,
                                            north.getWidth() - v2d.getPlaceHolderAxisEast()
                                                    - v2d.getPlaceHolderAxisWest() + 1,
-                                           WindowPart.North);
+                                           ViewPart.North);
                 }
             }
         }

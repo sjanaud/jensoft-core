@@ -8,8 +8,8 @@ package com.jensoft.core.plugin.point;
 import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * The abstract definition of a delegate that takes the responsibility of
@@ -17,11 +17,11 @@ import com.jensoft.core.window.WindowPart;
  */
 public abstract class AbstractPointPlugin extends AbstractPlugin {
 
-    public abstract void doPaintPoints(View2D v2d, Graphics2D g2d);
+    public abstract void doPaintPoints(View v2d, Graphics2D g2d);
 
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
 

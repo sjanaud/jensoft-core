@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.util.List;
 
 import com.jensoft.core.plugin.point.Point;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * PointLayoutManager defines the interface for classes that know how to lay out
@@ -19,9 +19,9 @@ public interface PointLayoutManager {
 
     public List<Point> getPoints();
 
-    public void setWindow2D(Window2D w2d);
+    public void setWindow2D(Projection w2d);
 
-    public Window2D getWindow2D();
+    public Projection getWindow2D();
 
     public static int POINT_X = 0;
     public static int POINT_Y = 1;

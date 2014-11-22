@@ -21,13 +21,13 @@ import com.jensoft.core.map.primitive.Node;
 import com.jensoft.core.map.primitive.Primitive;
 import com.jensoft.core.map.primitive.Way;
 import com.jensoft.core.map.projection.GeoPosition;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.RoundViewFill;
-import com.jensoft.core.window.Window2D;
 
 
-public class TraceDemo extends View2D {
+public class TraceDemo extends View {
 
 	// GeoPosition g1 = new GeoPosition(25.8575551, -80.1284813);
 	// GeoPosition g2 = new GeoPosition(25.8574182, -80.1287591);
@@ -98,10 +98,10 @@ public class TraceDemo extends View2D {
 
 		super();
 		createPositions();
-		final Window2D w2d = new Window2D.Map();
+		final Projection w2d = new Projection.Map();
 		w2d.setName("map window");
 		w2d.setThemeColor(Color.WHITE);
-		registerWindow2D(w2d);
+		registerProjection(w2d);
 
 		// TracePlugin tracePlugin = new TracePlugin();
 		// w2d.registerPlugin(tracePlugin);
@@ -264,7 +264,7 @@ public class TraceDemo extends View2D {
 	}
 
 	@Portfolio(name = "FreeGridDemo", width = 500, height = 250)
-	public static View2D getPortofolio() {
+	public static View getPortofolio() {
 		TraceDemo demo = new TraceDemo();
 
 		RoundViewFill viewBackground = new RoundViewFill();

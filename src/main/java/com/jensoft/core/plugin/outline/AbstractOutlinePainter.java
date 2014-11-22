@@ -9,10 +9,20 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Graphics2D;
 
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
+
+/**
+ * <code>AbstractOutlinePainter</code>
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
+ *
+ */
 public abstract class AbstractOutlinePainter {
 
+	/**outline line color*/
     private Color outlineColor;
 
     /**
@@ -30,7 +40,16 @@ public abstract class AbstractOutlinePainter {
         this.outlineColor = outlineColor;
     }
 
-    public abstract void doPaintOutline(Component c, Graphics2D g2d, int x,
-            int y, int weigh, WindowPart windowPart);
+    /**
+     * paint outline according to given parameters
+     * @param c
+     * @param g2d
+     * @param x
+     * @param y
+     * @param weigh
+     * @param viewPart
+     */
+    public abstract void doPaintOutline(Component c, Graphics2D g2d, int x,int y, int weigh, ViewPart viewPart);
+            
 
 }

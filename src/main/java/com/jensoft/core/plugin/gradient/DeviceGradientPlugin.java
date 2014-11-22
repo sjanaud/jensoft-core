@@ -16,33 +16,33 @@ import com.jensoft.core.graphics.AlphaInterpolation;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
- * <code>GradientPlugin</code>
+ * <code>DeviceGradientPlugin</code>
  * 
  * @author sebastien janaud
  */
-public class GradientPlugin extends AbstractPlugin {
+public class DeviceGradientPlugin extends AbstractPlugin {
 
     private Color color1 = new Color(0x202737);
     private Color color2 = Color.BLACK;
     private float alpha = 1f;
 
-    public GradientPlugin() {
+    public DeviceGradientPlugin() {
         setDithering(Dithering.On);
         setAntialiasing(Antialiasing.On);
         setAlphaInterpolation(AlphaInterpolation.Quality);
     }
 
-    public GradientPlugin(Color color1, Color color2) {
+    public DeviceGradientPlugin(Color color1, Color color2) {
         this();
         this.color1 = color1;
         this.color2 = color2;
     }
 
-    public GradientPlugin(Color color1, Color color2, float alpha) {
+    public DeviceGradientPlugin(Color color1, Color color2, float alpha) {
         this();
         this.color1 = color1;
         this.color2 = color2;
@@ -73,17 +73,20 @@ public class GradientPlugin extends AbstractPlugin {
         this.alpha = alpha;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
 
-        if (windowPart != WindowPart.Device) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
 
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,
                                                     alpha));
-        int width = getWindow2D().getDevice2D().getDeviceWidth();
-        int height = getWindow2D().getDevice2D().getDeviceHeight();
+        int width = getProjection().getDevice2D().getDeviceWidth();
+        int height = getProjection().getDevice2D().getDeviceHeight();
 
         Point2D start = new Point2D.Double(width / 2, 0);
         Point2D end = new Point2D.Double(width / 2, height);

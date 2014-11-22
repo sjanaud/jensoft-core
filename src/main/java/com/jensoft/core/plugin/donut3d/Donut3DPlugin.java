@@ -22,8 +22,8 @@ import com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel;
 import com.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel;
 import com.jensoft.core.plugin.donut3d.painter.label.Donut3DRadialLabel;
 import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>Donut3DPlugin</code>
@@ -129,31 +129,24 @@ public class Donut3DPlugin extends AbstractPlugin implements
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
-
         solveDonut3D();
-        
         for (Donut3D donut3D : donuts3D) {
-
             if (donut3D.getDonut3DPaint() != null) {
                 donut3D.getDonut3DPaint().paintDonut3D(g2d, donut3D);
             }
-
             List<Donut3DSlice> slices = donut3D.getSlices();
-
             for (Donut3DSlice donut3DSlice : slices) {
                 for (AbstractDonut3DSliceLabel label : donut3DSlice.getSliceLabels()) {
                     label.paintDonut3DSlice(g2d, donut3D, donut3DSlice);
                 }
             }
-
         }
     }
 

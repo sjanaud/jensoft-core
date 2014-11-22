@@ -6,10 +6,17 @@
 package com.jensoft.core.plugin.radar;
 
 /**
- * DimensionMetrics
+ * <code>DimensionMetrics</code> defines a metrics on a dimension
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public final class DimensionMetrics extends RadarMetrics {
 
+	/**
+	 * create dimension metrics
+	 */
     public DimensionMetrics() {
         super(RadarMetricsNature.DimensionMetrics);
     }

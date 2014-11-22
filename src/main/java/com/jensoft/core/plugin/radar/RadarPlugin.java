@@ -12,13 +12,27 @@ import java.util.List;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
+
+/**
+ * <code>RadarPlugin</code>
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
+ *
+ */
 public class RadarPlugin extends AbstractPlugin {
 
+	/**radars*/
     private List<Radar> radars;
 
+    
+    /**
+     * create radar plugin
+     */
     public RadarPlugin() {
         setName(this.getClass().getSimpleName());
         setAntialiasing(Antialiasing.On);
@@ -26,30 +40,37 @@ public class RadarPlugin extends AbstractPlugin {
         radars = new ArrayList<Radar>();
     }
 
+    /**
+     * add radar
+     * @param radar
+     */
     public void addRadar(Radar radar) {
         radar.setHost(this);
         radars.add(radar);
     }
 
+    /**
+     * remove radar
+     * @param radar
+     */
     public void removeRadar(Radar radar) {
         radar.setHost(null);
         radars.remove(radar);
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
-
         for (Radar radar : radars) {
             radar.solveGeometry();
-
             if (radar.getPainter() != null) {
                 radar.getPainter().paintRadar(g2d, radar);
             }
         }
-
     }
-
 }

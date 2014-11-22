@@ -11,8 +11,8 @@ import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
 
 /**
  * <code>CrossMarker</code>
@@ -103,7 +103,7 @@ public class CrossMarker extends AbstractMarker {
             return;
         }
 
-        Window2D window = getHost().getWindow2D();
+        Projection window = getHost().getProjection();
 
         g2d.setComposite(java.awt.AlphaComposite.getInstance(
                                                              java.awt.AlphaComposite.SRC_OVER, 1.0f));
@@ -132,7 +132,7 @@ public class CrossMarker extends AbstractMarker {
      * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    public final void paintMarker(View2D view2d, Graphics2D g2d) {
+    public final void paintMarker(View view2d, Graphics2D g2d) {
         paintCross(g2d);
 
     }

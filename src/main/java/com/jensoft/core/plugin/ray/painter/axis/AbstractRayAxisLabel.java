@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.ray.Ray;
 import com.jensoft.core.plugin.ray.painter.AbstractRayPainter;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * abstract definition of operation ray axis label painting
@@ -25,15 +25,15 @@ public abstract class AbstractRayAxisLabel extends AbstractRayPainter {
      *            the ray
      */
     protected abstract void paintRayAxisLabel(Graphics2D g2d, Ray ray,
-            WindowPart windowPart);
+            ViewPart viewPart);
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.painter.AbstractRayPainter#paintRay(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.ray.painter.AbstractRayPainter#paintRay(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public final void paintRay(Graphics2D g2d, Ray ray, WindowPart windowPart) {
-        paintRayAxisLabel(g2d, ray, windowPart);
+    public final void paintRay(Graphics2D g2d, Ray ray, ViewPart viewPart) {
+        paintRayAxisLabel(g2d, ray, viewPart);
     }
 
 }

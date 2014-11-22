@@ -13,7 +13,7 @@ import com.jensoft.core.plugin.ray.painter.draw.AbstractRayDraw;
 import com.jensoft.core.plugin.ray.painter.effect.AbstractRayEffect;
 import com.jensoft.core.plugin.ray.painter.fill.AbstractRayFill;
 import com.jensoft.core.plugin.ray.painter.label.AbstractRayLabel;
-import com.jensoft.core.view.View2D.DeviceBand;
+import com.jensoft.core.view.View.DeviceBand;
 
 /**
  * Ray define a bar with geometry in twice dimension x and y <br>
@@ -593,7 +593,7 @@ public class Ray {
                     if (getHost() != null) {
                         if (getRayNature() == RayNature.XRay) {
                             getHost()
-                                    .getWindow2D()
+                                    .getProjection()
                                     .getView2D()
                                     .repaintDeviceBand(
                                                        DeviceBand.XBand,
@@ -604,7 +604,7 @@ public class Ray {
                         }
                         else if (getRayNature() == RayNature.YRay) {
                             getHost()
-                                    .getWindow2D()
+                                    .getProjection()
                                     .getView2D()
                                     .repaintDeviceBand(
                                                        DeviceBand.YBand,
@@ -704,7 +704,7 @@ public class Ray {
 
                     if (getRayNature() == RayNature.XRay) {
                         getHost()
-                                .getWindow2D()
+                                .getProjection()
                                 .getView2D()
                                 .repaintDeviceBand(
                                                    DeviceBand.XBand,
@@ -714,7 +714,7 @@ public class Ray {
                     }
                     else if (getRayNature() == RayNature.YRay) {
                         getHost()
-                                .getWindow2D()
+                                .getProjection()
                                 .getView2D()
                                 .repaintDeviceBand(
                                                    DeviceBand.YBand,

@@ -62,7 +62,7 @@ public class RadarDefaultPainter extends AbstractRadarPainter {
 
             GeneralMetricsPath metricsPath = dimension.getMetricsPath();
 
-            metricsPath.setWindow2d(radar.getHost().getWindow2D());
+            metricsPath.setWindow2d(radar.getHost().getProjection());
             metricsPath.setFontRenderContext(g2d.getFontRenderContext());
 
             // paint glyph

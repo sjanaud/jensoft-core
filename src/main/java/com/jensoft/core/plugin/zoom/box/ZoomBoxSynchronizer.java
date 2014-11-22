@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.plugin.PluginEvent;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>ZoomBoxSynchronizer</code>
@@ -111,7 +111,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
             ZoomBoxPlugin zoomBoxPlugin = (ZoomBoxPlugin) pluginEvent.getSource();
             for (ZoomBoxPlugin zbp : boxesList) {
                 if (!zbp.equals(zoomBoxPlugin)) {
-                    Window2D w2d = zbp.getWindow2D();
+                    Projection w2d = zbp.getProjection();
                     
                     //interpretation base on press in user system
                     Point2D userBoxStartSource = zoomBoxPlugin .getBoxStartUserPoint();
@@ -143,7 +143,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
             ZoomBoxPlugin zoomBoxPlugin = (ZoomBoxPlugin) pluginEvent.getSource();
             for (ZoomBoxPlugin zbp : boxesList) {
                 if (!zbp.equals(zoomBoxPlugin)) {
-                    Window2D w2d = zbp.getWindow2D();
+                    Projection w2d = zbp.getProjection();
                     
                     //interpretation base on press in user system
                     Point2D userBoxCurrentSource = zoomBoxPlugin.getBoxCurrentUserPoint();

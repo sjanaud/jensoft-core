@@ -65,7 +65,7 @@ public class AreaDefaultFill extends AbstractAreaFill {
                 g2d.setPaint(area.getThemeColor());
             }
             else{
-                g2d.setPaint(area.getHost().getWindow2D().getThemeColor());
+                g2d.setPaint(area.getHost().getProjection().getThemeColor());
             }
         }
         g2d.fill(area.getArea());

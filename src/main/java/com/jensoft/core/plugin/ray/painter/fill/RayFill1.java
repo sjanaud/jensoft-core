@@ -63,7 +63,7 @@ public class RayFill1 extends AbstractRayFill {
 
         Color cBase = ray.getThemeColor();
         if (cBase == null) {
-            cBase = ray.getHost().getWindow2D().getThemeColor();
+            cBase = ray.getHost().getProjection().getThemeColor();
         }
 
         Color brighther1 = ColorPalette.brighter(cBase, 0.8f);

@@ -11,7 +11,7 @@ import java.util.List;
 
 import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>StaticMetricsManager</code> takes the responsibility to manage static metrics
@@ -44,7 +44,7 @@ public class StaticMetricsManager extends AbstractMetricsManager {
     @Override
     public List<Metrics> getDeviceMetrics() {
         metricsDevice.clear();
-        Window2D w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getWindow2D();
 
         if (getType() == MetricsType.XMetrics) {
 

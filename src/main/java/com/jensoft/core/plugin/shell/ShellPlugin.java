@@ -26,9 +26,9 @@ import com.jensoft.core.device.DevicePartComponent;
 import com.jensoft.core.palette.Alpha;
 import com.jensoft.core.palette.Spectral;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 import com.jensoft.core.widget.Widget;
-import com.jensoft.core.window.WindowPart;
 
 /**
  * <code>MessagePlugin</code>
@@ -146,8 +146,8 @@ public class ShellPlugin extends AbstractPlugin implements
      *            the message to maximize
      */
     public void maximizeMessage(final Shell message) {
-        int width = getWindow2D().getDevice2D().getDeviceWidth();
-        int height = getWindow2D().getDevice2D().getDeviceHeight();
+        int width = getProjection().getDevice2D().getDeviceWidth();
+        int height = getProjection().getDevice2D().getDeviceHeight();
         message.setBounds(0, 0, width, height);
         lockPassive();
         for (Widget widget : getWidgets()) {
@@ -165,8 +165,8 @@ public class ShellPlugin extends AbstractPlugin implements
      */
     public void unMaximizeMessage(Shell message) {
         if (message.equals(maximizedShell)) {
-            int width = getWindow2D().getDevice2D().getDeviceWidth();
-            int height = getWindow2D().getDevice2D().getDeviceHeight();
+            int width = getProjection().getDevice2D().getDeviceWidth();
+            int height = getProjection().getDevice2D().getDeviceHeight();
             int x = (width / 2 - message.getShellWidth() / 2);
             int y = (height / 2 - message.getShellHeight() / 2);
             message.setBounds(x, y, message.getShellWidth() - 10, message.getShellHeight() - 10);
@@ -237,7 +237,7 @@ public class ShellPlugin extends AbstractPlugin implements
      */
     public void showMessage(int index, Slide slide) {
 
-        DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+        DevicePartComponent comp = getProjection().getView2D().getDevice2D();
         if (volatileShell != null) {
             comp.remove(volatileShell);
         }
@@ -302,7 +302,7 @@ public class ShellPlugin extends AbstractPlugin implements
 
         @Override
         public void run() {
-            DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+            DevicePartComponent comp = getProjection().getView2D().getDevice2D();
             try {
                 if (toIndex > fromIndex) {
                     for (int i = fromIndex; i <= toIndex; i++) {
@@ -380,7 +380,7 @@ public class ShellPlugin extends AbstractPlugin implements
      *            the message to show
      */
     public void showVolatileMessage(Shell message) {
-        DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+        DevicePartComponent comp = getProjection().getView2D().getDevice2D();
 
         if (unshow != null && unshow.isAlive()) {
             unshow.interrupt();
@@ -409,7 +409,7 @@ public class ShellPlugin extends AbstractPlugin implements
      *            the message to show
      */
     public void showVolatileMessage(Shell message, long waitAndUnshow) {
-        DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+        DevicePartComponent comp = getProjection().getView2D().getDevice2D();
 
         if (unshow != null && unshow.isAlive()) {
             unshow.interrupt();
@@ -453,7 +453,7 @@ public class ShellPlugin extends AbstractPlugin implements
      */
     public void unshowVolatileMessage() {
         if (volatileShell != null) {
-            DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+            DevicePartComponent comp = getProjection().getView2D().getDevice2D();
             comp.remove(volatileShell);
             volatileShell = null;
         }
@@ -483,9 +483,9 @@ public class ShellPlugin extends AbstractPlugin implements
             sliding = true;
             try {
                 if (m != null) {
-                    getWindow2D().getView2D().repaintDevice();
+                    getProjection().getView2D().repaintDevice();
 
-                    int devicewidth = getWindow2D().getDevice2D().getDeviceWidth();
+                    int devicewidth = getProjection().getDevice2D().getDeviceWidth();
 
                     Rectangle currentInitialBound = null;
                     if (m != null) {
@@ -502,11 +502,11 @@ public class ShellPlugin extends AbstractPlugin implements
                                 m.setBounds((int) currentInitialBound.getX() + count++ * 20,
                                             (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
                             }
-                            getWindow2D().getView2D().repaintDevice();
+                            getProjection().getView2D().repaintDevice();
                             Thread.sleep(10);
                         }
 
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                     }
 
                     if (slide == Slide.NextMessage) {
@@ -520,21 +520,21 @@ public class ShellPlugin extends AbstractPlugin implements
                                 m.setBounds((int) currentInitialBound.getX() - count++ * 20,
                                             (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
                             }
-                            getWindow2D().getView2D().repaintDevice();
+                            getProjection().getView2D().repaintDevice();
                             Thread.sleep(10);
                         }
 
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                     }
 
                 }
             }
             catch (Exception e) {
-                DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+                DevicePartComponent comp = getProjection().getView2D().getDevice2D();
                 comp.remove(m);
                 Thread.currentThread().interrupt();
             }
-            DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+            DevicePartComponent comp = getProjection().getView2D().getDevice2D();
             comp.remove(m);
             sliding = false;
         }
@@ -554,7 +554,7 @@ public class ShellPlugin extends AbstractPlugin implements
             this.m = m;
             this.slide = slide;
             if (m != null) {
-                DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+                DevicePartComponent comp = getProjection().getView2D().getDevice2D();
                 int x = (comp.getWidth() / 2 - m.getShellWidth() / 2);
                 int y = (comp.getHeight() / 2 - m.getShellHeight() / 2);
                 int w = m.getShellWidth();
@@ -599,10 +599,10 @@ public class ShellPlugin extends AbstractPlugin implements
 
                 if (m != null) {
                     m.setLockDeleteBackground(false);
-                    getWindow2D().getView2D().repaintDevice();
+                    getProjection().getView2D().repaintDevice();
                     // m.setText(m.getText());
 
-                    int devicewidth = getWindow2D().getDevice2D().getDeviceWidth();
+                    int devicewidth = getProjection().getDevice2D().getDeviceWidth();
                     Rectangle msgSize = m.getBounds();
 
                     if (slide == Slide.PreviousMessage) {
@@ -610,15 +610,15 @@ public class ShellPlugin extends AbstractPlugin implements
                         int endX = (int) (devicewidth / 2 - msgSize.getWidth() / 2);
                         int count = 1;
                         m.setBounds(startX, (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                         for (int x = startX; x <= endX; x = x + 20) {
                             m.setBounds(x, (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
-                            getWindow2D().getView2D().repaintDevice();
+                            getProjection().getView2D().repaintDevice();
                             Thread.sleep(10);
                         }
                         m.setBounds(endX, (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
                         // m.setText(m.getText());
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                     }
 
                     if (slide == Slide.NextMessage) {
@@ -627,15 +627,15 @@ public class ShellPlugin extends AbstractPlugin implements
                         int endX = (int) (devicewidth / 2 - msgSize.getWidth() / 2);
                         int count = 1;
                         m.setBounds(startX, (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                         for (int x = startX; x >= endX; x = x - 20) {
                             m.setBounds(x, (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
-                            getWindow2D().getView2D().repaintDevice();
+                            getProjection().getView2D().repaintDevice();
                             Thread.sleep(10);
                         }
                         m.setBounds(endX, (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
                         // m.setText(m.getText());
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                     }
 
                 }
@@ -664,7 +664,7 @@ public class ShellPlugin extends AbstractPlugin implements
             this.m = m;
             this.slide = slide;
             if (m != null) {
-                DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+                DevicePartComponent comp = getProjection().getView2D().getDevice2D();
                 int x = (comp.getWidth() / 2 - m.getShellWidth() / 2);
                 int y = (comp.getHeight() / 2 - m.getShellHeight() / 2);
                 int w = m.getShellWidth();
@@ -704,10 +704,10 @@ public class ShellPlugin extends AbstractPlugin implements
 
                 if (m != null) {
                     m.setLockDeleteBackground(false);
-                    getWindow2D().getView2D().repaintDevice();
+                    getProjection().getView2D().repaintDevice();
                     // m.setText(m.getText());
 
-                    int devicewidth = getWindow2D().getDevice2D().getDeviceWidth();
+                    int devicewidth = getProjection().getDevice2D().getDeviceWidth();
                     Rectangle msgSize = m.getBounds();
                     Rectangle currentInitialBound = null;
                     if (currentMessage != null) {
@@ -727,12 +727,12 @@ public class ShellPlugin extends AbstractPlugin implements
                                                          currentMessage.getShellWidth(),
                                                          currentMessage.getShellHeight());
                             }
-                            getWindow2D().getView2D().repaintDevice();
+                            getProjection().getView2D().repaintDevice();
                             Thread.sleep(10);
                         }
                         m.setBounds(endX, (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
                         // m.setText(m.getText());
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                     }
 
                     if (slide == Slide.NextMessage) {
@@ -748,16 +748,16 @@ public class ShellPlugin extends AbstractPlugin implements
                                                          currentMessage.getShellWidth(),
                                                          currentMessage.getShellHeight());
                             }
-                            getWindow2D().getView2D().repaintDevice();
+                            getProjection().getView2D().repaintDevice();
                             Thread.sleep(10);
                         }
                         m.setBounds(endX, (int) m.getBounds().getY(), m.getShellWidth(), m.getShellHeight());
                         // m.setText(m.getText());
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                     }
 
                     if (currentMessage != null) {
-                        DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+                        DevicePartComponent comp = getProjection().getView2D().getDevice2D();
                         comp.remove(currentMessage);
                     }
                     currentMessage = m;
@@ -765,9 +765,9 @@ public class ShellPlugin extends AbstractPlugin implements
                 else {
 
                     if (currentMessage != null) {
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
 
-                        int devicewidth = getWindow2D().getDevice2D().getDeviceWidth();
+                        int devicewidth = getProjection().getDevice2D().getDeviceWidth();
 
                         Rectangle currentInitialBound = null;
                         if (currentMessage != null) {
@@ -786,11 +786,11 @@ public class ShellPlugin extends AbstractPlugin implements
                                                              currentMessage.getShellWidth(),
                                                              currentMessage.getShellHeight());
                                 }
-                                getWindow2D().getView2D().repaintDevice();
+                                getProjection().getView2D().repaintDevice();
                                 Thread.sleep(10);
                             }
 
-                            getWindow2D().getView2D().repaintDevice();
+                            getProjection().getView2D().repaintDevice();
                         }
 
                         if (slide == Slide.NextMessage) {
@@ -806,15 +806,15 @@ public class ShellPlugin extends AbstractPlugin implements
                                                              currentMessage.getShellWidth(),
                                                              currentMessage.getShellHeight());
                                 }
-                                getWindow2D().getView2D().repaintDevice();
+                                getProjection().getView2D().repaintDevice();
                                 Thread.sleep(10);
                             }
 
-                            getWindow2D().getView2D().repaintDevice();
+                            getProjection().getView2D().repaintDevice();
                         }
 
                         if (currentMessage != null) {
-                            DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
+                            DevicePartComponent comp = getProjection().getView2D().getDevice2D();
                             comp.remove(currentMessage);
                         }
 
@@ -918,13 +918,13 @@ public class ShellPlugin extends AbstractPlugin implements
         public void componentResized(ComponentEvent e) {
             if (volatileShell != null) {
                 if (volatileShell.isLockMaximize()) {
-                    int width = getWindow2D().getDevice2D().getDeviceWidth();
-                    int height = getWindow2D().getDevice2D().getDeviceHeight();
+                    int width = getProjection().getDevice2D().getDeviceWidth();
+                    int height = getProjection().getDevice2D().getDeviceHeight();
                     volatileShell.setBounds(5, 5, width - 10, height - 10);
                 }
                 else if (volatileShell.isLockMinimize()) {
-                    int width = getWindow2D().getDevice2D().getDeviceWidth();
-                    int height = getWindow2D().getDevice2D().getDeviceHeight();
+                    int width = getProjection().getDevice2D().getDeviceWidth();
+                    int height = getProjection().getDevice2D().getDeviceHeight();
                     volatileShell.setBounds(width / 2 - volatileShell.getShellWidth() / 2, height / 2
                             - volatileShell.getShellHeight() / 2,
                                             volatileShell.getShellWidth(),
@@ -933,13 +933,13 @@ public class ShellPlugin extends AbstractPlugin implements
             }
             else if (currentMessage != null) {
                 if (currentMessage.isLockMaximize()) {
-                    int width = getWindow2D().getDevice2D().getDeviceWidth();
-                    int height = getWindow2D().getDevice2D().getDeviceHeight();
+                    int width = getProjection().getDevice2D().getDeviceWidth();
+                    int height = getProjection().getDevice2D().getDeviceHeight();
                     currentMessage.setBounds(5, 5, width - 10, height - 10);
                 }
                 else if (currentMessage.isLockMinimize()) {
-                    int width = getWindow2D().getDevice2D().getDeviceWidth();
-                    int height = getWindow2D().getDevice2D().getDeviceHeight();
+                    int width = getProjection().getDevice2D().getDeviceWidth();
+                    int height = getProjection().getDevice2D().getDeviceHeight();
                     currentMessage.setBounds(width / 2 - currentMessage.getShellWidth() / 2, height / 2
                             - currentMessage.getShellHeight() / 2,
                                              currentMessage.getShellWidth(),
@@ -954,15 +954,15 @@ public class ShellPlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 
-        getWindow2D().getView2D().removeComponentListener(messageBoundAdapter);
-        getWindow2D().getView2D().addComponentListener(messageBoundAdapter);
+        getProjection().getView2D().removeComponentListener(messageBoundAdapter);
+        getProjection().getView2D().addComponentListener(messageBoundAdapter);
 
-        if (windowPart != WindowPart.Device) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
         if (!isLockSelected()) {
@@ -1056,13 +1056,13 @@ public class ShellPlugin extends AbstractPlugin implements
             if (msg.getMiniFrame() != null) {
                 if (msg.getMiniFrame().contains(me.getX(), me.getY())) {
                     msg.setLockMiniFrameRollover(true);
-                    getWindow2D().getView2D().repaintDevice(msg.getMiniFrame().getBounds());
+                    getProjection().getView2D().repaintDevice(msg.getMiniFrame().getBounds());
                     showVolatileMessage(msg);
                 }
                 else {
                     if (msg.isLockMiniFrameRollover()) {
                         msg.setLockMiniFrameRollover(false);
-                        getWindow2D().getView2D().repaintDevice();
+                        getProjection().getView2D().repaintDevice();
                     }
                 }
             }

@@ -11,12 +11,14 @@ import java.util.List;
 
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.plot.spline.AbstractPlot;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>PlotPlugin</code> <br>
  * 
+ * 
+ * @since 1.0
  * @author Sebastien Janaud
  */
 public class PlotPlugin extends AbstractPlugin{
@@ -29,34 +31,26 @@ public class PlotPlugin extends AbstractPlugin{
 	public PlotPlugin() {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
-	 * .View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		if (windowPart != WindowPart.Device)
+	protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+		if (viewPart != ViewPart.Device)
 			return;
-
 		for (AbstractPlot plot : plots) {
 			plot.solvePlotAnchors();
 			plot.solvePlot();
-			
 			if(plot.getPlotDraw() != null){
 				plot.getPlotDraw().paintPlot(g2d, plot);
 			}
-			
 //			if(plot.getPlotLabel() != null){
 //				plot.getPlotLabel().paintPlot(g2d, plot);
 //			}
-			
 			if(plot.getPlotAnchorsPainter() != null){
 				plot.getPlotAnchorsPainter().paintPlot(g2d, plot);
 			}
-			
 		}
 	}
 

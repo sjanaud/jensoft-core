@@ -37,13 +37,13 @@ import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
 import com.jensoft.core.plugin.pie.painter.fill.PieRadialFill;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel.Style;
 import com.jensoft.core.plugin.pie.painter.label.PieRadialLabel;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
 import com.jensoft.core.x2d.X2D;
 import com.jensoft.core.x2d.X2DException;
 
 @JenSoftView
-public class PieDeflate3 extends View2D {
+public class PieDeflate3 extends View {
 
 	private static final long serialVersionUID = 156889765687899L;
 	public static void main(String[] args) {
@@ -82,8 +82,8 @@ public class PieDeflate3 extends View2D {
 		setViewKey("view key");
 		setApiKey("5e4f49a6-37af-4bc4-bb37-1d62364114c3");
 		setName("deflate3");
-		Window2D window = new Window2D.Linear(-1, 1, -1, 1);
-		registerWindow2D(window);
+		Projection window = new Projection.Linear(-1, 1, -1, 1);
+		registerProjection(window);
 
 		PiePlugin piePlugin = new PiePlugin();
 		window.registerPlugin(piePlugin);

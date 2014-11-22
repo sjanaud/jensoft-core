@@ -7,23 +7,26 @@ package com.jensoft.core.plugin;
 
 import java.awt.image.BufferedImage;
 
-import com.jensoft.core.window.WindowBound;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.ProjectionBound;
+import com.jensoft.core.view.ViewPart;
 
 /**
- * defines a plug in buffer.
+ * <code>PluginBuffer</code> defines a plug in buffer.
+ * 
+ * <p>
  * a plug in buffer keeps a buffered image host plug in for the specified part
- * with specified dimension and a window bound.
+ * with specified dimension and a p^rojection bound.
+ * </p>
  * 
  * @author Sebastien Janaud
  */
 public class PluginBuffer {
 
-    private WindowPart part;
+    private ViewPart part;
     private BufferedImage buffer;
-    private WindowBound windowBound;
-    private int windowPartWidth;
-    private int windowPartHeight;
+    private ProjectionBound projectionBound;
+    private int projectionPartWidth;
+    private int projectionPartHeight;
 
     public PluginBuffer() {
     }
@@ -31,7 +34,7 @@ public class PluginBuffer {
     /**
      * @return the part
      */
-    public WindowPart getPart() {
+    public ViewPart getPart() {
         return part;
     }
 
@@ -39,7 +42,7 @@ public class PluginBuffer {
      * @param part
      *            the part to set
      */
-    public void setPart(WindowPart part) {
+    public void setPart(ViewPart part) {
         this.part = part;
     }
 
@@ -59,48 +62,48 @@ public class PluginBuffer {
     }
 
     /**
-     * @return the windowBound
+     * @return the projectionBound
      */
-    public WindowBound getWindowBound() {
-        return windowBound;
+    public ProjectionBound getProjectionBound() {
+        return projectionBound;
     }
 
     /**
-     * @param windowBound
-     *            the windowBound to set
+     * @param projectionBound
+     *            the projection bound to set
      */
-    public void setWindowBound(WindowBound windowBound) {
-        this.windowBound = windowBound;
+    public void setProjectionBound(ProjectionBound projectionBound) {
+        this.projectionBound = projectionBound;
     }
 
     /**
      * @return the windowPartWidth
      */
-    public int getWindowPartWidth() {
-        return windowPartWidth;
+    public int getProjectionPartWidth() {
+        return projectionPartWidth;
     }
 
     /**
-     * @param windowPartWidth
-     *            the windowPartWidth to set
+     * @param projectionPartWidth
+     *            the projection part width to set
      */
-    public void setWindowPartWidth(int windowPartWidth) {
-        this.windowPartWidth = windowPartWidth;
+    public void setProjectionPartWidth(int projectionPartWidth) {
+        this.projectionPartWidth = projectionPartWidth;
     }
 
     /**
      * @return the windowPartHeight
      */
-    public int getWindowPartHeight() {
-        return windowPartHeight;
+    public int getProjectionPartHeight() {
+        return projectionPartHeight;
     }
 
     /**
-     * @param windowPartHeight
-     *            the windowPartHeight to set
+     * @param projectionPartHeight
+     *            the projection part height to set
      */
-    public void setWindowPartHeight(int windowPartHeight) {
-        this.windowPartHeight = windowPartHeight;
+    public void setProjectionPartHeight(int projectionPartHeight) {
+        this.projectionPartHeight = projectionPartHeight;
     }
 
 }

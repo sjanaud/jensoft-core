@@ -103,7 +103,7 @@ public class PullItem {
 
     private void onActionPerformed() {
         pullDownWidget.updatePull(this);
-        pullDownWidget.getHost().getWindow2D().getView2D()
+        pullDownWidget.getHost().getProjection().getView2D()
                 .repaintDevice(pullDownWidget.getWidgetFolder().getBounds());
     }
 

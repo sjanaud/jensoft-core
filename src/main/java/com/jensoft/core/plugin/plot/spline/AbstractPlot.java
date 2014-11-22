@@ -18,7 +18,7 @@ import com.jensoft.core.plugin.plot.painter.draw.AbstractPlotDraw;
 import com.jensoft.core.plugin.plot.painter.draw.PlotDefaultDraw;
 import com.jensoft.core.plugin.plot.painter.label.AbstractPlotLabel;
 import com.jensoft.core.plugin.plot.painter.label.PlotDefaultLabel;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>AbstractPlot</code> defines an abstract plot.
@@ -80,7 +80,7 @@ public abstract class AbstractPlot {
 	 * solve plot anchors
 	 */
 	public void solvePlotAnchors() {
-		Window2D w2d = getHost().getWindow2D();
+		Projection w2d = getHost().getProjection();
 
 		List<PlotAnchor> anchors = new ArrayList<PlotAnchor>();
 		setAnchorsPoints(anchors);
@@ -279,7 +279,7 @@ public abstract class AbstractPlot {
 	 */
 	public void updateAnchorPoint(double x, double y) {
 		if (selectedAnchor != null) {
-			Point2D newPoint = getHost().getWindow2D().pixelToUser(new Point2D.Double(x, y));
+			Point2D newPoint = getHost().getProjection().pixelToUser(new Point2D.Double(x, y));
 			int index = getUserPointIndex(selectedAnchor.getUserPoint());
 			if (index != -1) {
 				userPoints.get(index).setLocation(newPoint);

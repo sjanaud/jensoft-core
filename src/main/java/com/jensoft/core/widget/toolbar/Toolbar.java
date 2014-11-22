@@ -7,7 +7,7 @@ package com.jensoft.core.widget.toolbar;
 
 import java.awt.Graphics2D;
 
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.widget.Widget;
 
 /**
@@ -31,7 +31,7 @@ public class Toolbar extends Widget {
     }
 
     @Override
-    protected void paintWidget(View2D v2d, Graphics2D g2d) {
+    protected void paintWidget(View v2d, Graphics2D g2d) {
         // TODO Auto-generated method stub
 
     }

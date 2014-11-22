@@ -10,18 +10,18 @@ import java.awt.Graphics2D;
 import com.jensoft.core.plugin.symbol.BarSymbol;
 import com.jensoft.core.plugin.symbol.SymbolComponent;
 import com.jensoft.core.plugin.symbol.painter.AbstractSymbolPainter;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 public abstract class AbstractBarAxisLabel extends AbstractSymbolPainter {
 
     protected abstract void paintAxisLabel(Graphics2D g2d, BarSymbol bar,
-            WindowPart windowPart);
+            ViewPart viewPart);
 
     @Override
     public void paintSymbol(Graphics2D g2d, SymbolComponent symbol,
-            WindowPart windowPart) {
+            ViewPart viewPart) {
         if (symbol.isVisible()) {
-            paintAxisLabel(g2d, (BarSymbol) symbol, windowPart);
+            paintAxisLabel(g2d, (BarSymbol) symbol, viewPart);
         }
     }
 

@@ -15,7 +15,7 @@ import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.widget.Widget;
 import com.jensoft.core.widget.WidgetFolder;
 import com.jensoft.core.widget.bar.AbstractBarGeometry.BarWidgetOrientation;
@@ -543,7 +543,7 @@ public abstract class AbstractBarWidget<P extends AbstractPlugin> extends Widget
         if (geometry == null || geometry.getRect1() == null) {
             return;
         }
-        getHost().getWindow2D().getView2D()
+        getHost().getProjection().getView2D()
                 .repaintDevice(geometry.getRect1().getBounds());
     }
 
@@ -554,7 +554,7 @@ public abstract class AbstractBarWidget<P extends AbstractPlugin> extends Widget
         if (geometry == null || geometry.getRect1() == null) {
             return;
         }
-        getHost().getWindow2D().getView2D()
+        getHost().getProjection().getView2D()
                 .repaintDevice(geometry.getRect2().getBounds());
     }
 
@@ -618,7 +618,7 @@ public abstract class AbstractBarWidget<P extends AbstractPlugin> extends Widget
      * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
      */
     @Override
-    protected void paintWidget(View2D v2d, Graphics2D g2d) {
+    protected void paintWidget(View v2d, Graphics2D g2d) {
 
         // if(getHost().isLockSelected()){
 

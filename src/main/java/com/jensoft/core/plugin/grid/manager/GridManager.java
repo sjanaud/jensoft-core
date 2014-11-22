@@ -12,7 +12,7 @@ import java.util.List;
 
 import com.jensoft.core.plugin.grid.Grid;
 import com.jensoft.core.plugin.grid.Grid.GridOrientation;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>GridLayoutManager</code>
@@ -37,14 +37,14 @@ public interface GridManager {
      * @param w2d
      *            windows to set
      */
-    public void setWindow2D(Window2D w2d);
+    public void setWindow2D(Projection w2d);
 
     /**
      * get window
      * 
      * @return window
      */
-    public Window2D getWindow2D();
+    public Projection getWindow2D();
 
     /**
      * set band orientation

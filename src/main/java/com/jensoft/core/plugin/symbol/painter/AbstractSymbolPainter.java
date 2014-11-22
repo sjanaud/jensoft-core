@@ -8,13 +8,13 @@ package com.jensoft.core.plugin.symbol.painter;
 import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.symbol.SymbolComponent;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 public abstract class AbstractSymbolPainter implements SymbolPainter {
 
     @Override
     public void paintSymbol(Graphics2D g2d, SymbolComponent symbol,
-            WindowPart windowPart) {
+            ViewPart viewPart) {
     }
 
 }

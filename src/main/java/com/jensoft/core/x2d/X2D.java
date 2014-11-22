@@ -19,7 +19,7 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DViewDeflater;
@@ -48,7 +48,7 @@ import com.jensoft.core.x2d.lang.X2DSchemaErrorHandler;
 /**
  * <code>X2D</code>
  * <p>
- * takes the responsibility to register X2D source and produce {@link View2D}
+ * takes the responsibility to register X2D source and produce {@link View}
  * </p>
  * 
  * @author Sebastien Janaud
@@ -67,8 +67,8 @@ public class X2D {
 	/** X2D deflater */
 	private X2DViewDeflater x2dDeflater;
 
-	/** the view2D */
-	private View2D view2D;
+	/** the view */
+	private View view;
 
 	/** core annotated inflaters */
 	private List<AbstractX2DPluginInflater<?>> coreInflaters = new ArrayList<AbstractX2DPluginInflater<?>>();
@@ -244,7 +244,7 @@ public class X2D {
 					x2dInflater.getInflaters().addAll(coreInflaters);
 				}
 				x2dInflater.setX2D(x2dDocument);
-				view2D = x2dInflater.inflate();
+				view = x2dInflater.inflate();
 			} else {
 				X2DException x2dException = new X2DException("X2D could not register template source , see exception errors.");
 
@@ -281,7 +281,7 @@ public class X2D {
 				x2dInflater.getInflaters().addAll(coreInflaters);
 			}
 			x2dInflater.setX2D(x2dDocument);
-			view2D = x2dInflater.inflate();
+			view = x2dInflater.inflate();
 		} else {
 			X2DException x2dException = new X2DException("X2D could not register template source , see exception errors.");
 			x2dException.setErrors(errorHandler.getErrors());
@@ -310,7 +310,7 @@ public class X2D {
 					x2dInflater.getInflaters().addAll(coreInflaters);
 				}
 				x2dInflater.setX2D(x2dDocument);
-				view2D = x2dInflater.inflate();
+				view = x2dInflater.inflate();
 			} else {
 				X2DException x2dException = new X2DException("X2D could not register template file " + x2dFile.getName() + ", see exception errors.");
 				x2dException.setErrors(errorHandler.getErrors());
@@ -333,8 +333,8 @@ public class X2D {
 	 * 
 	 * @param view
 	 */
-	public void registerView(View2D view) throws X2DException {
-		this.view2D = view;
+	public void registerView(View view) throws X2DException {
+		this.view = view;
 		x2dDeflater = new X2DViewDeflater(view);
 		x2dDeflater.getDeflaters().addAll(deflaters);
 		if (lookupCoreDeflaters) {
@@ -380,7 +380,7 @@ public class X2D {
 					x2dInflater.getInflaters().addAll(coreInflaters);
 				}
 				x2dInflater.setX2D(x2dDocument);
-				view2D = x2dInflater.inflate();
+				view = x2dInflater.inflate();
 				is1.close();
 				is2.close();
 			} else {
@@ -438,8 +438,8 @@ public class X2D {
 	/**
 	 * @return the view2D
 	 */
-	public View2D getView2D() {
-		return view2D;
+	public View getView() {
+		return view;
 	}
 	
 	/**

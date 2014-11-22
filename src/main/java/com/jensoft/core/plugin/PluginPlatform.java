@@ -18,10 +18,10 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.Portfolio.ImageType;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import com.jensoft.core.x2d.binding.X2DBinding;
 
@@ -40,14 +40,14 @@ public class PluginPlatform {
     private List<AbstractPlugin> plugins;
 
     /** window registry */
-    private List<Window2D> windows;
+    private List<Projection> windows;
 
     /**
      * create new platform instance
      */
     private PluginPlatform() {
         plugins = new ArrayList<AbstractPlugin>();
-        windows = new ArrayList<Window2D>();
+        windows = new ArrayList<Projection>();
     }
 
     /**
@@ -76,7 +76,7 @@ public class PluginPlatform {
      * 
      * @return the registered windows
      */
-    public List<Window2D> getWindows() {
+    public List<Projection> getWindows() {
         return windows;
     }
 
@@ -98,7 +98,7 @@ public class PluginPlatform {
      * @param window2d
      *            the window2d to register
      */
-    public void register(Window2D window2d) {
+    public void register(Projection window2d) {
         if (!windows.contains(window2d)) {
             windows.add(window2d);
         }
@@ -135,11 +135,11 @@ public class PluginPlatform {
      * @return the register plug
      */
     public <T extends AbstractPlugin> List<T> getPlugins(Class<T> pluginClass,
-            Window2D window2D) {
+            Projection window2D) {
         List<T> ps = new ArrayList<T>();
         for (AbstractPlugin plugin : plugins) {
-            if (plugin.getWindow2D() != null
-                    && plugin.getWindow2D().equals(window2D)) {
+            if (plugin.getProjection() != null
+                    && plugin.getProjection().equals(window2D)) {
                 if (plugin.getClass().getName().equals(pluginClass.getName())) {
                     ps.add((T) plugin);
                 }
@@ -175,11 +175,11 @@ public class PluginPlatform {
                 if (Modifier.isStatic(method.getModifiers())) {
                     Portfolio p = method.getAnnotation(Portfolio.class);
                     Class<?> returnType = method.getReturnType();
-                    if (View2D.class.isAssignableFrom(returnType)) {
+                    if (View.class.isAssignableFrom(returnType)) {
                         String name = p.name();
                         ImageType imageType = p.imageType();
                         try {
-                            View2D v = (View2D) method.invoke(null);
+                            View v = (View) method.invoke(null);
 
                             int w = 0;
                             int h = 0;

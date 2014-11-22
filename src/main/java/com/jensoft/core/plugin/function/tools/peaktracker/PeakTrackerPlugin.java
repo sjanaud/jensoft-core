@@ -25,8 +25,8 @@ import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 import com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent;
 import com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>PeakTrackerPlugin</code> takes the responsibility to track peak in serie
@@ -293,18 +293,18 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
         if (!isLockSelected()) {
             return;
         }
-        getWindow2D().getDevice2D().repaintDevice();
+        getProjection().getDevice2D().repaintDevice();
     }
     
     
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 
-        if (windowPart != WindowPart.Device) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
 
@@ -360,8 +360,8 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
             Point2D p2dUserMax = trackedSource.getCurrentFunction().get(indexMax);
             Point2D p2dUserMin = trackedSource.getCurrentFunction().get(indexMin);
 
-            Point2D p2dDeviceMax = getWindow2D().userToPixel(p2dUserMax);
-            Point2D p2dDeviceMin = getWindow2D().userToPixel(p2dUserMin);
+            Point2D p2dDeviceMax = getProjection().userToPixel(p2dUserMax);
+            Point2D p2dDeviceMin = getProjection().userToPixel(p2dUserMin);
 
             Rectangle2D rect2DMax = new Rectangle2D.Double(
                                                            p2dDeviceMax.getX() - trackFrameWidth / 2,

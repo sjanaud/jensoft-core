@@ -11,7 +11,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.linesymbol.LineSymbolPlugin.LineNature;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.widget.Widget;
 import com.jensoft.core.widget.WidgetFolder;
 
@@ -182,7 +182,7 @@ public class LineSymbolWidget extends Widget {
     }
 
     @Override
-    protected void paintWidget(View2D v2d, Graphics2D g2d) {
+    protected void paintWidget(View v2d, Graphics2D g2d) {
 
         if (((LineSymbolPlugin) getHost()).isLockSelected()) {
             if (((LineSymbolPlugin) getHost()).getLineNature() == LineNature.LineX) {

@@ -8,7 +8,15 @@ package com.jensoft.core.plugin.radar;
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 
 /**
+ * <code>RadarMetrics</code>
+ * <p>
  * extended metrics for radar usage
+ * </p>
+ * 
+ * @see GlyphMetric
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public class RadarMetrics extends GlyphMetric {
 

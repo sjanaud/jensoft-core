@@ -14,9 +14,9 @@ import java.util.List;
 
 import com.jensoft.core.map.projection.GeoPosition;
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 public class TracePlugin extends AbstractPlugin {
 
@@ -152,15 +152,15 @@ public class TracePlugin extends AbstractPlugin {
     }
 
     @Override
-    protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-        if (windowPart != WindowPart.Device) {
+    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+        if (viewPart != ViewPart.Device) {
             return;
         }
 
-        Window2D.Map map = (Window2D.Map) getWindow2D();
+        Projection.Map map = (Projection.Map) getProjection();
 
-        int width = getWindow2D().getDevice2D().getDeviceWidth();
-        int height = getWindow2D().getDevice2D().getDeviceHeight();
+        int width = getProjection().getDevice2D().getDeviceWidth();
+        int height = getProjection().getDevice2D().getDeviceHeight();
 
         // Point2D pixelCenterPosition = map.userToPixel(map.getCenterPosition().toPoint2D());
         // g2d.translate(-pixelCenterPosition.getX()+width/2,-pixelCenterPosition.getY()+height/2);

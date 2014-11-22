@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 public abstract class AbstractMarker {
 
@@ -55,7 +55,7 @@ public abstract class AbstractMarker {
             markerPoint = new Point2D.Double(getMarkerX(), getMarkerY());
         }
         if (markerNature == MarkerNature.MarkerUser) {
-            markerPoint = getHost().getWindow2D().userToPixel(
+            markerPoint = getHost().getProjection().userToPixel(
                                                               new Point2D.Double(getMarkerX(), getMarkerY()));
         }
         return markerPoint;
@@ -175,6 +175,6 @@ public abstract class AbstractMarker {
      * @param view2D
      * @param g2d
      */
-    public abstract void paintMarker(View2D view2D, Graphics2D g2d);
+    public abstract void paintMarker(View view2D, Graphics2D g2d);
 
 }

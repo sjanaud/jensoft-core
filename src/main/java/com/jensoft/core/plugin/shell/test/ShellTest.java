@@ -13,17 +13,17 @@ import javax.swing.JPanel;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.plugin.shell.Shell;
 import com.jensoft.core.plugin.shell.ShellPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
 
 
-public class ShellTest extends View2D {
+public class ShellTest extends View {
 
 	public ShellTest() {
 		super();
 
-		Window2D window = new Window2D.Linear(-10, 10, -10, 10);
-		registerWindow2D(window);
+		Projection window = new Projection.Linear(-10, 10, -10, 10);
+		registerProjection(window);
 
 		final ShellPlugin shellPlugin = new ShellPlugin();
 		window.registerPlugin(shellPlugin);

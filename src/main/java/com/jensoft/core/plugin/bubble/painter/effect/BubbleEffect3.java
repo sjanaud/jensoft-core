@@ -24,9 +24,9 @@ public class BubbleEffect3 extends BubbleEffect {
 
     @Override
     public void paintBubble(Graphics2D g2d, Bubble bubble) {
-        double centerX = bubble.getHost().getWindow2D()
+        double centerX = bubble.getHost().getProjection()
                 .userToPixel(new Point2D.Double(bubble.getX(), 0)).getX();
-        double centerY = bubble.getHost().getWindow2D()
+        double centerY = bubble.getHost().getProjection()
                 .userToPixel(new Point2D.Double(0, bubble.getY())).getY();
         int radius = (int) (bubble.getRadius() - 5);
 

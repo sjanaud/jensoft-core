@@ -19,10 +19,10 @@ import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeGlass;
 import com.jensoft.core.plugin.gauge.core.GaugePart;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2DEvent;
-import com.jensoft.core.window.Window2DListener;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.ProjectionEvent;
+import com.jensoft.core.projection.ProjectionListener;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>RadialGaugePlugin</code> incubator gauge plugin
@@ -77,25 +77,25 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	 * <p>
 	 */
 	@Override
-	public void onWindowRegister() {
-		super.onWindowRegister();
-		getWindow2D().addWindow2DListener(new Window2DListener() {
+	public void onProjectionRegister() {
+		super.onProjectionRegister();
+		getProjection().addProjectionListener(new ProjectionListener() {
 			
 			@Override
-			public void window2DUnlockActive(Window2DEvent w2dEvent) {
+			public void projectionUnlockActive(ProjectionEvent w2dEvent) {
 			}
 			
 			@Override
-			public void window2DResized(Window2DEvent w2dEvent) {
+			public void projectionResized(ProjectionEvent w2dEvent) {
 				invalidateParts();
 			}
 			
 			@Override
-			public void window2DLockActive(Window2DEvent w2dEvent) {
+			public void projectionLockActive(ProjectionEvent w2dEvent) {
 			}
 			
 			@Override
-			public void window2DBoundChanged(Window2DEvent w2dEvent) {
+			public void projectionBoundChanged(ProjectionEvent w2dEvent) {
 				invalidateParts();				
 			}
 		});
@@ -105,16 +105,16 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 
-		if (windowPart != WindowPart.Device) {
+		if (viewPart != ViewPart.Device) {
 			return;
 		}
 
-		gauge.setWindow2D(getWindow2D());
+		gauge.setWindow2D(getProjection());
 		gauge.setHost(this);
 		if (gauge.getEnvelop() != null) {
 			gauge.getEnvelop().paintPart(g2d, gauge);

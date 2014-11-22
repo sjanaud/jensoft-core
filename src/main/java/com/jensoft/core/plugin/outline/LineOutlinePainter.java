@@ -11,7 +11,7 @@ import java.awt.Component;
 import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * OutlinePainter takes the responsibility of window outline painting
@@ -75,10 +75,10 @@ public class LineOutlinePainter extends AbstractOutlinePainter {
 
     @Override
     public void doPaintOutline(Component c, Graphics2D g2d, int startX,
-            int startY, int weigh, WindowPart windowPart) {
+            int startY, int weigh, ViewPart viewPart) {
 
         g2d.setStroke(outlineStroke);
-        if (windowPart == WindowPart.East && east) {
+        if (viewPart == ViewPart.East && east) {
             Line2D l2dVertical = new Line2D.Double(startX, startY, startX,
                                                    startY - weigh);
             g2d.setColor(eastColor);
@@ -87,7 +87,7 @@ public class LineOutlinePainter extends AbstractOutlinePainter {
 
         }
 
-        if (windowPart == WindowPart.West && west) {
+        if (viewPart == ViewPart.West && west) {
             Line2D l2dVertical = new Line2D.Double(startX, startY, startX,
                                                    startY - weigh);
             g2d.setColor(westColor);
@@ -95,7 +95,7 @@ public class LineOutlinePainter extends AbstractOutlinePainter {
             g2d.draw(l2dVertical);
 
         }
-        if (windowPart == WindowPart.North && north) {
+        if (viewPart == ViewPart.North && north) {
             Line2D l2dHorizontal = new Line2D.Double(startX, startY, startX
                     + weigh, startY);
             g2d.setColor(northColor);
@@ -103,7 +103,7 @@ public class LineOutlinePainter extends AbstractOutlinePainter {
             g2d.draw(l2dHorizontal);
 
         }
-        if (windowPart == WindowPart.South && south) {
+        if (viewPart == ViewPart.South && south) {
             Line2D l2dHorizontal = new Line2D.Double(startX, startY, startX
                     + weigh, startY);
             g2d.setColor(southColor);

@@ -16,8 +16,8 @@ import com.jensoft.core.plugin.ray.Ray;
 import com.jensoft.core.plugin.ray.Ray.RayNature;
 import com.jensoft.core.plugin.ray.RayGroup;
 import com.jensoft.core.plugin.ray.RayPlugin;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>DefaultAxisSymbol<code> know how to paint bar or group symbol in window axis part<br>
@@ -265,15 +265,15 @@ public class RayDefaultAxisLabel extends AbstractRayAxisLabel {
 	}
 
 	@Override
-	public void paintRayAxisLabel(Graphics2D g2d, Ray ray, WindowPart windowPart) {
+	public void paintRayAxisLabel(Graphics2D g2d, Ray ray, ViewPart viewPart) {
 
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
 		if (ray.getRayNature() == RayNature.XRay) {
-			paintXRayAxisLabel(g2d, ray, windowPart);
+			paintXRayAxisLabel(g2d, ray, viewPart);
 		}
 		if (ray.getRayNature() == RayNature.YRay) {
-			paintYRayAxisLabel(g2d, ray, windowPart);
+			paintYRayAxisLabel(g2d, ray, viewPart);
 		}
 	}
 
@@ -282,12 +282,12 @@ public class RayDefaultAxisLabel extends AbstractRayAxisLabel {
 	 * 
 	 * @param g2d
 	 * @param ray
-	 * @param windowPart
+	 * @param viewPart
 	 */
-	private void paintXRayAxisLabel(Graphics2D g2d, Ray ray, WindowPart windowPart) {
+	private void paintXRayAxisLabel(Graphics2D g2d, Ray ray, ViewPart viewPart) {
 
 		RayPlugin bsp = ray.getHost();
-		View2D v2d = ray.getHost().getWindow2D().getView2D();
+		View v2d = ray.getHost().getProjection().getView2D();
 
 		if (symbolFont == null) {
 			setSymbolFont(new Font("Dialog", Font.PLAIN, 12));
@@ -296,7 +296,7 @@ public class RayDefaultAxisLabel extends AbstractRayAxisLabel {
 		g2d.setFont(getSymbolFont());
 		FontMetrics fm = g2d.getFontMetrics();
 
-		if (windowPart == WindowPart.South) {
+		if (viewPart == ViewPart.South) {
 
 			int margin = v2d.getPlaceHolderAxisWest();
 
@@ -356,11 +356,11 @@ public class RayDefaultAxisLabel extends AbstractRayAxisLabel {
 	 *  paint y ray axis label
 	 * @param g2d
 	 * @param bar
-	 * @param windowPart
+	 * @param viewPart
 	 */
-	private void paintYRayAxisLabel(Graphics2D g2d, Ray bar, WindowPart windowPart) {
+	private void paintYRayAxisLabel(Graphics2D g2d, Ray bar, ViewPart viewPart) {
 
-		View2D v2d = bar.getHost().getWindow2D().getView2D();
+		View v2d = bar.getHost().getProjection().getView2D();
 
 		if (symbolFont == null) {
 			setSymbolFont(new Font("Dialog", Font.PLAIN, 12));
@@ -369,7 +369,7 @@ public class RayDefaultAxisLabel extends AbstractRayAxisLabel {
 		g2d.setFont(getSymbolFont());
 		FontMetrics fm = g2d.getFontMetrics();
 
-		if (windowPart == WindowPart.West) {
+		if (viewPart == ViewPart.West) {
 
 			int margin = v2d.getPlaceHolderAxisWest();
 

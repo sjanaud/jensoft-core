@@ -8,11 +8,11 @@ package com.jensoft.core.view;
 import java.util.EventObject;
 
 /**
- * View2DEvent
+ * <code>ViewEvent</code>
  * 
  * @author Sebastien Janaud
  */
-public class View2DEvent extends EventObject {
+public class ViewEvent extends EventObject {
 
     /** serial version UID */
     private final static long serialVersionUID = 828462626882282L;
@@ -20,11 +20,11 @@ public class View2DEvent extends EventObject {
     /**
      * create view event for the specified view
      * 
-     * @param v2d
+     * @param view
      *            the view
      */
-    public View2DEvent(View2D v2d) {
-        super(v2d);
+    public ViewEvent(View view) {
+        super(view);
     }
 
 }

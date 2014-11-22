@@ -9,7 +9,7 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.plugin.linesymbol.LineSymbolPlugin.LineNature;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * Line symbol geometry
@@ -54,7 +54,7 @@ public class LineSymbolGeometry {
      */
     public Rectangle2D getBounds() {
         Rectangle2D bound;
-        Window2D w2d = lineSymbolComponent.getHost().getWindow2D();
+        Projection w2d = lineSymbolComponent.getHost().getProjection();
         if (lineSymbolComponent.getLineNature() == LineNature.LineX) {
             double y = lineSymbolComponent.getLocation();
             double thickness = lineSymbolComponent.getThickness();
@@ -81,7 +81,7 @@ public class LineSymbolGeometry {
      * @return the base line for the specified line symbol component
      */
     public Line2D getBaseLine() {
-        Window2D w2d = lineSymbolComponent.getHost().getWindow2D();
+        Projection w2d = lineSymbolComponent.getHost().getProjection();
         Line2D baseLine;
         if (lineSymbolComponent.getLineNature() == LineNature.LineX) {
             double y = lineSymbolComponent.getLocation();

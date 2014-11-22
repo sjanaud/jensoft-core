@@ -15,7 +15,7 @@ import com.jensoft.core.plugin.symbol.painter.draw.AbstractBarDraw;
 import com.jensoft.core.plugin.symbol.painter.effect.AbstractBarEffect;
 import com.jensoft.core.plugin.symbol.painter.fill.AbstractBarFill;
 import com.jensoft.core.plugin.symbol.painter.label.AbstractBarLabel;
-import com.jensoft.core.view.View2D.DeviceBand;
+import com.jensoft.core.view.View.DeviceBand;
 
 /**
  * BarSymbol is a simple bar <br>
@@ -407,7 +407,7 @@ public class BarSymbol extends SymbolComponent {
 					} else if (isDescent()) {
 						setDescentValue(val);
 					}
-					if (getHost() == null || getHost().getWindow2D() == null) {
+					if (getHost() == null || getHost().getProjection() == null) {
 						interrupt();
 					}
 					if (getHost() != null) {
@@ -418,9 +418,9 @@ public class BarSymbol extends SymbolComponent {
 						}
 					}
 					if (getNature() == SymbolNature.Vertical) {
-						getHost().getWindow2D().getView2D().repaintDeviceBand(DeviceBand.XBand, (int) getBarShape().getBounds().getX(), (int) getBarShape().getBounds().getWidth() + 1);
+						getHost().getProjection().getView2D().repaintDeviceBand(DeviceBand.XBand, (int) getBarShape().getBounds().getX(), (int) getBarShape().getBounds().getWidth() + 1);
 					} else if (getNature() == SymbolNature.Horizontal) {
-						getHost().getWindow2D().getView2D().repaintDeviceBand(DeviceBand.YBand, (int) getBarShape().getBounds().getY(), (int) getBarShape().getBounds().getHeight() + 1);
+						getHost().getProjection().getView2D().repaintDeviceBand(DeviceBand.YBand, (int) getBarShape().getBounds().getY(), (int) getBarShape().getBounds().getHeight() + 1);
 					}
 
 					Thread.sleep(delayByStep);
@@ -502,7 +502,7 @@ public class BarSymbol extends SymbolComponent {
 
 						setDescentValue(val);
 					}
-					if (getHost() == null || getHost().getWindow2D() == null) {
+					if (getHost() == null || getHost().getProjection() == null) {
 						interrupt();
 					}
 					if (getHost() != null) {
@@ -510,9 +510,9 @@ public class BarSymbol extends SymbolComponent {
 					}
 
 					if (getNature() == SymbolNature.Vertical) {
-						getHost().getWindow2D().getView2D().repaintDeviceBand(DeviceBand.XBand, (int) getBarShape().getBounds().getX(), (int) getBarShape().getBounds().getWidth() + 1);
+						getHost().getProjection().getView2D().repaintDeviceBand(DeviceBand.XBand, (int) getBarShape().getBounds().getX(), (int) getBarShape().getBounds().getWidth() + 1);
 					} else if (getNature() == SymbolNature.Horizontal) {
-						getHost().getWindow2D().getView2D().repaintDeviceBand(DeviceBand.YBand, (int) getBarShape().getBounds().getY(), (int) getBarShape().getBounds().getHeight() + 1);
+						getHost().getProjection().getView2D().repaintDeviceBand(DeviceBand.YBand, (int) getBarShape().getBounds().getY(), (int) getBarShape().getBounds().getHeight() + 1);
 					}
 
 					// oldBound = newBound;

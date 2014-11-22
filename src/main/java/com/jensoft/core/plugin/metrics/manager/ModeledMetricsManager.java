@@ -19,7 +19,7 @@ import java.util.Locale;
 
 import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>ModeledMetricsManager</code>
@@ -287,7 +287,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      */
     protected Metrics generateMetrics(BigDecimal userValue, MetricsModel model) {
     	Metrics metrics = new Metrics(getType());
-        Window2D window = getRenderContext().getWindow2D();
+        Projection window = getRenderContext().getWindow2D();
         double deviceValue = 0;
         double maxPixelValue = 0;
         if (getType() == MetricsType.XMetrics) {
@@ -458,7 +458,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * @return true if this model is applicable, false otherwise
          */
         public void solve() {
-            Window2D window = getMetricsManager().getRenderContext().getWindow2D();
+            Projection window = getMetricsManager().getRenderContext().getWindow2D();
             if (getMetricsManager().getType() == MetricsType.XMetrics) {
                 this.userSize = new BigDecimal(window.getUserWidth());
                 BigDecimal bd1 = new BigDecimal(window.getMinX()).divide(factor, RoundingMode.CEILING);
@@ -485,7 +485,6 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
             }
 
             int metricsSize = metricsManager.getMetricsMajorFont().getSize();
-            System.out.println("get size : "+metricsSize);
             int s = (this.ref.toString()).length();
             this.pixelLabelHolder = 4/5d*s*metricsSize+metricsManager.getDensityFactor();
         }

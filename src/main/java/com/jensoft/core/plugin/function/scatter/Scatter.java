@@ -22,7 +22,7 @@ import com.jensoft.core.plugin.function.scatter.painter.ScatterFill;
 import com.jensoft.core.plugin.function.source.SourceFunction;
 
 /**
- * <code>ScatterFunction</code>
+ * <code>Scatter</code>
  * 
  * @see ScatterPoint
  * @see ScatterFunction
@@ -125,7 +125,7 @@ public class Scatter extends Function {
             scatter.setParent(this);
             scatter.setUserPoint(sourcePoint);
 
-            Point2D deviceScatterPoint = getHost().getWindow2D().userToPixel(sourcePoint);
+            Point2D deviceScatterPoint = getHost().getProjection().userToPixel(sourcePoint);
 
             scatter.setDevicePoint(deviceScatterPoint);
 

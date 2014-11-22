@@ -25,12 +25,12 @@ import com.jensoft.core.plugin.zoom.box.ZoomBoxDefaultDeviceContext;
 import com.jensoft.core.plugin.zoom.box.ZoomBoxDonutWidget;
 import com.jensoft.core.plugin.zoom.box.ZoomBoxPlugin;
 import com.jensoft.core.plugin.zoom.wheel.ZoomWheelPlugin;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 import com.jensoft.core.view.background.DarkViewBackground;
 import com.jensoft.core.view.background.RoundViewFill;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
 
 /**
  * <code>ModeledMetricsDemo</code>
@@ -38,7 +38,7 @@ import com.jensoft.core.window.WindowPart;
  * @author JenSoft API
  */
 @JenSoftView(background=DarkViewBackground.class)
-public class ModeledMetricsTestlocaleSample extends View2D {
+public class ModeledMetricsTestlocaleSample extends View {
 
 	
 	public static void main(String[] args) {
@@ -50,13 +50,13 @@ public class ModeledMetricsTestlocaleSample extends View2D {
 	 */
 	public ModeledMetricsTestlocaleSample() {
 		super();
-		setPlaceHolder(100, WindowPart.South);
-		setPlaceHolder(80, WindowPart.West);
+		setPlaceHolder(100, ViewPart.South);
+		setPlaceHolder(80, ViewPart.West);
 
 		// create linear window
-		Window2D.Linear window = new Window2D.Linear(-700, 1200, -140, 300);
+		Projection.Linear window = new Projection.Linear(-700, 1200, -140, 300);
 		window.setThemeColor(RosePalette.LEMONPEEL);
-		registerWindow2D(window);
+		registerProjection(window);
 
 		// register a zoom wheel plug-in
 		ZoomWheelPlugin wheel = new ZoomWheelPlugin();
@@ -100,7 +100,7 @@ public class ModeledMetricsTestlocaleSample extends View2D {
 	}
 
 	@Portfolio(name = "Metrics-Modeled", width = 500, height = 250)
-	public static View2D getPortofolio() {
+	public static View getPortofolio() {
 		ModeledMetricsTestlocaleSample demo = new ModeledMetricsTestlocaleSample();
 
 		RoundViewFill viewBackground = new RoundViewFill();

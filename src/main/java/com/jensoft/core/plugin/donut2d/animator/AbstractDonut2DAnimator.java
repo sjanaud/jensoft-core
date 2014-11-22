@@ -9,7 +9,7 @@ import com.jensoft.core.plugin.donut2d.Donut2D;
 import com.jensoft.core.plugin.donut2d.Donut2DEvent;
 import com.jensoft.core.plugin.donut2d.Donut2DListener;
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * <code>AbstractDonut2DAnimator</code> Abstract base definition to animate donut2D
@@ -155,8 +155,8 @@ public abstract class AbstractDonut2DAnimator implements Donut2DListener {
      * @param slice
      * @return host view
      */
-    public View2D getView2D(Donut2DSlice slice) {
-        return slice.getHost().getHostPlugin().getWindow2D().getView2D();
+    public View getView2D(Donut2DSlice slice) {
+        return slice.getHost().getHostPlugin().getProjection().getView2D();
     }
 
 }

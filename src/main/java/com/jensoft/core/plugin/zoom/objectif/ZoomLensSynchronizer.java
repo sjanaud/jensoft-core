@@ -11,14 +11,14 @@ import java.util.List;
 import com.jensoft.core.plugin.PluginEvent;
 
 /**
- * <code>ZoomObjectifSynchronizer</code>
+ * <code>ZoomLensSynchronizer</code>
  * 
  * @author sebastien janaud
  */
-public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
+public class ZoomLensSynchronizer implements ZoomLensListener {
 
     /** the zoom objectif plug ins to synchronize */
-    private List<ZoomObjectifPlugin> zoomObjectifsList;
+    private List<ZoomLensPlugin> zoomObjectifsList;
 
     /** enabled flag */
     private boolean enabled = true;
@@ -31,10 +31,10 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
      * 
      * @param zoomObjectifs
      */
-    public ZoomObjectifSynchronizer(ZoomObjectifPlugin... zoomObjectifs) {
-        zoomObjectifsList = new ArrayList<ZoomObjectifPlugin>();
+    public ZoomLensSynchronizer(ZoomLensPlugin... zoomObjectifs) {
+        zoomObjectifsList = new ArrayList<ZoomLensPlugin>();
         for (int i = 0; i < zoomObjectifs.length; i++) {
-            ZoomObjectifPlugin objectif = zoomObjectifs[i];
+            ZoomLensPlugin objectif = zoomObjectifs[i];
             objectif.addZoomObjectifListener(this);
             objectif.addPluginListener(this);
             zoomObjectifsList.add(objectif);
@@ -49,10 +49,10 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
      * @param zoomObjectifs
      *            the objectifs plug ins to synchronize when actions occurs
      */
-    public ZoomObjectifSynchronizer(List<ZoomObjectifPlugin> zoomObjectifs) {
-        zoomObjectifsList = new ArrayList<ZoomObjectifPlugin>();
+    public ZoomLensSynchronizer(List<ZoomLensPlugin> zoomObjectifs) {
+        zoomObjectifsList = new ArrayList<ZoomLensPlugin>();
         for (int i = 0; i < zoomObjectifs.size(); i++) {
-            ZoomObjectifPlugin objectif = zoomObjectifs.get(i);
+            ZoomLensPlugin objectif = zoomObjectifs.get(i);
             objectif.addZoomObjectifListener(this);
             objectif.addPluginListener(this);
             zoomObjectifsList.add(objectif);
@@ -64,11 +64,11 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
      * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
      */
     @Override
-    public void pluginSelected(PluginEvent<ZoomObjectifPlugin> pluginEvent) {
+    public void pluginSelected(PluginEvent<ZoomLensPlugin> pluginEvent) {
         if (enabled && !dispathingEvent) {
             dispathingEvent = true;
-            ZoomObjectifPlugin sourceLock = (ZoomObjectifPlugin) pluginEvent.getSource();
-            for (ZoomObjectifPlugin targetLock : zoomObjectifsList) {
+            ZoomLensPlugin sourceLock = (ZoomLensPlugin) pluginEvent.getSource();
+            for (ZoomLensPlugin targetLock : zoomObjectifsList) {
                 if (!targetLock.equals(sourceLock)) {
                     targetLock.lockSelected();
                 }
@@ -82,11 +82,11 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
      * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
      */
     @Override
-    public void pluginUnlockSelected(PluginEvent<ZoomObjectifPlugin> pluginEvent) {
+    public void pluginUnlockSelected(PluginEvent<ZoomLensPlugin> pluginEvent) {
         if (enabled && !dispathingEvent) {
             dispathingEvent = true;
-            ZoomObjectifPlugin sourceLock = (ZoomObjectifPlugin) pluginEvent.getSource();
-            for (ZoomObjectifPlugin targetLock : zoomObjectifsList) {
+            ZoomLensPlugin sourceLock = (ZoomLensPlugin) pluginEvent.getSource();
+            for (ZoomLensPlugin targetLock : zoomObjectifsList) {
                 if (!targetLock.equals(sourceLock)) {
                     targetLock.unlockSelected();
                 }
@@ -100,11 +100,11 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
      * @see com.jensoft.core.plugin.zoom.objectif.ZoomObjectifListener#zoomIn(com.jensoft.core.plugin.zoom.objectif.ZoomObjectifEvent)
      */
     @Override
-    public void zoomIn(ZoomObjectifEvent pluginEvent) {
+    public void zoomIn(ZoomLensEvent pluginEvent) {
         if (enabled && !dispathingEvent) {
             dispathingEvent = true;
-            ZoomObjectifPlugin sourceObjectif = (ZoomObjectifPlugin) pluginEvent.getSource();
-            for (ZoomObjectifPlugin targetObjectif : zoomObjectifsList) {
+            ZoomLensPlugin sourceObjectif = (ZoomLensPlugin) pluginEvent.getSource();
+            for (ZoomLensPlugin targetObjectif : zoomObjectifsList) {
                 if (!targetObjectif.equals(sourceObjectif)) {
                     //System.out.println("source process nature : " + sourceObjectif.getProcessNature());
                     targetObjectif.zoomIn(sourceObjectif.getProcessNature());
@@ -119,11 +119,11 @@ public class ZoomObjectifSynchronizer implements ZoomObjectifListener {
      * @see com.jensoft.core.plugin.zoom.objectif.ZoomObjectifListener#zoomOut(com.jensoft.core.plugin.zoom.objectif.ZoomObjectifEvent)
      */
     @Override
-    public void zoomOut(ZoomObjectifEvent pluginEvent) {
+    public void zoomOut(ZoomLensEvent pluginEvent) {
         if (enabled && !dispathingEvent) {
             dispathingEvent = true;
-            ZoomObjectifPlugin sourceObjectif = (ZoomObjectifPlugin) pluginEvent.getSource();
-            for (ZoomObjectifPlugin targetObjectif : zoomObjectifsList) {
+            ZoomLensPlugin sourceObjectif = (ZoomLensPlugin) pluginEvent.getSource();
+            for (ZoomLensPlugin targetObjectif : zoomObjectifsList) {
                 if (!targetObjectif.equals(sourceObjectif)) {
                     targetObjectif.zoomOut(sourceObjectif.getProcessNature());
                 }

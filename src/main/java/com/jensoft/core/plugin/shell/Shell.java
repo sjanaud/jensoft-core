@@ -142,14 +142,14 @@ public abstract class Shell extends JComponent {
                     if (x < 5) {
                         x = 5;
                     }
-                    if (x + width > getHost().getWindow2D().getDevice2D().getDeviceWidth() - 5) {
-                        x = (getHost().getWindow2D().getDevice2D().getDeviceWidth() - width - 5);
+                    if (x + width > getHost().getProjection().getDevice2D().getDeviceWidth() - 5) {
+                        x = (getHost().getProjection().getDevice2D().getDeviceWidth() - width - 5);
                     }
                     if (y < 5) {
                         y = 5;
                     }
-                    if (y + height > getHost().getWindow2D().getDevice2D().getDeviceHeight() - 5) {
-                        y = (getHost().getWindow2D().getDevice2D().getDeviceHeight() - height - 5);
+                    if (y + height > getHost().getProjection().getDevice2D().getDeviceHeight() - 5) {
+                        y = (getHost().getProjection().getDevice2D().getDeviceHeight() - height - 5);
                     }
                     Rectangle newBound = new Rectangle(x, y, width, height);
                     Shell.this.setBounds(newBound);
@@ -174,12 +174,12 @@ public abstract class Shell extends JComponent {
             @Override
             public void mouseExited(MouseEvent e) {
                 move = true;
-                getHost().getWindow2D().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                getHost().getProjection().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                getHost().getWindow2D().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+                getHost().getProjection().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
             }
 
             @Override
@@ -677,12 +677,12 @@ public abstract class Shell extends JComponent {
             }
 
             if (newBound.getX() < 5
-                    || newBound.getX() + newBound.getWidth() > getHost().getWindow2D().getDevice2D().getDeviceWidth() - 5) {
+                    || newBound.getX() + newBound.getWidth() > getHost().getProjection().getDevice2D().getDeviceWidth() - 5) {
                 //System.out.println("return 3");
                 return;
             }
             if (newBound.getY() < 5
-                    || newBound.getY() + newBound.getHeight() > getHost().getWindow2D().getDevice2D().getDeviceHeight() - 5) {
+                    || newBound.getY() + newBound.getHeight() > getHost().getProjection().getDevice2D().getDeviceHeight() - 5) {
                 //System.out.println("return 4");
                 return;
             }
@@ -704,35 +704,35 @@ public abstract class Shell extends JComponent {
                         return;
                     }
                     if (part == SizerPart.N) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.S) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.W) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.E) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.NE) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.NW) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.SE) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.SW) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));
                     }
                     currentX = e.getX();
@@ -762,7 +762,7 @@ public abstract class Shell extends JComponent {
                     if (resize) {
                         return;
                     }
-                    getHost().getWindow2D().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                    getHost().getProjection().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 }
 
                 @Override
@@ -771,35 +771,35 @@ public abstract class Shell extends JComponent {
                         return;
                     }
                     if (part == SizerPart.N) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.S) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.W) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.E) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.NE) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.NW) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.SE) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.SW) {
-                        getHost().getWindow2D().getView2D()
+                        getHost().getProjection().getView2D()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));
                     }
 

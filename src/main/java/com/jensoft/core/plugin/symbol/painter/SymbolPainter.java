@@ -7,7 +7,7 @@
 import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.symbol.SymbolComponent;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>SymbolPainter</code>
@@ -26,9 +26,9 @@ public interface SymbolPainter {
      *            the graphics context
      * @param symbol
      *            the symbol to paint
-     * @param windowPart
+     * @param viewPart
      *            the window zone
      */
     void paintSymbol(Graphics2D g2d, SymbolComponent symbol,
-            WindowPart windowPart);
+            ViewPart viewPart);
 }

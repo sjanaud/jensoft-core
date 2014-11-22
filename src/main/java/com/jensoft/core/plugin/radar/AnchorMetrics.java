@@ -6,7 +6,11 @@
 package com.jensoft.core.plugin.radar;
 
 /**
- * AnchorMetrics
+ * <code>AnchorMetrics</code> defines the anchor for a given metrics on a radar dimension
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public final class AnchorMetrics extends RadarMetrics {
 

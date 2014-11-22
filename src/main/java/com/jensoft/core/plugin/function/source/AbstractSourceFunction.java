@@ -9,7 +9,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.plugin.function.Function;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>AbstractSourceFunction</code> defines a source function. The current build of function is get 
@@ -71,7 +71,7 @@ public abstract class AbstractSourceFunction implements SourceFunction {
 	@Override
 	public List<Point2D> getCurrentFunction() {
 		if(currentFunction == null || currentFunction.size()==0){
-			Window2D window = getHost().getHost().getWindow2D();
+			Projection window = getHost().getHost().getProjection();
 			if(getNature() == FunctionNature.XFunction){
 				currentFunction = solveFunction(window.getMinX(), window.getMaxX());
 			}

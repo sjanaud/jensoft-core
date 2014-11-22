@@ -17,7 +17,7 @@ import java.awt.geom.RoundRectangle2D;
 import com.jensoft.core.graphics.Shader;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel.Style;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
  * @author Sebastien Janaud
@@ -186,7 +186,7 @@ public class ButtonWidget<P extends AbstractPlugin> extends AbstractButtonWidget
      * @see com.jensoft.core.widget.button.AbstractButtonWidget#paintButton(com.jensoft.core.view.View2D, java.awt.Graphics2D, java.awt.geom.Rectangle2D)
      */
     @Override
-    public void paintButton(View2D v2d, Graphics2D g2d,
+    public void paintButton(View v2d, Graphics2D g2d,
             Rectangle2D buttonDrawingRegion) {
         double x = buttonDrawingRegion.getX();
         double y = buttonDrawingRegion.getY();

@@ -68,13 +68,13 @@ public class Bezier extends AbstractPlot {
 		GeneralPath path = new GeneralPath();
 		List<Point2D> devicePoints = new ArrayList<Point2D>();
 		Point2D q = p(0, 0);
-		Point2D uq = getHost().getWindow2D().userToPixel(q);
+		Point2D uq = getHost().getProjection().userToPixel(q);
 		devicePoints.add(uq);
 		path.moveTo(uq.getX(), uq.getY());
 		for (int i = 0; i < getUserPoints().size() - 3; i += 3) {
 			for (int j = 1; j <= STEPS; j++) {
 				q = p(i, j / (float) STEPS);
-				uq = getHost().getWindow2D().userToPixel(q);				
+				uq = getHost().getProjection().userToPixel(q);				
 				devicePoints.add(uq);
 				path.lineTo(uq.getX(), uq.getY());
 			}

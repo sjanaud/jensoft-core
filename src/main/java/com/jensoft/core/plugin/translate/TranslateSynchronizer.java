@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.jensoft.core.plugin.PluginEvent;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>TranslateSynchronizer</code>
@@ -160,7 +160,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
                     tp.fireTranslate();
                 }
             }
-            sourceTranslate.getWindow2D().getDevice2D().repaintDevice();
+            sourceTranslate.getProjection().getDevice2D().repaintDevice();
             dispathingEvent = false;
         }
     }
@@ -178,7 +178,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
                     .getSource();
             for (TranslatePlugin tp : translateList) {
                 if (!tp.equals(sourceTranslate)) {
-                    Window2D w2d = tp.getWindow2D();
+                    Projection w2d = tp.getProjection();
                     Point2D deviceCurentDevice = sourceTranslate.getTranslateCurrentDevicePoint();
                     tp.stopTranslate((int) deviceCurentDevice.getX(), (int) deviceCurentDevice.getY());
                     w2d.getDevice2D().repaintDevice();

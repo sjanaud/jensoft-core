@@ -6,11 +6,11 @@
 package com.jensoft.core.device;
 
 /**
- * <code>Device2D</code>
+ * <code>Device</code>
  * @author Sebastien Janaud
  * @since 1.0
  */
-public interface Device2D {
+public interface Device {
 
     /**
      * get the device origin X

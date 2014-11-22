@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.ray.Ray;
 import com.jensoft.core.plugin.ray.painter.AbstractRayPainter;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * abstract definition of operation ray effect painting
@@ -28,10 +28,10 @@ public abstract class AbstractRayEffect extends AbstractRayPainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.painter.AbstractRayPainter#paintRay(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray, com.jensoft.core.window.WindowPart)
+     * @see com.jensoft.core.plugin.ray.painter.AbstractRayPainter#paintRay(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public final void paintRay(Graphics2D g2d, Ray ray, WindowPart windowPart) {
+    public final void paintRay(Graphics2D g2d, Ray ray, ViewPart viewPart) {
         paintRayEffect(g2d, ray);
     }
 

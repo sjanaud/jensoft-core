@@ -19,7 +19,11 @@ import com.jensoft.core.plugin.radar.painter.dimension.DimensionDefaultPainter;
 import com.jensoft.core.plugin.radar.painter.label.AbstractRadarDimensionLabel;
 
 /**
- * RadarDimension
+ * <code>RadarDimension</code> defines a dimension for a radar chart
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public class RadarDimension {
 

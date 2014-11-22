@@ -9,7 +9,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class Line extends Primitive {
 
@@ -34,7 +34,7 @@ public class Line extends Primitive {
             g2d.draw(line2DDevice);
         }
         else if (getNature() == PrimitiveNature.USER) {
-            Window2D w2d = getHost().getWindow2D();
+            Projection w2d = getHost().getProjection();
 
             Point2D start = w2d.userToPixel(new Point2D.Double(startX, startY));
             Point2D end = w2d.userToPixel(new Point2D.Double(endX, endY));

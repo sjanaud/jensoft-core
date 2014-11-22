@@ -5,10 +5,10 @@
  */
 package com.jensoft.core.x2d.lang;
 
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 
 /**
- * <code>X2DView2DElement</code> defines {@link View2D} related elements names that should be used in any XML x2d view
+ * <code>X2DView2DElement</code> defines {@link View} related elements names that should be used in any XML x2d view
  * document
  * and view particular purpose.
  * 

@@ -40,13 +40,14 @@ import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeDurationMe
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel;
 import com.jensoft.core.plugin.metrics.painter.AbstractMetricsPainter;
 import com.jensoft.core.plugin.metrics.painter.MetricsGlyphPainter;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>AxisMetricsPlugin</code> takes the responsibility to draw metrics for
  * {@link Axis}
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
 public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extends AbstractPlugin {
@@ -776,11 +777,11 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.metrics.AxisMetricsPlugin#paintMetrics(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+		 * @see com.jensoft.core.plugin.metrics.AxisMetricsPlugin#paintMetrics(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 		 */
 		@Override
-		public void paintMetrics(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			if (!super.isAccessible(windowPart)) {
+		public void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			if (!super.isAccessible(viewPart)) {
 				return;
 			}
 			super.createRenderContext(v2d, g2d);
@@ -789,7 +790,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 			List<TimeModel> sequence = ((TimeMetricsManager) getMetricsManager()).getTimingSequence();
 			for (TimeModel timingManager : sequence) {
 
-				MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getWindow2D(), g2d);
+				MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getProjection(), g2d);
 				// renderContext.setMetricsMedianFont(timeFont1);
 				// renderContext.setMetricsMajorFont(timeFont1);
 
@@ -822,24 +823,24 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 					}
 
 					Point2D markerLocation = new Point2D.Double();
-					if (windowPart == WindowPart.South) {
+					if (viewPart == ViewPart.South) {
 						markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.S);
 					}
-					if (windowPart == WindowPart.West) {
-						JComponent component = v2d.getWindowComponent(WindowPart.West);
+					if (viewPart == ViewPart.West) {
+						JComponent component = v2d.getWindowComponent(ViewPart.West);
 						markerLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, m.getDeviceValue());
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.W);
 					}
-					if (windowPart == WindowPart.East) {
+					if (viewPart == ViewPart.East) {
 						markerLocation = new Point2D.Double(axisSpacing, m.getDeviceValue());
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.E);
 					}
-					if (windowPart == WindowPart.North) {
-						JComponent component = v2d.getWindowComponent(WindowPart.North);
+					if (viewPart == ViewPart.North) {
+						JComponent component = v2d.getWindowComponent(ViewPart.North);
 						markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), component.getHeight() - 1 - axisSpacing);
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.N);
@@ -1112,11 +1113,11 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.metrics.AxisMetricsPlugin#paintMetrics(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+		 * @see com.jensoft.core.plugin.metrics.AxisMetricsPlugin#paintMetrics(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 		 */
 		@Override
-		protected void paintMetrics(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-			if (!super.isAccessible(windowPart)) {
+		protected void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+			if (!super.isAccessible(viewPart)) {
 				return;
 			}
 			super.createRenderContext(v2d, g2d);
@@ -1163,27 +1164,27 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 					}
 
 					Point2D markerLocation = new Point2D.Double();
-					if (windowPart == WindowPart.South) {
+					if (viewPart == ViewPart.South) {
 
 						markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
 
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.S);
 					}
-					if (windowPart == WindowPart.West) {
-						JComponent component = v2d.getWindowComponent(WindowPart.West);
+					if (viewPart == ViewPart.West) {
+						JComponent component = v2d.getWindowComponent(ViewPart.West);
 						markerLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, m.getDeviceValue());
 
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.W);
 					}
-					if (windowPart == WindowPart.East) {
+					if (viewPart == ViewPart.East) {
 						markerLocation = new Point2D.Double(axisSpacing, m.getDeviceValue());
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.E);
 					}
-					if (windowPart == WindowPart.North) {
-						JComponent component = v2d.getWindowComponent(WindowPart.North);
+					if (viewPart == ViewPart.North) {
+						JComponent component = v2d.getWindowComponent(ViewPart.North);
 						markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), component.getHeight() - 1 - axisSpacing);
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.N);
@@ -1485,23 +1486,23 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	/**
 	 * true if the context is accessible, false otherwise
 	 * 
-	 * @param windowPart
+	 * @param viewPart
 	 * @return true if the context is accessible, false otherwise
 	 */
-	protected boolean isAccessible(WindowPart windowPart) {
-		if (axis == Axis.AxisSouth && windowPart != WindowPart.South) {
+	protected boolean isAccessible(ViewPart viewPart) {
+		if (axis == Axis.AxisSouth && viewPart != ViewPart.South) {
 			return false;
 		}
-		if (axis == Axis.AxisNorth && windowPart != WindowPart.North) {
+		if (axis == Axis.AxisNorth && viewPart != ViewPart.North) {
 			return false;
 		}
-		if (axis == Axis.AxisWest && windowPart != WindowPart.West) {
+		if (axis == Axis.AxisWest && viewPart != ViewPart.West) {
 			return false;
 		}
-		if (axis == Axis.AxisEast && windowPart != WindowPart.East) {
+		if (axis == Axis.AxisEast && viewPart != ViewPart.East) {
 			return false;
 		}
-		if (windowPart == WindowPart.Device) {
+		if (viewPart == ViewPart.Device) {
 			return false;
 		}
 
@@ -1513,29 +1514,29 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @param v2d
 	 * @param g2d
-	 * @param windowPart
+	 * @param viewPart
 	 */
-	protected void paintBaseLine(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	protected void paintBaseLine(View v2d, Graphics2D g2d, ViewPart viewPart) {
 		if (isPaintAxisBaseLine()) {
 			Point2D axisStartLocation = new Point2D.Double();
 			Point2D axisEndLocation = new Point2D.Double();
-			if (windowPart == WindowPart.South) {
-				JComponent component = v2d.getWindowComponent(WindowPart.South);
+			if (viewPart == ViewPart.South) {
+				JComponent component = v2d.getWindowComponent(ViewPart.South);
 				axisStartLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest(), axisSpacing);
 				axisEndLocation = new Point2D.Double(component.getWidth() - v2d.getPlaceHolderAxisEast(), axisSpacing);
 			}
-			if (windowPart == WindowPart.West) {
-				JComponent component = v2d.getWindowComponent(WindowPart.West);
+			if (viewPart == ViewPart.West) {
+				JComponent component = v2d.getWindowComponent(ViewPart.West);
 				axisStartLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, 0);
 				axisEndLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, component.getHeight());
 			}
-			if (windowPart == WindowPart.East) {
-				JComponent component = v2d.getWindowComponent(WindowPart.East);
+			if (viewPart == ViewPart.East) {
+				JComponent component = v2d.getWindowComponent(ViewPart.East);
 				axisStartLocation = new Point2D.Double(axisSpacing, 0);
 				axisEndLocation = new Point2D.Double(axisSpacing, component.getHeight());
 			}
-			if (windowPart == WindowPart.North) {
-				JComponent component = v2d.getWindowComponent(WindowPart.North);
+			if (viewPart == ViewPart.North) {
+				JComponent component = v2d.getWindowComponent(ViewPart.North);
 				axisStartLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest(), component.getHeight() - 1 - axisSpacing);
 				axisEndLocation = new Point2D.Double(component.getWidth() - v2d.getPlaceHolderAxisEast(), component.getHeight() - 1 - axisSpacing);
 			}
@@ -1555,9 +1556,9 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @param v2d
 	 * @param g2d
-	 * @param windowPart
+	 * @param viewPart
 	 */
-	protected void paintMetricsLabelIndicator(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	protected void paintMetricsLabelIndicator(View v2d, Graphics2D g2d, ViewPart viewPart) {
 		List<Metrics> metrics = null;
 		try {
 			metrics = metricsManager.getDeviceMetrics();
@@ -1581,25 +1582,25 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 			Point2D markerLocation = new Point2D.Double();
 
-			if (windowPart == WindowPart.South) {
+			if (viewPart == ViewPart.South) {
 
 				markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.S);
 			}
-			if (windowPart == WindowPart.West) {
-				JComponent component = v2d.getWindowComponent(WindowPart.West);
+			if (viewPart == ViewPart.West) {
+				JComponent component = v2d.getWindowComponent(ViewPart.West);
 				markerLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, m.getDeviceValue());
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.W);
 			}
-			if (windowPart == WindowPart.East) {
+			if (viewPart == ViewPart.East) {
 				markerLocation = new Point2D.Double(axisSpacing, m.getDeviceValue());
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.E);
 			}
-			if (windowPart == WindowPart.North) {
-				JComponent component = v2d.getWindowComponent(WindowPart.North);
+			if (viewPart == ViewPart.North) {
+				JComponent component = v2d.getWindowComponent(ViewPart.North);
 				markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), component.getHeight() - 1 - axisSpacing);
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.N);
@@ -1614,8 +1615,8 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * @param v2d
 	 * @param g2d
 	 */
-	protected void createRenderContext(View2D v2d, Graphics2D g2d) {
-		MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getWindow2D(), g2d);
+	protected void createRenderContext(View v2d, Graphics2D g2d) {
+		MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getProjection(), g2d);
 		renderContext.setMetricsMedianFont(metricsManager.getMetricsMedianFont());
 		renderContext.setMetricsMajorFont(metricsManager.getMetricsMajorFont());
 
@@ -1638,24 +1639,24 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	/**
 	 * Paints the window metrics.
 	 */
-	protected void paintMetrics(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		if (!isAccessible(windowPart)) {
+	protected void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+		if (!isAccessible(viewPart)) {
 			return;
 		}
 		createRenderContext(v2d, g2d);
 		assignType();
-		paintMetricsLabelIndicator(v2d, g2d, windowPart);
-		paintBaseLine(v2d, g2d, windowPart);
+		paintMetricsLabelIndicator(v2d, g2d, viewPart);
+		paintBaseLine(v2d, g2d, viewPart);
 
 	}
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	public final void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
-		paintMetrics(v2d, g2d, windowPart);
+	public final void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+		paintMetrics(view, g2d, viewPart);
 	}
 
 }

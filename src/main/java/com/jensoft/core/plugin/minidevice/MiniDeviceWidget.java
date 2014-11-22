@@ -16,9 +16,9 @@ import java.util.List;
 
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.minidevice.MiniDevicePlugin.DimensionType;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 import com.jensoft.core.widget.Widget;
-import com.jensoft.core.window.WindowPart;
 
 /**
  * the minidevice widget display the current activated window in initial scale
@@ -41,7 +41,7 @@ public class MiniDeviceWidget extends Widget {
     }
 
     @Override
-    protected void paintWidget(View2D v2d, Graphics2D g2d) {
+    protected void paintWidget(View v2d, Graphics2D g2d) {
 
         int miniWidth;
         int miniHeight;
@@ -183,7 +183,7 @@ public class MiniDeviceWidget extends Widget {
                            (int) rect2DMiniDevice.getY() + 10);
         }
 
-        List<AbstractPlugin> layouts = host.getWindow2D().getPluginRegistry();
+        List<AbstractPlugin> layouts = host.getProjection().getPluginRegistry();
         for (AbstractPlugin layout : layouts) {
             if (!layout.equals(this)) {
                 System.out.println("paint layout in mini device : "
@@ -191,9 +191,9 @@ public class MiniDeviceWidget extends Widget {
                 host.getPrivateWindow().setDevice2D(host);
                 // host.getPrivateWindow().setWindowScaleMode(
                 // Window2D.WINDOW_SCALEMODE_DEVICE_INITIAL);
-                layout.setWindow2D(host.getPrivateWindow());
-                layout.paint(v2d, g2d, WindowPart.Device);
-                layout.setWindow2D(v2d.getActiveWindow());
+                layout.setProjection(host.getPrivateWindow());
+                layout.paint(v2d, g2d, ViewPart.Device);
+                layout.setProjection(v2d.getActiveProjection());
                 // host.getPrivateWindow().setWindowScaleMode(
                 // Window2D.WINDOW_SCALEMODE_DEFAULT);
             }

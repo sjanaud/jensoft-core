@@ -68,7 +68,7 @@ public class BubbleDefaultDraw extends BubbleDraw {
             g2d.setColor(bubble.getThemeColor());
         }
         else {
-            g2d.setColor(bubble.getHost().getWindow2D().getThemeColor());
+            g2d.setColor(bubble.getHost().getProjection().getThemeColor());
         }
 
         g2d.draw(bubble.getBubbleShape());

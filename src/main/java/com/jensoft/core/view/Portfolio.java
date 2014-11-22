@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 
 /**
  * <code>Portfolio</code> annotation help developer to produce image on static
- * method which returns {@link View2D}
+ * method which returns {@link View}
  * 
  * @author Sebastien Janaud
  */

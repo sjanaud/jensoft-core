@@ -25,26 +25,26 @@ import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
 import com.jensoft.core.plugin.translate.TranslatePlugin;
 import com.jensoft.core.plugin.translate.TranslateX;
 import com.jensoft.core.plugin.translate.TranslateY;
-import com.jensoft.core.plugin.zoom.objectif.ObjectifDefaultDeviceContext;
-import com.jensoft.core.plugin.zoom.objectif.ObjectifX;
-import com.jensoft.core.plugin.zoom.objectif.ObjectifY;
-import com.jensoft.core.plugin.zoom.objectif.ZoomObjectifPlugin;
+import com.jensoft.core.plugin.zoom.objectif.LensDefaultDeviceContext;
+import com.jensoft.core.plugin.zoom.objectif.LensX;
+import com.jensoft.core.plugin.zoom.objectif.LensY;
+import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin;
 import com.jensoft.core.plugin.zoom.percent.ZoomPercentDefaultDeviceContext;
 import com.jensoft.core.plugin.zoom.percent.ZoomPercentPlugin;
 import com.jensoft.core.plugin.zoom.wheel.ZoomWheelPlugin;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.sharedicon.SharedIcon;
 import com.jensoft.core.sharedicon.common.Common;
 import com.jensoft.core.sharedicon.marker.Marker;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.view.View;
 
-public class ButtonWidgetDemo extends View2D {
+public class ButtonWidgetDemo extends View {
 
    
 
 	 public ButtonWidgetDemo() {
 	    super();
-        Window2D w2d = new Window2D.Linear(0, 10, 0, 18);
+        Projection w2d = new Projection.Linear(0, 10, 0, 18);
         setBackground(Color.WHITE);
 
         // //TRANSLATE
@@ -144,15 +144,15 @@ public class ButtonWidgetDemo extends View2D {
         compass.setRingNeedleDrawColor(Color.WHITE);
 
         // plugin/objectif
-        ZoomObjectifPlugin zoomObjectif = new ZoomObjectifPlugin();
+        ZoomLensPlugin zoomObjectif = new ZoomLensPlugin();
 
         // plugin/objectif/widget
-        ObjectifX ox = new ObjectifX(80, 12);
+        LensX ox = new LensX(80, 12);
         ox.setOutlineColor(Color.WHITE);
         ox.setButton1DrawColor(RosePalette.REDWOOD);
         ox.setButton2DrawColor(RosePalette.REDWOOD);
 
-        ObjectifY oy = new ObjectifY(12, 80);
+        LensY oy = new LensY(12, 80);
         oy.setOutlineColor(Color.WHITE);
         oy.setButton1DrawColor(RosePalette.REDWOOD);
         oy.setButton2DrawColor(RosePalette.REDWOOD);
@@ -161,7 +161,7 @@ public class ButtonWidgetDemo extends View2D {
         zoomObjectif.registerWidget(oy);
 
         // plugin/objectif/context
-        zoomObjectif.registerContext(new ObjectifDefaultDeviceContext());
+        zoomObjectif.registerContext(new LensDefaultDeviceContext());
 
         w2d.registerPlugin(zoomObjectif);
 
@@ -181,7 +181,7 @@ public class ButtonWidgetDemo extends View2D {
         // w2d.registerPlugin(outline);
         // outline.inflateOutline(2000);
 
-        registerWindow2D(w2d);
+        registerProjection(w2d);
 
         // pre lock selected
         // translatePlugin.lockSelected();

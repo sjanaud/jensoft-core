@@ -12,7 +12,7 @@ import java.util.List;
 
 import com.jensoft.core.plugin.grid.Grid;
 import com.jensoft.core.plugin.grid.Grid.GridOrientation;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>CompoundGridManager</code>
@@ -110,7 +110,7 @@ public class CompoundGridManager extends AbstractGridManager {
 	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setWindow2D(com.jensoft.core.window.Window2D)
 	 */
 	@Override
-	public void setWindow2D(Window2D w2d) {
+	public void setWindow2D(Projection w2d) {
 		super.setWindow2D(w2d);
 		for (int i = 0; i < managers.size(); i++) {
 			managers.get(i).setWindow2D(w2d);

@@ -19,7 +19,7 @@ import java.util.List;
 
 import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>IncubatorMetricsManager</code>
@@ -390,7 +390,7 @@ public class ModeledMetricsManagerOLD extends AbstractMetricsManager {
      */
     protected Metrics generateMetrics(double userValue, MetricsModelOLD model) {
         Metrics metrics = new Metrics(getType());
-        Window2D window = getRenderContext().getWindow2D();
+        Projection window = getRenderContext().getWindow2D();
         double deviceValue = 0;
         double maxPixelValue = 0;
         if (getType() == MetricsType.XMetrics) {
@@ -488,7 +488,7 @@ public class ModeledMetricsManagerOLD extends AbstractMetricsManager {
          */
         public boolean isValid() {
 
-            Window2D window = getMetricsManager().getRenderContext().getWindow2D();
+            Projection window = getMetricsManager().getRenderContext().getWindow2D();
             boolean valid = false;
             BigDecimal userSize = null;
             BigDecimal startRef = null;

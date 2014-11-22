@@ -24,10 +24,10 @@ import com.jensoft.core.plugin.donut3d.Donut3DToolkit;
 import com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel.Style;
 import com.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel.LinkStyle;
 import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
+import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
-import com.jensoft.core.view.View2D;
+import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.RoundViewFill;
-import com.jensoft.core.window.Window2D;
 
 /**
  * <code>JavadocPortfolioDonut3D</code> doc files API
@@ -37,12 +37,12 @@ import com.jensoft.core.window.Window2D;
 public class JavadocPortfolioDonut3D {
 
     @Portfolio(name = "Donut3DRadialLabel")
-    public static View2D getRadialLabelView() {
+    public static View getRadialLabelView() {
 
-        View2D view = new View2D(0);
-        Window2D window = new Window2D.Linear(-1, 1, -1, 1);
+        View view = new View(0);
+        Projection window = new Projection.Linear(-1, 1, -1, 1);
         window.setName("compatible donut3D window");
-        view.registerWindow2D(window);
+        view.registerProjection(window);
 
         Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
         window.registerPlugin(donut3DPlugin);
@@ -120,12 +120,12 @@ public class JavadocPortfolioDonut3D {
     }
 
     @Portfolio(name = "Donut3DBorderLabel")
-    public static View2D getBorderLabelView() {
+    public static View getBorderLabelView() {
 
-        View2D view = new View2D(0);
-        Window2D window = new Window2D.Linear(-1, 1, -1, 1);
+        View view = new View(0);
+        Projection window = new Projection.Linear(-1, 1, -1, 1);
         window.setName("compatible donut3D window");
-        view.registerWindow2D(window);
+        view.registerProjection(window);
 
         Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
         window.registerPlugin(donut3DPlugin);

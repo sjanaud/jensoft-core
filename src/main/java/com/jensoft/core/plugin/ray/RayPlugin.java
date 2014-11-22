@@ -18,9 +18,9 @@ import javax.swing.event.EventListenerList;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.ray.Ray.RayNature;
 import com.jensoft.core.plugin.ray.Ray.ThicknessType;
-import com.jensoft.core.view.View2D;
-import com.jensoft.core.window.Window2D;
-import com.jensoft.core.window.WindowPart;
+import com.jensoft.core.projection.Projection;
+import com.jensoft.core.view.View;
+import com.jensoft.core.view.ViewPart;
 
 /**
  * RayPlugin knows how to register and draw {@link Ray}
@@ -130,7 +130,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 *            the ray geometry to resolve
 	 */
 	private void resolveRayGeometry(Ray ray) {
-		Window2D w2d = getWindow2D();
+		Projection w2d = getProjection();
 		if (ray.getRayNature() == RayNature.XRay) {
 
 			double centerUserX = ray.getRay();
@@ -233,7 +233,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 *            the stacked ray geometry to resolve
 	 */
 	private void resolveStackedRayGeometry(StackedRay stackedRay) {
-		Window2D w2d = getWindow2D();
+		Projection w2d = getProjection();
 
 		stackedRay.normalize();
 
@@ -445,25 +445,25 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * @param ray
 	 *            the ray to paint
 	 */
-	private void paintRay(View2D v2d, Graphics2D g2d, Ray ray, WindowPart windowPart, PaintRequest paintRequest) {
+	private void paintRay(View v2d, Graphics2D g2d, Ray ray, ViewPart viewPart, PaintRequest paintRequest) {
 
 		ray.setHost(this);
 
 		if (paintRequest == PaintRequest.RayLayer) {
 			if (ray.getRayFill() != null) {
-				ray.getRayFill().paintRay(g2d, ray, windowPart);
+				ray.getRayFill().paintRay(g2d, ray, viewPart);
 			}
 
 			if (ray.getRayEffect() != null) {
-				ray.getRayEffect().paintRay(g2d, ray, windowPart);
+				ray.getRayEffect().paintRay(g2d, ray, viewPart);
 			}
 
 			if (ray.getRayDraw() != null) {
-				ray.getRayDraw().paintRay(g2d, ray, windowPart);
+				ray.getRayDraw().paintRay(g2d, ray, viewPart);
 			}
 		} else {
 			if (ray.getRayLabel() != null) {
-				ray.getRayLabel().paintRay(g2d, ray, windowPart);
+				ray.getRayLabel().paintRay(g2d, ray, viewPart);
 			}
 		}
 
@@ -479,24 +479,24 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * @param stackedRay
 	 *            the stackedRay to paint
 	 */
-	private void paintStackedRay(View2D v2d, Graphics2D g2d, StackedRay stackedRay, WindowPart windowPart, PaintRequest paintRequest) {
+	private void paintStackedRay(View v2d, Graphics2D g2d, StackedRay stackedRay, ViewPart viewPart, PaintRequest paintRequest) {
 
 		for (RayStack s : stackedRay.getStacks()) {
 			Ray stackRay = s.getRay();
-			paintRay(v2d, g2d, stackRay, windowPart, paintRequest);
+			paintRay(v2d, g2d, stackRay, viewPart, paintRequest);
 		}
 
-		paintRay(v2d, g2d, stackedRay, windowPart, paintRequest);
+		paintRay(v2d, g2d, stackedRay, viewPart, paintRequest);
 
 	}
 
 	@Override
-	protected void paintPlugin(View2D v2d, Graphics2D g2d, WindowPart windowPart) {
+	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 
 		resolveRayGeometry();
 
-		if (windowPart == WindowPart.Device) {
+		if (viewPart == ViewPart.Device) {
 
 			for (Ray ray : rays) {
 				if (ray instanceof RayGroup) {
@@ -504,15 +504,15 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 					List<Ray> rays = group.getRays();
 					for (Ray r : rays) {
 						if (r instanceof StackedRay && !(ray instanceof RayGroup)) {
-							paintStackedRay(v2d, g2d, (StackedRay) r, windowPart, PaintRequest.RayLayer);
+							paintStackedRay(v2d, g2d, (StackedRay) r, viewPart, PaintRequest.RayLayer);
 						} else if (r instanceof Ray && !(r instanceof RayGroup)) {
-							paintRay(v2d, g2d, r, windowPart, PaintRequest.RayLayer);
+							paintRay(v2d, g2d, r, viewPart, PaintRequest.RayLayer);
 						}
 					}
 				} else if (ray instanceof StackedRay) {
-					paintStackedRay(v2d, g2d, (StackedRay) ray, windowPart, PaintRequest.RayLayer);
+					paintStackedRay(v2d, g2d, (StackedRay) ray, viewPart, PaintRequest.RayLayer);
 				} else {
-					paintRay(v2d, g2d, ray, windowPart, PaintRequest.RayLayer);
+					paintRay(v2d, g2d, ray, viewPart, PaintRequest.RayLayer);
 				}
 			}
 
@@ -522,19 +522,19 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 					List<Ray> rays = group.getRays();
 					for (Ray r : rays) {
 						if (r instanceof StackedRay && !(ray instanceof RayGroup)) {
-							paintStackedRay(v2d, g2d, (StackedRay) r, windowPart, PaintRequest.LabelLayer);
+							paintStackedRay(v2d, g2d, (StackedRay) r, viewPart, PaintRequest.LabelLayer);
 						} else if (r instanceof Ray && !(r instanceof RayGroup)) {
-							paintRay(v2d, g2d, r, windowPart, PaintRequest.LabelLayer);
+							paintRay(v2d, g2d, r, viewPart, PaintRequest.LabelLayer);
 						}
 					}
 				} else if (ray instanceof StackedRay) {
-					paintStackedRay(v2d, g2d, (StackedRay) ray, windowPart, PaintRequest.LabelLayer);
+					paintStackedRay(v2d, g2d, (StackedRay) ray, viewPart, PaintRequest.LabelLayer);
 				} else {
-					paintRay(v2d, g2d, ray, windowPart, PaintRequest.LabelLayer);
+					paintRay(v2d, g2d, ray, viewPart, PaintRequest.LabelLayer);
 				}
 			}
 		} else {
-			paintRayAxisLabel(g2d, windowPart);
+			paintRayAxisLabel(g2d, viewPart);
 		}
 	}
 
@@ -543,10 +543,10 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * 
 	 * @param g2d
 	 *            the graphics context to paint
-	 * @param windowPart
+	 * @param viewPart
 	 *            to window part to paint
 	 */
-	protected void paintRayAxisLabel(Graphics2D g2d, WindowPart windowPart) {
+	protected void paintRayAxisLabel(Graphics2D g2d, ViewPart viewPart) {
 
 		for (Ray ray : rays) {
 			ray.setHost(this);
@@ -555,7 +555,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 				RayGroup group = (RayGroup) ray;
 
 				if (group.getRayAxisLabel() != null) {
-					group.getRayAxisLabel().paintRay(g2d, ray, windowPart);
+					group.getRayAxisLabel().paintRay(g2d, ray, viewPart);
 				}
 
 				List<Ray> rays = group.getRays();
@@ -563,13 +563,13 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 					ray.setHost(this);
 					if (!(r instanceof RayGroup)) {
 						if (r.getRayAxisLabel() != null) {
-							r.getRayAxisLabel().paintRay(g2d, r, windowPart);
+							r.getRayAxisLabel().paintRay(g2d, r, viewPart);
 						}
 					}
 				}
 			} else {
 				if (ray.getRayAxisLabel() != null) {
-					ray.getRayAxisLabel().paintRay(g2d, ray, windowPart);
+					ray.getRayAxisLabel().paintRay(g2d, ray, viewPart);
 				}
 			}
 		}

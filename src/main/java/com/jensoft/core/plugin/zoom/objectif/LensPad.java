@@ -11,16 +11,16 @@ import java.awt.Stroke;
 
 import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.plugin.zoom.objectif.ZoomObjectifPlugin.ZoomLensType;
-import com.jensoft.core.plugin.zoom.objectif.ZoomObjectifPlugin.ZoomNature;
+import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin.ZoomLensType;
+import com.jensoft.core.plugin.zoom.objectif.ZoomLensPlugin.ZoomNature;
 import com.jensoft.core.widget.pad.AbstractPlusMinusPadWidget;
 
 /**
- * <code>ObjectifPad</code>
+ * <code>LensPad</code>
  * 
  * @author sebastien janaud
  */
-public class ObjectifPad extends AbstractPlusMinusPadWidget<ZoomObjectifPlugin> {
+public class LensPad extends AbstractPlusMinusPadWidget<ZoomLensPlugin> {
 
     /** the widget id */
     public final static String objectifPadID = "@widget/objectif/pad";
@@ -59,7 +59,7 @@ public class ObjectifPad extends AbstractPlusMinusPadWidget<ZoomObjectifPlugin> 
      * @param yIndex
      *            y folder index
      */
-    public ObjectifPad(String id, double squarePad, int xIndex, int yIndex) {
+    public LensPad(String id, double squarePad, int xIndex, int yIndex) {
         super(objectifPadID, squarePad, xIndex, yIndex);
 
         setFillBaseColor(Color.BLACK);
@@ -75,7 +75,7 @@ public class ObjectifPad extends AbstractPlusMinusPadWidget<ZoomObjectifPlugin> 
     /**
      * create default pad widget
      */
-    public ObjectifPad() {
+    public LensPad() {
         super(objectifPadID, 2 * widgetRadius, 60, 100);
         setFillBaseColor(Color.BLACK);
         setFillControlColor(ColorPalette.BLACK);
@@ -96,7 +96,7 @@ public class ObjectifPad extends AbstractPlusMinusPadWidget<ZoomObjectifPlugin> 
      */
     @Override
     public boolean isCompatiblePlugin() {
-        if (getHost() != null && getHost() instanceof ZoomObjectifPlugin) {
+        if (getHost() != null && getHost() instanceof ZoomLensPlugin) {
             return true;
         }
         return false;

@@ -6,7 +6,11 @@
 package com.jensoft.core.plugin.radar;
 
 /**
- * RadarSurfaceAnchor
+ * <code>RadarSurfaceAnchor</code> defines a surface anchor on radar dimension
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public class RadarSurfaceAnchor {
 

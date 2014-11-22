@@ -9,7 +9,7 @@ import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.window.Window2D;
+import com.jensoft.core.projection.Projection;
 
 public class Text extends Primitive {
 
@@ -35,7 +35,7 @@ public class Text extends Primitive {
             g2d.drawString(text, (int) x, (int) y);
         }
         else if (getNature() == PrimitiveNature.USER) {
-            Window2D w2d = getHost().getWindow2D();
+            Projection w2d = getHost().getProjection();
             Point2D p2dTextUser = w2d.userToPixel(new Point2D.Double(x, y));
             g2d.drawString(text, (int) p2dTextUser.getX(),
                            (int) p2dTextUser.getY());

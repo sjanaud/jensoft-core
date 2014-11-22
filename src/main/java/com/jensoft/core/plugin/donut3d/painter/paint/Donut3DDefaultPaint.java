@@ -48,6 +48,12 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 
 	/** alpha use to paint outer effect */
 	private float alphaOuter = 1f;
+	
+	/** alpha use to paint start face effect */
+	private float alphaStart = 0.8f;
+	
+	/** alpha use to paint stop face effect */
+	private float alphaStop = 0.8f;
 
 	/** alpha use to fill */
 	private float alphaFill = 0.7f;
@@ -188,6 +194,24 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 	 */
 	public void setAlphaFill(float alphaFill) {
 		this.alphaFill = alphaFill;
+	}
+	
+	
+
+	public float getAlphaStart() {
+		return alphaStart;
+	}
+
+	public void setAlphaStart(float alphaStart) {
+		this.alphaStart = alphaStart;
+	}
+
+	public float getAlphaStop() {
+		return alphaStop;
+	}
+
+	public void setAlphaStop(float alphaStop) {
+		this.alphaStop = alphaStop;
 	}
 
 	/*
@@ -634,7 +658,7 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 
 		Point2D c = null;
 		if (donut3d.getDonut3DNature() == Donut3DNature.Donut3DUser) {
-			c = donut3d.getHostPlugin().getWindow2D().userToPixel(new Point2D.Double(centerX, centerY));
+			c = donut3d.getHostPlugin().getProjection().userToPixel(new Point2D.Double(centerX, centerY));
 		}
 		if (donut3d.getDonut3DNature() == Donut3DNature.Donut3DDevice) {
 			c = new Point2D.Double(centerX, centerY);
@@ -772,7 +796,8 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 
 	private void paintEndEffect(Graphics2D g2d, Donut3D donut3d, Donut3DSlice section) {
 
-		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alphaStop));
+		
 
 		Line2D lineBottom = section.getEndBottomLine();
 		Line2D lineTop = section.getEndTopLine();
@@ -815,12 +840,12 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 
 			g2d.fill(section.getEndFace());
 		}
-
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 	}
 
 	private void paintStartEffect(Graphics2D g2d, Donut3D donut3d, Donut3DSlice section) {
 
-		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alphaStart));
 		Line2D lineBottom = section.getStartBottomLine();
 		Line2D lineTop = section.getStartTopLine();
 
@@ -862,7 +887,7 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 
 			g2d.fill(section.getStartFace());
 		}
-
+		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 	}
 
 	/**
