@@ -11,7 +11,7 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-import com.jensoft.core.view.background.NoBackground;
+import com.jensoft.core.view.background.ViewNoBackground;
 
 /**
  * <code>X2DView</code>
@@ -23,5 +23,5 @@ import com.jensoft.core.view.background.NoBackground;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface X2DView {	
 	Dim dimension() default @Dim(width=600,height=400);
-	Class background() default NoBackground.class;
+	Class background() default ViewNoBackground.class;
 }

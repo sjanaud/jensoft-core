@@ -12,7 +12,9 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.widget.Widget;
 
 /**
- * WidgetRegistry
+ * <code>WidgetRegistry</code>
+ * 
+ * @since 1.0
  * 
  * @author Sebastien Janaud
  */

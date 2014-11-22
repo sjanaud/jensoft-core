@@ -14,14 +14,14 @@ import com.jensoft.core.palette.PetalPalette;
 import com.jensoft.core.plugin.outline.OutlinePlugin;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.DarkViewBackground;
+import com.jensoft.core.view.background.ViewDarkBackground;
 
 /**
  * <code>Capacity1</code>
  * 
  * @author JenSoft API
  */
-@JenSoftView(background = DarkViewBackground.class, description = "Show how to use capacity cell plugin")
+@JenSoftView(background = ViewDarkBackground.class, description = "Show how to use capacity cell plugin")
 public class CapacityDemo extends View {
 
 	private static final long serialVersionUID = 8159753314041939307L;

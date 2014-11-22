@@ -6,7 +6,9 @@
 package com.jensoft.core.view;
 
 /**
- * <code>ViewPart</code> defines view part component
+ * <code>ViewPart</code> defines view part component name.
+ * 
+ * @since 1.0
  * 
  * @author Sebastien Janaud
  */

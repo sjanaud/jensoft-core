@@ -21,10 +21,9 @@ import javax.imageio.ImageIO;
 import com.jensoft.core.device.DevicePartComponent;
 
 /**
- * <code>ViewEmitter</code>
- * <p>
- * takes the responsibility to emit view a variety of format
- * </p>
+ * <code>ViewEmitter</code>  takes the responsibility to emit view a variety of format
+ * 
+ * @since 1.0
  * 
  * @author sebastien janaud
  */
@@ -214,6 +213,32 @@ public class ViewEmitter {
         return getImageView(width, height);
     }
 
+    
+    /**
+     * emit the template as image string base 64
+     * @param width image width
+     * @param height image height
+     * @return the template as buffered image in string base 64
+     */
+    public String emitAsImageBase64(int width,int height) {
+        BufferedImage img = emitAsBufferedImage(width,height);
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(img, "png", os);
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        Base64 b64 = new Base64();
+        String result = b64.encode(os.toByteArray());
+        try {
+            os.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        return result;
+    } 
     /**
      * emit the template as image string base 64
      * 

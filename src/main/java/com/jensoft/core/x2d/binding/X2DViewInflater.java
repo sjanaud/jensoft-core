@@ -29,7 +29,7 @@ import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginPlatform;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.BackgroundPainter;
+import com.jensoft.core.view.background.ViewBackgroundPainter;
 import com.jensoft.core.view.background.ViewDefaultBackground;
 import com.jensoft.core.x2d.X2DException;
 import com.jensoft.core.x2d.lang.X2DView2DElement;
@@ -267,7 +267,7 @@ public class X2DViewInflater implements X2DView2DElement {
 	 *            the background element view to inflate
 	 * @return the background painter
 	 */
-	public BackgroundPainter parseBackground(Element background) {
+	public ViewBackgroundPainter parseBackground(Element background) {
 		if (background == null) {
 			return null;
 		}

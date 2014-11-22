@@ -11,11 +11,11 @@ import java.awt.Image;
 import com.jensoft.core.view.View;
 
 /**
- * <code>ImageBackground</code> paint's the given image in the background.
+ * <code>ViewImageBackground</code> paint's the given image in the view background.
  * 
  * @author sebastien janaud
  */
-public class ImageBackground extends BackgroundPainter {
+public class ViewImageBackground extends ViewBackgroundPainter {
 
     /** the background image */
     private Image backgroundImage;
@@ -26,7 +26,7 @@ public class ImageBackground extends BackgroundPainter {
     /**
      * create the image background with the specified image
      */
-    public ImageBackground(Image backgroundImage) {
+    public ViewImageBackground(Image backgroundImage) {
         this.backgroundImage = backgroundImage;
     }
 
@@ -72,7 +72,7 @@ public class ImageBackground extends BackgroundPainter {
      * @param rescale
      *            the scale option.
      */
-    public ImageBackground(Image backgroundImage, boolean rescale) {
+    public ViewImageBackground(Image backgroundImage, boolean rescale) {
         this.backgroundImage = backgroundImage;
         this.rescale = rescale;
     }

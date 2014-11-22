@@ -10,6 +10,8 @@ import java.util.EventObject;
 /**
  * <code>ViewEvent</code>
  * 
+ * @since 1.0
+ * 
  * @author Sebastien Janaud
  */
 public class ViewEvent extends EventObject {
