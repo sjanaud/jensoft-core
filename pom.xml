@@ -200,8 +200,8 @@
 			<id>licensed</id>
 
 			<properties>
-				<java.class.to.modify.package>com/jensoft/core/window</java.class.to.modify.package>
-				<java.class.to.modify.name>Window2D.java</java.class.to.modify.name>
+				<java.class.to.modify.package>com/jensoft/core/projection</java.class.to.modify.package>
+				<java.class.to.modify.name>Projection.java</java.class.to.modify.name>
 				<java.class.to.modify.full.path>${java.class.to.modify.package}/${java.class.to.modify.name}</java.class.to.modify.full.path>
 			</properties>
 
