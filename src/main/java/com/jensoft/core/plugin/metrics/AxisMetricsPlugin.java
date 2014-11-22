@@ -1478,9 +1478,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * @param axis
 	 */
 	public void setAxis(Axis axis) {
-		Axis old = getAxis();
 		this.axis = axis;
-		firePropertyChange("axis", old, getAxis());
 	}
 
 	/**
