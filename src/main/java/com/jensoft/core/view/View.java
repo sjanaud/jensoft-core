@@ -37,6 +37,7 @@ import com.jensoft.core.widget.WidgetFolder;
 /**
  * <code>View</code> defines the end chart view.
  * 
+ * @since 1.0
  * @author Sebastien Janaud
  */
 public class View extends JComponent implements ProjectionListener, ComponentListener, FocusListener, MouseListener {
@@ -99,9 +100,6 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 
 	/** the active window */
 	private Projection activeProjection;
-
-	/** view emitter */
-	private ViewEmitter viewEmitter;
 
 	/** view key */
 	private String viewKey;
