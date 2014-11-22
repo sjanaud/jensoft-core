@@ -92,7 +92,7 @@ public class CapturePlugin extends AbstractPlugin {
         String imageFilePath = dir + File.separator + fileName;
 
         File saveFile = new File(imageFilePath);
-        BufferedImage viewImage = getProjection().getView2D().getImageView(width,
+        BufferedImage viewImage = getProjection().getView2D().createViewEmitter().getImageView(width,
                                                                          height);
         viewImage.flush();
         ImageIO.write(viewImage, viewImageFormat.getFormat(), saveFile);
@@ -111,7 +111,7 @@ public class CapturePlugin extends AbstractPlugin {
      */
     public final BufferedImage captureViewAsImage(int width, int height,
             ViewImageFormat viewImageFormat) {
-        BufferedImage viewImage = getProjection().getView2D().getImageView(width,
+        BufferedImage viewImage = getProjection().getView2D().createViewEmitter().getImageView(width,
                                                                          height);
         viewImage.flush();
         return viewImage;
@@ -157,7 +157,7 @@ public class CapturePlugin extends AbstractPlugin {
             try {
 
                 View v2d = getProjection().getView2D();
-                final BufferedImage viewImage = getProjection().getView2D()
+                final BufferedImage viewImage = getProjection().getView2D().createViewEmitter()
                         .getImageView(v2d.getWidth(), v2d.getHeight());
                 viewImage.flush();
                 File saveFile = new File("savedimage." + format);
