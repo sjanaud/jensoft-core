@@ -192,7 +192,7 @@ public class PluginPlatform {
                                 h = p.height();
                             }
 
-                            BufferedImage image = v.getImageView(w, h);
+                            BufferedImage image = v.createViewEmitter().getImageView(w, h);
 
                             File portfolioDir = new File(portfolioDirectory);
                             portfolioDir.mkdirs();
