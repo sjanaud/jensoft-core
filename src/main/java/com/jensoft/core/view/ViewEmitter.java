@@ -5,6 +5,10 @@
  */
 package com.jensoft.core.view;
 
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -13,6 +17,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
+
+import com.jensoft.core.device.DevicePartComponent;
 
 /**
  * <code>ViewEmitter</code>
@@ -41,6 +47,150 @@ public class ViewEmitter {
     public ViewEmitter(View view) {
         this.view = view;
     }
+    
+    
+    /**
+	 * get the view as an image outside swing UI.
+	 * 
+	 * @param width
+	 *            the width to set
+	 * @param height
+	 *            the height to set
+	 * @return the image view
+	 */
+	public BufferedImage getImageView(int width, int height) {
+
+		if (width < 0 || height < 0) {
+			throw new IllegalArgumentException("view width and view height should be greater than zero");
+		}
+		
+
+		// image view
+		BufferedImage viewImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+		Graphics viewGraphics = viewImage.getGraphics();
+
+		Graphics2D g2d = (Graphics2D) viewGraphics;
+
+		
+		Dimension old = view.getSize();
+		
+		view.setSize(new Dimension(width, height));
+
+		// component part
+		ViewPartComponent northPart = (ViewPartComponent) view.getWindowComponent(ViewPart.North);
+		ViewPartComponent southPart = (ViewPartComponent) view.getWindowComponent(ViewPart.South);
+		ViewPartComponent eastPart = (ViewPartComponent) view.getWindowComponent(ViewPart.East);
+		ViewPartComponent westPart = (ViewPartComponent) view.getWindowComponent(ViewPart.West);
+		DevicePartComponent devicePart = (DevicePartComponent) view.getWindowComponent(ViewPart.Device);
+
+		// size component
+		northPart.setSize(width, view.getPlaceHolderAxisNorth());
+		southPart.setSize(width, view.getPlaceHolderAxisSouth());
+		eastPart.setSize(view.getPlaceHolderAxisEast(), view.getHeight() - view.getPlaceHolderAxisNorth() - view.getPlaceHolderAxisSouth());
+		westPart.setSize(view.getPlaceHolderAxisWest(), view.getHeight() - view.getPlaceHolderAxisNorth() - view.getPlaceHolderAxisSouth());
+		devicePart.setSize(view.getWidth() - view.getPlaceHolderAxisWest() - view.getPlaceHolderAxisEast(), view.getHeight() - view.getPlaceHolderAxisNorth() - view.getPlaceHolderAxisSouth());
+
+		// buffered image
+
+		BufferedImage northImage = null;
+		if (view.getPlaceHolderAxisNorth() > 0) {
+			northImage = new BufferedImage(view.getWidth(), view.getPlaceHolderAxisNorth(), BufferedImage.TYPE_INT_ARGB);
+			Graphics2D ng2d = (Graphics2D) northImage.getGraphics();
+			northPart.paintComponent(ng2d);
+			ng2d.dispose();
+
+		}
+
+		BufferedImage southImage = null;
+		if (view.getPlaceHolderAxisSouth() > 0) {
+			southImage = new BufferedImage(view.getWidth(), view.getPlaceHolderAxisSouth(), BufferedImage.TYPE_INT_ARGB);
+			Graphics2D sg2d = (Graphics2D) southImage.getGraphics();
+			southPart.paintComponent(sg2d);
+			sg2d.dispose();
+
+		}
+
+		BufferedImage eastImage = null;
+		if (view.getPlaceHolderAxisEast() > 0) {
+			eastImage = new BufferedImage(view.getPlaceHolderAxisEast(), view.getHeight() - view.getPlaceHolderAxisNorth() - view.getPlaceHolderAxisSouth(), BufferedImage.TYPE_INT_ARGB);
+			Graphics2D eg2d = (Graphics2D) eastImage.getGraphics();
+			eastPart.paintComponent(eg2d);
+			eg2d.dispose();
+
+		}
+
+		BufferedImage westImage = null;
+		if (view.getPlaceHolderAxisWest() > 0) {
+			westImage = new BufferedImage(view.getPlaceHolderAxisWest(), view.getHeight() - view.getPlaceHolderAxisNorth() - view.getPlaceHolderAxisSouth(), BufferedImage.TYPE_INT_ARGB);
+			Graphics2D wg2d = (Graphics2D) westImage.getGraphics();
+			westPart.paintComponent(wg2d);
+			wg2d.dispose();
+
+		}
+
+		BufferedImage deviceImage = null;
+		if (view.getWidth() - view.getPlaceHolderAxisWest() - view.getPlaceHolderAxisEast() > 0 && view.getHeight() - view.getPlaceHolderAxisNorth() - view.getPlaceHolderAxisSouth() > 0) {
+			deviceImage = new BufferedImage(view.getWidth() - view.getPlaceHolderAxisWest() - view.getPlaceHolderAxisEast(), view.getHeight() - view.getPlaceHolderAxisNorth() - view.getPlaceHolderAxisSouth(), BufferedImage.TYPE_INT_ARGB);
+			Graphics2D dg2d = (Graphics2D) deviceImage.getGraphics();
+			devicePart.paintComponent(dg2d);
+			dg2d.dispose();
+
+		}
+
+		// paint in image view
+
+		RenderingHints qualityHints = new RenderingHints(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+		qualityHints.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		 qualityHints.put(RenderingHints.KEY_DITHERING,
+		 RenderingHints.VALUE_DITHER_ENABLE);
+		// qualityHints.put(RenderingHints.KEY_ALPHA_INTERPOLATION,
+		// RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
+		// qualityHints.put(RenderingHints.KEY_RENDERING,
+		// RenderingHints.VALUE_RENDER_QUALITY);
+		// qualityHints.put(RenderingHints.KEY_COLOR_RENDERING,
+		// RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+		// qualityHints.put(RenderingHints.KEY_INTERPOLATION,
+		// RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+		// qualityHints.put(RenderingHints.KEY_FRACTIONALMETRICS,
+		// RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+		g2d.setRenderingHints(qualityHints);
+
+		if (view.getBackgroundPainter() != null) {
+			view.getBackgroundPainter().paintViewBackground(view,width,height, g2d);
+		}
+
+		if (northImage != null) {
+			g2d.drawImage(northImage, 0, 0, northImage.getWidth(), northImage.getHeight(), null);
+		}
+
+		if (southImage != null) {
+			g2d.drawImage(southImage, 0, view.getHeight() - view.getPlaceHolderAxisSouth(), southImage.getWidth(), southImage.getHeight(), null);
+			southImage.flush();
+		}
+
+		if (eastImage != null) {
+			g2d.drawImage(eastImage, view.getWidth() - view.getPlaceHolderAxisEast(), view.getPlaceHolderAxisNorth(), eastImage.getWidth(), eastImage.getHeight(), null);
+			eastImage.flush();
+		}
+
+		if (westImage != null) {
+			g2d.drawImage(westImage, 0, view.getPlaceHolderAxisNorth(), westImage.getWidth(), westImage.getHeight(), null);
+			westImage.flush();
+		}
+
+		if (deviceImage != null) {
+			g2d.drawImage(deviceImage, view.getPlaceHolderAxisWest(), view.getPlaceHolderAxisNorth(), deviceImage.getWidth(), deviceImage.getHeight(), null);
+			deviceImage.flush();
+		}
+
+		g2d.dispose();
+		viewImage.flush();
+
+		
+		if(old != null)
+			view.setSize(old);
+		return viewImage;
+	}
 
     /**
      * emit the template as {@link BufferedImage}
@@ -48,7 +198,7 @@ public class ViewEmitter {
      * @return the template as buffered image
      */
     public BufferedImage emitAsBufferedImage() {
-        return view.getImageView(view.getWidth(), view.getHeight());
+        return getImageView(view.getWidth(), view.getHeight());
     }
 
     /**
@@ -61,7 +211,7 @@ public class ViewEmitter {
      * @return the template as buffered image
      */
     public BufferedImage emitAsBufferedImage(int width, int height) {
-        return view.getImageView(width, height);
+        return getImageView(width, height);
     }
 
     /**

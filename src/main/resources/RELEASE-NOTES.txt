@@ -37,6 +37,9 @@
 	
 /done
 
+	View#getImageView
+		method-move	   : getImageView method from View  move to class ViewEmitter
+
 	RoundViewFill
 		classes-rename : RoundViewFill rename to ViewDefaultBackground
  	
