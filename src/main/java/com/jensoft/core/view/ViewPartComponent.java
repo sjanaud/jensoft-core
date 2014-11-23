@@ -37,7 +37,7 @@ public class ViewPartComponent extends JComponent implements MouseListener,
     private ViewPart viewPart;
 
     /** host view */
-    private View v2d;
+    private View view;
 
     /** lock plugin */
     boolean lockPlugins = true;
@@ -47,12 +47,12 @@ public class ViewPartComponent extends JComponent implements MouseListener,
      * 
      * @param windowPart
      *            the window part to set
-     * @param v2d
-     *            the view2D to set
+     * @param view
+     *            the view to set
      */
-    public ViewPartComponent(ViewPart viewPart, View v2d) {
+    public ViewPartComponent(ViewPart viewPart, View view) {
         this.viewPart = viewPart;
-        this.v2d = v2d;
+        this.view = view;
         addMouseListener(this);
         addMouseMotionListener(this);
         addMouseWheelListener(this);
@@ -164,7 +164,7 @@ public class ViewPartComponent extends JComponent implements MouseListener,
      */
     protected void paintPlugins(Graphics2D g2d) {
 
-        List<Projection> windows2D = v2d.getProjections();
+        List<Projection> windows2D = view.getProjections();
 
         // paint all window, exlude active window
         for (Projection w2d : windows2D) {
@@ -173,7 +173,7 @@ public class ViewPartComponent extends JComponent implements MouseListener,
                 continue;
             }
 
-            if (!w2d.equals(v2d.getActiveProjection())) {
+            if (!w2d.equals(view.getActiveProjection())) {
                 // System.out.println("paint NON ACTIVE window part for window :"+w2d.getName());
                 List<AbstractPlugin> plugins = w2d.getPluginRegistry();
                 Collections.sort(plugins,
@@ -182,7 +182,7 @@ public class ViewPartComponent extends JComponent implements MouseListener,
                     for (int j = 0; j < plugins.size(); j++) {
                         AbstractPlugin plugin = plugins.get(j);
                         // System.out.println("paint non active plugin : "+plugin.getName());
-                        plugin.paint(v2d, g2d, viewPart);
+                        plugin.paint(view, g2d, viewPart);
                     }
                 }
             }
@@ -190,10 +190,10 @@ public class ViewPartComponent extends JComponent implements MouseListener,
         }
 
         // paint active window
-        if (v2d.getActiveProjection() != null && v2d.getActiveProjection().isVisible()) {
+        if (view.getActiveProjection() != null && view.getActiveProjection().isVisible()) {
 
             // System.out.println("paint ACTIVE window part for window :"+v2d.getActiveWindow().getName());
-            List<AbstractPlugin> plugins = v2d.getActiveProjection()
+            List<AbstractPlugin> plugins = view.getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
                 Collections.sort(plugins,
@@ -201,13 +201,13 @@ public class ViewPartComponent extends JComponent implements MouseListener,
                 for (int j = 0; j < plugins.size(); j++) {
                     AbstractPlugin plugin = plugins.get(j);
                     // System.out.println("paint active plugin : "+plugin.getName());
-                    plugin.paint(v2d, g2d, viewPart);
+                    plugin.paint(view, g2d, viewPart);
                 }
             }
         }
 
         try {
-            v2d.getWidgetPlugin().paint(v2d, g2d, viewPart);
+            view.getWidgetPlugin().paint(view, g2d, viewPart);
         }
         catch (Throwable e) {
             e.printStackTrace();

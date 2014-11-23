@@ -26,7 +26,7 @@ import com.jensoft.core.plugin.function.Function;
  * </ul>
  * 
  * <p>
- *  {@link #getCurrentFunction()} method provides the source function points collection (x,y) that define this source function which is the solved for current window
+ *  {@link #getCurrentFunction()} method provides the source function points collection (x,y) that define this source function which is the solved for current projection
  * </p>
  * 
  * <p>
@@ -40,7 +40,7 @@ public interface SourceFunction {
 	/**get nature of this source function, for nature convention  x [y=f(x)] or y [x=f(y)] */
 	public FunctionNature getNature();
     
-    /** return the current solved function for window*/
+    /** return the current solved function for projection*/
     public List<Point2D> getCurrentFunction();
     
     /**return the host function for this source*/

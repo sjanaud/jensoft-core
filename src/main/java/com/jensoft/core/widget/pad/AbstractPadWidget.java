@@ -335,7 +335,7 @@ public abstract class AbstractPadWidget<P extends AbstractPlugin> extends Widget
         if (padGeometry == null || padGeometry.getRectNorth() == null) {
             return;
         }
-        getHost().getProjection().getView2D()
+        getHost().getProjection().getView()
                 .repaintDevice(padGeometry.getRectNorth().getBounds());
     }
 
@@ -346,7 +346,7 @@ public abstract class AbstractPadWidget<P extends AbstractPlugin> extends Widget
         if (padGeometry == null || padGeometry.getRectSouth() == null) {
             return;
         }
-        getHost().getProjection().getView2D()
+        getHost().getProjection().getView()
                 .repaintDevice(padGeometry.getRectSouth().getBounds());
     }
 
@@ -357,7 +357,7 @@ public abstract class AbstractPadWidget<P extends AbstractPlugin> extends Widget
         if (padGeometry == null || padGeometry.getRectWest() == null) {
             return;
         }
-        getHost().getProjection().getView2D()
+        getHost().getProjection().getView()
                 .repaintDevice(padGeometry.getRectWest().getBounds());
     }
 
@@ -368,7 +368,7 @@ public abstract class AbstractPadWidget<P extends AbstractPlugin> extends Widget
         if (padGeometry == null || padGeometry.getRectEast() == null) {
             return;
         }
-        getHost().getProjection().getView2D()
+        getHost().getProjection().getView()
                 .repaintDevice(padGeometry.getRectEast().getBounds());
     }
 
@@ -908,7 +908,7 @@ public abstract class AbstractPadWidget<P extends AbstractPlugin> extends Widget
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     protected void paintWidget(View v2d, Graphics2D g2d) {

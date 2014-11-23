@@ -52,7 +52,7 @@ public class StripeDefaultPainter extends AbstractStripePainter {
                 double gd = stripe.deviceStart;
 
                 Shape stripeShape = new Rectangle2D.Double(gd, 0,
-                                                         stripe.getDeviceInterval(), getManager().getWindow2D()
+                                                         stripe.getDeviceInterval(), getManager().getProjection()
                                                                  .getDevice2D().getDeviceHeight());
 
                 StripePaint bandPaint = stripe.getPaint();
@@ -105,7 +105,7 @@ public class StripeDefaultPainter extends AbstractStripePainter {
                 double gd = stripe.deviceStart;
 
 				Shape stripeShape = new Rectangle2D.Double(0, gd, getManager()
-                        .getWindow2D().getDevice2D().getDeviceWidth(),
+                        .getProjection().getDevice2D().getDeviceWidth(),
                                                          Math.abs(stripe.getDeviceInterval()));
 
                 StripePaint bandPaint = stripe.getPaint();

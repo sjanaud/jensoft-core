@@ -103,22 +103,22 @@ public class CrossMarker extends AbstractMarker {
             return;
         }
 
-        Projection window = getHost().getProjection();
+        Projection proj = getHost().getProjection();
 
         g2d.setComposite(java.awt.AlphaComposite.getInstance(
                                                              java.awt.AlphaComposite.SRC_OVER, 1.0f));
 
         Point2D targetP2dDevice = new Point2D.Double(getMarkerX(), getMarkerY());
 
-        Point2D targetP2dUser = window.pixelToUser(targetP2dDevice);
+        Point2D targetP2dUser = proj.pixelToUser(targetP2dDevice);
 
         g2d.setStroke(new BasicStroke());
 
         g2d.setColor(Color.RED);
 
-        g2d.drawLine((int) getMarkerX(), 0, (int) getMarkerX(), window
+        g2d.drawLine((int) getMarkerX(), 0, (int) getMarkerX(), proj
                 .getDevice2D().getDeviceHeight());
-        g2d.drawLine(0, (int) getMarkerY(), window.getDevice2D()
+        g2d.drawLine(0, (int) getMarkerY(), proj.getDevice2D()
                 .getDeviceWidth(), (int) getMarkerY());
 
         g2d.drawString("X = " + (int) targetP2dUser.getX() + " , Y = "
@@ -129,10 +129,10 @@ public class CrossMarker extends AbstractMarker {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
-    public final void paintMarker(View view2d, Graphics2D g2d) {
+    public final void paintMarker(View view, Graphics2D g2d) {
         paintCross(g2d);
 
     }

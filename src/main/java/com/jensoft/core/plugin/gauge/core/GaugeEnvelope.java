@@ -52,8 +52,8 @@ public abstract class GaugeEnvelope extends GaugePart{
 		 */
 		@Override
 		public void paintEnvelope(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 			int radius = radialGauge.getRadius();
 			int deltaInternal = 4;
 			int deltaExternal = 40;
@@ -278,8 +278,8 @@ public abstract class GaugeEnvelope extends GaugePart{
 		private Shape createFragment(double theta, double alpha, double internalRadius, double externalRadius, RadialGauge radialGauge) {
 			GeneralPath path = new GeneralPath();
 
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 			int radius = radialGauge.getRadius();
 
 			Point2D p1, p2, p3, p4, pc1, pc2, pc3, pc4;
@@ -323,8 +323,8 @@ public abstract class GaugeEnvelope extends GaugePart{
 		 * @return cisero arc
 		 */
 		private Shape createArcFragment(double theta1, double theta2, double alpha, double internalRadius, double externalRadius, RadialGauge radialGauge) {
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 			Arc2D a = new Arc2D.Double(centerX - internalRadius, centerY - internalRadius, 2 * internalRadius, 2 * internalRadius, theta1 + alpha + alpha / 2, theta2 - theta1 - 3 * alpha, Arc2D.OPEN);
 			return a;
 		}
@@ -337,8 +337,8 @@ public abstract class GaugeEnvelope extends GaugePart{
 			// System.out.println("paint cisero env.");
 			GaugePartBuffer part = getPartBuffer();
 			if (part == null) {
-				double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-				double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+				double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+				double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 
 				int deltaExternal = (int) (radialGauge.getRadius() / extendsRatio);
 				int radiusExternal = radialGauge.getRadius() + deltaExternal;

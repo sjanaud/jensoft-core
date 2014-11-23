@@ -135,7 +135,7 @@ public class GaugeBody extends GaugePart {
 	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {
 		for (GaugeMetricsPath path : getMetricsPaths()) {
 			if (path.getPartBuffer() == null) {
-				path.setWindow2d(getGauge().getWindow2D());
+				path.setProjection(getGauge().getProjection());
 				path.resetPath();
 				Shape s = path.getPathBinder().bindPath(radialGauge);
 				if (s != null) {

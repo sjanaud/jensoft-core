@@ -105,9 +105,9 @@ public abstract class X2DFrameUI extends JFrame {
 		} catch (X2DException e) {
 			e.printStackTrace();
 		}
-		View view2d = x2d.getView();
+		View view = x2d.getView();
 
-		tabSet.addComandTab(demoTab, view2d);
+		tabSet.addComandTab(demoTab, view);
 		final X2D fx2d = x2d;
 
 		JavaSourcePane uiSourcePane = new JavaSourcePane();

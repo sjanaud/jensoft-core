@@ -143,13 +143,13 @@ public abstract class AbstractPieAnimator implements PieListener {
     }
 
     /**
-     * get view2D that host this slice
+     * get view that host this slice
      * 
      * @param slice
      * @return host view
      */
-    public View getView2D(PieSlice slice) {
-        return slice.getHost().getHostPlugin().getProjection().getView2D();
+    public View getView(PieSlice slice) {
+        return slice.getHost().getHostPlugin().getProjection().getView();
     }
 
 }

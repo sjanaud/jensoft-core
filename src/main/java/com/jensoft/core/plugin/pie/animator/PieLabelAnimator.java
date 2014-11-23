@@ -140,7 +140,7 @@ public class PieLabelAnimator extends AbstractPieAnimator {
                 animateSlice.removeSliceLabel(sliceLabel);
             }
 
-            getView2D(animateSlice).repaintDevice();
+            getView(animateSlice).repaintDevice();
         }
     }
 

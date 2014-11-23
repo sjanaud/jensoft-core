@@ -32,7 +32,7 @@ import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.ViewBackgroundPainter;
 import com.jensoft.core.view.background.ViewDefaultBackground;
 import com.jensoft.core.x2d.X2DException;
-import com.jensoft.core.x2d.lang.X2DView2DElement;
+import com.jensoft.core.x2d.lang.X2DViewElement;
 
 /**
  * <code>X2DInflater</code>
@@ -42,7 +42,7 @@ import com.jensoft.core.x2d.lang.X2DView2DElement;
  * 
  * @author sebastien janaud
  */
-public class X2DViewInflater implements X2DView2DElement {
+public class X2DViewInflater implements X2DViewElement {
 
 	/** x2d template document */
 	private Document x2dDocument;
@@ -372,7 +372,7 @@ public class X2DViewInflater implements X2DView2DElement {
 				}
 
 				w2d.setName(name);
-				w2d.setWindowID(windowID);
+				w2d.setProjectionId(windowID);
 				w2d.setThemeColor(themeColor);
 
 				view2D.registerProjection(w2d);

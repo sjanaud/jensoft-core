@@ -19,11 +19,11 @@ import com.jensoft.core.view.View;
  */
 public class MetricsRenderContext {
 
-    /** view 2D */
-    private View view2D;
+    /** view */
+    private View view;
 
-    /** window 2D */
-    private Projection window2D;
+    /** projection */
+    private Projection projection;
 
     /** graphics context */
     private Graphics2D graphics2D;
@@ -37,18 +37,18 @@ public class MetricsRenderContext {
     /**
      * create the metrics render context with specified rendering context
      * 
-     * @param view2d
-     *            the view 2D
-     * @param window2d
-     *            the window 2D
+     * @param view
+     *            the view
+     * @param projection
+     *            the projection
      * @param graphics2d
      *            the graphics context
      */
-    public MetricsRenderContext(View view2d, Projection window2d,
+    public MetricsRenderContext(View view, Projection projection,
             Graphics2D graphics2d) {
-        view2D = view2d;
-        window2D = window2d;
-        graphics2D = graphics2d;
+        this.view = view;
+        this.projection = projection;
+        this.graphics2D = graphics2d;
     }
 
     /**
@@ -71,41 +71,41 @@ public class MetricsRenderContext {
     }
 
     /**
-     * get the view2D for this metrics render context
+     * get the view for this metrics render context
      * 
-     * @return view 2D
+     * @return view 
      */
-    public View getView2D() {
-        return view2D;
+    public View getView() {
+        return view;
     }
 
     /**
-     * set the view2D for this metrics render context
+     * set the view for this metrics render context
      * 
-     * @param view2d
-     *            the view 2D to set for this render context
+     * @param view
+     *            the view  to set for this render context
      */
-    public void setView2D(View view2d) {
-        view2D = view2d;
+    public void setView(View view) {
+        this.view = view;
     }
 
     /**
-     * get the window2D for this render context
+     * get the projection for this render context
      * 
-     * @return the window 2D
+     * @return projection
      */
-    public Projection getWindow2D() {
-        return window2D;
+    public Projection getProjection() {
+        return projection;
     }
 
     /**
-     * set the window 2D for this render context
+     * set the projection for this render context
      * 
-     * @param window2d
-     *            the window 2D to set
+     * @param projection
+     *            the projection to set
      */
-    public void setWindow2D(Projection window2d) {
-        window2D = window2d;
+    public void setProjection(Projection projection) {
+        this.projection = projection;
     }
 
     /**

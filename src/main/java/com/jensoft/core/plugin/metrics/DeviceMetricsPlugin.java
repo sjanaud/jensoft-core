@@ -504,7 +504,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 *            the reference to use for resolve metrics
 		 * @param metricsInterval
 		 *            the metrics interval to factor from the reference into
-		 *            window bound metrics
+		 *            projection bound metrics
 		 * @param deviceAxis
 		 *            the device axis zone to lay out this metrics
 		 */
@@ -520,7 +520,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 *            the reference to use for resolve metrics
 		 * @param metricsInterval
 		 *            the metrics interval to factor from the reference into
-		 *            window bound metrics *
+		 *            projection bound metrics *
 		 * @param markerPosition
 		 *            the marker position
 		 * @param deviceAxis
@@ -540,9 +540,9 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * WARNING : can be reboot on to much iteration.
 	 * </p>
 	 * <p>
-	 * You can use this manager when you build some static views without window
+	 * You can use this manager when you build some static views without projection
 	 * bound change<br>
-	 * it is discourage if you use tools that dynamically change the window
+	 * it is discourage if you use tools that dynamically change the projection
 	 * bounds because the manager can be reboot.
 	 * <p>
 	 * 
@@ -1006,20 +1006,15 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 			return getMetricsManager().getMetricsModels();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * com.jensoft.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(
-		 * com.jensoft.core.view.View2D, java.awt.Graphics2D,
-		 * com.jensoft.core.window.WindowPart)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 		 */
 		@Override
-		protected void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+		protected void paintMetrics(View view, Graphics2D g2d, ViewPart viewPart) {
 			if (!super.isAccessible(viewPart)) {
 				return;
 			}
-			super.createRenderContext(v2d, g2d);
+			super.createRenderContext(view, g2d);
 			super.assignType();
 			int axisSpacing = 0;
 			List<MetricsModelOLD> sequence = getMetricsManager().getSequenceMetrics();
@@ -1032,19 +1027,19 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 				//System.out.println("applicable model : " + model);
 				List<Metrics> metrics = model.generateMetrics();
 				if (super.deviceAxis == DeviceAxis.AxisX) {
-					paintMetricsX(v2d, g2d, metrics, super.baseLine, axisSpacing);
+					paintMetricsX(view, g2d, metrics, super.baseLine, axisSpacing);
 				}
 				if (super.deviceAxis == DeviceAxis.AxisY) {
-					paintMetricsY(v2d, g2d, metrics, super.baseLine, axisSpacing);
+					paintMetricsY(view, g2d, metrics, super.baseLine, axisSpacing);
 				}
 				axisSpacing = axisSpacing + model.getPixelAxisHolder();
 			}
 
 			if (super.deviceAxis == DeviceAxis.AxisX) {
-				paintMetricsXBaseLine(v2d, g2d, super.baseLine);
+				paintMetricsXBaseLine(view, g2d, super.baseLine);
 			}
 			if (super.deviceAxis == DeviceAxis.AxisY) {
-				paintMetricsYBaseLine(v2d, g2d, super.baseLine);
+				paintMetricsYBaseLine(view, g2d, super.baseLine);
 			}
 		}
 	}
@@ -1358,7 +1353,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		if (metricsManager.getMetricsBaseLineColor() != null) {
 			axisBaseLineColor = metricsManager.getMetricsBaseLineColor();
 		} else {
-			axisBaseLineColor = metricsManager.getRenderContext().getWindow2D().getThemeColor();
+			axisBaseLineColor = metricsManager.getRenderContext().getProjection().getThemeColor();
 		}
 		metricsPainter.doPaintLineMetrics(g2d, new Point2D.Double(0, deviceBaseLine.getY()), new Point2D.Double(getProjection().getDevice2D().getDeviceWidth(), deviceBaseLine.getY()), axisBaseLineColor);
 
@@ -1399,7 +1394,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		if (metricsManager.getMetricsBaseLineColor() != null) {
 			axisBaseLineColor = metricsManager.getMetricsBaseLineColor();
 		} else {
-			axisBaseLineColor = metricsManager.getRenderContext().getWindow2D().getThemeColor();
+			axisBaseLineColor = metricsManager.getRenderContext().getProjection().getThemeColor();
 		}
 		metricsPainter.doPaintLineMetrics(g2d, new Point2D.Double(deviceBaseLine.getX(), 0), new Point2D.Double(deviceBaseLine.getX(), getProjection().getDevice2D().getDeviceHeight()), axisBaseLineColor);
 

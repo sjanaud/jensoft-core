@@ -390,16 +390,16 @@ public class ModeledMetricsManagerOLD extends AbstractMetricsManager {
      */
     protected Metrics generateMetrics(double userValue, MetricsModelOLD model) {
         Metrics metrics = new Metrics(getType());
-        Projection window = getRenderContext().getWindow2D();
+        Projection proj = getRenderContext().getProjection();
         double deviceValue = 0;
         double maxPixelValue = 0;
         if (getType() == MetricsType.XMetrics) {
-            deviceValue = window.userToPixelX(userValue);
-            maxPixelValue = window.getPixelWidth();
+            deviceValue = proj.userToPixelX(userValue);
+            maxPixelValue = proj.getPixelWidth();
         }
         else if (getType() == MetricsType.YMetrics) {
-            deviceValue = window.userToPixelY(userValue);
-            maxPixelValue = window.getPixelHeight();
+            deviceValue = proj.userToPixelY(userValue);
+            maxPixelValue = proj.getPixelHeight();
         }
 
         if (deviceValue < 0 || deviceValue > maxPixelValue) {
@@ -488,27 +488,27 @@ public class ModeledMetricsManagerOLD extends AbstractMetricsManager {
          */
         public boolean isValid() {
 
-            Projection window = getMetricsManager().getRenderContext().getWindow2D();
+            Projection proj = getMetricsManager().getRenderContext().getProjection();
             boolean valid = false;
             BigDecimal userSize = null;
             BigDecimal startRef = null;
             BigDecimal pixelSize = null;
             BigDecimal maxUserValue = null;
             if (getMetricsManager().getType() == MetricsType.XMetrics) {
-                userSize = new BigDecimal(window.getUserWidth());
-                BigDecimal bd1 = new BigDecimal(window.getMinX()).divide(factor, RoundingMode.CEILING);
+                userSize = new BigDecimal(proj.getUserWidth());
+                BigDecimal bd1 = new BigDecimal(proj.getMinX()).divide(factor, RoundingMode.CEILING);
                 BigInteger bi1 = bd1.toBigInteger();
                 startRef = new BigDecimal(bi1).multiply(getFactor());
-                pixelSize = new BigDecimal(window.getPixelWidth());
-                maxUserValue = new BigDecimal(window.getMaxX());
+                pixelSize = new BigDecimal(proj.getPixelWidth());
+                maxUserValue = new BigDecimal(proj.getMaxX());
             }
             else if (getMetricsManager().getType() == MetricsType.YMetrics) {
-                userSize = new BigDecimal(window.getUserHeight());
-                BigDecimal bd1 = new BigDecimal(window.getMinY()).divide(factor, RoundingMode.CEILING);
+                userSize = new BigDecimal(proj.getUserHeight());
+                BigDecimal bd1 = new BigDecimal(proj.getMinY()).divide(factor, RoundingMode.CEILING);
                 BigInteger bi1 = bd1.toBigInteger();
                 startRef = new BigDecimal(bi1).multiply(getFactor());
-                pixelSize = new BigDecimal(window.getPixelHeight());
-                maxUserValue = new BigDecimal(window.getMaxY());
+                pixelSize = new BigDecimal(proj.getPixelHeight());
+                maxUserValue = new BigDecimal(proj.getMaxY());
             }
            
             int compare = (userSize.divide(factor, RoundingMode.HALF_EVEN))

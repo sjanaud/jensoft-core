@@ -12,42 +12,76 @@ import java.util.List;
 import com.jensoft.core.plugin.point.Point;
 import com.jensoft.core.projection.Projection;
 
+/**
+ * <code>AbstractPointManager</code>
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
+ *
+ */
 public abstract class AbstractPointManager implements PointLayoutManager {
 
-    private Projection window2D;
+	/**projection */
+    private Projection projection;
+    
+    /**point type*/
     private int type;
+    
+    /**point color*/
     private Color color;
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#getPoints()
+     */
     @Override
     public List<Point> getPoints() {
         return Collections.EMPTY_LIST;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#setProjection(com.jensoft.core.projection.Projection)
+     */
     @Override
-    public void setWindow2D(Projection w2d) {
-        window2D = w2d;
+    public void setProjection(Projection projection) {
+        this.projection = projection;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#getProjection()
+     */
     @Override
-    public Projection getWindow2D() {
-        return window2D;
+    public Projection getProjection() {
+        return projection;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#setType(int)
+     */
     @Override
     public void setType(int type) {
         this.type = type;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#getType()
+     */
     @Override
     public int getType() {
         return type;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#setPointColor(java.awt.Color)
+     */
     @Override
-    public void setPointColor(Color p) {
-        color = color;
+    public void setPointColor(Color color) {
+        this.color = color;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#getPointColor()
+     */
     @Override
     public Color getPointColor() {
         return color;

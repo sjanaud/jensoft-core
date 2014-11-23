@@ -17,7 +17,7 @@ import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 
 /**
- * <code></code> Stock plug-in takes the responsibility to paint commons stock
+ * <code>StockPlugin</code>  takes the responsibility to paint commons stock
  * charts
  * 
  * @since 1.0
@@ -129,16 +129,11 @@ public class StockPlugin extends AbstractPlugin {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
-	 * .View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
 	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
-		//System.out.println("paint layer "+windowPart.name());
 		for (StockLayer<?> layer : stockLayers) {
 			layer.solveLayer();
 			layer.paintLayer(v2d, g2d, viewPart);

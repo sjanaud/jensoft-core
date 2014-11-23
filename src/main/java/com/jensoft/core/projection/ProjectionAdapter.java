@@ -8,11 +8,11 @@ package com.jensoft.core.projection;
 /**
  * <code>ProjectionAdapter</codes>
  * 
+ * @since 1.0
  * @author sebastien janaud
  *
  */
 public class ProjectionAdapter implements ProjectionListener {
-
     
     /* (non-Javadoc)
      * @see com.jensoft.core.projection.ProjectionListener#projectionLockActive(com.jensoft.core.projection.ProjectionEvent)
@@ -27,7 +27,6 @@ public class ProjectionAdapter implements ProjectionListener {
     @Override
     public void projectionBoundChanged(ProjectionEvent w2dEvent) {
     }
-
     
     /* (non-Javadoc)
      * @see com.jensoft.core.projection.ProjectionListener#projectionUnlockActive(com.jensoft.core.projection.ProjectionEvent)
@@ -35,7 +34,6 @@ public class ProjectionAdapter implements ProjectionListener {
     @Override
     public void projectionUnlockActive(ProjectionEvent w2dEvent) {
     }
-
    
     /* (non-Javadoc)
      * @see com.jensoft.core.projection.ProjectionListener#projectionResized(com.jensoft.core.projection.ProjectionEvent)
@@ -44,6 +42,4 @@ public class ProjectionAdapter implements ProjectionListener {
     public void projectionResized(ProjectionEvent w2dEvent) {
     }
     
-    
-
 }

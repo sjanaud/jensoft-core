@@ -140,10 +140,10 @@ public class WidgetPlugin extends AbstractPlugin implements
         @Override
         public void run() {
             try {
-                getView().getWindowComponent(ViewPart.North).repaint();
+                getView().getViewPartComponent(ViewPart.North).repaint();
                 Thread.sleep(startDelay);
 
-                getView().getWindowComponent(ViewPart.North).repaint();
+                getView().getViewPartComponent(ViewPart.North).repaint();
                 while (effect) {
 
                     if (alpha < 0) {
@@ -160,7 +160,7 @@ public class WidgetPlugin extends AbstractPlugin implements
                         countCurentEffect = countCurentEffect + 1;
                         if (alpha >= 0 && alpha <= 1) {
 
-                            getView().getWindowComponent(ViewPart.North)
+                            getView().getViewPartComponent(ViewPart.North)
                                     .repaint();
                             Thread.sleep(behavior.getBehavior());
                         }
@@ -168,13 +168,13 @@ public class WidgetPlugin extends AbstractPlugin implements
 
                 }
 
-                getView().getWindowComponent(ViewPart.North).repaint();
+                getView().getViewPartComponent(ViewPart.North).repaint();
 
             }
             catch (InterruptedException e) {
                 Thread.currentThread().interrupt();
                 message = null;
-                getView().getWindowComponent(ViewPart.North).repaint();
+                getView().getViewPartComponent(ViewPart.North).repaint();
 
             }
         }
@@ -354,7 +354,7 @@ public class WidgetPlugin extends AbstractPlugin implements
 
         northMessage = msg;
         // destroyMessage();
-        getView().getWindowComponent(ViewPart.North).repaint();
+        getView().getViewPartComponent(ViewPart.North).repaint();
 
         // if(messageCleaner != null && messageCleaner.isAlive())
         // return;
@@ -383,7 +383,7 @@ public class WidgetPlugin extends AbstractPlugin implements
 
         g2d.setColor(getView().getActiveProjection().getThemeColor().darker());
         g2d.setFont(font);
-        JComponent comp = getView().getWindowComponent(ViewPart.North);
+        JComponent comp = getView().getViewPartComponent(ViewPart.North);
         g2d.drawString(northMessage, getView().getPlaceHolderAxisWest(),
                        comp.getHeight() - 5);
 
@@ -403,14 +403,14 @@ public class WidgetPlugin extends AbstractPlugin implements
         @Override
         public void run() {
             try {
-                getView().getWindowComponent(ViewPart.North).repaint();
+                getView().getViewPartComponent(ViewPart.North).repaint();
                 Thread.sleep(delay);
                 northMessage = null;
-                getView().getWindowComponent(ViewPart.North).repaint();
+                getView().getViewPartComponent(ViewPart.North).repaint();
             }
             catch (InterruptedException e) {
                 northMessage = null;
-                getView().getWindowComponent(ViewPart.North).repaint();
+                getView().getViewPartComponent(ViewPart.North).repaint();
                 Thread.currentThread().interrupt();
 
             }
@@ -425,7 +425,7 @@ public class WidgetPlugin extends AbstractPlugin implements
     private void paintPushingMessage(Graphics2D g2d) {
         Antialiasing a = Antialiasing.On;
         a.configureGraphics(g2d);
-        int northHeight = getView().getWindowComponent(ViewPart.North)
+        int northHeight = getView().getViewPartComponent(ViewPart.North)
                 .getHeight();
         synchronized (pushingMessages) {
             for (PushingMessage pm : pushingMessages) {

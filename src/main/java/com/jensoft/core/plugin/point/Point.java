@@ -11,8 +11,11 @@ import java.awt.Stroke;
 import java.awt.geom.Point2D;
 
 /**
- * 
+ * <code>Point</code>
  *
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public class Point {
 

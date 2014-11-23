@@ -53,25 +53,25 @@ public class ModeledMetricsTestlocaleSample extends View {
 		setPlaceHolder(100, ViewPart.South);
 		setPlaceHolder(80, ViewPart.West);
 
-		// create linear window
-		Projection.Linear window = new Projection.Linear(-700, 1200, -140, 300);
-		window.setThemeColor(RosePalette.LEMONPEEL);
-		registerProjection(window);
+		// create linear projection
+		Projection.Linear proj = new Projection.Linear(-700, 1200, -140, 300);
+		proj.setThemeColor(RosePalette.LEMONPEEL);
+		registerProjection(proj);
 
 		// register a zoom wheel plug-in
 		ZoomWheelPlugin wheel = new ZoomWheelPlugin();
-		window.registerPlugin(wheel);
+		proj.registerPlugin(wheel);
 
 		// register a translate with context menu plug-in and lock selected for
 		// direct use
 		TranslatePlugin translate = new TranslatePlugin();
 		translate.registerContext(new TranslateDefaultDeviceContext());
 		translate.registerWidget(new TranslateCompassWidget());
-		window.registerPlugin(translate);
+		proj.registerPlugin(translate);
 
 		// register a zoom box with context menu and widget history
 		ZoomBoxPlugin zoomBox = new ZoomBoxPlugin();
-		window.registerPlugin(zoomBox);
+		proj.registerPlugin(zoomBox);
 		zoomBox.registerWidget(new ZoomBoxDonutWidget());
 		zoomBox.registerContext(new ZoomBoxDefaultDeviceContext());
 
@@ -82,20 +82,17 @@ public class ModeledMetricsTestlocaleSample extends View {
 		//southMetrics.setPaintAxisBaseLine(true);
 		southMetrics.setMetricsBaseLineColor(Color.ORANGE);
 		southMetrics.setAxisSpacing(0);
-		window.registerPlugin(southMetrics);
+		proj.registerPlugin(southMetrics);
 		southMetrics.setMetricsFont(font);
 		southMetrics.setMetricsLabelColor(TangoPalette.SCARLETRED3.brighter());
 		southMetrics.setLocale(Locale.US);	
 
 		// create modeled axis plug-in in west part
 		AxisMetricsPlugin.ModeledMetrics westMetrics = new AxisMetricsPlugin.ModeledMetrics.W();
-		//window.registerPlugin(westMetrics);
 		westMetrics.setMetricsFont(font);
-//		westMetrics.setMetricsLabelColor(TangoPalette.SKYBLUE3.brighter());
-//		// westMetrics.setMetricsMarkerColor(TangoPalette.SKYBLUE3);
 
 		// register device outline plug-in
-	   window.registerPlugin(new OutlinePlugin());
+	    proj.registerPlugin(new OutlinePlugin());
 
 	}
 

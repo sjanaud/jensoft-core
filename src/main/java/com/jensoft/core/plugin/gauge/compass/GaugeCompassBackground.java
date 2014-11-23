@@ -275,7 +275,7 @@ public class GaugeCompassBackground extends GaugeBackground{
 		g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1f));
 		List<CompassCapTicker> needles = getNeedles();
 
-		g2d.setColor(radialGauge.getWindow2D().getThemeColor().darker());
+		g2d.setColor(radialGauge.getProjection().getThemeColor().darker());
 		g2d.setStroke(new BasicStroke(1f));
 		Color blue = new Color(68, 155, 180);
 		

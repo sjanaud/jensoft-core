@@ -80,10 +80,10 @@ public class PointSymbolLayer extends SymbolLayer<PointSymbol> {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#paintLayer(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart, com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest)
+     * @see com.jensoft.core.plugin.symbol.SymbolLayer#paintLayer(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart, com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest)
      */
     @Override
-    public void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart,
+    public void paintLayer(View view, Graphics2D g2d, ViewPart viewPart,
             PaintRequest paintRequest) {
 
         if (viewPart == ViewPart.Device && paintRequest == PaintRequest.SymbolLayer) {

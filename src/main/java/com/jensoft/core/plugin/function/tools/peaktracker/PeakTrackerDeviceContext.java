@@ -168,7 +168,7 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
                     else {
                         getHost().trackSource(iSerie2D);
                     }
-                    getHost().getProjection().getView2D().repaintDevice();
+                    getHost().getProjection().getView().repaintDevice();
                 }
             });
             count++;

@@ -45,10 +45,10 @@ public class GaugeCompass extends RadialGauge {
 	/** gauge radius parameters */
 	private static int gaugeRadius = 110;
 
-	/** gauge center x coordinate in user window projection */
+	/** gauge center x coordinate in user  projection */
 	private static int centerUserX = 0;
 
-	/** gauge center y coordinate in user window projection */
+	/** gauge center y coordinate in user  projection */
 	private static int centerUserY = 0;
 
 	/**

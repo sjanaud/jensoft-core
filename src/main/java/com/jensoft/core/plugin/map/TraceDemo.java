@@ -98,16 +98,15 @@ public class TraceDemo extends View {
 
 		super();
 		createPositions();
-		final Projection w2d = new Projection.Map();
-		w2d.setName("map window");
-		w2d.setThemeColor(Color.WHITE);
-		registerProjection(w2d);
+		final Projection proj = new Projection.Map();
+		proj.setThemeColor(Color.WHITE);
+		registerProjection(proj);
 
 		// TracePlugin tracePlugin = new TracePlugin();
 		// w2d.registerPlugin(tracePlugin);
 
 		MapLayerPlugin mapLayerPlugin = new MapLayerPlugin();
-		w2d.registerPlugin(mapLayerPlugin);
+		proj.registerPlugin(mapLayerPlugin);
 
 		HighwayLayer highwayLayer = new HighwayLayer();
 		mapLayerPlugin.registerLayer(highwayLayer);
@@ -187,10 +186,10 @@ public class TraceDemo extends View {
 				try {
 					// wait for view obtain a size from ui
 					Thread.sleep(2000);
-					System.out.println("min x " + w2d.getMinX());
-					System.out.println("max x " + w2d.getMaxX());
-					System.out.println("min y " + w2d.getMinY());
-					System.out.println("max y " + w2d.getMaxY());
+					System.out.println("min x " + proj.getMinX());
+					System.out.println("max x " + proj.getMaxX());
+					System.out.println("min y " + proj.getMinY());
+					System.out.println("max y " + proj.getMaxY());
 				} catch (InterruptedException e) {
 				}
 			}

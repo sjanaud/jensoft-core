@@ -83,7 +83,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
                     area.getPathFunction().setSolveGeometryRequest(true);
                 }
 
-                area.getPathFunction().setWindow2d(getProjection());
+                area.getPathFunction().setProjection(getProjection());
                 area.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
 
                 area.solveGeometry();
@@ -131,7 +131,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
             
             for (int c = 0; c < getFunctions().size(); c++) {
                 Curve curve = getFunctions().get(c);
-                curve.getPathFunction().setWindow2d(getProjection());
+                curve.getPathFunction().setProjection(getProjection());
                 curve.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
                 curve.getCurveDraw().paintCurve(g2d, curve);
             }
@@ -161,7 +161,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
             }
             for (int i = 0; i < getFunctions().size(); i++) {
                 Scatter scatterCurve = getFunctions().get(i);
-                scatterCurve.getPathFunction().setWindow2d(getProjection());
+                scatterCurve.getPathFunction().setProjection(getProjection());
                 scatterCurve.getPathFunction().setFontRenderContext(g2d.getFontRenderContext());
                 scatterCurve.solveScatter();
                 for (ScatterPoint scatter : scatterCurve.getScatters()) {
@@ -187,32 +187,29 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#onWindowRegister()
+     * @see com.jensoft.core.plugin.AbstractPlugin#onProjectionRegister()
      */
     @Override
     public void onProjectionRegister() {
 
         getProjection().addProjectionListener(new ProjectionListener() {
 
-           
             /* (non-Javadoc)
-             * @see com.jensoft.core.window.Window2DListener#window2DUnlockActive(com.jensoft.core.window.Window2DEvent)
+             * @see com.jensoft.core.projection.ProjectionListener#projectionUnlockActive(com.jensoft.core.projection.ProjectionEvent)
              */
             @Override
             public void projectionUnlockActive(ProjectionEvent w2dEvent) {
             }
 
-            
             /* (non-Javadoc)
-             * @see com.jensoft.core.window.Window2DListener#window2DLockActive(com.jensoft.core.window.Window2DEvent)
+             * @see com.jensoft.core.projection.ProjectionListener#projectionLockActive(com.jensoft.core.projection.ProjectionEvent)
              */
             @Override
             public void projectionLockActive(ProjectionEvent w2dEvent) {
             }
 
-           
             /* (non-Javadoc)
-             * @see com.jensoft.core.window.Window2DListener#window2DBoundChanged(com.jensoft.core.window.Window2DEvent)
+             * @see com.jensoft.core.projection.ProjectionListener#projectionBoundChanged(com.jensoft.core.projection.ProjectionEvent)
              */
             @Override
             public void projectionBoundChanged(ProjectionEvent w2dEvent) {
@@ -221,7 +218,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
                     /*
                      * this action code mean that the next time geometry will get, a new geometry path will be created
                      * for path
-                     * Indeed when a window bound has change the function projection is dirty and need new solve.
+                     * Indeed when a projection bound has change the function projection is dirty and need new solve.
                      */
 
                     function.getPathFunction().setSolveGeometryRequest(true);
@@ -232,7 +229,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
             
             /* (non-Javadoc)
-             * @see com.jensoft.core.window.Window2DListener#window2DResized(com.jensoft.core.window.Window2DEvent)
+             * @see com.jensoft.core.projection.ProjectionListener#projectionResized(com.jensoft.core.projection.ProjectionEvent)
              */
             @Override
             public void projectionResized(ProjectionEvent w2dEvent) {
@@ -266,11 +263,11 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
     }
 
     /**
-     * @param v2d
+     * @param view
      * @param g2d
      * @param viewPart
      */
-    protected abstract void paintFunctions(View v2d, Graphics2D g2d, ViewPart viewPart);
+    protected abstract void paintFunctions(View view, Graphics2D g2d, ViewPart viewPart);
 
     /**
      * paint the {@link GlyphMetric} from {@link MetricsPathFunction}
@@ -279,7 +276,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
      * @param g2d
      * @param viewPart
      */
-    protected void paintMetricsGlyphFunction(View v2d, Graphics2D g2d, ViewPart viewPart) {
+    protected void paintMetricsGlyphFunction(View view, Graphics2D g2d, ViewPart viewPart) {
         if (viewPart != ViewPart.Device) {
             return;
         }
@@ -314,9 +311,9 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
      * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
-        paintFunctions(v2d, g2d, viewPart);
-        paintMetricsGlyphFunction(v2d, g2d, viewPart);
+    protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+        paintFunctions(view, g2d, viewPart);
+        paintMetricsGlyphFunction(view, g2d, viewPart);
     }
 
 }

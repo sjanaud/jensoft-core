@@ -44,7 +44,7 @@ public class StaticMetricsManager extends AbstractMetricsManager {
     @Override
     public List<Metrics> getDeviceMetrics() {
         metricsDevice.clear();
-        Projection w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getProjection();
 
         if (getType() == MetricsType.XMetrics) {
 

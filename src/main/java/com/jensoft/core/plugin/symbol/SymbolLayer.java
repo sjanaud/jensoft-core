@@ -135,7 +135,7 @@ public abstract class SymbolLayer<S extends SymbolComponent> {
                                     ViewPart viewPart, PaintRequest paintRequest);
 
     /**
-     * return flatten symbol components in the windowBar2D
+     * return flatten symbol components in the projection
      * flatten mean include symbol registered in group
      * 
      * @return the flattened list of symbol components

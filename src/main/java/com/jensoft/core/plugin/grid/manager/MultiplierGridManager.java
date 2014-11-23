@@ -102,7 +102,7 @@ public class MultiplierGridManager extends AbstractGridManager {
 
         if (getGridOrientation() == GridOrientation.Vertical) {
 
-            int gridNumber = (int) (getWindow2D().getUserWidth() / multiplier);
+            int gridNumber = (int) (getProjection().getUserWidth() / multiplier);
             if (gridNumber < 0 || gridNumber > getGridMaxNumber() + 4) {
                 grids.clear();
                 return grids;
@@ -112,10 +112,10 @@ public class MultiplierGridManager extends AbstractGridManager {
             boolean flag1 = true;
             while (flag1) {
                 // visible grids to max x
-                if (ref + count1 * multiplier > getWindow2D().getMinX()) {
+                if (ref + count1 * multiplier > getProjection().getMinX()) {
                     Point2D p2dUser = new Point2D.Double(ref + count1
                             * multiplier, 0);
-                    Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                     Grid grid = new Grid(GridOrientation.Vertical);
                     grid.setGridDeviceValue(p2dDevice.getX());
@@ -138,7 +138,7 @@ public class MultiplierGridManager extends AbstractGridManager {
 
                 }
 
-                if (ref + count1 * multiplier > getWindow2D().getMaxX()) {
+                if (ref + count1 * multiplier > getProjection().getMaxX()) {
                     flag1 = false;
                 }
 
@@ -149,11 +149,11 @@ public class MultiplierGridManager extends AbstractGridManager {
             boolean flag2 = true;
             while (flag2) {
                 // visible grids to min x
-                if (ref - count2 * multiplier < getWindow2D().getMaxX()) {
+                if (ref - count2 * multiplier < getProjection().getMaxX()) {
 
                     Point2D p2dUser = new Point2D.Double(ref - count2
                             * multiplier, 0);
-                    Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                     Grid grid = new Grid(GridOrientation.Vertical);
                     grid.setGridDeviceValue(p2dDevice.getX());
@@ -176,7 +176,7 @@ public class MultiplierGridManager extends AbstractGridManager {
 
                 }
 
-                if (ref - count2 * multiplier < getWindow2D().getMinX()) {
+                if (ref - count2 * multiplier < getProjection().getMinX()) {
                     flag2 = false;
                 }
 
@@ -186,7 +186,7 @@ public class MultiplierGridManager extends AbstractGridManager {
         }
         if (getGridOrientation() == GridOrientation.Horizontal) {
 
-            int gridNumber = (int) (getWindow2D().getUserHeight() / multiplier);
+            int gridNumber = (int) (getProjection().getUserHeight() / multiplier);
             if (gridNumber < 0 || gridNumber > getGridMaxNumber() + 4) {
                 grids.clear();
                 return grids;
@@ -196,11 +196,11 @@ public class MultiplierGridManager extends AbstractGridManager {
             boolean flag1 = true;
             while (flag1) {
                 // visible grids to max y
-                if (ref + count1 * multiplier > getWindow2D().getMinY()) {
+                if (ref + count1 * multiplier > getProjection().getMinY()) {
 
                     Point2D p2dUser = new Point2D.Double(0, ref + count1
                             * multiplier);
-                    Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                     Grid grid = new Grid(GridOrientation.Horizontal);
                     grid.setGridDeviceValue(p2dDevice.getY());
@@ -223,7 +223,7 @@ public class MultiplierGridManager extends AbstractGridManager {
 
                 }
 
-                if (ref + count1 * multiplier > getWindow2D().getMaxY()) {
+                if (ref + count1 * multiplier > getProjection().getMaxY()) {
                     flag1 = false;
                 }
                 count1++;
@@ -233,10 +233,10 @@ public class MultiplierGridManager extends AbstractGridManager {
             boolean flag2 = true;
             while (flag2) {
                 // visible grids to min y
-                if (ref - count2 * multiplier < getWindow2D().getMaxY()) {
+                if (ref - count2 * multiplier < getProjection().getMaxY()) {
                     Point2D p2dUser = new Point2D.Double(0, ref - count2
                             * multiplier);
-                    Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                     Grid grid = new Grid(GridOrientation.Horizontal);
                     grid.setGridDeviceValue(p2dDevice.getY());
@@ -259,7 +259,7 @@ public class MultiplierGridManager extends AbstractGridManager {
 
                 }
 
-                if (ref - count2 * multiplier < getWindow2D().getMinY()) {
+                if (ref - count2 * multiplier < getProjection().getMinY()) {
                     flag2 = false;
                 }
 

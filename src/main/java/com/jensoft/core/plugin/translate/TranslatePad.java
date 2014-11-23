@@ -85,7 +85,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.widget.pad.AbstractPadWidget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     protected void paintWidget(View v2d, Graphics2D g2d) {

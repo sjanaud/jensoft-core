@@ -309,7 +309,7 @@ public class TranslatePlugin extends AbstractPlugin implements
             try {
                 fireTranslateStarted();
                 if (boundHistory.size() > 3) {
-                    Projection w2d = getProjection().getView2D().getActiveProjection();
+                    Projection w2d = getProjection().getView().getActiveProjection();
                     if (w2d instanceof Projection.Linear) {
                         TimingBoundFrame twb0 = boundHistory.get(0);
                         Projection.Linear wl = (Projection.Linear) w2d;
@@ -318,7 +318,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                         for (TimingBoundFrame twb : boundHistory) {
                             processTranslate(twb.getDx(), twb.getDy());
                             fireTranslate();
-                            getProjection().getView2D().getDevice2D().repaintDevice();
+                            getProjection().getView().getDevice2D().repaintDevice();
                             Thread.sleep(twb.getBoundDurationMillis());
                         }
                     }
@@ -693,7 +693,7 @@ public class TranslatePlugin extends AbstractPlugin implements
             finally {
                 unlockTranslate();
                 unPassiveTranslate();
-                getProjection().getView2D().repaintDevice();
+                getProjection().getView().repaintDevice();
                 cinematiques.clear();
             }
         }
@@ -747,17 +747,17 @@ public class TranslatePlugin extends AbstractPlugin implements
     }
 
     /**
-     * register a new dynamic item for the current window bound, register this
+     * register a new dynamic item for the current projection bound, register this
      * bound with the current time millisecond.
      */
     private void registerTimingBoundSequence() {
-        Projection w2d = getProjection().getView2D().getActiveProjection();
-        TimingBoundFrame translateWindowBound = new TimingBoundFrame(
+        Projection w2d = getProjection().getView().getActiveProjection();
+        TimingBoundFrame translateProjectionBound = new TimingBoundFrame(
                                                                      w2d.getMinX(), w2d.getMaxX(), w2d.getMinY(),
                                                                      w2d.getMaxY());
 
-        translateWindowBound.setDx(translateDx);
-        translateWindowBound.setDy(translateDy);
+        translateProjectionBound.setDx(translateDx);
+        translateProjectionBound.setDy(translateDy);
         // check previous bound duration
         int len = boundHistory.size();
         if (len > 0) {
@@ -771,7 +771,7 @@ public class TranslatePlugin extends AbstractPlugin implements
         }
 
         dynamicSequenceTime = System.currentTimeMillis();
-        boundHistory.add(translateWindowBound);
+        boundHistory.add(translateProjectionBound);
 
     }
 
@@ -790,8 +790,8 @@ public class TranslatePlugin extends AbstractPlugin implements
         if (w2d == null) {
             return;
         }
-        int w = getProjection().getView2D().getDevice2D().getDeviceWidth();
-        int h = getProjection().getView2D().getDevice2D().getDeviceHeight();
+        int w = getProjection().getView().getDevice2D().getDeviceWidth();
+        int h = getProjection().getView().getDevice2D().getDeviceHeight();
 
         Point2D pMinXMinYDevice = new Point2D.Double(-deltaDeviceX, h
                 - deltaDeviceY);
@@ -1085,10 +1085,10 @@ public class TranslatePlugin extends AbstractPlugin implements
                 int sleep = velocity.getVelocity();
 
                 int fragment = 20;
-                int deltaY = getProjection().getView2D().getDevice2D()
+                int deltaY = getProjection().getView().getDevice2D()
                         .getDeviceHeight()
                         / fragment;
-                int deltaX = getProjection().getView2D().getDevice2D()
+                int deltaX = getProjection().getView().getDevice2D()
                         .getDeviceWidth()
                         / fragment;
 
@@ -1096,7 +1096,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                     for (int i = factor; i > 0; i--) {
                         processTranslate(0, deltaY);
                         fireTranslate();
-                        getProjection().getView2D().repaint();
+                        getProjection().getView().repaint();
                         Thread.sleep(sleep);
                     }
                     interrupt();
@@ -1105,7 +1105,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                     for (int i = factor; i > 0; i--) {
                         processTranslate(0, -deltaY);
                         fireTranslate();
-                        getProjection().getView2D().repaint();
+                        getProjection().getView().repaint();
                         Thread.sleep(sleep);
                     }
                     interrupt();
@@ -1114,7 +1114,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                     for (int i = factor; i > 0; i--) {
                         processTranslate(deltaX, 0);
                         fireTranslate();
-                        getProjection().getView2D().repaint();
+                        getProjection().getView().repaint();
                         Thread.sleep(sleep);
                     }
                     interrupt();
@@ -1123,7 +1123,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                     for (int i = factor; i > 1; i--) {
                         processTranslate(-deltaX, 0);
                         fireTranslate();
-                        getProjection().getView2D().repaint();
+                        getProjection().getView().repaint();
                         Thread.sleep(sleep);
                     }
                     interrupt();
@@ -1132,7 +1132,7 @@ public class TranslatePlugin extends AbstractPlugin implements
                 setShifting(false);
                 stopTranslate(0, 0);
                 fireTranslateStopped();
-                getProjection().getView2D().repaint();
+                getProjection().getView().repaint();
 
             }
             catch (InterruptedException e) {

@@ -145,7 +145,7 @@ public class PullDownButtonWidget<P extends AbstractPlugin> extends ButtonWidget
         }
         int x = (int) getWidgetFolder().getX();
         int y = (int) getWidgetFolder().getY();
-        DevicePartComponent device = getHost().getProjection().getView2D()
+        DevicePartComponent device = getHost().getProjection().getView()
                 .getDevice2D();
         popup.show(device, x, y + (int) getWidgetFolder().getHeight());
     }
@@ -242,7 +242,7 @@ public class PullDownButtonWidget<P extends AbstractPlugin> extends ButtonWidget
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.button.ButtonWidget#paintButton(com.jensoft.core.view.View2D, java.awt.Graphics2D, java.awt.geom.Rectangle2D)
+     * @see com.jensoft.core.widget.button.ButtonWidget#paintButton(com.jensoft.core.view.View, java.awt.Graphics2D, java.awt.geom.Rectangle2D)
      */
     @Override
     public void paintButton(View v2d, Graphics2D g2d,

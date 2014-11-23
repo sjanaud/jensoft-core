@@ -238,13 +238,13 @@ public class PieLinearEffect extends AbstractPieEffect {
 					if (effect1.isShifting()) {
 						throw new InterruptedException("effect is already shifting.");
 					}
-					pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+					pie.getHostPlugin().getProjection().getView().repaintDevice();
 					effect1.setShifting(true);
 					while (true) {
 						for (int i = 0; i < 90; i++) {
 							effect1.setIncidenceAngleDegree(i * 4);
 							Thread.sleep(20);
-							pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+							pie.getHostPlugin().getProjection().getView().repaintDevice();
 						}
 					}
 				} else if (pie.getPieEffect() instanceof PieCompoundEffect) {
@@ -256,12 +256,12 @@ public class PieLinearEffect extends AbstractPieEffect {
 							if (effect1.isShifting()) {
 								throw new InterruptedException("effect is already shifting.");
 							}
-							pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+							pie.getHostPlugin().getProjection().getView().repaintDevice();
 							while (true) {
 								for (int j = 0; j < 90; j++) {
 									effect1.setIncidenceAngleDegree(j * 4);
 									Thread.sleep(20);
-									pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+									pie.getHostPlugin().getProjection().getView().repaintDevice();
 								}
 							}
 						}

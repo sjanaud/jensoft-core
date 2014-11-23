@@ -17,13 +17,13 @@ import com.jensoft.core.sharedicon.common.Common;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 
-public class WindowShiftPlugin extends AbstractPlugin {
+public class ProjectionShiftPlugin extends AbstractPlugin {
 
-	public WindowShiftPlugin() {
+	public ProjectionShiftPlugin() {
 		registerContext(new WindowShiftPluginDeviceContext());
 	}
 	
-	public class WindowShiftPluginDeviceContext extends ContextEntry<WindowShiftPlugin> {
+	public class WindowShiftPluginDeviceContext extends ContextEntry<ProjectionShiftPlugin> {
 
 		 /** shift menu */
 	    private JMenu shiftMenu;
@@ -47,7 +47,7 @@ public class WindowShiftPlugin extends AbstractPlugin {
 			shiftMenu = new JMenu("Windows");
 			shiftMenu.setIcon(shiftIcon);
 			
-			List<Projection> windows =  getHost().getProjection().getView2D().getProjections();
+			List<Projection> windows =  getHost().getProjection().getView().getProjections();
 			int count =1;
 			for (final Projection window2d : windows) {
 				
@@ -64,8 +64,8 @@ public class WindowShiftPlugin extends AbstractPlugin {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						getHost().getProjection().getView2D().setActiveProjection(window2d);
-						getHost().getProjection().getView2D().repaintView();
+						getHost().getProjection().getView().setActiveProjection(window2d);
+						getHost().getProjection().getView().repaintView();
 					}
 				});
 			}

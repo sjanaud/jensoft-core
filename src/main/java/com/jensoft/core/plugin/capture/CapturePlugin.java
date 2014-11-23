@@ -92,7 +92,7 @@ public class CapturePlugin extends AbstractPlugin {
         String imageFilePath = dir + File.separator + fileName;
 
         File saveFile = new File(imageFilePath);
-        BufferedImage viewImage = getProjection().getView2D().createViewEmitter().getImageView(width,
+        BufferedImage viewImage = getProjection().getView().createViewEmitter().getImageView(width,
                                                                          height);
         viewImage.flush();
         ImageIO.write(viewImage, viewImageFormat.getFormat(), saveFile);
@@ -111,7 +111,7 @@ public class CapturePlugin extends AbstractPlugin {
      */
     public final BufferedImage captureViewAsImage(int width, int height,
             ViewImageFormat viewImageFormat) {
-        BufferedImage viewImage = getProjection().getView2D().createViewEmitter().getImageView(width,
+        BufferedImage viewImage = getProjection().getView().createViewEmitter().getImageView(width,
                                                                          height);
         viewImage.flush();
         return viewImage;
@@ -156,14 +156,14 @@ public class CapturePlugin extends AbstractPlugin {
         public void actionPerformed(ActionEvent e) {
             try {
 
-                View v2d = getProjection().getView2D();
-                final BufferedImage viewImage = getProjection().getView2D().createViewEmitter()
+                View v2d = getProjection().getView();
+                final BufferedImage viewImage = getProjection().getView().createViewEmitter()
                         .getImageView(v2d.getWidth(), v2d.getHeight());
                 viewImage.flush();
                 File saveFile = new File("savedimage." + format);
                 JFileChooser chooser = new JFileChooser();
                 chooser.setSelectedFile(saveFile);
-                int rval = chooser.showSaveDialog(getProjection().getView2D());
+                int rval = chooser.showSaveDialog(getProjection().getView());
                 if (rval == JFileChooser.APPROVE_OPTION) {
                     saveFile = chooser.getSelectedFile();
 

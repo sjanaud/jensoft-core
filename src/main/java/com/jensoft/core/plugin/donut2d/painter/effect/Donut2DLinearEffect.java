@@ -308,13 +308,13 @@ class Donut2DShiftIncidence extends Thread {
             if (effect1.isShifting()) {
                 throw new InterruptedException("effect is already shifting.");
             }
-            donut2D.getHostPlugin().getProjection().getView2D().repaintDevice();
+            donut2D.getHostPlugin().getProjection().getView().repaintDevice();
             while (true) {
 
                 for (int i = 0; i < 90; i++) {
                     effect1.setIncidenceAngleDegree(i * 4);
                     Thread.sleep(20);
-                    donut2D.getHostPlugin().getProjection().getView2D()
+                    donut2D.getHostPlugin().getProjection().getView()
                             .repaintDevice();
                 }
             }

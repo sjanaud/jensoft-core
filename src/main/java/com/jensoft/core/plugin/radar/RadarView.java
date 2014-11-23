@@ -21,7 +21,7 @@ public class RadarView extends View {
     /** uid */
     private static final long serialVersionUID = -8598481995145789973L;
 
-    /** window2D associate to this view and radar plugin */
+    /** projection associate to this view and radar plugin */
     private Projection.Linear radarProjection;
 
     /** radar plugin */
@@ -41,7 +41,7 @@ public class RadarView extends View {
 
     private void createProjection() {
         radarProjection = new Projection.Linear(-1, 1, -1, 1);
-        radarProjection.setName("compatible pie window");
+        radarProjection.setName("compatible radar projection");
         registerProjection(radarProjection);
     }
 

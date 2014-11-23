@@ -57,7 +57,7 @@ public class RayView extends View {
     }
 
     /**
-     * register the specified plugin into this view window2D
+     * register the specified plugin into this view projection
      * 
      * @param plugin
      *            the plugin to register
@@ -77,7 +77,7 @@ public class RayView extends View {
     }
 
     /**
-     * create compatible window according to specified constructor parameters
+     * create compatible projection according to specified constructor parameters
      * 
      * @param minx
      *            the minimum x coordinate value
@@ -94,7 +94,7 @@ public class RayView extends View {
     }
 
     /**
-     * register bar plug in in internal window of this view
+     * register bar plug in in internal projection of this view
      */
     private void registerPlugin() {
         rayPlugin = new RayPlugin();
@@ -124,7 +124,7 @@ public class RayView extends View {
     }
 
     /**
-     * @return the ray window
+     * @return the ray projection
      */
     public Projection getProjection() {
         return projection;

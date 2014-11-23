@@ -114,7 +114,7 @@ public class FlowMetricsManager extends AbstractMetricsManager {
     @Override
     public List<Metrics> getDeviceMetrics() {
         deviceMetrics.clear();
-        Projection w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getProjection();
         double interval = flowEnd - flowStart;
 
         int metricsCount = (int) (interval / flowInterval);

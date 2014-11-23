@@ -544,7 +544,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * @param g2d
 	 *            the graphics context to paint
 	 * @param viewPart
-	 *            to window part to paint
+	 *            to view part to paint
 	 */
 	protected void paintRayAxisLabel(Graphics2D g2d, ViewPart viewPart) {
 

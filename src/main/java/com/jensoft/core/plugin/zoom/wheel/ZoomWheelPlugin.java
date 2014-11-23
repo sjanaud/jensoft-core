@@ -322,9 +322,7 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 			return;
 		}
 
-		// if (getWindow2D().getWindowMetricsMode() !=
-		// Window2D.WINDOW_METRICSMODE_LINEAR)
-		// return; // for the moment ;o)
+		//TODO : check projection nature
 
 		lockWheel();
 		int rotation = mwe.getWheelRotation();
@@ -361,8 +359,8 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 				Thread.sleep(1000);
 				unlockWheel();
 				zoomMessage = null;
-				if (getProjection() != null && getProjection().getView2D() != null) {
-					getProjection().getView2D().getWindowComponent(ViewPart.North).repaint();
+				if (getProjection() != null && getProjection().getView() != null) {
+					getProjection().getView().getViewPartComponent(ViewPart.North).repaint();
 				}
 
 			} catch (InterruptedException e) {
@@ -380,10 +378,10 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 		if (zoomMessage != null) {
 			g2d.setColor(getProjection().getThemeColor().darker());
 			g2d.setFont(InputFonts.getFont(InputFonts.ELEMENT, 12));
-			JComponent comp = getProjection().getView2D().getWindowComponent(ViewPart.North);
+			JComponent comp = getProjection().getView().getViewPartComponent(ViewPart.North);
 
 			if (zoomMessage != null) {
-				g2d.drawString(zoomMessage, getProjection().getView2D().getPlaceHolderAxisWest(), comp.getHeight() - 5);
+				g2d.drawString(zoomMessage, getProjection().getView().getPlaceHolderAxisWest(), comp.getHeight() - 5);
 			}
 
 			if (messageCleaner == null) {
@@ -404,7 +402,7 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 	 */
 	@Override
 	public void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
-		// if (viewPart != WindowPart.North) {
+		// if (viewPart != ViewPart.North) {
 		// return;
 		// }
 		// paintZooming(g2d);

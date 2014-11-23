@@ -50,18 +50,16 @@ public class MarkerIcon extends AbstractMarker {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     public final void paintMarker(View view2d, Graphics2D g2d) {
-
         if (icon != null) {
             g2d.drawImage(icon.getImage(),
                           (int) (getMarkerPoint().getX() - icon.getIconWidth() / 2),
                           (int) (getMarkerPoint().getY() - icon.getIconHeight()),
                           null);
         }
-
     }
 
 }

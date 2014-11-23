@@ -246,14 +246,14 @@ public class TimeMetricsManager extends AbstractMetricsManager {
      * @return timing sequence
      */
     public List<TimeModel> getTimingSequence() {
-        Projection.Time timeWindow = getTimingWindow();
+        Projection.Time timeProjection = getTimingProjection();
         Collections.sort(timingModels, modelComparator);
         List<TimeModel> sequence = new ArrayList<TimeModel>();
         int rank = 0;
         for (TimeModel timingManager : timingModels) {
-            long windowTimeMillis = timeWindow.durationMillis();
+            long windowTimeMillis = timeProjection.durationMillis();
             long modelTimeMillis = timingManager.getMillis();
-            if ((windowTimeMillis / modelTimeMillis) * timingManager.getPixelLabelHolder() < timeWindow
+            if ((windowTimeMillis / modelTimeMillis) * timingManager.getPixelLabelHolder() < timeProjection
                     .getTimeDurationPixel()) {
                 timingManager.setRank(rank++);
                 sequence.add(timingManager);
@@ -493,28 +493,28 @@ public class TimeMetricsManager extends AbstractMetricsManager {
      * 
      * @return time window
      */
-    public Projection.Time getTimingWindow() {
-        Projection window = getRenderContext().getWindow2D();
-        if (window instanceof Linear) {
+    public Projection.Time getTimingProjection() {
+        Projection proj = getRenderContext().getProjection();
+        if (proj instanceof Linear) {
             if (getType() == MetricsType.XMetrics) {
-                Projection.TimeX timeX = new Projection.TimeX(new Date(new Double(window.getMinX()).longValue()),
-                                                          new Date(new Double(window.getMaxX()).longValue()),
-                                                          window.getMinY(), window.getMaxY());
-                timeX.setDevice2D(window.getDevice2D());
-                timeX.setView2D(window.getView2D());
+                Projection.TimeX timeX = new Projection.TimeX(new Date(new Double(proj.getMinX()).longValue()),
+                                                          new Date(new Double(proj.getMaxX()).longValue()),
+                                                          proj.getMinY(), proj.getMaxY());
+                timeX.setDevice2D(proj.getDevice2D());
+                timeX.setView(proj.getView());
                 return timeX;
             }
             else if (getType() == MetricsType.YMetrics) {
-                Projection.TimeY timeY = new Projection.TimeY(window.getMinX(), window.getMaxX(),
-                                                          new Date(new Double(window.getMinY()).longValue()),
-                                                          new Date(new Double(window.getMaxY()).longValue()));
-                timeY.setDevice2D(window.getDevice2D());
-                timeY.setView2D(window.getView2D());
+                Projection.TimeY timeY = new Projection.TimeY(proj.getMinX(), proj.getMaxX(),
+                                                          new Date(new Double(proj.getMinY()).longValue()),
+                                                          new Date(new Double(proj.getMaxY()).longValue()));
+                timeY.setDevice2D(proj.getDevice2D());
+                timeY.setView(proj.getView());
                 return timeY;
             }
         }
-        if (window instanceof Time) {
-            return (Projection.Time) window;
+        if (proj instanceof Time) {
+            return (Projection.Time) proj;
         }
         return null;
     }
@@ -530,7 +530,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         TimePointMetrics metrics = new TimePointMetrics(getType());
         metrics.setTime(time.getTime());
         double userValue = new Long(time.getTimeInMillis()).doubleValue();
-        Projection.Time timingWindow = getTimingWindow();
+        Projection.Time timingWindow = getTimingProjection();
         double deviceValue = timingWindow.timeToPixel(time.getTime());
         double max = timingWindow.getTimeDurationPixel();
 
@@ -579,8 +579,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         TimeDurationMetrics durationMetrics = new TimeDurationMetrics(getType());
         double userValue = new Long(middleTime.getTimeInMillis()).doubleValue();
-        // Window2D.Time timingWindow = (Window2D.Time) getRenderContext().getWindow2D();
-        Projection.Time timingWindow = getTimingWindow();
+        Projection.Time timingWindow = getTimingProjection();
         double deviceValue = timingWindow.timeToPixel(middleTime.getTime());
         double max = timingWindow.getTimeDurationPixel();
 
@@ -806,7 +805,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -876,7 +875,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -945,7 +944,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1015,7 +1014,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1085,7 +1084,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1155,7 +1154,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1225,7 +1224,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1294,7 +1293,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1363,7 +1362,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1431,7 +1430,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1501,7 +1500,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
@@ -1604,7 +1603,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 0, 0, 0, 0);
@@ -1673,7 +1672,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
         @Override
         public List<Metrics> generateMetrics() {
             Calendar cal = Calendar.getInstance();
-            Projection.Time time = getTimingManager().getTimingWindow();
+            Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
             ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 0, 0, 0, 0);

@@ -29,7 +29,7 @@ import com.jensoft.core.device.DevicePartComponent;
  */
 public class ViewEmitter {
 
-    /** view2D */
+    /** view */
     private View view;
 
     /**
@@ -76,11 +76,11 @@ public class ViewEmitter {
 		view.setSize(new Dimension(width, height));
 
 		// component part
-		ViewPartComponent northPart = (ViewPartComponent) view.getWindowComponent(ViewPart.North);
-		ViewPartComponent southPart = (ViewPartComponent) view.getWindowComponent(ViewPart.South);
-		ViewPartComponent eastPart = (ViewPartComponent) view.getWindowComponent(ViewPart.East);
-		ViewPartComponent westPart = (ViewPartComponent) view.getWindowComponent(ViewPart.West);
-		DevicePartComponent devicePart = (DevicePartComponent) view.getWindowComponent(ViewPart.Device);
+		ViewPartComponent northPart = (ViewPartComponent) view.getViewPartComponent(ViewPart.North);
+		ViewPartComponent southPart = (ViewPartComponent) view.getViewPartComponent(ViewPart.South);
+		ViewPartComponent eastPart = (ViewPartComponent) view.getViewPartComponent(ViewPart.East);
+		ViewPartComponent westPart = (ViewPartComponent) view.getViewPartComponent(ViewPart.West);
+		DevicePartComponent devicePart = (DevicePartComponent) view.getViewPartComponent(ViewPart.Device);
 
 		// size component
 		northPart.setSize(width, view.getPlaceHolderAxisNorth());

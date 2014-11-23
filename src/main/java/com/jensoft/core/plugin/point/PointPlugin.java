@@ -13,7 +13,7 @@ import com.jensoft.core.plugin.point.painter.PointPainter;
 import com.jensoft.core.view.View;
 
 /**
- * MetricsLayout defines how to lay out the window point
+ * <code>PointPlugin</code> defines how to lay out the projection point
  */
 public class PointPlugin extends AbstractPointPlugin {
 
@@ -46,9 +46,12 @@ public class PointPlugin extends AbstractPointPlugin {
         this.painter = painter;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.point.AbstractPointPlugin#doPaintPoints(com.jensoft.core.view.View, java.awt.Graphics2D)
+     */
     @Override
     public void doPaintPoints(View v2d, Graphics2D g2d) {
-        manager.setWindow2D(getProjection());
+        manager.setProjection(getProjection());
         painter.setLayout(manager);
         painter.doPaintPoint(g2d);
     }

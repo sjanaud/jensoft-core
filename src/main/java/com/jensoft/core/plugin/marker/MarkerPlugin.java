@@ -105,7 +105,7 @@ public class MarkerPlugin extends AbstractPlugin implements
     public void lockSelected() {
         super.lockSelected();
         getProjection()
-                .getView2D()
+                .getView()
                 .getWidgetPlugin()
                 .pushMessage("LOCK " + getName().toUpperCase(), this,
                              PushingBehavior.Fast);
@@ -250,10 +250,10 @@ public class MarkerPlugin extends AbstractPlugin implements
 
     private void pasteNewMarker(AbstractMarker marker) {
         marker.setHost(this);
-        Projection window = getProjection();
+        Projection proj = getProjection();
         Point2D p2dCross = new Point2D.Double(floatingMarker.getMarkerX(),
                                               floatingMarker.getMarkerY());
-        Point2D p2dCrossUser = window.pixelToUser(p2dCross);
+        Point2D p2dCrossUser = proj.pixelToUser(p2dCross);
 
         marker.setMarkerX(p2dCrossUser.getX());
         marker.setMarkerY(p2dCrossUser.getY());

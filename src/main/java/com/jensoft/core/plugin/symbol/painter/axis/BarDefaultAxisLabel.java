@@ -353,7 +353,7 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
             ViewPart viewPart) {
 
         SymbolPlugin bsp = bar.getHost();
-        View v2d = bar.getHost().getProjection().getView2D();
+        View v2d = bar.getHost().getProjection().getView();
 
         if (font == null) {
             setFont(new Font("Dialog", Font.PLAIN, 12));
@@ -517,7 +517,7 @@ public class BarDefaultAxisLabel extends AbstractBarAxisLabel {
             ViewPart viewPart) {
 
         SymbolPlugin bsp = bar.getHost();
-        View v2d = bar.getHost().getProjection().getView2D();
+        View v2d = bar.getHost().getProjection().getView();
 
         if (font == null) {
             setFont(new Font("Dialog", Font.PLAIN, 12));

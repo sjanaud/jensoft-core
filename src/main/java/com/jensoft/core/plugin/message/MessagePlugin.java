@@ -237,7 +237,7 @@ public class MessagePlugin extends AbstractPlugin implements
      */
     public void showMessage(int index, Slide slide) {
 
-        DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+        DevicePartComponent comp = getProjection().getView().getDevice2D();
         if (volatileMessage != null) {
             comp.remove(volatileMessage);
         }
@@ -302,7 +302,7 @@ public class MessagePlugin extends AbstractPlugin implements
 
         @Override
         public void run() {
-            DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+            DevicePartComponent comp = getProjection().getView().getDevice2D();
             try {
                 if (toIndex > fromIndex) {
                     for (int i = fromIndex; i <= toIndex; i++) {
@@ -364,9 +364,6 @@ public class MessagePlugin extends AbstractPlugin implements
             if (msgToClose.isLockMinimize()) {
                 msgToClose.setLockMinimize(false);
             }
-            // DevicePartComponent comp = getWindow2D().getView2D().getDevice2D();
-            // comp.remove(msgToClose);
-            // comp.repaint();
             unshow = new VolatileMessageUnshow(msgToClose, Slide.NextMessage);
             unshow.start();
 
@@ -380,7 +377,7 @@ public class MessagePlugin extends AbstractPlugin implements
      *            the message to show
      */
     public void showVolatileMessage(Message message) {
-        DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+        DevicePartComponent comp = getProjection().getView().getDevice2D();
 
         if (unshow != null && unshow.isAlive()) {
             unshow.interrupt();
@@ -409,7 +406,7 @@ public class MessagePlugin extends AbstractPlugin implements
      *            the message to show
      */
     public void showVolatileMessage(Message message, long waitAndUnshow) {
-        DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+        DevicePartComponent comp = getProjection().getView().getDevice2D();
 
         if (unshow != null && unshow.isAlive()) {
             unshow.interrupt();
@@ -452,7 +449,7 @@ public class MessagePlugin extends AbstractPlugin implements
      */
     public void unshowVolatileMessage() {
         if (volatileMessage != null) {
-            DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+            DevicePartComponent comp = getProjection().getView().getDevice2D();
             comp.remove(volatileMessage);
             volatileMessage = null;
         }
@@ -482,7 +479,7 @@ public class MessagePlugin extends AbstractPlugin implements
             sliding = true;
             try {
                 if (m != null) {
-                    getProjection().getView2D().repaintDevice();
+                    getProjection().getView().repaintDevice();
 
                     int devicewidth = getProjection().getDevice2D().getDeviceWidth();
 
@@ -501,11 +498,11 @@ public class MessagePlugin extends AbstractPlugin implements
                                 m.setBounds((int) currentInitialBound.getX() + count++ * 20,
                                             (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
                             }
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                             Thread.sleep(10);
                         }
 
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                     }
 
                     if (slide == Slide.NextMessage) {
@@ -519,21 +516,21 @@ public class MessagePlugin extends AbstractPlugin implements
                                 m.setBounds((int) currentInitialBound.getX() - count++ * 20,
                                             (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
                             }
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                             Thread.sleep(10);
                         }
 
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                     }
 
                 }
             }
             catch (Exception e) {
-                DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+                DevicePartComponent comp = getProjection().getView().getDevice2D();
                 comp.remove(m);
                 Thread.currentThread().interrupt();
             }
-            DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+            DevicePartComponent comp = getProjection().getView().getDevice2D();
             comp.remove(m);
             sliding = false;
         }
@@ -553,7 +550,7 @@ public class MessagePlugin extends AbstractPlugin implements
             this.m = m;
             this.slide = slide;
             if (m != null) {
-                DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+                DevicePartComponent comp = getProjection().getView().getDevice2D();
                 int x = (comp.getWidth() / 2 - m.getMessageWidth() / 2);
                 int y = (comp.getHeight() / 2 - m.getMessageHeight() / 2);
                 int w = m.getMessageWidth();
@@ -598,7 +595,7 @@ public class MessagePlugin extends AbstractPlugin implements
 
                 if (m != null) {
                     m.setLockDeleteBackground(false);
-                    getProjection().getView2D().repaintDevice();
+                    getProjection().getView().repaintDevice();
                     m.setText(m.getText());
 
                     int devicewidth = getProjection().getDevice2D().getDeviceWidth();
@@ -609,15 +606,15 @@ public class MessagePlugin extends AbstractPlugin implements
                         int endX = (int) (devicewidth / 2 - msgSize.getWidth() / 2);
                         int count = 1;
                         m.setBounds(startX, (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                         for (int x = startX; x <= endX; x = x + 20) {
                             m.setBounds(x, (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                             Thread.sleep(10);
                         }
                         m.setBounds(endX, (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
                         m.setText(m.getText());
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                     }
 
                     if (slide == Slide.NextMessage) {
@@ -626,15 +623,15 @@ public class MessagePlugin extends AbstractPlugin implements
                         int endX = (int) (devicewidth / 2 - msgSize.getWidth() / 2);
                         int count = 1;
                         m.setBounds(startX, (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                         for (int x = startX; x >= endX; x = x - 20) {
                             m.setBounds(x, (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                             Thread.sleep(10);
                         }
                         m.setBounds(endX, (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
                         m.setText(m.getText());
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                     }
 
                 }
@@ -663,7 +660,7 @@ public class MessagePlugin extends AbstractPlugin implements
             this.m = m;
             this.slide = slide;
             if (m != null) {
-                DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+                DevicePartComponent comp = getProjection().getView().getDevice2D();
                 int x = (comp.getWidth() / 2 - m.getMessageWidth() / 2);
                 int y = (comp.getHeight() / 2 - m.getMessageHeight() / 2);
                 int w = m.getMessageWidth();
@@ -703,7 +700,7 @@ public class MessagePlugin extends AbstractPlugin implements
 
                 if (m != null) {
                     m.setLockDeleteBackground(false);
-                    getProjection().getView2D().repaintDevice();
+                    getProjection().getView().repaintDevice();
                     m.setText(m.getText());
 
                     int devicewidth = getProjection().getDevice2D().getDeviceWidth();
@@ -726,12 +723,12 @@ public class MessagePlugin extends AbstractPlugin implements
                                                          currentMessage.getMessageWidth(),
                                                          currentMessage.getMessageHeight());
                             }
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                             Thread.sleep(10);
                         }
                         m.setBounds(endX, (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
                         m.setText(m.getText());
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                     }
 
                     if (slide == Slide.NextMessage) {
@@ -747,16 +744,16 @@ public class MessagePlugin extends AbstractPlugin implements
                                                          currentMessage.getMessageWidth(),
                                                          currentMessage.getMessageHeight());
                             }
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                             Thread.sleep(10);
                         }
                         m.setBounds(endX, (int) m.getBounds().getY(), m.getMessageWidth(), m.getMessageHeight());
                         m.setText(m.getText());
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                     }
 
                     if (currentMessage != null) {
-                        DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+                        DevicePartComponent comp = getProjection().getView().getDevice2D();
                         comp.remove(currentMessage);
                     }
                     currentMessage = m;
@@ -764,7 +761,7 @@ public class MessagePlugin extends AbstractPlugin implements
                 else {
 
                     if (currentMessage != null) {
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
 
                         int devicewidth = getProjection().getDevice2D().getDeviceWidth();
 
@@ -785,11 +782,11 @@ public class MessagePlugin extends AbstractPlugin implements
                                                              currentMessage.getMessageWidth(),
                                                              currentMessage.getMessageHeight());
                                 }
-                                getProjection().getView2D().repaintDevice();
+                                getProjection().getView().repaintDevice();
                                 Thread.sleep(10);
                             }
 
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                         }
 
                         if (slide == Slide.NextMessage) {
@@ -805,15 +802,15 @@ public class MessagePlugin extends AbstractPlugin implements
                                                              currentMessage.getMessageWidth(),
                                                              currentMessage.getMessageHeight());
                                 }
-                                getProjection().getView2D().repaintDevice();
+                                getProjection().getView().repaintDevice();
                                 Thread.sleep(10);
                             }
 
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                         }
 
                         if (currentMessage != null) {
-                            DevicePartComponent comp = getProjection().getView2D().getDevice2D();
+                            DevicePartComponent comp = getProjection().getView().getDevice2D();
                             comp.remove(currentMessage);
                         }
 
@@ -958,8 +955,8 @@ public class MessagePlugin extends AbstractPlugin implements
     @Override
     protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
 
-        getProjection().getView2D().removeComponentListener(messageBoundAdapter);
-        getProjection().getView2D().addComponentListener(messageBoundAdapter);
+        getProjection().getView().removeComponentListener(messageBoundAdapter);
+        getProjection().getView().addComponentListener(messageBoundAdapter);
 
         if (viewPart != ViewPart.Device) {
             return;
@@ -1055,13 +1052,13 @@ public class MessagePlugin extends AbstractPlugin implements
             if (msg.getMiniFrame() != null) {
                 if (msg.getMiniFrame().contains(me.getX(), me.getY())) {
                     msg.setLockMiniFrameRollover(true);
-                    getProjection().getView2D().repaintDevice(msg.getMiniFrame().getBounds());
+                    getProjection().getView().repaintDevice(msg.getMiniFrame().getBounds());
                     showVolatileMessage(msg);
                 }
                 else {
                     if (msg.isLockMiniFrameRollover()) {
                         msg.setLockMiniFrameRollover(false);
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                     }
                 }
             }
@@ -1091,7 +1088,7 @@ public class MessagePlugin extends AbstractPlugin implements
                 else {
                     // if(msg.isLockMinimizedFrameRollover()){
                     // msg.setLockMinimizedFrameRollover(false);
-                    // getWindow2D().getView2D().repaintDevice(msg.getMinimizedFrame().getBounds());
+                    // getProjection().getView().repaintDevice(msg.getMinimizedFrame().getBounds());
                     // unregisterMaximizeMessage(msg);
                     // }
                     //

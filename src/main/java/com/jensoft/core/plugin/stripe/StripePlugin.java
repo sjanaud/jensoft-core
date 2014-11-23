@@ -274,7 +274,7 @@ public abstract class StripePlugin<M extends AbstractStripeManager> extends Abst
      * @param g2d
      */
     protected void paintStripes(View v2d, Graphics2D g2d) {
-        stripeManager.setWindow2D(getProjection());
+        stripeManager.setProjection(getProjection());
         stripePainter.setBandManager(stripeManager);
         stripePainter.doPaintStripes(g2d);
     }

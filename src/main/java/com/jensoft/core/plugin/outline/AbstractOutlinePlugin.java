@@ -13,7 +13,7 @@ import com.jensoft.core.view.ViewPart;
 
 /**
  * <code>AbstractOutlinePlugin</code> abstract definition of a delegate that takes the responsibility of
- * painting a window2D Outline Layout.<BR>
+ * painting a projection Outline Layout.<BR>
  * 
  * @since 1.0
  * 

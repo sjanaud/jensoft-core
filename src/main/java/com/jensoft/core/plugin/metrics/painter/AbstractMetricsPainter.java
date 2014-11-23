@@ -14,7 +14,7 @@ import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 
 /**
- * AbstractMetricsPainter takes the responsibility to paint metrics on window
+ * AbstractMetricsPainter takes the responsibility to paint metrics on projection
  * part
  */
 public abstract class AbstractMetricsPainter {

@@ -9,17 +9,38 @@ import java.awt.Graphics2D;
 
 import com.jensoft.core.plugin.point.manager.PointLayoutManager;
 
+/**
+ * <code>AbstractPointPainter</code>
+ * 
+ * @since 1.0
+ * @author sebastien janaud
+ *
+ */
 public abstract class AbstractPointPainter {
 
-    private PointLayoutManager layout;
+	/**point layout manager*/
+    private PointLayoutManager manager;
 
+    
+    /**
+     * set layout manager
+     * @param layout
+     */
     public void setLayout(PointLayoutManager layout) {
-        this.layout = layout;
+        this.manager = layout;
     }
 
+    /**
+     * get layout manager
+     * @return
+     */
     public PointLayoutManager getLayout() {
-        return layout;
+        return manager;
     }
 
+    /**
+     * paint point layout
+     * @param g2d
+     */
     public abstract void doPaintPoint(Graphics2D g2d);
 }

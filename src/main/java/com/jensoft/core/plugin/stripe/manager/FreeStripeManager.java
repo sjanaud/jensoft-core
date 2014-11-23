@@ -73,10 +73,10 @@ public class FreeStripeManager extends AbstractStripeManager {
 
             if (getStripeOrientation() == StripeOrientation.Vertical) {
                 Point2D p2dUserStripeStart = new Point2D.Double(b.getUserStart(), 0);
-                Point2D p2dDeviceStripeStart = getWindow2D().userToPixel(p2dUserStripeStart);
+                Point2D p2dDeviceStripeStart = getProjection().userToPixel(p2dUserStripeStart);
 
                 Point2D p2dUserStripeEnd = new Point2D.Double(b.getUserEnd(), 0);
-                Point2D p2dDeviceStripeEnd = getWindow2D().userToPixel(p2dUserStripeEnd);
+                Point2D p2dDeviceStripeEnd = getProjection().userToPixel(p2dUserStripeEnd);
 
                 Stripe stripe = new Stripe(StripeOrientation.Vertical);
 
@@ -95,10 +95,10 @@ public class FreeStripeManager extends AbstractStripeManager {
             else if (getStripeOrientation() == StripeOrientation.Horizontal) {
 
                 Point2D p2dUserStripeStart = new Point2D.Double(0, b.getUserStart());
-                Point2D p2dDeviceStripeStart = getWindow2D().userToPixel(p2dUserStripeStart);
+                Point2D p2dDeviceStripeStart = getProjection().userToPixel(p2dUserStripeStart);
 
                 Point2D p2dUserStripeEnd = new Point2D.Double(0, b.getUserEnd());
-                Point2D p2dDeviceStripeEnd = getWindow2D().userToPixel(p2dUserStripeEnd);
+                Point2D p2dDeviceStripeEnd = getProjection().userToPixel(p2dUserStripeEnd);
 
                 Stripe stripe = new Stripe(StripeOrientation.Horizontal);
                 stripe.setDeviceInterval(p2dDeviceStripeStart.getY() - p2dDeviceStripeEnd.getY());

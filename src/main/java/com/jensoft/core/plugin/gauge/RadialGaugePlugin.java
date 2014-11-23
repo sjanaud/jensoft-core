@@ -71,9 +71,9 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	}
 	
 	/**
-	 * on window change or window resized, invalidate part buffer of gauges.
+	 * on projection change or projection resized, invalidate part buffer of gauges.
 	 * <p>
-	 * add a window listener and call {@link #invalidateParts()}
+	 * add a projection listener and call {@link #invalidateParts()}
 	 * <p>
 	 */
 	@Override
@@ -81,19 +81,31 @@ public class RadialGaugePlugin extends AbstractPlugin {
 		super.onProjectionRegister();
 		getProjection().addProjectionListener(new ProjectionListener() {
 			
+			/* (non-Javadoc)
+			 * @see com.jensoft.core.projection.ProjectionListener#projectionUnlockActive(com.jensoft.core.projection.ProjectionEvent)
+			 */
 			@Override
 			public void projectionUnlockActive(ProjectionEvent w2dEvent) {
 			}
 			
+			/* (non-Javadoc)
+			 * @see com.jensoft.core.projection.ProjectionListener#projectionResized(com.jensoft.core.projection.ProjectionEvent)
+			 */
 			@Override
 			public void projectionResized(ProjectionEvent w2dEvent) {
 				invalidateParts();
 			}
 			
+			/* (non-Javadoc)
+			 * @see com.jensoft.core.projection.ProjectionListener#projectionLockActive(com.jensoft.core.projection.ProjectionEvent)
+			 */
 			@Override
 			public void projectionLockActive(ProjectionEvent w2dEvent) {
 			}
 			
+			/* (non-Javadoc)
+			 * @see com.jensoft.core.projection.ProjectionListener#projectionBoundChanged(com.jensoft.core.projection.ProjectionEvent)
+			 */
 			@Override
 			public void projectionBoundChanged(ProjectionEvent w2dEvent) {
 				invalidateParts();				
@@ -108,13 +120,13 @@ public class RadialGaugePlugin extends AbstractPlugin {
 	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+	protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
 
 		if (viewPart != ViewPart.Device) {
 			return;
 		}
 
-		gauge.setWindow2D(getProjection());
+		gauge.setProjection(getProjection());
 		gauge.setHost(this);
 		if (gauge.getEnvelop() != null) {
 			gauge.getEnvelop().paintPart(g2d, gauge);

@@ -16,7 +16,7 @@ package com.jensoft.core.projection;
  */
 public abstract class AbstractProjectionInstaller {
 
-    /** window to install */
+    /** projection to install */
     private Projection projection;
 
     /**

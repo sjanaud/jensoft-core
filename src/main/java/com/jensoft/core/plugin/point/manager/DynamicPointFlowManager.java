@@ -42,11 +42,11 @@ public class DynamicPointFlowManager extends AbstractPointManager {
             int count1 = 0;
             boolean flag1 = true;
             while (flag1) {
-                if (xRef + count1 * weigh < getWindow2D().getMaxX()) {
+                if (xRef + count1 * weigh < getProjection().getMaxX()) {
 
                     Point2D p2dUser = new Point2D.Double(xRef + count1 * weigh,
                                                          yRef);
-                    Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                     Point p = new Point(POINT_X);
                     p.value = p2dDevice;
@@ -65,11 +65,11 @@ public class DynamicPointFlowManager extends AbstractPointManager {
             boolean flag2 = true;
             while (flag2) {
 
-                if (xRef - count2 * weigh > getWindow2D().getMinX()) {
+                if (xRef - count2 * weigh > getProjection().getMinX()) {
 
                     Point2D p2dUser = new Point2D.Double(xRef - count2 * weigh,
                                                          yRef);
-                    Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                     Point p = new Point(POINT_X);
                     p.value = p2dDevice;
@@ -91,11 +91,11 @@ public class DynamicPointFlowManager extends AbstractPointManager {
             int count1 = 0;
             boolean flag1 = true;
             while (flag1) {
-                if (yRef + count1 * weigh < getWindow2D().getMaxY()) {
+                if (yRef + count1 * weigh < getProjection().getMaxY()) {
 
                     Point2D p2dUser = new Point2D.Double(xRef, yRef + count1
                             * weigh);
-                    Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                     Point grid = new Point(POINT_Y);
                     grid.value = p2dDevice;
@@ -113,10 +113,10 @@ public class DynamicPointFlowManager extends AbstractPointManager {
             int count2 = 0;
             boolean flag2 = true;
             while (flag2) {
-                if (yRef - count2 * weigh > getWindow2D().getMinY()) {
+                if (yRef - count2 * weigh > getProjection().getMinY()) {
                     Point2D p2dUser = new Point2D.Double(xRef, yRef - count2
                             * weigh);
-                    Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                     Point p = new Point(POINT_Y);
                     p.value = p2dDevice;

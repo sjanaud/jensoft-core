@@ -144,7 +144,7 @@ public class Donut2DShiftStartAngleAnimator extends AbstractDonut2DAnimator {
                 while (!interrupted()) {
                     donut2D.setStartAngleDegree(donut2D.getStartAngleDegree() + 1);
                     Thread.sleep(velocity.getVelocity());
-                    donut2D.getHostPlugin().getProjection().getView2D().repaintDevice();
+                    donut2D.getHostPlugin().getProjection().getView().repaintDevice();
                 }
             }
             catch (InterruptedException e) {

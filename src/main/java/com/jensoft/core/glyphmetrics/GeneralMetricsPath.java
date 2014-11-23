@@ -47,7 +47,7 @@ import java.util.List;
  * non-vector metrics<br>
  * path and then can not support use full related object such a zoom plug in or
  * translate<br>
- * plug in which work in the user coordinate support by window.<br>
+ * plug in which work in the user coordinate support by projection.<br>
  * <br>
  * <br>
  * User Path Projection {@link AbstractMetricsPath.ProjectionNature#DEVICE}
@@ -402,13 +402,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 			switch (type) {
 
 			case PathIterator.SEG_MOVETO:
-				// System.out.println("move to "+coordinates[0]+","+
-				// coordinates[1]);
 				Point2D pm = null;
 				if (getProjectionNature() == ProjectionNature.USER) {
-					pm = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
-					// pm = getWindow2d().userToPixel(new
-					// Point2D.Double(coordinates[1], coordinates[0]));
+					pm = getProjection().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
 				} else {
 					pm = new Point2D.Double(coordinates[0], coordinates[1]);
 				}
@@ -422,7 +418,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 			case PathIterator.SEG_LINETO:
 				Point2D pl;
 				if (getProjectionNature() == ProjectionNature.USER) {
-					pl = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
+					pl = getProjection().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
 				} else {
 					pl = new Point2D.Double(coordinates[0], coordinates[1]);
 				}
@@ -433,8 +429,8 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 				Point2D pq1;
 				Point2D pq2;
 				if (getProjectionNature() == ProjectionNature.USER) {
-					pq1 = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
-					pq2 = getWindow2d().userToPixel(new Point2D.Double(coordinates[2], coordinates[3]));
+					pq1 = getProjection().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
+					pq2 = getProjection().userToPixel(new Point2D.Double(coordinates[2], coordinates[3]));
 				} else {
 					pq1 = new Point2D.Double(coordinates[0], coordinates[1]);
 					pq2 = new Point2D.Double(coordinates[2], coordinates[3]);
@@ -448,17 +444,17 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 				Point2D pc3;
 				// System.out.println("cubic to "+coordinates[0]+","+coordinates[1]+","+coordinates[2]+","+coordinates[3]+","+coordinates[4]+","+coordinates[5]);
 				if (getProjectionNature() == ProjectionNature.USER) {
-					pc1 = getWindow2d().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
-					pc2 = getWindow2d().userToPixel(new Point2D.Double(coordinates[2], coordinates[3]));
-					pc3 = getWindow2d().userToPixel(new Point2D.Double(coordinates[4], coordinates[5]));
+					pc1 = getProjection().userToPixel(new Point2D.Double(coordinates[0], coordinates[1]));
+					pc2 = getProjection().userToPixel(new Point2D.Double(coordinates[2], coordinates[3]));
+					pc3 = getProjection().userToPixel(new Point2D.Double(coordinates[4], coordinates[5]));
 
 					// seems Arc2D get reverse path iterator!? --> send mail to
 					// Jim Grapham?
-					// pc1 = getWindow2d().userToPixel(new
+					// pc1 = getProjection().userToPixel(new
 					// Point2D.Double(coordinates[1], coordinates[0]));
-					// pc2 = getWindow2d().userToPixel(new
+					// pc2 = getProjection().userToPixel(new
 					// Point2D.Double(coordinates[3], coordinates[2]));
-					// pc3 = getWindow2d().userToPixel(new
+					// pc3 = getProjection().userToPixel(new
 					// Point2D.Double(coordinates[5], coordinates[4]));
 
 				} else {
@@ -576,7 +572,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		@Override
 		protected void validEntry(GeneralPath path) {
 			if (getProjectionNature() == ProjectionNature.USER) {
-				Point2D p2dDevice = getWindow2d().userToPixel(new Point2D.Double(x, y));
+				Point2D p2dDevice = getProjection().userToPixel(new Point2D.Double(x, y));
 				path.moveTo(p2dDevice.getX(), p2dDevice.getY());
 			} else {
 				path.moveTo(x, y);
@@ -621,7 +617,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		@Override
 		protected void validEntry(GeneralPath path) {
 			if (getProjectionNature() == ProjectionNature.USER) {
-				Point2D p2dDevice = getWindow2d().userToPixel(new Point2D.Double(x, y));
+				Point2D p2dDevice = getProjection().userToPixel(new Point2D.Double(x, y));
 				path.lineTo(p2dDevice.getX(), p2dDevice.getY());
 			} else {
 				path.lineTo(x, y);
@@ -681,8 +677,8 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		@Override
 		protected void validEntry(GeneralPath path) {
 			if (getProjectionNature() == ProjectionNature.USER) {
-				Point2D p2dDeviceControl = getWindow2d().userToPixel(new Point2D.Double(xcontrol, ycontrol));
-				Point2D p2dDevice = getWindow2d().userToPixel(new Point2D.Double(x, y));
+				Point2D p2dDeviceControl = getProjection().userToPixel(new Point2D.Double(xcontrol, ycontrol));
+				Point2D p2dDevice = getProjection().userToPixel(new Point2D.Double(x, y));
 
 				path.quadTo(p2dDeviceControl.getX(), p2dDeviceControl.getY(), p2dDevice.getX(), p2dDevice.getY());
 			} else {
@@ -757,9 +753,9 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		@Override
 		protected void validEntry(GeneralPath path) {
 			if (getProjectionNature() == ProjectionNature.USER) {
-				Point2D p2dDeviceControl1 = getWindow2d().userToPixel(new Point2D.Double(xcontrol1, ycontrol1));
-				Point2D p2dDeviceControl2 = getWindow2d().userToPixel(new Point2D.Double(xcontrol2, ycontrol2));
-				Point2D p2dDevice = getWindow2d().userToPixel(new Point2D.Double(x, y));
+				Point2D p2dDeviceControl1 = getProjection().userToPixel(new Point2D.Double(xcontrol1, ycontrol1));
+				Point2D p2dDeviceControl2 = getProjection().userToPixel(new Point2D.Double(xcontrol2, ycontrol2));
+				Point2D p2dDevice = getProjection().userToPixel(new Point2D.Double(x, y));
 
 				path.curveTo(p2dDeviceControl1.getX(), p2dDeviceControl1.getY(), p2dDeviceControl2.getX(), p2dDeviceControl2.getY(), p2dDevice.getX(), p2dDevice.getY());
 			} else {

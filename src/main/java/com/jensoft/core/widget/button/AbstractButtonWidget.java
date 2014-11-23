@@ -171,9 +171,8 @@ public abstract class AbstractButtonWidget<P extends AbstractPlugin> extends Wid
     public abstract void paintButton(View v2d, Graphics2D g2d,
             Rectangle2D buttonDrawingRegion);
 
-    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     public final void paintWidget(View v2d, Graphics2D g2d) {

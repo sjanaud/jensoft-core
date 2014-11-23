@@ -172,9 +172,9 @@ public abstract class AbstractMarker {
     /**
      * override this method to paint the marker paint the marker
      * 
-     * @param view2D
+     * @param view
      * @param g2d
      */
-    public abstract void paintMarker(View view2D, Graphics2D g2d);
+    public abstract void paintMarker(View view, Graphics2D g2d);
 
 }

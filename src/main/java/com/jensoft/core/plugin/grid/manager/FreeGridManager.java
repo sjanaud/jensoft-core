@@ -146,7 +146,7 @@ public class FreeGridManager extends AbstractGridManager {
                 double dx = gt.getGridUserValue();
 
                 Point2D p2dUser = new Point2D.Double(dx, 0);
-                Point2D p2ddevice = getWindow2D().userToPixel(p2dUser);
+                Point2D p2ddevice = getProjection().userToPixel(p2dUser);
 
                 Grid grid = new Grid(GridOrientation.Vertical);
                 grid.setGridDeviceValue(p2ddevice.getX());
@@ -184,7 +184,7 @@ public class FreeGridManager extends AbstractGridManager {
                 Grid gt = grids.get(i);
                 double dy = gt.getGridUserValue();
                 Point2D p2dUser = new Point2D.Double(0, dy);
-                Point2D p2ddevice = getWindow2D().userToPixel(p2dUser);
+                Point2D p2ddevice = getProjection().userToPixel(p2dUser);
 
                 Grid grid = new Grid(GridOrientation.Horizontal);
                 grid.setGridDeviceValue(p2ddevice.getY());

@@ -83,7 +83,7 @@ public class DataLegendPlugin extends AbstractPlugin {
 			int currentX = startX;
 			int currentY = startY;
 			
-			Component legendHolder = getProjection().getView2D().getWindowComponent(legend.getPart());
+			Component legendHolder = getProjection().getView().getViewPartComponent(legend.getPart());
 			int partWidth = legendHolder.getWidth();
 			int partHeight = legendHolder.getHeight();
 			

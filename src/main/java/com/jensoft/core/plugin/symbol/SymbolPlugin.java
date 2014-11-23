@@ -178,7 +178,6 @@ public class SymbolPlugin extends AbstractPlugin implements
     @Override
     public final void paintPlugin(View v2d, Graphics2D g2d,
             ViewPart viewPart) {
-        // System.out.println("paint symbol plugin for part "+windowPart.name());
         g2d.setComposite(AlphaComposite
                 .getInstance(AlphaComposite.SRC_OVER, 1f));
         // solve layer

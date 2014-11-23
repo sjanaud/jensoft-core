@@ -402,12 +402,12 @@ public class ModeledGridManager extends AbstractGridManager {
         double deviceValue = 0;
         double maxPixelValue = 0;
         if (getGridOrientation() == GridOrientation.Vertical) {
-            deviceValue = getWindow2D().userToPixelX(userValue);
-            maxPixelValue = getWindow2D().getPixelWidth();
+            deviceValue = getProjection().userToPixelX(userValue);
+            maxPixelValue = getProjection().getPixelWidth();
         }
         else if (getGridOrientation() == GridOrientation.Horizontal) {
-            deviceValue = getWindow2D().userToPixelY(userValue);
-            maxPixelValue = getWindow2D().getPixelHeight();
+            deviceValue = getProjection().userToPixelY(userValue);
+            maxPixelValue = getProjection().getPixelHeight();
         }
 
         if (deviceValue < 0 || deviceValue > maxPixelValue) {
@@ -497,27 +497,27 @@ public class ModeledGridManager extends AbstractGridManager {
          */
         public boolean isValid() {
 
-            Projection window = metricsManager.getWindow2D();
+            Projection projection = metricsManager.getProjection();
             boolean valid = false;
             BigDecimal userSize = null;
             BigDecimal startRef = null;
             BigDecimal pixelSize = null;
             BigDecimal maxUserValue = null;
             if (getMetricsManager().getGridOrientation() == GridOrientation.Vertical) {
-                userSize = new BigDecimal(window.getUserWidth());
-                BigDecimal bd1 = new BigDecimal(window.getMinX()).divide(factor, RoundingMode.CEILING);
+                userSize = new BigDecimal(projection.getUserWidth());
+                BigDecimal bd1 = new BigDecimal(projection.getMinX()).divide(factor, RoundingMode.CEILING);
                 BigInteger bi1 = bd1.toBigInteger();
                 startRef = new BigDecimal(bi1).multiply(getFactor());
-                pixelSize = new BigDecimal(window.getPixelWidth());
-                maxUserValue = new BigDecimal(window.getMaxX());
+                pixelSize = new BigDecimal(projection.getPixelWidth());
+                maxUserValue = new BigDecimal(projection.getMaxX());
             }
             else if (getMetricsManager().getGridOrientation() == GridOrientation.Horizontal) {
-                userSize = new BigDecimal(window.getUserHeight());
-                BigDecimal bd1 = new BigDecimal(window.getMinY()).divide(factor, RoundingMode.CEILING);
+                userSize = new BigDecimal(projection.getUserHeight());
+                BigDecimal bd1 = new BigDecimal(projection.getMinY()).divide(factor, RoundingMode.CEILING);
                 BigInteger bi1 = bd1.toBigInteger();
                 startRef = new BigDecimal(bi1).multiply(getFactor());
-                pixelSize = new BigDecimal(window.getPixelHeight());
-                maxUserValue = new BigDecimal(window.getMaxY());
+                pixelSize = new BigDecimal(projection.getPixelHeight());
+                maxUserValue = new BigDecimal(projection.getMaxY());
             }
             else{
                 throw new PluginException("Grid orientation should be supply.");

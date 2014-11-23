@@ -14,7 +14,7 @@ import com.jensoft.core.projection.Projection;
 /**
  * <code>AbstractSourceFunction</code> defines a source function. The current build of function is get 
  * by a call to {@link #getCurrentFunction()} which is the internal result of {@link #solveFunction(double, double)}
- * on window domain [min,max], depends function nature.
+ * on projection domain [min,max], depends function nature.
  * 
  * <p> this source is hosted by function {@link #host} 
  * </p>
@@ -71,12 +71,12 @@ public abstract class AbstractSourceFunction implements SourceFunction {
 	@Override
 	public List<Point2D> getCurrentFunction() {
 		if(currentFunction == null || currentFunction.size()==0){
-			Projection window = getHost().getHost().getProjection();
+			Projection proj = getHost().getHost().getProjection();
 			if(getNature() == FunctionNature.XFunction){
-				currentFunction = solveFunction(window.getMinX(), window.getMaxX());
+				currentFunction = solveFunction(proj.getMinX(), proj.getMaxX());
 			}
 			else{
-				currentFunction = solveFunction(window.getMinX(), window.getMaxX());
+				currentFunction = solveFunction(proj.getMinX(), proj.getMaxX());
 			}			
 		}
 		return currentFunction;

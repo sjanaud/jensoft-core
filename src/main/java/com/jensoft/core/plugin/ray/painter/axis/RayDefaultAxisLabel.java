@@ -20,11 +20,11 @@ import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 
 /**
- * <code>DefaultAxisSymbol<code> know how to paint bar or group symbol in window axis part<br>
+ * <code>DefaultAxisSymbol<code> know how to paint bar or group symbol in projection axis part<br>
  * 
  * <ul>
- * 	<li>only draw symbol in south window part for vertical symbol</li>
- *  <li>only draw symbol in window west part for horizontal symbol</li>
+ * 	<li>only draw symbol in south projection part for vertical symbol</li>
+ *  <li>only draw symbol in projection west part for horizontal symbol</li>
  * </ul>
  */
 public class RayDefaultAxisLabel extends AbstractRayAxisLabel {
@@ -287,7 +287,7 @@ public class RayDefaultAxisLabel extends AbstractRayAxisLabel {
 	private void paintXRayAxisLabel(Graphics2D g2d, Ray ray, ViewPart viewPart) {
 
 		RayPlugin bsp = ray.getHost();
-		View v2d = ray.getHost().getProjection().getView2D();
+		View v2d = ray.getHost().getProjection().getView();
 
 		if (symbolFont == null) {
 			setSymbolFont(new Font("Dialog", Font.PLAIN, 12));
@@ -360,7 +360,7 @@ public class RayDefaultAxisLabel extends AbstractRayAxisLabel {
 	 */
 	private void paintYRayAxisLabel(Graphics2D g2d, Ray bar, ViewPart viewPart) {
 
-		View v2d = bar.getHost().getProjection().getView2D();
+		View v2d = bar.getHost().getProjection().getView();
 
 		if (symbolFont == null) {
 			setSymbolFont(new Font("Dialog", Font.PLAIN, 12));

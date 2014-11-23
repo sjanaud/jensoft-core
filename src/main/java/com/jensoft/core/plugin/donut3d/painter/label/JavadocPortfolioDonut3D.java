@@ -40,12 +40,12 @@ public class JavadocPortfolioDonut3D {
     public static View getRadialLabelView() {
 
         View view = new View(0);
-        Projection window = new Projection.Linear(-1, 1, -1, 1);
-        window.setName("compatible donut3D window");
-        view.registerProjection(window);
+        Projection projection = new Projection.Linear(-1, 1, -1, 1);
+        projection.setName("compatible donut3D");
+        view.registerProjection(projection);
 
         Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
-        window.registerPlugin(donut3DPlugin);
+        projection.registerPlugin(donut3DPlugin);
 
         ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
@@ -123,12 +123,12 @@ public class JavadocPortfolioDonut3D {
     public static View getBorderLabelView() {
 
         View view = new View(0);
-        Projection window = new Projection.Linear(-1, 1, -1, 1);
-        window.setName("compatible donut3D window");
-        view.registerProjection(window);
+        Projection projection = new Projection.Linear(-1, 1, -1, 1);
+        projection.setName("compatible donut3D");
+        view.registerProjection(projection);
 
         Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
-        window.registerPlugin(donut3DPlugin);
+        projection.registerPlugin(donut3DPlugin);
 
         ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });

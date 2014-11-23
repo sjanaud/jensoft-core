@@ -33,18 +33,18 @@ public abstract class AbstractViewDeflater {
     }
 
     /**
-     * @return the view2D
+     * @return the view
      */
-    public View getView2D() {
+    public View getView() {
         return view2D;
     }
 
     /**
-     * @param view2d
-     *            the view2D to set
+     * @param view
+     *            the view to set
      */
-    public void setView2D(View view2d) {
-        view2D = view2d;
+    public void setView(View view) {
+        this.view2D = view;
     }
 
     /**

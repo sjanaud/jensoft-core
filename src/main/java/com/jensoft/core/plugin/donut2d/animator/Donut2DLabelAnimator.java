@@ -171,7 +171,7 @@ public class Donut2DLabelAnimator extends AbstractDonut2DAnimator {
                 animateSlice.removeSliceLabel(sliceLabel);
             }
 
-            getView2D(animateSlice).repaintDevice();
+            getView(animateSlice).repaintDevice();
         }
     }
 

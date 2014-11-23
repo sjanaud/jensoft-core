@@ -186,12 +186,12 @@ public class PieAlphaAnimator extends AbstractPieAnimator {
 
                         slice.setAlpha(alpha);
 
-                        getView2D(slice).repaintDevice();
+                        getView(slice).repaintDevice();
                         Thread.sleep(sleep);
 
                     }
                     slice.setAlpha(alphaMin);
-                    getView2D(slice).repaintDevice();
+                    getView(slice).repaintDevice();
                     transitionState = TransitionState.On;
 
                 }
@@ -204,12 +204,12 @@ public class PieAlphaAnimator extends AbstractPieAnimator {
                         }
 
                         slice.setAlpha(alpha);
-                        getView2D(slice).repaintDevice();
+                        getView(slice).repaintDevice();
                         Thread.sleep(sleep);
 
                     }
                     slice.setAlpha(alphaMax);
-                    getView2D(slice).repaintDevice();
+                    getView(slice).repaintDevice();
                     transitionState = TransitionState.Off;
                 }
 

@@ -45,7 +45,7 @@ public class FlowPointManager extends AbstractPointManager {
                 if (getType() == POINT_X) {
                     g = pointStart.getX() + i * flowWeigh;
                     Point2D p2dUser = new Point2D.Double(g, pointStart.getY());
-                    Point2D p2ddevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2ddevice = getProjection().userToPixel(p2dUser);
 
                     Point p = new Point(POINT_X);
                     p.value = p2ddevice;
@@ -56,7 +56,7 @@ public class FlowPointManager extends AbstractPointManager {
                 else if (getType() == POINT_Y) {
                     g = pointStart.getY() + i * flowWeigh;
                     Point2D p2dUser = new Point2D.Double(pointStart.getX(), g);
-                    Point2D p2ddevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2ddevice = getProjection().userToPixel(p2dUser);
 
                     Point p = new Point(POINT_Y);
                     p.value = p2ddevice;

@@ -145,11 +145,11 @@ public class ZoomPercentPlugin extends AbstractPlugin implements
                     double maxy = center.getY() + partY / percentFactor;
 
                     wl.bound(minx, maxx, miny, maxy);
-                    getProjection().getView2D().repaint();
+                    getProjection().getView().repaint();
                 }
                 else {
                     zoomInit();
-                    getProjection().getView2D().repaint();
+                    getProjection().getView().repaint();
                 }
             }
 

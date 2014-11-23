@@ -14,7 +14,7 @@ import com.jensoft.core.view.View;
  * 
  * @author Sebastien Janaud
  */
-public interface X2DView2DElement {
+public interface X2DViewElement {
 
     public static String ELEMENT_VIEW_ROOT = "view2d";
     public static String ELEMENT_VIEW_KEY = "view-key";
