@@ -340,7 +340,7 @@ public class X2D {
 		if (lookupCoreDeflaters) {
 			x2dDeflater.getDeflaters().addAll(coreDeflaters);
 		}
-		x2dDeflater.setView2D(view);
+		x2dDeflater.setView(view);
 		x2dDocument=x2dDeflater.deflate();
 	}
 

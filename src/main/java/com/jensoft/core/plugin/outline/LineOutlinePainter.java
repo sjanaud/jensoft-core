@@ -14,7 +14,7 @@ import java.awt.geom.Line2D;
 import com.jensoft.core.view.ViewPart;
 
 /**
- * OutlinePainter takes the responsibility of window outline painting
+ * OutlinePainter takes the responsibility of projection outline painting
  */
 public class LineOutlinePainter extends AbstractOutlinePainter {
 

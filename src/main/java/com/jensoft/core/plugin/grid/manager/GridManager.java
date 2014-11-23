@@ -32,19 +32,19 @@ public interface GridManager {
     public List<Grid> getGrids();
 
     /**
-     * set window 2D
+     * set projection
      * 
-     * @param w2d
-     *            windows to set
+     * @param projection
+     *            projection to set
      */
-    public void setWindow2D(Projection w2d);
+    public void setProjection(Projection projection);
 
     /**
-     * get window
+     * get projection
      * 
-     * @return window
+     * @return projection
      */
-    public Projection getWindow2D();
+    public Projection getProjection();
 
     /**
      * set band orientation

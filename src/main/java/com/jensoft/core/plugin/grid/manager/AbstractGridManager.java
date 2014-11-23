@@ -21,8 +21,8 @@ public abstract class AbstractGridManager implements GridManager {
     /** grid orientation */
     private GridOrientation gridOrientation;
 
-    /** window */
-    private Projection window2D;
+    /** projection */
+    private Projection projection;
 
     /** grid color */
     private Color color;
@@ -45,14 +45,20 @@ public abstract class AbstractGridManager implements GridManager {
         color = GridManager.DEFAULT_BLACKCOLOR;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.grid.manager.GridManager#setProjection(com.jensoft.core.projection.Projection)
+     */
     @Override
-    public void setWindow2D(Projection w2d) {
-        window2D = w2d;
+    public void setProjection(Projection projection) {
+        this.projection = projection;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.grid.manager.GridManager#getProjection()
+     */
     @Override
-    public Projection getWindow2D() {
-        return window2D;
+    public Projection getProjection() {
+        return projection;
     }
 
     /**

@@ -30,19 +30,19 @@ public interface StripeManager {
     public List<Stripe> getStripes();
 
     /**
-     * set the window2D
+     * set the projection
      * 
-     * @param w2d
-     *            the window2D to set
+     * @param projection
+     *            the projection to set
      */
-    public void setWindow2D(Projection w2d);
+    public void setProjection(Projection projection);
 
     /**
-     * get the window2D
+     * get projection
      * 
-     * @return the window2D
+     * @return projection
      */
-    public Projection getWindow2D();
+    public Projection getProjection();
 
     /**
      * set the stripe orientation

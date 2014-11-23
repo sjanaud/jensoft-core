@@ -385,16 +385,6 @@ public class PeakTrackerPlugin extends AbstractPlugin implements
             g2d.setComposite(AlphaComposite
                     .getInstance(AlphaComposite.SRC_OVER, 1f));
 
-            // g2d.setFont(new Font("Tahoma", Font.PLAIN, 10));
-            //
-            // String messageMax = "PEAK MAX :" + p2dUserMax.getY();
-            // String messageMin = "PEAK MIN :" + p2dUserMin.getY();
-            //
-            // g2d.setColor(Color.RED);
-            // g2d.drawString(messageMax,
-            // getWindow2D().getDevice2D().getDeviceWidth() - 100, 30);
-            // g2d.drawString(messageMin,
-            // getWindow2D().getDevice2D().getDeviceWidth() - 100, 40);
         }
 
     }

@@ -38,7 +38,7 @@ import com.jensoft.core.view.View;
 import com.jensoft.core.view.background.ViewBackgroundPainter;
 import com.jensoft.core.view.background.ViewDefaultBackground;
 import com.jensoft.core.view.deflater.AbstractViewDeflater;
-import com.jensoft.core.x2d.lang.X2DView2DElement;
+import com.jensoft.core.x2d.lang.X2DViewElement;
 
 /**
  * <code>X2DViewDeflater</code>
@@ -48,7 +48,7 @@ import com.jensoft.core.x2d.lang.X2DView2DElement;
  * 
  * @author sebastien janaud
  */
-public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DElement{
+public class X2DViewDeflater extends AbstractViewDeflater  implements X2DViewElement{
 
 	/** X2D document */
 	private Document x2dDocument;
@@ -123,16 +123,16 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 			view2DElement.setAttribute("xmlns:xsi", "http://www.w3.org/2001/XMLSchema-instance");
 			//view2DElement.setAttribute("xsi:schemaLocation", "http://www.jensoft.org/jensoft/schema/x2d ../../schema/x2d.xsd");
 
-			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_KEY, getView2D().getViewKey()));
-			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_API_KEY, getView2D().getApiKey()));
-			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WIDTH, getView2D().getWidth()));
-			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HEIGHT, getView2D().getHeight()));
-			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_WEST, getView2D().getPlaceHolderAxisWest()));
-			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_EAST, getView2D().getPlaceHolderAxisEast()));
-			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_NORTH, getView2D().getPlaceHolderAxisNorth()));
-			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_SOUTH, getView2D().getPlaceHolderAxisSouth()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_KEY, getView().getViewKey()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_API_KEY, getView().getApiKey()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WIDTH, getView().getWidth()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HEIGHT, getView().getHeight()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_WEST, getView().getPlaceHolderAxisWest()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_EAST, getView().getPlaceHolderAxisEast()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_NORTH, getView().getPlaceHolderAxisNorth()));
+			view2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_HOLDER_SOUTH, getView().getPlaceHolderAxisSouth()));
 
-			ViewBackgroundPainter painter = getView2D().getBackgroundPainter();
+			ViewBackgroundPainter painter = getView().getBackgroundPainter();
 			if (painter instanceof ViewDefaultBackground) {
 				ViewDefaultBackground rvf = (ViewDefaultBackground) painter;
 				Element view2DBackgroundElement = x2dDocument.createElement(ELEMENT_VIEW_BACKGROUND_BACKGROUND);
@@ -150,7 +150,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 				}
 			}
 
-			List<Projection> windows = getView2D().getProjections();
+			List<Projection> windows = getView().getProjections();
 			
 			for (Projection window2d : windows) {
 				
@@ -178,12 +178,12 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 				
 				
 				view2DElement.appendChild(window2DElement);
-				if(window2d.getWindowID() == null){
-					window2d.setWindowID("window-"+windows.indexOf(window2d));
+				if(window2d.getProjectionId() == null){
+					window2d.setProjectionId("window-"+windows.indexOf(window2d));
 				}
 				
 				
-				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_ID, window2d.getWindowID()));
+				window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_ID, window2d.getProjectionId()));
 				
 				if(window2d.getName() != null){
 					window2DElement.appendChild(DeflaterUtil.createSingleElement(x2dDocument,ELEMENT_VIEW_WINDOW2D_NAME, window2d.getName()));
@@ -230,7 +230,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DView2DE
 			view2D.setSize(new Dimension(300, 200));
 
 			Projection w = new Projection.Linear(-12.4, 22.9, -123, 234);
-			w.setWindowID("myID");
+			w.setProjectionId("myID");
 			w.setName("myWindow name");
 
 			view2D.registerProjection(w);

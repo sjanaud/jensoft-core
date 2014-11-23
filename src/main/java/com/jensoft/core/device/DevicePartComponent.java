@@ -32,6 +32,7 @@ import com.jensoft.core.view.ViewPart;
  * <code>DevicePartComponent</code> is the view part center component.
  * 
  * @author Sebastien Janaud
+ * 
  * @since 1.0
  */
 public class DevicePartComponent extends JComponent implements Device,
@@ -214,27 +215,27 @@ public class DevicePartComponent extends JComponent implements Device,
 
     }
 
-    /** registered windows */
-    private Vector<Projection> windows = new Vector<Projection>();
+    /** registered projections */
+    private Vector<Projection> projections = new Vector<Projection>();
 
     /**
-     * Allow to register the new window in device2D
+     * Register the new projections in device2D
      * 
-     * @param w2d
-     *            the window to register in device
+     * @param proj
+     *            the projection to register in device
      */
-    public void registerProjection(Projection w2d) {
-        windows.add(w2d);
+    public void registerProjection(Projection proj) {
+        projections.add(proj);
     }
 
     /**
-     * Allow to register the new window in device2D
+     * Unregister the  projection from device2D
      * 
-     * @param w2d
-     *            the window to remove in device
+     * @param proj
+     *            the proj to remove in device
      */
-    public void unregisterProjection(Projection w2d) {
-        windows.remove(w2d);
+    public void unregisterProjection(Projection proj) {
+        projections.remove(proj);
     }
 
     /**
@@ -245,7 +246,7 @@ public class DevicePartComponent extends JComponent implements Device,
      */
     private void paintPlugins(Graphics2D g2d) {
 
-        // paint passives windows first
+        // paint passives projections first
         List<Projection> w2ds = view.getProjections();
         for (Projection w2d : w2ds) {
 
@@ -272,7 +273,7 @@ public class DevicePartComponent extends JComponent implements Device,
 
         }
 
-        // paint the active window last
+        // paint the active projection last
         if (view.getActiveProjection() != null
                 && view.getActiveProjection().isVisible()) {
 
@@ -461,23 +462,7 @@ public class DevicePartComponent extends JComponent implements Device,
             }
         }
 
-        // other window needs event?
-
-        // List<Window2D> w2ds = view2D.getRegisterWindow();
-        // for(Window2D w2d : w2ds){
-        // if(view2D.getActiveWindow() != null &&
-        // !w2d.equals(view2D.getActiveWindow())){
-        // List<AbstractPlugin> layouts = w2d.getPluginRegistry();
-        // if(layouts != null){
-        // for (int j = 0; j < layouts.size(); j++) {
-        // AbstractPlugin layout = layouts.get(j);
-        // AbstractPlugin.OnDragListener oml = layout.getOnDragListener();
-        // if(oml != null) oml.onDrag(e);
-        // }
-        // }
-        // }
-        //
-        // }
+        // other projection needs traversal event?
 
         view.getWidgetPlugin().getOnDragListener().onDrag(e);
     }
@@ -505,20 +490,9 @@ public class DevicePartComponent extends JComponent implements Device,
                 }
             }
         }
-        // other window needs event?
+        // other projections needs event?
 
-        // List<Window2D> windows = view2D.getRegisterWindow();
-        // for(Window2D window: windows){
-        // List<AbstractPlugin> layouts = window.getPluginRegistry();
-        // if(layouts != null){
-        // for (int j = 0; j < layouts.size(); j++) {
-        // AbstractPlugin layout = layouts.get(j);
-        // AbstractPlugin.OnMoveListener oml = layout.getOnMoveListener();
-        // if(oml != null) oml.onMove(e);
-        // }
-        // }
-        // }
-
+      
         view.getWidgetPlugin().getOnMoveListener().onMove(e);
     }
 
@@ -548,68 +522,59 @@ public class DevicePartComponent extends JComponent implements Device,
     }
 
    
+  
     /* (non-Javadoc)
-     * @see com.jensoft.core.view.View2DListener#viewWindow2DSelected(com.jensoft.core.view.View2DEvent)
+     * @see com.jensoft.core.view.ViewListener#viewProjectionSelected(com.jensoft.core.view.ViewEvent)
      */
     @Override
-    public void viewProjectionSelected(ViewEvent view2dEvent) {
+    public void viewProjectionSelected(ViewEvent event) {
     }
 
     
+   
     /* (non-Javadoc)
-     * @see com.jensoft.core.view.View2DListener#viewMoved(com.jensoft.core.view.View2DEvent)
+     * @see com.jensoft.core.view.ViewListener#viewMoved(com.jensoft.core.view.ViewEvent)
      */
     @Override
-    public void viewMoved(ViewEvent view2dEvent) {
-        // TODO Auto-generated method stub
+    public void viewMoved(ViewEvent event) {
     }
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.view.View2DListener#viewResized(com.jensoft.core.view.View2DEvent)
+     * @see com.jensoft.core.view.ViewListener#viewResized(com.jensoft.core.view.ViewEvent)
      */
     @Override
-    public void viewResized(ViewEvent view2dEvent) {
-        // TODO Auto-generated method stub
+    public void viewResized(ViewEvent event) {
+    }
+
+    /* (non-Javadoc)
+     * @see com.jensoft.core.view.ViewListener#viewHidden(com.jensoft.core.view.ViewEvent)
+     */
+    @Override
+    public void viewHidden(ViewEvent event) {
     }
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.view.View2DListener#viewHidden(com.jensoft.core.view.View2DEvent)
+     * @see com.jensoft.core.view.ViewListener#viewShown(com.jensoft.core.view.ViewEvent)
      */
     @Override
-    public void viewHidden(ViewEvent view2dEvent) {
-        // TODO Auto-generated method stub
+    public void viewShown(ViewEvent event) {
     }
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.view.View2DListener#viewShown(com.jensoft.core.view.View2DEvent)
+     * @see com.jensoft.core.view.ViewListener#viewFocusGained(com.jensoft.core.view.ViewEvent)
      */
     @Override
-    public void viewShown(ViewEvent view2dEvent) {
-        // TODO Auto-generated method stub
-
+    public void viewFocusGained(ViewEvent event) {
     }
 
-    
     /* (non-Javadoc)
-     * @see com.jensoft.core.view.View2DListener#viewFocusGained(com.jensoft.core.view.View2DEvent)
+     * @see com.jensoft.core.view.ViewListener#viewFocusLost(com.jensoft.core.view.ViewEvent)
      */
     @Override
-    public void viewFocusGained(ViewEvent view2dEvent) {
-        // TODO Auto-generated method stub
-
-    }
-
-    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.view.View2DListener#viewFocusLost(com.jensoft.core.view.View2DEvent)
-     */
-    @Override
-    public void viewFocusLost(ViewEvent view2dEvent) {
-        // TODO Auto-generated method stub
-
+    public void viewFocusLost(ViewEvent event) {
     }
 
     /*

@@ -267,7 +267,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
                     getCompassGeometry().getNeedle().getNeedleVector().endx = averageDx / averageCounter;
                     getCompassGeometry().getNeedle().getNeedleVector().starty = 0;
                     getCompassGeometry().getNeedle().getNeedleVector().endy = averageDy / averageCounter;
-                    getHost().getProjection().getView2D().repaintDevice(getWidgetFolder().getBounds());
+                    getHost().getProjection().getView().repaintDevice(getWidgetFolder().getBounds());
                     averageCounter = 0;
                     averageDx = 0;
                     averageDy = 0;
@@ -424,10 +424,10 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
-    protected void paintWidget(View v2d, Graphics2D g2d) {
+    protected void paintWidget(View view, Graphics2D g2d) {
         if (getHost().isLockTranslate()) {
             paintTranslateCompass(g2d);
         }

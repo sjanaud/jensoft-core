@@ -60,7 +60,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
             g2d.setColor(metric.getMetricsMarkerColor());
         }
         else {
-            g2d.setColor(renderContext.getWindow2D().getThemeColor());
+            g2d.setColor(renderContext.getProjection().getThemeColor());
         }
 
         Shape metricsShapeIndicator = null;
@@ -213,7 +213,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
                 g2d.setColor(metric.getMetricsLabelColor());
             }
             else {
-                g2d.setColor(renderContext.getWindow2D().getThemeColor());
+                g2d.setColor(renderContext.getProjection().getThemeColor());
             }
 
             if (metric.getMetricsLabel() != null) {
@@ -241,7 +241,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
 
                         boolean paintFlag = false;
                         
-                        int height = getMetricsRenderContext().getWindow2D().getDevice2D().getDeviceHeight();
+                        int height = getMetricsRenderContext().getProjection().getDevice2D().getDeviceHeight();
                         if (metric.getGravity() == Gravity.First) {
                             if (position.getY() < height - tickLabelWidth / 2) {
                                 paintFlag = true;

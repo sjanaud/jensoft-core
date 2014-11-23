@@ -122,10 +122,10 @@ public class StockItemGeometry extends StockGeometry {
 	@Override
 	public void solveGeometry() {
 		// stock session
-		Point2D deviceLow = getWindow2D().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getLow()));
-		Point2D deviceHigh = getWindow2D().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getHigh()));
-		Point2D deviceOpen = getWindow2D().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getOpen()));
-		Point2D deviceClose = getWindow2D().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getClose()));
+		Point2D deviceLow = getProjection().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getLow()));
+		Point2D deviceHigh = getProjection().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getHigh()));
+		Point2D deviceOpen = getProjection().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getOpen()));
+		Point2D deviceClose = getProjection().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getClose()));
 
 		setDeviceLow(deviceLow);
 		setDeviceHigh(deviceHigh);
@@ -133,18 +133,18 @@ public class StockItemGeometry extends StockGeometry {
 		setDeviceOpen(deviceOpen);
 
 		// volume
-		Point2D deviceVolume = getWindow2D().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getVolume()));
+		Point2D deviceVolume = getProjection().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), stock.getVolume()));
 		setDeviceVolume(deviceVolume);
 
-		Point2D deviceVolumeBase = getWindow2D().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), 0));
+		Point2D deviceVolumeBase = getProjection().userToPixel(new Point2D.Double(new Long(stock.getFixing().getTime()).doubleValue(), 0));
 		setDeviceVolumeBase(deviceVolumeBase);
 
 		// fixing
-		double deviceFixingStart = getWindow2D().userToPixelX(new Long(stock.getFixing().getTime() - stock.getFixingDurationMillis() / 2).doubleValue());
-		double deviceFixingEnd = getWindow2D().userToPixelX(new Long(stock.getFixing().getTime() + stock.getFixingDurationMillis() / 2).doubleValue());
+		double deviceFixingStart = getProjection().userToPixelX(new Long(stock.getFixing().getTime() - stock.getFixingDurationMillis() / 2).doubleValue());
+		double deviceFixingEnd = getProjection().userToPixelX(new Long(stock.getFixing().getTime() + stock.getFixingDurationMillis() / 2).doubleValue());
 
 		double deviceFixingDuration = Math.abs(deviceFixingEnd - deviceFixingStart);
-		double deviceTimingX = getWindow2D().userToPixelX(new Long(stock.getFixing().getTime()).doubleValue());
+		double deviceTimingX = getProjection().userToPixelX(new Long(stock.getFixing().getTime()).doubleValue());
 
 		setDeviceFixing(deviceTimingX);
 		setDeviceFixingDuration(deviceFixingDuration);
@@ -153,7 +153,7 @@ public class StockItemGeometry extends StockGeometry {
 
 	}
 
-	private Projection getWindow2D() {
+	private Projection getProjection() {
 		return getLayer().getHost().getProjection();
 	}
 

@@ -79,7 +79,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#paintLayer(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.window.WindowPart, com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest)
+     * @see com.jensoft.core.plugin.symbol.SymbolLayer#paintLayer(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart, com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest)
      */
     @Override
     public final void paintLayer(View v2d, Graphics2D g2d,
@@ -155,7 +155,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
      * @param barSymbolComponents
      *            the symbols components to paint
      * @param viewPart
-     *            the window zone to paint
+     *            the view zone to paint
      */
     private void paintSymbolsAxisLabel(Graphics2D g2d,
             List<BarSymbol> barSymbolComponents, ViewPart viewPart) {

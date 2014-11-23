@@ -18,6 +18,7 @@ import com.jensoft.core.view.ViewPart;
  * with specified dimension and a p^rojection bound.
  * </p>
  * 
+ * @since 1.0
  * @author Sebastien Janaud
  */
 public class PluginBuffer {
@@ -77,13 +78,15 @@ public class PluginBuffer {
     }
 
     /**
-     * @return the windowPartWidth
+     * get projection part width
+     * @return the projection part width
      */
     public int getProjectionPartWidth() {
         return projectionPartWidth;
     }
 
     /**
+     * set projection part width
      * @param projectionPartWidth
      *            the projection part width to set
      */
@@ -92,6 +95,7 @@ public class PluginBuffer {
     }
 
     /**
+     * get projection part height
      * @return the windowPartHeight
      */
     public int getProjectionPartHeight() {
@@ -99,6 +103,7 @@ public class PluginBuffer {
     }
 
     /**
+     * set projection part height
      * @param projectionPartHeight
      *            the projection part height to set
      */

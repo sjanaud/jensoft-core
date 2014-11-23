@@ -287,16 +287,16 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      */
     protected Metrics generateMetrics(BigDecimal userValue, MetricsModel model) {
     	Metrics metrics = new Metrics(getType());
-        Projection window = getRenderContext().getWindow2D();
+        Projection proj = getRenderContext().getProjection();
         double deviceValue = 0;
         double maxPixelValue = 0;
         if (getType() == MetricsType.XMetrics) {
-            deviceValue = window.userToPixelX(userValue.doubleValue());
-            maxPixelValue = window.getPixelWidth();
+            deviceValue = proj.userToPixelX(userValue.doubleValue());
+            maxPixelValue = proj.getPixelWidth();
         }
         else if (getType() == MetricsType.YMetrics) {
-            deviceValue = window.userToPixelY(userValue.doubleValue());
-            maxPixelValue = window.getPixelHeight();
+            deviceValue = proj.userToPixelY(userValue.doubleValue());
+            maxPixelValue = proj.getPixelHeight();
         }
 
         if (deviceValue < 0 || deviceValue > maxPixelValue) {
@@ -458,30 +458,30 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * @return true if this model is applicable, false otherwise
          */
         public void solve() {
-            Projection window = getMetricsManager().getRenderContext().getWindow2D();
+            Projection proj = getMetricsManager().getRenderContext().getProjection();
             if (getMetricsManager().getType() == MetricsType.XMetrics) {
-                this.userSize = new BigDecimal(window.getUserWidth());
-                BigDecimal bd1 = new BigDecimal(window.getMinX()).divide(factor, RoundingMode.CEILING);
+                this.userSize = new BigDecimal(proj.getUserWidth());
+                BigDecimal bd1 = new BigDecimal(proj.getMinX()).divide(factor, RoundingMode.CEILING);
                 BigInteger bi1 = bd1.toBigInteger();
                 this.ref = new BigDecimal(bi1).multiply(getFactor());
                 this.ref = ref.subtract(getFactor());
                 if(this.ref.equals(new BigDecimal("0"))){
                 	this.ref = this.ref.subtract(this.factor);
                 }
-                this.pixelSize = new BigDecimal(window.getPixelWidth());
-                this.maxValue = new BigDecimal(window.getMaxX());
+                this.pixelSize = new BigDecimal(proj.getPixelWidth());
+                this.maxValue = new BigDecimal(proj.getMaxX());
             }
             else if (getMetricsManager().getType() == MetricsType.YMetrics) {
-                this.userSize = new BigDecimal(window.getUserHeight());
-                BigDecimal bd1 = new BigDecimal(window.getMinY()).divide(factor, RoundingMode.CEILING);
+                this.userSize = new BigDecimal(proj.getUserHeight());
+                BigDecimal bd1 = new BigDecimal(proj.getMinY()).divide(factor, RoundingMode.CEILING);
                 BigInteger bi1 = bd1.toBigInteger();
                 this.ref = new BigDecimal(bi1).multiply(getFactor());
                 this.ref = ref.subtract(getFactor());
                 if(this.ref.equals(new BigDecimal("0"))){
                 	this.ref = this.ref.subtract(this.factor);
                 }
-                this.pixelSize = new BigDecimal(window.getPixelHeight());
-                this.maxValue = new BigDecimal(window.getMaxY());
+                this.pixelSize = new BigDecimal(proj.getPixelHeight());
+                this.maxValue = new BigDecimal(proj.getMaxY());
             }
 
             int metricsSize = metricsManager.getMetricsMajorFont().getSize();

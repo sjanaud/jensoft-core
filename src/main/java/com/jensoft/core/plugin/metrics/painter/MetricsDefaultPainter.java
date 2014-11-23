@@ -62,7 +62,7 @@ public class MetricsDefaultPainter extends AbstractMetricsPainter {
             g2d.setColor(metric.getMetricsMarkerColor());
         }
         else {
-            g2d.setColor(renderContext.getWindow2D().getThemeColor());
+            g2d.setColor(renderContext.getProjection().getThemeColor());
         }
 
         Shape metricsShapeIndicator = null;
@@ -118,7 +118,7 @@ public class MetricsDefaultPainter extends AbstractMetricsPainter {
                 g2d.setColor(metric.getMetricsLabelColor());
             }
             else {
-                g2d.setColor(renderContext.getWindow2D().getThemeColor());
+                g2d.setColor(renderContext.getProjection().getThemeColor());
             }
 
             if (metric.getMetricsLabel() != null) {
@@ -164,8 +164,8 @@ public class MetricsDefaultPainter extends AbstractMetricsPainter {
                     else {
 
                         boolean paintFlag = false;
-                        JComponent westPart = getMetricsRenderContext().getView2D()
-                                .getWindowComponent(ViewPart.West);
+                        JComponent westPart = getMetricsRenderContext().getView()
+                                .getViewPartComponent(ViewPart.West);
                         if (metric.getGravity() == Gravity.First) {
                             if (position.getY() < westPart.getHeight() - 6) {
                                 paintFlag = true;

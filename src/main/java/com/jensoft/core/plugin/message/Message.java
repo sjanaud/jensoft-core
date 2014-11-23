@@ -187,12 +187,12 @@ public class Message extends JComponent {
             @Override
             public void mouseExited(MouseEvent e) {
                 move = true;
-                getHost().getProjection().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                getHost().getProjection().getView().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                getHost().getProjection().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
+                getHost().getProjection().getView().setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
             }
 
             @Override
@@ -754,35 +754,35 @@ public class Message extends JComponent {
                         return;
                     }
                     if (part == SizerPart.N) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.S) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.W) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.E) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.NE) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.NW) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.SE) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.SW) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));
                     }
                     currentX = e.getX();
@@ -812,7 +812,7 @@ public class Message extends JComponent {
                     if (resize) {
                         return;
                     }
-                    getHost().getProjection().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                    getHost().getProjection().getView().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
                 }
 
                 @Override
@@ -821,35 +821,35 @@ public class Message extends JComponent {
                         return;
                     }
                     if (part == SizerPart.N) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.S) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.W) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.E) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.NE) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.NW) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.SE) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.SE_RESIZE_CURSOR));
                     }
                     else if (part == SizerPart.SW) {
-                        getHost().getProjection().getView2D()
+                        getHost().getProjection().getView()
                                 .setCursor(Cursor.getPredefinedCursor(Cursor.SW_RESIZE_CURSOR));
                     }
 

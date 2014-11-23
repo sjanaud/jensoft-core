@@ -35,13 +35,13 @@ import com.jensoft.core.view.WidgetRegistry;
 import com.jensoft.core.widget.Widget;
 
 /**
- * <code>AbstractPlugin</code> AbstractPlugin is the abstract definition that defines window plug in.
+ * <code>AbstractPlugin</code> AbstractPlugin is the abstract definition that defines projection plug in.
  */
 @SuppressWarnings("unchecked")
 public abstract class AbstractPlugin implements Plugin {
 
-    /** the view2D */
-    private View view2D;
+    /** the view host */
+    private View view;
 
     /** the projection */
     private Projection proj;
@@ -122,7 +122,7 @@ public abstract class AbstractPlugin implements Plugin {
      * @author Sebastien Janaud
      */
     public enum PaintBehavior {
-        NoPaint, PaintIfHostWindowActive, PaintIfPluginIsLockSelected, PaintAlways;
+        NoPaint, PaintIfHostProjectionActive, PaintIfPluginIsLockSelected, PaintAlways;
     }
 
     /**
@@ -332,10 +332,10 @@ public abstract class AbstractPlugin implements Plugin {
     }
 
     /**
-     * delegate method from window and view , repaint the device part component
+     * delegate method from projection and view , repaint the device part component
      */
     public void repaintDevice() {
-        getProjection().getView2D().repaintDevice();
+        getProjection().getView().repaintDevice();
     }
 
     /**
@@ -430,21 +430,21 @@ public abstract class AbstractPlugin implements Plugin {
     }
 
     /**
-     * return the vied2D host
+     * return view host
      * 
-     * @return the view2D
+     * @return  view
      */
     protected View getView() {
-        return view2D;
+        return view;
     }
 
     /**
-     * set the view2D host
+     * set  view host
      * 
-     * @param view2d
+     * @param view
      */
-    public void setView2D(View view2d) {
-        view2D = view2d;
+    public void setView(View view) {
+        this.view = view;
     }
 
     /**
@@ -463,18 +463,8 @@ public abstract class AbstractPlugin implements Plugin {
         if (!isLockSelected()) {
             lockSelected = true;
             firePluginLockSelected();
-            if (getProjection() != null && getProjection().getView2D() != null) {
-                // if (showLockMessage) {
-                // if (lockMessage == null) {
-                // lockMessage = "Lock " + getName();
-                // }
-                // getWindow2D()
-                // .getView2D()
-                // .getWidgetPlugin()
-                // .pushMessage(lockMessage, this,
-                // PushingBehavior.Fast, Color.BLACK);
-                // }
-                getProjection().getView2D().repaint();
+            if (getProjection() != null && getProjection().getView() != null) {
+                getProjection().getView().repaint();
             }
         }
     }
@@ -487,8 +477,8 @@ public abstract class AbstractPlugin implements Plugin {
         if (isLockSelected()) {
             lockSelected = false;
             firePluginUnlockSelected();
-            if (getProjection() != null && getProjection().getView2D() != null) {
-                getProjection().getView2D().repaint();
+            if (getProjection() != null && getProjection().getView() != null) {
+                getProjection().getView().repaint();
             }
         }
 

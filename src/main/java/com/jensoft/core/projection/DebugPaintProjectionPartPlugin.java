@@ -32,7 +32,7 @@ public class DebugPaintProjectionPartPlugin extends AbstractPlugin {
      */
     @Override
     protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
-        JComponent component = v2d.getWindowComponent(viewPart);
+        JComponent component = v2d.getViewPartComponent(viewPart);
         Rectangle2D rect2DPart = new Rectangle2D.Double(0, 0, component.getWidth() - 1, component.getHeight() - 1);
 
         if (colorMap.get(viewPart) == null) {

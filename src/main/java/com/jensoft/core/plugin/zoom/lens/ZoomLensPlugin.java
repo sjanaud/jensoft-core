@@ -214,10 +214,10 @@ public class ZoomLensPlugin extends AbstractPlugin implements AbstractPlugin.OnR
 	@Override
 	public void lockSelected() {
 		super.lockSelected();
-		if (getProjection() == null || getProjection().getView2D() == null) {
+		if (getProjection() == null || getProjection().getView() == null) {
 			return;
 		}
-		getProjection().getView2D().getWidgetPlugin().pushMessage("LOCK OBJECTIF", this, PushingBehavior.Fast);
+		getProjection().getView().getWidgetPlugin().pushMessage("LOCK OBJECTIF", this, PushingBehavior.Fast);
 
 	}
 

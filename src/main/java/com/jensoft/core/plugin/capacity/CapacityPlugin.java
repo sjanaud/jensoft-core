@@ -34,7 +34,7 @@ import com.jensoft.core.view.ViewPart;
  * </p>
  * 
  * <p>
- * capacity do not use window projection. it is only design as component.
+ * capacity do not use projection. it is only design as component.
  * </p>
  * 
  * @since 1.0

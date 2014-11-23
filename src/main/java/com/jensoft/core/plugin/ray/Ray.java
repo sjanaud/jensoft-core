@@ -594,7 +594,7 @@ public class Ray {
                         if (getRayNature() == RayNature.XRay) {
                             getHost()
                                     .getProjection()
-                                    .getView2D()
+                                    .getView()
                                     .repaintDeviceBand(
                                                        DeviceBand.XBand,
                                                        (int) getRayShape().getBounds()
@@ -605,7 +605,7 @@ public class Ray {
                         else if (getRayNature() == RayNature.YRay) {
                             getHost()
                                     .getProjection()
-                                    .getView2D()
+                                    .getView()
                                     .repaintDeviceBand(
                                                        DeviceBand.YBand,
                                                        (int) getRayShape().getBounds()
@@ -705,7 +705,7 @@ public class Ray {
                     if (getRayNature() == RayNature.XRay) {
                         getHost()
                                 .getProjection()
-                                .getView2D()
+                                .getView()
                                 .repaintDeviceBand(
                                                    DeviceBand.XBand,
                                                    (int) getRayShape().getBounds().getX(),
@@ -715,7 +715,7 @@ public class Ray {
                     else if (getRayNature() == RayNature.YRay) {
                         getHost()
                                 .getProjection()
-                                .getView2D()
+                                .getView()
                                 .repaintDeviceBand(
                                                    DeviceBand.YBand,
                                                    (int) getRayShape().getBounds().getY(),

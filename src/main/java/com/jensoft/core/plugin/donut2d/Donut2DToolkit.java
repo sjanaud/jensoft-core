@@ -37,9 +37,9 @@ public class Donut2DToolkit extends Toolkit {
      * create a new Donut2D in User projection with specified parameter
      * 
      * @param centerX
-     *            the center X in user window projection
+     *            the center X in user  projection
      * @param centerY
-     *            the center Y in user window projection
+     *            the center Y in user  projection
      * @param innerRadius
      * @param outerRadius
      * @return donut2D

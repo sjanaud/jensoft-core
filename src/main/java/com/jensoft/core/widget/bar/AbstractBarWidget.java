@@ -543,7 +543,7 @@ public abstract class AbstractBarWidget<P extends AbstractPlugin> extends Widget
         if (geometry == null || geometry.getRect1() == null) {
             return;
         }
-        getHost().getProjection().getView2D()
+        getHost().getProjection().getView()
                 .repaintDevice(geometry.getRect1().getBounds());
     }
 
@@ -554,7 +554,7 @@ public abstract class AbstractBarWidget<P extends AbstractPlugin> extends Widget
         if (geometry == null || geometry.getRect1() == null) {
             return;
         }
-        getHost().getProjection().getView2D()
+        getHost().getProjection().getView()
                 .repaintDevice(geometry.getRect2().getBounds());
     }
 
@@ -615,7 +615,7 @@ public abstract class AbstractBarWidget<P extends AbstractPlugin> extends Widget
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     protected void paintWidget(View v2d, Graphics2D g2d) {

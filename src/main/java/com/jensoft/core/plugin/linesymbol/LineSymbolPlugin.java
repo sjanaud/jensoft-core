@@ -61,7 +61,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
     /** current scroll on y */
     private double currentScrollY;
 
-    /** list of line components registered in the windows2d */
+    /** list of line components registered in the projection */
     private List<LineSymbolComponent> lineComponents = new ArrayList<LineSymbolComponent>();
 
     /** line symbol widget */
@@ -123,7 +123,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
     }
 
     /**
-     * add line component in the window2D
+     * add line component in the projection
      * 
      * @param lineComponent
      */
@@ -133,7 +133,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
     }
 
     /**
-     * remove the line component registered in the window2D
+     * remove the line component registered in the projection
      * 
      * @param lineComponent
      */
@@ -142,7 +142,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
     }
 
     /**
-     * return the all registered line components in the window2D
+     * return the all registered line components in the projection
      * 
      * @return the list of line components
      */
@@ -158,32 +158,8 @@ public class LineSymbolPlugin extends AbstractPlugin implements
      */
     public double getComponentXPosition(LineSymbolComponent lineComponent) {
 
-        Projection wb2d = getProjection();
         List<LineSymbolComponent> barComponents = getLineComponents();
 
-        // glues
-
-        // double total = 0;
-        // List<LineSymbolComponent> glues = new
-        // ArrayList<LineSymbolComponent>();
-        // for (LineSymbolComponent bc : barComponents) {
-        // if (bc.getName().endsWith("Glue"))
-        // glues.add(bc);
-        // else
-        // total = total + bc.getThickness();
-        // }
-        //
-        // if (getWindow2D().getDevice2D().getDeviceWidth() > total) {
-        //
-        // double reste = getWindow2D().getDevice2D().getDeviceWidth() - total;
-        // int gluesCount = glues.size();
-        // if (gluesCount > 0) {
-        // for (LineSymbolComponent glue : glues) {
-        //
-        // glue.setThickness(reste / gluesCount);
-        // }
-        // }
-        // }
 
         double positionX = 0;
 
@@ -221,29 +197,6 @@ public class LineSymbolPlugin extends AbstractPlugin implements
 
         List<LineSymbolComponent> barComponents = getLineComponents();
 
-        // double total = 0;
-        // List<LineSymbolComponent> glues = new
-        // ArrayList<LineSymbolComponent>();
-        // for (LineSymbolComponent bc : barComponents) {
-        // // if (bc.getName().endsWith("Glue"))
-        // // glues.add(bc);
-        // // else
-        // total = total + bc.getThickness();
-        // }
-        //
-        // // if (getWindow2D().getDevice2D().getDeviceHeight() > total) {
-        // //
-        // // double reste = getWindow2D().getDevice2D().getDeviceHeight()
-        // // - total;
-        // // int gluesCount = glues.size();
-        // // if (gluesCount > 0) {
-        // // for (LineSymbolComponent glue : glues) {
-        // //
-        // // glue.setThickness(reste / gluesCount);
-        // // }
-        // // }
-        // // }
-
         double positionY = 0;
 
         List<LineSymbolComponent> bcomps = new ArrayList<LineSymbolComponent>();
@@ -269,7 +222,6 @@ public class LineSymbolPlugin extends AbstractPlugin implements
 
         }
 
-       // System.out.println("line  component : location " + lineComponent.getLocation());
         return positionY;
     }
 
@@ -627,10 +579,6 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         currentScrollX = x;
         currentScrollY = y;
 
-        //System.out.println("scroll start x " + startScrollX);
-        //System.out.println("scroll start y " + startScrollY);
-        //System.out.println("scroll cur   x " + currentScrollX);
-        //System.out.println("scroll cur   y " + currentScrollY);
 
         double deltaDeviceX = currentScrollX - startScrollX;
         double deltaDeviceY = currentScrollY - startScrollY;
@@ -642,7 +590,6 @@ public class LineSymbolPlugin extends AbstractPlugin implements
             divergence = divergence + (int) deltaDeviceX;
         }
 
-        // getWindow2D().getView2D().getDevice2D().repaintDevice();
 
         startScrollX = currentScrollX;
         startScrollY = currentScrollY;
@@ -728,7 +675,7 @@ public class LineSymbolPlugin extends AbstractPlugin implements
         // else
         // unPassiveTranslate();
 
-        getProjection().getView2D().getDevice2D().repaint();
+        getProjection().getView().getDevice2D().repaint();
     }
 
     /** divergence */

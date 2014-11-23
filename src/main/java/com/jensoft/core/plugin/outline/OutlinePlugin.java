@@ -201,7 +201,7 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
             try {
                 Projection w2d = getProjection();
 
-                w2d.getView2D().repaintView();
+                w2d.getView().repaintView();
                 Thread.sleep(startDelay);
 
                 Device d2d = w2d.getDevice2D();
@@ -218,12 +218,12 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
                     inflateOutline = new Rectangle2D.Double(width / 2
                             - deltaWidthStep, height / 2 - deltaHeightStep,
                                                             2 * deltaWidthStep, 2 * deltaHeightStep);
-                    w2d.getView2D().repaintDevice(inflateOutline.getBounds());
+                    w2d.getView().repaintDevice(inflateOutline.getBounds());
                     Thread.sleep(20);
                 }
 
                 setInflating(false);
-                w2d.getView2D().repaintView();
+                w2d.getView().repaintView();
                 inflateOutline = null;
 
             }
@@ -271,7 +271,7 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
                 if (w2d == null) {
                     interrupt();
                 }
-                w2d.getView2D().repaintView();
+                w2d.getView().repaintView();
                 Thread.sleep(startDelay);
                 Device d2d = w2d.getDevice2D();
                 int step = 20;
@@ -290,16 +290,16 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
                             - deltaWidthStep, height / 2 - deltaHeightStep,
                                                             2 * deltaWidthStep, 2 * deltaHeightStep);
                     if (oldInflate != null) {
-                        w2d.getView2D().repaintDevice(oldInflate);
+                        w2d.getView().repaintDevice(oldInflate);
                     }
                     else {
-                        w2d.getView2D().repaintDevice();
+                        w2d.getView().repaintDevice();
                     }
                     Thread.sleep(20);
                 }
 
                 setInflating(false);
-                w2d.getView2D().repaintView();
+                w2d.getView().repaintView();
                 inflateOutline = null;
 
             }
@@ -320,10 +320,10 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
      * @param g2d
      *            the graphics context
      * @param viewPart
-     *            the window part
+     *            the view part
      */
-    private void paintInflating(View v2d, Graphics2D g2d,
-            ViewPart viewPart) {
+    private void paintInflating(View view, Graphics2D g2d, ViewPart viewPart) {
+           
         if (viewPart != ViewPart.Device) {
             return;
         }
@@ -340,16 +340,17 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
     }
 
    
+   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.outline.AbstractOutlinePlugin#doPaintOutline(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     * @see com.jensoft.core.plugin.outline.AbstractOutlinePlugin#doPaintOutline(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public void doPaintOutline(View v2d, Graphics2D g2d, ViewPart viewPart) {
+    public void doPaintOutline(View view, Graphics2D g2d, ViewPart viewPart) {
 
         if (getPaintBehavior() == PaintBehavior.NoPaint) {
             return;
         }
-        if (getPaintBehavior() == PaintBehavior.PaintIfHostWindowActive
+        if (getPaintBehavior() == PaintBehavior.PaintIfHostProjectionActive
                 && !getProjection().isLockActive()) {
             return;
         }
@@ -373,36 +374,36 @@ public class OutlinePlugin extends AbstractOutlinePlugin {
         }
 
         if (isInflating() && viewPart == ViewPart.Device) {
-            paintInflating(v2d, g2d, viewPart);
+            paintInflating(view, g2d, viewPart);
         }
         else {
 
             if (!isInflating()) {
                 if (viewPart == ViewPart.South) {
-                    JComponent south = v2d.getWindowComponent(ViewPart.South);
+                    JComponent south = view.getViewPartComponent(ViewPart.South);
                     painter.doPaintOutline(south, g2d,
-                                           v2d.getPlaceHolderAxisWest() - 1, 0,
-                                           south.getWidth() - v2d.getPlaceHolderAxisEast()
-                                                   - v2d.getPlaceHolderAxisWest() + 1,
+                    		view.getPlaceHolderAxisWest() - 1, 0,
+                                           south.getWidth() - view.getPlaceHolderAxisEast()
+                                                   - view.getPlaceHolderAxisWest() + 1,
                                            ViewPart.South);
                 }
                 if (viewPart == ViewPart.West) {
-                    JComponent west = v2d.getWindowComponent(ViewPart.West);
+                    JComponent west = view.getViewPartComponent(ViewPart.West);
                     painter.doPaintOutline(west, g2d, west.getWidth() - 1,
                                            west.getHeight(), west.getHeight(), ViewPart.West);
                 }
                 if (viewPart == ViewPart.East) {
-                    JComponent east = v2d.getWindowComponent(ViewPart.East);
+                    JComponent east = view.getViewPartComponent(ViewPart.East);
                     painter.doPaintOutline(east, g2d, 0, east.getHeight(),
                                            east.getHeight(), ViewPart.East);
                 }
                 if (viewPart == ViewPart.North) {
-                    JComponent north = v2d.getWindowComponent(ViewPart.North);
+                    JComponent north = view.getViewPartComponent(ViewPart.North);
                     painter.doPaintOutline(north, g2d,
-                                           v2d.getPlaceHolderAxisWest() - 1,
+                    		view.getPlaceHolderAxisWest() - 1,
                                            north.getHeight() - 1,
-                                           north.getWidth() - v2d.getPlaceHolderAxisEast()
-                                                   - v2d.getPlaceHolderAxisWest() + 1,
+                                           north.getWidth() - view.getPlaceHolderAxisEast()
+                                                   - view.getPlaceHolderAxisWest() + 1,
                                            ViewPart.North);
                 }
             }

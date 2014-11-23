@@ -12,16 +12,20 @@ import com.jensoft.core.plugin.point.Point;
 import com.jensoft.core.projection.Projection;
 
 /**
- * PointLayoutManager defines the interface for classes that know how to lay out
- * points window.
+ * <code>PointLayoutManager</code> defines the interface for classes that know how to lay out
+ * points projection.
+ * 
+ * @since 1.0
+ * 
+ * @author sebastien janaud
  */
 public interface PointLayoutManager {
 
     public List<Point> getPoints();
 
-    public void setWindow2D(Projection w2d);
+    public void setProjection(Projection w2d);
 
-    public Projection getWindow2D();
+    public Projection getProjection();
 
     public static int POINT_X = 0;
     public static int POINT_Y = 1;

@@ -69,13 +69,13 @@ public class DeviceTextureBackgroundPlugin extends AbstractPlugin {
      * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
      */
     @Override
-    public void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
+    public void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
 
         if (viewPart != ViewPart.Device) {
             return;
         }
 
-        JComponent comp = v2d.getWindowComponent(viewPart);
+        JComponent comp = view.getViewPartComponent(viewPart);
         Rectangle2D device = new Rectangle2D.Double(0, 0, comp.getWidth(),
                                                     comp.getHeight());
 

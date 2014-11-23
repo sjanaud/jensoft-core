@@ -107,13 +107,13 @@ public class CompoundGridManager extends AbstractGridManager {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setWindow2D(com.jensoft.core.window.Window2D)
+	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setProjection(com.jensoft.core.projection.Projection)
 	 */
 	@Override
-	public void setWindow2D(Projection w2d) {
-		super.setWindow2D(w2d);
+	public void setProjection(Projection projection) {
+		super.setProjection(projection);
 		for (int i = 0; i < managers.size(); i++) {
-			managers.get(i).setWindow2D(w2d);
+			managers.get(i).setProjection(projection);
 		}
 	}
 

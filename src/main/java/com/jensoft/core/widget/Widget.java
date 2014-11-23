@@ -406,19 +406,19 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
     /**
      * lay out widget folder
      * 
-     * @param v2d
-     *            the view2D
+     * @param view
+     *            the view
      */
-    private void layoutFolder(View v2d) {
+    private void layoutFolder(View view) {
 
         if (getWidgetFolder() == null) {
-            setWidgetFolder(v2d.newWidgetFolderIntance(getId(), getWidth(),
+            setWidgetFolder(view.newWidgetFolderIntance(getId(), getWidth(),
                                                        getHeight(), getxIndex(), getyIndex()));
             getWidgetFolder().setOnPostListener(this);
 
         }
         else {
-            WidgetFolder vdf = v2d.newWidgetFolderIntance(getId(), getWidth(),
+            WidgetFolder vdf = view.newWidgetFolderIntance(getId(), getWidth(),
                                                           getHeight(), getxIndex(), getyIndex());
 
             getWidgetFolder().updateFrame(vdf.getX(), vdf.getY(),
@@ -430,21 +430,21 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
      * repaint the widget for the clipping widget area
      */
     public void repaintWidget() {
-        if (getHost() != null && getHost().getProjection() != null && getHost().getProjection().getView2D() != null
+        if (getHost() != null && getHost().getProjection() != null && getHost().getProjection().getView() != null
                 && getWidgetFolder() != null && getWidgetFolder().getBounds() != null) {
-            getHost().getProjection().getView2D().repaintDevice(getWidgetFolder().getBounds());
+            getHost().getProjection().getView().repaintDevice(getWidgetFolder().getBounds());
         }
     }
 
     /**
      * paint widget
      * 
-     * @param v2d
-     *            the view2D
+     * @param view
+     *            the view
      * @param g2d
      *            the graphics context
      */
-    public final void paint(View v2d, Graphics2D g2d) {
+    public final void paint(View view, Graphics2D g2d) {
         if (!isLockWidget()) {
             return;
         }
@@ -453,8 +453,8 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
             return;
         }
 
-        layoutFolder(v2d);
-        paintWidget(v2d, g2d);
+        layoutFolder(view);
+        paintWidget(view, g2d);
 
     }
 
@@ -507,31 +507,21 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
             // System.out.println("widget folder ooo"+getWidgetFolder().getBounds());
         }
 
-        // if(getWidgetFolder() != null &&
-        // !getWidgetFolder().getBounds().contains(x, y)){
-        // System.out.println("not containt : "+getWidgetFolder().getBounds());
-        //
-        // //getHost().getWindow2D().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-        // //return;
-        // }
 
         if (!isMovable) {
             setNoMoveOperation(true);
             // System.out.println("set default cursor");
-            // getHost().getWindow2D().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             return;
         }
 
         if (isSensible(x, y)) {
             setNoMoveOperation(true);
             // System.out.println("set default cursor");
-            // getHost().getWindow2D().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 
         }
         else {
             setNoMoveOperation(false);
             // System.out.println("set hand cursor");
-            // getHost().getWindow2D().getView2D().setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         }
     }
 

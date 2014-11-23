@@ -38,15 +38,15 @@ public class GridDefaultPainter extends AbstractGridPainter {
                     g2d.setPaint(grid.getGridColor());
                 }
                 else {
-                    g2d.setColor(getLayoutManager().getWindow2D()
+                    g2d.setColor(getLayoutManager().getProjection()
                             .getThemeColor());
                 }
 
                 Shape grid2DShape = new Line2D.Double(gd, getLayoutManager()
-                        .getWindow2D().getDevice2D().getOriginY(), gd,
-                                                      getLayoutManager().getWindow2D().getDevice2D()
+                        .getProjection().getDevice2D().getOriginY(), gd,
+                                                      getLayoutManager().getProjection().getDevice2D()
                                                               .getDeviceHeight()
-                                                              + getLayoutManager().getWindow2D()
+                                                              + getLayoutManager().getProjection()
                                                                       .getDevice2D().getOriginY());
 
                 g2d.draw(grid2DShape);
@@ -54,7 +54,7 @@ public class GridDefaultPainter extends AbstractGridPainter {
                 if (grid.getAnnotation() != null) {
 
                     g2d.drawString(grid.getAnnotation(), (int) gd + 2,
-                                   getLayoutManager().getWindow2D().getDevice2D()
+                                   getLayoutManager().getProjection().getDevice2D()
                                            .getDeviceHeight()
                                            * grid.getAnnotationFraction());
                 }
@@ -74,22 +74,22 @@ public class GridDefaultPainter extends AbstractGridPainter {
                     g2d.setPaint(grid.getGridColor());
                 }
                 else {
-                    g2d.setColor(getLayoutManager().getWindow2D()
+                    g2d.setColor(getLayoutManager().getProjection()
                             .getThemeColor());
                 }
 
                 Shape grid2DShape = new Line2D.Double(getLayoutManager()
-                        .getWindow2D().getDevice2D().getOriginX(), gd,
-                                                      getLayoutManager().getWindow2D().getDevice2D()
+                        .getProjection().getDevice2D().getOriginX(), gd,
+                                                      getLayoutManager().getProjection().getDevice2D()
                                                               .getDeviceWidth()
-                                                              + getLayoutManager().getWindow2D()
+                                                              + getLayoutManager().getProjection()
                                                                       .getDevice2D().getOriginX(), gd);
 
                 g2d.draw(grid2DShape);
 
                 if (grid.getAnnotation() != null) {
                     g2d.drawString(grid.getAnnotation(), getLayoutManager()
-                            .getWindow2D().getDevice2D().getDeviceWidth()
+                            .getProjection().getDevice2D().getDeviceWidth()
                             * grid.getAnnotationFraction(), (int) gd - 2);
                 }
             }

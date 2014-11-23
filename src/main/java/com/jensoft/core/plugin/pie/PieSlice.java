@@ -124,8 +124,8 @@ public class PieSlice {
      * 
      * @return the host view
      */
-    public View getView2D() {
-        return getHost().getHostPlugin().getProjection().getView2D();
+    public View getView() {
+        return getHost().getHostPlugin().getProjection().getView();
     }
 
     /**

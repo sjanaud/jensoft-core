@@ -289,8 +289,8 @@ public class GaugeOil extends RadialGauge {
 			@Override
 			public Point2D bindAnchor(RadialGauge gauge) {
 				int radius = getRadius();
-				double anchorX = getWindow2D().userToPixel(new Point2D.Double(getX(), 0)).getX() - radius + radius / 4;// (int)getGauge().getX();
-				double anchorY = getWindow2D().userToPixel(new Point2D.Double(0,getY())).getY();// (int)getGauge().getY();
+				double anchorX = getProjection().userToPixel(new Point2D.Double(getX(), 0)).getX() - radius + radius / 4;// (int)getGauge().getX();
+				double anchorY = getProjection().userToPixel(new Point2D.Double(0,getY())).getY();// (int)getGauge().getY();
 				return new Point2D.Double(anchorX, anchorY);
 			}
 		});
@@ -369,8 +369,8 @@ public class GaugeOil extends RadialGauge {
 			@Override
 			public Point2D bindAnchor(RadialGauge gauge) {
 				int radius = getRadius();
-				double anchorX = getWindow2D().userToPixel(new Point2D.Double(getX(), 0)).getX() + radius - radius / 4;
-				double anchorY = getWindow2D().userToPixel(new Point2D.Double(0, getY())).getY();
+				double anchorX = getProjection().userToPixel(new Point2D.Double(getX(), 0)).getX() + radius - radius / 4;
+				double anchorY = getProjection().userToPixel(new Point2D.Double(0, getY())).getY();
 				return new Point2D.Double(anchorX, anchorY);
 			}
 		});

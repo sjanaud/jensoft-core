@@ -92,7 +92,7 @@ public class Donut3D {
     public enum Donut3DNature {
 
         /**
-         * defines coordinate system in user space, base on window2D projection
+         * defines coordinate system in user space, base on projection
          */
         Donut3DUser("user"),
 

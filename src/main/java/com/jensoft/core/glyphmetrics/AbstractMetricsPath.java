@@ -38,8 +38,8 @@ public abstract class AbstractMetricsPath {
 	/** reverse mode */
 	private boolean autoReverseGlyph = false;
 
-	/** the window 2D */
-	private Projection window2d;
+	/** projection */
+	private Projection projection;
 
 	/** the geometry path */
 	private GeometryPath geometryPath;
@@ -109,19 +109,19 @@ public abstract class AbstractMetricsPath {
 	}
 
 	/**
-	 * get the window2D
+	 * get the projection
 	 */
-	public Projection getWindow2d() {
-		return window2d;
+	public Projection getProjection() {
+		return projection;
 	}
 
 	/**
-	 * set the window2D
+	 * set the projection
 	 * 
-	 * @param window2d
+	 * @param projection
 	 */
-	public void setWindow2d(Projection window2d) {
-		this.window2d = window2d;
+	public void setProjection(Projection projection) {
+		this.projection = projection;
 	}
 
 	/**

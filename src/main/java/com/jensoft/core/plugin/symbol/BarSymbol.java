@@ -418,9 +418,9 @@ public class BarSymbol extends SymbolComponent {
 						}
 					}
 					if (getNature() == SymbolNature.Vertical) {
-						getHost().getProjection().getView2D().repaintDeviceBand(DeviceBand.XBand, (int) getBarShape().getBounds().getX(), (int) getBarShape().getBounds().getWidth() + 1);
+						getHost().getProjection().getView().repaintDeviceBand(DeviceBand.XBand, (int) getBarShape().getBounds().getX(), (int) getBarShape().getBounds().getWidth() + 1);
 					} else if (getNature() == SymbolNature.Horizontal) {
-						getHost().getProjection().getView2D().repaintDeviceBand(DeviceBand.YBand, (int) getBarShape().getBounds().getY(), (int) getBarShape().getBounds().getHeight() + 1);
+						getHost().getProjection().getView().repaintDeviceBand(DeviceBand.YBand, (int) getBarShape().getBounds().getY(), (int) getBarShape().getBounds().getHeight() + 1);
 					}
 
 					Thread.sleep(delayByStep);
@@ -510,9 +510,9 @@ public class BarSymbol extends SymbolComponent {
 					}
 
 					if (getNature() == SymbolNature.Vertical) {
-						getHost().getProjection().getView2D().repaintDeviceBand(DeviceBand.XBand, (int) getBarShape().getBounds().getX(), (int) getBarShape().getBounds().getWidth() + 1);
+						getHost().getProjection().getView().repaintDeviceBand(DeviceBand.XBand, (int) getBarShape().getBounds().getX(), (int) getBarShape().getBounds().getWidth() + 1);
 					} else if (getNature() == SymbolNature.Horizontal) {
-						getHost().getProjection().getView2D().repaintDeviceBand(DeviceBand.YBand, (int) getBarShape().getBounds().getY(), (int) getBarShape().getBounds().getHeight() + 1);
+						getHost().getProjection().getView().repaintDeviceBand(DeviceBand.YBand, (int) getBarShape().getBounds().getY(), (int) getBarShape().getBounds().getHeight() + 1);
 					}
 
 					// oldBound = newBound;

@@ -37,8 +37,8 @@ public class RadialGauge {
 	/** gauge radius */
 	private int radius;
 
-	/** gauge window */
-	private Projection window2D;
+	/** gauge projection */
+	private Projection projection;
 	
 	/**host plugin*/
 	private RadialGaugePlugin host;
@@ -78,8 +78,8 @@ public class RadialGauge {
 	 * @return gauge center device
 	 */
 	public Point2D getCenterDevice() {
-		double centerX = getWindow2D().userToPixel(new Point2D.Double(getX(), 0)).getX();
-		double centerY = getWindow2D().userToPixel(new Point2D.Double(0, getY())).getY();
+		double centerX = getProjection().userToPixel(new Point2D.Double(getX(), 0)).getX();
+		double centerY = getProjection().userToPixel(new Point2D.Double(0, getY())).getY();
 		return new Point2D.Double(centerX, centerY);
 	}
 
@@ -139,22 +139,22 @@ public class RadialGauge {
 	}
 
 	/**
-	 * window projection
+	 * get projection
 	 * 
 	 * @return projection
 	 */
-	public Projection getWindow2D() {
-		return window2D;
+	public Projection getProjection() {
+		return projection;
 	}
 
 	/**
-	 * set window projection
+	 * set  projection
 	 * 
-	 * @param window2d
+	 * @param projection
 	 *            projection
 	 */
-	public void setWindow2D(Projection window2d) {
-		window2D = window2d;
+	public void setProjection(Projection projection) {
+		this.projection = projection;
 	}
 
 	/**

@@ -24,8 +24,8 @@ import com.jensoft.core.view.WidgetPlugin.PushingBehavior;
  * WARNING : can be reboot on to much iteration.
  * </p>
  * <p>
- * You can use this manager when you build some static views without window bound change<br>
- * it is discourage if you use tools that dynamically change the window bounds because the manager can be reboot.
+ * You can use this manager when you build some static views without projection bound change<br>
+ * it is discourage if you use tools that dynamically change the projection bounds because the manager can be reboot.
  * <p>
  * @author sebastien janaud
  */
@@ -213,7 +213,7 @@ public class Multiplier3MetricsManager extends AbstractMetricsManager {
      * @return the metrics
      */
     private Metrics create(double userValue, int nature) {
-        Projection w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getProjection();
         Metrics metrics = new Metrics(getType());
         metrics.setNature(nature);
         double deviceValue = 0;
@@ -248,8 +248,8 @@ public class Multiplier3MetricsManager extends AbstractMetricsManager {
     }
 
     public void reboot() {
-        Projection w2d = getRenderContext().getWindow2D();
-        w2d.getView2D()
+        Projection w2d = getRenderContext().getProjection();
+        w2d.getView()
                 .getWidgetPlugin()
                 .pushMessage("MILLIMETRICS REBOOT", 0, null,
                              PushingBehavior.Fast, InputFonts.getElements(14));
@@ -277,7 +277,7 @@ public class Multiplier3MetricsManager extends AbstractMetricsManager {
         // System.out.println("median : "+median);
         // System.out.println("minor  : "+minor);
 
-        Projection w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getProjection();
 
         int globalCount = 0;
 
@@ -941,9 +941,9 @@ public class Multiplier3MetricsManager extends AbstractMetricsManager {
      */
     private void solveMetrics() {
         // System.out.println("solve metrics !");
-        double testWidth = getRenderContext().getWindow2D().getDevice2D()
+        double testWidth = getRenderContext().getProjection().getDevice2D()
                 .getDeviceWidth();
-        double testHeight = getRenderContext().getWindow2D().getDevice2D()
+        double testHeight = getRenderContext().getProjection().getDevice2D()
                 .getDeviceHeight();
         if (testWidth < 50 || testHeight < 50) {
             deviceMetrics.clear();
@@ -956,7 +956,7 @@ public class Multiplier3MetricsManager extends AbstractMetricsManager {
         if (getType() == MetricsType.XMetrics) {
 
             double mWidth = metricsWidth(volatileMetrics);
-            double deviceWidth = getRenderContext().getWindow2D().getDevice2D()
+            double deviceWidth = getRenderContext().getProjection().getDevice2D()
                     .getDeviceWidth();
 
             if (deviceWidth < 0) {
@@ -1025,23 +1025,13 @@ public class Multiplier3MetricsManager extends AbstractMetricsManager {
         if (getType() == MetricsType.YMetrics) {
 
             double mWidth = metricsWidth(volatileMetrics);
-            double deviceHeight = getRenderContext().getWindow2D().getDevice2D()
+            double deviceHeight = getRenderContext().getProjection().getDevice2D()
                     .getDeviceHeight();
 
             if (deviceHeight < 0) {
                 return;
             }
 
-            // double mHeight = metricsHeight(volatileMetrics);
-            //
-            // double deviceHeight = getRenderContext().getWindow2D()
-            // .getDevice2D().getDeviceHeight();
-
-            // if (deviceHeight < 0) {
-            // return;
-            // }
-
-            // if (mHeight >= deviceHeight) {
 
             if (mWidth >= deviceHeight) {
 

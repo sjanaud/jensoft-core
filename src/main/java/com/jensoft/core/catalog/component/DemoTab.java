@@ -72,7 +72,7 @@ public class DemoTab {
     }
 
     /**
-     * fire listener of the window has changed
+     * fire listener of the projection has changed
      */
     private void fireCommandGroupSelect() {
         DemoTabEvent cge = new DemoTabEvent(this);

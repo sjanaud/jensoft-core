@@ -245,7 +245,6 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
                 try {
                     donut2D.setStartAngleDegree(donut2D.getStartAngleDegree() + 12);
                     Thread.sleep(50);
-                    // getHost().getWindow2D().getView2D().repaintDevice(getWidgetFolder().getBounds());
                     repaintWidget();
                 }
                 catch (InterruptedException e) {
@@ -365,7 +364,7 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
             unlockAllSection();
             DonutBoundBoxSection dbbs = getDonutBoundBoxSection(bounbdBox);
             dbbs.lockRollover();
-            getHost().getProjection().getView2D().getDevice2D().repaint();
+            getHost().getProjection().getView().getDevice2D().repaint();
 
         }
 
@@ -411,7 +410,7 @@ public class ZoomBoxDonutWidget extends Widget<ZoomBoxPlugin> {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     protected void paintWidget(View v2d, Graphics2D g2d) {

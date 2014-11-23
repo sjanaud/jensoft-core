@@ -25,8 +25,9 @@ public class ComponentsPlugin extends AbstractPlugin {
     }
 
    
+   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#onWindowRegister()
+     * @see com.jensoft.core.plugin.AbstractPlugin#onProjectionRegister()
      */
     @Override
     public void onProjectionRegister() {
@@ -83,9 +84,9 @@ public class ComponentsPlugin extends AbstractPlugin {
                                                            .getWidth(),
                                                    (int) component.getComponent().getPreferredSize()
                                                            .getHeight());
-                getProjection().getView2D().getDevice2D()
+                getProjection().getView().getDevice2D()
                         .remove(component.getComponent());
-                getProjection().getView2D().getDevice2D()
+                getProjection().getView().getDevice2D()
                         .add(component.getComponent());
             }
 

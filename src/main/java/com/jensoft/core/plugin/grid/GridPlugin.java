@@ -93,7 +93,7 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
         if (gridManager == null) {
             return;
         }
-        gridManager.setWindow2D(getProjection());
+        gridManager.setProjection(getProjection());
         gridPainter.setLayoutManager(gridManager);
         gridPainter.paintGrids(g2d, gridManager.getGrids());
     }
@@ -375,7 +375,7 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.grid.GridPlugin#paintGrids(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+         * @see com.jensoft.core.plugin.grid.GridPlugin#paintGrids(com.jensoft.core.view.View, java.awt.Graphics2D)
          */
         @Override
         protected void paintGrids(View v2d, Graphics2D g2d) {
@@ -383,7 +383,7 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
             if (getGridManager() == null) {
                 return;
             }
-            getGridManager().setWindow2D(getProjection());
+            getGridManager().setProjection(getProjection());
 
             List<GridModel> models = getGridManager().getSequenceGrid();
             for (GridModel gridModel : models) {

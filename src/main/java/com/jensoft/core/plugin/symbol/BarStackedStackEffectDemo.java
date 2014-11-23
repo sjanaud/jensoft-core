@@ -215,11 +215,11 @@ public class BarStackedStackEffectDemo extends View {
 						BarSymbol symbol = e.getBarSymbol();
 						BarSymbolRelativeLabel rl = new BarSymbolRelativeLabel(VerticalAlignment.Middle, HorizontalAlignment.Middle, Color.WHITE, symbol.getThemeColor(), Color.BLACK);
 						symbol.setBarLabel(rl);
-						symbol.getHost().getProjection().getView2D().repaintDevice();
+						symbol.getHost().getProjection().getView().repaintDevice();
 					} else {
 						BarSymbol symbol = e.getBarSymbol();
 						symbol.setBarLabel(null);
-						symbol.getHost().getProjection().getView2D().repaintDevice();
+						symbol.getHost().getProjection().getView().repaintDevice();
 					}
 				}
 			}

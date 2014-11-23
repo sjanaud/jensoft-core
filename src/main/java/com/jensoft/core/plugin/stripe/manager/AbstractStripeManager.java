@@ -27,8 +27,8 @@ public abstract class AbstractStripeManager implements StripeManager {
     /** stripe orientation */
     private StripeOrientation stripeOrientation;
 
-    /** window */
-    private Projection window2D;
+    /** projection */
+    private Projection projection;
 
     /** max iteration for solve strip */
     private int iterationMax = 10000;
@@ -91,23 +91,23 @@ public abstract class AbstractStripeManager implements StripeManager {
     }
 
     /**
-     * set window 2D
+     * set projection
      * 
-     * @param windo2D
+     * @param projection
      */
     @Override
-    public void setWindow2D(Projection windo2D) {
-        window2D = windo2D;
+    public void setProjection(Projection projection) {
+        this.projection = projection;
     }
 
     /**
-     * get window 2D
+     * get projection
      * 
-     * @return window2D
+     * @return projection
      */
     @Override
-    public Projection getWindow2D() {
-        return window2D;
+    public Projection getProjection() {
+        return projection;
     }
 
     /**

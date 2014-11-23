@@ -143,7 +143,7 @@ public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
     @Override
     protected void onPressed(Donut2DSlice slice) {
         if (showFlashBehavior == ShowFlashBehavior.ShowOnSlicePressed) {
-            view2D = slice.getHost().getHostPlugin().getProjection().getView2D();
+            view2D = slice.getHost().getHostPlugin().getProjection().getView();
             AlphaRunner runner = (AlphaRunner) getAnimator(slice);
             if (!runner.isRunning()) {
                 Thread t = new Thread(getAnimator(slice));
@@ -164,7 +164,7 @@ public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
     @Override
     protected void onEntered(Donut2DSlice slice) {
         if (showFlashBehavior == ShowFlashBehavior.ShowOnSliceRollover) {
-            view2D = slice.getHost().getHostPlugin().getProjection().getView2D();
+            view2D = slice.getHost().getHostPlugin().getProjection().getView();
             AlphaRunner runner = (AlphaRunner) getAnimator(slice);
             if (!runner.isRunning()) {
                 Thread t = new Thread(getAnimator(slice));
@@ -185,7 +185,7 @@ public class Donut2DFlashAnimator extends AbstractDonut2DAnimator {
             if (runner.isRunning()) {
                 runner.getHost().interrupt();
                 slice.setAlpha(runner.getInitialAlpha());
-                getView2D(slice).repaintDevice();
+                getView(slice).repaintDevice();
             }
         }
     }

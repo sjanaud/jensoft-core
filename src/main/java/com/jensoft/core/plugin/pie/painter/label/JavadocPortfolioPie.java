@@ -43,12 +43,12 @@ public class JavadocPortfolioPie {
     public static View getPieRadialLabel() {
 
         View view = new View(0);
-        Projection window = new Projection.Linear(-1, 1, -1, 1);
-        window.setName("compatible donut3D window");
-        view.registerProjection(window);
+        Projection proj = new Projection.Linear(-1, 1, -1, 1);
+        proj.setName("compatible donut3D");
+        view.registerProjection(proj);
 
         PiePlugin piePlugin = new PiePlugin();
-        window.registerPlugin(piePlugin);
+        proj.registerPlugin(piePlugin);
         Pie pie = PieToolkit.createPie("pie", 60);
         pie.setStartAngleDegree(20);
         PieLinearEffect fx1 = new PieLinearEffect(120);
@@ -118,15 +118,15 @@ public class JavadocPortfolioPie {
     }
 
     @Portfolio(name = "PiePathLabel", width = 800, height = 800)
-    public static View createView2D() {
+    public static View createView() {
 
         View view = new View(0);
-        Projection window = new Projection.Linear(-1, 1, -1, 1);
-        window.setName("compatible donut3D window");
-        view.registerProjection(window);
+        Projection proj = new Projection.Linear(-1, 1, -1, 1);
+        proj.setName("compatible donut3D window");
+        view.registerProjection(proj);
 
         PiePlugin piePlugin = new PiePlugin();
-        window.registerPlugin(piePlugin);
+        proj.registerPlugin(piePlugin);
 
         ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
@@ -198,12 +198,12 @@ public class JavadocPortfolioPie {
     public static View getPieBoundLabel() {
 
         View view = new View(0);
-        Projection window = new Projection.Linear(-1, 1, -1, 1);
-        window.setName("compatible donut3D window");
-        view.registerProjection(window);
+        Projection proj = new Projection.Linear(-1, 1, -1, 1);
+        proj.setName("compatible donut3D window");
+        view.registerProjection(proj);
 
         PiePlugin piePlugin = new PiePlugin();
-        window.registerPlugin(piePlugin);
+        proj.registerPlugin(piePlugin);
         ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });
         viewBackground.setShader(sb);
@@ -276,12 +276,12 @@ public class JavadocPortfolioPie {
     public static View getPieBorderLabel() {
 
         View view = new View(0);
-        Projection window = new Projection.Linear(-1, 1, -1, 1);
-        window.setName("compatible donut3D window");
-        view.registerProjection(window);
+        Projection proj = new Projection.Linear(-1, 1, -1, 1);
+        proj.setName("compatible donut3D window");
+        view.registerProjection(proj);
 
         PiePlugin piePlugin = new PiePlugin();
-        window.registerPlugin(piePlugin);
+        proj.registerPlugin(piePlugin);
 
         ViewDefaultBackground viewBackground = new ViewDefaultBackground();
         Shader sb = new Shader(new float[] { 0f, 1f }, new Color[] { new Color(32, 39, 55), Color.BLACK });

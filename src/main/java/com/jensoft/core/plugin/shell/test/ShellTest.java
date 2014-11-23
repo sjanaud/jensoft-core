@@ -22,11 +22,11 @@ public class ShellTest extends View {
 	public ShellTest() {
 		super();
 
-		Projection window = new Projection.Linear(-10, 10, -10, 10);
-		registerProjection(window);
+		Projection proj = new Projection.Linear(-10, 10, -10, 10);
+		registerProjection(proj);
 
 		final ShellPlugin shellPlugin = new ShellPlugin();
-		window.registerPlugin(shellPlugin);
+		proj.registerPlugin(shellPlugin);
 
 		// messagePlugin.registerWidget(new MessageSelecterWidget());
 		// messagePlugin.registerContext(new MessageDefaultDeviceContext());

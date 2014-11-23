@@ -62,26 +62,26 @@ public class MiniDeviceWidget extends Widget {
         setWidth(miniWidth);
         setHeight(miniHeight);
 
-        host.getPrivateWindow().setView2D(v2d);
+        host.getPrivateProjection().setView(v2d);
 
-        double minX = host.getPrivateWindow().getMinX();
-        double maxX = host.getPrivateWindow().getMaxX();
-        double minY = host.getPrivateWindow().getMinY();
-        double maxY = host.getPrivateWindow().getMaxY();
+        double minX = host.getPrivateProjection().getMinX();
+        double maxX = host.getPrivateProjection().getMaxX();
+        double minY = host.getPrivateProjection().getMinY();
+        double maxY = host.getPrivateProjection().getMaxY();
 
         Point2D p2d1 = new Point2D.Double(minX, maxY);
         Point2D p2d2 = new Point2D.Double(minX, minY);
         Point2D p2d3 = new Point2D.Double(maxX, minY);
         Point2D p2d4 = new Point2D.Double(maxX, maxY);
 
-        host.getPrivateWindow().setDevice2D(host);
+        host.getPrivateProjection().setDevice2D(host);
         // host.getPrivateWindow().setWindowScaleMode(
         // Window2D.WINDOW_SCALEMODE_DEVICE_INITIAL);
 
-        Point2D p2d1D = host.getPrivateWindow().userToPixel(p2d1);
-        Point2D p2d2D = host.getPrivateWindow().userToPixel(p2d2);
-        Point2D p2d3D = host.getPrivateWindow().userToPixel(p2d3);
-        Point2D p2d4D = host.getPrivateWindow().userToPixel(p2d4);
+        Point2D p2d1D = host.getPrivateProjection().userToPixel(p2d1);
+        Point2D p2d2D = host.getPrivateProjection().userToPixel(p2d2);
+        Point2D p2d3D = host.getPrivateProjection().userToPixel(p2d3);
+        Point2D p2d4D = host.getPrivateProjection().userToPixel(p2d4);
         // host.getPrivateWindow().setWindowScaleMode(
         // Window2D.WINDOW_SCALEMODE_DEFAULT);
 
@@ -188,10 +188,10 @@ public class MiniDeviceWidget extends Widget {
             if (!layout.equals(this)) {
                 System.out.println("paint layout in mini device : "
                         + layout.getName());
-                host.getPrivateWindow().setDevice2D(host);
+                host.getPrivateProjection().setDevice2D(host);
                 // host.getPrivateWindow().setWindowScaleMode(
                 // Window2D.WINDOW_SCALEMODE_DEVICE_INITIAL);
-                layout.setProjection(host.getPrivateWindow());
+                layout.setProjection(host.getPrivateProjection());
                 layout.paint(v2d, g2d, ViewPart.Device);
                 layout.setProjection(v2d.getActiveProjection());
                 // host.getPrivateWindow().setWindowScaleMode(

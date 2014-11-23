@@ -24,7 +24,7 @@ public class CustomSource extends AbstractSourceFunction {
 	public List<Point2D> solveFunction(double start, double end) {
 		List<Point2D> newFunction = new ArrayList<Point2D>();
 
-		// if you need window projection...
+		// if you need  projection...
 		getHost().getHost().getProjection();
 
 		// with evaluate function and step increment (that you can provide in
@@ -46,7 +46,7 @@ public class CustomSource extends AbstractSourceFunction {
 	public Point2D evaluate(double value) {
 		// Put evaluation code, example square power.
 
-		// if you need window projection...
+		// if you need  projection...
 		getHost().getHost().getProjection();
 
 		if (getNature() == FunctionNature.XFunction) {

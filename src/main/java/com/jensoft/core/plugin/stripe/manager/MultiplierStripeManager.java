@@ -74,7 +74,7 @@ public class MultiplierStripeManager extends AbstractStripeManager {
 
         if (getStripeOrientation() == StripeOrientation.Vertical) {
 
-            int stripeNumber = (int) ((getWindow2D().getMaxX() - getWindow2D().getMinX()) / interval);
+            int stripeNumber = (int) ((getProjection().getMaxX() - getProjection().getMinX()) / interval);
             if (stripeNumber < 0 || stripeNumber > getStripeMaxNumber()) {
                 stripes.clear();
                 return stripes;
@@ -86,18 +86,18 @@ public class MultiplierStripeManager extends AbstractStripeManager {
             boolean flag1 = true;
             while (flag1) {
 
-                if (ref + count1 * interval >= getWindow2D().getMinX() - interval
-                        && ref + count1 * interval <= getWindow2D().getMaxX()
+                if (ref + count1 * interval >= getProjection().getMinX() - interval
+                        && ref + count1 * interval <= getProjection().getMaxX()
                                 + interval) {
 
                     Point2D p2dUserStripeStart = new Point2D.Double(ref + count1
                             * interval, 0);
-                    Point2D p2dDeviceStripeStart = getWindow2D().userToPixel(
+                    Point2D p2dDeviceStripeStart = getProjection().userToPixel(
                                                                            p2dUserStripeStart);
 
                     Point2D p2dUserStripeEnd = new Point2D.Double(ref + count1
                             * interval + interval, 0);
-                    Point2D p2dDeviceStripeEnd = getWindow2D().userToPixel(
+                    Point2D p2dDeviceStripeEnd = getProjection().userToPixel(
                                                                          p2dUserStripeEnd);
 
                     Stripe stripe = new Stripe(StripeOrientation.Vertical);
@@ -121,7 +121,7 @@ public class MultiplierStripeManager extends AbstractStripeManager {
                     countPalette = 0;
                 }
 
-                if (ref + count1 * interval > getWindow2D().getMaxX()) {
+                if (ref + count1 * interval > getProjection().getMaxX()) {
                     flag1 = false;
                 }
 
@@ -134,17 +134,17 @@ public class MultiplierStripeManager extends AbstractStripeManager {
             boolean flag2 = true;
             while (flag2) {
 
-                if (ref - count2 * interval >= getWindow2D().getMinX() - interval
-                        && ref - count2 * interval <= getWindow2D().getMaxX()
+                if (ref - count2 * interval >= getProjection().getMinX() - interval
+                        && ref - count2 * interval <= getProjection().getMaxX()
                                 + interval) {
                     Point2D p2dUserStripeStart = new Point2D.Double(ref - count2
                             * interval, 0);
-                    Point2D p2dDeviceStripeStart = getWindow2D().userToPixel(
+                    Point2D p2dDeviceStripeStart = getProjection().userToPixel(
                                                                   p2dUserStripeStart);
 
                     Point2D p2dUserStripeEnd = new Point2D.Double(ref - count2
                             * interval - interval, 0);
-                    Point2D p2dDeviceStripeEnd = getWindow2D().userToPixel(
+                    Point2D p2dDeviceStripeEnd = getProjection().userToPixel(
                                                                          p2dUserStripeEnd);
 
                     Stripe stripe = new Stripe(StripeOrientation.Vertical);
@@ -169,7 +169,7 @@ public class MultiplierStripeManager extends AbstractStripeManager {
                     countPalette = 0;
                 }
 
-                if (ref - count2 * interval < getWindow2D().getMinX()) {
+                if (ref - count2 * interval < getProjection().getMinX()) {
                     flag2 = false;
                 }
 
@@ -180,7 +180,7 @@ public class MultiplierStripeManager extends AbstractStripeManager {
         }
         if (getStripeOrientation() == StripeOrientation.Horizontal) {
 
-            int stripeNumber = (int) ((getWindow2D().getMaxY() - getWindow2D().getMinY()) / interval);
+            int stripeNumber = (int) ((getProjection().getMaxY() - getProjection().getMinY()) / interval);
             if (stripeNumber < 0 || stripeNumber > getStripeMaxNumber()) {
                 stripes.clear();
                 return stripes;
@@ -192,17 +192,17 @@ public class MultiplierStripeManager extends AbstractStripeManager {
             boolean flag1 = true;
             while (flag1) {
 
-                if (ref + count1 * interval >= getWindow2D().getMinY() - interval
-                        && ref + count1 * interval <= getWindow2D().getMaxY()
+                if (ref + count1 * interval >= getProjection().getMinY() - interval
+                        && ref + count1 * interval <= getProjection().getMaxY()
                                 + interval) {
                     Point2D p2dUserStripeStart = new Point2D.Double(0, ref
                             + count1 * interval);
-                    Point2D p2dDeviceStripeStart = getWindow2D().userToPixel(
+                    Point2D p2dDeviceStripeStart = getProjection().userToPixel(
                                                                              p2dUserStripeStart);
 
                     Point2D p2dUserStripeEnd = new Point2D.Double(0, ref + count1
                             * interval + interval);
-                    Point2D p2dDeviceStripeEnd = getWindow2D().userToPixel(
+                    Point2D p2dDeviceStripeEnd = getProjection().userToPixel(
                                                                          p2dUserStripeEnd);
 
                     Stripe stripe = new Stripe(StripeOrientation.Horizontal);
@@ -227,7 +227,7 @@ public class MultiplierStripeManager extends AbstractStripeManager {
                     countPalette = 0;
                 }
 
-                if (ref + count1 * interval > getWindow2D().getMaxY()) {
+                if (ref + count1 * interval > getProjection().getMaxY()) {
                     flag1 = false;
                 }
 
@@ -240,15 +240,15 @@ public class MultiplierStripeManager extends AbstractStripeManager {
             boolean flag2 = true;
             while (flag2) {
 
-                if (ref - count2 * interval > getWindow2D().getMinY() - interval
-                        && ref - count2 * interval < getWindow2D().getMaxY() + interval) {
+                if (ref - count2 * interval > getProjection().getMinY() - interval
+                        && ref - count2 * interval < getProjection().getMaxY() + interval) {
                     Point2D p2dUserStripeStart = new Point2D.Double(0, ref
                             - count2 * interval);
-                    Point2D p2dDeviceStripeStart = getWindow2D().userToPixel(p2dUserStripeStart);
+                    Point2D p2dDeviceStripeStart = getProjection().userToPixel(p2dUserStripeStart);
 
                     Point2D p2dUserStripeEnd = new Point2D.Double(0, ref - count2
                             * interval - interval);
-                    Point2D p2dDeviceStripeEnd = getWindow2D().userToPixel(
+                    Point2D p2dDeviceStripeEnd = getProjection().userToPixel(
                                                                            p2dUserStripeEnd);
 
                     Stripe stripe = new Stripe(StripeOrientation.Horizontal);
@@ -272,7 +272,7 @@ public class MultiplierStripeManager extends AbstractStripeManager {
                     countPalette = 0;
                 }
 
-                if (ref - count2 * interval < getWindow2D().getMinY()) {
+                if (ref - count2 * interval < getProjection().getMinY()) {
                     flag2 = false;
                 }
 

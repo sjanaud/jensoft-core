@@ -27,9 +27,9 @@ public class GaugePartBuffer extends PartBuffer {
 	 * @param gauge
 	 */
 	public GaugePartBuffer(RadialGauge gauge) {
-		super(gauge.getWindow2D().userToPixel(new Point2D.Double(gauge.getX(), 0)).getX()-2*gauge.getRadius(), gauge.getWindow2D().userToPixel(new Point2D.Double(0, gauge.getY())).getY()-2*gauge.getRadius(), 4 * gauge.getRadius(), 4 * gauge.getRadius());
+		super(gauge.getProjection().userToPixel(new Point2D.Double(gauge.getX(), 0)).getX()-2*gauge.getRadius(), gauge.getProjection().userToPixel(new Point2D.Double(0, gauge.getY())).getY()-2*gauge.getRadius(), 4 * gauge.getRadius(), 4 * gauge.getRadius());
 		g2dPart = getBuffer().createGraphics();
-		g2dPart.translate(-gauge.getWindow2D().userToPixel(new Point2D.Double(gauge.getX(), 0)).getX() + 2*gauge.getRadius(), -gauge.getWindow2D().userToPixel(new Point2D.Double(0, gauge.getY())).getY() + 2*gauge.getRadius());
+		g2dPart.translate(-gauge.getProjection().userToPixel(new Point2D.Double(gauge.getX(), 0)).getX() + 2*gauge.getRadius(), -gauge.getProjection().userToPixel(new Point2D.Double(0, gauge.getY())).getY() + 2*gauge.getRadius());
 	}
 
 	/**

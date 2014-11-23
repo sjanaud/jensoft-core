@@ -128,14 +128,14 @@ public class PiePlugin extends AbstractPlugin implements
     /**
      * paint slices of specified pie
      * 
-     * @param v2d
-     *            the view2D
+     * @param view
+     *            the view
      * @param g2d
      *            the graphics context
      * @param pie
      *            the pie to paint
      */
-    private void paintSlices(View v2d, Graphics2D g2d, Pie pie) {
+    private void paintSlices(View view, Graphics2D g2d, Pie pie) {
         List<PieSlice> slices = pie.getSlices();
         for (PieSlice slice : slices) {
             if (slice.getSliceFill() != null) {
@@ -151,7 +151,6 @@ public class PiePlugin extends AbstractPlugin implements
             for (AbstractPieSliceLabel label : slice.getSliceLabels()) {
                 label.paintPieSlice(g2d, pie, slice);
             }
-
         }
     }
 

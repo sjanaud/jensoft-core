@@ -39,11 +39,11 @@ public class TotalPauEngine {
         // 1 - Stream Data on zoom 17, all data are fetch ok at this zoom
 
         // pau total centre du laboratoire
-        GeoPosition centerWindow = new GeoPosition(43.318637, -0.312383);
+        GeoPosition centerProjection = new GeoPosition(43.318637, -0.312383);
 
         int zoom = 17;
-        int centerXIndex = MapUtil.longToX(centerWindow.getLongitude(), zoom);
-        int centerYIndex = MapUtil.latToY(centerWindow.getLatitude(), zoom);
+        int centerXIndex = MapUtil.longToX(centerProjection.getLongitude(), zoom);
+        int centerYIndex = MapUtil.latToY(centerProjection.getLatitude(), zoom);
 
         List<Tile> tiles = new ArrayList<Tile>();
 
@@ -102,8 +102,8 @@ public class TotalPauEngine {
 
             // 17
             int level = 17;
-            int x = MapUtil.longToX(centerWindow.getLongitude(), level);
-            int y = MapUtil.latToY(centerWindow.getLatitude(), level);
+            int x = MapUtil.longToX(centerProjection.getLongitude(), level);
+            int y = MapUtil.latToY(centerProjection.getLatitude(), level);
             int delta = 2;
 
             Map2D map2D_17_256 = engine.createMapD17_256(x - delta, x + delta,
@@ -114,8 +114,8 @@ public class TotalPauEngine {
 
             // //18
             level = 18;
-            x = MapUtil.longToX(centerWindow.getLongitude(), level);
-            y = MapUtil.latToY(centerWindow.getLatitude(), level);
+            x = MapUtil.longToX(centerProjection.getLongitude(), level);
+            y = MapUtil.latToY(centerProjection.getLatitude(), level);
             delta = 4;
 
             Map2D map2D_18_256 = engine.createMapD18_256(x - delta, x + delta,
@@ -126,8 +126,8 @@ public class TotalPauEngine {
 
             // 19
             level = 19;
-            x = MapUtil.longToX(centerWindow.getLongitude(), level);
-            y = MapUtil.latToY(centerWindow.getLatitude(), level);
+            x = MapUtil.longToX(centerProjection.getLongitude(), level);
+            y = MapUtil.latToY(centerProjection.getLatitude(), level);
             delta = 8;
 
             Map2D map2D_19_256 = engine.createMapD19_256(x - delta, x + delta,
@@ -138,8 +138,8 @@ public class TotalPauEngine {
 
             // 20
             level = 20;
-            x = MapUtil.longToX(centerWindow.getLongitude(), level);
-            y = MapUtil.latToY(centerWindow.getLatitude(), level);
+            x = MapUtil.longToX(centerProjection.getLongitude(), level);
+            y = MapUtil.latToY(centerProjection.getLatitude(), level);
             delta = 16;
 
             Map2D map2D_20_256 = engine.createMapD20_256(x - delta, x + delta,
@@ -150,8 +150,8 @@ public class TotalPauEngine {
 
             // 21
             level = 21;
-            x = MapUtil.longToX(centerWindow.getLongitude(), level);
-            y = MapUtil.latToY(centerWindow.getLatitude(), level);
+            x = MapUtil.longToX(centerProjection.getLongitude(), level);
+            y = MapUtil.latToY(centerProjection.getLatitude(), level);
             delta = 14;
 
             Map2D map2D_21_256 = engine.createMapD21_256(x - delta, x + delta,

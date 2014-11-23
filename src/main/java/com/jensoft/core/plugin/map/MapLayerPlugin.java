@@ -46,11 +46,11 @@ public class MapLayerPlugin extends AbstractPlugin {
     }
 
     /**
-     * get map window
+     * get map projection
      * 
-     * @return map window
+     * @return map projection
      */
-    public Projection.Map getWindowMap() {
+    public Projection.Map getMapProjection() {
         return (Projection.Map) getProjection();
     }
 
@@ -61,33 +61,33 @@ public class MapLayerPlugin extends AbstractPlugin {
 
         @Override
         public double pixelToLongitude(double pixelX) {
-            return getWindowMap().pixelToUserX(pixelX);
+            return getMapProjection().pixelToUserX(pixelX);
         }
 
         @Override
         public double pixelToLatitude(double pixelY) {
-            return getWindowMap().pixelToUserY(pixelY);
+            return getMapProjection().pixelToUserY(pixelY);
         }
 
         @Override
         public GeoPosition pixelToGeo(Point2D pixel) {
-            Point2D geo = getWindowMap().pixelToUser(pixel);
+            Point2D geo = getMapProjection().pixelToUser(pixel);
             return new GeoPosition(geo.getY(), geo.getX());
         }
 
         @Override
         public double longitudeToPixel(double longitude) {
-            return getWindowMap().userToPixelX(longitude);
+            return getMapProjection().userToPixelX(longitude);
         }
 
         @Override
         public double latitudeToPixel(double latitude) {
-            return getWindowMap().userToPixelY(latitude);
+            return getMapProjection().userToPixelY(latitude);
         }
 
         @Override
         public Point2D geoToPixel(GeoPosition position) {
-            return getWindowMap().userToPixel(new Point2D.Double(position.getLongitude(), position.getLatitude()));
+            return getMapProjection().userToPixel(new Point2D.Double(position.getLongitude(), position.getLatitude()));
         }
     };
 

@@ -43,15 +43,15 @@ public class DynamicPointAreaManager extends AbstractPointManager {
         double currentY1 = 0;
         double currentY2 = 0;
 
-        double deltaX1 = getWindow2D().getMaxX() - xRef;
-        double deltaY11 = getWindow2D().getMaxY() - yRef;
-        double deltaY12 = Math.abs(getWindow2D().getMinY() - yRef);
+        double deltaX1 = getProjection().getMaxX() - xRef;
+        double deltaY11 = getProjection().getMaxY() - yRef;
+        double deltaY12 = Math.abs(getProjection().getMinY() - yRef);
 
         int numberIterX1 = (int) (deltaX1 / weighX);
         int numberIterY11 = (int) (deltaY11 / weighY);
         int numberIterY12 = (int) (deltaY12 / weighY);
 
-        double deltaX2 = Math.abs(getWindow2D().getMinX() - xRef);
+        double deltaX2 = Math.abs(getProjection().getMinX() - xRef);
         double numberIterX2 = (int) (deltaX2 / weighX);
 
         for (int x1 = 0; x1 <= numberIterX1; x1++) {
@@ -61,7 +61,7 @@ public class DynamicPointAreaManager extends AbstractPointManager {
                 currentY1 = yRef + y1 * weighY;
 
                 Point2D p2dUser = new Point2D.Double(currentX, currentY1);
-                Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                 Point p = new Point(AREA);
                 p.value = p2dDevice;
@@ -75,7 +75,7 @@ public class DynamicPointAreaManager extends AbstractPointManager {
                 currentY2 = yRef - y2 * weighY;
 
                 Point2D p2dUser = new Point2D.Double(currentX, currentY2);
-                Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                 Point p = new Point(AREA);
                 p.value = p2dDevice;
@@ -93,7 +93,7 @@ public class DynamicPointAreaManager extends AbstractPointManager {
                 currentY1 = yRef + y1 * weighY;
 
                 Point2D p2dUser = new Point2D.Double(currentX, currentY1);
-                Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                 Point p = new Point(AREA);
                 p.value = p2dDevice;
@@ -106,7 +106,7 @@ public class DynamicPointAreaManager extends AbstractPointManager {
                 currentY2 = yRef - y2 * weighY;
 
                 Point2D p2dUser = new Point2D.Double(currentX, currentY2);
-                Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+                Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
                 Point p = new Point(AREA);
                 p.value = p2dDevice;

@@ -25,12 +25,12 @@ public class DocFilesPortfolioDonut3D {
     public static View getDonut3D_1() {
 
     	 View view = new View(0);
-         Projection window = new Projection.Linear(-1, 1, -1, 1);
-         window.setName("compatible donut3D window");
-         view.registerProjection(window);
+         Projection projection = new Projection.Linear(-1, 1, -1, 1);
+         projection.setName("compatible donut3");
+         view.registerProjection(projection);
 
          Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
-         window.registerPlugin(donut3DPlugin);
+         projection.registerPlugin(donut3DPlugin);
         
         
         Donut3D donut3d = Donut3DToolkit.createDonut3D("myDonut", 30, 60, 40, 60, 50);
@@ -50,12 +50,12 @@ public class DocFilesPortfolioDonut3D {
     public static View getDonut3D_2() {
 
     	 View view = new View(0);
-         Projection window = new Projection.Linear(-1, 1, -1, 1);
-         window.setName("compatible donut3D window");
-         view.registerProjection(window);
+         Projection proj = new Projection.Linear(-1, 1, -1, 1);
+         proj.setName("compatible donut3D window");
+         view.registerProjection(proj);
 
          Donut3DPlugin donut3DPlugin = new Donut3DPlugin();
-         window.registerPlugin(donut3DPlugin);
+         proj.registerPlugin(donut3DPlugin);
         Donut3D donut3d = Donut3DToolkit.createDonut3D("myDonut", 30, 60, 40, 60, 50);
         donut3DPlugin.addDonut(donut3d);
         // create slices

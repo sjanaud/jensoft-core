@@ -150,13 +150,13 @@ public abstract class AbstractDonut2DAnimator implements Donut2DListener {
     }
 
     /**
-     * get view2D that host specified slice
+     * get view that host specified slice
      * 
      * @param slice
      * @return host view
      */
-    public View getView2D(Donut2DSlice slice) {
-        return slice.getHost().getHostPlugin().getProjection().getView2D();
+    public View getView(Donut2DSlice slice) {
+        return slice.getHost().getHostPlugin().getProjection().getView();
     }
 
 }

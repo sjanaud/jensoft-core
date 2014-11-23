@@ -30,19 +30,17 @@ public class MarkerLabel extends AbstractMarker {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View2D, java.awt.Graphics2D)
+     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
-    public final void paintMarker(View view2d, Graphics2D g2d) {
-
-        //System.out.println("paint marker");
-        view2d.getDevice2D().remove(jlabel);
+    public final void paintMarker(View view, Graphics2D g2d) {
+        view.getDevice2D().remove(jlabel);
         jlabel.setText(label);
         jlabel.setForeground(Color.RED);
         jlabel.setBounds((int) getMarkerPoint().getX(), (int) getMarkerPoint()
                 .getY(), (int) jlabel.getPreferredSize().getWidth(),
                          (int) jlabel.getPreferredSize().getHeight());
-        view2d.getDevice2D().add(jlabel);
+        view.getDevice2D().add(jlabel);
 
     }
 

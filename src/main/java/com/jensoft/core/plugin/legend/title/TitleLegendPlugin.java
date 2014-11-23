@@ -82,7 +82,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
      * true if the context is accessible for this legend, false otherwise
      * 
      * @param viewPart
-     *            the window part
+     *            the view part
      * @param legend
      *            the legend
      * @return true if the context is accessible, false otherwise
@@ -120,11 +120,11 @@ public class TitleLegendPlugin extends AbstractPlugin {
     /**
      * solve legend
      * 
-     * @param view2D
+     * @param view
      * @param g2d
      * @param legend
      */
-    private void solveLegends(View view2D, Graphics2D g2d, TitleLegend legend) {
+    private void solveLegends(View view, Graphics2D g2d, TitleLegend legend) {
         TitleLegendConstraints contraints = legend.getConstraints();
         legend.clearLegendGlyph();
         String labelLegend = legend.getText();
@@ -134,7 +134,7 @@ public class TitleLegendPlugin extends AbstractPlugin {
                                                                            labelLegend);
         float legendWidth = GlyphUtil.getGlyphWidth(legendGlyphVector);
 
-        View v2d = legend.getHost().getProjection().getView2D();
+        View v2d = legend.getHost().getProjection().getView();
 
         if (contraints.getPosition() == LegendPosition.West
                 || contraints.getPosition() == LegendPosition.East) {
@@ -142,12 +142,12 @@ public class TitleLegendPlugin extends AbstractPlugin {
             JComponent windowComponent = null;
             double depth = 0;
             if (contraints.getPosition() == LegendPosition.West) {
-                windowComponent = v2d.getWindowComponent(ViewPart.West);
+                windowComponent = v2d.getViewPartComponent(ViewPart.West);
                 depth = windowComponent.getWidth()
                         * (1 - contraints.getDepth());
             }
             if (contraints.getPosition() == LegendPosition.East) {
-                windowComponent = v2d.getWindowComponent(ViewPart.East);
+                windowComponent = v2d.getViewPartComponent(ViewPart.East);
                 depth = windowComponent.getWidth() * contraints.getDepth();
             }
 
@@ -226,11 +226,11 @@ public class TitleLegendPlugin extends AbstractPlugin {
             int width = 0;
             double depth = 0;
             if (contraints.getPosition() == LegendPosition.South) {
-                windowComponent = v2d.getWindowComponent(ViewPart.South);
+                windowComponent = v2d.getViewPartComponent(ViewPart.South);
                 depth = windowComponent.getHeight() * contraints.getDepth();
             }
             else if (contraints.getPosition() == LegendPosition.North) {
-                windowComponent = v2d.getWindowComponent(ViewPart.North);
+                windowComponent = v2d.getViewPartComponent(ViewPart.North);
                 depth = windowComponent.getHeight()
                         * (1 - contraints.getDepth());
             }

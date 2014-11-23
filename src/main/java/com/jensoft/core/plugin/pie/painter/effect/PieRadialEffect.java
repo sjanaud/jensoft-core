@@ -254,13 +254,13 @@ class Effect2ShiftIncidence extends Thread {
 			if (effect2.isShiftingFocusIncidence()) {
 				throw new InterruptedException("effect is already shifting.");
 			}
-			pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+			pie.getHostPlugin().getProjection().getView().repaintDevice();
 			effect2.setShiftingFocusIncidence(true);
 			while (true) {
 				for (int i = 0; i < 90; i++) {
 					effect2.setFocusAngle(i * 4);
 					Thread.sleep(20);
-					pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+					pie.getHostPlugin().getProjection().getView().repaintDevice();
 				}
 			}
 
@@ -294,19 +294,19 @@ class Effect2ShiftRadius extends Thread {
 			if (effect2.isShiftingFocusRadius()) {
 				throw new InterruptedException("effect is already shifting.");
 			}
-			pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+			pie.getHostPlugin().getProjection().getView().repaintDevice();
 			effect2.setShiftingFocusRadius(true);
 			double pieRadius = pie.getRadius();
 			while (true) {
 				for (double i = 0; i < pieRadius; i++) {
 					effect2.setFocusRadius((int) i);
 					Thread.sleep(50);
-					pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+					pie.getHostPlugin().getProjection().getView().repaintDevice();
 				}
 				for (double i = pieRadius; i > 0; i--) {
 					effect2.setFocusRadius((int) i);
 					Thread.sleep(50);
-					pie.getHostPlugin().getProjection().getView2D().repaintDevice();
+					pie.getHostPlugin().getProjection().getView().repaintDevice();
 				}
 
 			}

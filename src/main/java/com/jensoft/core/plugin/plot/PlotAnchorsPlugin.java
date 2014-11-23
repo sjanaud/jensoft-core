@@ -104,7 +104,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 	public void onRelease(MouseEvent me) {
 		if (me.isShiftDown()) {
 			selectedPlot.removePoint(); // Shift Click removes control points
-			getProjection().getView2D().repaintDevice();
+			getProjection().getView().repaintDevice();
 		}
 
 	}
@@ -120,7 +120,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 	public void onDrag(MouseEvent me) {
 		if (selectedPlot != null) {
 			selectedPlot.updateAnchorPoint(me.getX(), me.getY());
-			getProjection().getView2D().repaintDevice();
+			getProjection().getView().repaintDevice();
 		}
 	}
 
@@ -147,7 +147,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 		//
 		//
 		// selection.addPoint(me.getX(), me.getY());
-		// getWindow2D().getView2D().repaintDevice();
+		// getProjection().getView().repaintDevice();
 		// System.out.println("on press plot!");
 		// }
 		// else{

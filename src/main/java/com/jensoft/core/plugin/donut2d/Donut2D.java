@@ -88,7 +88,7 @@ public class Donut2D {
     public enum Donut2DNature {
 
         /**
-         * defines coordinate system in user space, base on window2D projection
+         * defines coordinate system in user space, base on projection
          */
         User("user"),
 

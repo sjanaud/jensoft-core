@@ -115,19 +115,19 @@ public class Donut3DDivergenceAnimator extends AbstractDonut3DAnimator {
                         donutSlice
                                 .setDivergence(donutSlice.getDivergence() - 1);
                         Thread.sleep(sleep);
-                        getView2D(donutSlice).repaintDevice();
+                        getView(donutSlice).repaintDevice();
                     }
                     donutSlice.setDivergence(0);
-                    getView2D(donutSlice).repaintDevice();
+                    getView(donutSlice).repaintDevice();
                 }
                 else {
                     for (int i = 0; i <= inflate; i++) {
                         donutSlice.setDivergence(i);
                         Thread.sleep(sleep);
-                        getView2D(donutSlice).repaintDevice();
+                        getView(donutSlice).repaintDevice();
                     }
                     donutSlice.setDivergence(inflate);
-                    getView2D(donutSlice).repaintDevice();
+                    getView(donutSlice).repaintDevice();
                 }
 
             }

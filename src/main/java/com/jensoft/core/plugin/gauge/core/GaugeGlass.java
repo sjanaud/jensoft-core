@@ -58,8 +58,8 @@ public abstract class GaugeGlass extends GaugePart {
 
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
+			double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
+			double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
 			int gaugeRadius = radialGauge.getRadius();
 
 			Point2D p1 = new Point2D.Double(centerX, centerY + gaugeRadius);
@@ -112,8 +112,8 @@ public abstract class GaugeGlass extends GaugePart {
 		 */
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
+			double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();// (int)radialGauge.getX();
+			double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();// (int)radialGauge.getY();
 			int radius = radialGauge.getRadius() - 5;
 
 			Donut2D donut1 = new Donut2D();
@@ -440,8 +440,8 @@ public abstract class GaugeGlass extends GaugePart {
 		 */
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 			int radius = radialGauge.getRadius();
 			Arc2D arc2d = new Arc2D.Double(centerX - radius, centerY - radius, 2 * radius, 2 * radius, startAngleDegree, extendsDegree, Arc2D.OPEN);
 			textPath.setPath(arc2d);
@@ -487,8 +487,8 @@ public abstract class GaugeGlass extends GaugePart {
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 			int radius = radialGauge.getRadius();
 			int radius2 = radialGauge.getRadius() + 5;
 
@@ -588,8 +588,8 @@ public abstract class GaugeGlass extends GaugePart {
 		@Override
 		public final void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
 
-			double centerX = radialGauge.getWindow2D().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
-			double centerY = radialGauge.getWindow2D().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
+			double centerX = radialGauge.getProjection().userToPixel(new Point2D.Double(radialGauge.getX(), 0)).getX();
+			double centerY = radialGauge.getProjection().userToPixel(new Point2D.Double(0, radialGauge.getY())).getY();
 			int radius = radialGauge.getRadius();
 
 			Pie pie = new Pie();
@@ -601,7 +601,7 @@ public abstract class GaugeGlass extends GaugePart {
 			pie.addSlice(new PieSlice("slice", Color.WHITE));
 
 			PiePlugin piePlugin = new PiePlugin();
-			piePlugin.setProjection(radialGauge.getWindow2D());
+			piePlugin.setProjection(radialGauge.getProjection());
 			piePlugin.addPie(pie);
 
 			AbstractPieEffect fx = getEffectInstance();

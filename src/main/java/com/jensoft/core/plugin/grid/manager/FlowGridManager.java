@@ -111,7 +111,7 @@ public class FlowGridManager extends AbstractGridManager {
                 double g = flowStart + i * flowInterval;
                 if (getGridOrientation() == GridOrientation.Vertical) {
                     Point2D p2dUser = new Point2D.Double(g, 0);
-                    Point2D p2ddevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2ddevice = getProjection().userToPixel(p2dUser);
 
                     Grid grid = new Grid(GridOrientation.Vertical);
                     grid.setGridDeviceValue(p2ddevice.getX());
@@ -134,7 +134,7 @@ public class FlowGridManager extends AbstractGridManager {
                 }
                 else if (getGridOrientation() == GridOrientation.Horizontal) {
                     Point2D p2dUser = new Point2D.Double(0, g);
-                    Point2D p2ddevice = getWindow2D().userToPixel(p2dUser);
+                    Point2D p2ddevice = getProjection().userToPixel(p2dUser);
 
                     Grid grid = new Grid(GridOrientation.Horizontal);
                     grid.setGridDeviceValue(p2ddevice.getY());

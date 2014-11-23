@@ -30,15 +30,15 @@ import com.jensoft.core.view.ViewEvent;
  * <code>Projection</code> takes the responsibility to make user projection for
  * hosted plug-ins.
  * <p>
- * The window projection nature are {@link Linear},{@link LogX}, {@link LogY},
+ * The  projection nature are {@link Linear},{@link LogX}, {@link LogY},
  * {@link Log}, {@link Map} <br>
  * </p>
  * <ul>
- * <li>a window2D has to be registered in a {@link #view2D} with the
+ * <li>a projection has to be registered in a {@link #view} with the
  * {@link View#registerProjection(Projection)}
- * <li>a window2D should be register plug-ins with
+ * <li>a projection should be register plug-ins with
  * {@link #registerPlugin(AbstractPlugin)} method</li>
- * <li>a plug-in developer can be use window projection method
+ * <li>a plug-in developer can be use  projection method
  * {@link #userToPixel(Point2D)} or {@link #pixelToUser(Point2D)} to create
  * plug-ins for himself</li>
  * </ul>
@@ -48,7 +48,7 @@ import com.jensoft.core.view.ViewEvent;
 public abstract class Projection implements PluginListener {
 
 	/**
-	 * The <code>Linear</code> class defines a window linear projection.
+	 * The <code>Linear</code> class defines a linear projection.
 	 */
 	public static class Linear extends Projection implements Serializable {
 
@@ -88,7 +88,7 @@ public abstract class Projection implements PluginListener {
 		
 
 		/**
-		 * Constructs and initializes a <code>Linear</code> window projection
+		 * Constructs and initializes a <code>Linear</code>  projection
 		 * with coordinates (0,0,0,0).
 		 */
 		public Linear() {
@@ -112,28 +112,28 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * build a new window2d with specified user metrics parameters.<br>
+		 * build a new projection with specified user metrics parameters.<br>
 		 * the {@link #bound(double, double, double, double)} method is called.
 		 * 
 		 * @param minx
-		 *            the window minimum x to set
+		 *            the projection minimum x to set
 		 * @param maxx
-		 *            the window maximum x to set
+		 *            the projection maximum x to set
 		 * @param miny
-		 *            the window minimum y to set
+		 *            the projection minimum y to set
 		 * @param maxy
-		 *            the window maximum y to set
+		 *            the projection maximum y to set
 		 */
 		public Linear(double minx, double maxx, double miny, double maxy) {
 			bound(minx, maxx, miny, maxy);
 		}
 
 		/**
-		 * bound this {@link Linear} window with the specified double
+		 * bound this {@link Linear} projection with the specified double
 		 * parameters.<br>
 		 * <p>
-		 * set the all given parameters as window range. If {@link #initial} is
-		 * true, initials variables for range are referenced as the window
+		 * set the all given parameters as projection range. If {@link #initial} is
+		 * true, initials variables for range are referenced as the projection
 		 * origin bound.
 		 * </p>
 		 * 
@@ -173,8 +173,8 @@ public abstract class Projection implements PluginListener {
 			this.scaleX = null;
 			this.scaleY = null;
 
-			// fire listeners about this window bound
-			super.fireWindow2DBoundChanged();
+			// fire listeners about this projection bound
+			super.fireProjectionBoundChanged();
 
 		}
 		
@@ -190,10 +190,10 @@ public abstract class Projection implements PluginListener {
 		 * @see com.jensoft.core.window.Window2D#onView2DRegister()
 		 */
 		@Override
-		public void onView2DRegister() {
-			super.onView2DRegister();
+		public void onViewRegister() {
+			super.onViewRegister();
 			
-			getView2D().addView2DListener(new ViewAdapter() {
+			getView().addViewListener(new ViewAdapter() {
 
 				/* (non-Javadoc)
 				 * @see com.jensoft.core.view.View2DAdapter#viewResized(com.jensoft.core.view.View2DEvent)
@@ -209,7 +209,7 @@ public abstract class Projection implements PluginListener {
 		 * this method set the initial. on initial, when the
 		 * {@link #bound(double, double, double, double)} method is call, min
 		 * and max are copy in initial variables to have a origin range of the
-		 * initialized window
+		 * initialized projection
 		 * 
 		 * @param initial
 		 *            the initial to set
@@ -219,16 +219,16 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * return the window center in the user coordinate projection
+		 * return the projection center in the user coordinate projection
 		 * 
-		 * @return the window center
+		 * @return the projection center
 		 */
 		public Point2D getUserCenter() {
 			return new Point2D.Double(minX + (maxX - minX) / 2, minY + (maxY - minY) / 2);
 		}
 
 		/**
-		 * get the window initial minimum X
+		 * get the projection initial minimum X
 		 * 
 		 * @return minimum x
 		 */
@@ -237,7 +237,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the window initial maximum x
+		 * get the projection initial maximum x
 		 * 
 		 * @return maximum x
 		 */
@@ -246,7 +246,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the window initial minimum y
+		 * get the projection initial minimum y
 		 * 
 		 * @return minimum y
 		 */
@@ -255,7 +255,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the window initial maximum y
+		 * get the projection initial maximum y
 		 * 
 		 * @return maximum y
 		 */
@@ -264,7 +264,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * the the window initial width
+		 * the the projection initial width
 		 * 
 		 * @return initial width
 		 */
@@ -273,7 +273,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the window initial height
+		 * get the projection initial height
 		 * 
 		 * @return initial height
 		 */
@@ -282,7 +282,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the window minimum x
+		 * get the projection minimum x
 		 * 
 		 * @return minimum x
 		 */
@@ -292,7 +292,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the window maximum x
+		 * get the projection maximum x
 		 * 
 		 * @return maximum x
 		 */
@@ -302,7 +302,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the window minimum y
+		 * get the projection minimum y
 		 * 
 		 * @return minimum y
 		 */
@@ -312,7 +312,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the window maximum y
+		 * get the projection maximum y
 		 * 
 		 * @return maximum y
 		 */
@@ -413,10 +413,8 @@ public abstract class Projection implements PluginListener {
 			return this.scaleY;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#userToPixelX(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#userToPixelX(double)
 		 */
 		@Override
 		public double userToPixelX(double userX) {
@@ -425,10 +423,8 @@ public abstract class Projection implements PluginListener {
 			return getScaleX() * (userX - getMinX());
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#userToPixelY(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#userToPixelY(double)
 		 */
 		@Override
 		public double userToPixelY(double userY) {
@@ -437,10 +433,8 @@ public abstract class Projection implements PluginListener {
 			return -getScaleY() * (userY - getMaxY());
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#pixelToUserX(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#pixelToUserX(double)
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
@@ -449,10 +443,8 @@ public abstract class Projection implements PluginListener {
 			return pixelX / getScaleX() + getMinX();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#pixelToUserY(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#pixelToUserY(double)
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
@@ -466,36 +458,36 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * The <code>LogX</code> class defines a composite logarithmic linear window
+	 * The <code>LogX</code> class defines a composite logarithmic linear projection
 	 * with logarithmic x and linear y projection.
 	 */
 	public static class LogX extends Linear implements Serializable {
 
 		/**
-		 * Constructs a new window2d with logarithmic on x dimension and linear
+		 * Constructs a new projection with logarithmic on x dimension and linear
 		 * on y dimension with specified user metrics parameters.
 		 * 
 		 * @param minx
-		 *            the window minimum x to set, should be greater than 0
+		 *            the projection minimum x to set, should be greater than 0
 		 * @param maxx
-		 *            the window maximum x to set
+		 *            the projection maximum x to set
 		 * @param miny
-		 *            the window minimum y to set
+		 *            the projection minimum y to set
 		 * @param maxy
-		 *            the window maximum y to set
+		 *            the projection maximum y to set
 		 * @throws IllegalArgumentException
 		 *             if the minx argument is not greater than 0
 		 */
 		public LogX(double minx, double maxx, double miny, double maxy) {
 			if (minx <= 0) {
-				throw new IllegalArgumentException("for LogX window projection, minx should be greater than 0.");
+				throw new IllegalArgumentException("LogX projection, minx should be greater than 0.");
 			}
 			bound(minx, maxx, miny, maxy);
 		}
 		
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.window.Window2D.Linear#getScaleX()
+		 * @see com.jensoft.core.projection.Projection.Linear#getScaleX()
 		 */
 		@Override
 		public Double getScaleX() {
@@ -504,10 +496,8 @@ public abstract class Projection implements PluginListener {
 			return this.scaleX;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Linear#userToPixelX(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Linear#userToPixelX(double)
 		 */
 		@Override
 		public double userToPixelX(double userX) {
@@ -516,10 +506,8 @@ public abstract class Projection implements PluginListener {
 			return getScaleX() * (Math.log10(userX) - Math.log10(getMinX()));
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Linear#pixelToUserX(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Linear#pixelToUserX(double)
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
@@ -533,34 +521,34 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * The <code>LogY</code> class defines a composite logarithmic linear window
+	 * The <code>LogY</code> class defines a composite logarithmic linear projection
 	 * with logarithmic y and linear x projection.
 	 */
 	public static class LogY extends Linear implements Serializable {
 
 		/**
-		 * Constructs a new window2d with logarithmic on y dimension and linear
+		 * Constructs a new projection with logarithmic on y dimension and linear
 		 * on x dimension with specified user metrics parameters.
 		 * 
 		 * @param minx
-		 *            the window minimum x to set
+		 *            the projection minimum x to set
 		 * @param maxx
-		 *            the window maximum x to set
+		 *            the projection maximum x to set
 		 * @param miny
-		 *            the window minimum y to set
+		 *            the projection minimum y to set
 		 * @param maxy
-		 *            the window maximum y to set
+		 *            the projection maximum y to set
 		 */
 		public LogY(double minx, double maxx, double miny, double maxy) {
 			if (miny <= 0) {
-				throw new IllegalArgumentException("for LogY window projection, miny should be greater than 0.");
+				throw new IllegalArgumentException("LogY window projection, miny should be greater than 0.");
 			}
 			bound(minx, maxx, miny, maxy);
 		}
 		
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.window.Window2D.Linear#getScaleY()
+		 * @see com.jensoft.core.projection.Projection.Linear#getScaleY()
 		 */
 		@Override
 		public Double getScaleY() {
@@ -569,10 +557,8 @@ public abstract class Projection implements PluginListener {
 			return this.scaleY;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Linear#userToPixelY(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Linear#userToPixelY(double)
 		 */
 		@Override
 		public double userToPixelY(double userY) {
@@ -581,10 +567,8 @@ public abstract class Projection implements PluginListener {
 			return -getScaleY() * (Math.log10(userY) - Math.log10(getMaxY()));
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Linear#pixelToUserY(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Linear#pixelToUserY(double)
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
@@ -598,36 +582,36 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * The <code>Log</code> class defines a logarithmic projection window on x
+	 * The <code>Log</code> class defines a logarithmic projection projection on x
 	 * and y dimension
 	 */
 	public static class Log extends Linear implements Serializable {
 
 		/**
-		 * Constructs a new window2d with logarithmic on x and y dimension with
+		 * Constructs a new projection with logarithmic on x and y dimension with
 		 * specified user metrics parameters.
 		 * 
 		 * @param minx
-		 *            the window minimum x to set
+		 *            the projection minimum x to set
 		 * @param maxx
-		 *            the window maximum x to set
+		 *            the projection maximum x to set
 		 * @param miny
-		 *            the window minimum y to set
+		 *            the projection minimum y to set
 		 * @param maxy
-		 *            the window maximum y to set
+		 *            the projection maximum y to set
 		 */
 		public Log(double minx, double maxx, double miny, double maxy) {
 			if (minx <= 0) {
-				throw new IllegalArgumentException("for Log window projection, minx should be greater than 0.");
+				throw new IllegalArgumentException("Log projection, minx should be greater than 0.");
 			}
 			if (miny <= 0) {
-				throw new IllegalArgumentException("for Log window projection, miny should be greater than 0.");
+				throw new IllegalArgumentException("Log projection, miny should be greater than 0.");
 			}
 			bound(minx, maxx, miny, maxy);
 		}
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.window.Window2D.Linear#getScaleX()
+		 * @see com.jensoft.core.projection.Projection.Linear#getScaleX()
 		 */
 		@Override
 		public Double getScaleX() {
@@ -637,7 +621,7 @@ public abstract class Projection implements PluginListener {
 		}
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.window.Window2D.Linear#getScaleY()
+		 * @see com.jensoft.core.projection.Projection.Linear#getScaleY()
 		 */
 		@Override
 		public Double getScaleY() {
@@ -646,10 +630,8 @@ public abstract class Projection implements PluginListener {
 			return this.scaleY;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Linear#userToPixelX(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Linear#userToPixelX(double)
 		 */
 		@Override
 		public double userToPixelX(double userX) {
@@ -658,10 +640,8 @@ public abstract class Projection implements PluginListener {
 			return getScaleX() * (Math.log10(userX) - Math.log10(getMinX()));
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Linear#pixelToUserX(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Linear#pixelToUserX(double)
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
@@ -670,10 +650,8 @@ public abstract class Projection implements PluginListener {
 			return Math.pow(10, pixelX / getScaleX() + Math.log10(getMinX()));
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Linear#userToPixelY(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Linear#userToPixelY(double)
 		 */
 		@Override
 		public double userToPixelY(double userY) {
@@ -682,10 +660,8 @@ public abstract class Projection implements PluginListener {
 			return -getScaleY() * (Math.log10(userY) - Math.log10(getMaxY()));
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Linear#pixelToUserY(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Linear#pixelToUserY(double)
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
@@ -699,7 +675,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * The <code>Map</code> class defines a Mercator projection window.
+	 * The <code>Map</code> class defines a Mercator projection.
 	 */
 	public static class Map extends Projection implements Serializable {
 
@@ -743,7 +719,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the center position of this window map
+		 * get the center position of this projection map
 		 * 
 		 * @return the centerPosition
 		 */
@@ -781,10 +757,9 @@ public abstract class Projection implements PluginListener {
 			this.level = level;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#getMinX()
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#getMinX()
 		 */
 		@Override
 		public double getMinX() {
@@ -792,10 +767,8 @@ public abstract class Projection implements PluginListener {
 			return projection.pixelToLongitude(centerXPixel - getPixelWidth() / 2);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#getMaxX()
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#getMaxX()
 		 */
 		@Override
 		public double getMaxX() {
@@ -803,10 +776,8 @@ public abstract class Projection implements PluginListener {
 			return projection.pixelToLongitude(centerXPixel + getPixelWidth() / 2);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#getMinY()
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#getMinY()
 		 */
 		@Override
 		public double getMinY() {
@@ -814,10 +785,8 @@ public abstract class Projection implements PluginListener {
 			return projection.pixelToLatitude(centerYPixel + getPixelHeight() / 2);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#getMaxY()
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#getMaxY()
 		 */
 		@Override
 		public double getMaxY() {
@@ -825,10 +794,8 @@ public abstract class Projection implements PluginListener {
 			return projection.pixelToLatitude(centerYPixel - getPixelHeight() / 2);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#userToPixelX(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#userToPixelX(double)
 		 */
 		@Override
 		public double userToPixelX(double userX) {
@@ -836,10 +803,8 @@ public abstract class Projection implements PluginListener {
 			return -centerXPixel + getPixelWidth() / 2 + projection.longitudeToPixel(userX);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#userToPixelY(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#userToPixelY(double)
 		 */
 		@Override
 		public double userToPixelY(double userY) {
@@ -847,20 +812,16 @@ public abstract class Projection implements PluginListener {
 			return -centerYPixel + getPixelHeight() / 2 + projection.latitudeToPixel(userY);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#pixelToUserX(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#pixelToUserX(double)
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
 			return 0;
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D#pixelToUserY(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection#pixelToUserY(double)
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
@@ -872,7 +833,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * Time window define a window with time definition on one x or y dimension
+	 * Time projection define a projection with time definition on one x or y dimension
 	 * 
 	 * @author sebastien janaud
 	 */
@@ -881,7 +842,7 @@ public abstract class Projection implements PluginListener {
 		private static final long serialVersionUID = 5908781043325467240L;
 
 		/**
-		 * create a time window
+		 * create a time projection
 		 * 
 		 * @param minx
 		 * @param maxx
@@ -893,14 +854,14 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * return the minimum date of this time window
+		 * return the minimum date of this time projection
 		 * 
 		 * @return minimum date
 		 */
 		public abstract Date getMinDate();
 
 		/**
-		 * return the maximum date of this time window
+		 * return the maximum date of this time projection
 		 * 
 		 * @return maximum
 		 */
@@ -930,7 +891,7 @@ public abstract class Projection implements PluginListener {
 		public abstract int getTimeDurationPixel();
 
 		/**
-		 * get the time duration in millisecond of this time window between min
+		 * get the time duration in millisecond of this time projection between min
 		 * date and max date
 		 * 
 		 * @return duration millisecond
@@ -940,7 +901,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the time duration in minutes of this time window between min date
+		 * get the time duration in minutes of this time projection between min date
 		 * and max date
 		 * 
 		 * @return duration minutes
@@ -952,7 +913,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the time duration in hours of this time window between min date
+		 * get the time duration in hours of this time projection between min date
 		 * and max date
 		 * 
 		 * @return duration hours
@@ -964,7 +925,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the time duration in days of this time window between min date
+		 * get the time duration in days of this time projection between min date
 		 * and max date
 		 * 
 		 * @return duration days
@@ -976,7 +937,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the time duration in weeks of this time window between min date
+		 * get the time duration in weeks of this time projection between min date
 		 * and max date
 		 * 
 		 * @return duration weeks
@@ -988,7 +949,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * get the time duration in month of this time window between min date
+		 * get the time duration in month of this time projection between min date
 		 * and max date
 		 * 
 		 * @return duration month
@@ -1002,7 +963,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * The <code>TimeX</code> class defines a {@link Linear} window projection
+	 * The <code>TimeX</code> class defines a {@link Linear} projection projection
 	 * with timing bounds definition on x dimension
 	 */
 	public static class TimeX extends Time implements Serializable {
@@ -1020,20 +981,18 @@ public abstract class Projection implements PluginListener {
 			super(minXDate.getTime(), maxXDate.getTime(), miny, maxy);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Time#getMinDate()
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#getMinDate()
 		 */
 		@Override
 		public Date getMinDate() {
 			return getMinXAsDate();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Time#getMaxDate()
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#getMaxDate()
 		 */
 		@Override
 		public Date getMaxDate() {
@@ -1058,10 +1017,9 @@ public abstract class Projection implements PluginListener {
 			return new Date(new Double(getMaxX()).longValue());
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Time#pixelToTime(double)
+		
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#pixelToTime(double)
 		 */
 		@Override
 		public Date pixelToTime(double pixel) {
@@ -1069,11 +1027,8 @@ public abstract class Projection implements PluginListener {
 			return new Date(new Double(dateMillis).longValue());
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * com.jensoft.core.window.Window2D.Time#timeToPixel(java.util.Date)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#timeToPixel(java.util.Date)
 		 */
 		@Override
 		public double timeToPixel(Date time) {
@@ -1081,10 +1036,8 @@ public abstract class Projection implements PluginListener {
 			return userToPixelX(userValue);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Time#getTimeDurationPixel()
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#getTimeDurationPixel()
 		 */
 		@Override
 		public int getTimeDurationPixel() {
@@ -1092,7 +1045,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * bound this {@link TimeX} window with given times min and max date for
+		 * bound this {@link TimeX} projection with given times min and max date for
 		 * x dimension
 		 * 
 		 * @param minXDate
@@ -1108,13 +1061,13 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * The <code>TimeY</code> class defines a {@link Linear} window projection
+	 * The <code>TimeY</code> class defines a {@link Linear}  projection
 	 * with timing bounds definition on y dimension
 	 */
 	public static class TimeY extends Time implements Serializable {
 
 		/**
-		 * create a window with explicit time on y dimension
+		 * create a projection with explicit time on y dimension
 		 * 
 		 * @param minx
 		 * @param maxx
@@ -1143,30 +1096,24 @@ public abstract class Projection implements PluginListener {
 			return new Date(new Double(getMaxY()).longValue());
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Time#getMinDate()
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#getMinDate()
 		 */
 		@Override
 		public Date getMinDate() {
 			return getMinYAsDate();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Time#getMaxDate()
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#getMaxDate()
 		 */
 		@Override
 		public Date getMaxDate() {
 			return getMaxYAsDate();
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Time#pixelToTime(double)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#pixelToTime(double)
 		 */
 		@Override
 		public Date pixelToTime(double pixel) {
@@ -1174,11 +1121,8 @@ public abstract class Projection implements PluginListener {
 			return new Date(new Double(dateMillis).longValue());
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * com.jensoft.core.window.Window2D.Time#timeToPixel(java.util.Date)
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#timeToPixel(java.util.Date)
 		 */
 		@Override
 		public double timeToPixel(Date time) {
@@ -1186,10 +1130,8 @@ public abstract class Projection implements PluginListener {
 			return userToPixelY(userValue);
 		}
 
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see com.jensoft.core.window.Window2D.Time#getTimeDurationPixel()
+		/* (non-Javadoc)
+		 * @see com.jensoft.core.projection.Projection.Time#getTimeDurationPixel()
 		 */
 		@Override
 		public int getTimeDurationPixel() {
@@ -1197,7 +1139,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/**
-		 * bound this {@link TimeY} window with given times min and max date for
+		 * bound this {@link TimeY} projection with given times min and max date for
 		 * y dimension
 		 * 
 		 * @param minx
@@ -1228,7 +1170,7 @@ public abstract class Projection implements PluginListener {
 
 	/**
 	 * The <code>SymbolX</code> class defines a composite symbol and linear
-	 * window with no scalar on x and linear y projection.
+	 * projection with no scalar on x and linear y projection.
 	 */
 	public static class SymbolX extends Linear implements Serializable {
 
@@ -1247,7 +1189,7 @@ public abstract class Projection implements PluginListener {
 
 	/**
 	 * The <code>SymbolX</code> class defines a composite with symbol and linear
-	 * window with no scalar on x and linear y projection.
+	 * projection with no scalar on x and linear y projection.
 	 */
 	public static class SymbolY extends Linear implements Serializable {
 
@@ -1278,15 +1220,15 @@ public abstract class Projection implements PluginListener {
 	private Device device2D;
 
 	/** parent view */
-	private View view2D;
+	private View view;
 
-	/** window2d id */
-	private String windowID;
+	/** projection id */
+	private String projID;
 
-	/** window2d name */
+	/** projection name */
 	private String name;
 
-	/** window color theme */
+	/** projection color theme */
 	private Color themeColor;
 
 	/** visible flag */
@@ -1295,38 +1237,38 @@ public abstract class Projection implements PluginListener {
 	/** lock active */
 	private boolean lockActive;
 
-	/** registered window listener */
+	/** registered projection listener */
 	protected EventListenerList listenerList = new EventListenerList();
 
 	/** plug in registry */
 	private List<AbstractPlugin> plugins = new ArrayList<AbstractPlugin>();
 
 	/**
-	 * @return the windowID
+	 * @return the projID
 	 */
-	public String getWindowID() {
-		return windowID;
+	public String getProjectionId() {
+		return projID;
 	}
 
 	/**
-	 * @param windowID
-	 *            the windowID to set
+	 * @param projId
+	 *            the projection id to set
 	 */
-	public void setWindowID(String windowID) {
-		this.windowID = windowID;
+	public void setProjectionId(String projID) {
+		this.projID = projID;
 	}
 
 	/**
-	 * get the window name
+	 * get the projection name
 	 * 
-	 * @return the window name
+	 * @return the projection name
 	 */
 	public String getName() {
 		return name;
 	}
 
 	/***
-	 * set the window name
+	 * set the projection name
 	 * 
 	 * @param name
 	 */
@@ -1335,40 +1277,40 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * get the registered device2d of this window
+	 * get the registered device2d of this projection
 	 * 
-	 * @return the device2D
+	 * @return  device
 	 */
 	public Device getDevice2D() {
 		return device2D;
 	}
 
 	/**
-	 * set the device2D for this window
+	 * set the device2D for this projection
 	 * 
-	 * @param device2D
+	 * @param device
 	 */
-	public void setDevice2D(Device device2D) {
-		this.device2D = device2D;
+	public void setDevice2D(Device device) {
+		this.device2D = device;
 	}
 
 	/**
-	 * get the view that host this window
+	 * get the view that host this projection
 	 * 
-	 * @return window host.
+	 * @return view host.
 	 */
-	public View getView2D() {
-		return view2D;
+	public View getView() {
+		return view;
 	}
 
 	/**
-	 * set view 2D that host this window
+	 * set view that host this projection
 	 * 
-	 * @param view2d
-	 *            the host view 2D
+	 * @param view
+	 *            the host view
 	 */
-	public void setView2D(View view2d) {
-		view2D = view2d;
+	public void setView(View view) {
+		this.view = view;
 	}
 
 	/**
@@ -1420,7 +1362,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * rteurn true if this window is visible, false otherwise
+	 * return true if this projection is visible, false otherwise
 	 * 
 	 * @return the visible
 	 */
@@ -1429,7 +1371,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * set window visible
+	 * set projection visible
 	 * 
 	 * @param visible
 	 *            the visible to set
@@ -1439,25 +1381,25 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * lock this window
+	 * lock this projection
 	 */
 	public void lockActive() {
 		lockActive = true;
-		fireWindow2DActivate();
+		fireProjectionActivate();
 	}
 
 	/**
-	 * unlock this window
+	 * unlock this projection
 	 */
 	public void unlockActive() {
 		lockActive = false;
-		fireWindow2DPassivate();
+		fireProjectionPassivate();
 	}
 
 	/**
-	 * return true if this window is locked, false otherwise
+	 * return true if this projection is locked, false otherwise
 	 * 
-	 * @return the window lock
+	 * @return the projection lock
 	 */
 	public boolean isLockActive() {
 		return lockActive;
@@ -1522,14 +1464,14 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * call on {@link View} register this window
+	 * call on {@link View} register this projection
 	 */
-	public void onView2DRegister() {
-		getView2D().addView2DListener(new ViewAdapter() {
+	public void onViewRegister() {
+		getView().addViewListener(new ViewAdapter() {
 
 			@Override
 			public void viewResized(ViewEvent view2dEvent) {
-				fireWindow2DResized();
+				fireProjectionResized();
 			}
 		});
 	}
@@ -1552,12 +1494,8 @@ public abstract class Projection implements PluginListener {
 		plugins.remove(plugin);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core
-	 * .plugin.PluginEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
 	 */
 	@Override
 	public void pluginSelected(PluginEvent te) {
@@ -1569,21 +1507,17 @@ public abstract class Projection implements PluginListener {
 		}
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft
-	 * .core.plugin.PluginEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
 	 */
 	@Override
 	public void pluginUnlockSelected(PluginEvent te) {
 	}
 
 	/**
-	 * fire listener that the window became active
+	 * fire listener that the projection became active
 	 */
-	private void fireWindow2DActivate() {
+	private void fireProjectionActivate() {
 		ProjectionEvent w2dEvent = new ProjectionEvent(this);
 
 		Object[] listeners = listenerList.getListenerList();
@@ -1597,9 +1531,9 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * fire listener that the window became passive
+	 * fire listener that the projection became passive
 	 */
-	private void fireWindow2DPassivate() {
+	private void fireProjectionPassivate() {
 		ProjectionEvent w2dEvent = new ProjectionEvent(this);
 		Object[] listeners = listenerList.getListenerList();
 		synchronized (listeners) {
@@ -1612,9 +1546,9 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * fire listener that the window has changed
+	 * fire listener that the projection has changed
 	 */
-	private void fireWindow2DBoundChanged() {
+	private void fireProjectionBoundChanged() {
 		ProjectionEvent w2dEvent = new ProjectionEvent(this);
 		Object[] listeners = listenerList.getListenerList();
 		synchronized (listeners) {
@@ -1627,9 +1561,9 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * fire listener that the window has changed
+	 * fire listener that the projection has changed
 	 */
-	private void fireWindow2DResized() {
+	private void fireProjectionResized() {
 		ProjectionEvent w2dEvent = new ProjectionEvent(this);
 		Object[] listeners = listenerList.getListenerList();
 		synchronized (listeners) {
@@ -1642,21 +1576,21 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * check if point is include in user window
+	 * check if point is include in user projection
 	 * 
 	 * @param p2dUser
-	 * @return true if the user point intercept window, false otherwise
+	 * @return true if the user point intercept projection, false otherwise
 	 */
 	public boolean intercept(Point2D p2dUser) {
 		return interceptX(p2dUser.getX()) && interceptY(p2dUser.getY());
 	}
 
 	/**
-	 * check if point is include in window x user range
+	 * check if point is include in projection x user range
 	 * 
 	 * @param userX
 	 *            the x value in user coordinate system
-	 * @return true if the user x range intercept window, false otherwise
+	 * @return true if the user x range intercept projection, false otherwise
 	 */
 	public boolean interceptX(double userX) {
 		if (userX > getMaxX() || userX < getMinX()) {
@@ -1666,11 +1600,11 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * check if point is include in window y user range
+	 * check if point is include in projection y user range
 	 * 
 	 * @param userY
 	 *            the y value in user coordinate system
-	 * @return true if the user y range intercept window, false otherwise
+	 * @return true if the user y range intercept projection, false otherwise
 	 */
 	public boolean interceptY(double userY) {
 		if (userY > getMaxY() || userY < getMinY()) {
@@ -1680,7 +1614,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * return the user width of this window
+	 * return the user width of this projection
 	 * 
 	 * @return user width
 	 */
@@ -1689,7 +1623,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * get the pixel with of this window
+	 * get the pixel with of this projection
 	 * 
 	 * @return pixel width
 	 */
@@ -1698,7 +1632,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * return the user height of this window
+	 * return the user height of this projection
 	 * 
 	 * @return user height
 	 */
@@ -1707,7 +1641,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/**
-	 * get the pixel height of this window
+	 * get the pixel height of this projection
 	 * 
 	 * @return pixel height
 	 */
@@ -1717,34 +1651,34 @@ public abstract class Projection implements PluginListener {
 	
 
 	/**
-	 * Returns the user minimum X coordinate of this <code>Window2D</code> in
+	 * Returns the user minimum X coordinate of this <code>Projection</code> in
 	 * <code>double</code> precision.
 	 * 
-	 * @return the user minimum X coordinate of this <code>Window2D</code>.
+	 * @return the user minimum X coordinate of this <code>Projection</code>.
 	 */
 	public abstract double getMinX();
 
 	/**
-	 * Returns the user minimum Y coordinate of this <code>Window2D</code> in
+	 * Returns the user minimum Y coordinate of this <code>Projection</code> in
 	 * <code>double</code> precision.
 	 * 
-	 * @return the user minimum Y coordinate of this <code>Window2D</code>.
+	 * @return the user minimum Y coordinate of this <code>Projection</code>.
 	 */
 	public abstract double getMinY();
 
 	/**
-	 * Returns the user maximum X coordinate of this <code>Window2D</code> in
+	 * Returns the user maximum X coordinate of this <code>Projection</code> in
 	 * <code>double</code> precision.
 	 * 
-	 * @return the user maximum X coordinate of this <code>Window2D</code>.
+	 * @return the user maximum X coordinate of this <code>Projection</code>.
 	 */
 	public abstract double getMaxX();
 
 	/**
-	 * Returns the user maximum Y coordinate of this <code>Window2D</code> in
+	 * Returns the user maximum Y coordinate of this <code>Projection</code> in
 	 * <code>double</code> precision.
 	 * 
-	 * @return the user maximum Y coordinate of this <code>Window2D</code>.
+	 * @return the user maximum Y coordinate of this <code>Projection</code>.
 	 */
 	public abstract double getMaxY();
 

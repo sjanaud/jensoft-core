@@ -36,10 +36,10 @@ public class TestRendererEngine {
     }
 
     public void createTotalPauMapD15__() {
-        GeoPosition centerWindow = new GeoPosition(43.31793, -0.311088);
+        GeoPosition centerProjection = new GeoPosition(43.31793, -0.311088);
         int zoom = 17;
-        int centerXIndex = MapUtil.longToX(centerWindow.getLongitude(), zoom);
-        int centerYIndex = MapUtil.latToY(centerWindow.getLatitude(), zoom);
+        int centerXIndex = MapUtil.longToX(centerProjection.getLongitude(), zoom);
+        int centerYIndex = MapUtil.latToY(centerProjection.getLatitude(), zoom);
 
         Stream s = osmRestBridge.streamTile(centerXIndex, centerYIndex, 17);
 

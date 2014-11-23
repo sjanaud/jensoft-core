@@ -95,10 +95,10 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
     /** zoom effect height */
     private double zoomEffectHeight;
 
-    /** user window coordinate of the corner top left */
+    /** user projection coordinate of the corner top left */
     private Point2D userWindowMinxMaxY;
 
-    /** user window coordinate of the corner bottom right */
+    /** user projection coordinate of the corner bottom right */
     private Point2D userWindowMaxXMinY;
 
     /** user start zoom point */
@@ -293,7 +293,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                         double h = maxY - stepY * i;
                         Point2D p = new Point2D.Double(w, h);
                         processZoomBound(p);
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                         Thread.sleep(10);
                     }
                     Thread.sleep(300);
@@ -674,9 +674,9 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
     public void processZoomIn() {
 
         try {
-            Projection window2D = getProjection();
-            if (window2D instanceof Projection.Linear) {
-                Projection.Linear wl = (Projection.Linear) window2D;
+            Projection proj = getProjection();
+            if (proj instanceof Projection.Linear) {
+                Projection.Linear wl = (Projection.Linear) proj;
 
                 // if (transactionType == TransactionType.UserTransaction) {
                 // if (getBoxType() == BoxType.BoxXY) {
@@ -692,7 +692,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                 // currentBox.getY(), startBox.getY());
                 // }
                 //
-                // getWindow2D().getView2D().repaintDevice();
+                // getProjection().getView().repaintDevice();
                 // unlockZoomTransaction();
                 //
                 // if (zoomHistory != null && startBox != null
@@ -736,8 +736,8 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                     Point2D deviceCurrent = new Point2D.Double(zoomBoxCurrentX,
                                                                zoomBoxCurrentY);
 
-                    userWindowStartPoint = window2D.pixelToUser(deviceStart);
-                    userWindowCurrentPoint = window2D.pixelToUser(deviceCurrent);
+                    userWindowStartPoint = proj.pixelToUser(deviceStart);
+                    userWindowCurrentPoint = proj.pixelToUser(deviceCurrent);
 
                     if (userWindowStartPoint.getX() == Double.POSITIVE_INFINITY
                             || userWindowStartPoint.getY() == Double.POSITIVE_INFINITY
@@ -767,15 +767,15 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                         else if (getBoxType() == BoxType.BoxX) {
                             wl.bound(userWindowStartPoint.getX(),
                                      userWindowCurrentPoint.getX(),
-                                     window2D.getMinY(), window2D.getMaxY());
+                                     proj.getMinY(), proj.getMaxY());
                         }
                         else if (getBoxType() == BoxType.BoxY) {
-                            wl.bound(window2D.getMinX(), window2D.getMaxX(),
+                            wl.bound(proj.getMinX(), proj.getMaxX(),
                                      userWindowCurrentPoint.getY(),
                                      userWindowStartPoint.getY());
                         }
 
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                         unlockZoomTransaction();
                     }
 
@@ -802,11 +802,11 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                         else if (getBoxType() == BoxType.BoxX) {
                             zoomHistory.add(new BoundBox(userWindowStartPoint
                                     .getX(), userWindowCurrentPoint.getX(),
-                                                         window2D.getMinY(), window2D.getMaxY()));
+                                                         proj.getMinY(), proj.getMaxY()));
                         }
                         else if (getBoxType() == BoxType.BoxY) {
-                            zoomHistory.add(new BoundBox(window2D.getMinX(),
-                                                         window2D.getMaxX(), userWindowCurrentPoint
+                            zoomHistory.add(new BoundBox(proj.getMinX(),
+                                                         proj.getMaxX(), userWindowCurrentPoint
                                                                  .getY(), userWindowStartPoint
                                                                  .getY()));
                         }
@@ -834,9 +834,9 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
 
         @Override
         public void run() {
-            Projection window2D = getProjection();
-            if (window2D instanceof Projection.Linear) {
-                Projection.Linear wl = (Projection.Linear) window2D;
+            Projection proj = getProjection();
+            if (proj instanceof Projection.Linear) {
+                Projection.Linear wl = (Projection.Linear) proj;
                 if (dynSequence.size() > 0) {
                     try {
 
@@ -855,15 +855,15 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                             }
                             else if (getBoxType() == BoxType.BoxX) {
                                 wl.bound(q.up1.getX(), q.up3.getX(),
-                                         window2D.getMinY(), window2D.getMaxY());
+                                         proj.getMinY(), proj.getMaxY());
                             }
                             else if (getBoxType() == BoxType.BoxY) {
-                                wl.bound(window2D.getMinX(),
-                                         window2D.getMaxX(), q.up3.getY(),
+                                wl.bound(proj.getMinX(),
+                                         proj.getMaxX(), q.up3.getY(),
                                          q.up1.getY());
                             }
 
-                            getProjection().getView2D().repaintDevice();
+                            getProjection().getView().repaintDevice();
                             Thread.sleep(25);
                         }
 
@@ -876,7 +876,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                                  userWindowMaxXMinY.getX(),
                                  userWindowMaxXMinY.getY(),
                                  userWindowMinxMaxY.getY());
-                        getProjection().getView2D().repaintDevice();
+                        getProjection().getView().repaintDevice();
                         dynSequence.clear();
                         unlockZoomTransaction();
                     }
@@ -893,34 +893,34 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         @Override
         public void run() {
             // System.out.println("process zoom in thread-start");
-            Projection window2D = getProjection();
-            if (window2D instanceof Projection.Linear) {
-                Projection.Linear wl = (Projection.Linear) window2D;
+            Projection proj = getProjection();
+            if (proj instanceof Projection.Linear) {
+                Projection.Linear wl = (Projection.Linear) proj;
                 try {
 
                     lockEffect = true;
 
-                    userWindowMinxMaxY = new Point2D.Double(window2D.getMinX(),
-                                                            window2D.getMaxY());
-                    userWindowMaxXMinY = new Point2D.Double(window2D.getMaxX(),
-                                                            window2D.getMinY());
+                    userWindowMinxMaxY = new Point2D.Double(proj.getMinX(),
+                                                            proj.getMaxY());
+                    userWindowMaxXMinY = new Point2D.Double(proj.getMaxX(),
+                                                            proj.getMinY());
 
                     Point2D devicepd2_1 = new Point2D.Double(zoomBoxStartX,
                                                              zoomBoxStartY);
-                    userWindowStartPoint = window2D.pixelToUser(devicepd2_1);
+                    userWindowStartPoint = proj.pixelToUser(devicepd2_1);
 
                     Point2D devicepd2_2 = new Point2D.Double(zoomBoxCurrentX,
                                                              zoomBoxCurrentY);
-                    userWindowCurrentPoint = window2D.pixelToUser(devicepd2_2);
+                    userWindowCurrentPoint = proj.pixelToUser(devicepd2_2);
 
                     int pas = 20;
 
                     double deltaNorth = zoomBoxStartY / pas;
-                    double deltaEast = (getProjection().getView2D().getDevice2D()
+                    double deltaEast = (getProjection().getView().getDevice2D()
                             .getDeviceWidth() - zoomBoxCurrentX)
                             / pas;
                     double deltaWest = zoomBoxStartX / pas;
-                    double deltaSouth = (getProjection().getView2D()
+                    double deltaSouth = (getProjection().getView()
                             .getDevice2D().getDeviceHeight() - zoomBoxCurrentY)
                             / pas;
 
@@ -941,22 +941,22 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                         Point2D dp1 = new Point2D.Double(i * deltaWest, i
                                 * deltaNorth);
                         Point2D dp2 = new Point2D.Double(i * deltaWest,
-                                                         getProjection().getView2D().getDevice2D()
+                                                         getProjection().getView().getDevice2D()
                                                                  .getDeviceHeight()
                                                                  - i * deltaSouth);
                         Point2D dp3 = new Point2D.Double(getProjection()
-                                .getView2D().getDevice2D().getDeviceWidth()
-                                - i * deltaEast, getProjection().getView2D()
+                                .getView().getDevice2D().getDeviceWidth()
+                                - i * deltaEast, getProjection().getView()
                                 .getDevice2D().getDeviceHeight()
                                 - i * deltaSouth);
                         Point2D dp4 = new Point2D.Double(getProjection()
-                                .getView2D().getDevice2D().getDeviceWidth()
+                                .getView().getDevice2D().getDeviceWidth()
                                 - i * deltaEast, i * deltaNorth);
 
-                        Point2D up1 = window2D.pixelToUser(dp1);
-                        Point2D up2 = window2D.pixelToUser(dp2);
-                        Point2D up3 = window2D.pixelToUser(dp3);
-                        Point2D up4 = window2D.pixelToUser(dp4);
+                        Point2D up1 = proj.pixelToUser(dp1);
+                        Point2D up2 = proj.pixelToUser(dp2);
+                        Point2D up3 = proj.pixelToUser(dp3);
+                        Point2D up4 = proj.pixelToUser(dp4);
 
                         DynamicSequenceItem q = null;
                         q = new DynamicSequenceItem(izoomEffectX, izoomEffectY,
@@ -981,14 +981,14 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                         }
                         else if (getBoxType() == BoxType.BoxX) {
                             wl.bound(q.up1.getX(), q.up3.getX(),
-                                     window2D.getMinY(), window2D.getMaxY());
+                                     proj.getMinY(), proj.getMaxY());
                         }
                         else if (getBoxType() == BoxType.BoxY) {
-                            wl.bound(window2D.getMinX(), window2D.getMaxX(),
+                            wl.bound(proj.getMinX(), proj.getMaxX(),
                                      q.up3.getY(), q.up1.getY());
                         }
 
-                        getProjection().getView2D().getDevice2D().repaintDevice();
+                        getProjection().getView().getDevice2D().repaintDevice();
                         Thread.sleep(25);
                     }
 
@@ -1008,15 +1008,15 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
                     else if (getBoxType() == BoxType.BoxX) {
                         wl.bound(userWindowStartPoint.getX(),
                                  userWindowCurrentPoint.getX(),
-                                 window2D.getMinY(), window2D.getMaxY());
+                                 proj.getMinY(), proj.getMaxY());
                     }
                     else if (getBoxType() == BoxType.BoxY) {
-                        wl.bound(window2D.getMinX(), window2D.getMaxX(),
+                        wl.bound(proj.getMinX(), proj.getMaxX(),
                                  userWindowCurrentPoint.getY(),
                                  userWindowStartPoint.getY());
                     }
 
-                    getProjection().getView2D().getDevice2D().repaintDevice();
+                    getProjection().getView().getDevice2D().repaintDevice();
                     unlockZoomTransaction();
                     // System.out.println("process zoom in thread-end");
                 }
@@ -1099,7 +1099,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         if (transactionType == TransactionType.DeviceTransaction) {
             processZoomBound(new Point2D.Double(me.getX(), me.getY()));
             // fireZoomBounded();
-            getProjection().getView2D().repaintDevice();
+            getProjection().getView().repaintDevice();
         }
 
     }
@@ -1344,9 +1344,9 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         // if (viewPart == WindowPart.South) {
         // System.out.println("call paint from south !! ");
         //
-        // int startXSouthCoordinate = getWindow2D().getView2D()
+        // int startXSouthCoordinate = getProjection().getView()
         // .getPlaceHolderAxisWEST() + getBoxStartDeviceX();
-        // int currentXSouthCoordinate = getWindow2D().getView2D()
+        // int currentXSouthCoordinate = getProjection().getView()
         // .getPlaceHolderAxisWEST() + getBoxCurrentDeviceX();
         //
         // g2d.setColor(Color.RED);
@@ -1495,7 +1495,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
      * @param g2d
      */
     private void paintMetricsInfo(Graphics2D g2d) {
-        Projection w2d = getProjection().getView2D().getActiveProjection();
+        Projection w2d = getProjection().getView().getActiveProjection();
 
         if (zoomBoxDrawColor != null) {
             g2d.setColor(zoomBoxDrawColor);
@@ -1894,7 +1894,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
         zoomHistory.clear();
         curentBoxIndex = -1;
         fireZoomClearHistory();
-        getProjection().getView2D().repaintDevice();
+        getProjection().getView().repaintDevice();
     }
 
     /**

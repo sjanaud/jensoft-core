@@ -39,15 +39,15 @@ public class PluginPlatform {
     /** plugins registry */
     private List<AbstractPlugin> plugins;
 
-    /** window registry */
-    private List<Projection> windows;
+    /** projection registry */
+    private List<Projection> projections;
 
     /**
      * create new platform instance
      */
     private PluginPlatform() {
         plugins = new ArrayList<AbstractPlugin>();
-        windows = new ArrayList<Projection>();
+        projections = new ArrayList<Projection>();
     }
 
     /**
@@ -72,12 +72,12 @@ public class PluginPlatform {
     }
 
     /**
-     * get the windows registry
+     * get the projections registry
      * 
-     * @return the registered windows
+     * @return the registered projections
      */
-    public List<Projection> getWindows() {
-        return windows;
+    public List<Projection> getProjections() {
+        return projections;
     }
 
     /**
@@ -93,14 +93,14 @@ public class PluginPlatform {
     }
 
     /**
-     * register the specified window2d into platform
+     * register the specified projection into platform
      * 
-     * @param window2d
-     *            the window2d to register
+     * @param projection
+     *            the projection to register
      */
-    public void register(Projection window2d) {
-        if (!windows.contains(window2d)) {
-            windows.add(window2d);
+    public void register(Projection projection) {
+        if (!projections.contains(projection)) {
+            projections.add(projection);
         }
     }
 
@@ -124,22 +124,22 @@ public class PluginPlatform {
     }
 
     /**
-     * get the plug in registry by class for specified window
+     * get the plug in registry by class for specified projection
      * 
      * @param <T>
      *            plug in type
      * @param pluginClass
      *            the plug in class
-     * @param window2D
-     *            the window2D
+     * @param projection
+     *            the projection
      * @return the register plug
      */
     public <T extends AbstractPlugin> List<T> getPlugins(Class<T> pluginClass,
-            Projection window2D) {
+            Projection projection) {
         List<T> ps = new ArrayList<T>();
         for (AbstractPlugin plugin : plugins) {
             if (plugin.getProjection() != null
-                    && plugin.getProjection().equals(window2D)) {
+                    && plugin.getProjection().equals(projection)) {
                 if (plugin.getClass().getName().equals(pluginClass.getName())) {
                     ps.add((T) plugin);
                 }

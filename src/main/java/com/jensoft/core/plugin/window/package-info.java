@@ -1,5 +1,5 @@
 /**
- * Provides plugins that work on window like window switch or window bound editor
+ * Provides plugins that work on projection like projection switch or projection bound editor
  * 
  * @since 1.0
  */

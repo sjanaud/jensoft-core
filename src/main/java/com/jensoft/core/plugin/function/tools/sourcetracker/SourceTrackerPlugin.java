@@ -318,7 +318,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	 * process the metrics
 	 * <p>
 	 * process the related metrics for the specified device mouse point
-	 * coordinate into a point in the user window projection and append it to
+	 * coordinate into a point in the user projection and append it to
 	 * the curve metrics path.
 	 * </p>
 	 * 
@@ -375,12 +375,8 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		getProjection().getDevice2D().repaintDevice();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt
-	 * .event.MouseEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void onDrag(MouseEvent me) {
@@ -390,12 +386,8 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		processMetrics(me);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt
-	 * .event.MouseEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void onPress(MouseEvent me) {
@@ -405,23 +397,15 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		processMetrics(me);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt
-	 * .event.MouseEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void onMove(MouseEvent me) {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java
-	 * .awt.event.MouseEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void onRelease(MouseEvent me) {
@@ -432,16 +416,12 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 		getProjection().getDevice2D().repaintDevice();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view
-	 * .View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 	 */
 	@Override
-	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
-		metricsPathFunction.setWindow2d(getProjection());
+	protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {
+		metricsPathFunction.setProjection(getProjection());
 		metricsPathFunction.setFontRenderContext(g2d.getFontRenderContext());
 		metricsPathFunction.setSolveGeometryRequest(true);
 		List<GlyphMetric> metrics = metricsPathFunction.getMetrics();
@@ -458,9 +438,7 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 			if (glyphMetric.getGlyphMetricDraw() != null) {
 				glyphMetric.getGlyphMetricDraw().paintGlyphMetric(g2d, glyphMetric);
 			}
-
 		}
-
 	}
 
 }

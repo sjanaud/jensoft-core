@@ -67,7 +67,7 @@ public class FreeMetricsManager extends AbstractMetricsManager {
     public List<Metrics> getDeviceMetrics() {
 
         metricsDevice.clear();
-        Projection w2d = getRenderContext().getWindow2D();
+        Projection w2d = getRenderContext().getProjection();
         if (getType() == MetricsType.XMetrics) {
 
             for (int i = 0; i < volatileMetrics.size(); i++) {

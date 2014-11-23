@@ -79,10 +79,10 @@ public class FlowStripeManager extends AbstractStripeManager {
 
 				if (getStripeOrientation() == StripeOrientation.Vertical) {
 					Point2D p2dUser = new Point2D.Double(g, 0);
-					Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+					Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
 					Point2D p2dUser2 = new Point2D.Double(g + flowInterval, 0);
-					Point2D p2dDevice2 = getWindow2D().userToPixel(p2dUser2);
+					Point2D p2dDevice2 = getProjection().userToPixel(p2dUser2);
 
 					Stripe stripe = new Stripe(StripeOrientation.Vertical);
 					stripe.setDeviceInterval(p2dDevice2.getX() - p2dDevice.getX());
@@ -101,10 +101,10 @@ public class FlowStripeManager extends AbstractStripeManager {
 				} else if (getStripeOrientation() == StripeOrientation.Horizontal) {
 
 					Point2D p2dUser = new Point2D.Double(0, g);
-					Point2D p2dDevice = getWindow2D().userToPixel(p2dUser);
+					Point2D p2dDevice = getProjection().userToPixel(p2dUser);
 
 					Point2D p2dUser2 = new Point2D.Double(0, g + flowInterval);
-					Point2D p2dDevice2 = getWindow2D().userToPixel(p2dUser2);
+					Point2D p2dDevice2 = getProjection().userToPixel(p2dUser2);
 
 					Stripe stripe = new Stripe(StripeOrientation.Horizontal);
 					stripe.setDeviceInterval(p2dDevice.getY() - p2dDevice2.getY());

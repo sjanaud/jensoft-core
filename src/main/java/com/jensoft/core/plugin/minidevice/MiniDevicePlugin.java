@@ -16,15 +16,15 @@ import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 
 /**
- * MiniDevicePlugin embed a widget display of the current activate window in
+ * MiniDevicePlugin embed a widget display of the current activate projection in
  * initial scale mode.
  */
 public class MiniDevicePlugin extends AbstractPlugin implements Device {
 
-    /** the outline color of the current window bound */
+    /** the outline color of the current projection bound */
     private Color miniCurrentDeviceDrawColor;
 
-    /** the outline color of the initial window bound */
+    /** the outline color of the initial projection bound */
     private Color miniInitialDeviceDrawColor;
 
     /** x ratio dimension for the device widget */
@@ -42,8 +42,8 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
     /** the device widget dimension type */
     private DimensionType dimentionType = DimensionType.Ratio;
 
-    /** the private device widget window 2D */
-    private Projection.Linear miniDeviceWindow2D;
+    /** the private device widget projection*/
+    private Projection.Linear miniDeviceProjection;
 
     private MiniDeviceWidget miniDeviceWidget;
 
@@ -146,16 +146,16 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
     }
 
     /**
-     * get the outline color of the initial window bound
+     * get the outline color of the initial projection bound
      * 
-     * @return the outline color for initial window bound
+     * @return the outline color for initial projection bound
      */
     public Color getMiniInitialDeviceDrawColor() {
         return miniInitialDeviceDrawColor;
     }
 
     /**
-     * set the outline color for the initial window bound
+     * set the outline color for the initial projection bound
      * 
      * @param miniInitialDeviceDrawColor
      */
@@ -164,16 +164,16 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
     }
 
     /**
-     * get the outline of the current window bound
+     * get the outline of the current projection bound
      * 
-     * @return the outline color for the current window bound
+     * @return the outline color for the current projection bound
      */
     public Color getMiniCurrentDeviceDrawColor() {
         return miniCurrentDeviceDrawColor;
     }
 
     /**
-     * set the outline color for the current window bound
+     * set the outline color for the current projection bound
      * 
      * @param miniDeviceDrawColor
      */
@@ -214,20 +214,17 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
     }
 
     /**
-     * return the private window associate with the device widget which is a
-     * representation of the initial and active bound of the window.
+     * return the private projection associate with the device widget which is a
+     * representation of the initial and active bound of the projection.
      * 
-     * @return the device widget private window
+     * @return the device widget private projection
      */
-    public Projection getPrivateWindow() {
-        if (miniDeviceWindow2D == null) {
-            miniDeviceWindow2D = new Projection.Linear();
-            miniDeviceWindow2D.setName("minidevicewindow");
+    public Projection getPrivateProjection() {
+        if (miniDeviceProjection == null) {
+            miniDeviceProjection = new Projection.Linear();
         }
 
-        miniDeviceWindow2D.setDevice2D(this);
-        // miniDeviceWindow2D.setProjection(getWindow2D()
-        // .getProjection());
+        miniDeviceProjection.setDevice2D(this);
         if (getProjection() instanceof Projection.Linear) {
             Projection.Linear wl = (Projection.Linear) getProjection();
             double iminX = wl.getInitialMinX();
@@ -235,34 +232,40 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
             double iminY = wl.getInitialMinY();
             double imaxY = wl.getInitialMaxY();
 
-            miniDeviceWindow2D.bound(iminX, imaxX, iminY, imaxY);
+            miniDeviceProjection.bound(iminX, imaxX, iminY, imaxY);
 
             double minX = getProjection().getMinX();
             double maxX = getProjection().getMaxX();
             double minY = getProjection().getMinY();
             double maxY = getProjection().getMaxY();
 
-            miniDeviceWindow2D.bound(minX, maxX, minY, maxY);
+            miniDeviceProjection.bound(minX, maxX, minY, maxY);
         }
 
-        return miniDeviceWindow2D;
+        return miniDeviceProjection;
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     */
     @Override
     protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
         if (viewPart != ViewPart.Device) {
             return;
         }
-
-        // System.out.println("paint mini device ");
-        // miniDeviceWidget.paint(v2d, g2d);
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.device.Device#repaintDevice(int, int, int, int)
+     */
     @Override
     public void repaintDevice(int x, int y, int w, int h) {
 
     }
 
+    /* (non-Javadoc)
+     * @see com.jensoft.core.plugin.AbstractPlugin#repaintDevice()
+     */
     @Override
     public void repaintDevice() {
 

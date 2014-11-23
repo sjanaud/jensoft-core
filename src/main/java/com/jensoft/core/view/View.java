@@ -18,7 +18,6 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -56,23 +55,23 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	/** place holder axis north in pixel */
 	private int placeHolderAxisNorth = 40;
 
-	/** window part south */
+	/** view part south */
 	private ViewPartComponent axisSouth;
 
-	/** window part north */
+	/** view part north */
 	private ViewPartComponent axisNorth;
 
-	/** window part west */
+	/** view part west */
 	private ViewPartComponent axisWest;
 
-	/** window part east */
+	/** view part east */
 	private ViewPartComponent axisEast;
 
-	/** window device part */
+	/** view device part */
 	private DevicePartComponent device2D;
 
-	/** window container */
-	private JPanel windowContainer;
+	/** projection container */
+	private JPanel projectionContainer;
 
 	/** view header container */
 	private JPanel headerContainer;
@@ -90,7 +89,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	private WidgetPlugin widgetPlugin = new WidgetPlugin();
 
 	/** registered view listener */
-	protected EventListenerList view2DListenerList = new EventListenerList();
+	protected EventListenerList viewListenerList = new EventListenerList();
 
 	/** the widget folder guard interval */
 	private int folderGuardInterval = 4;
@@ -98,7 +97,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	/** projections registry */
 	private List<Projection> projections = new Vector<Projection>();
 
-	/** the active window */
+	/** the active projection */
 	private Projection activeProjection;
 
 	/** view key */
@@ -223,7 +222,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 */
 	public void repaintView() {
 		// device2D.repaintDevice();
-		windowContainer.repaint();
+		projectionContainer.repaint();
 	}
 
 	/**
@@ -242,7 +241,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 			device2D.repaintDevice();
 		}
 
-		windowContainer.repaint();
+		projectionContainer.repaint();
 	}
 
 	/**
@@ -252,12 +251,12 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 		setLayout(new BorderLayout());
 		setFocusable(true);
 
-		windowContainer = new JPanel();
-		windowContainer.setLayout(new BorderLayout());
-		windowContainer.setOpaque(false);
+		projectionContainer = new JPanel();
+		projectionContainer.setLayout(new BorderLayout());
+		projectionContainer.setOpaque(false);
 		createView();
 
-		add(windowContainer, BorderLayout.CENTER);
+		add(projectionContainer, BorderLayout.CENTER);
 
 		headerContainer = new JPanel();
 		headerContainer.setLayout(new BorderLayout());
@@ -269,7 +268,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 		footerContainer.setOpaque(false);
 		add(footerContainer, BorderLayout.SOUTH);
 
-		widgetPlugin.setView2D(this);
+		widgetPlugin.setView(this);
 
 		addComponentListener(this);
 		addFocusListener(this);
@@ -307,8 +306,8 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 * 
 	 * @param listener
 	 */
-	public void addView2DListener(ViewListener listener) {
-		view2DListenerList.add(ViewListener.class, listener);
+	public void addViewListener(ViewListener listener) {
+		viewListenerList.add(ViewListener.class, listener);
 	}
 
 	/**
@@ -316,8 +315,8 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 * 
 	 * @param listener
 	 */
-	public void removeView2DListener(ViewListener listener) {
-		view2DListenerList.remove(ViewListener.class, listener);
+	public void removeViewListener(ViewListener listener) {
+		viewListenerList.remove(ViewListener.class, listener);
 	}
 
 	/**
@@ -325,7 +324,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 */
 	private void fireProjectionSelected() {
 		ViewEvent v2dEvent = new ViewEvent(this);
-		Object[] listeners = view2DListenerList.getListenerList();
+		Object[] listeners = viewListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
 				if (listeners[i] == ViewListener.class) {
@@ -359,14 +358,14 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 
 		projections.add(proj);
 		proj.setDevice2D(device2D);
-		proj.setView2D(this);
+		proj.setView(this);
 		proj.addProjectionListener(this);
 
 		setActiveProjection(proj);
 
 		device2D.registerProjection(proj);
 
-		proj.onView2DRegister();
+		proj.onViewRegister();
 
 	}
 
@@ -397,7 +396,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 * @param viewPart
 	 * @return the view part component
 	 */
-	public JComponent getWindowComponent(ViewPart viewPart) {
+	public JComponent getViewPartComponent(ViewPart viewPart) {
 		if (viewPart == ViewPart.North) {
 			return axisNorth;
 		} else if (viewPart == ViewPart.South) {
@@ -445,12 +444,12 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 		
 		device2D.setView(this);
 
-		addView2DListener(device2D);
-		windowContainer.add(axisNorth, BorderLayout.NORTH);
-		windowContainer.add(axisSouth, BorderLayout.SOUTH);
-		windowContainer.add(axisEast, BorderLayout.EAST);
-		windowContainer.add(axisWest, BorderLayout.WEST);
-		windowContainer.add(device2D, BorderLayout.CENTER);
+		addViewListener(device2D);
+		projectionContainer.add(axisNorth, BorderLayout.NORTH);
+		projectionContainer.add(axisSouth, BorderLayout.SOUTH);
+		projectionContainer.add(axisEast, BorderLayout.EAST);
+		projectionContainer.add(axisWest, BorderLayout.WEST);
+		projectionContainer.add(device2D, BorderLayout.CENTER);
 
 	}
 
@@ -476,7 +475,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 */
 	public void setPartBackground(Color partBackground, ViewPart... windowParts) {
 		for (int i = 0; i < windowParts.length; i++) {
-			JComponent compPart = getWindowComponent(windowParts[i]);
+			JComponent compPart = getViewPartComponent(windowParts[i]);
 			if (compPart != null) {
 				compPart.setOpaque(true);
 				compPart.setBackground(partBackground);
@@ -518,53 +517,41 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 		device2D.repaintDevice();
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.window.Window2DListener#window2DLockActive(com.jensoft
-	 * .core.window.Window2DEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.projection.ProjectionListener#projectionLockActive(com.jensoft.core.projection.ProjectionEvent)
 	 */
 	@Override
 	public void projectionLockActive(ProjectionEvent w2dEvent) {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.window.Window2DListener#window2DUnlockActive(com.jensoft
-	 * .core.window.Window2DEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.projection.ProjectionListener#projectionUnlockActive(com.jensoft.core.projection.ProjectionEvent)
 	 */
 	@Override
 	public void projectionUnlockActive(ProjectionEvent w2dEvent) {
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * com.jensoft.core.window.Window2DListener#window2DResized(com.jensoft.
-	 * core.window.Window2DEvent)
+	/* (non-Javadoc)
+	 * @see com.jensoft.core.projection.ProjectionListener#projectionResized(com.jensoft.core.projection.ProjectionEvent)
 	 */
 	@Override
 	public void projectionResized(ProjectionEvent w2dEvent) {
 	}
 
 	/**
-	 * set the place holder for the specified window part except device. the
+	 * set the place holder for the specified view part except device. the
 	 * place holder is the weight in pixel for the specified part,
 	 * {@link ViewPart#East}, {@link ViewPart#West},
 	 * {@link ViewPart#North} and {@link ViewPart#South}.
 	 * 
 	 * @param placeHolder
 	 *            the place holder to set
-	 * @param windowParts
-	 *            the window parts
+	 * @param viewParts
+	 *            the view parts
 	 */
-	public void setPlaceHolder(int placeHolder, ViewPart... windowParts) {
-		for (int i = 0; i < windowParts.length; i++) {
-			ViewPart viewPart = windowParts[i];
+	public void setPlaceHolder(int placeHolder, ViewPart... viewParts) {
+		for (int i = 0; i < viewParts.length; i++) {
+			ViewPart viewPart = viewParts[i];
 			if (viewPart == ViewPart.North) {
 				setPlaceHolderAxisNorth(placeHolder);
 			} else if (viewPart == ViewPart.South) {
@@ -579,15 +566,15 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * set the place holder for the specified window part except device. the
+	 * set the place holder for the specified view part except device. the
 	 * place holder is the weight in pixel for the specified part,
 	 * {@link ViewPart#East}, {@link ViewPart#West},
 	 * {@link ViewPart#North} and {@link ViewPart#South}.
 	 * 
 	 * @param placeHolder
-	 *            the place holder to set to the given window part
-	 * @param windowPart
-	 *            the window part
+	 *            the place holder to set to the given view part
+	 * @param viewPart
+	 *            the view part
 	 */
 	public void setPlaceHolder(int placeHolder, ViewPart viewPart) {
 		if (viewPart == ViewPart.North) {
@@ -608,7 +595,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 * {@link ViewPart#South}.
 	 * 
 	 * @param placeHolder
-	 *            the place holder to set to the given window part
+	 *            the place holder to set to the given view part
 	 */
 	public void setPlaceHolder(int placeHolder) {
 		setPlaceHolderAxisEast(placeHolder);
@@ -618,7 +605,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * return the place holder for the west window part border component
+	 * return the place holder for the west view part border component
 	 * 
 	 * @return the place holder west
 	 */
@@ -627,7 +614,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * set the place holder for the window border west component
+	 * set the place holder for the  west part
 	 * 
 	 * @param placeHolderAxisWest
 	 */
@@ -642,7 +629,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * return the place holder for the east window border component
+	 * return the place holder for the east part
 	 * 
 	 * @return the place holder east
 	 */
@@ -651,7 +638,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * set the place holder for the window border east component
+	 * set the place holder for the east part
 	 * 
 	 * @param placeHolderAxisEast
 	 */
@@ -666,7 +653,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * return the place holder for the south window border component
+	 * return the place holder for the south part
 	 * 
 	 * @return the place holder south
 	 */
@@ -675,7 +662,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * set the place holder for the window border south component
+	 * set the place holder for the south part
 	 * 
 	 * @param placeHolderAxisSouth
 	 */
@@ -690,7 +677,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * return the place holder for the north window border component
+	 * return the place holder for the north part
 	 * 
 	 * @return the place holder north
 	 */
@@ -699,7 +686,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * set the place holder for the window border north component
+	 * set the place holder for the north part
 	 * 
 	 * @param placeHolderAxisNorth
 	 */
@@ -847,7 +834,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	private void fireViewResized() {
 
 		ViewEvent v2dEvent = new ViewEvent(this);
-		Object[] listeners = view2DListenerList.getListenerList();
+		Object[] listeners = viewListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
 				if (listeners[i] == ViewListener.class) {
@@ -875,7 +862,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	private void fireViewMoved() {
 		ViewEvent v2dEvent = new ViewEvent(this);
 
-		Object[] listeners = view2DListenerList.getListenerList();
+		Object[] listeners = viewListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
 				if (listeners[i] == ViewListener.class) {
@@ -898,12 +885,12 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * fire listener that the window has shwon
+	 * fire listener that the projection is shown
 	 */
 	private void fireViewShown() {
 		ViewEvent v2dEvent = new ViewEvent(this);
 
-		Object[] listeners = view2DListenerList.getListenerList();
+		Object[] listeners = viewListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
 				if (listeners[i] == ViewListener.class) {
@@ -925,12 +912,12 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * fire listener that the window is hidden
+	 * fire listener that the projection is hidden
 	 */
 	private void fireViewHidden() {
 		ViewEvent v2dEvent = new ViewEvent(this);
 
-		Object[] listeners = view2DListenerList.getListenerList();
+		Object[] listeners = viewListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
 				if (listeners[i] == ViewListener.class) {
@@ -951,12 +938,12 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * fire listener that the window is hidden
+	 * fire listener that the projection is hidden
 	 */
 	private void fireViewFocusGained() {
 		ViewEvent v2dEvent = new ViewEvent(this);
 
-		Object[] listeners = view2DListenerList.getListenerList();
+		Object[] listeners = viewListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
 				if (listeners[i] == ViewListener.class) {
@@ -977,12 +964,12 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/**
-	 * fire listener that the window is hidden
+	 * fire listener that the projection lost focus
 	 */
 	private void fireViewFocusLost() {
 		ViewEvent v2dEvent = new ViewEvent(this);
 
-		Object[] listeners = view2DListenerList.getListenerList();
+		Object[] listeners = viewListenerList.getListenerList();
 		synchronized (listeners) {
 			for (int i = 0; i < listeners.length; i += 2) {
 				if (listeners[i] == ViewListener.class) {
@@ -1053,11 +1040,17 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 		this.backgroundPainter = backgroundPainter;
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintChildren(java.awt.Graphics)
+	 */
 	@Override
 	protected void paintChildren(Graphics g) {
 		super.paintChildren(g);
 	}
 
+	/* (non-Javadoc)
+	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
+	 */
 	@Override
 	protected void paintComponent(Graphics g) {
 		if (backgroundPainter != null) {

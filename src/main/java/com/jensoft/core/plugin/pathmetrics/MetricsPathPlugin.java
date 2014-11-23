@@ -77,7 +77,7 @@ public class MetricsPathPlugin extends AbstractPlugin {
             return;
         }
         metricsPath.setSolveGeometryRequest(true);
-        metricsPath.setWindow2d(getProjection());
+        metricsPath.setProjection(getProjection());
         metricsPath.setFontRenderContext(g2d.getFontRenderContext());
         // paint path
         if (metricsPath.getPathPainter() != null) {

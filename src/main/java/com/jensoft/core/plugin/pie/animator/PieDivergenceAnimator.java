@@ -120,19 +120,19 @@ public class PieDivergenceAnimator extends AbstractPieAnimator {
                     for (int i = 0; i <= inflate; i++) {
                         slice.setDivergence(slice.getDivergence() - 1);
                         Thread.sleep(sleep);
-                        getView2D(slice).repaintDevice();
+                        getView(slice).repaintDevice();
                     }
                     slice.setDivergence(0);
-                    getView2D(slice).repaintDevice();
+                    getView(slice).repaintDevice();
                 }
                 else {
                     for (int i = 0; i <= inflate; i++) {
                         slice.setDivergence(i);
                         Thread.sleep(sleep);
-                        getView2D(slice).repaintDevice();
+                        getView(slice).repaintDevice();
                     }
                     slice.setDivergence(inflate);
-                    getView2D(slice).repaintDevice();
+                    getView(slice).repaintDevice();
                 }
 
             }

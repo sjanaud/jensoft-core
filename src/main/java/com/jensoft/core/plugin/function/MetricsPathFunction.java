@@ -403,8 +403,8 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 	 */
 	@Override
 	protected GeneralPath createPathMetrics() {
-		if (getWindow2d() == null) {
-			throw new NullPointerException("window2D should have been to set before invoke solving geometry");
+		if (getProjection() == null) {
+			throw new NullPointerException("Projection should have been to set before invoke solving geometry");
 		}
 		GeneralPath path = new GeneralPath();
 		if (sourceFunction == null) {
@@ -412,21 +412,21 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 		}
 		List<Point2D> entries;
 		if (sourceFunction.getNature() == FunctionNature.XFunction) {
-			entries = sourceFunction.solveFunction(getWindow2d().getMinX(), getWindow2d().getMaxX());
+			entries = sourceFunction.solveFunction(getProjection().getMinX(), getProjection().getMaxX());
 		} else {
-			entries = sourceFunction.solveFunction(getWindow2d().getMinY(), getWindow2d().getMaxY());
+			entries = sourceFunction.solveFunction(getProjection().getMinY(), getProjection().getMaxY());
 		}
 
 		List<Point2D> src = new ArrayList<Point2D>();
 		// try {
-		// Point2D evaluateMinX = source.evaluate(getWindow2d().getMinX());
+		// Point2D evaluateMinX = source.evaluate(getProjection().getMinX());
 		// if (evaluateMinX != null) {
 		// src.add(evaluateMinX);
 		// }
 		// }
 		// catch (Exception e) {
 		// // try to get the point before max otherwise
-		// //Point2D next = source.previous(getWindow2d().getMaxX());
+		// //Point2D next = source.previous(getProjection().getMaxX());
 		// //if(next != null)
 		// // src.add(next);
 		// }
@@ -453,13 +453,13 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 
 		for (int i = 0; i < src.size(); i++) {
 			Point2D sourceFunctionEntry = src.get(i);
-			Point2D segmentDeviceEnd = getWindow2d().userToPixel(sourceFunctionEntry);
+			Point2D segmentDeviceEnd = getProjection().userToPixel(sourceFunctionEntry);
 
 			if (i == 0) {
 				path.moveTo(segmentDeviceEnd.getX(), segmentDeviceEnd.getY());
 			} else {
 				Point2D segmentUserStart = src.get(i - 1);
-				Point2D segmentDeviceStart = getWindow2d().userToPixel(segmentUserStart);
+				Point2D segmentDeviceStart = getProjection().userToPixel(segmentUserStart);
 
 				PathSegment cs = new PathSegment(segmentUserStart, sourceFunctionEntry, segmentDeviceStart, segmentDeviceEnd);
 				pathSegments.add(cs);
@@ -518,7 +518,7 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 
 		PathSegment cs = getPathSegment(userValue);
 		Point2D userPoint = cs.getUserPoint(userValue);
-		Point2D devicePoint = getWindow2d().userToPixel(userPoint);
+		Point2D devicePoint = getProjection().userToPixel(userPoint);
 
 		double delta = Point2D.distance(devicePoint.getX(), devicePoint.getY(), cs.getSegmentDeviceEnd().getX(), cs.getSegmentDeviceEnd().getY());
 
@@ -574,7 +574,7 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 			}
 
 			Point2D userPoint = cs.getUserPoint(vm.getValue());
-			Point2D devicePoint = getWindow2d().userToPixel(userPoint);
+			Point2D devicePoint = getProjection().userToPixel(userPoint);
 
 			double delta = Point2D.distance(devicePoint.getX(), devicePoint.getY(), cs.getSegmentDeviceEnd().getX(), cs.getSegmentDeviceEnd().getY());
 			double deviceLength = getLengthAtSegment(cs) - delta;
