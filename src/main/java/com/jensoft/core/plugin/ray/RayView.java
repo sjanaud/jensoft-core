@@ -20,8 +20,8 @@ public class RayView extends View {
     /** uid */
     private static final long serialVersionUID = 4610374377279625205L;
 
-    /** window2D associate to this view and ray plugin */
-    private Projection.Linear window2DRay;
+    /** projection associate to this view and ray plugin */
+    private Projection.Linear projection;
 
     /** ray plug in */
     private RayPlugin rayPlugin;
@@ -51,7 +51,7 @@ public class RayView extends View {
 
         // setBackground(Color.WHITE);
 
-        createWindow(minx, maxx, miny, maxy);
+        createProjection(minx, maxx, miny, maxy);
         registerPlugin();
 
     }
@@ -63,7 +63,7 @@ public class RayView extends View {
      *            the plugin to register
      */
     public void registerPlugin(AbstractPlugin plugin) {
-        window2DRay.registerPlugin(plugin);
+        projection.registerPlugin(plugin);
     }
 
     /**
@@ -88,9 +88,9 @@ public class RayView extends View {
      * @param maxy
      *            the maximum y coordinate value
      */
-    private void createWindow(double minx, double maxx, double miny, double maxy) {
-        window2DRay = new Projection.Linear(minx, maxx, miny, maxy);
-        registerProjection(window2DRay);
+    private void createProjection(double minx, double maxx, double miny, double maxy) {
+        projection = new Projection.Linear(minx, maxx, miny, maxy);
+        registerProjection(projection);
     }
 
     /**
@@ -100,34 +100,34 @@ public class RayView extends View {
         rayPlugin = new RayPlugin();
 
         rayPlugin.setPriority(10);
-        window2DRay.registerPlugin(rayPlugin);
+        projection.registerPlugin(rayPlugin);
 
-        axisMiliMetricsY = new AxisMetricsPlugin.Multiplier3Metrics(window2DRay.getMinY(),
+        axisMiliMetricsY = new AxisMetricsPlugin.Multiplier3Metrics(projection.getMinY(),
                                                 Axis.AxisWest);
-        double height = window2DRay.getUserHeight();
+        double height = projection.getUserHeight();
         axisMiliMetricsY.setMajor(height / 10);
         axisMiliMetricsY.setMedian(height / 20);
         axisMiliMetricsY.setMinor(height / 100);
 
-        axisMiliMetricsX = new AxisMetricsPlugin.Multiplier3Metrics(window2DRay.getMinX(),
+        axisMiliMetricsX = new AxisMetricsPlugin.Multiplier3Metrics(projection.getMinX(),
                                                 Axis.AxisSouth);
-        double width = window2DRay.getUserWidth();
+        double width = projection.getUserWidth();
         axisMiliMetricsX.setMajor(width / 10);
         axisMiliMetricsX.setMedian(width / 20);
         axisMiliMetricsX.setMinor(width / 100);
 
-        window2DRay.registerPlugin(axisMiliMetricsX);
-        window2DRay.registerPlugin(axisMiliMetricsY);
+        projection.registerPlugin(axisMiliMetricsX);
+        projection.registerPlugin(axisMiliMetricsY);
 
-        window2DRay.registerPlugin(new OutlinePlugin());
+        projection.registerPlugin(new OutlinePlugin());
 
     }
 
     /**
      * @return the ray window
      */
-    public Projection getRayWindow() {
-        return window2DRay;
+    public Projection getProjection() {
+        return projection;
     }
 
     /**
