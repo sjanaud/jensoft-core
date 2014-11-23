@@ -14,11 +14,12 @@ import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 
 /**
- * <code>BackgroundPlugin</code> takes the responsibility to paint device background with the given image
+ * <code>DeviceImageBackgroundPlugin</code> takes the responsibility to paint device background with the given image
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
-public class BackgroundPlugin extends AbstractPlugin {
+public class DeviceImageBackgroundPlugin extends AbstractPlugin {
 
     /** the background image */
     private Image deviceImage;
@@ -29,7 +30,7 @@ public class BackgroundPlugin extends AbstractPlugin {
     /**
      * create the device background plug in with given image to paint in the device background
      */
-    public BackgroundPlugin(Image deviceImage) {
+    public DeviceImageBackgroundPlugin(Image deviceImage) {
         setName("BackgroundPlugin");
         this.deviceImage = deviceImage;
         setPriority(-10000);
