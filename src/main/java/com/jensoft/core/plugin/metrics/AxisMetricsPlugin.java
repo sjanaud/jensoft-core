@@ -975,10 +975,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 */
 		public List<MetricsModel> getMetricsModels() {
 			return getMetricsManager().getMetricsModels();
-		}
-
-		
-
+		}	
 	}
 
 	/**
