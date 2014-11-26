@@ -935,6 +935,38 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 			getMetricsManager().applyLocalizedMetrics(locale);
 		}
 		
+		/**
+		 * set median metrics option
+		 * @param medianOption
+		 */
+		public void setMedianMetricsOption(boolean medianOption){
+			getMetricsManager().setMedianMetricsOption(medianOption);
+		}
+		
+		/**
+		 * set minor metrics option
+		 * @param minorOption
+		 */
+		public void setMinorMetricsOption(boolean minorOption){
+			getMetricsManager().setMinorMetricsOption(minorOption);
+		}
+		
+		/**
+		 * set median density threshold
+		 * @param medianMetricsDensityThreshold
+		 */
+		public void setMedianMetricsDensityThreshold(double medianMetricsDensityThreshold){
+			getMetricsManager().setMedianMetricsDensityThreshold(medianMetricsDensityThreshold);
+		}
+		
+		/**
+		 * set minor density threshold
+		 * @param minorMetricsDensityThreshold
+		 */
+		public void setMinorMetricsDensityThreshold(double minorMetricsDensityThreshold){
+			getMetricsManager().setMinorMetricsDensityThreshold(minorMetricsDensityThreshold);
+		}
+		
 
 		/**
 		 * get all registered {@link MetricsModel}
