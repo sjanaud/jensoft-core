@@ -1409,27 +1409,23 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 			}else{
 				m.setRotate(false);
 			}
-			//if (viewPart == ViewPart.South) {
-			if (axis == Axis.AxisSouth) {
+			if (viewPart == ViewPart.South) {
 				markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.S);
 			}
-			//if (viewPart == ViewPart.West) {
-			if (axis == Axis.AxisWest) {
+			if (viewPart == ViewPart.West) {
 				JComponent component = v2d.getViewPartComponent(ViewPart.West);
 				markerLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, m.getDeviceValue());
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.W);
 			}
-			//if (viewPart == ViewPart.East) {
-			if (axis == Axis.AxisEast) {
+			if (viewPart == ViewPart.East) {
 				markerLocation = new Point2D.Double(axisSpacing, m.getDeviceValue());
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.E);
 			}
-			//if (viewPart == ViewPart.North) {
-			if (axis == Axis.AxisNorth) {
+			if (viewPart == ViewPart.North) {
 				JComponent component = v2d.getViewPartComponent(ViewPart.North);
 				markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), component.getHeight() - 1 - axisSpacing);
 				m.setMarkerLocation(markerLocation);
