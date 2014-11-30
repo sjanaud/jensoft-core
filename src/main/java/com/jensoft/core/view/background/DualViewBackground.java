@@ -33,13 +33,64 @@ public class DualViewBackground extends ViewBackgroundPainter {
 	/** padding y */
 	private int paddingY = 2;
 	
+	/**color 1 for outer, default black*/
 	private Color color1 = Color.BLACK;
+	
+	/**color 2 for inner, default RED*/
 	private Color color2 = Color.RED;
 	
+	/**texture 1 for outer, default null*/
 	private TexturePaint texture1;
+	
+	/**texture 2 for inner, default null*/
 	private TexturePaint texture2;
 	
 	
+	/**
+	 * Create dual colors backgrounds
+	 * @param color1
+	 * @param color2
+	 */
+	public DualViewBackground(Color color1, Color color2) {
+		super();
+		this.color1 = color1;
+		this.color2 = color2;
+	}
+	
+	/**
+	 * create dual textures backgrounds
+	 * @param texture1
+	 * @param texture2
+	 */
+	public DualViewBackground(TexturePaint texture1, TexturePaint texture2) {
+		super();
+		this.texture1 = texture1;
+		this.texture2 = texture2;
+	}
+
+	/**
+	 * Create dual outer color and inner texture background
+	 * @param color1
+	 * @param texture2
+	 */
+	public DualViewBackground(Color color1, TexturePaint texture2) {
+		super();
+		this.color1 = color1;
+		this.texture2 = texture2;
+	}
+	
+	/**
+	 * Create dual outer texture and inner color background
+	 * @param color1
+	 * @param texture2
+	 */
+	public DualViewBackground(TexturePaint texture1, Color color2) {
+		super();
+		this.texture1 = texture1;
+		this.color2 = color2;
+	}
+
+
 	/**
 	 * @return the outlineRound
 	 */
@@ -85,38 +136,66 @@ public class DualViewBackground extends ViewBackgroundPainter {
 		this.paddingY = paddingY;
 	}
 	
-	
-	
-	
-
+	/**
+	 * get color 1
+	 * @return color1
+	 */
 	public Color getColor1() {
 		return color1;
 	}
 
+	/**
+	 * set color1
+	 * @param color1
+	 */
 	public void setColor1(Color color1) {
 		this.color1 = color1;
 	}
 
+	/**
+	 * get color 2
+	 * @return color2
+	 */
 	public Color getColor2() {
 		return color2;
 	}
 
+	/**
+	 * set color2
+	 * @param color2
+	 */
 	public void setColor2(Color color2) {
 		this.color2 = color2;
 	}
 
+	/**
+	 * get texture 1
+	 * @return texture 1
+	 */
 	public TexturePaint getTexture1() {
 		return texture1;
 	}
 
+	/**
+	 * set texture 1
+	 * @param texture1
+	 */
 	public void setTexture1(TexturePaint texture1) {
 		this.texture1 = texture1;
 	}
 
+	/**
+	 * get texture 2
+	 * @return texture 2
+	 */
 	public TexturePaint getTexture2() {
 		return texture2;
 	}
 
+	/**
+	 * set texture 2
+	 * @param texture2
+	 */
 	public void setTexture2(TexturePaint texture2) {
 		this.texture2 = texture2;
 	}
@@ -148,9 +227,7 @@ public class DualViewBackground extends ViewBackgroundPainter {
 			g2d.setColor(color2);
 
 		Rectangle2D rectDevice = new Rectangle2D.Double(view.getPlaceHolderAxisWest(), view.getPlaceHolderAxisNorth(), view.getDevice2D().getWidth(), view.getDevice2D().getHeight());
-		
 		g2d.fill(rectDevice);
-		
 	}
 
 }
