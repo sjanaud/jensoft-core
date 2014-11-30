@@ -17,6 +17,7 @@ import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 /**
  * <code>MetricsManager</code> defines a metrics manager
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
 public interface MetricsManager {

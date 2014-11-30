@@ -16,6 +16,7 @@ import com.jensoft.core.projection.Projection;
 /**
  * <code>StaticMetricsManager</code> takes the responsibility to manage static metrics
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
 public class StaticMetricsManager extends AbstractMetricsManager {

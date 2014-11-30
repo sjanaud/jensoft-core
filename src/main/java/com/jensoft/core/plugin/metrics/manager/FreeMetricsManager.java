@@ -16,6 +16,7 @@ import com.jensoft.core.projection.Projection;
 /**
  * <code>FreeMetricsManager</code>
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
 public class FreeMetricsManager extends AbstractMetricsManager {

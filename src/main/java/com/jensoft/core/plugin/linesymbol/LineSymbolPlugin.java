@@ -18,7 +18,6 @@ import com.jensoft.core.plugin.linesymbol.core.LineSymbolComponent;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbolGeometry;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbolGroup;
 import com.jensoft.core.plugin.linesymbol.painter.LineSymbolPainter;
-import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 

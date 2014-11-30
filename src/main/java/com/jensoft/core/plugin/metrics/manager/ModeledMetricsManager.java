@@ -27,6 +27,7 @@ import com.jensoft.core.projection.Projection;
  * Modeled metrics is based on exponent model collection
  * </p>
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
 public class ModeledMetricsManager extends AbstractMetricsManager {

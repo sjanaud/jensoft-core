@@ -15,7 +15,7 @@ import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 
 /**
- * AbstractMetricsManager takes the responsibility to solve and create metrics
+ * <code>AbstractMetricsManager</code> takes the responsibility to solve and create metrics
  * <p>
  * subclass this abstract definition to solve metrics and override {@link #getDeviceMetrics()}
  * <p>
