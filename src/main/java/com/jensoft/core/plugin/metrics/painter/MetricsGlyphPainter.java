@@ -17,11 +17,8 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import javax.swing.JComponent;
-
 import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
-import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
@@ -101,6 +98,12 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
 
     }
     
+    
+    /**
+     * paint north metrics label
+     * @param g2d
+     * @param metric
+     */
     protected void paintNorthMetricsLabel(Graphics2D g2d, Metrics metric){
         MetricsRenderContext renderContext = getMetricsRenderContext();
         Point2D position = metric.getMarkerLocation();
@@ -112,6 +115,12 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
                        (int) (position.getY() - markerSize - 4));
     }
     
+    
+    /**
+     * paint south metrics label
+     * @param g2d
+     * @param metric
+     */
     protected void paintSouthMetricsLabel(Graphics2D g2d, Metrics metric){
         MetricsRenderContext renderContext = getMetricsRenderContext();
         Point2D position = metric.getMarkerLocation();
@@ -124,6 +133,12 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
                                + renderContext.metricsHeight(metric) + 2));
     }
     
+    
+    /**
+     * paint west metrics label
+     * @param g2d
+     * @param metric
+     */
     protected void paintWestMetricsLabel(Graphics2D g2d, Metrics metric){
         MetricsRenderContext renderContext = getMetricsRenderContext();
         Point2D position = metric.getMarkerLocation();
@@ -179,46 +194,12 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
         }
     }
     
-//    protected void paintWestMetricsLabel2(Graphics2D g2d, Metrics metric){
-//        MetricsRenderContext renderContext = getMetricsRenderContext();
-//        Point2D position = metric.getMarkerLocation();
-//        int markerSize = renderContext.getMarkerSize(metric);
-//        FontRenderContext frc = g2d.getFontRenderContext();
-//       
-//        int tickLabelWidth = renderContext.metricsWidth(metric);
-//        boolean paintFlag = false;
-//        JComponent westPart = getMetricsRenderContext().getView().getViewPartComponent(ViewPart.West);
-//	      
-//        if (position.getY() < westPart.getHeight()  ) {
-//            paintFlag = true;
-//        }
-//            
-//        System.out.println("metrics height : "+renderContext.metricsHeight(metric)/3);
-//	                                     
-//	    
-//	    //if (paintFlag) {
-//	          if (metric.getMarkerPosition() == MarkerPosition.W) {
-//	              g2d.drawString(metric.getMetricsLabel(),
-//	                             (int) (metric.getMarkerLocation()
-//	                                     .getX()
-//	                                     - tickLabelWidth
-//	                                     - markerSize - 4),
-//	                             (int) (position.getY() + renderContext
-//	                                     .metricsHeight(metric) / 3));
-//	          }
-//	          if (metric.getMarkerPosition() == MarkerPosition.E) {
-//	              g2d.drawString(
-//	                             metric.getMetricsLabel(),
-//	                             (int) (position.getX() + markerSize + 4),
-//	                             (int) (position.getY() + renderContext
-//	                                     .metricsHeight(metric) / 3));
-//	          }
-//	    // }
-//    }
-    
-    
 
-    
+    /**
+     * paint east metrics label
+     * @param g2d
+     * @param metric
+     */
     protected void paintEastMetricsLabel(Graphics2D g2d, Metrics metric){
         MetricsRenderContext renderContext = getMetricsRenderContext();
         Point2D position = metric.getMarkerLocation();
@@ -235,25 +216,6 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
             float px = (float) p.getX();
             float py = (float) p.getY();
 
-//            Point2D pointGlyph = null;
-//
-//            pointGlyph = new Point2D.Double(
-//                                            position.getX() + markerSize
-//                                                    + renderContext.metricsAbsoluteHeight(metric),
-//                                            position.getY()
-//                                                    + legendWidth
-//                                                    / 2
-//                                                    - GlyphUtil
-//                                                            .getGlyphWidthAtToken(legendGlyphVector,
-//                                                                                  g));
-//
-//            Shape glyph = legendGlyphVector.getGlyphOutline(g);
-//            af.setToTranslation(pointGlyph.getX(), pointGlyph.getY());
-//            af.rotate(-Math.PI / 2);
-//            af.translate(-px, -py);
-//            Shape ts = af.createTransformedShape(glyph);
-//            g2d.fill(ts);
-            
             Point2D pointGlyph = null;
             
             Shape  glyph = legendGlyphVector.getGlyphOutline(g);
@@ -301,20 +263,14 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
        // System.out.println("paint metrics : "+metric);
         MetricsRenderContext renderContext = getMetricsRenderContext();
         g2d.setFont(renderContext.getFont(metric));
-        Point2D position = metric.getMarkerLocation();
-        if ((metric.getNature() == Metrics.MAJOR || metric.getNature() == Metrics.MEDIAN)
-                && metric.isLockLabel()) {
-
+        if ((metric.getNature() == Metrics.MAJOR || metric.getNature() == Metrics.MEDIAN)  && metric.isLockLabel()) {
             if (metric.getMetricsLabelColor() != null) {
                 g2d.setColor(metric.getMetricsLabelColor());
             }
             else {
                 g2d.setColor(renderContext.getProjection().getThemeColor());
             }
-
             if (metric.getMetricsLabel() != null) {
-
-              
                 if (metric.getMetricsType() == MetricsType.XMetrics) {
                     if (metric.getMarkerPosition() == MarkerPosition.S) {
                        paintSouthMetricsLabel(g2d, metric);
@@ -322,25 +278,16 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
                     if (metric.getMarkerPosition() == MarkerPosition.N) {
                        paintNorthMetricsLabel(g2d, metric);
                     }
-
                 }
                 if (metric.getMetricsType() == MetricsType.YMetrics) {
-
-                   
-                        //if (paintFlag) {
-                            if (metric.getMarkerPosition() == MarkerPosition.W) {                        
-                                paintWestMetricsLabel(g2d, metric);
-                            }
-                            if (metric.getMarkerPosition() == MarkerPosition.E) {
-                                 paintEastMetricsLabel(g2d, metric);
-                            }
-                        //}
-
-                   
+                    if (metric.getMarkerPosition() == MarkerPosition.W) {                        
+                        paintWestMetricsLabel(g2d, metric);
+                    }
+                    if (metric.getMarkerPosition() == MarkerPosition.E) {
+                         paintEastMetricsLabel(g2d, metric);
+                    }
                 }
-
             }
-
         }
     }
 

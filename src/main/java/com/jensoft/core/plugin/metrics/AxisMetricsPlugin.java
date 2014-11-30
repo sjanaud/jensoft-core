@@ -42,8 +42,7 @@ import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 
 /**
- * <code>AxisMetricsPlugin</code> takes the responsibility to draw metrics for
- * {@link Axis}
+ * <code>AxisMetricsPlugin</code> takes the responsibility to draw metrics along the given  {@link Axis}
  * 
  * @since 1.0
  * @author sebastien janaud

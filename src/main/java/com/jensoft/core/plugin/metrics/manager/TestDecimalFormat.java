@@ -1,11 +1,6 @@
 package com.jensoft.core.plugin.metrics.manager;
 
 import java.awt.Font;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.Locale;
 
 import com.jensoft.core.palette.InputFonts;
 

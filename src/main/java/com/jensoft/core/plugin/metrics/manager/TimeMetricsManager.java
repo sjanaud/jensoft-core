@@ -23,6 +23,8 @@ import com.jensoft.core.projection.Projection.Time;
 /**
  * <code>TimeMetricsManager</code> takes the responsibility to manage timing metrics
  * 
+ *
+ * @since 1.0
  * @author sebastien janaud
  */
 public class TimeMetricsManager extends AbstractMetricsManager {

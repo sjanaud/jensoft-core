@@ -27,8 +27,12 @@ import com.jensoft.core.view.WidgetPlugin.PushingBehavior;
  * You can use this manager when you build some static views without projection bound change<br>
  * it is discourage if you use tools that dynamically change the projection bounds because the manager can be reboot.
  * <p>
+ * 
+ * @since 1.0
+ * 
  * @author sebastien janaud
  */
+@Deprecated
 public class MultiplierMetricsManager extends AbstractMetricsManager {
 
     /** the metrics start reference */

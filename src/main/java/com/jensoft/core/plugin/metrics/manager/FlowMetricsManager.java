@@ -16,6 +16,7 @@ import com.jensoft.core.projection.Projection;
 /**
  * <code>FlowMetricsManager</code> take the responsibility to generate a flow of metrics.
  * 
+ * @since 1.0
  * @author sebastien janaud
  */
 public class FlowMetricsManager extends AbstractMetricsManager {
