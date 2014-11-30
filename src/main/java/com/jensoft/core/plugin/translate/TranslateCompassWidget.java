@@ -17,8 +17,8 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.palette.Alpha;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.Alpha;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.PluginEvent;
 import com.jensoft.core.view.View;
 import com.jensoft.core.widget.Widget;

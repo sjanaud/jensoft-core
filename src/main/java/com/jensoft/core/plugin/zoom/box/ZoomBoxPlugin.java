@@ -27,7 +27,7 @@ import java.util.Vector;
 import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginException;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;

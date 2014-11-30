@@ -12,7 +12,7 @@ import java.util.Map;
 
 import javax.swing.JComponent;
 
-import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;

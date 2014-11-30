@@ -19,7 +19,7 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 import javax.swing.event.EventListenerList;
 
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.NanoChromatique;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 import com.jensoft.core.plugin.function.source.SourceFunction;

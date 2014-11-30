@@ -10,7 +10,7 @@ import java.awt.Graphics2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.symbol.PointSymbol;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 

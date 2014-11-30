@@ -10,7 +10,7 @@ import java.util.List;
 
 import javax.swing.ImageIcon;
 
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbol;
 import com.jensoft.core.plugin.linesymbol.painter.LinePainter;
 

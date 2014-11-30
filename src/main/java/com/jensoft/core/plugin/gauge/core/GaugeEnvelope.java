@@ -25,7 +25,7 @@ import com.jensoft.core.device.PartBuffer;
 import com.jensoft.core.drawable.screw.Posidrive;
 import com.jensoft.core.drawable.screw.Split;
 import com.jensoft.core.drawable.screw.Torx;
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.NanoChromatique;
 
 /**
  * <code>GaugeEnvelope</code> defines an envelop that extends around the gauge.

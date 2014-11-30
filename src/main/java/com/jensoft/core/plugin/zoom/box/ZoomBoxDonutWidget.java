@@ -12,8 +12,8 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.palette.Alpha;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.Alpha;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.PluginEvent;
 import com.jensoft.core.plugin.donut2d.Donut2D;
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;

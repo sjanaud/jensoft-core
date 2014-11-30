@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.NanoChromatique;
 
 public class OhlcGeom extends StockItemGeometry{
 	

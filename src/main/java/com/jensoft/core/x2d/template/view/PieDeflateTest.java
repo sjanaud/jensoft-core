@@ -20,9 +20,9 @@ import org.w3c.dom.Document;
 
 import com.jensoft.core.catalog.nature.JenSoftView;
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.NanoChromatique;
-import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.palette.Spectral;
+import com.jensoft.core.palette.color.NanoChromatique;
+import com.jensoft.core.palette.color.RosePalette;
+import com.jensoft.core.palette.color.Spectral;
 import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.PiePlugin;
 import com.jensoft.core.plugin.pie.PieSlice;

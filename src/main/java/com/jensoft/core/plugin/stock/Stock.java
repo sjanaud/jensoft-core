@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.stock;
 import java.awt.Color;
 import java.util.Date;
 
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.NanoChromatique;
 
 /**
  * <code>Stock</code>defines a stock market with low, high, open, close, volume,

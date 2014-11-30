@@ -9,7 +9,7 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Stroke;
 
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.translate.TranslatePlugin.ShiftDirection;
 import com.jensoft.core.widget.bar.AbstractBackwardForwardBarWidget;
 import com.jensoft.core.widget.bar.AbstractBarGeometry.BarWidgetOrientation;

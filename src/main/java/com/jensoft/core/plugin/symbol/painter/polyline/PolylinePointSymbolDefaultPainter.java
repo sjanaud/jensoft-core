@@ -12,7 +12,7 @@ import java.awt.Stroke;
 import java.awt.geom.GeneralPath;
 import java.util.List;
 
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.symbol.PointSymbol;
 import com.jensoft.core.plugin.symbol.PolylinePointSymbol;
 

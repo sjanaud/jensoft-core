@@ -13,7 +13,7 @@ import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.AbstractMetricsPath.ProjectionNature;
 import com.jensoft.core.glyphmetrics.GeneralMetricsPath;
-import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.radar.painter.dimension.AbstractDimensionPainter;
 import com.jensoft.core.plugin.radar.painter.dimension.DimensionDefaultPainter;
 import com.jensoft.core.plugin.radar.painter.label.AbstractRadarDimensionLabel;

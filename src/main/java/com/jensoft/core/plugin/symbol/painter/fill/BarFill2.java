@@ -11,7 +11,7 @@ import java.awt.LinearGradientPaint;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
-import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.symbol.BarSymbol;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 

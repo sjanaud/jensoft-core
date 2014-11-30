@@ -27,7 +27,7 @@ import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;

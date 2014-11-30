@@ -3,7 +3,7 @@
  * This source file is part of JenSoft API, All rights reserved.
  * JENSOFT PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.jensoft.core.palette;
+package com.jensoft.core.palette.color;
 
 import java.awt.Color;
 

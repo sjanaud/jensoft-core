@@ -12,7 +12,7 @@ import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.symbol.SymbolPlugin.SymbolNature;
 import com.jensoft.core.plugin.symbol.painter.draw.AbstractBarDraw;
 import com.jensoft.core.plugin.symbol.painter.effect.AbstractBarEffect;

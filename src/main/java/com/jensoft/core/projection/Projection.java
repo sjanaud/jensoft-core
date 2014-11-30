@@ -17,7 +17,7 @@ import javax.swing.event.EventListenerList;
 import com.jensoft.core.device.Device;
 import com.jensoft.core.map.projection.DalleProjection;
 import com.jensoft.core.map.projection.GeoPosition;
-import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginEvent;
 import com.jensoft.core.plugin.PluginListener;

@@ -11,7 +11,7 @@ import java.awt.geom.Point2D;
 
 import javax.swing.ImageIcon;
 
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.linesymbol.LineSymbolPlugin.LineNature;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbolComponent;
 import com.jensoft.core.plugin.linesymbol.painter.AbstractLinePainter;

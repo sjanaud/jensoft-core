@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.linesymbol.core.LineSymbol;
 import com.jensoft.core.plugin.linesymbol.painter.LinePainter;
 

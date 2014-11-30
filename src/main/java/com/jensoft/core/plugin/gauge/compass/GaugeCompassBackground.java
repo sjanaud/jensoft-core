@@ -19,8 +19,8 @@ import java.awt.geom.Point2D;
 import java.util.List;
 import java.util.Vector;
 
-import com.jensoft.core.palette.ColorPalette;
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.ColorPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 

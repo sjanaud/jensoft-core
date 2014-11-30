@@ -10,8 +10,8 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Stroke;
 
-import com.jensoft.core.palette.ColorPalette;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.ColorPalette;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.translate.TranslatePlugin.ShiftDirection;
 import com.jensoft.core.view.View;
 import com.jensoft.core.widget.pad.AbstractBackwardForwardPadWidget;

@@ -7,7 +7,7 @@ package com.jensoft.core.plugin.ray;
 
 import java.awt.Color;
 
-import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.ray.painter.draw.AbstractRayDraw;
 import com.jensoft.core.plugin.ray.painter.effect.AbstractRayEffect;
 import com.jensoft.core.plugin.ray.painter.fill.AbstractRayFill;
