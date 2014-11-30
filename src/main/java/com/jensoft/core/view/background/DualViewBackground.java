@@ -45,7 +45,13 @@ public class DualViewBackground extends ViewBackgroundPainter {
 	/**texture 2 for inner, default null*/
 	private TexturePaint texture2;
 	
-	
+	/**
+	 * Create Default view dual background
+	 */
+	public DualViewBackground() {
+		super();
+	}
+
 	/**
 	 * Create dual colors backgrounds
 	 * @param color1
