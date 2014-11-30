@@ -5,7 +5,6 @@ import java.awt.Paint;
 import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.catalog.ui.ViewFrameUI;
-import com.jensoft.core.palette.color.TexturePalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.View;
