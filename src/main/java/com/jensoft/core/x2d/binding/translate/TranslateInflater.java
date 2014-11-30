@@ -9,8 +9,8 @@ import java.awt.Color;
 
 import org.w3c.dom.Element;
 
-import com.jensoft.core.palette.Alpha;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.Alpha;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.translate.TranslateCompassWidget;
 import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
 import com.jensoft.core.plugin.translate.TranslatePlugin;

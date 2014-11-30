@@ -22,8 +22,8 @@ import javax.swing.text.PlainView;
 import javax.swing.text.Segment;
 import javax.swing.text.Utilities;
 
-import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.RosePalette;
+import com.jensoft.core.palette.color.TangoPalette;
 
 /**
  * <code>XmlView</code>

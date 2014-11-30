@@ -15,8 +15,8 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.palette.ColorPalette;
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.ColorPalette;
+import com.jensoft.core.palette.color.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.GaugeMetricsPath;
 
 /**

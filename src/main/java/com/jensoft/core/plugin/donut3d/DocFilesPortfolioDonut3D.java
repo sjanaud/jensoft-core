@@ -8,7 +8,7 @@ package com.jensoft.core.plugin.donut3d;
 import java.awt.Color;
 import java.io.File;
 
-import com.jensoft.core.palette.Spectral;
+import com.jensoft.core.palette.color.Spectral;
 import com.jensoft.core.plugin.PluginPlatform;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;

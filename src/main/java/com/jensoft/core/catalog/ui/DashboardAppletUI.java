@@ -19,7 +19,7 @@ import com.jensoft.core.catalog.component.DemoTab;
 import com.jensoft.core.catalog.component.DemoTabSet;
 import com.jensoft.core.catalog.nature.JenSoftDashboard;
 import com.jensoft.core.catalog.source.JavaSourcePane;
-import com.jensoft.core.palette.JennyPalette;
+import com.jensoft.core.palette.color.JennyPalette;
 import com.jensoft.core.view.View;
 
 /**

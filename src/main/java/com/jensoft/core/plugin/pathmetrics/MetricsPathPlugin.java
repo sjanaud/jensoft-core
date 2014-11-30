@@ -22,7 +22,7 @@ import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.Interpolation;
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;

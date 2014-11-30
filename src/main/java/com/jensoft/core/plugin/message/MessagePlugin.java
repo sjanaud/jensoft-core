@@ -23,8 +23,8 @@ import java.util.List;
 import javax.swing.SwingUtilities;
 
 import com.jensoft.core.device.DevicePartComponent;
-import com.jensoft.core.palette.Alpha;
-import com.jensoft.core.palette.Spectral;
+import com.jensoft.core.palette.color.Alpha;
+import com.jensoft.core.palette.color.Spectral;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;

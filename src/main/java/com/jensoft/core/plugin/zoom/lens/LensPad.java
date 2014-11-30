@@ -9,8 +9,8 @@ import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.Stroke;
 
-import com.jensoft.core.palette.ColorPalette;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.ColorPalette;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.zoom.lens.ZoomLensPlugin.ZoomLensType;
 import com.jensoft.core.plugin.zoom.lens.ZoomLensPlugin.ZoomNature;
 import com.jensoft.core.widget.pad.AbstractPlusMinusPadWidget;

@@ -14,7 +14,7 @@ import com.jensoft.core.glyphmetrics.StylePosition;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
 import com.jensoft.core.palette.InputFonts;
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.gauge.core.GaugeBackground;
 import com.jensoft.core.plugin.gauge.core.GaugeBody;
 import com.jensoft.core.plugin.gauge.core.GaugeEnvelope;

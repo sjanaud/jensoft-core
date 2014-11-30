@@ -11,8 +11,8 @@ import java.awt.geom.CubicCurve2D;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 
-import com.jensoft.core.palette.Alpha;
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.Alpha;
+import com.jensoft.core.palette.color.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 
 /**

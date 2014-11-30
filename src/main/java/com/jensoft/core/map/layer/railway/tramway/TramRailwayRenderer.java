@@ -17,7 +17,7 @@ import java.awt.geom.Point2D;
 import com.jensoft.core.map.layer.railway.Railway;
 import com.jensoft.core.map.layer.railway.RailwayRenderer;
 import com.jensoft.core.map.primitive.Node;
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.TangoPalette;
 
 public class TramRailwayRenderer implements RailwayRenderer {
 

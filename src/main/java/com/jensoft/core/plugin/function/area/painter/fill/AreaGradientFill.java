@@ -13,7 +13,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.ColorPalette;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.function.area.Area;
 import com.jensoft.core.plugin.function.source.FunctionNature;
 

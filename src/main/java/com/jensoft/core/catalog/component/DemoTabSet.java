@@ -30,7 +30,7 @@ import java.util.List;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
 
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.RosePalette;
 
 /**
  * do not use, only demo component for jensoft view. no buffered component!

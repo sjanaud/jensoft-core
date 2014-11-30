@@ -11,8 +11,8 @@ import java.awt.Graphics2D;
 
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.palette.ColorPalette;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.ColorPalette;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;

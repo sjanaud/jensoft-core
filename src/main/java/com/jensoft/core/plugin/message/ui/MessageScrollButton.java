@@ -14,7 +14,7 @@ import java.awt.geom.GeneralPath;
 import javax.swing.SwingConstants;
 import javax.swing.plaf.metal.MetalScrollButton;
 
-import com.jensoft.core.palette.Spectral;
+import com.jensoft.core.palette.color.Spectral;
 
 class MessageScrollButton extends MetalScrollButton {
 

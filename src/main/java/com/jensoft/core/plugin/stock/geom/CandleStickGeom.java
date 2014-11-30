@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.awt.geom.Line2D;
 import java.awt.geom.Rectangle2D;
 
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.NanoChromatique;
 
 /**
  * <code>CandleStickGeom</code> defines the common candle stick market geometry

@@ -12,11 +12,11 @@ import java.awt.event.ActionListener;
 
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.Alpha;
-import com.jensoft.core.palette.ColorPalette;
-import com.jensoft.core.palette.NanoChromatique;
-import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.palette.ShaderPalette;
+import com.jensoft.core.palette.color.Alpha;
+import com.jensoft.core.palette.color.ColorPalette;
+import com.jensoft.core.palette.color.NanoChromatique;
+import com.jensoft.core.palette.color.RosePalette;
+import com.jensoft.core.palette.color.ShaderPalette;
 import com.jensoft.core.plugin.marker.MarkerPlugin;
 import com.jensoft.core.plugin.marker.context.MarkerDefaultDeviceContext;
 import com.jensoft.core.plugin.outline.OutlinePlugin;

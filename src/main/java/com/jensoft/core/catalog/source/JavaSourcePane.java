@@ -22,8 +22,8 @@ import javax.swing.text.StyleContext;
 import com.jensoft.core.catalog.styles.SectionStyle;
 import com.jensoft.core.catalog.styles.SourceStyle;
 import com.jensoft.core.catalog.styles.WordStyle;
-import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.RosePalette;
+import com.jensoft.core.palette.color.TangoPalette;
 
 /**
  * <code>SourcePane</code>

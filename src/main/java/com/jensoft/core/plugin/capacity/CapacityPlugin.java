@@ -14,7 +14,7 @@ import java.util.List;
 
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Fractional;
-import com.jensoft.core.palette.Alpha;
+import com.jensoft.core.palette.color.Alpha;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;

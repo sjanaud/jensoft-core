@@ -31,10 +31,10 @@ import javax.swing.JTextArea;
 import javax.swing.ScrollPaneConstants;
 import javax.swing.ScrollPaneLayout;
 
-import com.jensoft.core.palette.Alpha;
-import com.jensoft.core.palette.NanoChromatique;
-import com.jensoft.core.palette.Spectral;
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.Alpha;
+import com.jensoft.core.palette.color.NanoChromatique;
+import com.jensoft.core.palette.color.Spectral;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.message.ui.MessageScrollbarUI;
 import com.jensoft.core.sharedicon.SharedIcon;
 import com.jensoft.core.sharedicon.common.Common;

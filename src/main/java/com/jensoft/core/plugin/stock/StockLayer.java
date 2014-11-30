@@ -11,8 +11,8 @@ import java.awt.Shape;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.palette.NanoChromatique;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.NanoChromatique;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.stock.geom.BollingerMovingAverageStockGeom;
 import com.jensoft.core.plugin.stock.geom.CandleStickGeom;
 import com.jensoft.core.plugin.stock.geom.CurveStockGeom;

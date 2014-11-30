@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import com.jensoft.core.drawable.text.TextPath;
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;
 
 /**

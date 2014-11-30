@@ -21,9 +21,9 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 
 import com.jensoft.core.catalog.nature.JenSoftView;
-import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.InputFonts;
-import com.jensoft.core.palette.RosePalette;
+import com.jensoft.core.palette.color.ColorPalette;
+import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.Pie.PieNature;
 import com.jensoft.core.plugin.pie.PiePlugin;

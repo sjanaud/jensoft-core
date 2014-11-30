@@ -21,8 +21,8 @@ import javax.swing.JButton;
 import javax.swing.JComponent;
 import javax.swing.plaf.metal.MetalScrollBarUI;
 
-import com.jensoft.core.palette.Alpha;
-import com.jensoft.core.palette.Spectral;
+import com.jensoft.core.palette.color.Alpha;
+import com.jensoft.core.palette.color.Spectral;
 
 /**
  * <code>essageScrollbarUI</code>

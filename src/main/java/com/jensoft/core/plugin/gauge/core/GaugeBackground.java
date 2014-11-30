@@ -16,7 +16,7 @@ import java.awt.geom.Ellipse2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.palette.NanoChromatique;
+import com.jensoft.core.palette.color.NanoChromatique;
 import com.jensoft.core.plugin.donut2d.Donut2D;
 import com.jensoft.core.plugin.donut2d.Donut2DSlice;
 import com.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel;

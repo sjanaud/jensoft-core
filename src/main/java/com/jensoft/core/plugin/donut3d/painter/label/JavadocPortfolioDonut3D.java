@@ -11,11 +11,11 @@ import java.awt.Stroke;
 import java.io.File;
 
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.ColorPalette;
 import com.jensoft.core.palette.InputFonts;
-import com.jensoft.core.palette.RosePalette;
-import com.jensoft.core.palette.Spectral;
-import com.jensoft.core.palette.TangoPalette;
+import com.jensoft.core.palette.color.ColorPalette;
+import com.jensoft.core.palette.color.RosePalette;
+import com.jensoft.core.palette.color.Spectral;
+import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.PluginPlatform;
 import com.jensoft.core.plugin.donut3d.Donut3D;
 import com.jensoft.core.plugin.donut3d.Donut3DPlugin;

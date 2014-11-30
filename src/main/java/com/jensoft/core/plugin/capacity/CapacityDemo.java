@@ -10,7 +10,7 @@ import java.awt.Color;
 
 import com.jensoft.core.catalog.nature.JenSoftView;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
-import com.jensoft.core.palette.PetalPalette;
+import com.jensoft.core.palette.color.PetalPalette;
 import com.jensoft.core.plugin.outline.OutlinePlugin;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.View;
