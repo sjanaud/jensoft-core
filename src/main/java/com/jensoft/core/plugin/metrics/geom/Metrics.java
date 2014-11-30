@@ -54,8 +54,8 @@ public class Metrics {
     /** marker position */
     private MarkerPosition markerPosition;
 
-    /** gravity */
-    private Gravity gravity = Gravity.Neutral;
+    /** rotate */
+    private boolean rotate = true;
 
     /** lock marker flag */
     private boolean lockMarker;
@@ -66,9 +66,9 @@ public class Metrics {
     /** visible flag */
     private boolean visible = true;
 
-    /** Gravity defines the position in device flow, first, last or neutral */
+    /** Gravity defines a style of metrics  */
     public enum Gravity {
-        Neutral, First, Last;
+        Natural, Rotate;
     }
 
     /**
@@ -122,8 +122,7 @@ public class Metrics {
     @Override
     public String toString() {
         return "Metrics [metricsType=" + metricsType + ", deviceValue=" + deviceValue + ", userValue=" + userValue
-                + ", format=" + format + ", metricsLabel=" + metricsLabel + ", nature=" + nature + ", gravity="
-                + gravity + ", visible=" + visible + "]";
+                + ", format=" + format + ", metricsLabel=" + metricsLabel + ", nature=" + nature + ", visible=" + visible + "]";
     }
 
     /**
@@ -183,20 +182,7 @@ public class Metrics {
         this.markerPosition = markerPosition;
     }
 
-    /**
-     * @return the gravity
-     */
-    public Gravity getGravity() {
-        return gravity;
-    }
 
-    /**
-     * @param gravity
-     *            the gravity to set
-     */
-    public void setGravity(Gravity gravity) {
-        this.gravity = gravity;
-    }
 
     /**
      * get marker location
@@ -392,7 +378,15 @@ public class Metrics {
     
     
 
-    public BigDecimal getUserValueAsBigDecimal() {
+    public boolean isRotate() {
+		return rotate;
+	}
+
+	public void setRotate(boolean rotate) {
+		this.rotate = rotate;
+	}
+
+	public BigDecimal getUserValueAsBigDecimal() {
 		return userValueAsBigDecimal;
 	}
 

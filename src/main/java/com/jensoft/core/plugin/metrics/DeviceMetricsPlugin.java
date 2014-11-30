@@ -22,10 +22,8 @@ import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelCollections;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelOLD;
 import com.jensoft.core.plugin.metrics.manager.Multiplier3MetricsManager;
 import com.jensoft.core.plugin.metrics.manager.MultiplierMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
@@ -840,7 +838,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * 
 	 * @author sebastien janaud
 	 */
-	public static class DeviceModeledMetrics extends DeviceMetricsPlugin<ModeledMetricsManagerOLD> {
+	public static class DeviceModeledMetrics extends DeviceMetricsPlugin<ModeledMetricsManager> {
 
 		/**
 		 * <code>X</code> manages {@link DeviceModeledMetrics} for
@@ -903,7 +901,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param deviceAxis
 		 */
 		public DeviceModeledMetrics(double baseLine, DeviceAxis deviceAxis) {
-			super(new ModeledMetricsManagerOLD(), baseLine, deviceAxis);
+			super(new ModeledMetricsManager(), baseLine, deviceAxis);
 		}
 
 		/**
@@ -914,134 +912,56 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		 * @param deviceAxis
 		 */
 		public DeviceModeledMetrics(double baseLine, MarkerPosition deviceMarkerPosition, DeviceAxis deviceAxis) {
-			super(new ModeledMetricsManagerOLD(), baseLine, deviceMarkerPosition, deviceAxis);
+			super(new ModeledMetricsManager(), baseLine, deviceMarkerPosition, deviceAxis);
 		}
 
-		/**
-		 * register the given {@link MetricsModel}
-		 * 
-		 * @param model
-		 *            the model to register
-		 */
-		public void registerMetricsModel(MetricsModelOLD model) {
-			getMetricsManager().registerMetricsModel(model);
-		}
-
-		/**
-		 * register the given {@link MetricsModel} array
-		 * 
-		 * @param models
-		 *            the models to register
-		 */
-		public void registerMetricsModels(MetricsModelOLD... models) {
-			getMetricsManager().registerMetricsModels(models);
-		}
-
-		/**
-		 * register the given {@link MetricsModelCollections}
-		 * 
-		 * @param modelCollections
-		 *            the models to register
-		 */
-		public void registerMetricsModels(MetricsModelCollections modelCollections) {
-			getMetricsManager().registerMetricsModels(modelCollections);
-		}
-
-		/**
-		 * register the given {@link MetricsModel} list
-		 * 
-		 * @param models
-		 *            the models to register
-		 */
-		public void registerMetricsModels(List<MetricsModelOLD> models) {
-			getMetricsManager().registerMetricsModels(models);
-		}
-
-		/**
-		 * unregister the given {@link MetricsModel}
-		 * 
-		 * @param model
-		 *            the model to remove
-		 */
-		public void unregisterMetricsModel(MetricsModelOLD model) {
-			getMetricsManager().unregisterMetricsModel(model);
-		}
-
-		/**
-		 * unregister the given {@link MetricsModel} array
-		 * 
-		 * @param models
-		 *            the metrics models to remove
-		 */
-		public void unregisterMetricsModels(MetricsModelOLD... models) {
-			getMetricsManager().unregisterMetricsModels(models);
-		}
-
-		/**
-		 * unregister the given {@link MetricsModelCollections}
-		 * 
-		 * @param modelCollections
-		 *            the metrics models to remove
-		 */
-		public void unregisterMetricsModels(MetricsModelCollections modelCollections) {
-			getMetricsManager().unregisterMetricsModels(modelCollections);
-		}
-
-		/**
-		 * unregister the given {@link MetricsModel} list
-		 * 
-		 * @param models
-		 *            the metrics models to remove
-		 */
-		public void unregisterMetricsModels(List<MetricsModelOLD> models) {
-			getMetricsManager().unregisterMetricsModels(models);
-		}
+		
 
 		/**
 		 * get all registered {@link MetricsModel}
 		 * 
 		 * @return models
 		 */
-		public List<MetricsModelOLD> getMetricsModels() {
+		public List<MetricsModel> getMetricsModels() {
 			return getMetricsManager().getMetricsModels();
 		}
 
-		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
-		 */
-		@Override
-		protected void paintMetrics(View view, Graphics2D g2d, ViewPart viewPart) {
-			if (!super.isAccessible(viewPart)) {
-				return;
-			}
-			super.createRenderContext(view, g2d);
-			super.assignType();
-			int axisSpacing = 0;
-			List<MetricsModelOLD> sequence = getMetricsManager().getSequenceMetrics();
-			//System.out.println("--SEQUENCE MODELS--");
-			for (MetricsModelOLD model : sequence) {
-				if (model.getRank() > 0 && !sequence.get(0).isMinimal())
-					continue;
-				if (model.getRank() > 1)
-					continue;
-				//System.out.println("applicable model : " + model);
-				List<Metrics> metrics = model.generateMetrics();
-				if (super.deviceAxis == DeviceAxis.AxisX) {
-					paintMetricsX(view, g2d, metrics, super.baseLine, axisSpacing);
-				}
-				if (super.deviceAxis == DeviceAxis.AxisY) {
-					paintMetricsY(view, g2d, metrics, super.baseLine, axisSpacing);
-				}
-				axisSpacing = axisSpacing + model.getPixelAxisHolder();
-			}
-
-			if (super.deviceAxis == DeviceAxis.AxisX) {
-				paintMetricsXBaseLine(view, g2d, super.baseLine);
-			}
-			if (super.deviceAxis == DeviceAxis.AxisY) {
-				paintMetricsYBaseLine(view, g2d, super.baseLine);
-			}
-		}
+//		/* (non-Javadoc)
+//		 * @see com.jensoft.core.plugin.metrics.DeviceMetricsPlugin#paintMetrics(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+//		 */
+//		@Override
+//		protected void paintMetrics(View view, Graphics2D g2d, ViewPart viewPart) {
+//			if (!super.isAccessible(viewPart)) {
+//				return;
+//			}
+//			super.createRenderContext(view, g2d);
+//			super.assignType();
+//			int axisSpacing = 0;
+//			List<MetricsModelOLD> sequence = getMetricsManager().getSequenceMetrics();
+//			//System.out.println("--SEQUENCE MODELS--");
+//			for (MetricsModelOLD model : sequence) {
+//				if (model.getRank() > 0 && !sequence.get(0).isMinimal())
+//					continue;
+//				if (model.getRank() > 1)
+//					continue;
+//				//System.out.println("applicable model : " + model);
+//				List<Metrics> metrics = model.generateMetrics();
+//				if (super.deviceAxis == DeviceAxis.AxisX) {
+//					paintMetricsX(view, g2d, metrics, super.baseLine, axisSpacing);
+//				}
+//				if (super.deviceAxis == DeviceAxis.AxisY) {
+//					paintMetricsY(view, g2d, metrics, super.baseLine, axisSpacing);
+//				}
+//				axisSpacing = axisSpacing + model.getPixelAxisHolder();
+//			}
+//
+//			if (super.deviceAxis == DeviceAxis.AxisX) {
+//				paintMetricsXBaseLine(view, g2d, super.baseLine);
+//			}
+//			if (super.deviceAxis == DeviceAxis.AxisY) {
+//				paintMetricsYBaseLine(view, g2d, super.baseLine);
+//			}
+//		}
 	}
 
 	/**

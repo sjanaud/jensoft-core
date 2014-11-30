@@ -79,17 +79,14 @@ public class ViewPartComponent extends JComponent implements MouseListener,
      *            the graphics2D context
      */
     private void paintBackdrop(Graphics2D g2d) {
-
         if (!isOpaque()) {
             return;
         }
 
         if (getBackground() != null) {
-
             g2d.setColor(getBackground());
             g2d.fillRect(0, 0, getWidth(), getHeight());
         }
-
     }
 
     @Override
@@ -145,7 +142,6 @@ public class ViewPartComponent extends JComponent implements MouseListener,
      */
     @Override
     public void paintComponent(Graphics g) {
-
         if (!lockPlugins) {
             return;
         }
@@ -153,7 +149,6 @@ public class ViewPartComponent extends JComponent implements MouseListener,
         paintBackdrop(g2d);
         paintPlugins(g2d);
         g2d.dispose();
-
     }
 
     /**
@@ -164,18 +159,18 @@ public class ViewPartComponent extends JComponent implements MouseListener,
      */
     protected void paintPlugins(Graphics2D g2d) {
 
-        List<Projection> windows2D = view.getProjections();
+        List<Projection> projections = view.getProjections();
 
         // paint all window, exlude active window
-        for (Projection w2d : windows2D) {
+        for (Projection proj : projections) {
 
-            if (!w2d.isVisible()) {
+            if (!proj.isVisible()) {
                 continue;
             }
 
-            if (!w2d.equals(view.getActiveProjection())) {
+            if (!proj.equals(view.getActiveProjection())) {
                 // System.out.println("paint NON ACTIVE window part for window :"+w2d.getName());
-                List<AbstractPlugin> plugins = w2d.getPluginRegistry();
+                List<AbstractPlugin> plugins = proj.getPluginRegistry();
                 Collections.sort(plugins,
                                  AbstractPlugin.getPriorityComparator());
                 if (plugins != null) {

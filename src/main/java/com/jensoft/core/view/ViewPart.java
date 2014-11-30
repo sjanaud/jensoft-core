@@ -13,7 +13,7 @@ package com.jensoft.core.view;
  * @author Sebastien Janaud
  */
 public enum ViewPart {
-    North, South, West, East, Device;
+    North, South, West, East, Device, View;
 
     /**
      * get device part
