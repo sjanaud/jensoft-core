@@ -27,7 +27,7 @@ public abstract class AbstractMetricsPainter {
 
     /** metrics render context */
     private MetricsRenderContext metricsRenderContext;
-
+    
     /**
      * get metrics render context
      * 

@@ -142,61 +142,61 @@ public class MetricsDefaultPainter extends AbstractMetricsPainter {
 
                 }
                 if (metric.getMetricsType() == MetricsType.YMetrics) {
-                    if (metric.getGravity() == Gravity.Neutral) {
-                        if (metric.getMarkerPosition() == MarkerPosition.W) {
-
-                            g2d.drawString(metric.getMetricsLabel(),
-                                           (int) (metric.getMarkerLocation()
-                                                   .getX()
-                                                   - tickLabelWidth
-                                                   - markerSize - 4),
-                                           (int) (position.getY() + renderContext
-                                                   .metricsHeight(metric) / 3));
-                        }
-                        if (metric.getMarkerPosition() == MarkerPosition.E) {
-                            g2d.drawString(
-                                           metric.getMetricsLabel(),
-                                           (int) (position.getX() + markerSize + 4),
-                                           (int) (position.getY() + renderContext
-                                                   .metricsHeight(metric) / 3));
-                        }
-                    }
-                    else {
-
-                        boolean paintFlag = false;
-                        JComponent westPart = getMetricsRenderContext().getView()
-                                .getViewPartComponent(ViewPart.West);
-                        if (metric.getGravity() == Gravity.First) {
-                            if (position.getY() < westPart.getHeight() - 6) {
-                                paintFlag = true;
-                            }
-                        }
-                        if (metric.getGravity() == Gravity.Last) {
-                            if (position.getY() > 6) {
-                                paintFlag = true;
-                            }
-                        }
-
-                        if (paintFlag) {
-                            if (metric.getMarkerPosition() == MarkerPosition.W) {
-                                g2d.drawString(metric.getMetricsLabel(),
-                                               (int) (metric.getMarkerLocation()
-                                                       .getX()
-                                                       - tickLabelWidth
-                                                       - markerSize - 4),
-                                               (int) (position.getY() + renderContext
-                                                       .metricsHeight(metric) / 3));
-                            }
-                            if (metric.getMarkerPosition() == MarkerPosition.E) {
-                                g2d.drawString(
-                                               metric.getMetricsLabel(),
-                                               (int) (position.getX() + markerSize + 4),
-                                               (int) (position.getY() + renderContext
-                                                       .metricsHeight(metric) / 3));
-                            }
-                        }
-
-                    }
+//                    if (metric.getGravity() == Gravity.Neutral) {
+//                        if (metric.getMarkerPosition() == MarkerPosition.W) {
+//
+//                            g2d.drawString(metric.getMetricsLabel(),
+//                                           (int) (metric.getMarkerLocation()
+//                                                   .getX()
+//                                                   - tickLabelWidth
+//                                                   - markerSize - 4),
+//                                           (int) (position.getY() + renderContext
+//                                                   .metricsHeight(metric) / 3));
+//                        }
+//                        if (metric.getMarkerPosition() == MarkerPosition.E) {
+//                            g2d.drawString(
+//                                           metric.getMetricsLabel(),
+//                                           (int) (position.getX() + markerSize + 4),
+//                                           (int) (position.getY() + renderContext
+//                                                   .metricsHeight(metric) / 3));
+//                        }
+//                    }
+//                    else {
+//
+//                        boolean paintFlag = false;
+//                        JComponent westPart = getMetricsRenderContext().getView()
+//                                .getViewPartComponent(ViewPart.West);
+//                        if (metric.getGravity() == Gravity.First) {
+//                            if (position.getY() < westPart.getHeight() - 6) {
+//                                paintFlag = true;
+//                            }
+//                        }
+//                        if (metric.getGravity() == Gravity.Last) {
+//                            if (position.getY() > 6) {
+//                                paintFlag = true;
+//                            }
+//                        }
+//
+//                        if (paintFlag) {
+//                            if (metric.getMarkerPosition() == MarkerPosition.W) {
+//                                g2d.drawString(metric.getMetricsLabel(),
+//                                               (int) (metric.getMarkerLocation()
+//                                                       .getX()
+//                                                       - tickLabelWidth
+//                                                       - markerSize - 4),
+//                                               (int) (position.getY() + renderContext
+//                                                       .metricsHeight(metric) / 3));
+//                            }
+//                            if (metric.getMarkerPosition() == MarkerPosition.E) {
+//                                g2d.drawString(
+//                                               metric.getMetricsLabel(),
+//                                               (int) (position.getX() + markerSize + 4),
+//                                               (int) (position.getY() + renderContext
+//                                                       .metricsHeight(metric) / 3));
+//                            }
+//                        }
+//
+//                    }
                 }
 
             }

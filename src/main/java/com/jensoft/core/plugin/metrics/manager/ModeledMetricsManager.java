@@ -50,8 +50,16 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
     private double minorMetricsDensityThreshold = 80.0d;
     
     /**density factor. Density is an adjust parameter that can be make switch the model to next model by invalidate the size pixel holder.*/
-    private int densityFactor = 0;
-
+    private int intervalDensity = 3;
+    
+    private MetricsDensity metricsDensity = MetricsDensity.Condensed;
+    
+    
+    /**density*/
+    public enum MetricsDensity{
+    	Condensed,
+    	Low
+    }
     
     /**
      * create the modeled manager.
@@ -62,7 +70,6 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
       metricsModels.addAll(models);
       Collections.sort(metricsModels, modelComparator);
     }
-    
     
     /**
      * set locale to this modeled exponent model
@@ -75,9 +82,24 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         metricsModels.addAll(models);
         Collections.sort(metricsModels, modelComparator);
     }
-    
-    
+   
     /**
+     * get metrics density
+     * @return metrics density 
+     */
+	public MetricsDensity getMetricsDensity() {
+		return metricsDensity;
+	}
+
+	/**
+	 * set metrics density
+	 * @param metricsDensity
+	 */
+	public void setMetricsDensity(MetricsDensity metricsDensity) {
+		this.metricsDensity = metricsDensity;
+	}
+
+	/**
      * true if the median metrics options is enabled, false otherwise
      * @return median metrics option
      */
@@ -146,19 +168,20 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
 	}
 
 	/**
-	 * get density factor
-	 * @return density factor
+	 * get interval density
+	 * @return interval density
 	 */
-	public int getDensityFactor() {
-		return densityFactor;
+	public int getIntervalDensity() {
+		return intervalDensity;
 	}
 
 	/**
-	 * set density factor
-	 * @param densityFactor
+	 * set interval density factor, ideal value is O, 10, 20 pixel for condensed to more and more low density.
+	 * this interval is take in account on metrics solving algorithm.
+	 * @param intervalDensity
 	 */
-	public void setDensityFactor(int densityFactor) {
-		this.densityFactor = densityFactor;
+	public void setIntervalDensity(int intervalDensity) {
+		this.intervalDensity = intervalDensity;
 	}
 
 
@@ -194,7 +217,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      * @return the metrics model for the given exponents
      */
     protected MetricsModel createModel(int exponent){
-    	return createDefaultExponentModel(exponent);
+    	return createDefaultExponentModel(exponent,getLocale());
     }
     
     /**
@@ -229,13 +252,13 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      *            the reference exponent model
      * @return new model
      */
-    public MetricsModel createDefaultExponentModel(int exp) {
+    public static MetricsModel createDefaultExponentModel(int exp,Locale locale) {
         MetricsModel model = null;
         StringBuffer buffer = new StringBuffer();
         if (exp < 0) {
         	buffer.append("0.");for (int j = 1; j < Math.abs(exp); j++){buffer.append("0");}buffer.append("1");
             String multiplier = buffer.toString();
-            DecimalFormat formater = (DecimalFormat)NumberFormat.getInstance(getLocale());
+            DecimalFormat formater = (DecimalFormat)NumberFormat.getInstance(locale);
             //force decimal format digits to exact decimal precision
             formater.setMinimumFractionDigits(Math.abs(exp));
             formater.setMaximumFractionDigits(Math.abs(exp));
@@ -244,11 +267,11 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         else if (exp > 0) {
         	buffer.append("1");for (int j = 1; j <= Math.abs(exp); j++){buffer.append("0");}
             String multiplier = buffer.toString();
-            DecimalFormat formater = (DecimalFormat)NumberFormat.getInstance(getLocale());
+            DecimalFormat formater = (DecimalFormat)NumberFormat.getInstance(locale);
             model = new MetricsModel(exp,new BigDecimal(multiplier),formater);
         }
         else if (exp == 0) {
-             DecimalFormat formater = (DecimalFormat)NumberFormat.getInstance(getLocale());
+             DecimalFormat formater = (DecimalFormat)NumberFormat.getInstance(locale);
              model = new MetricsModel(exp, new BigDecimal("1"),formater);
         }
         return model;
@@ -350,8 +373,12 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
 			if(valid){
 				
 				//System.out.println(model.getExponent()+ "for metrics "+ getType() +" density : "+model.getDensity());
-				
 				double density = model.getDensity();
+				if(metricsDensity == MetricsDensity.Low &&  density > 75){ 
+					model = model.nextModel();
+					model.solve();
+					model.isValid();
+				}
 				
 				List<Metrics> majors = model.generateMetrics();
 				metrics.addAll(majors);
@@ -379,6 +406,9 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
 		}
     	return metrics;
     }
+    
+    
+    
 
     /**
      * <code>MetricsModel</code> defines an exponent model.
@@ -444,6 +474,27 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
             this.factor = factor;
             this.decimalFormat = format;
         }
+        
+        
+        /**
+         * return the sub
+         * @return next model
+         */
+        public MetricsModel nextModel(){
+        	MetricsModel mm = ModeledMetricsManager.createDefaultExponentModel(this.exponent+1, getMetricsManager().getLocale());
+        	mm.setMetricsManager(metricsManager);
+        	return  mm;
+        }
+        
+        /**
+         * return the sub
+         * @return previous model
+         */
+        public MetricsModel previousModel(){
+        	MetricsModel mm = ModeledMetricsManager.createDefaultExponentModel(this.exponent-1, getMetricsManager().getLocale());
+        	mm.setMetricsManager(metricsManager);
+        	return  mm;
+        }
 
 
         /**
@@ -486,7 +537,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
 
             int metricsSize = metricsManager.getMetricsMajorFont().getSize();
             int s = (this.ref.toString()).length();
-            this.pixelLabelHolder = 4/5d*s*metricsSize+metricsManager.getDensityFactor();
+            this.pixelLabelHolder = 4/5d*s*metricsSize+metricsManager.getIntervalDensity();
         }
         
         
@@ -497,7 +548,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         public double getDensity(){
         	 int s = (this.ref.toString()).length();
         	 int metricsSize = metricsManager.getMetricsMajorFont().getSize();
-        	 double commonHolder =  4/5d*s*metricsSize+metricsManager.getDensityFactor();
+        	 double commonHolder =  4/5d*s*metricsSize+metricsManager.getIntervalDensity();
         	 double commonSize = userSize.divide(factor, RoundingMode.HALF_EVEN).multiply(new BigDecimal(commonHolder)).doubleValue();
         	 return commonSize*100/pixelSize.doubleValue();
         }

@@ -28,10 +28,8 @@ import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
+import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsDensity;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelCollections;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManagerOLD.MetricsModelOLD;
 import com.jensoft.core.plugin.metrics.manager.Multiplier3MetricsManager;
 import com.jensoft.core.plugin.metrics.manager.MultiplierMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
@@ -66,6 +64,10 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 	/** paint flag axis base line, default is false */
 	private boolean paintAxisBaseLine = false;
+	
+	/** metrics gravity*/
+	private Gravity gravity = Gravity.Rotate;
+	
 
 	/**
 	 * <code>StaticMetrics</code> takes the responsibility to manage static
@@ -413,6 +415,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @author Sebastien Janaud
 	 */
+	@Deprecated
 	public static class MultiplierMetrics extends AxisMetricsPlugin<MultiplierMetricsManager> {
 
 		/**
@@ -516,6 +519,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * 
 	 * @author sebastien janaud
 	 */
+	@Deprecated
 	public static class Multiplier3Metrics extends AxisMetricsPlugin<Multiplier3MetricsManager> {
 
 		/**
@@ -806,13 +810,14 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 				for (int i = 0; i < metrics.size(); i++) {
 					Metrics m = metrics.get(i);
-
-					if (i == 0) {
-						m.setGravity(Gravity.First);
-					}
-					if (i == metrics.size() - 1) {
-						m.setGravity(Gravity.Last);
-					}
+					
+//
+//					if (i == 0) {
+//						m.setGravity(Gravity.First);
+//					}
+//					if (i == metrics.size() - 1) {
+//						m.setGravity(Gravity.Last);
+//					}
 
 					m.setLockMarker(true);
 					if (axisSpacing > 0) {
@@ -935,6 +940,33 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 			getMetricsManager().applyLocalizedMetrics(locale);
 		}
 		
+		
+		/**
+		 * set Condensed or Low density
+		 * The low mode swap model to next model (exponent + 1) from a given threshold density amount (default 75)
+		 * at the density, the next model reduce the amount of generated metrics and metrics are more readable.
+		 * 
+		 * you can also use {@link #setMetricsIntervalDensity(int)} to increase the metrics interval
+		 * 
+		 * @param density
+		 */
+		public void setMetricsDensity(MetricsDensity density){
+			getMetricsManager().setMetricsDensity(density);
+		}
+		
+		/**
+		 * set interval density factor, ideal value is O, 10, 20 pixel for condensed to more and more low density.
+		 * this interval is take in account on metrics solving algorithm.
+		 * 
+		 * you can also use {@link #setMetricsDensity(MetricsDensity)} with Low or Condensed strategy
+		 * 
+		 * @param intervalDensity
+		 */
+		public void setMetricsIntervalDensity(int intervalDensity){
+			getMetricsManager().setIntervalDensity(intervalDensity);
+		}
+		
+		
 		/**
 		 * set median metrics option
 		 * @param medianOption
@@ -978,254 +1010,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		}	
 	}
 
-	/**
-	 * <code>ModeledMetrics</code> takes the responsibility to manage metrics
-	 * from models
-	 * 
-	 * @author sebastien janaud
-	 */
-	public static class ModeledMetricsOld extends AxisMetricsPlugin<ModeledMetricsManagerOLD> {
 
-		/**
-		 * <code>W</code> manages {@link ModeledMetrics} for
-		 * {@link Axis#AxisWest}
-		 */
-		public static class W extends ModeledMetrics {
-
-			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisWest}
-			 */
-			public W() {
-				super(Axis.AxisWest);
-			}
-		}
-
-		/**
-		 * <code>E</code> manages {@link ModeledMetrics} for
-		 * {@link Axis#AxisEast}
-		 */
-		public static class E extends ModeledMetrics {
-
-			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisEast}
-			 */
-			public E() {
-				super(Axis.AxisEast);
-			}
-		}
-
-		/**
-		 * <code>N</code> manages {@link ModeledMetrics} for
-		 * {@link Axis#AxisNorth}
-		 */
-		public static class N extends ModeledMetrics {
-
-			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisNorth}
-			 */
-			public N() {
-				super(Axis.AxisNorth);
-			}
-		}
-
-		/**
-		 * <code>S</code> manages {@link ModeledMetrics} for
-		 * {@link Axis#AxisSouth}
-		 */
-		public static class S extends ModeledMetrics {
-
-			/**
-			 * Create {@link ModeledMetrics} for {@link Axis#AxisSouth}
-			 */
-			public S() {
-				super(Axis.AxisSouth);
-			}
-		}
-
-		/**
-		 * create ModeledMetrics with the given {@link Axis}
-		 */
-		public ModeledMetricsOld(Axis axis) {
-			super(new ModeledMetricsManagerOLD(), axis);
-			setName(ModeledMetrics.class.getCanonicalName());
-			setMetricsPainter(new MetricsGlyphPainter());
-		}
-
-		/**
-		 * register the given {@link MetricsModel}
-		 * 
-		 * @param model
-		 *            the model to register
-		 */
-		public void registerMetricsModel(MetricsModelOLD model) {
-			getMetricsManager().registerMetricsModel(model);
-		}
-
-		/**
-		 * register the given {@link MetricsModel} array
-		 * 
-		 * @param models
-		 *            the models array to register
-		 */
-		public void registerMetricsModels(MetricsModelOLD... models) {
-			getMetricsManager().registerMetricsModels(models);
-		}
-
-		/**
-		 * register the given {@link MetricsModelCollections}
-		 * 
-		 * @param ModelCollections
-		 *            the models collection to register
-		 */
-		public void registerMetricsModels(MetricsModelCollections ModelCollections) {
-			getMetricsManager().registerMetricsModels(ModelCollections);
-		}
-
-		/**
-		 * register the given {@link MetricsModel} list
-		 * 
-		 * @param models
-		 *            the models list to register
-		 */
-		public void registerMetricsModels(List<MetricsModelOLD> models) {
-			getMetricsManager().registerMetricsModels(models);
-		}
-
-		/**
-		 * unregister the given {@link MetricsModel}
-		 * 
-		 * @param model
-		 *            the model to remove
-		 */
-		public void unregisterMetricsModel(MetricsModelOLD model) {
-			getMetricsManager().unregisterMetricsModel(model);
-		}
-
-		/**
-		 * unregister the given {@link MetricsModel} array
-		 * 
-		 * @param models
-		 *            the metrics models to remove
-		 */
-		public void unregisterMetricsModels(MetricsModelOLD... models) {
-			getMetricsManager().unregisterMetricsModels(models);
-		}
-
-		/**
-		 * unregister the given {@link MetricsModelCollections}
-		 * 
-		 * @param ModelCollections
-		 *            the metrics models to remove
-		 */
-		public void unregisterMetricsModels(MetricsModelCollections ModelCollections) {
-			getMetricsManager().unregisterMetricsModels(ModelCollections);
-		}
-
-		/**
-		 * unregister the given {@link MetricsModel} list
-		 * 
-		 * @param models
-		 *            the metrics models to remove
-		 */
-		public void unregisterMetricsModels(List<MetricsModelOLD> models) {
-			getMetricsManager().unregisterMetricsModels(models);
-		}
-
-		/**
-		 * get all registered {@link MetricsModel}
-		 * 
-		 * @return models
-		 */
-		public List<MetricsModelOLD> getMetricsModels() {
-			return getMetricsManager().getMetricsModels();
-		}
-
-		
-		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.metrics.AxisMetricsPlugin#paintMetrics(com.jensoft.core.view.View2D, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
-		 */
-		@Override
-		protected void paintMetrics(View view, Graphics2D g2d, ViewPart viewPart) {
-			if (!super.isAccessible(viewPart)) {
-				return;
-			}
-			super.createRenderContext(view, g2d);
-			super.assignType();
-			int axisSpacing = 0;
-			List<MetricsModelOLD> sequence = getMetricsManager().getSequenceMetrics();
-			for (MetricsModelOLD model : sequence) {
-				if (model.getRank() > 0 && !sequence.get(0).isMinimal())
-					continue;
-				if (model.getRank() > 1)
-					continue;
-				// System.out.println("paint metrics for :"+model);
-				// MetricsRenderContext renderContext = new
-				// MetricsRenderContext(v2d, getWindow2D(), g2d);
-				// renderContext.setMetricsMedianFont(timeFont1);
-				// renderContext.setMetricsMajorFont(timeFont1);
-
-				// timingManager.setMetricsMajorFont(timeFont1);
-				// timingManager.setMetricsMajorFont(timeFont1);
-
-				// getMetricsPainter().setMetricsRenderContext(renderContext);
-				// getMetricsManager().setRenderContext(renderContext);
-				// System.out.println("model start ref : "+model.getRef());
-				List<Metrics> metrics = model.generateMetrics();
-				// System.out.println("paints "
-				// +getMetricsManager().getType().name()+" "+ metrics.size() +
-				// " metrics for metrics model : " + model.toString());
-
-				Collections.sort(metrics, Metrics.getComparator());
-
-				for (int i = 0; i < metrics.size(); i++) {
-					Metrics m = metrics.get(i);
-
-					if (i == 0) {
-						m.setGravity(Gravity.First);
-					}
-					if (i == metrics.size() - 1 && i > 0) {
-						m.setGravity(Gravity.Last);
-					}
-
-					m.setLockMarker(true);
-					if (axisSpacing > 0) {
-						m.setLockMarker(false);
-					}
-
-					Point2D markerLocation = new Point2D.Double();
-					if (viewPart == ViewPart.South) {
-
-						markerLocation = new Point2D.Double(view.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
-
-						m.setMarkerLocation(markerLocation);
-						m.setMarkerPosition(MarkerPosition.S);
-					}
-					if (viewPart == ViewPart.West) {
-						JComponent component = view.getViewPartComponent(ViewPart.West);
-						markerLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, m.getDeviceValue());
-
-						m.setMarkerLocation(markerLocation);
-						m.setMarkerPosition(MarkerPosition.W);
-					}
-					if (viewPart == ViewPart.East) {
-						markerLocation = new Point2D.Double(axisSpacing, m.getDeviceValue());
-						m.setMarkerLocation(markerLocation);
-						m.setMarkerPosition(MarkerPosition.E);
-					}
-					if (viewPart == ViewPart.North) {
-						JComponent component = view.getViewPartComponent(ViewPart.North);
-						markerLocation = new Point2D.Double(view.getPlaceHolderAxisWest() + m.getDeviceValue(), component.getHeight() - 1 - axisSpacing);
-						m.setMarkerLocation(markerLocation);
-						m.setMarkerPosition(MarkerPosition.N);
-					}
-				}
-
-				getMetricsPainter().doPaintMetrics(g2d, metrics);
-				axisSpacing = axisSpacing + model.getPixelAxisHolder();
-
-			}
-		}
-	}
 
 	/**
 	 * Axis Nature
@@ -1405,6 +1190,22 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	public void setPaintAxisBaseLine(boolean paintAxisBaseLine) {
 		this.paintAxisBaseLine = paintAxisBaseLine;
 	}
+	
+	/**
+	 * return gravity
+	 * @return Gravity
+	 */
+	public Gravity getGravity() {
+		return gravity;
+	}
+
+	/**
+	 * set gravity
+	 * @param gravity
+	 */
+	public void setGravity(Gravity gravity) {
+		this.gravity = gravity;
+	}
 
 	/**
 	 * get the axis metrics base line color
@@ -1517,6 +1318,8 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * @return true if the context is accessible, false otherwise
 	 */
 	protected boolean isAccessible(ViewPart viewPart) {
+		if(viewPart == ViewPart.View)
+			return true;
 		if (axis == Axis.AxisSouth && viewPart != ViewPart.South) {
 			return false;
 		}
@@ -1586,6 +1389,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * @param viewPart
 	 */
 	protected void paintMetricsLabelIndicator(View v2d, Graphics2D g2d, ViewPart viewPart) {
+		
 		List<Metrics> metrics = null;
 		try {
 			metrics = metricsManager.getDeviceMetrics();
@@ -1598,35 +1402,35 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 		for (int i = 0; i < metrics.size(); i++) {
 
-			Metrics m = metrics.get(i);
-
-			if (i == 0) {
-				m.setGravity(Gravity.First);
-			}
-			if (i == metrics.size() - 1) {
-				m.setGravity(Gravity.Last);
-			}
-
+			Metrics m = metrics.get(i);		
 			Point2D markerLocation = new Point2D.Double();
 
-			if (viewPart == ViewPart.South) {
-
+			if(getGravity() == Gravity.Rotate){
+				m.setRotate(true);
+			}else{
+				m.setRotate(false);
+			}
+			//if (viewPart == ViewPart.South) {
+			if (axis == Axis.AxisSouth) {
 				markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.S);
 			}
-			if (viewPart == ViewPart.West) {
+			//if (viewPart == ViewPart.West) {
+			if (axis == Axis.AxisWest) {
 				JComponent component = v2d.getViewPartComponent(ViewPart.West);
 				markerLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, m.getDeviceValue());
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.W);
 			}
-			if (viewPart == ViewPart.East) {
+			//if (viewPart == ViewPart.East) {
+			if (axis == Axis.AxisEast) {
 				markerLocation = new Point2D.Double(axisSpacing, m.getDeviceValue());
 				m.setMarkerLocation(markerLocation);
 				m.setMarkerPosition(MarkerPosition.E);
 			}
-			if (viewPart == ViewPart.North) {
+			//if (viewPart == ViewPart.North) {
+			if (axis == Axis.AxisNorth) {
 				JComponent component = v2d.getViewPartComponent(ViewPart.North);
 				markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), component.getHeight() - 1 - axisSpacing);
 				m.setMarkerLocation(markerLocation);
@@ -1674,7 +1478,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		assignType();
 		paintMetricsLabelIndicator(v2d, g2d, viewPart);
 		paintBaseLine(v2d, g2d, viewPart);
-
 	}
 
 	
