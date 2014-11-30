@@ -8,6 +8,7 @@ package com.jensoft.core.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -28,6 +29,9 @@ import javax.swing.JPanel;
 import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.device.DevicePartComponent;
+import com.jensoft.core.graphics.Antialiasing;
+import com.jensoft.core.graphics.TextAntialiasing;
+import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.projection.ProjectionEvent;
@@ -1050,9 +1054,22 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 		super.paintChildren(g);
 		Graphics2D g2 = (Graphics2D)g;
 		paintPlugins(g2);
+		copyright((Graphics2D)g);
 	}
 	
 	
+	/**
+	 * TRIAL VERSION, DO NOT REMOVE THIS METHOD
+	 */
+    public void copyright(Graphics2D g2d) {
+        String copyright = "\u00a9"+"JenSoftAPI"+" http://wwww.jensoftapi.com";
+        Color c = ColorPalette.getRandomColor();
+        g2d.setColor(c);
+        g2d.setFont(new Font("Verdana", Font.PLAIN, 10));
+        g2d.drawString(copyright, getPlaceHolderAxisWest(), getPlaceHolderAxisNorth()-10);
+    }
+
+   
 	/**
      * Paint plugins
      * 

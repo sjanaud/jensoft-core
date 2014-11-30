@@ -1213,7 +1213,6 @@ public abstract class Projection implements PluginListener {
 	 * satisfy the various projection methods below.
 	 */
 	protected Projection() {
-		registerPlugin(new CopyrightPlugin());
 	}
 
 	/** device component */
