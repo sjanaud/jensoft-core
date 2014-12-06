@@ -809,14 +809,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 				for (int i = 0; i < metrics.size(); i++) {
 					Metrics m = metrics.get(i);
-					
-//
-//					if (i == 0) {
-//						m.setGravity(Gravity.First);
-//					}
-//					if (i == metrics.size() - 1) {
-//						m.setGravity(Gravity.Last);
-//					}
 
 					m.setLockMarker(true);
 					if (axisSpacing > 0) {
