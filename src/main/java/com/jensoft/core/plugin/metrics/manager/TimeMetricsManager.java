@@ -491,9 +491,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
     }
 
     /**
-     * get the window worker
+     * get the timing projection
      * 
-     * @return time window
+     * @return timimg projection
      */
     public Projection.Time getTimingProjection() {
         Projection proj = getRenderContext().getProjection();
@@ -638,8 +638,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
      * @param secondIncrement
      * @return seconds metrics
      */
-    protected List<TimePointMetrics> generateSecondsPoint(Calendar ref, long duration, int secondIncrement,
-            TimeModel model) {
+    protected List<TimePointMetrics> generateSecondsPoint(Calendar ref, long duration, int secondIncrement,  TimeModel model) {
         List<TimePointMetrics> seconds = new ArrayList<TimePointMetrics>();
         for (int i = 0; i <= new Long(duration).intValue() + 1; i = i + secondIncrement) {
             Calendar c = (Calendar) ref.clone();
