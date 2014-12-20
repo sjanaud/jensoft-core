@@ -400,8 +400,6 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 */
 		@Override
 		public Point2D evaluate(double value) {
-			Projection w2d = getHost().getHost().getProjection();
-
 			Point2D previous = previous(value);
 			Point2D next = next(value);
 			if (previous != null && next != null) {

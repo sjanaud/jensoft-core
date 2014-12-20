@@ -15,7 +15,7 @@ import java.awt.Stroke;
 import com.jensoft.core.plugin.function.curve.Curve;
 
 /**
- * @author S�bastien Janaud
+ * @author Sebastien Janaud
  */
 public class CurveDefaultDraw extends AbstractCurveDraw {
 
