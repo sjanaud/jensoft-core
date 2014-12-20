@@ -35,7 +35,7 @@ import com.jensoft.core.plugin.function.source.SourceFunction;
  */
 public class MetricsPathFunction extends AbstractMetricsPath {
 
-	/** path metrics for this manager */
+	/** glyphs metrics */
 	private List<GlyphMetric> glyphMetrics;
 
 	/** the source function for this metrics path function */

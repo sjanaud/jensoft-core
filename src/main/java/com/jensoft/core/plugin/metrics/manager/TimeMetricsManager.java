@@ -809,11 +809,8 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
-            ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
-                    cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), 0);
-            List<TimePointMetrics> points = getTimingManager().generateMinutesPoint(ref, time.durationMinutes(), 1,
-                                                                                    this);
-
+            ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), 0);
+            List<TimePointMetrics> points = getTimingManager().generateMinutesPoint(ref, time.durationMinutes(),1,this);
             return getTimingManager().formatMetricsPoint(points, minuteFormat);
         }
     }
@@ -879,10 +876,8 @@ public class TimeMetricsManager extends AbstractMetricsManager {
             Projection.Time time = getTimingManager().getTimingProjection();
             cal.setTime(time.getMinDate());
             Calendar ref = (Calendar) cal.clone();
-            ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE),
-                    cal.get(Calendar.HOUR_OF_DAY), 0, 0);
-            List<TimePointMetrics> minutesPoints = getTimingManager().generateMinutesPoint(ref, time.durationMinutes(),
-                                                                                           10, this);
+            ref.set(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DATE), cal.get(Calendar.HOUR_OF_DAY), 0, 0);
+            List<TimePointMetrics> minutesPoints = getTimingManager().generateMinutesPoint(ref, time.durationMinutes(),10,this);
             return getTimingManager().formatMetricsPoint(minutesPoints, minuteFormat);
         }
     }

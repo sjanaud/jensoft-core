@@ -76,7 +76,7 @@ public abstract class AbstractSourceFunction implements SourceFunction {
 				currentFunction = solveFunction(proj.getMinX(), proj.getMaxX());
 			}
 			else{
-				currentFunction = solveFunction(proj.getMinX(), proj.getMaxX());
+				currentFunction = solveFunction(proj.getMinY(), proj.getMaxY());
 			}			
 		}
 		return currentFunction;
