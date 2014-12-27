@@ -9,33 +9,13 @@
 	artifact : jensoft-core
 	version  : 2.0.0-SNAPSHOT
 	
-    @Author  : Sébastien Janaud
+    @Author  : Sebastien Janaud
 	
 
 #######################################
-## Notes 2.0.0  -  November 2, 2014  ##
+## Notes 2.0.0  - December 27, 2014  ##
 #######################################
 	
-	
-/todos
-
-
-
-- View2D backgrounds
-	-add background list
-	-add background clip
-	-add gloss, textured, etc
-
-
-- Metrics
-	update all metrics formater with locale
-	refacto timing metrics like modeled metrics
-	check device for metrics on limit
-	add rotate choice
-	
-	
-	
-/done
 
 	View#getImageView
 		method-move	   : getImageView method from View  move to class ViewEmitter
@@ -54,6 +34,11 @@
 		package-rename : com.jensoft.zoom.objectif to com.jensoft.zoom.lens
 		classes-rename : All  *Objectif* rename to *Lens*
 
+	Metrics
+		global refactoring
+		add rotate or natural gravity
+		add locale on modeled metrics
+		
 	DataLegend : 
 		fix
 			package  : com.jensoft.core.plugin.legend.data.painter
