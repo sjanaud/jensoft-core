@@ -7,10 +7,8 @@
 
 	group    : com.jensoft
 	artifact : jensoft-core
-	version  : 2.0.0-SNAPSHOT
-	
-    @Author  : Sebastien Janaud
-	
+	version  : 2.0.0
+
 
 #######################################
 ## Notes 2.0.0  - December 27, 2014  ##
