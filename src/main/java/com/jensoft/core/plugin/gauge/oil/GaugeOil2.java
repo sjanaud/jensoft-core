@@ -166,8 +166,8 @@ public class GaugeOil2 extends RadialGauge {
 		rmyellow2.setDivergenceRadial(6);
 		rmyellow2.setDirection(TriangleDirection.In);
 
-		f12 =  new Font("Dialog", Font.PLAIN, 12);
-		f10 =  new Font("Dialog", Font.PLAIN, 10);
+		f12 = InputFonts.getFont(InputFonts.ELEMENT, 12);
+		f10 = InputFonts.getFont(InputFonts.ELEMENT, 12);
 	}
 
 	private void createLegends() {

@@ -89,7 +89,7 @@ public class Tachometer extends RadialGauge {
 
 		body.registerGaugeMetricsPath(metricsManager);
 
-		Font f = new Font("Dialog", Font.PLAIN, 24);
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 24);
 		GlyphMetric metric = new GlyphMetric();
 		metric.setValue(0);
 		metric.setStylePosition(StylePosition.Default);

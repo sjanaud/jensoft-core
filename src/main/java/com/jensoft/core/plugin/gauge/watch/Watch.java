@@ -187,7 +187,7 @@ public class Watch extends RadialGauge {
 		//TicTacMarker ttm = new TicTacMarker(NanoChromatique.YELLOW);
 		//ttm.setSize(4);
 		//ttm.setDivergence(4);
-		Font f = new Font("Dialog", Font.PLAIN, 16);
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 16);
 		for (int i = 0; i < 12; i++) {
 			GlyphMetric metric = new GlyphMetric();
 			metric.setValue(i);
@@ -224,7 +224,7 @@ public class Watch extends RadialGauge {
 		TicTacMarker ttm = new TicTacMarker(NanoChromatique.RED);
 		ttm.setSize(3);
 		ttm.setDivergence(3);
-		Font f = new Font("Dialog", Font.PLAIN, 36);
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 36);
 
 		// 6 o'clock
 		GlyphMetric metric = new GlyphMetric();
