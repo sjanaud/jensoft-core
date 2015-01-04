@@ -94,7 +94,7 @@ public class InputFonts {
 			
 		} catch (Exception ex) {
 			// ex.printStackTrace();
-			System.err.println(fName + " not loaded.  Using serif font.");
+			System.err.println(fName + " not loaded.   Using Dialog");
 			font = new Font("Dialog", Font.PLAIN, 12);
 		}
 		return font;

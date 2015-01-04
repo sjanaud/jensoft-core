@@ -155,7 +155,7 @@ public class GaugeCompass extends RadialGauge {
 		body.registerGaugeMetricsPath(secondaryPathManager);
 
 		GlyphMetric metric;
-		Font f = InputFonts.getElements(12);
+		Font f = InputFonts.getFont(InputFonts.ELEMENT, 12);
 		
 		metric = new GlyphMetric();
 		metric.setValue(30);
