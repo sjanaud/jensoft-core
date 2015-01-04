@@ -130,10 +130,10 @@ public class PieDeflate3 extends View {
 		Stroke s = new BasicStroke(2);
 		pie.setPassiveLabelAtMinPercent(0);
 
-		Font f = InputFonts.getNoMove(10);
+		Font f = new Font("Dialog", Font.PLAIN, 12);
 		
 		// LABEL 1
-		PieRadialLabel label1 = PieToolkit.createRadialLabel("SILVER", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+		PieRadialLabel label1 = PieToolkit.createRadialLabel("SILVER", ColorPalette.WHITE, f, 20);
 		label1.setStyle(Style.Both);
 		label1.setOutlineStroke(s);
 		label1.setShader(fractions, colors);
@@ -142,7 +142,7 @@ public class PieDeflate3 extends View {
 		s1.addSliceLabel(label1);
 
 		// LABEL 2
-		PieRadialLabel label2 = PieToolkit.createRadialLabel("GOLD", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+		PieRadialLabel label2 = PieToolkit.createRadialLabel("GOLD", ColorPalette.WHITE, f, 20);
 		label2.setStyle(Style.Both);
 		label2.setOutlineStroke(s);
 		label2.setShader(fractions, colors);
@@ -151,7 +151,7 @@ public class PieDeflate3 extends View {
 		s2.addSliceLabel(label2);
 
 		// LABEL 3
-		PieRadialLabel label3 = PieToolkit.createRadialLabel("COPPER", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+		PieRadialLabel label3 = PieToolkit.createRadialLabel("COPPER", ColorPalette.WHITE, f, 20);
 		label3.setStyle(Style.Both);
 		label3.setOutlineStroke(s);
 		label3.setShader(fractions, colors);
@@ -159,7 +159,7 @@ public class PieDeflate3 extends View {
 		label3.setOutlineRound(20);
 		s3.addSliceLabel(label3);
 
-		PieRadialLabel label4 = PieToolkit.createRadialLabel("PLATINIUM", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+		PieRadialLabel label4 = PieToolkit.createRadialLabel("PLATINIUM", ColorPalette.WHITE, f, 20);
 		label4.setStyle(Style.Both);
 		label4.setOutlineStroke(s);
 		label4.setOutlineColor(RosePalette.COBALT);
@@ -167,7 +167,7 @@ public class PieDeflate3 extends View {
 		label4.setOutlineRound(20);
 		s4.addSliceLabel(label4);
 		
-		PieRadialLabel label5 = PieToolkit.createRadialLabel("RHODIUM", ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+		PieRadialLabel label5 = PieToolkit.createRadialLabel("RHODIUM", ColorPalette.WHITE, f, 20);
 		label5.setStyle(Style.Both);
 		label5.setOutlineStroke(s);
 		label5.setOutlineColor(RosePalette.COBALT);

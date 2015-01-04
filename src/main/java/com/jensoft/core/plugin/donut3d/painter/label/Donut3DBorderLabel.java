@@ -402,7 +402,7 @@ public class Donut3DBorderLabel extends AbstractDonut3DSliceLabel {
             s = getLabel();
         }
 
-        Font f = InputFonts.getSansation(12);
+        Font f = new Font("Dialog", Font.PLAIN, 12);
 
         if (getLabelFont() != null) {
             f = getLabelFont();

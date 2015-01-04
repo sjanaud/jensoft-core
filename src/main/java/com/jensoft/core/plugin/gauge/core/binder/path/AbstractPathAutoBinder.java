@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.gauge.core.binder.path;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Shape;
 import java.awt.geom.Arc2D;
@@ -239,7 +240,8 @@ public abstract class AbstractPathAutoBinder extends PathBinder {
 
 		g2d.setColor(NanoChromatique.YELLOW.brighter());
 		g2d.setColor(NanoChromatique.YELLOW.brighter());
-		g2d.setFont(InputFonts.getSansation(14));
+		Font f = new Font("Dialog", Font.PLAIN, 12);
+		g2d.setFont(f);
 		g2d.drawString("PATH BINDER : " + this.getClass().getSimpleName(), 20, 60);
 		g2d.drawString("GAUGE RADIUS : " + getMetricsPath().getBody().getGauge().getRadius(), 20, 80);
 		g2d.drawString("BINDER RADIUS : " + radius, 20, 100);
@@ -261,8 +263,9 @@ public abstract class AbstractPathAutoBinder extends PathBinder {
 		g2d.fill(new Ellipse2D.Double(intersectionPointEnd.getX() - 3, intersectionPointEnd.getY() - 3, 6, 6));
 		drawPath(g2d, createPath(), color);
 
+		Font f14 = new Font("Dialog", Font.PLAIN, 14);
 		g2d.setColor(NanoChromatique.BLUE.brighter());
-		g2d.setFont(InputFonts.getSansation(14));
+		g2d.setFont(f14);
 		g2d.drawString("I1", (int) intersectionPointStart.getX() + 5, (int) intersectionPointStart.getY());
 
 		g2d.setColor(NanoChromatique.RED.brighter());

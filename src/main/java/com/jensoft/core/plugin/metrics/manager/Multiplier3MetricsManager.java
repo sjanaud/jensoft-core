@@ -5,6 +5,7 @@
  */
 package com.jensoft.core.plugin.metrics.manager;
 
+import java.awt.Font;
 import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -252,10 +253,11 @@ public class Multiplier3MetricsManager extends AbstractMetricsManager {
 
     public void reboot() {
         Projection w2d = getRenderContext().getProjection();
+        Font f = new Font("Dialog", Font.PLAIN, 12);
         w2d.getView()
                 .getWidgetPlugin()
                 .pushMessage("MILLIMETRICS REBOOT", 0, null,
-                             PushingBehavior.Fast, InputFonts.getElements(14));
+                             PushingBehavior.Fast, f);
         major = initialMajor;
         median = initialMedian;
         minor = initialMinor;

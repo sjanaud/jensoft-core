@@ -137,7 +137,7 @@ public class Donut3DRadialLabel extends AbstractDonut3DSliceLabel {
             s = getLabel();
         }
 
-        Font f = InputFonts.getElements(14);
+        Font f = new Font("Dialog", Font.PLAIN, 12);
 
         if (getLabelFont() != null) {
             f = getLabelFont();

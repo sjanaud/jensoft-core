@@ -234,17 +234,16 @@ public class WidgetPlugin extends AbstractPlugin implements
     public void pushMessage(String message, AbstractPlugin plugin,
             PushingBehavior pushingBehavior) {
         PushingMessage pm = null;
+        Font f = new Font("Dialog", Font.PLAIN, 12);
         if (plugin != null) {
             pm = new PushingMessage(message, pushingBehavior,
-                                    plugin.getThemeColor(), InputFonts.getFont(
-                                                                               InputFonts.NEUROPOL, 12));
+                                    plugin.getThemeColor(), f);
         }
         else {
             if (getView().getActiveProjection() != null) {
 
                 pm = new PushingMessage(message, pushingBehavior, getView()
-                        .getActiveProjection().getThemeColor(), InputFonts.getFont(
-                                                                               InputFonts.NEUROPOL, 12));
+                        .getActiveProjection().getThemeColor(),f);
             }
         }
 
@@ -260,10 +259,9 @@ public class WidgetPlugin extends AbstractPlugin implements
     public void pushMessage(String message, AbstractPlugin plugin,
             PushingBehavior pushingBehavior, Color color) {
         PushingMessage pm = null;
-
+        Font f = new Font("Dialog", Font.PLAIN, 12);
         pm = new PushingMessage(message, pushingBehavior,
-                                color, InputFonts.getFont(
-                                                          InputFonts.NEUROPOL, 12));
+                                color, f);
 
         if (pm != null) {
             destroyMessage();

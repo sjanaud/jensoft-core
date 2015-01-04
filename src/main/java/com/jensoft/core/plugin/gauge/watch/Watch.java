@@ -146,13 +146,15 @@ public class Watch extends RadialGauge {
 		miniMetricsManager.setNeedleValueAnchorBinder(needleMiniValueAnchor);
 		miniMetricsManager.setGaugeNeedlePainter(new GaugeNeedleClassicWatchSecond(Color.WHITE));
 
+		Font f = new Font("Dialog", Font.PLAIN, 8);
+		
 		GlyphMetric metric = new GlyphMetric();
 		metric.setValue(0);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED.brighter()));
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsLabel("12");
 		metric.setDivergence(-5);
-		metric.setFont(InputFonts.getPTFNordic(8));
+		metric.setFont(f);
 		miniMetricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -161,7 +163,7 @@ public class Watch extends RadialGauge {
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsLabel("24");
 		metric.setDivergence(-5);
-		metric.setFont(InputFonts.getPTFNordic(8));
+		metric.setFont(f);
 		miniMetricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -170,7 +172,7 @@ public class Watch extends RadialGauge {
 		metric.setStylePosition(StylePosition.Default);
 		metric.setMetricsLabel("18");
 		metric.setDivergence(-5);
-		metric.setFont(InputFonts.getPTFNordic(8));
+		metric.setFont(f);
 		miniMetricsManager.addMetric(metric);
 
 		body.registerGaugeMetricsPath(miniMetricsManager);
@@ -185,7 +187,7 @@ public class Watch extends RadialGauge {
 		//TicTacMarker ttm = new TicTacMarker(NanoChromatique.YELLOW);
 		//ttm.setSize(4);
 		//ttm.setDivergence(4);
-		Font f = InputFonts.getFont(InputFonts.ELEMENT, 16);
+		Font f = new Font("Dialog", Font.PLAIN, 16);
 		for (int i = 0; i < 12; i++) {
 			GlyphMetric metric = new GlyphMetric();
 			metric.setValue(i);
@@ -222,7 +224,7 @@ public class Watch extends RadialGauge {
 		TicTacMarker ttm = new TicTacMarker(NanoChromatique.RED);
 		ttm.setSize(3);
 		ttm.setDivergence(3);
-		Font f = InputFonts.getFont(InputFonts.ELEMENT, 36);
+		Font f = new Font("Dialog", Font.PLAIN, 36);
 
 		// 6 o'clock
 		GlyphMetric metric = new GlyphMetric();

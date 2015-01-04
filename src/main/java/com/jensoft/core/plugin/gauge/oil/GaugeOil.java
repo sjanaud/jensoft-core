@@ -162,8 +162,8 @@ public class GaugeOil extends RadialGauge {
 		rmyellow2.setDivergenceRadial(6);
 		rmyellow2.setDirection(TriangleDirection.In);
 
-		f12 = InputFonts.getFont(InputFonts.ELEMENT, 12);
-		f10 = InputFonts.getFont(InputFonts.ELEMENT, 12);
+		f12 = new Font("Dialog", Font.PLAIN, 12);
+		f10 = new Font("Dialog", Font.PLAIN, 10);
 	}
 
 	private void createLegends() {
@@ -183,7 +183,8 @@ public class GaugeOil extends RadialGauge {
 		});
 		float[] fractions = new float[] { 0f, 0.8f, 1f };
 		Color[] colors = new Color[] { NanoChromatique.WHITE, NanoChromatique.RED.brighter(), NanoChromatique.RED };
-		legend1.setLabelFont(InputFonts.getNoMove(14));
+		Font f = new Font("Dialog", Font.PLAIN, 12);
+		legend1.setLabelFont(f);
 		legend1.setPathSide(PathSide.Below);
 		// legend1.setLockReverse(false);
 		
@@ -210,7 +211,7 @@ public class GaugeOil extends RadialGauge {
 		});
 		float[] fractions2 = new float[] { 0f, 1f };
 		Color[] colors2 = new Color[] { NanoChromatique.WHITE, NanoChromatique.BLUE };
-		legend2.setLabelFont(InputFonts.getNoMove(12));
+		legend2.setLabelFont(f);
 		legend2.setLabel("CELSIUS");
 		legend2.setPathSide(PathSide.Above);
 
@@ -235,7 +236,7 @@ public class GaugeOil extends RadialGauge {
 		});
 		float[] fractions3 = new float[] { 0f, 1f };
 		Color[] colors3 = new Color[] { NanoChromatique.WHITE, NanoChromatique.ORANGE };
-		legendTop.setLabelFont(InputFonts.getNeuropol(12));
+		legendTop.setLabelFont(f);
 		legendTop.setTextPosition(TextPosition.Middle);
 		legendTop.setPathSide(PathSide.Below);
 		legendTop.setDivergence(0);
@@ -261,7 +262,7 @@ public class GaugeOil extends RadialGauge {
 		});
 		float[] fractions4 = new float[] { 0f, 1f };
 		Color[] colors4 = new Color[] { NanoChromatique.WHITE, NanoChromatique.PURPLE };
-		legendBottom.setLabelFont(InputFonts.getElements(11));
+		legendBottom.setLabelFont(f);
 		legendBottom.setDivergence(5);
 		legendBottom.setPathSide(PathSide.Over);
 		legendBottom.setTextPosition(TextPosition.Middle);

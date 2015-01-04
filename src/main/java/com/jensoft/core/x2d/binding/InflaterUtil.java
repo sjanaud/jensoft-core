@@ -81,7 +81,8 @@ public class InflaterUtil {
      */
     public static Font elementFont(Element parent, String childName) {
         Element fontElement = (Element) parent.getElementsByTagName(childName).item(0);
-        return InputFonts.getNoMove(10);
+        Font f = new Font("Dialog", Font.PLAIN, 12);
+        return f;
     }
 
     /**
@@ -92,7 +93,8 @@ public class InflaterUtil {
      * @return font
      */
     public static Font parseFont(String font) {
-        return InputFonts.getNoMove(12);
+    	Font f = new Font("Dialog", Font.PLAIN, 12);
+        return f;
     }
 
     

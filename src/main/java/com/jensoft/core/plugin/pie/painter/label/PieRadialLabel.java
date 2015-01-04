@@ -133,7 +133,7 @@ public class PieRadialLabel extends AbstractPieSliceLabel {
             s = getLabel();
         }
 
-        Font f = InputFonts.getElements(12);
+        Font f = new Font("Dialog", Font.PLAIN, 12);
 
         if (getLabelFont() != null) {
             f = getLabelFont();
