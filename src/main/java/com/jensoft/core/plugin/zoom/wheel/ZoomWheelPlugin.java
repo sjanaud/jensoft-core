@@ -5,6 +5,7 @@
  */
 package com.jensoft.core.plugin.zoom.wheel;
 
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -377,7 +378,8 @@ public class ZoomWheelPlugin extends AbstractPlugin implements AbstractPlugin.On
 		// if (isLockWheel()) {
 		if (zoomMessage != null) {
 			g2d.setColor(getProjection().getThemeColor().darker());
-			g2d.setFont(InputFonts.getFont(InputFonts.ELEMENT, 12));
+			Font f = new Font("Dialog", Font.PLAIN, 12);
+			g2d.setFont(f);
 			JComponent comp = getProjection().getView().getViewPartComponent(ViewPart.North);
 
 			if (zoomMessage != null) {
