@@ -7,6 +7,7 @@ package com.jensoft.core.plugin.donut3d.painter.label;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Stroke;
 import java.io.File;
 
@@ -71,6 +72,8 @@ public class JavadocPortfolioDonut3D {
         // add section in donut
         Donut3DToolkit.pushSlices(donut3d, s1, s2, s3, s4);
 
+        Font f = new Font("Dialog", Font.PLAIN, 12);
+        
         // LABELS
         float[] fractions = { 0f, 0.3f, 0.7f, 1f };
         Color[] c = { new Color(0, 0, 0, 20), new Color(0, 0, 0, 150),
@@ -78,7 +81,7 @@ public class JavadocPortfolioDonut3D {
 
         // LABEL 1
         Donut3DRadialLabel label1 = Donut3DToolkit.createRadialLabel("Symbian",
-                                                                     RosePalette.COALBLACK, InputFonts.getNeuropol(12),
+                                                                     RosePalette.COALBLACK, f,
                                                                      30, 20,
                                                                      Style.Both);
         label1.setLabelColor(ColorPalette.WHITE);
@@ -88,7 +91,7 @@ public class JavadocPortfolioDonut3D {
 
         // LABEL 2
         Donut3DRadialLabel label2 = Donut3DToolkit.createRadialLabel("WiMo",
-                                                                     RosePalette.COALBLACK, InputFonts.getNeuropol(12),
+                                                                     RosePalette.COALBLACK, f,
                                                                      30, 20,
                                                                      Style.Both);
         label2.setLabelColor(ColorPalette.WHITE);
@@ -98,7 +101,7 @@ public class JavadocPortfolioDonut3D {
 
         // LABEL 3
         Donut3DRadialLabel label3 = Donut3DToolkit.createRadialLabel("iPhone",
-                                                                     RosePalette.COALBLACK, InputFonts.getNeuropol(12),
+                                                                     RosePalette.COALBLACK, f,
                                                                      30, 20,
                                                                      Style.Both);
         label3.setLabelColor(ColorPalette.WHITE);
@@ -108,7 +111,7 @@ public class JavadocPortfolioDonut3D {
 
         // LABEL 4
         Donut3DRadialLabel label4 = Donut3DToolkit.createRadialLabel("Android",
-                                                                     RosePalette.COALBLACK, InputFonts.getNeuropol(12),
+                                                                     RosePalette.COALBLACK, f,
                                                                      30, 20,
                                                                      Style.Both);
         label4.setLabelColor(ColorPalette.WHITE);
@@ -161,10 +164,11 @@ public class JavadocPortfolioDonut3D {
         float[] fractions = { 0f, 0.5f, 1f };
         Color[] colors = { new Color(0, 0, 0, 100), new Color(0, 0, 0, 255), new Color(0, 0, 0, 255) };
         Stroke s = new BasicStroke(2);
-
+        Font f = new Font("Dialog", Font.PLAIN, 12);
+        
         // LABEL 1
         Donut3DBorderLabel label1 = Donut3DToolkit.createBorderLabel("Symbian", ColorPalette.WHITE,
-                                                                     InputFonts.getNeuropol(12), 50);
+                                                                     f, 50);
         label1.setStyle(Style.Both);
         label1.setOutlineStroke(s);
         label1.setShader(fractions, colors);
@@ -177,7 +181,7 @@ public class JavadocPortfolioDonut3D {
 
         // LABEL 2
         Donut3DBorderLabel label2 = Donut3DToolkit.createBorderLabel("WiMo", ColorPalette.WHITE,
-                                                                     InputFonts.getNeuropol(12), 50);
+                                                                     f, 50);
         label2.setStyle(Style.Both);
         label2.setOutlineStroke(s);
         label2.setShader(fractions, colors);
@@ -190,7 +194,7 @@ public class JavadocPortfolioDonut3D {
 
         // LABEL 3
         Donut3DBorderLabel label3 = Donut3DToolkit.createBorderLabel("android", ColorPalette.WHITE,
-                                                                     InputFonts.getNeuropol(12), 50);
+                                                                     f, 50);
         label3.setStyle(Style.Both);
         label3.setOutlineStroke(s);
         label3.setShader(fractions, colors);
@@ -202,7 +206,7 @@ public class JavadocPortfolioDonut3D {
         s3.addSliceLabel(label3);
 
         Donut3DBorderLabel label4 = Donut3DToolkit.createBorderLabel("iPhone", ColorPalette.WHITE,
-                                                                     InputFonts.getNeuropol(12), 50);
+                                                                     f, 50);
         label4.setStyle(Style.Both);
         label4.setOutlineStroke(s);
         label4.setOutlineColor(RosePalette.EMERALD);

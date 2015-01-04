@@ -91,7 +91,7 @@ public class Speedometer extends RadialGauge {
 		TicTacMarker ttm = new TicTacMarker(NanoChromatique.GREEN);
 		ttm.setSize(3);
 		ttm.setDivergence(3);
-		Font f = InputFonts.getFont(InputFonts.ELEMENT, 14);
+		Font f = new Font("Dialog", Font.PLAIN, 14);
 
 		for (int i = 20; i < 250; i = i + 20) {
 			GlyphMetric metric = new GlyphMetric();
@@ -112,7 +112,8 @@ public class Speedometer extends RadialGauge {
 		metric.setMetricsLabel("Km/h");
 		metric.setDivergence(30);
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, NanoChromatique.RED));
-		metric.setFont(InputFonts.getFont(InputFonts.NEUROPOL, 16));
+		Font f16 = new Font("Dialog", Font.PLAIN, 12);
+		metric.setFont(f16);
 		metricsManager.addMetric(metric);
 
 	}

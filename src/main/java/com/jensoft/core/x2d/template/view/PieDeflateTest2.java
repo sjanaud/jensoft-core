@@ -132,7 +132,7 @@ public class PieDeflateTest2 extends View {
 		Stroke s = new BasicStroke(2);
 		pie.setPassiveLabelAtMinPercent(0);
 
-		Font f = InputFonts.getNoMove(10);
+		Font f = new Font("Dialog", Font.PLAIN, 12);
 		// LABEL 1
 		PieBorderLabel label1 = PieToolkit.createBorderLabel("SILVER", ColorPalette.WHITE, f, 30);
 		label1.setStyle(Style.Both);

@@ -124,7 +124,7 @@ public class Donut2DRadialLabel extends AbstractDonut2DSliceLabel {
 
         g2d.setColor(donut2DSlice.getThemeColor());
 
-        Font f = InputFonts.getNoMove(12);
+        Font f =  new Font("Dialog", Font.PLAIN, 12);
 
         if (getLabelFont() != null) {
             f = getLabelFont();

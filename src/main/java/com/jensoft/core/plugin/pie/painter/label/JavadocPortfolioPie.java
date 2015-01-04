@@ -75,9 +75,10 @@ public class JavadocPortfolioPie {
         Stroke s = new BasicStroke(2);
         pie.setPassiveLabelAtMinPercent(0);
 
+        Font f = new Font("Dialog", Font.PLAIN, 12);
         // LABEL 1
         PieRadialLabel label1 = PieToolkit.createRadialLabel("Symbian",
-                                                             ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+                                                             ColorPalette.WHITE, f, 20);
         label1.setStyle(Style.Both);
         label1.setOutlineStroke(s);
         label1.setShader(fractions, colors);
@@ -87,7 +88,7 @@ public class JavadocPortfolioPie {
 
         // LABEL 2
         PieRadialLabel label2 = PieToolkit.createRadialLabel("WiMo",
-                                                             ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+                                                             ColorPalette.WHITE, f, 20);
         label2.setStyle(Style.Both);
         label2.setOutlineStroke(s);
         label2.setShader(fractions, colors);
@@ -97,7 +98,7 @@ public class JavadocPortfolioPie {
 
         // LABEL 3
         PieRadialLabel label3 = PieToolkit.createRadialLabel("iPhone",
-                                                             ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+                                                             ColorPalette.WHITE, f, 20);
         label3.setStyle(Style.Both);
         label3.setOutlineStroke(s);
         label3.setShader(fractions, colors);
@@ -106,7 +107,7 @@ public class JavadocPortfolioPie {
         s3.addSliceLabel(label3);
 
         PieRadialLabel label4 = PieToolkit.createRadialLabel("Android",
-                                                             ColorPalette.WHITE, InputFonts.getNeuropol(12), 20);
+                                                             ColorPalette.WHITE, f, 20);
         label4.setStyle(Style.Both);
         label4.setOutlineStroke(s);
         label4.setOutlineColor(RosePalette.COBALT);
@@ -151,14 +152,15 @@ public class JavadocPortfolioPie {
 
         PiePathLabel ppl = new PiePathLabel(TextPosition.Right, "My name is S�bastien");
         ppl.setPathSide(PathSide.Below);
-        ppl.setLabelFont(InputFonts.getYorkville(12));
+        Font f = new Font("Dialog", Font.PLAIN, 12);
+        ppl.setLabelFont(f);
         ppl.setLabelColor(RosePalette.MANDARIN);
         ppl.setDivergence(2);
         s1.addSliceLabel(ppl);
 
         PiePathLabel ppl12 = PieToolkit.createPathLabel("JenSoft API",
                                                         RosePalette.INDIGO,
-                                                        InputFonts.getFont(InputFonts.NO_MOVE, 12),
+                                                        f,
                                                         TextPosition.Middle);
         s1.addSliceLabel(ppl12);
 
@@ -177,7 +179,7 @@ public class JavadocPortfolioPie {
                                              TangoPalette.CHAMELEON2.darker());
         float[] fractions = { 0f, 1f };
         Color[] colors = { Color.BLACK, RosePalette.AMETHYST };
-        ppl3.setLabelFont(InputFonts.getNoMove(12));
+        ppl3.setLabelFont(f);
         ppl3.setTextShader(fractions, colors);
         ppl3.setPathSide(PathSide.Above);
         ppl3.setDivergence(2);
@@ -186,7 +188,7 @@ public class JavadocPortfolioPie {
 
         PiePathLabel ppl4 = new PiePathLabel(TextPosition.Right, "JenSoft");
         ppl4.setPathSide(PathSide.Below);
-        ppl4.setLabelFont(InputFonts.getNeuropol(12));
+        ppl4.setLabelFont(f);
         ppl4.setDivergence(0);
 
         // s4.addSliceLabel(ppl4);
@@ -232,9 +234,10 @@ public class JavadocPortfolioPie {
         Stroke s = new BasicStroke(2);
         pie.setPassiveLabelAtMinPercent(0);
 
+        Font f = new Font("Dialog", Font.PLAIN, 10);
         // LABEL 1
         PieBoundLabel label1 = PieToolkit.createBoundLabel("Symbian",
-                                                           ColorPalette.WHITE, InputFonts.getNeuropol(10));
+                                                           ColorPalette.WHITE, f);
         label1.setStyle(Style.Both);
         label1.setOutlineStroke(s);
         label1.setShader(fractions, colors);
@@ -243,7 +246,7 @@ public class JavadocPortfolioPie {
         s1.addSliceLabel(label1);
 
         PieBoundLabel label2 = PieToolkit.createBoundLabel("Wimo",
-                                                           ColorPalette.WHITE, InputFonts.getNeuropol(10));
+                                                           ColorPalette.WHITE, f);
         label2.setStyle(Style.Both);
         label2.setOutlineStroke(s);
         label2.setShader(fractions, colors);
@@ -252,7 +255,7 @@ public class JavadocPortfolioPie {
         s2.addSliceLabel(label2);
 
         PieBoundLabel label3 = PieToolkit.createBoundLabel("IPhone",
-                                                           ColorPalette.WHITE, InputFonts.getNeuropol(10));
+                                                           ColorPalette.WHITE, f);
         label3.setStyle(Style.Both);
         label3.setOutlineStroke(s);
         label3.setShader(fractions, colors);
@@ -261,7 +264,7 @@ public class JavadocPortfolioPie {
         s3.addSliceLabel(label3);
 
         PieBoundLabel label4 = PieToolkit.createBoundLabel("Android",
-                                                           ColorPalette.WHITE, InputFonts.getNeuropol(10));
+                                                           ColorPalette.WHITE, f);
         label4.setStyle(Style.Both);
         label4.setOutlineStroke(s);
         label4.setShader(fractions, colors);
@@ -307,7 +310,7 @@ public class JavadocPortfolioPie {
         Stroke s = new BasicStroke(2);
         pie.setPassiveLabelAtMinPercent(0);
 
-        Font f = InputFonts.getNoMove(10);
+        Font f = new Font("Dialog", Font.PLAIN, 10);
         // LABEL 1
         PieBorderLabel label1 = PieToolkit.createBorderLabel("View",
                                                              ColorPalette.WHITE, f, 30);

@@ -77,7 +77,8 @@ public class SourceTrackerPlugin extends AbstractPlugin implements AbstractPlugi
 	private GlyphMetricMarkerPainter glyphMarker = new DefaultMarker(NanoChromatique.RED);
 
 	/** default glyph font */
-	private Font defaultGlyphFont = InputFonts.getFont(InputFonts.NEUROPOL, 12);
+	private Font defaultGlyphFont =  new Font("Dialog", Font.PLAIN, 12);
+	
 
 	/**
 	 * create source tracker

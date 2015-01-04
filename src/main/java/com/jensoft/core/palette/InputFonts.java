@@ -13,8 +13,25 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
+ * 
  * <code>InputFonts</code> is a cache of the dynamically loaded fonts found in
  * the fonts directory.
+ * 
+ * <p>
+ * WARNING : some physicals fonts crash JVM
+ * </p>
+ * 
+ * <p>
+ * better way is to use logical fonts :
+ * <p>
+ *  <ul>
+ *   <li>Dialog</li>
+ *   <li>DialogInput</li>
+ *   <li>Monospaced</li>
+ *   <li>Serif</li>
+ *   <li>SansSerif</li>
+ *  </ul>
+ *   Font font = new Font("Dialog", Font.PLAIN, 12);
  * 
  * @author sebastien janaud
  */

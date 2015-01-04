@@ -8,6 +8,7 @@ package com.jensoft.core.plugin.symbol;
 
 import java.awt.BasicStroke;
 import java.awt.Color;
+import java.awt.Font;
 
 import com.jensoft.core.catalog.nature.JenSoftView;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
@@ -178,7 +179,8 @@ public class BarStackedStackEffectDemo extends View {
 
 		TitleLegend legend = new TitleLegend("Simple Stacked Bar");
 		legend.setLegendFill(new TitleLegendGradientFill(Color.WHITE, JennyPalette.JENNY8));
-		legend.setFont(InputFonts.getFont(InputFonts.ELEMENT, 10));
+		Font f = new Font("Dialog", Font.PLAIN, 12);
+		legend.setFont(f);
 		legend.setConstraints(new TitleLegendConstraints(LegendPosition.South, 0.8f, LegendAlignment.Rigth));
 		TitleLegendPlugin lgendL = new TitleLegendPlugin();
 		lgendL.addLegend(legend);

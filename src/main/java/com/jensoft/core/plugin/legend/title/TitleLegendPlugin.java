@@ -510,7 +510,8 @@ public class TitleLegendPlugin extends AbstractPlugin {
     public static TitleLegend createLegend(String label, Color color1, Color color2) {
         TitleLegend legend = new TitleLegend(label);
         legend.setLegendFill(new TitleLegendGradientFill(color1, color2));
-        legend.setFont(InputFonts.getNeuropol(12));
+        Font f = new Font("Dialog", Font.PLAIN, 12);
+        legend.setFont(f);
         legend.setConstraints(new TitleLegendConstraints(LegendPosition.North, 0.1f,
                                                     LegendAlignment.Rigth));
         return legend;

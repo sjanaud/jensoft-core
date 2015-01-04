@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.gauge.tachometer;
 
 import java.awt.Color;
+import java.awt.Font;
 
 import com.jensoft.core.glyphmetrics.GlyphMetric;
 import com.jensoft.core.glyphmetrics.GlyphMetricsNature;
@@ -88,6 +89,7 @@ public class Tachometer extends RadialGauge {
 
 		body.registerGaugeMetricsPath(metricsManager);
 
+		Font f = new Font("Dialog", Font.PLAIN, 24);
 		GlyphMetric metric = new GlyphMetric();
 		metric.setValue(0);
 		metric.setStylePosition(StylePosition.Default);
@@ -97,7 +99,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.CHAMELEON1));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.CHAMELEON1));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -110,7 +112,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.CHAMELEON2));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.CHAMELEON2));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -123,7 +125,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.CHAMELEON3));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.CHAMELEON3));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -136,7 +138,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.BUTTER1));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.BUTTER1));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -149,7 +151,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.BUTTER2));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.BUTTER2));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -162,7 +164,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.BUTTER3));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.BUTTER3));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -175,7 +177,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.SCARLETRED3));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.SCARLETRED3));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -188,7 +190,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.SCARLETRED3));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.SCARLETRED3));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 		metric = new GlyphMetric();
@@ -201,7 +203,7 @@ public class Tachometer extends RadialGauge {
 		metric.setGlyphMetricFill(new GlyphFill(Color.WHITE, TangoPalette.SCARLETRED3));
 		metric.setGlyphMetricMarkerPainter(new TicTacMarker(TangoPalette.SCARLETRED3));
 		// metric.setGlyphMetricDraw(new ClassicGlyphDraw(Color.WHITE));
-		metric.setFont(InputFonts.getFont(InputFonts.ELEMENT, 24));
+		metric.setFont(f);
 		metricsManager.addMetric(metric);
 
 	}

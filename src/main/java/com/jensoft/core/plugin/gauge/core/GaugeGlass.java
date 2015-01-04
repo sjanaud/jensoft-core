@@ -501,9 +501,7 @@ public abstract class GaugeGlass extends GaugePart {
 			GeometryPath geometry = new GeometryPath(arc2d);
 			GeometryPath geometry2 = new GeometryPath(arc2d2);
 
-			// Font f = new Font("Dialog", Font.PLAIN, 10);
-			// Font f2 = new Font("Dialog", Font.PLAIN, 8);
-			Font f = InputFonts.getSreda(10);
+			Font f = new Font("Dialog", Font.PLAIN, 12);
 
 			String copyright = label + " - JENSOFT API";
 			GlyphVector glyphVector = f.createGlyphVector(g2d.getFontRenderContext(), copyright);
