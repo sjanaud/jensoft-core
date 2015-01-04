@@ -14,9 +14,10 @@
 #######################################
 	
 
-	Remove embedded fonts
-		some physicals fonts crash JVM
-
+	Remove some embedded physical true type fonts
+		- some physicals fonts crash JVM
+		- only let element, no move and neuropol fonts for gauge
+		- font in observation for crash.
 
 
 #######################################
