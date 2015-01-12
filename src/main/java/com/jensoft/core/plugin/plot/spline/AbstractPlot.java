@@ -80,14 +80,13 @@ public abstract class AbstractPlot {
 	 * solve plot anchors
 	 */
 	public void solvePlotAnchors() {
-		Projection w2d = getHost().getProjection();
-
+		Projection proj = getHost().getProjection();
 		List<PlotAnchor> anchors = new ArrayList<PlotAnchor>();
 		setAnchorsPoints(anchors);
 		for (int i = 0; i < getUserPoints().size(); i++) {
 			PlotAnchor anchor = new PlotAnchor();
 			anchor.setUserPoint(getUserPoints().get(i));
-			anchor.setDevicePoint(w2d.userToPixel(getUserPoints().get(i)));
+			anchor.setDevicePoint(proj.userToPixel(getUserPoints().get(i)));
 			anchors.add(anchor);
 		}
 	}
