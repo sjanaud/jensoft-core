@@ -129,7 +129,6 @@ public abstract class AbstractPlugin implements Plugin {
      * Default constructor
      */
     public AbstractPlugin() {
-        PluginPlatform.instance().register(this);
     }
 
     /**
