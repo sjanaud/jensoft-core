@@ -5,7 +5,15 @@
 
 	group    : com.jensoft
 	artifact : jensoft-core
-	version  : 2.0.1
+	version  : 2.0.2
+
+#######################################
+## Notes 2.0.2  - March 25, 2015    ##
+#######################################
+	
+
+	Remove static plugin reference from abstract plugin constructor in plugin platform class
+
 	
 #######################################
 ## Notes 2.0.1  - January 4, 2015    ##
