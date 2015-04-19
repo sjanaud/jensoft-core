@@ -416,32 +416,6 @@
 		</xsd:complexContent>
 	</xsd:complexType>
 
-	<xsd:complexType name="AxisMultiplierMetrics">
-		<xsd:complexContent>
-			<xsd:extension base="AxisMetricsPlugin">
-				<xsd:sequence>
-					<xsd:element name="ref" type="xsd:double" />
-					<xsd:element name="multiplier" type="xsd:double" />
-				</xsd:sequence>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-
-	<xsd:complexType name="AxisMultiMultiplierMetrics">
-		<xsd:complexContent>
-			<xsd:extension base="AxisMetricsPlugin">
-				<xsd:sequence>
-					<xsd:element name="ref" type="xsd:double" />
-					<xsd:element name="major-multiplier" type="xsd:double" />
-					<xsd:element name="median-multiplier" type="xsd:double" />
-					<xsd:element name="minor-multiplier" type="xsd:double" />
-				</xsd:sequence>
-			</xsd:extension>
-		</xsd:complexContent>
-	</xsd:complexType>
-
-
-
 	<xsd:complexType name="DeviceMetricsPlugin" abstract="true">
 		<xsd:complexContent>
 			<xsd:extension base="MetricsPlugin">
