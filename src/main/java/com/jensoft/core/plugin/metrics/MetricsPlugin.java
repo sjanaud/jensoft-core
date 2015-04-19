@@ -47,7 +47,7 @@ public abstract class MetricsPlugin<M extends AbstractMetricsManager> extends Ab
 	private Stroke baseLineStroke = new BasicStroke();
 	
 	
-	//Metrics marker porperties
+	//Metrics marker properties
 	private int    minorMarkerSize = 2;
 	private Color  minorMarkerColor;
 	private Stroke minorMarkerStroke = new BasicStroke();
@@ -55,7 +55,7 @@ public abstract class MetricsPlugin<M extends AbstractMetricsManager> extends Ab
 	private int    medianMarkerSize = 4;
 	private Color  medianMarkerColor;
 	private Stroke medianMarkerStroke = new BasicStroke();
-	private int    medianTextOffset = 10;
+	private int    medianTextOffset = 5;
 	private Color  medianTextColor;
 	private Font   medianTextFont = new Font("Dialog", Font.PLAIN, 10);
 	
@@ -216,6 +216,16 @@ public abstract class MetricsPlugin<M extends AbstractMetricsManager> extends Ab
 		return null;
 	}
 	
+	public int getMetricsTextOffset(Metrics metrics){
+		if(metrics.getNature() == MetricsNature.Minor)
+			return 0;
+		if(metrics.getNature() == MetricsNature.Major)
+			return this.majorTextOffset;
+		if(metrics.getNature() == MetricsNature.Median)
+			return this.medianTextOffset;
+		return 0;
+	}
+	
 	public int getMetricsMarkerSize(Metrics metrics){
 		if(metrics.getNature() == MetricsNature.Minor)
 			return this.minorMarkerSize;
@@ -224,6 +234,16 @@ public abstract class MetricsPlugin<M extends AbstractMetricsManager> extends Ab
 		if(metrics.getNature() == MetricsNature.Median)
 			return this.medianMarkerSize;
 		return 0;
+	}
+	
+	public Stroke getMetricsMarkerStroke(Metrics metrics){
+		if(metrics.getNature() == MetricsNature.Minor)
+			return this.minorMarkerStroke;
+		if(metrics.getNature() == MetricsNature.Major)
+			return this.majorMarkerStroke;
+		if(metrics.getNature() == MetricsNature.Median)
+			return this.medianMarkerStroke;
+		return null;
 	}
 	
 	public Color getMetricsTextColor(Metrics metrics){

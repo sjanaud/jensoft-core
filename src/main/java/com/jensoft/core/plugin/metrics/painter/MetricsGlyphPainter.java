@@ -20,6 +20,7 @@ import java.util.List;
 
 import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
+import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsNature;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
@@ -65,6 +66,17 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
         }
         else {
             g2d.setColor(getMetricsPlugin().getProjection().getThemeColor());
+        }
+        
+        //marker stroke
+        if (metric.getMetricsMarkerStroke() != null) {
+            g2d.setColor(metric.getMetricsMarkerColor());
+        }
+        else if (getMetricsPlugin().getMetricsMarkerStroke(metric) != null) {
+            g2d.setStroke(getMetricsPlugin().getMetricsMarkerStroke(metric));
+        }
+        else {
+            g2d.setStroke(new BasicStroke());
         }
 
         Shape metricsShapeIndicator = null;
@@ -176,9 +188,9 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
            
             Shape  glyph = legendGlyphVector.getGlyphOutline(g);
             //boolean paintFlag = false;
-            if(metric.isRotate()){
+            if(getMetricsPlugin().getGravity() == Gravity.Rotate){
             	 pointGlyph = new Point2D.Double(position.getX() + g2d.getFontMetrics().getAscent()/2,
-							position.getY()  +markerSize +10 + legendWidth  - GlyphUtil.getGlyphWidthAtToken(legendGlyphVector,g));
+							position.getY()  + markerSize + getMetricsPlugin().getMetricsTextOffset(metric) + legendWidth  - GlyphUtil.getGlyphWidthAtToken(legendGlyphVector,g));
 				af.setToTranslation(pointGlyph.getX(), pointGlyph.getY());
 				af.rotate(-Math.PI/2);
 				af.translate(-px,-py);
@@ -194,7 +206,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
             }else{
             	 pointGlyph = new Point2D.Double(
             			position.getX() - legendWidth/2 + GlyphUtil.getGlyphWidthAtToken(legendGlyphVector,g) ,
-     					position.getY() + markerSize+ 10 + g2d.getFontMetrics().getAscent()/2);                                    
+     					position.getY() + markerSize + getMetricsPlugin().getMetricsTextOffset(metric) + g2d.getFontMetrics().getHeight());                                    
 
                  af.setToTranslation(pointGlyph.getX(), pointGlyph.getY());
                  af.translate(-px, -py);
@@ -236,8 +248,8 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
            
             Shape  glyph = legendGlyphVector.getGlyphOutline(g);
             boolean paintFlag = false;
-            if(metric.isRotate()){
-              pointGlyph = new Point2D.Double(position.getX() - markerSize - g2d.getFontMetrics(f).getHeight()/2,
+            if(getMetricsPlugin().getGravity() == Gravity.Rotate){
+              pointGlyph = new Point2D.Double(position.getX() - markerSize - getMetricsPlugin().getMetricsTextOffset(metric) - g2d.getFontMetrics(f).getHeight()/2,
             		  							position.getY()   + legendWidth / 2 - GlyphUtil.getGlyphWidthAtToken(legendGlyphVector,g));
               af.setToTranslation(pointGlyph.getX(), pointGlyph.getY());
               af.rotate(-Math.PI/2);
@@ -252,7 +264,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
             	  g2d.fill(ts);
               }
             }else{
-            	 pointGlyph = new Point2D.Double(position.getX() - legendWidth - markerSize - 10 + GlyphUtil.getGlyphWidthAtToken(legendGlyphVector,g) ,
+            	 pointGlyph = new Point2D.Double(position.getX() - legendWidth - markerSize - getMetricsPlugin().getMetricsTextOffset(metric) + GlyphUtil.getGlyphWidthAtToken(legendGlyphVector,g) ,
      					position.getY() + g2d.getFontMetrics().getAscent()/2);                                    
 
                  af.setToTranslation(pointGlyph.getX(), pointGlyph.getY());
@@ -298,7 +310,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
             
             Shape  glyph = legendGlyphVector.getGlyphOutline(g);
             boolean paintFlag = false;
-            if(metric.isRotate()){
+            if(getMetricsPlugin().getGravity() == Gravity.Rotate){
               pointGlyph = new Point2D.Double(position.getX() + markerSize + g2d.getFontMetrics(f).getHeight(),
             		  position.getY() + legendWidth  / 2 - GlyphUtil   .getGlyphWidthAtToken(legendGlyphVector,   g));
               af.setToTranslation(pointGlyph.getX(), pointGlyph.getY());

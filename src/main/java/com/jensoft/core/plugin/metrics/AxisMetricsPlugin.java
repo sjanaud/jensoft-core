@@ -452,7 +452,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		public TimeMetrics(Axis axis) {
 			super(new TimeMetricsManager(), axis);
 			setName(TimeMetrics.class.getCanonicalName());
-			setMetricsPainter(new MetricsGlyphPainter());
 		}
 
 		/**
@@ -660,14 +659,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 			setName(ModeledMetrics.class.getCanonicalName());
 		}
 
-//		/**
-//		 * set locale
-//		 * @param locale
-//		 */
-//		public void setLocale(Locale locale){
-//			getMetricsManager().applyLocalizedMetrics(locale);
-//		}
-//		
 		
 		/**
 		 * set interval density factor, ideal value is O, 10, 20 pixel for condensed to more and more low density.
@@ -941,11 +932,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 			Metrics m = metrics.get(i);		
 			Point2D markerLocation = new Point2D.Double();
 
-			if(getGravity() == Gravity.Rotate){
-				m.setRotate(true);
-			}else{
-				m.setRotate(false);
-			}
 			if (viewPart == ViewPart.South) {
 				markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
 				m.setMarkerLocation(markerLocation);
