@@ -7,6 +7,7 @@ package com.jensoft.core.plugin.metrics.geom;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Stroke;
 import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.util.Comparator;
@@ -35,6 +36,9 @@ public class Metrics {
     /** metrics marker color */
     private Color metricsMarkerColor;
 
+    /** metrics marker stroke */
+    private Stroke metricsMarkerStroke;
+
     /** metrics label color */
     private Color metricsLabelColor;
 
@@ -46,9 +50,6 @@ public class Metrics {
     /** metrics label */
     private String metricsLabel;
 
-  //  public static int MAJOR = 1;
-   // public static int MEDIAN = 0;
-   // public static int MINOR = -1;
     private MetricsNature nature = MetricsNature.Major;
 
     /** metrics position */
@@ -277,8 +278,27 @@ public class Metrics {
     public void setMetricsMarkerColor(Color metricsMarkerColor) {
         this.metricsMarkerColor = metricsMarkerColor;
     }
+    
+    
+    /**
+     * get marker stroke
+     * 
+     * @return marker stroke
+     */
+    public Stroke getMetricsMarkerStroke() {
+		return metricsMarkerStroke;
+	}
 
     /**
+     * set the theme marker stroke
+     * 
+     * @param metricsMarkerStroke
+     */
+	public void setMetricsMarkerStroke(Stroke metricsMarkerStroke) {
+		this.metricsMarkerStroke = metricsMarkerStroke;
+	}
+
+	/**
      * get the device/pixel value for this metrics
      * 
      * @return device value
@@ -398,13 +418,6 @@ public class Metrics {
     
     
 
-    public boolean isRotate() {
-		return rotate;
-	}
-
-	public void setRotate(boolean rotate) {
-		this.rotate = rotate;
-	}
 
 	public BigDecimal getUserValueAsBigDecimal() {
 		return userValueAsBigDecimal;
