@@ -10,10 +10,10 @@ import java.awt.Font;
 import java.util.Locale;
 
 import com.jensoft.core.plugin.metrics.MetricsPlugin;
+import com.jensoft.core.plugin.metrics.Metrics.Gravity;
+import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.format.MetricsDecimalFormat;
-import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
-import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 
 /**
  * <code>AbstractMetricsManager</code> takes the responsibility to solve and create metrics
