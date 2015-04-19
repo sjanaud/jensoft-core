@@ -10,9 +10,8 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import com.jensoft.core.plugin.metrics.Metrics;
 import com.jensoft.core.plugin.metrics.AbstractMetricsPlugin;
-import com.jensoft.core.projection.Projection;
+import com.jensoft.core.plugin.metrics.Metrics;
 
 /**
  * <code>AbstractMetricsPainter</code> takes the responsibility to paint metrics on projection part

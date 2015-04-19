@@ -5,12 +5,7 @@
  */
 package com.jensoft.core.plugin.metrics.manager;
 
-import java.awt.Color;
-import java.awt.Font;
-import java.util.Locale;
-
 import com.jensoft.core.plugin.metrics.AbstractMetricsPlugin;
-import com.jensoft.core.plugin.metrics.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.format.MetricsDecimalFormat;

@@ -5,8 +5,6 @@
  */
 package com.jensoft.core.plugin.metrics.manager;
 
-import java.awt.Color;
-import java.awt.Font;
 import java.util.List;
 
 import com.jensoft.core.plugin.metrics.Metrics;
