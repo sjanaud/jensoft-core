@@ -9,7 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.Locale;
 
-import com.jensoft.core.plugin.metrics.MetricsPlugin;
+import com.jensoft.core.plugin.metrics.AbstractMetricsPlugin;
 import com.jensoft.core.plugin.metrics.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
@@ -26,7 +26,7 @@ import com.jensoft.core.plugin.metrics.format.MetricsDecimalFormat;
 public abstract class AbstractMetricsManager implements
         MetricsManager {
 	
-	private MetricsPlugin<?> metricsPlugin;
+	private AbstractMetricsPlugin<?> metricsPlugin;
 
     /** default decimal format */
     private IMetricsFormat defaultFormat = new MetricsDecimalFormat();
@@ -54,13 +54,13 @@ public abstract class AbstractMetricsManager implements
     
     
     
-    public MetricsPlugin<?> getMetricsPlugin() {
+    public AbstractMetricsPlugin<?> getMetricsPlugin() {
 		return metricsPlugin;
 	}
 
 
 
-	public void setMetricsPlugin(MetricsPlugin<?> metricsPlugin) {
+	public void setMetricsPlugin(AbstractMetricsPlugin<?> metricsPlugin) {
 		this.metricsPlugin = metricsPlugin;
 	}
 

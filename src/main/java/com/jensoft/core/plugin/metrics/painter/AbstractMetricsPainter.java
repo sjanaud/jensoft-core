@@ -11,7 +11,7 @@ import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.plugin.metrics.Metrics;
-import com.jensoft.core.plugin.metrics.MetricsPlugin;
+import com.jensoft.core.plugin.metrics.AbstractMetricsPlugin;
 import com.jensoft.core.projection.Projection;
 
 /**
@@ -30,14 +30,14 @@ public abstract class AbstractMetricsPainter {
     public AbstractMetricsPainter() {
     }
 
-    private MetricsPlugin<?> metricsPlugin;
+    private AbstractMetricsPlugin<?> metricsPlugin;
    
     
-	public MetricsPlugin<?> getMetricsPlugin() {
+	public AbstractMetricsPlugin<?> getMetricsPlugin() {
 		return metricsPlugin;
 	}
 
-	public void setMetricsPlugin(MetricsPlugin<?> metricsPlugin) {
+	public void setMetricsPlugin(AbstractMetricsPlugin<?> metricsPlugin) {
 		this.metricsPlugin = metricsPlugin;
 	}
 
