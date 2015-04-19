@@ -36,9 +36,9 @@ public class TimeMetricsManager extends AbstractMetricsManager {
     private static long DAY_MILLIS = HOUR_MILLIS * 24L;
     private static long WEEK_MILLIS = DAY_MILLIS * 7L;
     private static long MONTH_MILLIS = WEEK_MILLIS * 4L;
-    private static long YEAR_MILLIS = MONTH_MILLIS * 12L;
-    private static long DECENNARY_MILLIS = YEAR_MILLIS * 10L;
-    private static long CENTURY_MILLIS = DECENNARY_MILLIS * 10L;
+    //private static long YEAR_MILLIS = MONTH_MILLIS * 12L;
+    //private static long DECENNARY_MILLIS = YEAR_MILLIS * 10L;
+    //private static long CENTURY_MILLIS = DECENNARY_MILLIS * 10L;
 
     public static SimpleDateFormat yearFormat = new SimpleDateFormat("yyyy");
     public static SimpleDateFormat monthFormat = new SimpleDateFormat("MMM");
