@@ -12,7 +12,6 @@ import java.awt.Stroke;
 import java.io.File;
 
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.palette.color.Spectral;

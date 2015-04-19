@@ -147,8 +147,6 @@ public class X2D {
 		coreInflaters.add(new AxisMetricsInflater.StaticMetricsInflater());
 		coreInflaters.add(new AxisMetricsInflater.ModeledMetricsInflater());
 		coreInflaters.add(new AxisMetricsInflater.TimeMetricsInflater());
-		coreInflaters.add(new AxisMetricsInflater.MultiplierMetricsInflater());
-		coreInflaters.add(new AxisMetricsInflater.MultiMultiplierMetricsInflater());
 
 		// grids
 		coreInflaters.add(new GridInflater.FreeGridInflater());

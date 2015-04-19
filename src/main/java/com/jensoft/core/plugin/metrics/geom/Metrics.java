@@ -6,6 +6,7 @@
 package com.jensoft.core.plugin.metrics.geom;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.util.Comparator;
@@ -39,14 +40,16 @@ public class Metrics {
 
     /** metrics format */
     private IMetricsFormat format;
+    
+    private Font font;
 
     /** metrics label */
     private String metricsLabel;
 
-    public static int MAJOR = 1;
-    public static int MEDIAN = 0;
-    public static int MINOR = -1;
-    private int nature = MAJOR;
+  //  public static int MAJOR = 1;
+   // public static int MEDIAN = 0;
+   // public static int MINOR = -1;
+    private MetricsNature nature = MetricsNature.Major;
 
     /** metrics position */
     private Point2D markerLocation;
@@ -58,10 +61,10 @@ public class Metrics {
     private boolean rotate = true;
 
     /** lock marker flag */
-    private boolean lockMarker;
+    private boolean lockMarker = true;
 
     /** lock label */
-    private boolean lockLabel;
+    private boolean lockLabel = true;
 
     /** visible flag */
     private boolean visible = true;
@@ -76,6 +79,13 @@ public class Metrics {
      */
     public enum MetricsType {
         XMetrics, YMetrics;
+    }
+    
+    /**
+     * Metrics nature
+     */
+    public enum MetricsNature {
+        Minor, Median, Major;
     }
 
     /**
@@ -115,7 +125,17 @@ public class Metrics {
         metricsType = type;
     }
 
-    /*
+    
+    
+    public Font getFont() {
+		return font;
+	}
+
+	public void setFont(Font font) {
+		this.font = font;
+	}
+
+	/*
      * (non-Javadoc)
      * @see java.lang.Object#toString()
      */
@@ -208,7 +228,7 @@ public class Metrics {
      * 
      * @return nature
      */
-    public int getNature() {
+    public MetricsNature getNature() {
         return nature;
     }
 
@@ -218,7 +238,7 @@ public class Metrics {
      * @param nature
      *            the nature to set
      */
-    public void setNature(int nature) {
+    public void setNature(MetricsNature nature) {
         this.nature = nature;
     }
 

@@ -9,9 +9,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.util.StringTokenizer;
 
-import javax.jnlp.ClipboardService;
-import javax.jnlp.ServiceManager;
-import javax.jnlp.UnavailableServiceException;
+//import javax.jnlp.ClipboardService;
+//import javax.jnlp.ServiceManager;
+//import javax.jnlp.UnavailableServiceException;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
@@ -37,7 +37,7 @@ public class ViewAppletUI extends JApplet {
 	private static final long serialVersionUID = -7872212203014369306L;
 
 	/** JNLP clip board service */
-	private ClipboardService cs = null;
+	//private ClipboardService cs = null;
 
 	
 	private String inset;
@@ -77,10 +77,10 @@ public class ViewAppletUI extends JApplet {
 		} catch (Exception e) {
 
 		}
-		try {
-			cs = (ClipboardService) ServiceManager.lookup("javax.jnlp.ClipboardService");
-		} catch (UnavailableServiceException e) {
-		}
+//		try {
+//			cs = (ClipboardService) ServiceManager.lookup("javax.jnlp.ClipboardService");
+//		} catch (UnavailableServiceException e) {
+//		}
 
 		getContentPane().removeAll();
 		getContentPane().setLayout(new BorderLayout());

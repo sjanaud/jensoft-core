@@ -29,8 +29,6 @@ import javax.swing.JPanel;
 import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.device.DevicePartComponent;
-import com.jensoft.core.graphics.Antialiasing;
-import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.projection.Projection;

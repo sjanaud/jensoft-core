@@ -15,7 +15,6 @@ import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 import java.text.DecimalFormat;
 
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.donut3d.Donut3D;
 import com.jensoft.core.plugin.donut3d.Donut3D.Donut3DNature;
 import com.jensoft.core.plugin.donut3d.Donut3DPlugin;

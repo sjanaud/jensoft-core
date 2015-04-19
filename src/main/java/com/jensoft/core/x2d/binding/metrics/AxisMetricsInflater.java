@@ -16,8 +16,6 @@ import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FlowMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FreeMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.ModeledMetrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Multiplier3Metrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.MultiplierMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.StaticMetrics;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
@@ -104,70 +102,7 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 
 	}
 
-	/**
-	 * <code>MultiplierMetricsInflater</code>
-	 * 
-	 * @author sebastien janaud
-	 */
-	@X2DBinding(xsi = "AxisMultiplierMetrics", plugin = MultiplierMetrics.class)
-	public static class MultiplierMetricsInflater extends AxisMetricsInflater<MultiplierMetrics> {
-
-		
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
-		 * .w3c.dom.Element)
-		 */
-		@Override
-		public AxisMetricsPlugin.MultiplierMetrics inflate(Element plugin) {
-			Double ref = elementDouble(plugin, ELEMENT_METRICS_MULTIPLIER_REF);
-			Double mul = elementDouble(plugin, ELEMENT_METRICS_MULTIPLIER_MULTIPLIER);
-			AxisMetricsPlugin.MultiplierMetrics multiplier = new AxisMetricsPlugin.MultiplierMetrics(ref, mul, Axis.AxisSouth);
-			completeFromAbstract(multiplier, plugin);
-			return multiplier;
-		}
-
-	}
-
-	/**
-	 * <code>MultiMultiplierMetricsInflater</code>
-	 * 
-	 * @author sebastien janaud
-	 */
-	@X2DBinding(xsi = "AxisMultiMultiplierMetrics", plugin = Multiplier3Metrics.class)
-	public static class MultiMultiplierMetricsInflater extends AxisMetricsInflater<Multiplier3Metrics> {
-
-		
-		/*
-		 * (non-Javadoc)
-		 * 
-		 * @see
-		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
-		 * .w3c.dom.Element)
-		 */
-		@Override
-		public AxisMetricsPlugin.Multiplier3Metrics inflate(Element plugin) {
-			Double ref = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_REF);
-			Double majorMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MAJOR_MULTIPLIER);
-			Double medianMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MEDIAN_MULTIPLIER);
-			Double minorMultiplier = elementDouble(plugin, ELEMENT_METRICS_MULTI_MULTIPLIER_MINOR_MULTIPLIER);
-
-			AxisMetricsPlugin.Multiplier3Metrics multiMultiplier = new AxisMetricsPlugin.Multiplier3Metrics(ref, getAxis(plugin));
-			if (majorMultiplier != null) {
-				multiMultiplier.setMajor(majorMultiplier);
-			}
-			if (medianMultiplier != null) {
-				multiMultiplier.setMedian(medianMultiplier);
-			}
-			if (minorMultiplier != null) {
-				multiMultiplier.setMinor(minorMultiplier);
-			}
-			completeFromAbstract(multiMultiplier, plugin);
-			return multiMultiplier;
-		}
-	}
+	
 
 	/**
 	 * <code>StaticMetricsInflater</code>
@@ -284,21 +219,21 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 		if (axisSpacing != null && axisSpacing > 0) {
 			abstratPlugin.setAxisSpacing(axisSpacing);
 		}
-		if (linePaint != null) {
-			abstratPlugin.setPaintAxisBaseLine(linePaint);
-		}
-		if (lineColor != null) {
-			abstratPlugin.setMetricsBaseLineColor(lineColor);
-		}
-		if (markerColor != null) {
-			abstratPlugin.setMetricsMarkerColor(markerColor);
-		}
-		if (textColor != null) {
-			abstratPlugin.setMetricsLabelColor(textColor);
-		}
-		if (f != null) {
-			abstratPlugin.setMetricsFont(f);
-		}
+//		if (linePaint != null) {
+//			abstratPlugin.setPaintAxisBaseLine(linePaint);
+//		}
+//		if (lineColor != null) {
+//			abstratPlugin.setMetricsBaseLineColor(lineColor);
+//		}
+//		if (markerColor != null) {
+//			abstratPlugin.setMetricsMarkerColor(markerColor);
+//		}
+//		if (textColor != null) {
+//			abstratPlugin.setMetricsLabelColor(textColor);
+//		}
+//		if (f != null) {
+//			abstratPlugin.setMetricsFont(f);
+//		}
 	}
 
 }

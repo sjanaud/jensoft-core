@@ -45,7 +45,7 @@ public class StaticMetricsManager extends AbstractMetricsManager {
     @Override
     public List<Metrics> getDeviceMetrics() {
         metricsDevice.clear();
-        Projection w2d = getRenderContext().getProjection();
+        Projection w2d = getMetricsPlugin().getProjection();
 
         if (getType() == MetricsType.XMetrics) {
 
@@ -63,10 +63,10 @@ public class StaticMetricsManager extends AbstractMetricsManager {
 
                 metrics.setDeviceValue(p2dDeviceMetrics.getX());
                 metrics.setUserValue(userMetricsX);
-                metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-                metrics.setMetricsLabelColor(getMetricsLabelColor());
-                metrics.setLockLabel(isLockLabel());
-                metrics.setLockMarker(isLockMarker());
+                //metrics.setMetricsMarkerColor(getMetricsMarkerColor());
+                //metrics.setMetricsLabelColor(getMetricsLabelColor());
+                //metrics.setLockLabel(isLockLabel());
+                //metrics.setLockMarker(isLockMarker());
 
                 if (getMetricsFormat() == null) {
                     metrics.setMetricsLabel(getDefaultFormat().format(
@@ -97,10 +97,10 @@ public class StaticMetricsManager extends AbstractMetricsManager {
 
                 metrics.setDeviceValue(p2dDeviceMetrics.getY());
                 metrics.setUserValue(userMetricsY);
-                metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-                metrics.setMetricsLabelColor(getMetricsLabelColor());
-                metrics.setLockLabel(isLockLabel());
-                metrics.setLockMarker(isLockMarker());
+               // metrics.setMetricsMarkerColor(getMetricsMarkerColor());
+               // metrics.setMetricsLabelColor(getMetricsLabelColor());
+               // metrics.setLockLabel(isLockLabel());
+               // metrics.setLockMarker(isLockMarker());
 
                 if (getMetricsFormat() == null) {
                     metrics.setMetricsLabel(getDefaultFormat().format(

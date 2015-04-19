@@ -68,7 +68,7 @@ public class FreeMetricsManager extends AbstractMetricsManager {
     public List<Metrics> getDeviceMetrics() {
 
         metricsDevice.clear();
-        Projection w2d = getRenderContext().getProjection();
+        Projection w2d = getMetricsPlugin().getProjection();
         if (getType() == MetricsType.XMetrics) {
 
             for (int i = 0; i < volatileMetrics.size(); i++) {
@@ -85,10 +85,10 @@ public class FreeMetricsManager extends AbstractMetricsManager {
 
                     metrics.setDeviceValue(p2dDeviceMetrics.getX());
                     metrics.setUserValue(userMetricsX);
-                    metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-                    metrics.setMetricsLabelColor(getMetricsLabelColor());
-                    metrics.setLockLabel(isLockLabel());
-                    metrics.setLockMarker(isLockMarker());
+                   // metrics.setMetricsMarkerColor(getMetricsMarkerColor());
+                   // metrics.setMetricsLabelColor(getMetricsLabelColor());
+                   // metrics.setLockLabel(isLockLabel());
+                   // metrics.setLockMarker(isLockMarker());
 
                     if (tTemp.label != null) {
                         metrics.setMetricsLabel(tTemp.label);
@@ -125,10 +125,10 @@ public class FreeMetricsManager extends AbstractMetricsManager {
 
                     metrics.setDeviceValue(p2dDeviceMetrics.getY());
                     metrics.setUserValue(userMetricsY);
-                    metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-                    metrics.setMetricsLabelColor(getMetricsLabelColor());
-                    metrics.setLockLabel(isLockLabel());
-                    metrics.setLockMarker(isLockMarker());
+                   // metrics.setMetricsMarkerColor(getMetricsMarkerColor());
+                   // metrics.setMetricsLabelColor(getMetricsLabelColor());
+                   // metrics.setLockLabel(isLockLabel());
+                   // metrics.setLockMarker(isLockMarker());
 
                     if (tTemp.label != null) {
                         metrics.setMetricsLabel(tTemp.label);

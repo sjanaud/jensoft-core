@@ -23,7 +23,6 @@ import com.jensoft.core.drawable.text.TextPath.PathSide;
 import com.jensoft.core.drawable.text.TextPath.TextPosition;
 import com.jensoft.core.glyphmetrics.GeometryPath;
 import com.jensoft.core.glyphmetrics.GlyphUtil;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.color.PetalPalette;
 import com.jensoft.core.palette.color.TangoPalette;
 import com.jensoft.core.plugin.donut2d.Donut2D;

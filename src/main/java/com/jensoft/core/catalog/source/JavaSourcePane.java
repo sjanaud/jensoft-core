@@ -65,11 +65,11 @@ public class JavaSourcePane extends JComponent {
 		SourceScrollPane scroll = new SourceScrollPane(sourceTextPane);
 		scroll.setWheelScrollingEnabled(true);
 
-		try {
-			add(new ControlPanel(sourceTextPane), BorderLayout.NORTH);
-		} catch (Error e) {
-			//java.lang.NoClassDefFoundError: javax/jnlp/UnavailableServiceException
-		}
+//		try {
+//			add(new ControlPanel(sourceTextPane), BorderLayout.NORTH);
+//		} catch (Error e) {
+//			//java.lang.NoClassDefFoundError: javax/jnlp/UnavailableServiceException
+//		}
 		
 
 		add(scroll, BorderLayout.CENTER);

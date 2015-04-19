@@ -21,7 +21,6 @@ import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.Fractional;
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginListener;

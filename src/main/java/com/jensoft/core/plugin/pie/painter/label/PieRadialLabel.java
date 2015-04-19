@@ -13,7 +13,6 @@ import java.awt.LinearGradientPaint;
 import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.pie.Pie;
 import com.jensoft.core.plugin.pie.Pie.PieNature;
 import com.jensoft.core.plugin.pie.PiePlugin;

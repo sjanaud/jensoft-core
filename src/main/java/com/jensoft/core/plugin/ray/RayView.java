@@ -27,8 +27,8 @@ public class RayView extends View {
     private RayPlugin rayPlugin;
 
     /** default axis metrics */
-    private AxisMetricsPlugin.Multiplier3Metrics axisMiliMetricsX;
-    private AxisMetricsPlugin.Multiplier3Metrics axisMiliMetricsY;
+    private AxisMetricsPlugin.ModeledMetrics axisMiliMetricsX;
+    private AxisMetricsPlugin.ModeledMetrics axisMiliMetricsY;
 
     /**
      * create compatible view with bar plugin
@@ -102,19 +102,10 @@ public class RayView extends View {
         rayPlugin.setPriority(10);
         projection.registerPlugin(rayPlugin);
 
-        axisMiliMetricsY = new AxisMetricsPlugin.Multiplier3Metrics(projection.getMinY(),
+        axisMiliMetricsY = new AxisMetricsPlugin.ModeledMetrics(
                                                 Axis.AxisWest);
-        double height = projection.getUserHeight();
-        axisMiliMetricsY.setMajor(height / 10);
-        axisMiliMetricsY.setMedian(height / 20);
-        axisMiliMetricsY.setMinor(height / 100);
 
-        axisMiliMetricsX = new AxisMetricsPlugin.Multiplier3Metrics(projection.getMinX(),
-                                                Axis.AxisSouth);
-        double width = projection.getUserWidth();
-        axisMiliMetricsX.setMajor(width / 10);
-        axisMiliMetricsX.setMedian(width / 20);
-        axisMiliMetricsX.setMinor(width / 100);
+        axisMiliMetricsX = new AxisMetricsPlugin.ModeledMetrics(Axis.AxisSouth);
 
         projection.registerPlugin(axisMiliMetricsX);
         projection.registerPlugin(axisMiliMetricsY);

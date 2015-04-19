@@ -77,7 +77,7 @@ public class MapUtil {
      * @param args
      */
     public static void main(String[] args) {
-        GeoPosition centerWindow = new GeoPosition(43.318637, -0.312383);
+        GeoPosition centerWindow = new GeoPosition(44.8380405,-0.5938274);
 
         System.out.println(latToY(centerWindow.getLatitude(), 15));
         System.out.println(longToX(centerWindow.getLongitude(), 15));

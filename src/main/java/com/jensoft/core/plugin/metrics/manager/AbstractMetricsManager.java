@@ -9,10 +9,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.util.Locale;
 
+import com.jensoft.core.plugin.metrics.MetricsPlugin;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.format.MetricsDecimalFormat;
+import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
-import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 
 /**
  * <code>AbstractMetricsManager</code> takes the responsibility to solve and create metrics
@@ -24,6 +25,8 @@ import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
  */
 public abstract class AbstractMetricsManager implements
         MetricsManager {
+	
+	private MetricsPlugin<?> metricsPlugin;
 
     /** default decimal format */
     private IMetricsFormat defaultFormat = new MetricsDecimalFormat();
@@ -34,23 +37,7 @@ public abstract class AbstractMetricsManager implements
     /** metrics format */
     private IMetricsFormat metricsFormat;
 
-    /** metrics MarkerColor */
-    private Color metricsMarkerColor;
-
-    /** metrics label color */
-    private Color metricsLabelColor;
-
-    /** metrics base line color */
-    private Color metricsBaseLineColor;
-
-    /** metrics median font */
-    private Font metricsMedianFont = new Font("Verdana", Font.PLAIN, 10);
-
-    /** metrics major font */
-    private Font metricsMajorFont = new Font("Verdana", Font.PLAIN, 12);
-
-    /** metrics render context */
-    private MetricsRenderContext renderContext;
+   
 
     /** lock marker */
     private boolean lockMarker = true;
@@ -58,8 +45,6 @@ public abstract class AbstractMetricsManager implements
     /** lock label */
     private boolean lockLabel = true;
     
-    /** locale*/
-    private Locale locale;
 
     /**
      * create abstract metrics manager
@@ -67,23 +52,18 @@ public abstract class AbstractMetricsManager implements
     public AbstractMetricsManager() {
     }
     
-    /**
-     * get the locale for this manager
-     * @return locale
-     */
-    public Locale getLocale() {
-    	if(locale == null)
-    		return Locale.getDefault();
-		return locale;
+    
+    
+    public MetricsPlugin<?> getMetricsPlugin() {
+		return metricsPlugin;
 	}
 
-    /**
-     * set locale for this manager.
-     * @param locale
-     */
-	public void applyLocalizedMetrics(Locale locale) {
-		this.locale = locale;
+
+
+	public void setMetricsPlugin(MetricsPlugin<?> metricsPlugin) {
+		this.metricsPlugin = metricsPlugin;
 	}
+
 
 
 	/* (non-Javadoc)
@@ -140,22 +120,7 @@ public abstract class AbstractMetricsManager implements
     }
 
     
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getRenderContext()
-     */
-    @Override
-    public MetricsRenderContext getRenderContext() {
-        return renderContext;
-    }
-
    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setRenderContext(com.jensoft.core.plugin.metrics.geom.MetricsRenderContext)
-     */
-    @Override
-    public void setRenderContext(MetricsRenderContext renderContext) {
-        this.renderContext = renderContext;
-    }
 
     /**
      * get basic format
@@ -213,93 +178,6 @@ public abstract class AbstractMetricsManager implements
     }
 
    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsMarkerColor()
-     */
-    @Override
-    public Color getMetricsMarkerColor() {
-        return metricsMarkerColor;
-    }
-
-    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsMarkerColor(java.awt.Color)
-     */
-    @Override
-    public void setMetricsMarkerColor(Color metricsColor) {
-        metricsMarkerColor = metricsColor;
-    }
-
    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsLabelColor()
-     */
-    @Override
-    public Color getMetricsLabelColor() {
-        return metricsLabelColor;
-    }
-
-    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsLabelColor(java.awt.Color)
-     */
-    @Override
-    public void setMetricsLabelColor(Color metricsLabelColor) {
-        this.metricsLabelColor = metricsLabelColor;
-    }
-
-   
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsBaseLineColor()
-     */
-    @Override
-    public Color getMetricsBaseLineColor() {
-        return metricsBaseLineColor;
-    }
-
-    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsBaseLineColor(java.awt.Color)
-     */
-    @Override
-    public void setMetricsBaseLineColor(Color metricsBaseLineColor) {
-        this.metricsBaseLineColor = metricsBaseLineColor;
-    }
-
-    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsMedianFont()
-     */
-    @Override
-    public Font getMetricsMedianFont() {
-        return metricsMedianFont;
-    }
-
-    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsMedianFont(java.awt.Font)
-     */
-    @Override
-    public void setMetricsMedianFont(Font metricsFont) {
-        metricsMedianFont = metricsFont;
-    }
-
-    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsMajorFont()
-     */
-    @Override
-    public Font getMetricsMajorFont() {
-        return metricsMajorFont;
-    }
-
-    
-    /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsMajorFont(java.awt.Font)
-     */
-    @Override
-    public void setMetricsMajorFont(Font metricsMajorFont) {
-        this.metricsMajorFont = metricsMajorFont;
-    }
 
 }

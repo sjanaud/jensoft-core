@@ -18,6 +18,8 @@ import java.util.List;
 import java.util.Locale;
 
 import com.jensoft.core.plugin.metrics.geom.Metrics;
+import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
+import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsNature;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.projection.Projection;
 
@@ -53,23 +55,11 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
     /**density factor. Density is an adjust parameter that can be make switch the model to next model by invalidate the size pixel holder.*/
     private int intervalDensity = 3;
     
-    private MetricsDensity metricsDensity = MetricsDensity.Condensed;
-    
-    
-    /**density*/
-    public enum MetricsDensity{
-    	Condensed,
-    	Low
-    }
-    
     /**
      * create the modeled manager.
      */
     public ModeledMetricsManager() {
       this.metricsModels =new ArrayList<ModeledMetricsManager.MetricsModel>();
-      List<MetricsModel> models = createDefaultRangeExponentModel(24);
-      metricsModels.addAll(models);
-      Collections.sort(metricsModels, modelComparator);
     }
     
     /**
@@ -77,28 +67,13 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      * @param locale 
      */
     public void applyLocalizedMetrics(Locale locale){
-    	super.applyLocalizedMetrics(locale);
+    	//super.applyLocalizedMetrics(locale);
     	this.metricsModels.clear();
     	List<MetricsModel> models = createDefaultRangeExponentModel(24);
         metricsModels.addAll(models);
         Collections.sort(metricsModels, modelComparator);
     }
    
-    /**
-     * get metrics density
-     * @return metrics density 
-     */
-	public MetricsDensity getMetricsDensity() {
-		return metricsDensity;
-	}
-
-	/**
-	 * set metrics density
-	 * @param metricsDensity
-	 */
-	public void setMetricsDensity(MetricsDensity metricsDensity) {
-		this.metricsDensity = metricsDensity;
-	}
 
 	/**
      * true if the median metrics options is enabled, false otherwise
@@ -218,7 +193,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      * @return the metrics model for the given exponents
      */
     protected MetricsModel createModel(int exponent){
-    	return createDefaultExponentModel(exponent,getLocale());
+    	return createDefaultExponentModel(exponent,getMetricsPlugin().getLocale());
     }
     
     /**
@@ -311,7 +286,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      */
     protected Metrics generateMetrics(BigDecimal userValue, MetricsModel model) {
     	Metrics metrics = new Metrics(getType());
-        Projection proj = getRenderContext().getProjection();
+        Projection proj = getMetricsPlugin().getProjection();
         double deviceValue = 0;
         double maxPixelValue = 0;
         if (getType() == MetricsType.XMetrics) {
@@ -330,11 +305,15 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
         metrics.setDeviceValue(deviceValue);
         metrics.setUserValueAsBigDecimal(userValue);
         metrics.setUserValue(userValue.doubleValue());
-        metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-        metrics.setMetricsLabelColor(getMetricsLabelColor());
-        metrics.setLockLabel(isLockLabel());
-        metrics.setLockMarker(isLockMarker());
-        metrics.setMetricsLabel(model.formatValue(userValue.doubleValue()));
+       // metrics.setMetricsMarkerColor(getMetricsPlugin().getMetricsMarkerColor());
+       // metrics.setMetricsLabelColor(getMetricsLabelColor());
+        //metrics.setLockLabel(isLockLabel());
+        //metrics.setLockMarker(isLockMarker());
+        
+        if(getMetricsPlugin().getSuffix() == null)
+        	metrics.setMetricsLabel(model.formatValue(userValue.doubleValue()));
+        else
+        	 metrics.setMetricsLabel(model.formatValue(userValue.doubleValue())+getMetricsPlugin().getSuffix());
 
         if (model != null) {
             if (model.getMetricsLabelColor() != null) {
@@ -366,22 +345,26 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
      */
     @Override
     public final List<Metrics> getDeviceMetrics() {
+    	if(metricsModels.isEmpty()){
+    		 List<MetricsModel> models = createDefaultRangeExponentModel(24);
+             metricsModels.addAll(models);
+             Collections.sort(metricsModels, modelComparator);
+    	}
+         
     	List<Metrics> metrics= new ArrayList<Metrics>();
     	for (int i = 0; i < metricsModels.size(); i++) {
     		MetricsModel model = metricsModels.get(i);
+    		
+    		//solve and check validity
     		model.solve();
 			boolean valid = model.isValid();
+			
 			if(valid){
 				
 				//System.out.println(model.getExponent()+ "for metrics "+ getType() +" density : "+model.getDensity());
 				double density = model.getDensity();
-				if(metricsDensity == MetricsDensity.Low &&  density > 75){ 
-					model = model.nextModel();
-					model.solve();
-					model.isValid();
-				}
 				
-				List<Metrics> majors = model.generateMetrics();
+				List<Metrics> majors = model.generateMajorMetrics();
 				metrics.addAll(majors);
 				
 				if(isMedianMetricsOption() && density < getMedianMetricsDensityThreshold()){
@@ -482,7 +465,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * @return next model
          */
         public MetricsModel nextModel(){
-        	MetricsModel mm = ModeledMetricsManager.createDefaultExponentModel(this.exponent+1, getMetricsManager().getLocale());
+        	MetricsModel mm = ModeledMetricsManager.createDefaultExponentModel(this.exponent+1, getMetricsManager().getMetricsPlugin().getLocale());
         	mm.setMetricsManager(metricsManager);
         	return  mm;
         }
@@ -492,7 +475,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * @return previous model
          */
         public MetricsModel previousModel(){
-        	MetricsModel mm = ModeledMetricsManager.createDefaultExponentModel(this.exponent-1, getMetricsManager().getLocale());
+        	MetricsModel mm = ModeledMetricsManager.createDefaultExponentModel(this.exponent-1, getMetricsManager().getMetricsPlugin().getLocale());
         	mm.setMetricsManager(metricsManager);
         	return  mm;
         }
@@ -510,7 +493,8 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * @return true if this model is applicable, false otherwise
          */
         public void solve() {
-            Projection proj = getMetricsManager().getRenderContext().getProjection();
+            Projection proj = getMetricsManager().getMetricsPlugin().getProjection();
+            int metricsSize = metricsManager.getMetricsPlugin().getMajorTextFont().getSize();
             if (getMetricsManager().getType() == MetricsType.XMetrics) {
                 this.userSize = new BigDecimal(proj.getUserWidth());
                 BigDecimal bd1 = new BigDecimal(proj.getMinX()).divide(factor, RoundingMode.CEILING);
@@ -522,6 +506,17 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
                 }
                 this.pixelSize = new BigDecimal(proj.getPixelWidth());
                 this.maxValue = new BigDecimal(proj.getMaxX());
+                
+                if(getMetricsManager().getMetricsPlugin().getGravity() == Gravity.Rotate){
+     	            this.pixelLabelHolder = 4/5d*1*metricsSize+metricsManager.getIntervalDensity();
+                }
+                else{//natural
+                	int s = (this.formatValue(this.ref.doubleValue())).length();
+     	            if(getMetricsManager().getMetricsPlugin().getSuffix() != null)
+     	            	s = (this.formatValue(this.ref.doubleValue())+getMetricsManager().getMetricsPlugin().getSuffix()).length();
+     	            
+     	            this.pixelLabelHolder = 4/5d*s*metricsSize+metricsManager.getIntervalDensity();
+                }
             }
             else if (getMetricsManager().getType() == MetricsType.YMetrics) {
                 this.userSize = new BigDecimal(proj.getUserHeight());
@@ -534,11 +529,19 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
                 }
                 this.pixelSize = new BigDecimal(proj.getPixelHeight());
                 this.maxValue = new BigDecimal(proj.getMaxY());
+                
+                if(getMetricsManager().getMetricsPlugin().getGravity() == Gravity.Rotate){
+                	int s = (this.formatValue(this.ref.doubleValue())).length();
+     	            if(getMetricsManager().getMetricsPlugin().getSuffix() != null)
+     	            	s = (this.formatValue(this.ref.doubleValue())+getMetricsManager().getMetricsPlugin().getSuffix()).length();
+     	            
+     	            this.pixelLabelHolder = 4/5d*s*metricsSize+metricsManager.getIntervalDensity();
+                }
+                else{//natural
+     	            this.pixelLabelHolder = 4/5d*1*metricsSize+metricsManager.getIntervalDensity();
+                }
             }
-
-            int metricsSize = metricsManager.getMetricsMajorFont().getSize();
-            int s = (this.ref.toString()).length();
-            this.pixelLabelHolder = 4/5d*s*metricsSize+metricsManager.getIntervalDensity();
+	           
         }
         
         
@@ -548,7 +551,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          */
         public double getDensity(){
         	 int s = (this.ref.toString()).length();
-        	 int metricsSize = metricsManager.getMetricsMajorFont().getSize();
+        	 int metricsSize = metricsManager.getMetricsPlugin().getMajorTextFont().getSize();
         	 double commonHolder =  4/5d*s*metricsSize+metricsManager.getIntervalDensity();
         	 double commonSize = userSize.divide(factor, RoundingMode.HALF_EVEN).multiply(new BigDecimal(commonHolder)).doubleValue();
         	 return commonSize*100/pixelSize.doubleValue();
@@ -587,18 +590,21 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * @return {@link Metrics} list
          */
         public List<Metrics> generateMedianMetrics() {
-	    	DecimalFormat medianFormater= (DecimalFormat)NumberFormat.getInstance(metricsManager.getLocale());
+	    	DecimalFormat medianFormater= (DecimalFormat)NumberFormat.getInstance(metricsManager.getMetricsPlugin().getLocale());
 	    	if(exponent < 0){
 	     	   medianFormater.setMaximumFractionDigits(Math.abs(exponent)+1);
 	     	   medianFormater.setMinimumFractionDigits(Math.abs(exponent)+1);
 	 	   	}
-	    	BigDecimal originFactor = this.factor;
-	    	this.factor = this.factor.multiply(new BigDecimal("0.5"));
-	    	List<Metrics> metrics = generateMetrics();
-	    	this.factor = originFactor;
+	    	BigDecimal seed = this.factor.multiply(new BigDecimal("0.5"));
+	    	List<Metrics> metrics = generateMetrics(seed,MetricsNature.Median);
 	    	for (Metrics median : metrics) {
-        	   median.setNature(Metrics.MEDIAN);
-        	   median.setMetricsLabel(medianFormater.format(median.getUserValue()));
+	    		String s = getMetricsManager().getMetricsPlugin().getSuffix();
+	    		if(s != null){
+	    			median.setMetricsLabel(medianFormater.format(median.getUserValue())+s);
+	    		}else{
+	    			median.setMetricsLabel(medianFormater.format(median.getUserValue()));
+	    		}
+        	   
 	    	}
 	    	return metrics;
         }
@@ -612,33 +618,46 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
          * @return {@link Metrics} list
          */
         public List<Metrics> generateMinorMetrics() {
-           BigDecimal originFactor = this.factor;
-           this.factor = this.factor.multiply(new BigDecimal("0.1"));
-           List<Metrics> metrics = generateMetrics();
-           this.factor = originFactor;
+           BigDecimal seed = this.factor.multiply(new BigDecimal("0.1"));
+           List<Metrics> metrics = generateMetrics(seed, MetricsNature.Minor);
            for (Metrics metrics2 : metrics) {
-        	   metrics2.setNature(Metrics.MINOR);
         	   metrics2.setMetricsLabel(null);
            }
            return metrics;
+        }
+        
+        
+        /**
+         * generates all major metrics for this model.
+         * <p>
+         * minor metrics is the identity fraction metrics between two majors metrics according to this model with reference and factor. 
+         * </p>
+         * @return {@link Metrics} list
+         */
+        public List<Metrics> generateMajorMetrics() {
+	    	return generateMetrics(this.factor, MetricsNature.Major);
         }
         
         /**
          * generates all major metrics for this model
          * @return {@link Metrics} list
          */
-        public List<Metrics> generateMetrics() {
+        private List<Metrics> generateMetrics(BigDecimal seed, MetricsNature nature) {
             List<Metrics> metrics = new ArrayList<Metrics>();
             boolean flag = true;
             BigDecimal metricsValue = this.ref;
             Metrics m0 = this.getMetricsManager().generateMetrics(metricsValue, this);
+          
             if (m0 != null) {
+            	  m0.setNature(nature);
             	 metrics.add(m0);
             }
             while(flag){
-            	metricsValue = metricsValue.add(this.factor);
+            	metricsValue = metricsValue.add(seed);
             	 Metrics m = this.getMetricsManager().generateMetrics(metricsValue, this);
+            	
                  if (m != null) {
+                	 m.setNature(nature);
                      metrics.add(m);
                  }
                  if(metricsValue.compareTo(this.maxValue) == 1)
@@ -682,7 +701,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
 		}
 
 		/**
-         * @return the ref
+         * @return the reference
          */
         public BigDecimal getRef() {
             return ref;

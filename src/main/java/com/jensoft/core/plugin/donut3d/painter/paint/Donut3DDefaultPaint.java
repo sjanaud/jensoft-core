@@ -228,6 +228,7 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 		List<Donut3DSlice> slicesFragments = donut3d.getPaintOrderFragments();
 		for (Donut3DSlice fragment : slicesFragments) {
 
+			//System.out.println("paint fragment : "+fragment.getName());
 			
 			paintDonut3DFill2(g2d, donut3d, fragment);
 
@@ -790,6 +791,7 @@ public class Donut3DDefaultPaint extends AbstractDonut3DPaint {
 			g2d.setPaint(p2);
 
 			g2d.fill(outerEffect2);
+			
 		}
 		
 	}

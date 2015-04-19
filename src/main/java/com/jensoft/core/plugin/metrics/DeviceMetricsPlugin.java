@@ -18,14 +18,11 @@ import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
-import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
-import com.jensoft.core.plugin.metrics.manager.Multiplier3MetricsManager;
-import com.jensoft.core.plugin.metrics.manager.MultiplierMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel;
@@ -41,10 +38,8 @@ import com.jensoft.core.view.ViewPart;
  * @since 1.0
  * @author sebastien janaud
  */
-public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> extends AbstractPlugin {
+public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> extends MetricsPlugin<M> {
 
-	/** the metrics manager for x axis */
-	private M metricsManager;
 
 	/** axis base line at the constant x or y value */
 	private double baseLine;
@@ -55,11 +50,6 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	/** device axis x or y */
 	private MarkerPosition deviceMarkerPosition;
 
-	/** the metrics painter */
-	private AbstractMetricsPainter metricsPainter = new MetricsGlyphPainter();
-
-	/** paint base line flag */
-	private boolean paintLine = true;
 
 	/**
 	 * defines two type of axis on device, axis along x and axis along y
@@ -411,264 +401,8 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 
 	}
 
-	/**
-	 * <code>DeviceMultiplierMetrics</code> takes the responsibility to manage
-	 * device metrics with one multiplier
-	 * <p style="color : red;">
-	 * WARNING : can be reboot on to much iteration.
-	 * </p>
-	 * <p>
-	 * You can use this manager when you build some static views without window
-	 * bound change<br>
-	 * it is discourage if you use tools that dynamically change the window
-	 * bounds because the manager can be reboot.
-	 * <p>
-	 * 
-	 * @author Sebastien Janaud
-	 */
+	
 
-	public static class DeviceMultiplierMetrics extends DeviceMetricsPlugin<MultiplierMetricsManager> {
-
-		/**
-		 * <code>X</code> manages {@link DeviceMultiplierMetrics} for
-		 * {@link DeviceAxis#AxisX}
-		 */
-		public static class X extends DeviceMultiplierMetrics {
-
-			/**
-			 * Create {@link DeviceMultiplierMetrics} for
-			 * {@link DeviceAxis#AxisX} for given parameters
-			 * 
-			 * @param metricsRef
-			 * @param metricsInterval
-			 * @param baseLine
-			 */
-			public X(double metricsRef, double metricsInterval, double baseLine) {
-				super(metricsRef, metricsInterval, baseLine, DeviceAxis.AxisX);
-			}
-
-			/**
-			 * Create {@link DeviceMultiplierMetrics} for
-			 * {@link DeviceAxis#AxisX} for given parameters
-			 * 
-			 * @param metricsRef
-			 * @param metricsInterval
-			 * @param baseLine
-			 * @param markerPosition
-			 */
-			public X(double metricsRef, double metricsInterval, double baseLine, MarkerPosition markerPosition) {
-				super(metricsRef, metricsInterval, baseLine, DeviceAxis.AxisX);
-			}
-
-		}
-
-		/**
-		 * <code>Y</code> manages {@link DeviceMultiplierMetrics} for
-		 * {@link DeviceAxis#AxisY}
-		 */
-		public static class Y extends DeviceMultiplierMetrics {
-
-			/**
-			 * Create {@link DeviceMultiplierMetrics} for
-			 * {@link DeviceAxis#AxisY} for given parameters
-			 * 
-			 * @param metricsRef
-			 * @param metricsInterval
-			 * @param baseLine
-			 */
-			public Y(double metricsRef, double metricsInterval, double baseLine) {
-				super(metricsRef, metricsInterval, baseLine, DeviceAxis.AxisY);
-			}
-
-			/**
-			 * Create {@link DeviceMultiplierMetrics} for
-			 * {@link DeviceAxis#AxisY} for given parameters
-			 * 
-			 * @param metricsRef
-			 * @param metricsInterval
-			 * @param baseLine
-			 * @param markerPosition
-			 */
-			public Y(double metricsRef, double metricsInterval, double baseLine, MarkerPosition markerPosition) {
-				super(metricsRef, metricsInterval, baseLine, DeviceAxis.AxisY);
-			}
-
-		}
-
-		/**
-		 * create a device multiplier metrics
-		 * 
-		 * @param metricsRef
-		 *            the reference to use for resolve metrics
-		 * @param metricsInterval
-		 *            the metrics interval to factor from the reference into
-		 *            projection bound metrics
-		 * @param deviceAxis
-		 *            the device axis zone to lay out this metrics
-		 */
-		public DeviceMultiplierMetrics(double metricsRef, double metricsInterval, double baseLine, DeviceAxis deviceAxis) {
-			super(new MultiplierMetricsManager(metricsRef, metricsInterval), baseLine, deviceAxis);
-
-		}
-
-		/**
-		 * create a device multiplier metrics
-		 * 
-		 * @param metricsRef
-		 *            the reference to use for resolve metrics
-		 * @param metricsInterval
-		 *            the metrics interval to factor from the reference into
-		 *            projection bound metrics *
-		 * @param markerPosition
-		 *            the marker position
-		 * @param deviceAxis
-		 *            the device axis zone to lay out this metrics
-		 */
-		public DeviceMultiplierMetrics(double metricsRef, double metricsInterval, double baseLine, MarkerPosition markerPosition, DeviceAxis deviceAxis) {
-			super(new MultiplierMetricsManager(metricsRef, metricsInterval), baseLine, markerPosition, deviceAxis);
-
-		}
-
-	}
-
-	/**
-	 * <code>DeviceMultiMultiplierMetrics</code> takes the responsibility to
-	 * manage 3-multipliers metrics on device
-	 * <p style="color : red;">
-	 * WARNING : can be reboot on to much iteration.
-	 * </p>
-	 * <p>
-	 * You can use this manager when you build some static views without projection
-	 * bound change<br>
-	 * it is discourage if you use tools that dynamically change the projection
-	 * bounds because the manager can be reboot.
-	 * <p>
-	 * 
-	 * @author sebastien janaud
-	 */
-	public static class DeviceMultiplier3Metrics extends DeviceMetricsPlugin<Multiplier3MetricsManager> {
-
-		/**
-		 * <code>X</code> manages {@link DeviceMultiplier3Metrics} for
-		 * {@link DeviceAxis#AxisX}
-		 */
-		public static class X extends DeviceMultiplier3Metrics {
-
-			/**
-			 * Create {@link DeviceMultiplier3Metrics} for
-			 * {@link DeviceAxis#AxisX}
-			 * 
-			 * @param ref
-			 * @param baseLine
-			 */
-			public X(double ref, double baseLine) {
-				super(ref, baseLine, DeviceAxis.AxisX);
-			}
-
-			/**
-			 * Create {@link DeviceMultiplier3Metrics} for
-			 * {@link DeviceAxis#AxisX}
-			 * 
-			 * @param ref
-			 * @param baseLine
-			 * @param markerPosition
-			 */
-			public X(double ref, double baseLine, MarkerPosition markerPosition) {
-				super(ref, baseLine, markerPosition, DeviceAxis.AxisX);
-			}
-
-		}
-
-		/**
-		 * <code>Y</code> manages {@link DeviceMultiplier3Metrics} for
-		 * {@link DeviceAxis#AxisY}
-		 */
-		public static class Y extends DeviceMultiplier3Metrics {
-
-			/**
-			 * Create {@link DeviceMultiplier3Metrics} for
-			 * {@link DeviceAxis#AxisY} for given parameters
-			 * 
-			 * @param ref
-			 * @param baseLine
-			 */
-			public Y(double ref, double baseLine) {
-				super(ref, baseLine, DeviceAxis.AxisY);
-			}
-
-			/**
-			 * Create {@link DeviceMultiplier3Metrics} for
-			 * {@link DeviceAxis#AxisY} for given parameters
-			 * 
-			 * @param ref
-			 * @param baseLine
-			 * @param markerPosition
-			 */
-			public Y(double ref, double baseLine, MarkerPosition markerPosition) {
-				super(ref, baseLine, markerPosition, DeviceAxis.AxisY);
-			}
-
-		}
-
-		/**
-		 * Create device multiple multiplier metrics plug-in
-		 * 
-		 * @param ref
-		 *            the reference from metrics will be created
-		 * @param baseLine
-		 *            the axis base line on x or y
-		 * @param deviceAxis
-		 *            the x or y axis on device
-		 */
-		public DeviceMultiplier3Metrics(double ref, double baseLine, DeviceAxis deviceAxis) {
-			super(new Multiplier3MetricsManager(ref), baseLine, deviceAxis);
-		}
-
-		/**
-		 * Create device multiple multiplier metrics plug-in
-		 * 
-		 * @param ref
-		 *            the reference from metrics will be created
-		 * @param baseLine
-		 *            the axis base line on x or y
-		 * @param deviceAxis
-		 *            the x or y axis on device
-		 * @param markerPosition
-		 *            the marker position N,S,NS for x axis, W,E,WE for y axis
-		 */
-		public DeviceMultiplier3Metrics(double ref, double baseLine, MarkerPosition markerPosition, DeviceAxis deviceAxis) {
-			super(new Multiplier3MetricsManager(ref), baseLine, markerPosition, deviceAxis);
-		}
-
-		/***
-		 * set the major metrics.
-		 * 
-		 * @param major
-		 */
-		public void setMajor(double major) {
-			getMetricsManager().setMajor(major);
-
-		}
-
-		/**
-		 * set the median metrics
-		 * 
-		 * @param median
-		 */
-		public void setMedian(double median) {
-			getMetricsManager().setMedian(median);
-		}
-
-		/**
-		 * set the minor metrics
-		 * 
-		 * @param minor
-		 */
-		public void setMinor(double minor) {
-			getMetricsManager().setMinor(minor);
-		}
-
-	}
 
 	/**
 	 * <code>DeviceTimeMetrics</code> takes the responsibility to manage timing
@@ -815,7 +549,6 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 			if (!super.isAccessible(viewPart)) {
 				return;
 			}
-			super.createRenderContext(v2d, g2d);
 			super.assignType();
 
 			int axisSpacing = 0;
@@ -975,7 +708,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 *            the axis type x or y on device
 	 */
 	public DeviceMetricsPlugin(M manager, double baseLine, DeviceAxis deviceAxis) {
-		metricsManager = manager;
+		super(manager);
 		this.baseLine = baseLine;
 		this.deviceAxis = deviceAxis;
 	}
@@ -990,42 +723,15 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 	 * @param deviceAxis
 	 *            the axis type x or y on device
 	 * @param deviceMarkerPosition
-	 *            the marker position N,S,NS for x axis, W,E,WE for y axis
+	 *            the marker position N,S for x axis, W,E for y axis
 	 */
 	public DeviceMetricsPlugin(M manager, double baseLine, MarkerPosition deviceMarkerPosition, DeviceAxis deviceAxis) {
-		metricsManager = manager;
-		this.baseLine = baseLine;
-		this.deviceAxis = deviceAxis;
+		this(manager, baseLine, deviceAxis);
 		this.deviceMarkerPosition = deviceMarkerPosition;
 	}
 
-	/**
-	 * get the metrics layout manager
-	 * 
-	 * @return layout manager
-	 */
-	public M getMetricsManager() {
-		return metricsManager;
-	}
 
-	/**
-	 * set the metrics layout manager
-	 * 
-	 * @param metricsLayoutManager
-	 *            the manager to set
-	 */
-	public void setMetricsManager(M metricsLayoutManager) {
-		this.metricsManager = metricsLayoutManager;
-	}
-
-	/**
-	 * get the metrics painter {@link AbstractMetricsPainter}
-	 * 
-	 * @return the metricsPainter
-	 */
-	public AbstractMetricsPainter getMetricsPainter() {
-		return metricsPainter;
-	}
+	
 
 	/**
 	 * @return the deviceMarkerPosition
@@ -1042,23 +748,7 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		this.deviceMarkerPosition = deviceMarkerPosition;
 	}
 
-	/**
-	 * get the metrics painter
-	 * 
-	 * @return the painter
-	 */
-	public AbstractMetricsPainter getPainter() {
-		return metricsPainter;
-	}
-
-	/**
-	 * set the metrics painter
-	 * 
-	 * @param painter
-	 */
-	public void setPainter(AbstractMetricsPainter painter) {
-		this.metricsPainter = painter;
-	}
+	
 
 	/**
 	 * true if the context is accessible, false otherwise
@@ -1073,57 +763,9 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		return true;
 	}
 
-	/**
-	 * @return the paintLine
-	 */
-	public boolean isPaintLine() {
-		return paintLine;
-	}
+	
 
-	/**
-	 * @param paintLine
-	 *            the paintLine to set
-	 */
-	public void setPaintLine(boolean paintLine) {
-		this.paintLine = paintLine;
-	}
-
-	/**
-	 * delegate, set the metrics label color
-	 * 
-	 * @param metricsLabelColor
-	 */
-	public void setMetricsLabelColor(Color metricsLabelColor) {
-		getMetricsManager().setMetricsLabelColor(metricsLabelColor);
-	}
-
-	/**
-	 * delegate, get the metrics label color
-	 * 
-	 * @return metrics label color
-	 */
-	public Color getMetricsLabelColor() {
-		return getMetricsManager().getMetricsLabelColor();
-	}
-
-	/**
-	 * delegate, set the metrics marker Color
-	 * 
-	 * @param metricsColor
-	 *            the color of the marker
-	 */
-	public void setMetricsMarkerColor(Color metricsColor) {
-		getMetricsManager().setMetricsMarkerColor(metricsColor);
-	}
-
-	/**
-	 * delegate, get the metrics marker Color
-	 * 
-	 * @return metricsColor the color of the marker
-	 */
-	public Color getMetricsMarkerColor() {
-		return getMetricsManager().getMetricsMarkerColor();
-	}
+	
 
 	/**
 	 * delegate method to set the metrics format
@@ -1144,86 +786,18 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		return getMetricsManager().getMetricsFormat();
 	}
 
-	/**
-	 * get the axis metrics base line color
-	 * 
-	 * @return the base line color
-	 */
-	public Color getMetricsBaseLineColor() {
-		return getMetricsManager().getMetricsBaseLineColor();
-	}
 
-	/**
-	 * set base line color
-	 * 
-	 * @param baseLineColor
-	 */
-	public void setMetricsBaseLineColor(Color baseLineColor) {
-		getMetricsManager().setMetricsBaseLineColor(baseLineColor);
-	}
 
-	/**
-	 * get the axis metrics median font
-	 * 
-	 * @return the metrics median font
-	 */
-	public Font getMetricsMedianFont() {
-		return getMetricsManager().getMetricsMedianFont();
-	}
-
-	/**
-	 * set the metrics median font
-	 * 
-	 * @param metricsMedianFont
-	 *            the metrics median font to set
-	 */
-	public void setMetricsMedianFont(Font metricsMedianFont) {
-		getMetricsManager().setMetricsMedianFont(metricsMedianFont);
-	}
-
-	/**
-	 * get the axis metrics major font
-	 * 
-	 * @return the metrics major font
-	 */
-	public Font getMetricsMajorFont() {
-		return getMetricsManager().getMetricsMajorFont();
-	}
-
-	/**
-	 * set the metrics major font
-	 * 
-	 * @param metricsMajorFont
-	 *            the metrics major font to set
-	 */
-	public void setMetricsMajorFont(Font metricsMajorFont) {
-		getMetricsManager().setMetricsMajorFont(metricsMajorFont);
-	}
-
-	/**
-	 * create the render context
-	 * 
-	 * @param v2d
-	 * @param g2d
-	 */
-	private void createRenderContext(View v2d, Graphics2D g2d) {
-		MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getProjection(), g2d);
-		renderContext.setMetricsMedianFont(metricsManager.getMetricsMedianFont());
-		renderContext.setMetricsMajorFont(metricsManager.getMetricsMajorFont());
-
-		metricsManager.setRenderContext(renderContext);
-		metricsPainter.setMetricsRenderContext(renderContext);
-	}
 
 	/**
 	 * assign manager type x or y given by given device axis.
 	 */
 	private void assignType() {
 		if (deviceAxis == DeviceAxis.AxisX) {
-			metricsManager.setMetricsType(MetricsType.XMetrics);
+			getMetricsManager().setMetricsType(MetricsType.XMetrics);
 		}
 		if (deviceAxis == DeviceAxis.AxisY) {
-			metricsManager.setMetricsType(MetricsType.YMetrics);
+			getMetricsManager().setMetricsType(MetricsType.YMetrics);
 		}
 	}
 
@@ -1257,25 +831,25 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 			m.setMarkerLocation(p);
 
 		}
-		metricsPainter.doPaintMetrics(g2d, metricsX);
+		getMetricsPainter().doPaintMetrics(g2d, metricsX);
 	}
 
 	/**
 	 * paint the base line for x metrics
 	 * 
-	 * @param v2d
+	 * @param view
 	 * @param g2d
 	 */
-	protected void paintMetricsXBaseLine(View v2d, Graphics2D g2d, double baseLine) {
+	protected void paintMetricsXBaseLine(View view, Graphics2D g2d, double baseLine) {
 
 		Point2D deviceBaseLine = getProjection().userToPixel(new Point2D.Double(0, baseLine));
 		Color axisBaseLineColor;
-		if (metricsManager.getMetricsBaseLineColor() != null) {
-			axisBaseLineColor = metricsManager.getMetricsBaseLineColor();
+		if (getBaseLineColor() != null) {
+			axisBaseLineColor = getBaseLineColor();
 		} else {
-			axisBaseLineColor = metricsManager.getRenderContext().getProjection().getThemeColor();
+			axisBaseLineColor = getProjection().getThemeColor();
 		}
-		metricsPainter.doPaintLineMetrics(g2d, new Point2D.Double(0, deviceBaseLine.getY()), new Point2D.Double(getProjection().getDevice2D().getDeviceWidth(), deviceBaseLine.getY()), axisBaseLineColor);
+		getMetricsPainter().doPaintLineMetrics(g2d, new Point2D.Double(0, deviceBaseLine.getY()), new Point2D.Double(getProjection().getDevice2D().getDeviceWidth(), deviceBaseLine.getY()), axisBaseLineColor);
 
 	}
 
@@ -1298,25 +872,25 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 			}
 		}
 
-		metricsPainter.doPaintMetrics(g2d, metricsY);
+		getMetricsPainter().doPaintMetrics(g2d, metricsY);
 	}
 
 	/**
 	 * paint the base line for y metrics
 	 * 
-	 * @param v2d
+	 * @param view
 	 * @param g2d
 	 */
-	protected void paintMetricsYBaseLine(View v2d, Graphics2D g2d, double baseLine) {
+	protected void paintMetricsYBaseLine(View view, Graphics2D g2d, double baseLine) {
 
 		Point2D deviceBaseLine = getProjection().userToPixel(new Point2D.Double(baseLine, 0));
 		Color axisBaseLineColor;
-		if (metricsManager.getMetricsBaseLineColor() != null) {
-			axisBaseLineColor = metricsManager.getMetricsBaseLineColor();
+		if (getBaseLineColor() != null) {
+			axisBaseLineColor = getBaseLineColor();
 		} else {
-			axisBaseLineColor = metricsManager.getRenderContext().getProjection().getThemeColor();
+			axisBaseLineColor = getProjection().getThemeColor();
 		}
-		metricsPainter.doPaintLineMetrics(g2d, new Point2D.Double(deviceBaseLine.getX(), 0), new Point2D.Double(deviceBaseLine.getX(), getProjection().getDevice2D().getDeviceHeight()), axisBaseLineColor);
+		getMetricsPainter().doPaintLineMetrics(g2d, new Point2D.Double(deviceBaseLine.getX(), 0), new Point2D.Double(deviceBaseLine.getX(), getProjection().getDevice2D().getDeviceHeight()), axisBaseLineColor);
 
 	}
 
@@ -1332,18 +906,17 @@ public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> exte
 		if (!isAccessible(viewPart)) {
 			return;
 		}
-		createRenderContext(v2d, g2d);
 		assignType();
-		List<Metrics> metrics = metricsManager.getDeviceMetrics();
+		List<Metrics> metrics = getMetricsManager().getDeviceMetrics();
 		if (deviceAxis == DeviceAxis.AxisX) {
 			paintMetricsX(v2d, g2d, metrics, baseLine, 0);
-			if (isPaintLine()) {
+			if (isBaseLinePaint()) {
 				paintMetricsXBaseLine(v2d, g2d, baseLine);
 			}
 		}
 		if (deviceAxis == DeviceAxis.AxisY) {
 			paintMetricsY(v2d, g2d, metrics, baseLine, 0);
-			if (isPaintLine()) {
+			if (isBaseLinePaint()) {
 				paintMetricsYBaseLine(v2d, g2d, baseLine);
 			}
 		}

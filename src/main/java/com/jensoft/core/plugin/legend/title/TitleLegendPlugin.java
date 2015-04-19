@@ -23,7 +23,6 @@ import com.jensoft.core.glyphmetrics.GlyphUtil;
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.Dithering;
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
 import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;

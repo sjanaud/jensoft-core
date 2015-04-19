@@ -18,7 +18,6 @@ import javax.swing.SwingUtilities;
 import javax.swing.event.EventListenerList;
 
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.View;

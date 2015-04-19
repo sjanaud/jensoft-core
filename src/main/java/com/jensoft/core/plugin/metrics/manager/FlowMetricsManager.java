@@ -115,7 +115,7 @@ public class FlowMetricsManager extends AbstractMetricsManager {
     @Override
     public List<Metrics> getDeviceMetrics() {
         deviceMetrics.clear();
-        Projection w2d = getRenderContext().getProjection();
+        Projection w2d = getMetricsPlugin().getProjection();
         double interval = flowEnd - flowStart;
 
         int metricsCount = (int) (interval / flowInterval);
@@ -135,10 +135,10 @@ public class FlowMetricsManager extends AbstractMetricsManager {
 
                         metrics.setDeviceValue(p2dDevice.getX());
                         metrics.setUserValue(userMetricsValue);
-                        metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-                        metrics.setMetricsLabelColor(getMetricsLabelColor());
-                        metrics.setLockLabel(isLockLabel());
-                        metrics.setLockMarker(isLockMarker());
+                        //metrics.setMetricsMarkerColor(getMetricsMarkerColor());
+                        //metrics.setMetricsLabelColor(getMetricsLabelColor());
+                        //metrics.setLockLabel(isLockLabel());
+                        //metrics.setLockMarker(isLockMarker());
 
                         if (getMetricsFormat() == null) {
                             metrics.setMetricsLabel(getDefaultFormat().format(
@@ -162,10 +162,10 @@ public class FlowMetricsManager extends AbstractMetricsManager {
                         Metrics metrics = new Metrics(MetricsType.YMetrics);
                         metrics.setDeviceValue(p2dDevice.getY());
                         metrics.setUserValue(userMetricsValue);
-                        metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-                        metrics.setMetricsLabelColor(getMetricsLabelColor());
-                        metrics.setLockLabel(isLockLabel());
-                        metrics.setLockMarker(isLockMarker());
+                       // metrics.setMetricsMarkerColor(getMetricsMarkerColor());
+                       // metrics.setMetricsLabelColor(getMetricsLabelColor());
+                       // metrics.setLockLabel(isLockLabel());
+                        //metrics.setLockMarker(isLockMarker());
 
                         if (getMetricsFormat() == null) {
                             metrics.setMetricsLabel(getDefaultFormat().format(
