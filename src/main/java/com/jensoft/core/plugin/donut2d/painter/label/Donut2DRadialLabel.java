@@ -13,7 +13,6 @@ import java.awt.LinearGradientPaint;
 import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
 
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.plugin.donut2d.Donut2D;
 import com.jensoft.core.plugin.donut2d.Donut2D.Donut2DNature;
 import com.jensoft.core.plugin.donut2d.Donut2DPlugin;

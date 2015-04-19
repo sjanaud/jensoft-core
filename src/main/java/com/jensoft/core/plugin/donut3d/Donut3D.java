@@ -773,15 +773,17 @@ public class Donut3D {
         double resteExtends = sliceExtendsDegree;
 
         while (resteExtends > 0) {
-
+        	
             fragmentExtends = getFragmentExtendsDegree(sliceStartDegree,
                                                        sliceExtendsDegree, fragmentStartAngleDegree,
                                                        resteExtends);
 
             Donut3DSlice fragment = createSliceFragment(donutSlice,
                                                         fragmentStartAngleDegree, fragmentExtends);
+            //System.out.println("fragment : "+fragment.getName());
             donutSlice.addFragment(fragment);
             resteExtends = resteExtends - fragmentExtends;
+            System.out.println("reste extends : "+resteExtends);
             fragmentStartAngleDegree = fragmentStartAngleDegree
                     + fragmentExtends;
 
@@ -790,6 +792,8 @@ public class Donut3D {
             }
 
         }
+        
+        System.out.println("count fragment for slice :"+donutSlice.getName()+" fragment count : "+donutSlice.getFragments().size());
 
     }
 
@@ -1248,6 +1252,7 @@ public class Donut3D {
     	 List<Donut3DSlice> firstSlices = getSlicesOnAngle(90);    	 
     	 List<Donut3DSlice> flattenFirstSlicesFragments = new ArrayList<Donut3DSlice>();
          for (Donut3DSlice firstSlice : firstSlices) {
+        	 //System.out.println(" add first slices : "+firstSlice.getName());
         	 flattenFirstSlicesFragments.addAll(firstSlice.getFragments());
          }
     	 
@@ -1256,22 +1261,42 @@ public class Donut3D {
          for (Donut3DSlice lastSlice : lastSlices) {
         	 flattenLastSlicesFragments.addAll(lastSlice.getFragments());
          }
+         
+         //process twice for back and front, to avoid issue when multiple slice on 90 extends back and front
 
+         //FIRST BACK
          //first fragment on 90°        
          for (Donut3DSlice firstSliceFragment : flattenFirstSlicesFragments) {
-			if(firstSliceFragment.getStartAngleDegree() <= 90 && firstSliceFragment.getEndAngleDegree() >= 90){
-				//System.out.println("found fragment from : "+firstSlice.getName() +" for fragment ["+donut3dSliceFragment.getStartAngleDegree()+","+donut3dSliceFragment.getEndAngleDegree()+"]");
+			if(firstSliceFragment.getStartAngleDegree() <= 90 && firstSliceFragment.getEndAngleDegree() >= 90 && firstSliceFragment.getType() == Type.Back){
+				//System.out.println("found back 90 deg fragment : "+firstSliceFragment.getName() +" for  ["+firstSliceFragment.getStartAngleDegree()+","+firstSliceFragment.getEndAngleDegree()+"]");
 				paintOrderFragments.add(firstSliceFragment);
 			}
          }        	
-        
-         
          //other from first
          for (Donut3DSlice firstSliceFragment : flattenFirstSlicesFragments) {
-        	  if (!in(firstSliceFragment, paintOrderFragments) && !in(firstSliceFragment, flattenLastSlicesFragments)) {
+        	  if (!in(firstSliceFragment, paintOrderFragments) && !in(firstSliceFragment, flattenLastSlicesFragments) && firstSliceFragment.getType() == Type.Back) {
+        		  //System.out.println("found other back 90 deg fragment : "+firstSliceFragment.getName() +" for  ["+firstSliceFragment.getStartAngleDegree()+","+firstSliceFragment.getEndAngleDegree()+"]");
         		  paintOrderFragments.add(firstSliceFragment);
               }
          }
+         
+         //FIRST FRONT
+         //first fragment on 90°        
+         for (Donut3DSlice firstSliceFragment : flattenFirstSlicesFragments) {
+			if(firstSliceFragment.getStartAngleDegree() <= 90 && firstSliceFragment.getEndAngleDegree() >= 90 && firstSliceFragment.getType() == Type.Front){
+				//System.out.println("found front 90 deg fragment : "+firstSliceFragment.getName() +" for  ["+firstSliceFragment.getStartAngleDegree()+","+firstSliceFragment.getEndAngleDegree()+"]");
+				paintOrderFragments.add(firstSliceFragment);
+			}
+         }        	
+         //other from first
+         for (Donut3DSlice firstSliceFragment : flattenFirstSlicesFragments) {
+        	  if (!in(firstSliceFragment, paintOrderFragments) && !in(firstSliceFragment, flattenLastSlicesFragments) && firstSliceFragment.getType() == Type.Front) {
+        		  //System.out.println("found other front 90 deg fragment : "+firstSliceFragment.getName() +" for  ["+firstSliceFragment.getStartAngleDegree()+","+firstSliceFragment.getEndAngleDegree()+"]");
+        		  paintOrderFragments.add(firstSliceFragment);
+              }
+         }
+         
+         
          
          //left
          List<Donut3DSlice> slicesLeft = getSlicesOnAngle(90, 270);

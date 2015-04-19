@@ -13,7 +13,6 @@ import java.awt.Font;
 import com.jensoft.core.catalog.nature.JenSoftView;
 import com.jensoft.core.catalog.ui.ViewFrameUI;
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.palette.color.FilPalette;
 import com.jensoft.core.palette.color.JennyPalette;

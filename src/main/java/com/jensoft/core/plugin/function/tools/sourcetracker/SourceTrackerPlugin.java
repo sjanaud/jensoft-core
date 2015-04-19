@@ -25,7 +25,6 @@ import com.jensoft.core.glyphmetrics.painter.GlyphMetricFill;
 import com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
 import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
 import com.jensoft.core.glyphmetrics.painter.marker.DefaultMarker;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.color.NanoChromatique;
 import com.jensoft.core.palette.color.Spectral;
 import com.jensoft.core.plugin.AbstractPlugin;

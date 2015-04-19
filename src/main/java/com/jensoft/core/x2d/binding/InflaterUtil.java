@@ -14,7 +14,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.InputFonts;
 
 /**
  * <code>InflaterUtil</code>

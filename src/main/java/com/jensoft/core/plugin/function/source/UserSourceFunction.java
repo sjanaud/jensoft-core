@@ -17,7 +17,6 @@ import com.jensoft.core.plugin.function.analysis.SimpleRegression;
 import com.jensoft.core.plugin.function.analysis.SplineInterpolator;
 import com.jensoft.core.plugin.function.analysis.UnivariateRealFunction;
 import com.jensoft.core.plugin.function.analysis.UnivariateRealInterpolator;
-import com.jensoft.core.projection.Projection;
 
 /**
  * <code>UserSourceFunction</code> defines kind of sources with user inputs like

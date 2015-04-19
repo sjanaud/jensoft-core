@@ -6,7 +6,6 @@
 package com.jensoft.core.plugin.metrics;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.Collections;
@@ -17,26 +16,20 @@ import javax.swing.JComponent;
 
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
 import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
-import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager;
-import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsDensity;
 import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsModel;
-import com.jensoft.core.plugin.metrics.manager.Multiplier3MetricsManager;
-import com.jensoft.core.plugin.metrics.manager.MultiplierMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeDurationMetrics;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel;
-import com.jensoft.core.plugin.metrics.painter.AbstractMetricsPainter;
 import com.jensoft.core.plugin.metrics.painter.MetricsGlyphPainter;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
@@ -47,13 +40,8 @@ import com.jensoft.core.view.ViewPart;
  * @since 1.0
  * @author sebastien janaud
  */
-public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extends AbstractPlugin {
+public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extends MetricsPlugin<M> {
 
-	/** the metrics manager */
-	private M metricsManager;
-
-	/** the metrics painter */
-	private AbstractMetricsPainter metricsPainter;
 
 	/** the accessible zone */
 	private Axis axis;
@@ -61,11 +49,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	/** the axis spacing */
 	private int axisSpacing = 0;
 
-	/** paint flag axis base line, default is false */
-	private boolean paintAxisBaseLine = false;
-	
-	/** metrics gravity*/
-	private Gravity gravity = Gravity.Rotate;
 	
 
 	/**
@@ -399,246 +382,9 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 	}
 
-	/**
-	 * <code>MultiplierMetrics</code> takes the responsibility to manage metrics
-	 * with 1 multiplier
-	 * <p style="color : red;">
-	 * WARNING : can be reboot on to much iteration.
-	 * </p>
-	 * <p>
-	 * You can use this manager when you build some static views without projection
-	 * bound change<br>
-	 * it is discourage if you use tools that dynamically change the projection
-	 * bounds because the manager can be reboot.
-	 * <p>
-	 * 
-	 * @author Sebastien Janaud
-	 */
-	@Deprecated
-	public static class MultiplierMetrics extends AxisMetricsPlugin<MultiplierMetricsManager> {
+	
 
-		/**
-		 * <code>W</code> manages {@link MultiplierMetrics} for
-		 * {@link Axis#AxisWest}
-		 */
-		public static class W extends MultiplierMetrics {
 
-			/**
-			 * Create {@link MultiplierMetrics} for {@link Axis#AxisWest} with
-			 * the given multiplier parameter
-			 * 
-			 * @param ref
-			 * @param multiplier
-			 */
-			public W(double ref, double multiplier) {
-				super(ref, multiplier, Axis.AxisWest);
-			}
-		}
-
-		/**
-		 * <code>W</code> manages {@link MultiplierMetrics} for
-		 * {@link Axis#AxisEast}
-		 */
-		public static class E extends MultiplierMetrics {
-
-			/**
-			 * Create {@link MultiplierMetrics} for {@link Axis#AxisEast} with
-			 * the given multiplier parameter
-			 * 
-			 * @param ref
-			 */
-			public E(double ref, double metricsInterval) {
-				super(ref, metricsInterval, Axis.AxisEast);
-			}
-		}
-
-		/**
-		 * <code>W</code> manages {@link MultiplierMetrics} for
-		 * {@link Axis#AxisNorth}
-		 */
-		public static class N extends MultiplierMetrics {
-
-			/**
-			 * Create {@link MultiplierMetrics} for {@link Axis#AxisNorth} with
-			 * the given multiplier parameter
-			 * 
-			 * @param ref
-			 */
-			public N(double ref, double metricsInterval) {
-				super(ref, metricsInterval, Axis.AxisNorth);
-			}
-		}
-
-		/**
-		 * <code>W</code> manages {@link MultiplierMetrics} for
-		 * {@link Axis#AxisSouth}
-		 */
-		public static class S extends MultiplierMetrics {
-
-			/**
-			 * Create {@link MultiplierMetrics} for {@link Axis#AxisSouth} with
-			 * the given multiplier parameter
-			 * 
-			 * @param ref
-			 */
-			public S(double ref, double metricsInterval) {
-				super(ref, metricsInterval, Axis.AxisSouth);
-			}
-		}
-
-		/**
-		 * create metrics multiplier plug-in
-		 * 
-		 * @param ref
-		 *            the reference to use for resolve metrics
-		 * @param multiplier
-		 *            the metrics interval to factor from the reference into
-		 *            projection bound metrics
-		 * @param axis
-		 *            the axis zone to lay out this metrics
-		 */
-		public MultiplierMetrics(double ref, double multiplier, Axis axis) {
-			super(new MultiplierMetricsManager(ref, multiplier), axis);
-		}
-
-	}
-
-	/**
-	 * <code>MultiMultiplierMetrics</code> takes the responsibility to manage
-	 * metrics with 3 multipliers
-	 * <p style="color : red;">
-	 * WARNING : can be reboot on to much iteration.
-	 * </p>
-	 * <p>
-	 * You can use this manager when you build some static views without projection
-	 * bound change<br>
-	 * it is discourage if you use tools that dynamically change the projection
-	 * bounds because the manager can be reboot.
-	 * <p>
-	 * 
-	 * @author sebastien janaud
-	 */
-	@Deprecated
-	public static class Multiplier3Metrics extends AxisMetricsPlugin<Multiplier3MetricsManager> {
-
-		/**
-		 * <code>W</code> manages {@link Multiplier3Metrics} for
-		 * {@link Axis#AxisWest}
-		 */
-		public static class W extends Multiplier3Metrics {
-
-			/**
-			 * Create {@link Multiplier3Metrics} for {@link Axis#AxisWest}
-			 * with the given multiplier parameter
-			 * 
-			 * @param ref
-			 */
-			public W(double ref) {
-				super(ref, Axis.AxisWest);
-			}
-		}
-
-		/**
-		 * <code>E</code> manages {@link Multiplier3Metrics} for
-		 * {@link Axis#AxisEast}
-		 */
-		public static class E extends Multiplier3Metrics {
-
-			/**
-			 * Create {@link Multiplier3Metrics} for {@link Axis#AxisEast}
-			 * with the given multiplier parameter
-			 * 
-			 * @param ref
-			 */
-			public E(double ref) {
-				super(ref, Axis.AxisEast);
-			}
-		}
-
-		/**
-		 * <code>N</code> manages {@link Multiplier3Metrics} for
-		 * {@link Axis#AxisNorth}
-		 */
-		public static class N extends Multiplier3Metrics {
-
-			/**
-			 * Create {@link Multiplier3Metrics} for {@link Axis#AxisNorth}
-			 * with the given multiplier parameter
-			 * 
-			 * @param ref
-			 */
-			public N(double ref) {
-				super(ref, Axis.AxisNorth);
-			}
-		}
-
-		/**
-		 * <code>S</code> manages {@link Multiplier3Metrics} for
-		 * {@link Axis#AxisSouth}
-		 */
-		public static class S extends Multiplier3Metrics {
-
-			/**
-			 * Create {@link Multiplier3Metrics} for {@link Axis#AxisSouth}
-			 * with the given multiplier parameter
-			 * 
-			 * @param ref
-			 */
-			public S(double ref) {
-				super(ref, Axis.AxisSouth);
-			}
-		}
-
-		/**
-		 * Create a multi multiplier metrics plug-in
-		 * <p style="color : red;">
-		 * WARNING : can be reboot on to much iteration.
-		 * </p>
-		 * <p>
-		 * You can use this manager when you build some static views without
-		 * projection bound change<br>
-		 * it is discourage if you use tools that dynamically change the projection
-		 * bounds because the manager can be reboot.
-		 * <p>
-		 * 
-		 * @param ref
-		 *            the reference from metrics will be created
-		 * @param axis
-		 *            the projection axis
-		 */
-		public Multiplier3Metrics(double ref, Axis axis) {
-			super(new Multiplier3MetricsManager(ref), axis);
-			super.setName(Multiplier3Metrics.class.getCanonicalName());
-		}
-
-		/***
-		 * set the major multiplier.
-		 * 
-		 * @param major
-		 */
-		public void setMajor(double major) {
-			getMetricsManager().setMajor(major);
-		}
-
-		/**
-		 * set the median multiplier
-		 * 
-		 * @param median
-		 */
-		public void setMedian(double median) {
-			getMetricsManager().setMedian(median);
-		}
-
-		/**
-		 * set the minor multiplier
-		 * 
-		 * @param minor
-		 */
-		public void setMinor(double minor) {
-			getMetricsManager().setMinor(minor);
-		}
-
-	}
 
 	/**
 	 * <code>TimeMetrics</code> takes the responsibility to manage timing
@@ -783,25 +529,15 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		 * @see com.jensoft.core.plugin.metrics.AxisMetricsPlugin#paintMetrics(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
 		 */
 		@Override
-		public void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+		public void paintMetrics(View view, Graphics2D g2d, ViewPart viewPart) {
 			if (!super.isAccessible(viewPart)) {
 				return;
 			}
-			super.createRenderContext(v2d, g2d);
 			super.assignType();
 			int axisSpacing = 0;
 			List<TimeModel> sequence = ((TimeMetricsManager) getMetricsManager()).getTimingSequence();
 			for (TimeModel timingManager : sequence) {
 
-				MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getProjection(), g2d);
-				// renderContext.setMetricsMedianFont(timeFont1);
-				// renderContext.setMetricsMajorFont(timeFont1);
-
-				// timingManager.setMetricsMajorFont(timeFont1);
-				// timingManager.setMetricsMajorFont(timeFont1);
-
-				getMetricsPainter().setMetricsRenderContext(renderContext);
-				getMetricsManager().setRenderContext(renderContext);
 
 				List<Metrics> metrics = timingManager.generateMetrics();
 
@@ -820,12 +556,12 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 					Point2D markerLocation = new Point2D.Double();
 					if (viewPart == ViewPart.South) {
-						markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
+						markerLocation = new Point2D.Double(view.getPlaceHolderAxisWest() + m.getDeviceValue(), axisSpacing);
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.S);
 					}
 					if (viewPart == ViewPart.West) {
-						JComponent component = v2d.getViewPartComponent(ViewPart.West);
+						JComponent component = view.getViewPartComponent(ViewPart.West);
 						markerLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, m.getDeviceValue());
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.W);
@@ -836,8 +572,8 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 						m.setMarkerPosition(MarkerPosition.E);
 					}
 					if (viewPart == ViewPart.North) {
-						JComponent component = v2d.getViewPartComponent(ViewPart.North);
-						markerLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest() + m.getDeviceValue(), component.getHeight() - 1 - axisSpacing);
+						JComponent component = view.getViewPartComponent(ViewPart.North);
+						markerLocation = new Point2D.Double(view.getPlaceHolderAxisWest() + m.getDeviceValue(), component.getHeight() - 1 - axisSpacing);
 						m.setMarkerLocation(markerLocation);
 						m.setMarkerPosition(MarkerPosition.N);
 					}
@@ -920,30 +656,16 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		public ModeledMetrics(Axis axis) {
 			super(new ModeledMetricsManager(), axis);
 			setName(ModeledMetrics.class.getCanonicalName());
-			setMetricsPainter(new MetricsGlyphPainter());
 		}
 
-		/**
-		 * set locale
-		 * @param locale
-		 */
-		public void setLocale(Locale locale){
-			getMetricsManager().applyLocalizedMetrics(locale);
-		}
-		
-		
-		/**
-		 * set Condensed or Low density
-		 * The low mode swap model to next model (exponent + 1) from a given threshold density amount (default 75)
-		 * at the density, the next model reduce the amount of generated metrics and metrics are more readable.
-		 * 
-		 * you can also use {@link #setMetricsIntervalDensity(int)} to increase the metrics interval
-		 * 
-		 * @param density
-		 */
-		public void setMetricsDensity(MetricsDensity density){
-			getMetricsManager().setMetricsDensity(density);
-		}
+//		/**
+//		 * set locale
+//		 * @param locale
+//		 */
+//		public void setLocale(Locale locale){
+//			getMetricsManager().applyLocalizedMetrics(locale);
+//		}
+//		
 		
 		/**
 		 * set interval density factor, ideal value is O, 10, 20 pixel for condensed to more and more low density.
@@ -1051,17 +773,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	}
 
 	/**
-	 * Create a new <code>AxisMetricsPlugin<code>
-	 */
-	public AxisMetricsPlugin() {
-		metricsPainter = new MetricsGlyphPainter();
-		axis = Axis.AxisSouth;
-		setPriority(1000);
-		setTextAntialising(TextAntialiasing.On);
-		setAntialiasing(Antialiasing.On);
-	}
-
-	/**
 	 * Create a new
 	 * <code>AxisMetricsPlugin<code> with the specified manager and axis
 	 * 
@@ -1071,64 +782,13 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 *            the axis
 	 */
 	public AxisMetricsPlugin(M manager, Axis axis) {
-		this();
-		metricsManager = manager;
+		super(manager);
 		this.axis = axis;
+		setPriority(1000);
+		setTextAntialising(TextAntialiasing.On);
+		setAntialiasing(Antialiasing.On);
 	}
 
-	/**
-	 * get the metrics layout manager
-	 * 
-	 * @return layout manager
-	 */
-	public M getMetricsManager() {
-		return metricsManager;
-	}
-
-	/**
-	 * set the metrics manager
-	 * 
-	 * @param metricsManager
-	 */
-	public void setMetricsManager(M metricsManager) {
-		this.metricsManager = metricsManager;
-	}
-
-	/**
-	 * delegate, set the metrics label color
-	 * 
-	 * @param metricsLabelColor
-	 */
-	public void setMetricsLabelColor(Color metricsLabelColor) {
-		getMetricsManager().setMetricsLabelColor(metricsLabelColor);
-	}
-
-	/**
-	 * delegate, get the metrics label color
-	 * 
-	 */
-	public Color getMetricsLabelColor() {
-		return getMetricsManager().getMetricsLabelColor();
-	}
-
-	/**
-	 * delegate, set the metrics marker Color
-	 * 
-	 * @param metricsColor
-	 *            the color of the marker
-	 */
-	public void setMetricsMarkerColor(Color metricsColor) {
-		getMetricsManager().setMetricsMarkerColor(metricsColor);
-	}
-
-	/**
-	 * delegate, get the metrics marker Color
-	 * 
-	 * @return metricsColor the color of the marker
-	 */
-	public Color getMetricsMarkerColor() {
-		return getMetricsManager().getMetricsMarkerColor();
-	}
 
 	/**
 	 * delegate method to set the metrics format
@@ -1165,123 +825,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 */
 	public void setAxisSpacing(int axisSpacing) {
 		this.axisSpacing = axisSpacing;
-	}
-
-	/**
-	 * @return the paintAxisBaseLine
-	 */
-	public boolean isPaintAxisBaseLine() {
-		return paintAxisBaseLine;
-	}
-
-	/**
-	 * @param paintAxisBaseLine
-	 *            the paintAxisBaseLine to set
-	 */
-	public void setPaintAxisBaseLine(boolean paintAxisBaseLine) {
-		this.paintAxisBaseLine = paintAxisBaseLine;
-	}
-	
-	/**
-	 * return gravity
-	 * @return Gravity
-	 */
-	public Gravity getGravity() {
-		return gravity;
-	}
-
-	/**
-	 * set gravity
-	 * @param gravity
-	 */
-	public void setGravity(Gravity gravity) {
-		this.gravity = gravity;
-	}
-
-	/**
-	 * get the axis metrics base line color
-	 * 
-	 * @return the base line color
-	 */
-	public Color getMetricsBaseLineColor() {
-		return getMetricsManager().getMetricsBaseLineColor();
-	}
-
-	/**
-	 * set the axis base line color
-	 * 
-	 * @param baseLineColor
-	 *            the base line color to set
-	 */
-	public void setMetricsBaseLineColor(Color baseLineColor) {
-		getMetricsManager().setMetricsBaseLineColor(baseLineColor);
-	}
-
-	/**
-	 * get the axis metrics median font
-	 * 
-	 * @return the metrics median font
-	 */
-	public Font getMetricsMedianFont() {
-		return getMetricsManager().getMetricsMedianFont();
-	}
-
-	/**
-	 * set the metrics font
-	 * 
-	 * @param metricsFont
-	 *            the metrics font to set
-	 */
-	public void setMetricsFont(Font metricsFont) {
-		setMetricsMedianFont(metricsFont);
-		setMetricsMajorFont(metricsFont);
-	}
-
-	/**
-	 * set the metrics median font
-	 * 
-	 * @param metricsMedianFont
-	 *            the metrics median font to set
-	 */
-	public void setMetricsMedianFont(Font metricsMedianFont) {
-		getMetricsManager().setMetricsMedianFont(metricsMedianFont);
-	}
-
-	/**
-	 * get the axis metrics major font
-	 * 
-	 * @return the metrics major font
-	 */
-	public Font getMetricsMajorFont() {
-		return getMetricsManager().getMetricsMajorFont();
-	}
-
-	/**
-	 * set the metrics major font
-	 * 
-	 * @param metricsMajorFont
-	 *            the metrics major font to set
-	 */
-	public void setMetricsMajorFont(Font metricsMajorFont) {
-		getMetricsManager().setMetricsMajorFont(metricsMajorFont);
-	}
-
-	/**
-	 * get the metrics painter
-	 * 
-	 * @return the painter
-	 */
-	public AbstractMetricsPainter getMetricsPainter() {
-		return metricsPainter;
-	}
-
-	/**
-	 * set the metrics painter
-	 * 
-	 * @param metricsPainter
-	 */
-	public void setMetricsPainter(AbstractMetricsPainter metricsPainter) {
-		this.metricsPainter = metricsPainter;
 	}
 
 	/**
@@ -1331,44 +874,44 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	}
 
 	/**
-	 * paint the base line if the {@link #paintAxisBaseLine} is true.
+	 * paint the base line
 	 * 
-	 * @param v2d
+	 * @param view
 	 * @param g2d
 	 * @param viewPart
 	 */
-	protected void paintBaseLine(View v2d, Graphics2D g2d, ViewPart viewPart) {
-		if (isPaintAxisBaseLine()) {
+	protected void paintBaseLine(View view, Graphics2D g2d, ViewPart viewPart) {
+		if (isBaseLinePaint()) {
 			Point2D axisStartLocation = new Point2D.Double();
 			Point2D axisEndLocation = new Point2D.Double();
 			if (viewPart == ViewPart.South) {
-				JComponent component = v2d.getViewPartComponent(ViewPart.South);
-				axisStartLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest(), axisSpacing);
-				axisEndLocation = new Point2D.Double(component.getWidth() - v2d.getPlaceHolderAxisEast(), axisSpacing);
+				JComponent component = view.getViewPartComponent(ViewPart.South);
+				axisStartLocation = new Point2D.Double(view.getPlaceHolderAxisWest(), axisSpacing);
+				axisEndLocation = new Point2D.Double(component.getWidth() - view.getPlaceHolderAxisEast(), axisSpacing);
 			}
 			if (viewPart == ViewPart.West) {
-				JComponent component = v2d.getViewPartComponent(ViewPart.West);
+				JComponent component = view.getViewPartComponent(ViewPart.West);
 				axisStartLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, 0);
 				axisEndLocation = new Point2D.Double(component.getWidth() - 1 - axisSpacing, component.getHeight());
 			}
 			if (viewPart == ViewPart.East) {
-				JComponent component = v2d.getViewPartComponent(ViewPart.East);
+				JComponent component = view.getViewPartComponent(ViewPart.East);
 				axisStartLocation = new Point2D.Double(axisSpacing, 0);
 				axisEndLocation = new Point2D.Double(axisSpacing, component.getHeight());
 			}
 			if (viewPart == ViewPart.North) {
-				JComponent component = v2d.getViewPartComponent(ViewPart.North);
-				axisStartLocation = new Point2D.Double(v2d.getPlaceHolderAxisWest(), component.getHeight() - 1 - axisSpacing);
-				axisEndLocation = new Point2D.Double(component.getWidth() - v2d.getPlaceHolderAxisEast(), component.getHeight() - 1 - axisSpacing);
+				JComponent component = view.getViewPartComponent(ViewPart.North);
+				axisStartLocation = new Point2D.Double(view.getPlaceHolderAxisWest(), component.getHeight() - 1 - axisSpacing);
+				axisEndLocation = new Point2D.Double(component.getWidth() - view.getPlaceHolderAxisEast(), component.getHeight() - 1 - axisSpacing);
 			}
 
 			Color axisBaseLineColor;
-			if (metricsManager.getMetricsBaseLineColor() != null) {
-				axisBaseLineColor = metricsManager.getMetricsBaseLineColor();
+			if (getBaseLineColor() != null) {
+				axisBaseLineColor = getBaseLineColor();
 			} else {
-				axisBaseLineColor = metricsManager.getRenderContext().getProjection().getThemeColor();
+				axisBaseLineColor = getProjection().getThemeColor();
 			}
-			metricsPainter.doPaintLineMetrics(g2d, axisStartLocation, axisEndLocation, axisBaseLineColor);
+			getMetricsPainter().doPaintLineMetrics(g2d, axisStartLocation, axisEndLocation, axisBaseLineColor);
 		}
 	}
 
@@ -1383,7 +926,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 		
 		List<Metrics> metrics = null;
 		try {
-			metrics = metricsManager.getDeviceMetrics();
+			metrics = getMetricsManager().getDeviceMetrics();
 		} catch (Throwable e) {
 			e.printStackTrace();
 			return;
@@ -1424,47 +967,39 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 				m.setMarkerPosition(MarkerPosition.N);
 			}
 		}
-		metricsPainter.doPaintMetrics(g2d, metrics);
+		getMetricsPainter().doPaintMetrics(g2d, metrics);
 	}
 
-	/**
-	 * create the render context
-	 * 
-	 * @param v2d
-	 * @param g2d
-	 */
-	protected void createRenderContext(View v2d, Graphics2D g2d) {
-		MetricsRenderContext renderContext = new MetricsRenderContext(v2d, getProjection(), g2d);
-		renderContext.setMetricsMedianFont(metricsManager.getMetricsMedianFont());
-		renderContext.setMetricsMajorFont(metricsManager.getMetricsMajorFont());
-
-		metricsManager.setRenderContext(renderContext);
-		metricsPainter.setMetricsRenderContext(renderContext);
-	}
+	
 
 	/**
 	 * assign manager type x or y given by given axis.
 	 */
 	protected void assignType() {
 		if (axis == Axis.AxisSouth || axis == Axis.AxisNorth) {
-			metricsManager.setMetricsType(MetricsType.XMetrics);
+			getMetricsManager().setMetricsType(MetricsType.XMetrics);
 		}
 		if (axis == Axis.AxisEast || axis == Axis.AxisWest) {
-			metricsManager.setMetricsType(MetricsType.YMetrics);
+			getMetricsManager().setMetricsType(MetricsType.YMetrics);
 		}
 	}
 
 	/**
-	 * Paints the window metrics.
+	 * paint metrics
+	 * @param view
+	 * @param g2d
+	 * @param viewPart
 	 */
-	protected void paintMetrics(View v2d, Graphics2D g2d, ViewPart viewPart) {
+	protected void paintMetrics(View view, Graphics2D g2d, ViewPart viewPart) {
 		if (!isAccessible(viewPart)) {
 			return;
 		}
-		createRenderContext(v2d, g2d);
 		assignType();
-		paintMetricsLabelIndicator(v2d, g2d, viewPart);
-		paintBaseLine(v2d, g2d, viewPart);
+		getMetricsManager().setMetricsPlugin(this);
+		getMetricsPainter().setMetricsPlugin(this);
+		
+		paintMetricsLabelIndicator(view, g2d, viewPart);
+		paintBaseLine(view, g2d, viewPart);
 	}
 
 	

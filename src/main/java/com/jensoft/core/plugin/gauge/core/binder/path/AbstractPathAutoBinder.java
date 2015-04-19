@@ -15,7 +15,6 @@ import java.awt.geom.GeneralPath;
 import java.awt.geom.Point2D;
 
 import com.jensoft.core.glyphmetrics.GeometryPath;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.color.NanoChromatique;
 import com.jensoft.core.plugin.gauge.core.RadialGauge;
 import com.jensoft.core.plugin.gauge.core.binder.PathBinder;

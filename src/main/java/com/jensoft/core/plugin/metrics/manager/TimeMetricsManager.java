@@ -15,6 +15,7 @@ import java.util.Date;
 import java.util.List;
 
 import com.jensoft.core.plugin.metrics.geom.Metrics;
+import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsNature;
 import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.projection.Projection.Linear;
@@ -496,7 +497,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
      * @return timimg projection
      */
     public Projection.Time getTimingProjection() {
-        Projection proj = getRenderContext().getProjection();
+        Projection proj = getMetricsPlugin().getProjection();
         if (proj instanceof Linear) {
             if (getType() == MetricsType.XMetrics) {
                 Projection.TimeX timeX = new Projection.TimeX(new Date(new Double(proj.getMinX()).longValue()),
@@ -541,13 +542,13 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         metrics.setDeviceValue(deviceValue);
         metrics.setUserValue(userValue);
-        metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-        metrics.setMetricsLabelColor(getMetricsLabelColor());
+       // metrics.setMetricsMarkerColor(getMetricsMarkerColor());
+       // metrics.setMetricsLabelColor(getMetricsLabelColor());
         metrics.setLockLabel(isLockLabel());
         metrics.setLockMarker(isLockMarker());
 
         if (model.isMinimal()) {
-            metrics.setNature(Metrics.MINOR);
+            metrics.setNature(MetricsNature.Minor);
         }
 
         if (model != null) {
@@ -590,10 +591,10 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         durationMetrics.setDeviceValue(deviceValue);
         durationMetrics.setUserValue(userValue);
-        durationMetrics.setMetricsMarkerColor(getMetricsMarkerColor());
-        durationMetrics.setMetricsLabelColor(getMetricsLabelColor());
-        durationMetrics.setLockLabel(isLockLabel());
-        durationMetrics.setLockMarker(isLockMarker());
+       // durationMetrics.setMetricsMarkerColor(getMetricsMarkerColor());
+        //durationMetrics.setMetricsLabelColor(getMetricsLabelColor());
+       // durationMetrics.setLockLabel(isLockLabel());
+       // durationMetrics.setLockMarker(isLockMarker());
 
         durationMetrics.setMetricsStart(pointStart);
         durationMetrics.setMetricsEnd(pointEnd);

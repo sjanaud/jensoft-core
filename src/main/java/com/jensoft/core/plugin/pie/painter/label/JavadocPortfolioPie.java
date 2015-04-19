@@ -14,7 +14,6 @@ import java.io.File;
 import com.jensoft.core.drawable.text.TextPath.PathSide;
 import com.jensoft.core.drawable.text.TextPath.TextPosition;
 import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.InputFonts;
 import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.palette.color.TangoPalette;

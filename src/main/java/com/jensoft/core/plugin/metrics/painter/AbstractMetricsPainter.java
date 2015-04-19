@@ -10,8 +10,9 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
+import com.jensoft.core.plugin.metrics.MetricsPlugin;
 import com.jensoft.core.plugin.metrics.geom.Metrics;
-import com.jensoft.core.plugin.metrics.geom.MetricsRenderContext;
+import com.jensoft.core.projection.Projection;
 
 /**
  * <code>AbstractMetricsPainter</code> takes the responsibility to paint metrics on projection part
@@ -29,30 +30,18 @@ public abstract class AbstractMetricsPainter {
     public AbstractMetricsPainter() {
     }
 
-    /** metrics render context */
-    private MetricsRenderContext metricsRenderContext;
+    private MetricsPlugin<?> metricsPlugin;
+   
     
-    /**
-     * get metrics render context
-     * 
-     * @return metrics render context
-     */
-    public MetricsRenderContext getMetricsRenderContext() {
-        return metricsRenderContext;
-    }
+	public MetricsPlugin<?> getMetricsPlugin() {
+		return metricsPlugin;
+	}
 
-    /**
-     * set metrics render context
-     * 
-     * @param metricsRenderContext
-     *            the render context to set
-     */
-    public void setMetricsRenderContext(
-            MetricsRenderContext metricsRenderContext) {
-        this.metricsRenderContext = metricsRenderContext;
-    }
+	public void setMetricsPlugin(MetricsPlugin<?> metricsPlugin) {
+		this.metricsPlugin = metricsPlugin;
+	}
 
-    /**
+	/**
      * paint metrics base line
      * 
      * @param g2d

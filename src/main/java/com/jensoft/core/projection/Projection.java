@@ -21,7 +21,6 @@ import com.jensoft.core.palette.color.ColorPalette;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.PluginEvent;
 import com.jensoft.core.plugin.PluginListener;
-import com.jensoft.core.plugin.copyright.CopyrightPlugin;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewAdapter;
 import com.jensoft.core.view.ViewEvent;
