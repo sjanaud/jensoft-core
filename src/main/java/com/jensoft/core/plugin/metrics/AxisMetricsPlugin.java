@@ -16,11 +16,10 @@ import javax.swing.JComponent;
 
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
+import com.jensoft.core.plugin.metrics.Metrics.Gravity;
+import com.jensoft.core.plugin.metrics.Metrics.MarkerPosition;
+import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
-import com.jensoft.core.plugin.metrics.geom.Metrics;
-import com.jensoft.core.plugin.metrics.geom.Metrics.Gravity;
-import com.jensoft.core.plugin.metrics.geom.Metrics.MarkerPosition;
-import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FlowMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.FreeMetricsManager;

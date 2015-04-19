@@ -14,9 +14,9 @@ import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
-import com.jensoft.core.plugin.metrics.geom.Metrics;
-import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsNature;
-import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
+import com.jensoft.core.plugin.metrics.Metrics;
+import com.jensoft.core.plugin.metrics.Metrics.MetricsNature;
+import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.projection.Projection.Linear;
 import com.jensoft.core.projection.Projection.Time;

@@ -9,8 +9,8 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.jensoft.core.plugin.metrics.geom.Metrics;
-import com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType;
+import com.jensoft.core.plugin.metrics.Metrics;
+import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.projection.Projection;
 
 /**
