@@ -58,9 +58,6 @@ public class Metrics {
     /** marker position */
     private MarkerPosition markerPosition;
 
-    /** rotate */
-    private boolean rotate = true;
-
     /** lock marker flag */
     private boolean lockMarker = true;
 
