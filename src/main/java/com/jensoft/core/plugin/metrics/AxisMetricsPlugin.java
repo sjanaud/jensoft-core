@@ -534,6 +534,8 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 				return;
 			}
 			super.assignType();
+			getMetricsManager().setMetricsPlugin(this);
+			getMetricsPainter().setMetricsPlugin(this);
 			int axisSpacing = 0;
 			List<TimeModel> sequence = ((TimeMetricsManager) getMetricsManager()).getTimingSequence();
 			for (TimeModel timingManager : sequence) {
