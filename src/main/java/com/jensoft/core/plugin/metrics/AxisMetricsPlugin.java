@@ -10,13 +10,11 @@ import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.Collections;
 import java.util.List;
-import java.util.Locale;
 
 import javax.swing.JComponent;
 
 import com.jensoft.core.graphics.Antialiasing;
 import com.jensoft.core.graphics.TextAntialiasing;
-import com.jensoft.core.plugin.metrics.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
@@ -29,7 +27,6 @@ import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeDurationMetrics;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel;
-import com.jensoft.core.plugin.metrics.painter.MetricsGlyphPainter;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 
@@ -39,7 +36,7 @@ import com.jensoft.core.view.ViewPart;
  * @since 1.0
  * @author sebastien janaud
  */
-public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extends MetricsPlugin<M> {
+public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extends AbstractMetricsPlugin<M> {
 
 
 	/** the accessible zone */

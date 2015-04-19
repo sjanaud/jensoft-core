@@ -6,13 +6,11 @@
 package com.jensoft.core.plugin.metrics;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
 import java.util.List;
 
 import com.jensoft.core.device.Device;
-import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
 import com.jensoft.core.plugin.metrics.Metrics.MarkerPosition;
 import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
@@ -25,8 +23,6 @@ import com.jensoft.core.plugin.metrics.manager.ModeledMetricsManager.MetricsMode
 import com.jensoft.core.plugin.metrics.manager.StaticMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel;
-import com.jensoft.core.plugin.metrics.painter.AbstractMetricsPainter;
-import com.jensoft.core.plugin.metrics.painter.MetricsGlyphPainter;
 import com.jensoft.core.view.View;
 import com.jensoft.core.view.ViewPart;
 
@@ -37,7 +33,7 @@ import com.jensoft.core.view.ViewPart;
  * @since 1.0
  * @author sebastien janaud
  */
-public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> extends MetricsPlugin<M> {
+public abstract class DeviceMetricsPlugin<M extends AbstractMetricsManager> extends AbstractMetricsPlugin<M> {
 
 
 	/** axis base line at the constant x or y value */

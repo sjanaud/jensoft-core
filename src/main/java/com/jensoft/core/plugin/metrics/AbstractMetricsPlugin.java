@@ -26,7 +26,7 @@ import com.jensoft.core.plugin.metrics.painter.MetricsGlyphPainter;
  * @since 2.0.2
  * @author sebastien janaud
  */
-public abstract class MetricsPlugin<M extends AbstractMetricsManager> extends AbstractPlugin {
+public abstract class AbstractMetricsPlugin<M extends AbstractMetricsManager> extends AbstractPlugin {
 	/** the metrics manager */
 	private M metricsManager;
 
@@ -79,7 +79,7 @@ public abstract class MetricsPlugin<M extends AbstractMetricsManager> extends Ab
 	 * @param manager
 	 *            the manager
 	 */
-	public MetricsPlugin(M manager) {
+	public AbstractMetricsPlugin(M manager) {
 		metricsPainter = new MetricsGlyphPainter();
 		setPriority(1000);
 		setTextAntialising(TextAntialiasing.On);
