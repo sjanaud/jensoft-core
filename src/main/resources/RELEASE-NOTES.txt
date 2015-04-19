@@ -5,7 +5,16 @@
 
 	group    : com.jensoft
 	artifact : jensoft-core
-	version  : 2.0.2
+	version  : 2.0.3
+	
+	
+#######################################
+## Notes 2.0.3  - April 19, 2015    ##
+#######################################
+	
+
+	Change Modeled Metrics Axis
+	Remove Metrics Multipliers plugin/manager
 
 #######################################
 ## Notes 2.0.2  - March 25, 2015    ##
