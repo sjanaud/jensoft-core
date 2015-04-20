@@ -756,8 +756,7 @@ public class Donut3D {
      * @param buildAngleDegree
      *            the start build angle degree of the specified slice
      */
-    private void solveSliceFragments(Donut3DSlice donutSlice,
-            double buildAngleDegree) {
+    private void solveSliceFragments(Donut3DSlice donutSlice,double buildAngleDegree) {
 
         donutSlice.clearFragment();
         donutSlice.setPainted(false);
@@ -765,14 +764,15 @@ public class Donut3D {
         double sliceExtendsDegree = donutSlice.getNormalizedValue() * 360;
 
         donutSlice.setStartAngleDegree(sliceStartDegree);
-        donutSlice.setEndAngleDegree(sliceStartDegree
-                + sliceExtendsDegree);
+        donutSlice.setEndAngleDegree(sliceStartDegree+ sliceExtendsDegree);
+                
 
         double fragmentStartAngleDegree = sliceStartDegree;
         double fragmentExtends = sliceExtendsDegree;
         double resteExtends = sliceExtendsDegree;
 
-        while (resteExtends > 0) {
+        int count = 0;
+        while (resteExtends > 0 && count++ < 4) {
         	
             fragmentExtends = getFragmentExtendsDegree(sliceStartDegree,
                                                        sliceExtendsDegree, fragmentStartAngleDegree,
@@ -783,7 +783,7 @@ public class Donut3D {
             //System.out.println("fragment : "+fragment.getName());
             donutSlice.addFragment(fragment);
             resteExtends = resteExtends - fragmentExtends;
-            System.out.println("reste extends : "+resteExtends);
+            //System.out.println("reste extends : "+resteExtends);
             fragmentStartAngleDegree = fragmentStartAngleDegree
                     + fragmentExtends;
 
@@ -793,8 +793,7 @@ public class Donut3D {
 
         }
         
-        System.out.println("count fragment for slice :"+donutSlice.getName()+" fragment count : "+donutSlice.getFragments().size());
-
+        //System.out.println("count fragment for slice :"+donutSlice.getName()+" fragment count : "+donutSlice.getFragments().size());
     }
 
     /**

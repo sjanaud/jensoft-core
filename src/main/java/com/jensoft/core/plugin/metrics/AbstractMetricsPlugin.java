@@ -157,6 +157,7 @@ public abstract class AbstractMetricsPlugin<M extends AbstractMetricsManager> ex
 		this.suffix = suffix;
 	}
 
+	
 	public Gravity getGravity() {
 		return gravity;
 	}

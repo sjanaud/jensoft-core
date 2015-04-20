@@ -56,7 +56,7 @@ public class Donut3DPlugin_Label_Border_view1 extends View {
 
 		Donut3D donut3d = Donut3DToolkit.createDonut3D("myDonut", 70, 120, 50, 60, 40);
 		donut3DPlugin.addDonut(donut3d);
-		donut3d.setStartAngleDegree(90); // issue with angle at 90 degree, for S4 slice back/front inverted ?
+		donut3d.setStartAngleDegree(20); 
 
 		// create sections
 		Donut3DSlice s1 = Donut3DToolkit.createDonut3DSlice("s1", new Color(250, 250, 250), 45);

@@ -8,6 +8,10 @@ package com.jensoft.core.plugin.metrics.format;
 /**
  * <code>IMetricsFormat</code> format the double model to pretty print convenience
  * 
+ * TODO switch to metrics argument or big decimal.
+ * or whatever user can control decimal format in manual mode
+ *
+ * 
  * @author sebastien janaud
  */
 public interface IMetricsFormat {

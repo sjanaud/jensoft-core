@@ -56,7 +56,7 @@ public abstract class AbstractMetricsPainter {
             Point2D end, Color axisBaseColor);
 
     /**
-     * paint metrics
+     * paint metrics text & marker
      * 
      * @param g2d
      *            the graphics context

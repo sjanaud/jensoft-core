@@ -14,7 +14,7 @@ import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.projection.Projection;
 
 /**
- * <code>FlowMetricsManager</code> take the responsibility to generate a flow of metrics.
+ * <code>FlowMetricsManager</code> takes the responsibility to generate a flow of metrics.
  * 
  * @since 1.0
  * @author sebastien janaud

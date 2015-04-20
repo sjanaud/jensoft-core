@@ -30,7 +30,6 @@ public class MetricsDecimalFormat implements IMetricsFormat {
      *            the formater to set
      */
     public MetricsDecimalFormat(DecimalFormat decimalFormater) {
-        super();
         this.decimalFormater = decimalFormater;
     }
 
