@@ -1,5 +1,5 @@
 # jensoft-core
-jensoft java core charts 
+jensoft java core library. 
 
 Want to learn more? [Visit JenSoft APIs site] (https://www.jensoftapi.com/site/home)
 
@@ -29,4 +29,4 @@ Want to learn more? [Visit JenSoft APIs site] (https://www.jensoftapi.com/site/h
 - Zoom Lens : tool for inflate/deflate dimension, widgets.
 - Translate : tool for translate projection, widgets
 
-## Samples
+
