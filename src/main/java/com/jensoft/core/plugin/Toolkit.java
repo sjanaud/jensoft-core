@@ -13,5 +13,6 @@ package com.jensoft.core.plugin;
  * 
  * @author Sebastien Janaud
  */
+@Deprecated
 public class Toolkit {
 }

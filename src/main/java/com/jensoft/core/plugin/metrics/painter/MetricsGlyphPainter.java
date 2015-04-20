@@ -27,7 +27,7 @@ import com.jensoft.core.plugin.metrics.Metrics.MetricsType;
 import com.jensoft.core.view.ViewPart;
 
 /**
- * <code>MetricsGlyphPainter<code> takes the responsibility to paint glyph metrics
+ * <code>MetricsGlyphPainter<code> takes the responsibility to paint metrics
  * 
  * @since 1.0
  * @author sebastien janaud
@@ -46,14 +46,14 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
     }
 
     /**
-     * paint metrics indicator
+     * paint metrics marker
      * 
      * @param g2d
      * @param metric
      */
     protected void paintMetricsMarker(Graphics2D g2d, Metrics metric) {
         
-    	System.out.println("paint marker "+metric.getUserValue());
+    	//System.out.println("paint marker "+metric.getUserValue());
     	g2d.setFont(getMetricsPlugin().getMetricsTextFont(metric));
         int markerSize = getMetricsPlugin().getMetricsMarkerSize(metric);
 
@@ -152,7 +152,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
         AffineTransform af = new AffineTransform();
         
         //Look for this solution instead of pure glyph
-       // af.translate(tx, ty);
+        //af.translate(tx, ty);
         af.rotate(-Math.PI/4, position.getX(), position.getY()+markerSize +10);
         
         g2d.setTransform(af);
@@ -170,7 +170,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
      * @param metric
      */
     protected void paintSouthMetricsLabel(Graphics2D g2d, Metrics metric){
-    	System.out.println("paint south : "+metric.getUserValue());
+    //	System.out.println("paint south : "+metric.getUserValue());
         Point2D position = metric.getMarkerLocation();
         int markerSize = getMetricsPlugin().getMetricsMarkerSize(metric);
         Font f = getMetricsPlugin().getMetricsTextFont(metric);
@@ -397,7 +397,7 @@ public class MetricsGlyphPainter extends AbstractMetricsPainter {
         for (int i = 0; i < metrics.size(); i++) {
         	
             Metrics metric = metrics.get(i);
-            System.out.println("paint metrics : "+metric.getUserValue());
+           // System.out.println("paint metrics : "+metric.getUserValue());
             if (!metric.isVisible()) {
                 continue;
             }
