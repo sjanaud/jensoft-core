@@ -10,7 +10,7 @@ Want to learn more? [Visit JenSoft APIs site] (https://www.jensoftapi.com/site/h
 <img width="180" height="140" src="https://www.jensoftapi.com/site/WebViewRequest?group=overview&amp;view=bubble&amp;width=800&amp;height=600" >
 </div>
 <div style="float:left">
-<img width="180" height="140" src="https://www.jensoftapi.com/site/WebViewRequest?group=overview&amp;view=stackedbar&amp;width=800&amp;height=600" >
+<img width="180" height="150" src="https://www.jensoftapi.com/site/WebViewRequest?group=overview&amp;view=stackedbar&amp;width=800&amp;height=600" >
 <img width="180" height="140" src="https://www.jensoftapi.com/site/WebViewRequest?group=overview&amp;view=area&amp;width=800&amp;height=600" >
 <img width="180" height="140" src="https://www.jensoftapi.com/site/WebViewRequest?group=overview&amp;view=curve&amp;width=800&amp;height=600" >
 <img width="180" height="140" src="https://www.jensoftapi.com/site/WebViewRequest?group=overview&amp;view=scatter&amp;width=800&amp;height=600" >
