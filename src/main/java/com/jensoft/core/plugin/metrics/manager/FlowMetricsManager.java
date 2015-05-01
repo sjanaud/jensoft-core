@@ -6,6 +6,9 @@
 package com.jensoft.core.plugin.metrics.manager;
 
 import java.awt.geom.Point2D;
+import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -108,6 +111,32 @@ public class FlowMetricsManager extends AbstractMetricsManager {
     }
 
     /**
+     * format the metrics value
+     * @param value
+     * @return string
+     */
+    protected String format(BigDecimal value){
+    	
+    	//if format if provided, just return format value by formatter
+    	if(getMetricsPlugin().getFormat() != null){
+    		return getMetricsPlugin().getFormat().format(value.doubleValue());
+    	}
+    	
+    	//else provide internal formating process
+    	DecimalFormat formater = null;
+    	if(getMetricsPlugin().getLocale() != null)
+    		formater = (DecimalFormat)NumberFormat.getInstance(getMetricsPlugin().getLocale());
+    	else
+    		formater = new DecimalFormat();
+    	
+    	if(getMetricsPlugin().getSuffix() != null)
+    		return formater.format(value.doubleValue())+getMetricsPlugin().getSuffix();
+    	else
+    		return formater.format(value.doubleValue());
+    		
+    }
+    
+    /**
      * get flow metrics
      * 
      * @return metrics flow
@@ -115,75 +144,60 @@ public class FlowMetricsManager extends AbstractMetricsManager {
     @Override
     public List<Metrics> getDeviceMetrics() {
         deviceMetrics.clear();
-        Projection w2d = getMetricsPlugin().getProjection();
-        double interval = flowEnd - flowStart;
+        Projection projection = getMetricsPlugin().getProjection();
+        
+        if(flowEnd <= flowStart)
+        	throw new IllegalArgumentException("metrics flow end should be greater than metrics flow start");
+        
+        
+        BigDecimal start = new BigDecimal(flowStart+"");
+        BigDecimal end = new BigDecimal(flowEnd+"");
+        BigDecimal interval = new BigDecimal(flowInterval+"");
+        boolean flag = true;
+        int count = 0;
+        while(flag){
+        	BigDecimal increment = new BigDecimal(count);
+        	BigDecimal m = start.add(increment.multiply(interval));
+        	Metrics metrics = null;
+        	if (getType() == MetricsType.XMetrics) {
+        		 Point2D p2dUser = new Point2D.Double(m.doubleValue(), 0);
+                 Point2D p2dDevice = projection.userToPixel(p2dUser);
+                 metrics = new Metrics(MetricsType.XMetrics);
 
-        int metricsCount = (int) (interval / flowInterval);
+                 metrics.setDeviceValue(p2dDevice.getX());
+                 metrics.setUserValue(m.doubleValue());
+                 metrics.setUserValueAsBigDecimal(m);
+                 metrics.setMetricsLabel(format(m));
+                 
+                 if (m.doubleValue() >= projection.getMinX()  && m.doubleValue() <= projection.getMaxX()) {
+                	 deviceMetrics.add(metrics);
+                 }
+        	}
+        	else if (getType() == MetricsType.YMetrics) {
+        		 Point2D p2dUser = new Point2D.Double(0,m.doubleValue());
+                 Point2D p2dDevice = projection.userToPixel(p2dUser);
 
-        if (metricsCount > 0) {
-            for (int i = 0; i <= metricsCount; i++) {
-                double userMetricsValue = flowStart + i * flowInterval;
-
-                if (getType() == MetricsType.XMetrics) {
-                    if (userMetricsValue > w2d.getMinX()
-                            && userMetricsValue < w2d.getMaxX()) {
-                        Point2D p2dUser = new Point2D.Double(userMetricsValue,
-                                                             0);
-                        Point2D p2dDevice = w2d.userToPixel(p2dUser);
-
-                        Metrics metrics = new Metrics(MetricsType.XMetrics);
-
-                        metrics.setDeviceValue(p2dDevice.getX());
-                        metrics.setUserValue(userMetricsValue);
-                        //metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-                        //metrics.setMetricsLabelColor(getMetricsLabelColor());
-                        //metrics.setLockLabel(isLockLabel());
-                        //metrics.setLockMarker(isLockMarker());
-
-                        if (getMetricsFormat() == null) {
-                            metrics.setMetricsLabel(getDefaultFormat().format(
-                                                                              userMetricsValue));
-                        }
-                        else {
-                            metrics.setMetricsLabel(getMetricsFormat().format(
-                                                                              userMetricsValue));
-                        }
-
-                        deviceMetrics.add(metrics);
-                    }
-                }
-                if (getType() == MetricsType.YMetrics) {
-                    if (userMetricsValue > w2d.getMinY()
-                            && userMetricsValue < w2d.getMaxY()) {
-                        Point2D p2dUser = new Point2D.Double(0,
-                                                             userMetricsValue);
-                        Point2D p2dDevice = w2d.userToPixel(p2dUser);
-
-                        Metrics metrics = new Metrics(MetricsType.YMetrics);
-                        metrics.setDeviceValue(p2dDevice.getY());
-                        metrics.setUserValue(userMetricsValue);
-                       // metrics.setMetricsMarkerColor(getMetricsMarkerColor());
-                       // metrics.setMetricsLabelColor(getMetricsLabelColor());
-                       // metrics.setLockLabel(isLockLabel());
-                        //metrics.setLockMarker(isLockMarker());
-
-                        if (getMetricsFormat() == null) {
-                            metrics.setMetricsLabel(getDefaultFormat().format(
-                                                                              userMetricsValue));
-                        }
-                        else {
-                            metrics.setMetricsLabel(getMetricsFormat().format(
-                                                                              userMetricsValue));
-                        }
-
-                        deviceMetrics.add(metrics);
-                    }
-                }
-
-            }
+                 metrics = new Metrics(MetricsType.YMetrics);
+                 metrics.setDeviceValue(p2dDevice.getY());
+                 metrics.setUserValue(m.doubleValue());
+                 metrics.setUserValueAsBigDecimal(m);
+                 metrics.setMetricsLabel(format(m));
+                 
+                 if (m.doubleValue() >= projection.getMinY()  && m.doubleValue() <= projection.getMaxY()) {
+                	 deviceMetrics.add(metrics);
+                 }
+        	}
+        	
+        	if(m.doubleValue() > end.doubleValue())
+        		flag = false;
+        	
+        	count++;
         }
+        
 
         return deviceMetrics;
     }
+
+   
 
 }
