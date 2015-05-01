@@ -9,12 +9,15 @@
 	
 	
 #######################################
-## Notes 2.0.3  - April 19, 2015    ##
+## Notes 2.0.3  - May 1, 2015        ##
 #######################################
 	
-
-	Change Modeled Metrics Axis
+	Add Abstract Metrics Plugin for suffix, tick properties, Gravity, Formatter
+	Change Modeled Metrics Manager
+	Change Flow Metrics Manager
+	Change Donut3D, add control on fragment iteration
 	Remove Metrics Multipliers plugin/manager
+	
 
 #######################################
 ## Notes 2.0.2  - March 25, 2015    ##
