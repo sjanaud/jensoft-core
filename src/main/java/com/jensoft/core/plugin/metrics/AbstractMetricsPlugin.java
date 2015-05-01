@@ -16,6 +16,7 @@ import com.jensoft.core.graphics.TextAntialiasing;
 import com.jensoft.core.plugin.AbstractPlugin;
 import com.jensoft.core.plugin.metrics.Metrics.Gravity;
 import com.jensoft.core.plugin.metrics.Metrics.MetricsNature;
+import com.jensoft.core.plugin.metrics.format.IMetricsFormat;
 import com.jensoft.core.plugin.metrics.manager.AbstractMetricsManager;
 import com.jensoft.core.plugin.metrics.painter.AbstractMetricsPainter;
 import com.jensoft.core.plugin.metrics.painter.MetricsGlyphPainter;
@@ -70,6 +71,9 @@ public abstract class AbstractMetricsPlugin<M extends AbstractMetricsManager> ex
     
     /** metric suffix*/
     private String suffix;
+    
+    /**metrics format*/
+    private IMetricsFormat format;
 	
 	
 	/**
@@ -141,6 +145,16 @@ public abstract class AbstractMetricsPlugin<M extends AbstractMetricsManager> ex
 		this.locale = locale;
 	}
 	
+	
+	
+	public IMetricsFormat getFormat() {
+		return format;
+	}
+
+	public void setFormat(IMetricsFormat format) {
+		this.format = format;
+	}
+
 	/**
 	 * get metrics suffix
 	 * @return metrics suffix
