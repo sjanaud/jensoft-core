@@ -15,8 +15,9 @@
 	Add Abstract Metrics Plugin for suffix, tick properties, Gravity, Formatter
 	Change Modeled Metrics Manager
 	Change Flow Metrics Manager
-	Change Donut3D, add control on fragment iteration
+	Change Donut3D, add exit scontrol on fragment iteration, illegal argument exception on slice Donut3D Slice setValue methods
 	Remove Metrics Multipliers plugin/manager
+	
 	
 
 #######################################
