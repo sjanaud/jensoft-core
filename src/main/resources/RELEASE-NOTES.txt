@@ -5,8 +5,13 @@
 
 	group    : com.jensoft
 	artifact : jensoft-core
-	version  : 2.0.3
+	version  : 2.0.4
+
+#######################################
+## Notes 2.0.4  - May 4, 2015        ##
+#######################################
 	
+	Donut3DSlice throw illegal argument exception on setValue method for negative values
 	
 #######################################
 ## Notes 2.0.3  - May 1, 2015        ##
@@ -15,7 +20,7 @@
 	Add Abstract Metrics Plugin for suffix, tick properties, Gravity, Formatter
 	Change Modeled Metrics Manager
 	Change Flow Metrics Manager
-	Change Donut3D, add exit scontrol on fragment iteration, illegal argument exception on slice Donut3D Slice setValue methods
+	Change Donut3D, add exit control on fragment iteration
 	Remove Metrics Multipliers plugin/manager
 	
 	
