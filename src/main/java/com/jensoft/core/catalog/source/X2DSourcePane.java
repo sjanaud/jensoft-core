@@ -17,10 +17,11 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.jensoft.core.x2d.X2D;
+
 import org.w3c.dom.Document;
 
 import com.jensoft.core.catalog.xml.XmlTextPane;
-import com.jensoft.core.x2d.X2D;
 
 /**
  * <code>XMLSourcePane</code>
