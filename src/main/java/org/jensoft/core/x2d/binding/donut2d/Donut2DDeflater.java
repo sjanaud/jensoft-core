@@ -7,26 +7,25 @@ package org.jensoft.core.x2d.binding.donut2d;
 
 import java.util.List;
 
+import org.jensoft.core.graphics.Shader;
+import org.jensoft.core.plugin.donut2d.Donut2D;
+import org.jensoft.core.plugin.donut2d.Donut2DPlugin;
+import org.jensoft.core.plugin.donut2d.Donut2DSlice;
+import org.jensoft.core.plugin.donut2d.painter.effect.AbstractDonut2DEffect;
+import org.jensoft.core.plugin.donut2d.painter.effect.Donut2DCompoundEffect;
+import org.jensoft.core.plugin.donut2d.painter.effect.Donut2DLinearEffect;
+import org.jensoft.core.plugin.donut2d.painter.effect.Donut2DReflectionEffect;
+import org.jensoft.core.plugin.donut2d.painter.fill.AbstractDonut2DFill;
+import org.jensoft.core.plugin.donut2d.painter.fill.Donut2DDefaultFill;
+import org.jensoft.core.plugin.donut2d.painter.fill.Donut2DRadialFill;
+import org.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel;
+import org.jensoft.core.plugin.donut2d.painter.label.Donut2DBorderLabel;
+import org.jensoft.core.plugin.donut2d.painter.label.Donut2DPathLabel;
+import org.jensoft.core.plugin.donut2d.painter.label.Donut2DRadialLabel;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import org.jensoft.core.x2d.binding.DeflaterUtil;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.plugin.donut2d.Donut2D;
-import com.jensoft.core.plugin.donut2d.Donut2DPlugin;
-import com.jensoft.core.plugin.donut2d.Donut2DSlice;
-import com.jensoft.core.plugin.donut2d.painter.effect.AbstractDonut2DEffect;
-import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DCompoundEffect;
-import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DLinearEffect;
-import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DReflectionEffect;
-import com.jensoft.core.plugin.donut2d.painter.fill.AbstractDonut2DFill;
-import com.jensoft.core.plugin.donut2d.painter.fill.Donut2DDefaultFill;
-import com.jensoft.core.plugin.donut2d.painter.fill.Donut2DRadialFill;
-import com.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel;
-import com.jensoft.core.plugin.donut2d.painter.label.Donut2DBorderLabel;
-import com.jensoft.core.plugin.donut2d.painter.label.Donut2DPathLabel;
-import com.jensoft.core.plugin.donut2d.painter.label.Donut2DRadialLabel;
 
 /**
  * <code>Donut2DDeflater</code>

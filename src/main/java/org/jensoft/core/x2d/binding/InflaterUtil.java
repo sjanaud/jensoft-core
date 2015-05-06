@@ -10,10 +10,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Stroke;
 
+import org.jensoft.core.graphics.Shader;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.graphics.Shader;
 
 /**
  * <code>InflaterUtil</code>

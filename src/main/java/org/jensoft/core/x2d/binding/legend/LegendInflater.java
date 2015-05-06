@@ -8,18 +8,17 @@ package org.jensoft.core.x2d.binding.legend;
 import java.awt.Color;
 import java.awt.Font;
 
+import org.jensoft.core.plugin.legend.title.TitleLegend;
+import org.jensoft.core.plugin.legend.title.TitleLegendConstraints;
+import org.jensoft.core.plugin.legend.title.TitleLegendPlugin;
+import org.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
+import org.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
+import org.jensoft.core.plugin.legend.title.painter.fil.TitleLegendDefaultFill;
+import org.jensoft.core.plugin.legend.title.painter.fil.TitleLegendGradientFill;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.plugin.legend.title.TitleLegend;
-import com.jensoft.core.plugin.legend.title.TitleLegendConstraints;
-import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendAlignment;
-import com.jensoft.core.plugin.legend.title.TitleLegendConstraints.LegendPosition;
-import com.jensoft.core.plugin.legend.title.TitleLegendPlugin;
-import com.jensoft.core.plugin.legend.title.painter.fil.TitleLegendDefaultFill;
-import com.jensoft.core.plugin.legend.title.painter.fil.TitleLegendGradientFill;
 
 /**
  * <code>LegendInflater</code>

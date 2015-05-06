@@ -5,11 +5,10 @@
  */
 package org.jensoft.core.x2d.binding.legend;
 
+import org.jensoft.core.plugin.legend.title.TitleLegendPlugin;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.legend.title.TitleLegendPlugin;
 
 /**
  * <code>LegendDeflater</code>

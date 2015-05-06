@@ -5,15 +5,15 @@
  */
 package org.jensoft.core.x2d.binding.donut2d;
 
-import com.jensoft.core.plugin.donut2d.Donut2D;
-import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DCompoundEffect;
-import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DLinearEffect;
-import com.jensoft.core.plugin.donut2d.painter.effect.Donut2DReflectionEffect;
-import com.jensoft.core.plugin.donut2d.painter.fill.Donut2DDefaultFill;
-import com.jensoft.core.plugin.donut2d.painter.fill.Donut2DRadialFill;
-import com.jensoft.core.plugin.donut2d.painter.label.Donut2DBorderLabel;
-import com.jensoft.core.plugin.donut2d.painter.label.Donut2DPathLabel;
-import com.jensoft.core.plugin.donut2d.painter.label.Donut2DRadialLabel;
+import org.jensoft.core.plugin.donut2d.Donut2D;
+import org.jensoft.core.plugin.donut2d.painter.effect.Donut2DCompoundEffect;
+import org.jensoft.core.plugin.donut2d.painter.effect.Donut2DLinearEffect;
+import org.jensoft.core.plugin.donut2d.painter.effect.Donut2DReflectionEffect;
+import org.jensoft.core.plugin.donut2d.painter.fill.Donut2DDefaultFill;
+import org.jensoft.core.plugin.donut2d.painter.fill.Donut2DRadialFill;
+import org.jensoft.core.plugin.donut2d.painter.label.Donut2DBorderLabel;
+import org.jensoft.core.plugin.donut2d.painter.label.Donut2DPathLabel;
+import org.jensoft.core.plugin.donut2d.painter.label.Donut2DRadialLabel;
 
 /**
  * <code>X2DDonut2DElement</code> defines {@link Donut2D} related elements names that should be used in any XML x2d view

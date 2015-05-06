@@ -5,29 +5,28 @@
  */
 package org.jensoft.core.x2d.binding.donut3d;
 
+import org.jensoft.core.drawable.text.TextPath.PathSide;
+import org.jensoft.core.drawable.text.TextPath.TextPosition;
+import org.jensoft.core.plugin.donut3d.Donut3D;
+import org.jensoft.core.plugin.donut3d.Donut3DPlugin;
+import org.jensoft.core.plugin.donut3d.Donut3DSlice;
+import org.jensoft.core.plugin.donut3d.Donut3DToolkit;
+import org.jensoft.core.plugin.donut3d.Donut3D.Donut3DNature;
+import org.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DPathLabel;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DRadialLabel;
+import org.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel.Style;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel.LinkAlignment;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel.LinkStyle;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DPathLabel.Donut3DFacetPathName;
+import org.jensoft.core.plugin.donut3d.painter.paint.AbstractDonut3DPaint;
+import org.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.InflaterUtil;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.drawable.text.TextPath.PathSide;
-import com.jensoft.core.drawable.text.TextPath.TextPosition;
-import com.jensoft.core.plugin.donut3d.Donut3D;
-import com.jensoft.core.plugin.donut3d.Donut3D.Donut3DNature;
-import com.jensoft.core.plugin.donut3d.Donut3DPlugin;
-import com.jensoft.core.plugin.donut3d.Donut3DSlice;
-import com.jensoft.core.plugin.donut3d.Donut3DToolkit;
-import com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel;
-import com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel.Style;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel.LinkAlignment;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel.LinkStyle;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DPathLabel;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DPathLabel.Donut3DFacetPathName;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DRadialLabel;
-import com.jensoft.core.plugin.donut3d.painter.paint.AbstractDonut3DPaint;
-import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 /**
  * <code>Donut3DInflater</code>
  * <p>

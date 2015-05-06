@@ -7,19 +7,18 @@ package org.jensoft.core.x2d.binding.bubble;
 
 import java.awt.Color;
 
+import org.jensoft.core.plugin.bubble.Bubble;
+import org.jensoft.core.plugin.bubble.BubblePlugin;
+import org.jensoft.core.plugin.bubble.painter.draw.BubbleDefaultDraw;
+import org.jensoft.core.plugin.bubble.painter.effect.BubbleEffect1;
+import org.jensoft.core.plugin.bubble.painter.effect.BubbleEffect2;
+import org.jensoft.core.plugin.bubble.painter.effect.BubbleEffect3;
+import org.jensoft.core.plugin.bubble.painter.effect.BubbleEffect4;
+import org.jensoft.core.plugin.bubble.painter.fill.BubbleDefaultFill;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.plugin.bubble.Bubble;
-import com.jensoft.core.plugin.bubble.BubblePlugin;
-import com.jensoft.core.plugin.bubble.painter.draw.BubbleDefaultDraw;
-import com.jensoft.core.plugin.bubble.painter.effect.BubbleEffect1;
-import com.jensoft.core.plugin.bubble.painter.effect.BubbleEffect2;
-import com.jensoft.core.plugin.bubble.painter.effect.BubbleEffect3;
-import com.jensoft.core.plugin.bubble.painter.effect.BubbleEffect4;
-import com.jensoft.core.plugin.bubble.painter.fill.BubbleDefaultFill;
 
 /**
  * <code>BubbleInflater</code>

@@ -16,25 +16,24 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.jensoft.core.catalog.nature.JenSoftView;
+import org.jensoft.core.graphics.Shader;
+import org.jensoft.core.palette.color.NanoChromatique;
+import org.jensoft.core.palette.color.RosePalette;
+import org.jensoft.core.palette.color.Spectral;
+import org.jensoft.core.plugin.pie.Pie;
+import org.jensoft.core.plugin.pie.PiePlugin;
+import org.jensoft.core.plugin.pie.PieSlice;
+import org.jensoft.core.plugin.pie.PieToolkit;
+import org.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
+import org.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
+import org.jensoft.core.projection.Projection;
+import org.jensoft.core.view.Portfolio;
+import org.jensoft.core.view.View;
+import org.jensoft.core.view.background.ViewDefaultBackground;
 import org.jensoft.core.x2d.X2D;
 import org.jensoft.core.x2d.X2DException;
 import org.w3c.dom.Document;
-
-import com.jensoft.core.catalog.nature.JenSoftView;
-import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.palette.color.NanoChromatique;
-import com.jensoft.core.palette.color.RosePalette;
-import com.jensoft.core.palette.color.Spectral;
-import com.jensoft.core.plugin.pie.Pie;
-import com.jensoft.core.plugin.pie.PiePlugin;
-import com.jensoft.core.plugin.pie.PieSlice;
-import com.jensoft.core.plugin.pie.PieToolkit;
-import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
-import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
-import com.jensoft.core.projection.Projection;
-import com.jensoft.core.view.Portfolio;
-import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.ViewDefaultBackground;
 
 @JenSoftView
 public class PieDeflateTest extends View {

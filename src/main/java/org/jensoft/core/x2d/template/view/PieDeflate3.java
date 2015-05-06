@@ -18,28 +18,27 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.jensoft.core.catalog.nature.JenSoftView;
+import org.jensoft.core.palette.color.ColorPalette;
+import org.jensoft.core.palette.color.RosePalette;
+import org.jensoft.core.plugin.pie.Pie;
+import org.jensoft.core.plugin.pie.PiePlugin;
+import org.jensoft.core.plugin.pie.PieSlice;
+import org.jensoft.core.plugin.pie.PieToolkit;
+import org.jensoft.core.plugin.pie.Pie.PieNature;
+import org.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
+import org.jensoft.core.plugin.pie.painter.effect.PieCompoundEffect;
+import org.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
+import org.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
+import org.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
+import org.jensoft.core.plugin.pie.painter.fill.PieRadialFill;
+import org.jensoft.core.plugin.pie.painter.label.PieRadialLabel;
+import org.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel.Style;
+import org.jensoft.core.projection.Projection;
+import org.jensoft.core.view.View;
 import org.jensoft.core.x2d.X2D;
 import org.jensoft.core.x2d.X2DException;
 import org.w3c.dom.Document;
-
-import com.jensoft.core.catalog.nature.JenSoftView;
-import com.jensoft.core.palette.color.ColorPalette;
-import com.jensoft.core.palette.color.RosePalette;
-import com.jensoft.core.plugin.pie.Pie;
-import com.jensoft.core.plugin.pie.Pie.PieNature;
-import com.jensoft.core.plugin.pie.PiePlugin;
-import com.jensoft.core.plugin.pie.PieSlice;
-import com.jensoft.core.plugin.pie.PieToolkit;
-import com.jensoft.core.plugin.pie.painter.effect.CubicEffectFrame;
-import com.jensoft.core.plugin.pie.painter.effect.PieCompoundEffect;
-import com.jensoft.core.plugin.pie.painter.effect.PieCubicEffect;
-import com.jensoft.core.plugin.pie.painter.effect.PieLinearEffect;
-import com.jensoft.core.plugin.pie.painter.effect.PieReflectionEffect;
-import com.jensoft.core.plugin.pie.painter.fill.PieRadialFill;
-import com.jensoft.core.plugin.pie.painter.label.AbstractPieSliceLabel.Style;
-import com.jensoft.core.plugin.pie.painter.label.PieRadialLabel;
-import com.jensoft.core.projection.Projection;
-import com.jensoft.core.view.View;
 
 @JenSoftView
 public class PieDeflate3 extends View {

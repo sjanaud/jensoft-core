@@ -20,19 +20,18 @@ import java.util.List;
 
 import javax.xml.bind.DatatypeConverter;
 
+import org.jensoft.core.graphics.Shader;
+import org.jensoft.core.plugin.AbstractPlugin;
+import org.jensoft.core.plugin.PluginPlatform;
+import org.jensoft.core.projection.Projection;
+import org.jensoft.core.view.View;
+import org.jensoft.core.view.background.ViewBackgroundPainter;
+import org.jensoft.core.view.background.ViewDefaultBackground;
 import org.jensoft.core.x2d.X2DException;
 import org.jensoft.core.x2d.lang.X2DViewElement;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.plugin.PluginPlatform;
-import com.jensoft.core.projection.Projection;
-import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.ViewBackgroundPainter;
-import com.jensoft.core.view.background.ViewDefaultBackground;
 
 /**
  * <code>X2DInflater</code>

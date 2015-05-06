@@ -5,11 +5,10 @@
  */
 package org.jensoft.core.x2d.binding.bubble;
 
+import org.jensoft.core.plugin.bubble.BubblePlugin;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.bubble.BubblePlugin;
 
 /**
  * <code>BubbleDeflater</code>

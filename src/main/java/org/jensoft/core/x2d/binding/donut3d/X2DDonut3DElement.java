@@ -5,8 +5,8 @@
  */
 package org.jensoft.core.x2d.binding.donut3d;
 
-import com.jensoft.core.plugin.donut3d.Donut3D;
-import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
+import org.jensoft.core.plugin.donut3d.Donut3D;
+import org.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 
 /**
  * <code>X2DDonut3DElement</code> defines {@link Donut3D} related elements names

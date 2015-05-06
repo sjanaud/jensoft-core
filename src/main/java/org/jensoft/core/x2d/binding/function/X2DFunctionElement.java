@@ -5,8 +5,8 @@
  */
 package org.jensoft.core.x2d.binding.function;
 
-import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.plugin.function.source.SourceFunction;
+import org.jensoft.core.glyphmetrics.GlyphMetric;
+import org.jensoft.core.plugin.function.source.SourceFunction;
 
 /**
  * <code>X2DFunctionElement</code> defines {@link GlyphMetric} and {@link SourceFunction} related elements names that

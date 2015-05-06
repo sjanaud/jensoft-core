@@ -8,19 +8,18 @@ package org.jensoft.core.x2d.binding.metrics;
 import java.awt.Color;
 import java.awt.Font;
 
+import org.jensoft.core.plugin.metrics.AxisMetricsPlugin;
+import org.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
+import org.jensoft.core.plugin.metrics.AxisMetricsPlugin.FlowMetrics;
+import org.jensoft.core.plugin.metrics.AxisMetricsPlugin.FreeMetrics;
+import org.jensoft.core.plugin.metrics.AxisMetricsPlugin.ModeledMetrics;
+import org.jensoft.core.plugin.metrics.AxisMetricsPlugin.StaticMetrics;
+import org.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
+import org.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.Axis;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FlowMetrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.FreeMetrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.ModeledMetrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.StaticMetrics;
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin.TimeMetrics;
-import com.jensoft.core.plugin.metrics.manager.TimeMetricsManager;
 
 /**
  * <code>AxisMetricsInflater</code>

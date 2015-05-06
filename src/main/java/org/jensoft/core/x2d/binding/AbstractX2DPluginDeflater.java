@@ -5,10 +5,9 @@
  */
 package org.jensoft.core.x2d.binding;
 
+import org.jensoft.core.plugin.AbstractPlugin;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.AbstractPlugin;
 
 /**
  * <code>AbstractX2DPluginDeflater</code>

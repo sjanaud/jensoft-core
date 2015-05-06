@@ -5,7 +5,7 @@
  */
 package org.jensoft.core.x2d.binding.function;
 
-import com.jensoft.core.plugin.function.curve.Curve;
+import org.jensoft.core.plugin.function.curve.Curve;
 
 /**
  * <code>X2DCurveElement</code> defines {@link Curve} related elements names that should be used in any XML x2d view

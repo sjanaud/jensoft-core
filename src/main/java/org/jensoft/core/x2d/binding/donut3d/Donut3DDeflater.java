@@ -7,19 +7,18 @@ package org.jensoft.core.x2d.binding.donut3d;
 
 import java.util.List;
 
+import org.jensoft.core.graphics.Shader;
+import org.jensoft.core.plugin.donut3d.Donut3D;
+import org.jensoft.core.plugin.donut3d.Donut3DPlugin;
+import org.jensoft.core.plugin.donut3d.Donut3DSlice;
+import org.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DPathLabel;
+import org.jensoft.core.plugin.donut3d.painter.label.Donut3DRadialLabel;
+import org.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.plugin.donut3d.Donut3D;
-import com.jensoft.core.plugin.donut3d.Donut3DPlugin;
-import com.jensoft.core.plugin.donut3d.Donut3DSlice;
-import com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DBorderLabel;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DPathLabel;
-import com.jensoft.core.plugin.donut3d.painter.label.Donut3DRadialLabel;
-import com.jensoft.core.plugin.donut3d.painter.paint.Donut3DDefaultPaint;
 
 /**
  * <code>Donut3DDeflater</code>

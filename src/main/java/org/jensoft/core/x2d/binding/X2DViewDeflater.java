@@ -22,23 +22,22 @@ import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import org.jensoft.core.plugin.AbstractPlugin;
+import org.jensoft.core.projection.Projection;
+import org.jensoft.core.projection.Projection.Linear;
+import org.jensoft.core.projection.Projection.Log;
+import org.jensoft.core.projection.Projection.LogX;
+import org.jensoft.core.projection.Projection.LogY;
+import org.jensoft.core.projection.Projection.TimeX;
+import org.jensoft.core.projection.Projection.TimeY;
+import org.jensoft.core.view.View;
+import org.jensoft.core.view.background.ViewBackgroundPainter;
+import org.jensoft.core.view.background.ViewDefaultBackground;
+import org.jensoft.core.view.deflater.AbstractViewDeflater;
 import org.jensoft.core.x2d.lang.X2DViewElement;
 import org.w3c.dom.DOMException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.projection.Projection;
-import com.jensoft.core.projection.Projection.Linear;
-import com.jensoft.core.projection.Projection.Log;
-import com.jensoft.core.projection.Projection.LogX;
-import com.jensoft.core.projection.Projection.LogY;
-import com.jensoft.core.projection.Projection.TimeX;
-import com.jensoft.core.projection.Projection.TimeY;
-import com.jensoft.core.view.View;
-import com.jensoft.core.view.background.ViewBackgroundPainter;
-import com.jensoft.core.view.background.ViewDefaultBackground;
-import com.jensoft.core.view.deflater.AbstractViewDeflater;
 
 /**
  * <code>X2DViewDeflater</code>

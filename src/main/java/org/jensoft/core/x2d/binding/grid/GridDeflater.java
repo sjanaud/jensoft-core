@@ -5,10 +5,9 @@
  */
 package org.jensoft.core.x2d.binding.grid;
 
+import org.jensoft.core.plugin.grid.GridPlugin;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.grid.GridPlugin;
 
 /**
  * <code>GridDeflater</code>

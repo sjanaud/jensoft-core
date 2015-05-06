@@ -5,7 +5,7 @@
  */
 package org.jensoft.core.x2d.binding.function;
 
-import com.jensoft.core.plugin.function.area.Area;
+import org.jensoft.core.plugin.function.area.Area;
 
 /**
  * <code>X2DAreaElement</code> defines {@link Area} related elements names that should be used in any XML x2d
