@@ -18,12 +18,13 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
+import org.jensoft.core.x2d.binding.X2DBinding;
+
 import com.jensoft.core.projection.Projection;
 import com.jensoft.core.view.Portfolio;
 import com.jensoft.core.view.Portfolio.ImageType;
 import com.jensoft.core.view.View;
-import com.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
-import com.jensoft.core.x2d.binding.X2DBinding;
 
 /**
  * <code>PluginPlatform</code>

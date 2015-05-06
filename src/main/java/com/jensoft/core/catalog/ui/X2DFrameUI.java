@@ -17,6 +17,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
+import org.jensoft.core.x2d.X2D;
+import org.jensoft.core.x2d.X2DException;
+
 import com.jensoft.core.catalog.component.DemoTab;
 import com.jensoft.core.catalog.component.DemoTabSet;
 import com.jensoft.core.catalog.source.JavaSourcePane;
@@ -24,8 +27,6 @@ import com.jensoft.core.catalog.source.X2DSourcePane;
 import com.jensoft.core.palette.color.JennyPalette;
 import com.jensoft.core.palette.color.RosePalette;
 import com.jensoft.core.view.View;
-import com.jensoft.core.x2d.X2D;
-import com.jensoft.core.x2d.X2DException;
 
 /**
  * <code>X2DFrameUI</code><br>
