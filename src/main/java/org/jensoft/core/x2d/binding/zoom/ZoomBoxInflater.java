@@ -5,13 +5,12 @@
  */
 package org.jensoft.core.x2d.binding.zoom;
 
+import org.jensoft.core.plugin.zoom.box.ZoomBoxDefaultDeviceContext;
+import org.jensoft.core.plugin.zoom.box.ZoomBoxDonutWidget;
+import org.jensoft.core.plugin.zoom.box.ZoomBoxPlugin;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.zoom.box.ZoomBoxDefaultDeviceContext;
-import com.jensoft.core.plugin.zoom.box.ZoomBoxDonutWidget;
-import com.jensoft.core.plugin.zoom.box.ZoomBoxPlugin;
 /**
  * <code>ZoomBoxInflater</code>
  * 

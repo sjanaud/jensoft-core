@@ -8,19 +8,18 @@ package org.jensoft.core.x2d.binding.function;
 import java.awt.Color;
 import java.awt.Stroke;
 
+import org.jensoft.core.glyphmetrics.GlyphMetric;
+import org.jensoft.core.plugin.function.FunctionPlugin;
+import org.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
+import org.jensoft.core.plugin.function.FunctionPlugin.CurveFunction;
+import org.jensoft.core.plugin.function.curve.Curve;
+import org.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw;
+import org.jensoft.core.plugin.function.curve.painter.draw.CurveDefaultDraw;
+import org.jensoft.core.plugin.function.source.SourceFunction;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.plugin.function.FunctionPlugin;
-import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
-import com.jensoft.core.plugin.function.FunctionPlugin.CurveFunction;
-import com.jensoft.core.plugin.function.curve.Curve;
-import com.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw;
-import com.jensoft.core.plugin.function.curve.painter.draw.CurveDefaultDraw;
-import com.jensoft.core.plugin.function.source.SourceFunction;
 
 /**
  * <code>CurveInflater</code> takes the responsibility to inflates X2D curve

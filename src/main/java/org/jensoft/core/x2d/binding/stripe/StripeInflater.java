@@ -7,18 +7,17 @@ package org.jensoft.core.x2d.binding.stripe;
 
 import java.awt.Color;
 
+import org.jensoft.core.plugin.stripe.Stripe;
+import org.jensoft.core.plugin.stripe.StripePlugin;
+import org.jensoft.core.plugin.stripe.StripePlugin.StripeOrientation;
+import org.jensoft.core.plugin.stripe.manager.FlowStripeManager;
+import org.jensoft.core.plugin.stripe.manager.FreeStripeManager;
+import org.jensoft.core.plugin.stripe.manager.MultiplierStripeManager;
+import org.jensoft.core.plugin.stripe.painter.StripePaint;
+import org.jensoft.core.plugin.stripe.painter.StripePalette;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.plugin.stripe.Stripe;
-import com.jensoft.core.plugin.stripe.StripePlugin;
-import com.jensoft.core.plugin.stripe.StripePlugin.StripeOrientation;
-import com.jensoft.core.plugin.stripe.manager.FlowStripeManager;
-import com.jensoft.core.plugin.stripe.manager.FreeStripeManager;
-import com.jensoft.core.plugin.stripe.manager.MultiplierStripeManager;
-import com.jensoft.core.plugin.stripe.painter.StripePaint;
-import com.jensoft.core.plugin.stripe.painter.StripePalette;
 
 /**
  * <code>BandInflater</code>

@@ -9,20 +9,19 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Stroke;
 
+import org.jensoft.core.plugin.grid.Grid;
+import org.jensoft.core.plugin.grid.GridPlugin;
+import org.jensoft.core.plugin.grid.Grid.GridOrientation;
+import org.jensoft.core.plugin.grid.GridPlugin.FlowGrid;
+import org.jensoft.core.plugin.grid.GridPlugin.FreeGrid;
+import org.jensoft.core.plugin.grid.GridPlugin.ModeledGrid;
+import org.jensoft.core.plugin.grid.GridPlugin.MultiplierGrid;
+import org.jensoft.core.plugin.grid.GridPlugin.StaticGrid;
+import org.jensoft.core.plugin.grid.manager.ModeledGridManager.GridModelRangeCollections;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.plugin.grid.Grid;
-import com.jensoft.core.plugin.grid.Grid.GridOrientation;
-import com.jensoft.core.plugin.grid.GridPlugin;
-import com.jensoft.core.plugin.grid.GridPlugin.FlowGrid;
-import com.jensoft.core.plugin.grid.GridPlugin.FreeGrid;
-import com.jensoft.core.plugin.grid.GridPlugin.ModeledGrid;
-import com.jensoft.core.plugin.grid.GridPlugin.MultiplierGrid;
-import com.jensoft.core.plugin.grid.GridPlugin.StaticGrid;
-import com.jensoft.core.plugin.grid.manager.ModeledGridManager.GridModelRangeCollections;
 
 /**
  * <code>GridInflater</code>

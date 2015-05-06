@@ -5,10 +5,9 @@
  */
 package org.jensoft.core.x2d.binding.metrics;
 
+import org.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.metrics.AxisMetricsPlugin;
 
 /**
  * <code>GridDeflater</code>

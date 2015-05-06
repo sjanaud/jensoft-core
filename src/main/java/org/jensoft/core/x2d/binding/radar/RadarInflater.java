@@ -5,10 +5,9 @@
  */
 package org.jensoft.core.x2d.binding.radar;
 
+import org.jensoft.core.plugin.radar.RadarPlugin;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.radar.RadarPlugin;
 
 /**
  * @author Sebastien Janaud

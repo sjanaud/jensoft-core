@@ -5,7 +5,7 @@
  */
 package org.jensoft.core.x2d.binding.function;
 
-import com.jensoft.core.plugin.function.curve.Curve;
+import org.jensoft.core.plugin.function.curve.Curve;
 
 
 /**

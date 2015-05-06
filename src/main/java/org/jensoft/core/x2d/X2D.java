@@ -15,6 +15,8 @@ import java.util.List;
 
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.jensoft.core.plugin.AbstractPlugin;
+import org.jensoft.core.view.View;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DViewDeflater;
@@ -41,9 +43,6 @@ import org.jensoft.core.x2d.lang.X2DSchema;
 import org.jensoft.core.x2d.lang.X2DSchemaErrorHandler;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
-
-import com.jensoft.core.plugin.AbstractPlugin;
-import com.jensoft.core.view.View;
 
 /**
  * <code>X2D</code>

@@ -16,20 +16,19 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
+import org.jensoft.core.glyphmetrics.GlyphMetric;
+import org.jensoft.core.glyphmetrics.StylePosition;
+import org.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
+import org.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
+import org.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
+import org.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
+import org.jensoft.core.plugin.function.source.FunctionNature;
+import org.jensoft.core.plugin.function.source.SourceFunction;
+import org.jensoft.core.plugin.function.source.UserSourceFunction;
+import org.jensoft.core.plugin.function.source.UserSourceFunction.LineSource;
+import org.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSource;
+import org.jensoft.core.plugin.function.source.UserSourceFunction.SplineSource;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.glyphmetrics.StylePosition;
-import com.jensoft.core.glyphmetrics.painter.GlyphMetricMarkerPainter;
-import com.jensoft.core.glyphmetrics.painter.fill.GlyphFill;
-import com.jensoft.core.glyphmetrics.painter.marker.RoundMarker;
-import com.jensoft.core.glyphmetrics.painter.marker.TicTacMarker;
-import com.jensoft.core.plugin.function.source.FunctionNature;
-import com.jensoft.core.plugin.function.source.SourceFunction;
-import com.jensoft.core.plugin.function.source.UserSourceFunction;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.LineSource;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.RegressionSource;
-import com.jensoft.core.plugin.function.source.UserSourceFunction.SplineSource;
 
 
 /**

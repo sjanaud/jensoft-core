@@ -8,22 +8,21 @@ package org.jensoft.core.x2d.binding.function;
 import java.awt.Color;
 import java.awt.Stroke;
 
+import org.jensoft.core.glyphmetrics.GlyphMetric;
+import org.jensoft.core.graphics.Shader;
+import org.jensoft.core.plugin.function.FunctionPlugin;
+import org.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
+import org.jensoft.core.plugin.function.area.Area;
+import org.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
+import org.jensoft.core.plugin.function.area.painter.draw.AreaDefaultDraw;
+import org.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
+import org.jensoft.core.plugin.function.area.painter.fill.AreaDefaultFill;
+import org.jensoft.core.plugin.function.area.painter.fill.AreaGradientFill;
+import org.jensoft.core.plugin.function.source.SourceFunction;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.glyphmetrics.GlyphMetric;
-import com.jensoft.core.graphics.Shader;
-import com.jensoft.core.plugin.function.FunctionPlugin;
-import com.jensoft.core.plugin.function.FunctionPlugin.AreaFunction;
-import com.jensoft.core.plugin.function.area.Area;
-import com.jensoft.core.plugin.function.area.painter.draw.AbstractAreaDraw;
-import com.jensoft.core.plugin.function.area.painter.draw.AreaDefaultDraw;
-import com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill;
-import com.jensoft.core.plugin.function.area.painter.fill.AreaDefaultFill;
-import com.jensoft.core.plugin.function.area.painter.fill.AreaGradientFill;
-import com.jensoft.core.plugin.function.source.SourceFunction;
 
 /**
  * <code>AreaFunctionInflater</code>

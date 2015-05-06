@@ -7,11 +7,10 @@ package org.jensoft.core.x2d.binding.outline;
 
 import java.awt.Color;
 
+import org.jensoft.core.plugin.outline.OutlinePlugin;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.outline.OutlinePlugin;
 
 /**
  * <code>OutlineInflater</code>

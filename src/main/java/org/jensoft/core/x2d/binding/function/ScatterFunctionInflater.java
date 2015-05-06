@@ -6,21 +6,20 @@
 package org.jensoft.core.x2d.binding.function;
 import java.awt.Color;
 
+import org.jensoft.core.plugin.function.FunctionPlugin;
+import org.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
+import org.jensoft.core.plugin.function.scatter.Scatter;
+import org.jensoft.core.plugin.function.scatter.morphe.EllipseMorphe;
+import org.jensoft.core.plugin.function.scatter.morphe.PolygonMorphe;
+import org.jensoft.core.plugin.function.scatter.morphe.QInverseMorphe;
+import org.jensoft.core.plugin.function.scatter.morphe.RectangleMorphe;
+import org.jensoft.core.plugin.function.scatter.morphe.StarMorphe;
+import org.jensoft.core.plugin.function.scatter.painter.fill.ScatterDefaultFill;
+import org.jensoft.core.plugin.function.source.SourceFunction;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
-
-import com.jensoft.core.plugin.function.FunctionPlugin;
-import com.jensoft.core.plugin.function.FunctionPlugin.ScatterFunction;
-import com.jensoft.core.plugin.function.scatter.Scatter;
-import com.jensoft.core.plugin.function.scatter.morphe.EllipseMorphe;
-import com.jensoft.core.plugin.function.scatter.morphe.PolygonMorphe;
-import com.jensoft.core.plugin.function.scatter.morphe.QInverseMorphe;
-import com.jensoft.core.plugin.function.scatter.morphe.RectangleMorphe;
-import com.jensoft.core.plugin.function.scatter.morphe.StarMorphe;
-import com.jensoft.core.plugin.function.scatter.painter.fill.ScatterDefaultFill;
-import com.jensoft.core.plugin.function.source.SourceFunction;
 
 /**
  * <code>ScatterCurveInflater</code>

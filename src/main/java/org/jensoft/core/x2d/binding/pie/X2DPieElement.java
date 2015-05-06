@@ -5,7 +5,7 @@
  */
 package org.jensoft.core.x2d.binding.pie;
 
-import com.jensoft.core.plugin.pie.Pie;
+import org.jensoft.core.plugin.pie.Pie;
 
 /**
  * <code>X2DPieElement</code> defines {@link Pie} related elements names that

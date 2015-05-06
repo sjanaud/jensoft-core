@@ -5,14 +5,13 @@
  */
 package org.jensoft.core.x2d.binding.zoom;
 
+import org.jensoft.core.plugin.zoom.lens.LensDefaultDeviceContext;
+import org.jensoft.core.plugin.zoom.lens.LensX;
+import org.jensoft.core.plugin.zoom.lens.LensY;
+import org.jensoft.core.plugin.zoom.lens.ZoomLensPlugin;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.plugin.zoom.lens.LensDefaultDeviceContext;
-import com.jensoft.core.plugin.zoom.lens.LensX;
-import com.jensoft.core.plugin.zoom.lens.LensY;
-import com.jensoft.core.plugin.zoom.lens.ZoomLensPlugin;
 
 /**
  * <code>ZoomObjectifInflater</code>

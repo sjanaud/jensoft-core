@@ -5,7 +5,7 @@
  */
 package org.jensoft.core.x2d.binding.outline;
 
-import com.jensoft.core.plugin.outline.OutlinePlugin;
+import org.jensoft.core.plugin.outline.OutlinePlugin;
 
 /**
  * <code>X2DOutlineElement</code> defines {@link OutlinePlugin} related elements names that should be used in any XML

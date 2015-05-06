@@ -7,17 +7,16 @@ package org.jensoft.core.x2d.binding.translate;
 
 import java.awt.Color;
 
+import org.jensoft.core.palette.color.Alpha;
+import org.jensoft.core.palette.color.RosePalette;
+import org.jensoft.core.plugin.translate.TranslateCompassWidget;
+import org.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
+import org.jensoft.core.plugin.translate.TranslatePlugin;
+import org.jensoft.core.plugin.translate.TranslateX;
+import org.jensoft.core.plugin.translate.TranslateY;
 import org.jensoft.core.x2d.binding.AbstractX2DPluginInflater;
 import org.jensoft.core.x2d.binding.X2DBinding;
 import org.w3c.dom.Element;
-
-import com.jensoft.core.palette.color.Alpha;
-import com.jensoft.core.palette.color.RosePalette;
-import com.jensoft.core.plugin.translate.TranslateCompassWidget;
-import com.jensoft.core.plugin.translate.TranslateDefaultDeviceContext;
-import com.jensoft.core.plugin.translate.TranslatePlugin;
-import com.jensoft.core.plugin.translate.TranslateX;
-import com.jensoft.core.plugin.translate.TranslateY;
 /**
  * <code>TranslateInflater</code>
  * 
