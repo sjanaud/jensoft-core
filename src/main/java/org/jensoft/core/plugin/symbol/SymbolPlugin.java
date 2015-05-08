@@ -173,7 +173,7 @@ public class SymbolPlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     * @see org.jensoft.core.plugin.AbstractPlugin#paintPlugin(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
      */
     @Override
     public final void paintPlugin(View v2d, Graphics2D g2d,
@@ -202,7 +202,7 @@ public class SymbolPlugin extends AbstractPlugin implements
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
      */
     @Override
     public void onRelease(MouseEvent me) {
@@ -214,7 +214,7 @@ public class SymbolPlugin extends AbstractPlugin implements
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
      */
     @Override
     public void onPress(MouseEvent me) {
@@ -226,7 +226,7 @@ public class SymbolPlugin extends AbstractPlugin implements
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnExitListener#onExit(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnExitListener#onExit(java.awt.event.MouseEvent)
      */
     @Override
     public void onExit(MouseEvent me) {
@@ -238,7 +238,7 @@ public class SymbolPlugin extends AbstractPlugin implements
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnEnterListener#onEnter(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnEnterListener#onEnter(java.awt.event.MouseEvent)
      */
     @Override
     public void onEnter(MouseEvent me) {
@@ -250,7 +250,7 @@ public class SymbolPlugin extends AbstractPlugin implements
 
  
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnClickListener#onClick(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnClickListener#onClick(java.awt.event.MouseEvent)
      */
     @Override
     public void onClick(MouseEvent me) {
@@ -263,7 +263,7 @@ public class SymbolPlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt.event.MouseEvent)
      */
     @Override
     public void onMove(MouseEvent me) {
@@ -276,7 +276,7 @@ public class SymbolPlugin extends AbstractPlugin implements
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt.event.MouseEvent)
      */
     @Override
     public void onDrag(MouseEvent me) {

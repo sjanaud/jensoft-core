@@ -207,8 +207,8 @@ public class PieCubicEffect extends AbstractPieEffect {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect#paintPieEffect
-	 * (java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
+	 * org.jensoft.core.plugin.pie.painter.effect.AbstractPieEffect#paintPieEffect
+	 * (java.awt.Graphics2D, org.jensoft.core.plugin.pie.Pie)
 	 */
 	@Override
 	public final void paintPieEffect(Graphics2D g2d, Pie pie) {

@@ -521,7 +521,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.metrics.AxisMetricsPlugin#paintMetrics(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+		 * @see org.jensoft.core.plugin.metrics.AxisMetricsPlugin#paintMetrics(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
 		 */
 		@Override
 		public void paintMetrics(View view, Graphics2D g2d, ViewPart viewPart) {
@@ -988,7 +988,7 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+	 * @see org.jensoft.core.plugin.AbstractPlugin#paintPlugin(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
 	 */
 	@Override
 	public final void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {

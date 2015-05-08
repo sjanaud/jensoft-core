@@ -95,7 +95,7 @@ public class PieDivergenceAnimator extends AbstractPieAnimator {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#getAnimator(com.jensoft.core.plugin.pie.PieSlice)
+     * @see org.jensoft.core.plugin.pie.animator.AbstractPieAnimator#getAnimator(org.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     public Runnable getAnimator(PieSlice slice) {

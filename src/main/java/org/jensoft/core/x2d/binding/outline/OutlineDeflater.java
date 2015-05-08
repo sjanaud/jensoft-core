@@ -21,7 +21,7 @@ public class OutlineDeflater extends AbstractX2DPluginDeflater<OutlinePlugin> im
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate(com.jensoft.core.plugin.AbstractPlugin)
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate(org.jensoft.core.plugin.AbstractPlugin)
 	 */
 	@Override
 	public Element deflate(OutlinePlugin plugin) {

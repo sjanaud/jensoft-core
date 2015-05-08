@@ -23,7 +23,7 @@ public class OutlineInflater extends AbstractX2DPluginInflater<OutlinePlugin> im
    
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public OutlinePlugin inflate(Element outlinePluginElement) {

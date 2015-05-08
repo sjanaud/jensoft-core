@@ -1179,7 +1179,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt.event.MouseEvent)
      */
     @Override
     public void onPress(MouseEvent me) {
@@ -1262,7 +1262,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
      */
     @Override
     public void onRelease(MouseEvent me) {
@@ -1308,7 +1308,7 @@ public class ZoomBoxPlugin extends AbstractPlugin implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     * @see org.jensoft.core.plugin.AbstractPlugin#paintPlugin(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
      */
     @Override
     protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {

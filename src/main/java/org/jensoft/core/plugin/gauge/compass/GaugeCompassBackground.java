@@ -256,7 +256,7 @@ public class GaugeCompassBackground extends GaugeBackground{
     }
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.gauge.core.GaugeBackground#paintBackground(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 * @see org.jensoft.core.plugin.gauge.core.GaugeBackground#paintBackground(java.awt.Graphics2D, org.jensoft.core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override
 	public void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {

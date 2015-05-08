@@ -66,7 +66,7 @@ public abstract class AbstractSourceFunction implements SourceFunction {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.function.source.SourceFunction#getCurrentFunction()
+	 * @see org.jensoft.core.plugin.function.source.SourceFunction#getCurrentFunction()
 	 */
 	@Override
 	public List<Point2D> getCurrentFunction() {
@@ -95,7 +95,7 @@ public abstract class AbstractSourceFunction implements SourceFunction {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.function.source.SourceFunction#solveFunction(
+	 * org.jensoft.core.plugin.function.source.SourceFunction#solveFunction(
 	 * double, double)
 	 */
 	@Override
@@ -105,7 +105,7 @@ public abstract class AbstractSourceFunction implements SourceFunction {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.function.source.SourceFunction#evaluate(double)
+	 * org.jensoft.core.plugin.function.source.SourceFunction#evaluate(double)
 	 */
 	@Override
 	public abstract Point2D evaluate(double value);

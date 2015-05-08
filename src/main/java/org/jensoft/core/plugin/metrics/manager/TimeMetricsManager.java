@@ -124,7 +124,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getDeviceMetrics()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#getDeviceMetrics()
      */
     @Override
     public List<Metrics> getDeviceMetrics() {
@@ -789,7 +789,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -802,7 +802,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -856,7 +856,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -869,7 +869,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -923,7 +923,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -936,7 +936,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
       
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -993,7 +993,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1006,7 +1006,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1063,7 +1063,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
       
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1076,7 +1076,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
      
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1133,7 +1133,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1146,7 +1146,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1203,7 +1203,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1216,7 +1216,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
       
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1272,7 +1272,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1285,7 +1285,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1341,7 +1341,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
       
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1354,7 +1354,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1409,7 +1409,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1422,7 +1422,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1479,7 +1479,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1492,7 +1492,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1582,7 +1582,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1595,7 +1595,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {
@@ -1651,7 +1651,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#cloneModel()
          */
         @Override
         public TimeModel cloneModel() {
@@ -1664,7 +1664,7 @@ public class TimeMetricsManager extends AbstractMetricsManager {
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
+         * @see org.jensoft.core.plugin.metrics.manager.TimeMetricsManager.TimeModel#generateMetrics()
          */
         @Override
         public List<Metrics> generateMetrics() {

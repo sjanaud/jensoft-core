@@ -529,7 +529,7 @@ public class Donut2DInflater extends AbstractX2DPluginInflater<Donut2DPlugin> im
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public Donut2DPlugin inflate(Element pluginElement) {

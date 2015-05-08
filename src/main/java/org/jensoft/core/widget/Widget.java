@@ -387,7 +387,7 @@ public abstract class Widget<P extends AbstractPlugin> implements WidgetFolder.O
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.WidgetFolder.OnPostWidgetListener#onPostWidget()
+     * @see org.jensoft.core.widget.WidgetFolder.OnPostWidgetListener#onPostWidget()
      */
     @Override
     public void onPostWidget() {

@@ -89,7 +89,7 @@ public class CompoundGridManager extends AbstractGridManager {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.grid.manager.GridManager#getGrids()
+	 * @see org.jensoft.core.plugin.grid.manager.GridManager#getGrids()
 	 */
 	@Override
 	public List<Grid> getGrids() {
@@ -107,7 +107,7 @@ public class CompoundGridManager extends AbstractGridManager {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setProjection(com.jensoft.core.projection.Projection)
+	 * @see org.jensoft.core.plugin.grid.manager.AbstractGridManager#setProjection(org.jensoft.core.projection.Projection)
 	 */
 	@Override
 	public void setProjection(Projection projection) {
@@ -119,7 +119,7 @@ public class CompoundGridManager extends AbstractGridManager {
 
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setGridOrientation(com.jensoft.core.plugin.grid.Grid.GridOrientation)
+	 * @see org.jensoft.core.plugin.grid.manager.AbstractGridManager#setGridOrientation(org.jensoft.core.plugin.grid.Grid.GridOrientation)
 	 */
 	@Override
 	public void setGridOrientation(GridOrientation gridOrientation) {
@@ -131,7 +131,7 @@ public class CompoundGridManager extends AbstractGridManager {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.grid.manager.AbstractGridManager#setGridColor(java.awt.Color)
+	 * @see org.jensoft.core.plugin.grid.manager.AbstractGridManager#setGridColor(java.awt.Color)
 	 */
 	@Override
 	public void setGridColor(Color c) {

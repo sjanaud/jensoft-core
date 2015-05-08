@@ -29,7 +29,7 @@ public abstract class AbstractPieEffect extends AbstractPiePainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.painter.AbstractPiePainter#paintPie(java.awt.Graphics2D, com.jensoft.core.plugin.pie.Pie)
+     * @see org.jensoft.core.plugin.pie.painter.AbstractPiePainter#paintPie(java.awt.Graphics2D, org.jensoft.core.plugin.pie.Pie)
      */
     @Override
     public final void paintPie(Graphics2D g2d, Pie pie) {

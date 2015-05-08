@@ -31,7 +31,7 @@ public class CurveFunctionInflater extends AbstractX2DPluginInflater<CurveFuncti
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public FunctionPlugin.CurveFunction inflate(Element pluginElement) {

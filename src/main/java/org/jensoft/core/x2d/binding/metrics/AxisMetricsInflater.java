@@ -41,7 +41,7 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
 		 * .w3c.dom.Element)
 		 */
 		@Override
@@ -72,7 +72,7 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
 		 * .w3c.dom.Element)
 		 */
 		@Override
@@ -115,7 +115,7 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
 		 * .w3c.dom.Element)
 		 */
 		@Override
@@ -140,7 +140,7 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
 		 * .w3c.dom.Element)
 		 */
 		@Override
@@ -164,7 +164,7 @@ public abstract class AxisMetricsInflater<A extends AxisMetricsPlugin<?>> extend
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
+		 * org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org
 		 * .w3c.dom.Element)
 		 */
 		@Override

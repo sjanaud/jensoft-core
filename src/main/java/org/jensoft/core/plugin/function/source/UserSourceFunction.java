@@ -301,7 +301,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.function.source.SourceFunction#select(double,
+		 * org.jensoft.core.plugin.function.source.SourceFunction#select(double,
 		 * double)
 		 */
 		@Override
@@ -394,7 +394,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.function.source.SourceFunction#evaluate(double
+		 * org.jensoft.core.plugin.function.source.SourceFunction#evaluate(double
 		 * )
 		 */
 		@Override
@@ -422,7 +422,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		// * (non-Javadoc)
 		// *
 		// * @see
-		// com.jensoft.core.plugin.function.source.SourceFunction#getFunction()
+		// org.jensoft.core.plugin.function.source.SourceFunction#getFunction()
 		// */
 		// @Override
 		// public List<Point2D> getFunction() {
@@ -669,7 +669,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.function.source.AffineSourceFunction#setSource
+		 * org.jensoft.core.plugin.function.source.AffineSourceFunction#setSource
 		 * (java.util.List)
 		 */
 		@Override
@@ -682,7 +682,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate
+		 * org.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate
 		 * (double)
 		 */
 		@Override
@@ -706,7 +706,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.function.source.LineSourceFunction#solveFunction
+		 * org.jensoft.core.plugin.function.source.LineSourceFunction#solveFunction
 		 * (double, double)
 		 */
 		@Override
@@ -959,7 +959,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.function.source.AffineSourceFunction#setSource
+		 * org.jensoft.core.plugin.function.source.AffineSourceFunction#setSource
 		 * (java.util.List)
 		 */
 		@Override
@@ -972,7 +972,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.function.source.LineSourceFunction#solveFunction
+		 * org.jensoft.core.plugin.function.source.LineSourceFunction#solveFunction
 		 * (double, double)
 		 */
 		@Override
@@ -1003,7 +1003,7 @@ public abstract class UserSourceFunction extends AbstractSourceFunction {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate
+		 * org.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate
 		 * (double)
 		 */
 		@Override

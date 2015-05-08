@@ -95,7 +95,7 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.device.Device2D#getDeviceMenuManager()
+     * @see org.jensoft.core.device.Device2D#getDeviceMenuManager()
      */
     @Override
     public DeviceMenuManager getDeviceMenuManager() {
@@ -246,7 +246,7 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     * @see org.jensoft.core.plugin.AbstractPlugin#paintPlugin(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
      */
     @Override
     protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
@@ -256,7 +256,7 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.device.Device#repaintDevice(int, int, int, int)
+     * @see org.jensoft.core.device.Device#repaintDevice(int, int, int, int)
      */
     @Override
     public void repaintDevice(int x, int y, int w, int h) {
@@ -264,7 +264,7 @@ public class MiniDevicePlugin extends AbstractPlugin implements Device {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#repaintDevice()
+     * @see org.jensoft.core.plugin.AbstractPlugin#repaintDevice()
      */
     @Override
     public void repaintDevice() {

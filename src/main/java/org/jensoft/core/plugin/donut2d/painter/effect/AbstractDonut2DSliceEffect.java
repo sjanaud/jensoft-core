@@ -35,7 +35,7 @@ public abstract class AbstractDonut2DSliceEffect extends AbstractDonut2DSlicePai
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.painter.AbstractDonut2DSlicePainter#paintDonut2DSlice(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D, com.jensoft.core.plugin.donut2d.Donut2DSlice)
+     * @see org.jensoft.core.plugin.donut2d.painter.AbstractDonut2DSlicePainter#paintDonut2DSlice(java.awt.Graphics2D, org.jensoft.core.plugin.donut2d.Donut2D, org.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     public final void paintDonut2DSlice(Graphics2D g2d, Donut2D donut2D, Donut2DSlice slice) {

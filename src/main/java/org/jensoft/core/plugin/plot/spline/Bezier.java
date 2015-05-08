@@ -61,7 +61,7 @@ public class Bezier extends AbstractPlot {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.plot.spline.AbstractPlot#solvePlot()
+	 * @see org.jensoft.core.plugin.plot.spline.AbstractPlot#solvePlot()
 	 */
 	@Override
 	public void solvePlot() {

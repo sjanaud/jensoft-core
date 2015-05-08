@@ -22,7 +22,7 @@ public class BubbleDeflater extends AbstractX2DPluginDeflater<BubblePlugin> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
 	public Element deflate(BubblePlugin bubblePlugin) {

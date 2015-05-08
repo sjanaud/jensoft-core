@@ -112,7 +112,7 @@ public class BollingerMovingAverageStockGeom extends CurveStockGeom {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.stock.geom.StockGeometry#solveGeometry()
+	 * @see org.jensoft.core.plugin.stock.geom.StockGeometry#solveGeometry()
 	 */
 	@Override
 	public void solveGeometry() {

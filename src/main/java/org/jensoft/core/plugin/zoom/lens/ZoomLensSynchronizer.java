@@ -61,7 +61,7 @@ public class ZoomLensSynchronizer implements ZoomLensListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
+     * @see org.jensoft.core.plugin.PluginListener#pluginSelected(org.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginSelected(PluginEvent<ZoomLensPlugin> pluginEvent) {
@@ -79,7 +79,7 @@ public class ZoomLensSynchronizer implements ZoomLensListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
+     * @see org.jensoft.core.plugin.PluginListener#pluginUnlockSelected(org.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginUnlockSelected(PluginEvent<ZoomLensPlugin> pluginEvent) {
@@ -97,7 +97,7 @@ public class ZoomLensSynchronizer implements ZoomLensListener {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.zoom.objectif.ZoomObjectifListener#zoomIn(com.jensoft.core.plugin.zoom.objectif.ZoomObjectifEvent)
+     * @see org.jensoft.core.plugin.zoom.objectif.ZoomObjectifListener#zoomIn(org.jensoft.core.plugin.zoom.objectif.ZoomObjectifEvent)
      */
     @Override
     public void zoomIn(ZoomLensEvent pluginEvent) {
@@ -116,7 +116,7 @@ public class ZoomLensSynchronizer implements ZoomLensListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.zoom.objectif.ZoomObjectifListener#zoomOut(com.jensoft.core.plugin.zoom.objectif.ZoomObjectifEvent)
+     * @see org.jensoft.core.plugin.zoom.objectif.ZoomObjectifListener#zoomOut(org.jensoft.core.plugin.zoom.objectif.ZoomObjectifEvent)
      */
     @Override
     public void zoomOut(ZoomLensEvent pluginEvent) {

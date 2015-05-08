@@ -65,7 +65,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
       
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+         * @see org.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
          */
         @Override
         protected void paintFunctions(View view, Graphics2D g2d, ViewPart viewPart) {
@@ -118,7 +118,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+         * @see org.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
          */
         @Override
         protected void paintFunctions(View view, Graphics2D g2d, ViewPart viewPart) {
@@ -152,7 +152,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+         * @see org.jensoft.core.plugin.function.FunctionPlugin#paintFunctions(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
          */
         @Override
         protected void paintFunctions(View view, Graphics2D g2d, ViewPart viewPart) {
@@ -187,7 +187,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#onProjectionRegister()
+     * @see org.jensoft.core.plugin.AbstractPlugin#onProjectionRegister()
      */
     @Override
     public void onProjectionRegister() {
@@ -195,21 +195,21 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
         getProjection().addProjectionListener(new ProjectionListener() {
 
             /* (non-Javadoc)
-             * @see com.jensoft.core.projection.ProjectionListener#projectionUnlockActive(com.jensoft.core.projection.ProjectionEvent)
+             * @see org.jensoft.core.projection.ProjectionListener#projectionUnlockActive(org.jensoft.core.projection.ProjectionEvent)
              */
             @Override
             public void projectionUnlockActive(ProjectionEvent w2dEvent) {
             }
 
             /* (non-Javadoc)
-             * @see com.jensoft.core.projection.ProjectionListener#projectionLockActive(com.jensoft.core.projection.ProjectionEvent)
+             * @see org.jensoft.core.projection.ProjectionListener#projectionLockActive(org.jensoft.core.projection.ProjectionEvent)
              */
             @Override
             public void projectionLockActive(ProjectionEvent w2dEvent) {
             }
 
             /* (non-Javadoc)
-             * @see com.jensoft.core.projection.ProjectionListener#projectionBoundChanged(com.jensoft.core.projection.ProjectionEvent)
+             * @see org.jensoft.core.projection.ProjectionListener#projectionBoundChanged(org.jensoft.core.projection.ProjectionEvent)
              */
             @Override
             public void projectionBoundChanged(ProjectionEvent w2dEvent) {
@@ -229,7 +229,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
             
             /* (non-Javadoc)
-             * @see com.jensoft.core.projection.ProjectionListener#projectionResized(com.jensoft.core.projection.ProjectionEvent)
+             * @see org.jensoft.core.projection.ProjectionListener#projectionResized(org.jensoft.core.projection.ProjectionEvent)
              */
             @Override
             public void projectionResized(ProjectionEvent w2dEvent) {
@@ -308,7 +308,7 @@ public abstract class FunctionPlugin<F extends Function> extends AbstractPlugin 
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     * @see org.jensoft.core.plugin.AbstractPlugin#paintPlugin(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
      */
     @Override
     protected void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {

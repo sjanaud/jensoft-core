@@ -61,7 +61,7 @@ public class FlowStripeManager extends AbstractStripeManager {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.stripe.manager.StripeManager#getStripes()
+	 * @see org.jensoft.core.plugin.stripe.manager.StripeManager#getStripes()
 	 */
 	@Override
 	public List<Stripe> getStripes() {

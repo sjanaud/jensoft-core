@@ -47,8 +47,8 @@ public abstract class GaugeEnvelope extends GaugePart{
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.gauge.core.env.GaugeEnvelope#paintEnvelop
-		 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+		 * org.jensoft.core.plugin.gauge.core.env.GaugeEnvelope#paintEnvelop
+		 * (java.awt.Graphics2D, org.jensoft.core.plugin.gauge.core.RadialGauge)
 		 */
 		@Override
 		public void paintEnvelope(Graphics2D g2d, RadialGauge radialGauge) {
@@ -330,7 +330,7 @@ public abstract class GaugeEnvelope extends GaugePart{
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.gauge.core.env.GaugeEnvelope#paintEnvelop(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+		 * @see org.jensoft.core.plugin.gauge.core.env.GaugeEnvelope#paintEnvelop(java.awt.Graphics2D, org.jensoft.core.plugin.gauge.core.RadialGauge)
 		 */
 		@Override
 		public void paintEnvelope(Graphics2D g2d, RadialGauge radialGauge) {
@@ -510,7 +510,7 @@ public abstract class GaugeEnvelope extends GaugePart{
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
+	 * @see org.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
 	 */
 	@Override
 	public void invalidate() {
@@ -526,7 +526,7 @@ public abstract class GaugeEnvelope extends GaugePart{
 	protected abstract void paintEnvelope(Graphics2D g2d, RadialGauge radialGauge);
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 * @see org.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D, org.jensoft.core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override
 	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {

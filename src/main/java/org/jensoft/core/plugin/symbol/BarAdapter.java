@@ -33,7 +33,7 @@ public abstract class BarAdapter implements BarListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolClicked(com.jensoft.core.plugin.symbol.BarEvent)
+     * @see org.jensoft.core.plugin.symbol.BarListener#barSymbolClicked(org.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolClicked(BarEvent e) {
@@ -41,7 +41,7 @@ public abstract class BarAdapter implements BarListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolPressed(com.jensoft.core.plugin.symbol.BarEvent)
+     * @see org.jensoft.core.plugin.symbol.BarListener#barSymbolPressed(org.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolPressed(BarEvent e) {
@@ -49,7 +49,7 @@ public abstract class BarAdapter implements BarListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolReleased(com.jensoft.core.plugin.symbol.BarEvent)
+     * @see org.jensoft.core.plugin.symbol.BarListener#barSymbolReleased(org.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolReleased(BarEvent e) {
@@ -57,7 +57,7 @@ public abstract class BarAdapter implements BarListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolEntered(com.jensoft.core.plugin.symbol.BarEvent)
+     * @see org.jensoft.core.plugin.symbol.BarListener#barSymbolEntered(org.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolEntered(BarEvent e) {
@@ -65,7 +65,7 @@ public abstract class BarAdapter implements BarListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.BarListener#barSymbolExited(com.jensoft.core.plugin.symbol.BarEvent)
+     * @see org.jensoft.core.plugin.symbol.BarListener#barSymbolExited(org.jensoft.core.plugin.symbol.BarEvent)
      */
     @Override
     public void barSymbolExited(BarEvent e) {

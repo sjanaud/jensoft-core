@@ -32,7 +32,7 @@ public abstract class AbstractPointManager implements PointLayoutManager {
     private Color color;
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#getPoints()
+     * @see org.jensoft.core.plugin.point.manager.PointLayoutManager#getPoints()
      */
     @Override
     public List<Point> getPoints() {
@@ -40,7 +40,7 @@ public abstract class AbstractPointManager implements PointLayoutManager {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#setProjection(com.jensoft.core.projection.Projection)
+     * @see org.jensoft.core.plugin.point.manager.PointLayoutManager#setProjection(org.jensoft.core.projection.Projection)
      */
     @Override
     public void setProjection(Projection projection) {
@@ -48,7 +48,7 @@ public abstract class AbstractPointManager implements PointLayoutManager {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#getProjection()
+     * @see org.jensoft.core.plugin.point.manager.PointLayoutManager#getProjection()
      */
     @Override
     public Projection getProjection() {
@@ -56,7 +56,7 @@ public abstract class AbstractPointManager implements PointLayoutManager {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#setType(int)
+     * @see org.jensoft.core.plugin.point.manager.PointLayoutManager#setType(int)
      */
     @Override
     public void setType(int type) {
@@ -64,7 +64,7 @@ public abstract class AbstractPointManager implements PointLayoutManager {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#getType()
+     * @see org.jensoft.core.plugin.point.manager.PointLayoutManager#getType()
      */
     @Override
     public int getType() {
@@ -72,7 +72,7 @@ public abstract class AbstractPointManager implements PointLayoutManager {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#setPointColor(java.awt.Color)
+     * @see org.jensoft.core.plugin.point.manager.PointLayoutManager#setPointColor(java.awt.Color)
      */
     @Override
     public void setPointColor(Color color) {
@@ -80,7 +80,7 @@ public abstract class AbstractPointManager implements PointLayoutManager {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.point.manager.PointLayoutManager#getPointColor()
+     * @see org.jensoft.core.plugin.point.manager.PointLayoutManager#getPointColor()
      */
     @Override
     public Color getPointColor() {

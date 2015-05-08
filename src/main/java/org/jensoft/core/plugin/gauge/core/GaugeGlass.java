@@ -106,8 +106,8 @@ public abstract class GaugeGlass extends GaugePart {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter#paintGlass
-		 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+		 * org.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter#paintGlass
+		 * (java.awt.Graphics2D, org.jensoft.core.plugin.gauge.core.RadialGauge)
 		 */
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
@@ -434,8 +434,8 @@ public abstract class GaugeGlass extends GaugePart {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.gauge.core.GlassGaugePainter#paintGlass(java
-		 * .awt.Graphics2D, com.jensoft.core.plugin.gauge.RadialGauge)
+		 * org.jensoft.core.plugin.gauge.core.GlassGaugePainter#paintGlass(java
+		 * .awt.Graphics2D, org.jensoft.core.plugin.gauge.RadialGauge)
 		 */
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
@@ -480,8 +480,8 @@ public abstract class GaugeGlass extends GaugePart {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter#paintGlass
-		 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+		 * org.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter#paintGlass
+		 * (java.awt.Graphics2D, org.jensoft.core.plugin.gauge.core.RadialGauge)
 		 */
 		@Override
 		public void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
@@ -579,8 +579,8 @@ public abstract class GaugeGlass extends GaugePart {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter#paintGlass
-		 * (java.awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+		 * org.jensoft.core.plugin.gauge.core.glass.GaugeGlassPainter#paintGlass
+		 * (java.awt.Graphics2D, org.jensoft.core.plugin.gauge.core.RadialGauge)
 		 */
 		@Override
 		public final void paintGlass(Graphics2D g2d, RadialGauge radialGauge) {
@@ -693,7 +693,7 @@ public abstract class GaugeGlass extends GaugePart {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlass.PieGaugeGlass
+		 * org.jensoft.core.plugin.gauge.core.glass.GaugeGlass.PieGaugeGlass
 		 * #getEffectInstance()
 		 */
 		@Override
@@ -719,7 +719,7 @@ public abstract class GaugeGlass extends GaugePart {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlass.PieGaugeGlass
+		 * org.jensoft.core.plugin.gauge.core.glass.GaugeGlass.PieGaugeGlass
 		 * #getEffectInstance()
 		 */
 		@Override
@@ -874,7 +874,7 @@ public abstract class GaugeGlass extends GaugePart {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.plugin.gauge.core.glass.GaugeGlass.PieGaugeGlass
+		 * org.jensoft.core.plugin.gauge.core.glass.GaugeGlass.PieGaugeGlass
 		 * #getEffectInstance()
 		 */
 		@Override
@@ -895,7 +895,7 @@ public abstract class GaugeGlass extends GaugePart {
 	
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
+	 * @see org.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
 	 */
 	@Override
 	public void invalidate() {
@@ -914,8 +914,8 @@ public abstract class GaugeGlass extends GaugePart {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D
-	 * , com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 * org.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D
+	 * , org.jensoft.core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override
 	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {

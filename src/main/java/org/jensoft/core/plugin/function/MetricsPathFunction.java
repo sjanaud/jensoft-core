@@ -399,7 +399,7 @@ public class MetricsPathFunction extends AbstractMetricsPath {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.glyphmetrics.AbstractMetricsPath#createPathMetrics()
+	 * @see org.jensoft.core.glyphmetrics.AbstractMetricsPath#createPathMetrics()
 	 */
 	@Override
 	protected GeneralPath createPathMetrics() {
