@@ -228,7 +228,7 @@ public class Donut2DSliceLinearEffect extends AbstractDonut2DSliceEffect {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.painter.effect.AbstractDonut2DSliceEffect#paintDonut2DSliceEffect(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D, com.jensoft.core.plugin.donut2d.Donut2DSlice)
+     * @see org.jensoft.core.plugin.donut2d.painter.effect.AbstractDonut2DSliceEffect#paintDonut2DSliceEffect(java.awt.Graphics2D, org.jensoft.core.plugin.donut2d.Donut2D, org.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     protected void paintDonut2DSliceEffect(Graphics2D g2d, Donut2D donut2D,

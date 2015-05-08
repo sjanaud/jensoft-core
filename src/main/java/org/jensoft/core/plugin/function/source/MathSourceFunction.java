@@ -61,7 +61,7 @@ public class MathSourceFunction extends AbstractSourceFunction {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.function.source.AffineSourceFunction#solveFunction
+	 * org.jensoft.core.plugin.function.source.AffineSourceFunction#solveFunction
 	 * (double, double)
 	 */
 	@Override
@@ -77,7 +77,7 @@ public class MathSourceFunction extends AbstractSourceFunction {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate
+	 * org.jensoft.core.plugin.function.source.AffineSourceFunction#evaluate
 	 * (double)
 	 */
 	@Override

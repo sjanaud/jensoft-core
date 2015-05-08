@@ -61,7 +61,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#getFlattenSymbolComponents()
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#getFlattenSymbolComponents()
      */
     @Override
     public List<BarSymbol> getFlattenSymbolComponents() {
@@ -79,7 +79,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#paintLayer(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart, com.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#paintLayer(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart, org.jensoft.core.plugin.symbol.SymbolPlugin.PaintRequest)
      */
     @Override
     public final void paintLayer(View v2d, Graphics2D g2d,
@@ -235,7 +235,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#solveSymbolComponent(com.jensoft.core.plugin.symbol.SymbolComponent)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#solveSymbolComponent(org.jensoft.core.plugin.symbol.SymbolComponent)
      */
     @Override
     public void solveSymbolComponent(BarSymbol symbol) {
@@ -890,7 +890,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#onRelease(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#onRelease(java.awt.event.MouseEvent)
      */
     @Override
     public void onRelease(MouseEvent me) {
@@ -965,7 +965,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#onPress(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#onPress(java.awt.event.MouseEvent)
      */
     @Override
     public void onPress(MouseEvent me) {
@@ -1040,14 +1040,14 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#onExit(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#onExit(java.awt.event.MouseEvent)
      */
     @Override
     public void onExit(MouseEvent me) {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#onEnter(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#onEnter(java.awt.event.MouseEvent)
      */
     @Override
     public void onEnter(MouseEvent me) {
@@ -1055,7 +1055,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#onClick(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#onClick(java.awt.event.MouseEvent)
      */
     @Override
     public void onClick(MouseEvent me) {
@@ -1127,7 +1127,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#onMove(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#onMove(java.awt.event.MouseEvent)
      */
     @Override
     public void onMove(MouseEvent me) {
@@ -1204,7 +1204,7 @@ public class BarSymbolLayer extends SymbolLayer<BarSymbol> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.SymbolLayer#onDrag(java.awt.event.MouseEvent)
+     * @see org.jensoft.core.plugin.symbol.SymbolLayer#onDrag(java.awt.event.MouseEvent)
      */
     @Override
     public void onDrag(MouseEvent me) {

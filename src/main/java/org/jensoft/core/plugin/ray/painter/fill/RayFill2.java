@@ -23,7 +23,7 @@ public class RayFill2 extends AbstractRayFill {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.painter.fill.AbstractRayFill#paintRayFill(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray)
+     * @see org.jensoft.core.plugin.ray.painter.fill.AbstractRayFill#paintRayFill(java.awt.Graphics2D, org.jensoft.core.plugin.ray.Ray)
      */
     @Override
     public void paintRayFill(Graphics2D g2d, Ray ray) {

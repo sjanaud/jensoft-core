@@ -33,7 +33,7 @@ public abstract class PointAdapter implements PointListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolClicked(com.jensoft.core.plugin.symbol.PointEvent)
+     * @see org.jensoft.core.plugin.symbol.PointListener#pointSymbolClicked(org.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolClicked(PointEvent e) {
@@ -41,7 +41,7 @@ public abstract class PointAdapter implements PointListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolPressed(com.jensoft.core.plugin.symbol.PointEvent)
+     * @see org.jensoft.core.plugin.symbol.PointListener#pointSymbolPressed(org.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolPressed(PointEvent e) {
@@ -49,7 +49,7 @@ public abstract class PointAdapter implements PointListener {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolReleased(com.jensoft.core.plugin.symbol.PointEvent)
+     * @see org.jensoft.core.plugin.symbol.PointListener#pointSymbolReleased(org.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolReleased(PointEvent e) {
@@ -57,7 +57,7 @@ public abstract class PointAdapter implements PointListener {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolEntered(com.jensoft.core.plugin.symbol.PointEvent)
+     * @see org.jensoft.core.plugin.symbol.PointListener#pointSymbolEntered(org.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolEntered(PointEvent e) {
@@ -65,7 +65,7 @@ public abstract class PointAdapter implements PointListener {
 
  
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.PointListener#pointSymbolExited(com.jensoft.core.plugin.symbol.PointEvent)
+     * @see org.jensoft.core.plugin.symbol.PointListener#pointSymbolExited(org.jensoft.core.plugin.symbol.PointEvent)
      */
     @Override
     public void pointSymbolExited(PointEvent e) {

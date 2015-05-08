@@ -103,7 +103,7 @@ public abstract class AbstractButtonWidget<P extends AbstractPlugin> extends Wid
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#interceptMove(int, int)
+     * @see org.jensoft.core.widget.Widget#interceptMove(int, int)
      */
     @Override
     public void interceptMove(int x, int y) {
@@ -113,7 +113,7 @@ public abstract class AbstractButtonWidget<P extends AbstractPlugin> extends Wid
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#interceptPress(int, int)
+     * @see org.jensoft.core.widget.Widget#interceptPress(int, int)
      */
     @Override
     public void interceptPress(int x, int y) {
@@ -136,7 +136,7 @@ public abstract class AbstractButtonWidget<P extends AbstractPlugin> extends Wid
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#interceptDrag(int, int)
+     * @see org.jensoft.core.widget.Widget#interceptDrag(int, int)
      */
     @Override
     public void interceptDrag(int x, int y) {
@@ -145,7 +145,7 @@ public abstract class AbstractButtonWidget<P extends AbstractPlugin> extends Wid
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#interceptReleased(int, int)
+     * @see org.jensoft.core.widget.Widget#interceptReleased(int, int)
      */
     @Override
     public void interceptReleased(int x, int y) {
@@ -172,7 +172,7 @@ public abstract class AbstractButtonWidget<P extends AbstractPlugin> extends Wid
             Rectangle2D buttonDrawingRegion);
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
+     * @see org.jensoft.core.widget.Widget#paintWidget(org.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     public final void paintWidget(View v2d, Graphics2D g2d) {

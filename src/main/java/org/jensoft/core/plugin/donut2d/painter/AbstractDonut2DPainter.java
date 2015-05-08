@@ -19,7 +19,7 @@ public abstract class AbstractDonut2DPainter implements Donut2DPainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.painter.Donut2DPainter#paintDonut2D(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D)
+     * @see org.jensoft.core.plugin.donut2d.painter.Donut2DPainter#paintDonut2D(java.awt.Graphics2D, org.jensoft.core.plugin.donut2d.Donut2D)
      */
     @Override
     public void paintDonut2D(Graphics2D g2d, Donut2D donut2D) {

@@ -125,7 +125,7 @@ public class PathArcManualBinder extends PathBinder {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.binder.PathBinder#bindPath(com.jensoft
+	 * org.jensoft.core.plugin.gauge.core.binder.PathBinder#bindPath(org.jensoft
 	 * .core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override

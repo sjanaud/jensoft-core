@@ -342,10 +342,10 @@ public class Donut2DPathLabel extends AbstractDonut2DSliceLabel {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel
+	 * org.jensoft.core.plugin.donut2d.painter.label.AbstractDonut2DSliceLabel
 	 * #paintDonut2DSliceLabel(java.awt.Graphics2D,
-	 * com.jensoft.core.plugin.donut2d.Donut2D,
-	 * com.jensoft.core.plugin.donut2d.Donut2DSlice)
+	 * org.jensoft.core.plugin.donut2d.Donut2D,
+	 * org.jensoft.core.plugin.donut2d.Donut2DSlice)
 	 */
 	@Override
 	protected void paintDonut2DSliceLabel(Graphics2D g2d, Donut2D donut3d, Donut2DSlice donutSlice) {

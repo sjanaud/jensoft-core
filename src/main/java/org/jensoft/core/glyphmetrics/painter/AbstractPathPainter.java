@@ -18,7 +18,7 @@ public abstract class AbstractPathPainter implements MetricsPathPainter {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.glyphmetrics.painter.MetricsPathPainter#paintPath(java.awt.Graphics2D, com.jensoft.core.glyphmetrics.AbstractMetricsPath)
+     * @see org.jensoft.core.glyphmetrics.painter.MetricsPathPainter#paintPath(java.awt.Graphics2D, org.jensoft.core.glyphmetrics.AbstractMetricsPath)
      */
     @Override
     public void paintPath(Graphics2D g2d, AbstractMetricsPath metricsPath) {

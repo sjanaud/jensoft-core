@@ -41,7 +41,7 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+         * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public GridPlugin.FlowGrid inflate(Element plugin) {
@@ -67,7 +67,7 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
 
 
         /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+         * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public GridPlugin.FreeGrid inflate(Element plugin) {
@@ -109,7 +109,7 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
 
 
         /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+         * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public GridPlugin.MultiplierGrid inflate(Element plugin) {
@@ -133,7 +133,7 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
 
 
         /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+         * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public GridPlugin.StaticGrid inflate(Element plugin) {
@@ -155,7 +155,7 @@ public abstract class GridInflater<A extends GridPlugin<?>> extends
 
         
         /* (non-Javadoc)
-         * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+         * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
          */
         @Override
         public GridPlugin.ModeledGrid inflate(Element plugin) {

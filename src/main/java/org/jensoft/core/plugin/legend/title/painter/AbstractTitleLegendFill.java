@@ -26,7 +26,7 @@ public abstract class AbstractTitleLegendFill extends AbstractTitleLegendPainter
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendPainter#paintLegend(java.awt.Graphics2D, com.jensoft.core.plugin.legend.title.TitleLegend)
+     * @see org.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendPainter#paintLegend(java.awt.Graphics2D, org.jensoft.core.plugin.legend.title.TitleLegend)
      */
     @Override
     public final void paintLegend(Graphics2D g2d, TitleLegend legend) {

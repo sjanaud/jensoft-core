@@ -103,7 +103,7 @@ public class X2DViewDeflater extends AbstractViewDeflater  implements X2DViewEle
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.view.deflater.AbstractViewDeflater#deflate()
+	 * @see org.jensoft.core.view.deflater.AbstractViewDeflater#deflate()
 	 */
 	@Override
 	public Document deflate() {

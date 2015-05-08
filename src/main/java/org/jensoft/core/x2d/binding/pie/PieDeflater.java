@@ -41,7 +41,7 @@ public class PieDeflater extends AbstractX2DPluginDeflater<PiePlugin> implements
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate(com.jensoft.core.plugin.AbstractPlugin)
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate(org.jensoft.core.plugin.AbstractPlugin)
 	 */
 	@Override
 	public Element deflate(PiePlugin plugin) {	

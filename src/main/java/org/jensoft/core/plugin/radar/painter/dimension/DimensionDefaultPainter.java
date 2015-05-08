@@ -28,7 +28,7 @@ public class DimensionDefaultPainter extends AbstractDimensionPainter {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.radar.painter.dimension.AbstractDimensionPainter#paintDimension(java.awt.Graphics2D, com.jensoft.core.plugin.radar.Radar, com.jensoft.core.plugin.radar.RadarDimension)
+     * @see org.jensoft.core.plugin.radar.painter.dimension.AbstractDimensionPainter#paintDimension(java.awt.Graphics2D, org.jensoft.core.plugin.radar.Radar, org.jensoft.core.plugin.radar.RadarDimension)
      */
     @Override
     protected void paintDimension(Graphics2D g2d, Radar radar,

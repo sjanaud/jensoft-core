@@ -132,7 +132,7 @@ public class PathCubicAutoBinder extends AbstractPathAutoBinder {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder#createPath
+	 * org.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder#createPath
 	 * ()
 	 */
 	@Override
@@ -196,8 +196,8 @@ public class PathCubicAutoBinder extends AbstractPathAutoBinder {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder#debug(java
-	 * .awt.Graphics2D, com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 * org.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder#debug(java
+	 * .awt.Graphics2D, org.jensoft.core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override
 	public void debug(Graphics2D g2d, RadialGauge gauge) {

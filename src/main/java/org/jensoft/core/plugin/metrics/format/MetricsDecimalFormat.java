@@ -35,7 +35,7 @@ public class MetricsDecimalFormat implements IMetricsFormat {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.format.IMetricsFormat#format(double)
+     * @see org.jensoft.core.plugin.metrics.format.IMetricsFormat#format(double)
      */
     @Override
     public String format(double d) {

@@ -45,7 +45,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.device.ContextEntry#buildContext()
+		 * @see org.jensoft.core.device.ContextEntry#buildContext()
 		 */
 		@Override
 		public void buildContext() {
@@ -74,7 +74,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.device.ContextEntry#isCompatiblePlugin()
+		 * @see org.jensoft.core.device.ContextEntry#isCompatiblePlugin()
 		 */
 		@Override
 		public boolean isCompatiblePlugin() {
@@ -97,7 +97,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java
+	 * org.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java
 	 * .awt.event.MouseEvent)
 	 */
 	@Override
@@ -113,7 +113,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt
+	 * org.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt
 	 * .event.MouseEvent)
 	 */
 	@Override
@@ -128,7 +128,7 @@ public class PlotAnchorsPlugin extends AbstractPlugin implements OnPressListener
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt
+	 * org.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt
 	 * .event.MouseEvent)
 	 */
 	@Override

@@ -32,9 +32,9 @@ public class GaugeNeedleClassicPainter extends GaugeNeedlePainter {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.needle.GaugeNeedlePainter#paintNeedle
+	 * org.jensoft.core.plugin.gauge.core.needle.GaugeNeedlePainter#paintNeedle
 	 * (java.awt.Graphics2D,
-	 * com.jensoft.core.plugin.gauge.core.GaugeMetricsPath)
+	 * org.jensoft.core.plugin.gauge.core.GaugeMetricsPath)
 	 */
 	@Override
 	public void paintNeedle(Graphics2D g2d, GaugeMetricsPath gaugeMetricsPath) {

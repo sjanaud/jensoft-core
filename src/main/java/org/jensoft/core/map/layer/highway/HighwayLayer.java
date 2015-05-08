@@ -211,7 +211,7 @@ public class HighwayLayer extends AbstractMapLayer {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.map.layer.AbstractMapLayer#doPaintMap(com.jensoft.core.map.projection.Map2D)
+     * @see org.jensoft.core.map.layer.AbstractMapLayer#doPaintMap(org.jensoft.core.map.projection.Map2D)
      */
     @Override
     public void doPaintMap(Map2D map2D) {
@@ -222,7 +222,7 @@ public class HighwayLayer extends AbstractMapLayer {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.map.layer.AbstractMapLayer#doPaint(java.awt.Graphics2D)
+     * @see org.jensoft.core.map.layer.AbstractMapLayer#doPaint(java.awt.Graphics2D)
      */
     @Override
     public void doPaint(Graphics2D g2d) {

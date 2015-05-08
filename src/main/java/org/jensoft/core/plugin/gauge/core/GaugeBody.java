@@ -109,7 +109,7 @@ public class GaugeBody extends GaugePart {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
+	 * @see org.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
 	 */
 	@Override
 	public void invalidate() {
@@ -128,8 +128,8 @@ public class GaugeBody extends GaugePart {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D
-	 * , com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 * org.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D
+	 * , org.jensoft.core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override
 	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {

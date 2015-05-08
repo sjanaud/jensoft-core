@@ -26,7 +26,7 @@ public class ViewNoBackground extends ViewBackgroundPainter {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.view.background.BackgroundPainter#paintViewBackground(com.jensoft.core.view.View, int, int, java.awt.Graphics2D)
+	 * @see org.jensoft.core.view.background.BackgroundPainter#paintViewBackground(org.jensoft.core.view.View, int, int, java.awt.Graphics2D)
 	 */
 	@Override
 	public void paintViewBackground(View view,int viewWidth,int viewHeight, Graphics2D g2d) {

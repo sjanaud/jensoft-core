@@ -18,7 +18,7 @@ public abstract class BubbleEffect extends AbstractBubblePainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.bubble.painter.AbstractBubblePainter#paintBubble(java.awt.Graphics2D, com.jensoft.core.plugin.bubble.Bubble)
+     * @see org.jensoft.core.plugin.bubble.painter.AbstractBubblePainter#paintBubble(java.awt.Graphics2D, org.jensoft.core.plugin.bubble.Bubble)
      */
     @Override
     public void paintBubble(Graphics2D g2d, Bubble bubble) {

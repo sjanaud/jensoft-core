@@ -29,7 +29,7 @@ public abstract class AbstractCurveDraw implements CurvePainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.function.curve.painter.CurvePainter#paintCurve(java.awt.Graphics2D, com.jensoft.core.plugin.function.curve.CurveFunction)
+     * @see org.jensoft.core.plugin.function.curve.painter.CurvePainter#paintCurve(java.awt.Graphics2D, org.jensoft.core.plugin.function.curve.CurveFunction)
      */
     @Override
     public final void paintCurve(Graphics2D g2d, Curve curve) {

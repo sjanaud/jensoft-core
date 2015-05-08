@@ -163,7 +163,7 @@ public class DefaultDataLegendBackgroundPainter extends AbstractDataLegendBackgr
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.legend.data.painter.AbstractDataLegendBackgroundPainter#paintDataLegendBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D, com.jensoft.core.plugin.legend.data.DataLegend)
+	 * @see org.jensoft.core.plugin.legend.data.painter.AbstractDataLegendBackgroundPainter#paintDataLegendBackground(java.awt.Graphics2D, java.awt.geom.Rectangle2D, org.jensoft.core.plugin.legend.data.DataLegend)
 	 */
 	@Override
 	public void paintDataLegendBackground(Graphics2D g2d, Rectangle2D backgroundBound, DataLegend legend) {

@@ -1021,7 +1021,7 @@ public abstract class AbstractPlugin implements Plugin {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.Plugin#paint(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     * @see org.jensoft.core.plugin.Plugin#paint(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
      */
     @Override
     public final void paint(View view, Graphics2D g2d, ViewPart viewPart) {

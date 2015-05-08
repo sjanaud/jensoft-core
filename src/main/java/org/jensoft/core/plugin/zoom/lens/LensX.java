@@ -111,7 +111,7 @@ public class LensX extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
+     * @see org.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
     @Override
     public final boolean isCompatiblePlugin() {
@@ -123,7 +123,7 @@ public class LensX extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton1Press()
+     * @see org.jensoft.core.widget.bar.AbstractBarWidget#onButton1Press()
      */
     @Override
     public void onButton1Press() {
@@ -137,7 +137,7 @@ public class LensX extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton2Press()
+     * @see org.jensoft.core.widget.bar.AbstractBarWidget#onButton2Press()
      */
     @Override
     public void onButton2Press() {
@@ -150,7 +150,7 @@ public class LensX extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton1Released()
+     * @see org.jensoft.core.widget.bar.AbstractBarWidget#onButton1Released()
      */
     @Override
     public void onButton1Released() {
@@ -167,7 +167,7 @@ public class LensX extends AbstractPlusMinusBarWidget<ZoomLensPlugin> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.bar.AbstractBarWidget#onButton2Released()
+     * @see org.jensoft.core.widget.bar.AbstractBarWidget#onButton2Released()
      */
     @Override
     public void onButton2Released() {

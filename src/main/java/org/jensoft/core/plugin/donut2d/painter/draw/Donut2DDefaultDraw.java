@@ -86,9 +86,9 @@ public class Donut2DDefaultDraw extends AbstractDonut2DDraw {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.donut2d.painter.draw.Donut2DDefaultDraw#
+	 * @see org.jensoft.core.plugin.donut2d.painter.draw.Donut2DDefaultDraw#
 	 * paintDonut2DDraw(java.awt.Graphics2D,
-	 * com.jensoft.core.plugin.donut2d.Donut2D)
+	 * org.jensoft.core.plugin.donut2d.Donut2D)
 	 */
 	@Override
 	public void paintDonut2DDraw(Graphics2D g2d, Donut2D donut2D) {

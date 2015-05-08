@@ -71,7 +71,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
    
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
+     * @see org.jensoft.core.plugin.PluginListener#pluginSelected(org.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginSelected(PluginEvent<TranslatePlugin> pluginEvent) {
@@ -90,7 +90,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
     
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
+     * @see org.jensoft.core.plugin.PluginListener#pluginUnlockSelected(org.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginUnlockSelected(PluginEvent<TranslatePlugin> pluginEvent) {
@@ -110,7 +110,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
    
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateL2RChanged(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+     * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translateL2RChanged(org.jensoft.core.plugin.translate.TranslatePluginEvent)
      */
     @Override
     public void translateL2RChanged(TranslatePluginEvent pluginEvent) {
@@ -118,7 +118,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateB2TChanged(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+     * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translateB2TChanged(org.jensoft.core.plugin.translate.TranslatePluginEvent)
      */
     @Override
     public void translateB2TChanged(TranslatePluginEvent pluginEvent) {
@@ -126,7 +126,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateStarted(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+     * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translateStarted(org.jensoft.core.plugin.translate.TranslatePluginEvent)
      */
     @Override
     public void translateStarted(TranslatePluginEvent pluginEvent) {
@@ -146,7 +146,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translated(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+     * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translated(org.jensoft.core.plugin.translate.TranslatePluginEvent)
      */
     @Override
     public void translated(TranslatePluginEvent pluginEvent) {
@@ -168,7 +168,7 @@ public class TranslateSynchronizer implements TranslatePluginListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateStoped(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+     * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translateStoped(org.jensoft.core.plugin.translate.TranslatePluginEvent)
      */
     @Override
     public void translateStoped(TranslatePluginEvent pluginEvent) {

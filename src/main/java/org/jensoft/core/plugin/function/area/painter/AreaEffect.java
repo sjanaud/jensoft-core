@@ -28,7 +28,7 @@ public abstract class AreaEffect extends AbstractAreaPainter {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.function.area.painter.AbstractAreaPainter#paintArea(java.awt.Graphics2D, com.jensoft.core.plugin.function.area.AreaFunction)
+     * @see org.jensoft.core.plugin.function.area.painter.AbstractAreaPainter#paintArea(java.awt.Graphics2D, org.jensoft.core.plugin.function.area.AreaFunction)
      */
     @Override
     public final void paintArea(Graphics2D g2d, Area areaCurve) {

@@ -21,7 +21,7 @@ public class ZoomBoxInflater extends AbstractX2DPluginInflater<ZoomBoxPlugin> {
 
        
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public ZoomBoxPlugin inflate(Element pluginElement) {

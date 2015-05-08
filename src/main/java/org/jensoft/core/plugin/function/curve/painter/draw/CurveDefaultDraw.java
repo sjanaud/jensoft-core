@@ -103,7 +103,7 @@ public class CurveDefaultDraw extends AbstractCurveDraw {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw#drawCurve(java.awt.Graphics2D, com.jensoft.core.plugin.function.curve.CurveFunction)
+     * @see org.jensoft.core.plugin.function.curve.painter.draw.AbstractCurveDraw#drawCurve(java.awt.Graphics2D, org.jensoft.core.plugin.function.curve.CurveFunction)
      */
     @Override
     protected void drawCurve(Graphics2D g2d, Curve curve) {

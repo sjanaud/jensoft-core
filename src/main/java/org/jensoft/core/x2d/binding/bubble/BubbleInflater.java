@@ -33,7 +33,7 @@ public class BubbleInflater extends AbstractX2DPluginInflater<BubblePlugin> {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c
+	 * org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c
 	 * .dom.Element)
 	 */
 	@Override

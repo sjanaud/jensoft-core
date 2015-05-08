@@ -135,9 +135,9 @@ public abstract class GaugeBackground extends GaugePart {
 			 * (non-Javadoc)
 			 * 
 			 * @see
-			 * com.jensoft.core.plugin.gauge.core.GaugeBackground.Circular#fill
+			 * org.jensoft.core.plugin.gauge.core.GaugeBackground.Circular#fill
 			 * (java.awt.Graphics2D,
-			 * com.jensoft.core.plugin.gauge.core.RadialGauge, java.awt.Shape)
+			 * org.jensoft.core.plugin.gauge.core.RadialGauge, java.awt.Shape)
 			 */
 			@Override
 			public final void fill(Graphics2D g2d, RadialGauge radialGauge, Shape shape) {
@@ -228,7 +228,7 @@ public abstract class GaugeBackground extends GaugePart {
 			/*
 			 * (non-Javadoc)
 			 * 
-			 * @see com.jensoft.core.plugin.gauge.core.GaugeBackground.Circular.
+			 * @see org.jensoft.core.plugin.gauge.core.GaugeBackground.Circular.
 			 * CircularGradient#getGradient()
 			 */
 			@Override
@@ -304,9 +304,9 @@ public abstract class GaugeBackground extends GaugePart {
 			/*
 			 * (non-Javadoc)
 			 * 
-			 * @see com.jensoft.core.plugin.gauge.core.GaugeBackground.Circular.
+			 * @see org.jensoft.core.plugin.gauge.core.GaugeBackground.Circular.
 			 * CircularGradient
-			 * #getGradient(com.jensoft.core.plugin.gauge.core.RadialGauge)
+			 * #getGradient(org.jensoft.core.plugin.gauge.core.RadialGauge)
 			 */
 			@Override
 			public Paint getGradient(RadialGauge radialGauge) {
@@ -342,7 +342,7 @@ public abstract class GaugeBackground extends GaugePart {
 			 * (non-Javadoc)
 			 * 
 			 * @see
-			 * com.jensoft.core.plugin.gauge.core.bg.GaugeBackgroundPainter.
+			 * org.jensoft.core.plugin.gauge.core.bg.GaugeBackgroundPainter.
 			 * Circular#fill(java.awt.Graphics2D, java.awt.Shape)
 			 */
 			@Override
@@ -422,7 +422,7 @@ public abstract class GaugeBackground extends GaugePart {
 			 * (non-Javadoc)
 			 * 
 			 * @see
-			 * com.jensoft.core.plugin.gauge.core.bg.GaugeBackgroundPainter.
+			 * org.jensoft.core.plugin.gauge.core.bg.GaugeBackgroundPainter.
 			 * Circular#fill(java.awt.Graphics2D, java.awt.Shape)
 			 */
 			@Override
@@ -512,9 +512,9 @@ public abstract class GaugeBackground extends GaugePart {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.gauge.core.bg.GaugeBackgroundPainter#
+		 * @see org.jensoft.core.plugin.gauge.core.bg.GaugeBackgroundPainter#
 		 * paintBackground(java.awt.Graphics2D,
-		 * com.jensoft.core.plugin.gauge.core.RadialGauge)
+		 * org.jensoft.core.plugin.gauge.core.RadialGauge)
 		 */
 		@Override
 		public final void paintBackground(Graphics2D g2d, RadialGauge radialGauge) {
@@ -549,7 +549,7 @@ public abstract class GaugeBackground extends GaugePart {
 	}
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
+	 * @see org.jensoft.core.plugin.gauge.core.GaugePart#invalidate()
 	 */
 	@Override
 	public void invalidate() {
@@ -568,8 +568,8 @@ public abstract class GaugeBackground extends GaugePart {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D
-	 * , com.jensoft.core.plugin.gauge.core.RadialGauge)
+	 * org.jensoft.core.plugin.gauge.core.GaugePart#paintPart(java.awt.Graphics2D
+	 * , org.jensoft.core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override
 	public final void paintPart(Graphics2D g2d, RadialGauge radialGauge) {
