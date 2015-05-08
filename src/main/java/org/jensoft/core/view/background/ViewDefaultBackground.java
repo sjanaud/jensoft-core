@@ -206,8 +206,8 @@ public class ViewDefaultBackground extends ViewBackgroundPainter {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.view.background.BackgroundPainter#paintViewBackground
-	 * (com.jensoft.core.view.View2D, java.awt.Graphics2D)
+	 * org.jensoft.core.view.background.BackgroundPainter#paintViewBackground
+	 * (org.jensoft.core.view.View2D, java.awt.Graphics2D)
 	 */
 	@Override
 	public final void paintViewBackground(View view,int viewWidth,int viewHeight, Graphics2D g2d) {

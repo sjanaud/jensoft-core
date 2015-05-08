@@ -186,7 +186,7 @@ public abstract class Projection implements PluginListener {
 		}
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.window.Window2D#onView2DRegister()
+		 * @see org.jensoft.core.window.Window2D#onView2DRegister()
 		 */
 		@Override
 		public void onViewRegister() {
@@ -195,7 +195,7 @@ public abstract class Projection implements PluginListener {
 			getView().addViewListener(new ViewAdapter() {
 
 				/* (non-Javadoc)
-				 * @see com.jensoft.core.view.View2DAdapter#viewResized(com.jensoft.core.view.View2DEvent)
+				 * @see org.jensoft.core.view.View2DAdapter#viewResized(org.jensoft.core.view.View2DEvent)
 				 */
 				@Override
 				public void viewResized(ViewEvent view2dEvent) {
@@ -413,7 +413,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#userToPixelX(double)
+		 * @see org.jensoft.core.projection.Projection#userToPixelX(double)
 		 */
 		@Override
 		public double userToPixelX(double userX) {
@@ -423,7 +423,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#userToPixelY(double)
+		 * @see org.jensoft.core.projection.Projection#userToPixelY(double)
 		 */
 		@Override
 		public double userToPixelY(double userY) {
@@ -433,7 +433,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#pixelToUserX(double)
+		 * @see org.jensoft.core.projection.Projection#pixelToUserX(double)
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
@@ -443,7 +443,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#pixelToUserY(double)
+		 * @see org.jensoft.core.projection.Projection#pixelToUserY(double)
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
@@ -486,7 +486,7 @@ public abstract class Projection implements PluginListener {
 		
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#getScaleX()
+		 * @see org.jensoft.core.projection.Projection.Linear#getScaleX()
 		 */
 		@Override
 		public Double getScaleX() {
@@ -496,7 +496,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#userToPixelX(double)
+		 * @see org.jensoft.core.projection.Projection.Linear#userToPixelX(double)
 		 */
 		@Override
 		public double userToPixelX(double userX) {
@@ -506,7 +506,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#pixelToUserX(double)
+		 * @see org.jensoft.core.projection.Projection.Linear#pixelToUserX(double)
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
@@ -547,7 +547,7 @@ public abstract class Projection implements PluginListener {
 		
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#getScaleY()
+		 * @see org.jensoft.core.projection.Projection.Linear#getScaleY()
 		 */
 		@Override
 		public Double getScaleY() {
@@ -557,7 +557,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#userToPixelY(double)
+		 * @see org.jensoft.core.projection.Projection.Linear#userToPixelY(double)
 		 */
 		@Override
 		public double userToPixelY(double userY) {
@@ -567,7 +567,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#pixelToUserY(double)
+		 * @see org.jensoft.core.projection.Projection.Linear#pixelToUserY(double)
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
@@ -610,7 +610,7 @@ public abstract class Projection implements PluginListener {
 		}
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#getScaleX()
+		 * @see org.jensoft.core.projection.Projection.Linear#getScaleX()
 		 */
 		@Override
 		public Double getScaleX() {
@@ -620,7 +620,7 @@ public abstract class Projection implements PluginListener {
 		}
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#getScaleY()
+		 * @see org.jensoft.core.projection.Projection.Linear#getScaleY()
 		 */
 		@Override
 		public Double getScaleY() {
@@ -630,7 +630,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#userToPixelX(double)
+		 * @see org.jensoft.core.projection.Projection.Linear#userToPixelX(double)
 		 */
 		@Override
 		public double userToPixelX(double userX) {
@@ -640,7 +640,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#pixelToUserX(double)
+		 * @see org.jensoft.core.projection.Projection.Linear#pixelToUserX(double)
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
@@ -650,7 +650,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#userToPixelY(double)
+		 * @see org.jensoft.core.projection.Projection.Linear#userToPixelY(double)
 		 */
 		@Override
 		public double userToPixelY(double userY) {
@@ -660,7 +660,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Linear#pixelToUserY(double)
+		 * @see org.jensoft.core.projection.Projection.Linear#pixelToUserY(double)
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
@@ -758,7 +758,7 @@ public abstract class Projection implements PluginListener {
 
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#getMinX()
+		 * @see org.jensoft.core.projection.Projection#getMinX()
 		 */
 		@Override
 		public double getMinX() {
@@ -767,7 +767,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#getMaxX()
+		 * @see org.jensoft.core.projection.Projection#getMaxX()
 		 */
 		@Override
 		public double getMaxX() {
@@ -776,7 +776,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#getMinY()
+		 * @see org.jensoft.core.projection.Projection#getMinY()
 		 */
 		@Override
 		public double getMinY() {
@@ -785,7 +785,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#getMaxY()
+		 * @see org.jensoft.core.projection.Projection#getMaxY()
 		 */
 		@Override
 		public double getMaxY() {
@@ -794,7 +794,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#userToPixelX(double)
+		 * @see org.jensoft.core.projection.Projection#userToPixelX(double)
 		 */
 		@Override
 		public double userToPixelX(double userX) {
@@ -803,7 +803,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#userToPixelY(double)
+		 * @see org.jensoft.core.projection.Projection#userToPixelY(double)
 		 */
 		@Override
 		public double userToPixelY(double userY) {
@@ -812,7 +812,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#pixelToUserX(double)
+		 * @see org.jensoft.core.projection.Projection#pixelToUserX(double)
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
@@ -820,7 +820,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection#pixelToUserY(double)
+		 * @see org.jensoft.core.projection.Projection#pixelToUserY(double)
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
@@ -982,7 +982,7 @@ public abstract class Projection implements PluginListener {
 
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#getMinDate()
+		 * @see org.jensoft.core.projection.Projection.Time#getMinDate()
 		 */
 		@Override
 		public Date getMinDate() {
@@ -991,7 +991,7 @@ public abstract class Projection implements PluginListener {
 
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#getMaxDate()
+		 * @see org.jensoft.core.projection.Projection.Time#getMaxDate()
 		 */
 		@Override
 		public Date getMaxDate() {
@@ -1018,7 +1018,7 @@ public abstract class Projection implements PluginListener {
 
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#pixelToTime(double)
+		 * @see org.jensoft.core.projection.Projection.Time#pixelToTime(double)
 		 */
 		@Override
 		public Date pixelToTime(double pixel) {
@@ -1027,7 +1027,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#timeToPixel(java.util.Date)
+		 * @see org.jensoft.core.projection.Projection.Time#timeToPixel(java.util.Date)
 		 */
 		@Override
 		public double timeToPixel(Date time) {
@@ -1036,7 +1036,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#getTimeDurationPixel()
+		 * @see org.jensoft.core.projection.Projection.Time#getTimeDurationPixel()
 		 */
 		@Override
 		public int getTimeDurationPixel() {
@@ -1096,7 +1096,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#getMinDate()
+		 * @see org.jensoft.core.projection.Projection.Time#getMinDate()
 		 */
 		@Override
 		public Date getMinDate() {
@@ -1104,7 +1104,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#getMaxDate()
+		 * @see org.jensoft.core.projection.Projection.Time#getMaxDate()
 		 */
 		@Override
 		public Date getMaxDate() {
@@ -1112,7 +1112,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#pixelToTime(double)
+		 * @see org.jensoft.core.projection.Projection.Time#pixelToTime(double)
 		 */
 		@Override
 		public Date pixelToTime(double pixel) {
@@ -1121,7 +1121,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#timeToPixel(java.util.Date)
+		 * @see org.jensoft.core.projection.Projection.Time#timeToPixel(java.util.Date)
 		 */
 		@Override
 		public double timeToPixel(Date time) {
@@ -1130,7 +1130,7 @@ public abstract class Projection implements PluginListener {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.projection.Projection.Time#getTimeDurationPixel()
+		 * @see org.jensoft.core.projection.Projection.Time#getTimeDurationPixel()
 		 */
 		@Override
 		public int getTimeDurationPixel() {
@@ -1493,7 +1493,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
+	 * @see org.jensoft.core.plugin.PluginListener#pluginSelected(org.jensoft.core.plugin.PluginEvent)
 	 */
 	@Override
 	public void pluginSelected(PluginEvent te) {
@@ -1506,7 +1506,7 @@ public abstract class Projection implements PluginListener {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
+	 * @see org.jensoft.core.plugin.PluginListener#pluginUnlockSelected(org.jensoft.core.plugin.PluginEvent)
 	 */
 	@Override
 	public void pluginUnlockSelected(PluginEvent te) {

@@ -20,7 +20,7 @@ public class AreaFunctionDeflater extends AbstractX2DPluginDeflater<AreaFunction
 
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
 	public Element deflate(AreaFunction plugin) {

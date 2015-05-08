@@ -34,7 +34,7 @@ import org.w3c.dom.NodeList;
 public class AreaFunctionInflater extends AbstractX2DPluginInflater<AreaFunction> implements X2DAreaElement {
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public FunctionPlugin.AreaFunction inflate(Element pluginElement) {

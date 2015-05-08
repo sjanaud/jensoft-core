@@ -23,7 +23,7 @@ public class Donut2DSliceDefaultFill extends AbstractDonut2DSliceFill {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.painter.fill.AbstractDonut2DSliceFill#paintDonut2DSliceFill(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D, com.jensoft.core.plugin.donut2d.Donut2DSlice)
+     * @see org.jensoft.core.plugin.donut2d.painter.fill.AbstractDonut2DSliceFill#paintDonut2DSliceFill(java.awt.Graphics2D, org.jensoft.core.plugin.donut2d.Donut2D, org.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     public void paintDonut2DSliceFill(Graphics2D g2d, Donut2D donut2D, Donut2DSlice slice) {

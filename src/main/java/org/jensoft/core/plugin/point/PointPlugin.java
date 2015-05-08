@@ -47,7 +47,7 @@ public class PointPlugin extends AbstractPointPlugin {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.point.AbstractPointPlugin#doPaintPoints(com.jensoft.core.view.View, java.awt.Graphics2D)
+     * @see org.jensoft.core.plugin.point.AbstractPointPlugin#doPaintPoints(org.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     public void doPaintPoints(View v2d, Graphics2D g2d) {

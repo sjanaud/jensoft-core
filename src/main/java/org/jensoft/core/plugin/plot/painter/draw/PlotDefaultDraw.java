@@ -22,7 +22,7 @@ public class PlotDefaultDraw extends AbstractPlotDraw {
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.plot.painter.draw.AbstractPlotDraw#drawPlot(java.awt.Graphics2D, com.jensoft.core.plugin.plot.spline.AbstractPlot)
+	 * @see org.jensoft.core.plugin.plot.painter.draw.AbstractPlotDraw#drawPlot(java.awt.Graphics2D, org.jensoft.core.plugin.plot.spline.AbstractPlot)
 	 */
 	@Override
 	public final void drawPlot(Graphics2D g2d, AbstractPlot plot) {

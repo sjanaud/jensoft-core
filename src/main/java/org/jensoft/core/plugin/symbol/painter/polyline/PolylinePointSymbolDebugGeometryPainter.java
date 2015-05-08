@@ -42,7 +42,7 @@ public class PolylinePointSymbolDebugGeometryPainter extends AbstractPolylinePoi
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.painter.polyline.AbstractPolylinePointSymbolPainter#paintPolylinePointSymbol(java.awt.Graphics2D, com.jensoft.core.plugin.symbol.PolylinePointSymbol)
+     * @see org.jensoft.core.plugin.symbol.painter.polyline.AbstractPolylinePointSymbolPainter#paintPolylinePointSymbol(java.awt.Graphics2D, org.jensoft.core.plugin.symbol.PolylinePointSymbol)
      */
     @Override
     protected void paintPolylinePointSymbol(Graphics2D g2d, PolylinePointSymbol polyline) {

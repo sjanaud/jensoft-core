@@ -26,7 +26,7 @@ import org.w3c.dom.Element;
 public class TranslateInflater extends AbstractX2DPluginInflater<TranslatePlugin> {
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public TranslatePlugin inflate(Element pluginElement) {

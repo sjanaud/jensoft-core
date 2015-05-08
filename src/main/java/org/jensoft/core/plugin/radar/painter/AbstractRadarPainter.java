@@ -13,7 +13,7 @@ public abstract class AbstractRadarPainter implements RadarPainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.radar.painter.RadarPainter#paintRadar(java.awt.Graphics2D, com.jensoft.core.plugin.radar.Radar)
+     * @see org.jensoft.core.plugin.radar.painter.RadarPainter#paintRadar(java.awt.Graphics2D, org.jensoft.core.plugin.radar.Radar)
      */
     @Override
     public void paintRadar(Graphics2D g2d, Radar radar) {

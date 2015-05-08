@@ -151,9 +151,9 @@ public class AreaGradientFill extends AbstractAreaFill {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill#
+	 * @see org.jensoft.core.plugin.function.area.painter.fill.AbstractAreaFill#
 	 * paintAreaFill(java.awt.Graphics2D,
-	 * com.jensoft.core.plugin.function.area.AreaFunction)
+	 * org.jensoft.core.plugin.function.area.AreaFunction)
 	 */
 	@Override
 	public final void paintAreaFill(Graphics2D g2d, Area area) {

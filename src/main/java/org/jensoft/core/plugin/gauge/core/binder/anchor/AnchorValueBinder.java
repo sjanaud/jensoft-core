@@ -78,7 +78,7 @@ public class AnchorValueBinder extends AnchorBinder {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.binder.AnchorBinder#bindAnchor(com
+	 * org.jensoft.core.plugin.gauge.core.binder.AnchorBinder#bindAnchor(com
 	 * .jensoft.core.plugin.gauge.core.RadialGauge)
 	 */
 	@Override

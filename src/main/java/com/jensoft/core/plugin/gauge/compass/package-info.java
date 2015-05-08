@@ -1,7 +1,0 @@
-/**
- * JenSoft API Compass Gauge
- * 
- * @author sebastien janaud
- * @since 1.0
- */
-package com.jensoft.core.plugin.gauge.compass;

@@ -479,7 +479,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
+		 * org.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
 		 * (java.awt.geom.GeneralPath)
 		 */
 		@Override
@@ -524,7 +524,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
+		 * org.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
 		 * (java.awt.geom.GeneralPath)
 		 */
 		@Override
@@ -566,7 +566,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
+		 * org.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
 		 * (java.awt.geom.GeneralPath)
 		 */
 		@Override
@@ -611,7 +611,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
+		 * org.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
 		 * (java.awt.geom.GeneralPath)
 		 */
 		@Override
@@ -671,7 +671,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
+		 * org.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
 		 * (java.awt.geom.GeneralPath)
 		 */
 		@Override
@@ -747,7 +747,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 		 * (non-Javadoc)
 		 * 
 		 * @see
-		 * com.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
+		 * org.jensoft.core.glyphmetrics.GeneralMetricsPath.SegmentEntry#validEntry
 		 * (java.awt.geom.GeneralPath)
 		 */
 		@Override
@@ -769,7 +769,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.glyphmetrics.AbstractMetricsPath#createPathMetrics()
+	 * org.jensoft.core.glyphmetrics.AbstractMetricsPath#createPathMetrics()
 	 */
 	@Override
 	protected GeneralPath createPathMetrics() {
@@ -1122,7 +1122,7 @@ public class GeneralMetricsPath extends AbstractMetricsPath {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.glyphmetrics.AbstractMetricsPath#getMetrics()
+	 * @see org.jensoft.core.glyphmetrics.AbstractMetricsPath#getMetrics()
 	 */
 	@Override
 	public List<GlyphMetric> getMetrics() {

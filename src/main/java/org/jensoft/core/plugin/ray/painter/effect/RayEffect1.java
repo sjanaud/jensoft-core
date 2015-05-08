@@ -27,7 +27,7 @@ public class RayEffect1 extends AbstractRayEffect {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.painter.effect.AbstractRayEffect#paintRayEffect(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray)
+     * @see org.jensoft.core.plugin.ray.painter.effect.AbstractRayEffect#paintRayEffect(java.awt.Graphics2D, org.jensoft.core.plugin.ray.Ray)
      */
     @Override
     public void paintRayEffect(Graphics2D g2d, Ray ray) {

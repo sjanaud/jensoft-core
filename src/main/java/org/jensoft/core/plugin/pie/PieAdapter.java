@@ -33,7 +33,7 @@ abstract class PieAdapter implements PieListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceClicked(com.jensoft.core.plugin.pie.PieEvent)
+     * @see org.jensoft.core.plugin.pie.PieListener#pieSliceClicked(org.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSliceClicked(PieEvent e) {
@@ -41,7 +41,7 @@ abstract class PieAdapter implements PieListener {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.PieListener#pieSlicePressed(com.jensoft.core.plugin.pie.PieEvent)
+     * @see org.jensoft.core.plugin.pie.PieListener#pieSlicePressed(org.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSlicePressed(PieEvent e) {
@@ -49,7 +49,7 @@ abstract class PieAdapter implements PieListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceReleased(com.jensoft.core.plugin.pie.PieEvent)
+     * @see org.jensoft.core.plugin.pie.PieListener#pieSliceReleased(org.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSliceReleased(PieEvent e) {
@@ -57,7 +57,7 @@ abstract class PieAdapter implements PieListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceEntered(com.jensoft.core.plugin.pie.PieEvent)
+     * @see org.jensoft.core.plugin.pie.PieListener#pieSliceEntered(org.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSliceEntered(PieEvent e) {
@@ -65,7 +65,7 @@ abstract class PieAdapter implements PieListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.PieListener#pieSliceExited(com.jensoft.core.plugin.pie.PieEvent)
+     * @see org.jensoft.core.plugin.pie.PieListener#pieSliceExited(org.jensoft.core.plugin.pie.PieEvent)
      */
     @Override
     public void pieSliceExited(PieEvent e) {

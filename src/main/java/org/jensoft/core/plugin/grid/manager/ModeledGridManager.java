@@ -443,7 +443,7 @@ public class ModeledGridManager extends AbstractGridManager {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.grid.manager.GridManager#getGrids()
+     * @see org.jensoft.core.plugin.grid.manager.GridManager#getGrids()
      */
     @Override
     public List<Grid> getGrids() {

@@ -17,7 +17,7 @@ public class BackwardForwardPadGeometry extends AbstractPadGeometry {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonNorthGeometry(java.awt.geom.Rectangle2D)
+     * @see org.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonNorthGeometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButtonNorthGeometry(Rectangle2D buttonNorthBound) {
@@ -36,7 +36,7 @@ public class BackwardForwardPadGeometry extends AbstractPadGeometry {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonSouthGeometry(java.awt.geom.Rectangle2D)
+     * @see org.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonSouthGeometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButtonSouthGeometry(Rectangle2D buttonSouthBound) {
@@ -54,7 +54,7 @@ public class BackwardForwardPadGeometry extends AbstractPadGeometry {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonWestGeometry(java.awt.geom.Rectangle2D)
+     * @see org.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonWestGeometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButtonWestGeometry(Rectangle2D buttonWestBound) {
@@ -71,7 +71,7 @@ public class BackwardForwardPadGeometry extends AbstractPadGeometry {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonEastGeometry(java.awt.geom.Rectangle2D)
+     * @see org.jensoft.core.widget.pad.AbstractPadGeometry#solveButtonEastGeometry(java.awt.geom.Rectangle2D)
      */
     @Override
     void solveButtonEastGeometry(Rectangle2D buttonEastBound) {

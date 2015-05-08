@@ -23,7 +23,7 @@ public abstract class AbstractDonut2DSlicePainter implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.painter.Donut2DSlicePainter#paintDonut2DSlice(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D, com.jensoft.core.plugin.donut2d.Donut2DSlice)
+     * @see org.jensoft.core.plugin.donut2d.painter.Donut2DSlicePainter#paintDonut2DSlice(java.awt.Graphics2D, org.jensoft.core.plugin.donut2d.Donut2D, org.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     public void paintDonut2DSlice(Graphics2D g2d, Donut2D donut2d, Donut2DSlice slice) {

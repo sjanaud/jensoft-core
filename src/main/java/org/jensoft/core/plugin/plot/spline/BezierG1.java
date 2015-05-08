@@ -77,7 +77,7 @@ public class BezierG1 extends Bezier {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.plot.spline.AbstractPlot#addPoint(double,
+	 * @see org.jensoft.core.plugin.plot.spline.AbstractPlot#addPoint(double,
 	 * double)
 	 */
 //	@Override
@@ -101,7 +101,7 @@ public class BezierG1 extends Bezier {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.plot.spline.AbstractPlot#setPoint(double,
+	 * @see org.jensoft.core.plugin.plot.spline.AbstractPlot#setPoint(double,
 	 * double)
 	 */
 	@Override
@@ -117,7 +117,7 @@ public class BezierG1 extends Bezier {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.plot.spline.AbstractPlot#removePoint()
+	 * @see org.jensoft.core.plugin.plot.spline.AbstractPlot#removePoint()
 	 */
 	@Override
 	public void removePoint() {

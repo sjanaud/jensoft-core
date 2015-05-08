@@ -36,7 +36,7 @@ public class StripeInflater extends AbstractX2DPluginInflater<StripePlugin> {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c
+	 * org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c
 	 * .dom.Element)
 	 */
 	@Override

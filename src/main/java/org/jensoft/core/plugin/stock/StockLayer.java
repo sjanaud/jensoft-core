@@ -108,7 +108,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.stock.StockLayer#solveLayer()
+		 * @see org.jensoft.core.plugin.stock.StockLayer#solveLayer()
 		 */
 		@Override
 		protected void solveLayer() {
@@ -124,7 +124,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 
 	
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.stock.StockLayer#paintLayer(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+		 * @see org.jensoft.core.plugin.stock.StockLayer#paintLayer(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
 		 */
 		@Override
 		protected void paintLayer(View view, Graphics2D g2d, ViewPart viewPart) {
@@ -161,7 +161,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.stock.StockLayer#solveLayer()
+		 * @see org.jensoft.core.plugin.stock.StockLayer#solveLayer()
 		 */
 		@Override
 		protected void solveLayer() {
@@ -177,7 +177,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 
 	
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.stock.StockLayer#paintLayer(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+		 * @see org.jensoft.core.plugin.stock.StockLayer#paintLayer(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
 		 */
 		@Override
 		protected void paintLayer(View view, Graphics2D g2d, ViewPart viewPart) {
@@ -243,7 +243,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.stock.StockLayer#solveLayer()
+		 * @see org.jensoft.core.plugin.stock.StockLayer#solveLayer()
 		 */
 		@Override
 		protected void solveLayer() {
@@ -258,7 +258,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.stock.StockLayer#paintLayer(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+		 * @see org.jensoft.core.plugin.stock.StockLayer#paintLayer(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
 		 */
 		@Override
 		protected void paintLayer(View v2d, Graphics2D g2d, ViewPart viewPart) {
@@ -318,7 +318,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.stock.StockLayer#solveLayer()
+		 * @see org.jensoft.core.plugin.stock.StockLayer#solveLayer()
 		 */
 		@Override
 		protected void solveLayer() {
@@ -344,7 +344,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 
 		
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.stock.StockLayer#paintLayer(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+		 * @see org.jensoft.core.plugin.stock.StockLayer#paintLayer(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
 		 */
 		@Override
 		protected void paintLayer(View view, Graphics2D g2d, ViewPart viewPart) {
@@ -419,7 +419,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
+		 * @see org.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
 		 */
 		@Override
 		protected MovingAverageStockGeom getGeomInstance() {
@@ -462,7 +462,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
+		 * @see org.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
 		 */
 		@Override
 		protected WeightedMovingAverageStockGeom getGeomInstance() {
@@ -505,7 +505,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
+		 * @see org.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
 		 */
 		@Override
 		protected ExponentialMovingAverageStockGeom getGeomInstance() {
@@ -568,7 +568,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		/*
 		 * (non-Javadoc)
 		 * 
-		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
+		 * @see org.jensoft.core.plugin.stock.StockLayer.Curve#getGeomInstance()
 		 */
 		@Override
 		protected BollingerMovingAverageStockGeom getGeomInstance() {
@@ -576,7 +576,7 @@ public abstract class StockLayer<G extends StockGeometry> {
 		}
 
 		/* (non-Javadoc)
-		 * @see com.jensoft.core.plugin.stock.StockLayer.Curve#paintLayer(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+		 * @see org.jensoft.core.plugin.stock.StockLayer.Curve#paintLayer(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
 		 */
 		@Override
 		protected void paintLayer(View view, Graphics2D g2d, ViewPart viewPart) {

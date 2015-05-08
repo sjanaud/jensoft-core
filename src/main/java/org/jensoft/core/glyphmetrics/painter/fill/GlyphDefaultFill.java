@@ -56,7 +56,7 @@ public class GlyphDefaultFill extends GlyphMetricFill {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.glyphmetrics.painter.GlyphMetricFill#paintGlyphMetricFill(java.awt.Graphics2D, com.jensoft.core.glyphmetrics.GlyphMetric)
+     * @see org.jensoft.core.glyphmetrics.painter.GlyphMetricFill#paintGlyphMetricFill(java.awt.Graphics2D, org.jensoft.core.glyphmetrics.GlyphMetric)
      */
     @Override
     public void paintGlyphMetricFill(Graphics2D g2d, GlyphMetric glyphMetric) {

@@ -67,7 +67,7 @@ public class PathArcAutoBinder extends AbstractPathAutoBinder {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder#createPath
+	 * org.jensoft.core.plugin.gauge.core.binder.path.PathAutoBinder#createPath
 	 * ()
 	 */
 	@Override

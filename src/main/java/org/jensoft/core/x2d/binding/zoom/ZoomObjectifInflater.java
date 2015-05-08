@@ -24,7 +24,7 @@ public class ZoomObjectifInflater extends AbstractX2DPluginInflater<ZoomLensPlug
 	
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public ZoomLensPlugin inflate(Element pluginElement) {

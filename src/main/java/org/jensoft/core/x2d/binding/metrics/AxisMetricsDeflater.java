@@ -20,7 +20,7 @@ public class AxisMetricsDeflater extends AbstractX2DPluginDeflater<AxisMetricsPl
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
 	public Element deflate(AxisMetricsPlugin plugin) {

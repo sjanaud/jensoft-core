@@ -84,7 +84,7 @@ public class PointSymbolImage extends AbstractPointSymbolPainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.symbol.painter.point.AbstractPointSymbolPainter#paintPointSymbol(java.awt.Graphics2D, com.jensoft.core.plugin.symbol.PointSymbol)
+     * @see org.jensoft.core.plugin.symbol.painter.point.AbstractPointSymbolPainter#paintPointSymbol(java.awt.Graphics2D, org.jensoft.core.plugin.symbol.PointSymbol)
      */
     @Override
     protected void paintPointSymbol(Graphics2D g2d, PointSymbol point) {

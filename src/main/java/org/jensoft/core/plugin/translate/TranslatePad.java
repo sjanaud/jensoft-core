@@ -85,7 +85,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#paintWidget(org.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     protected void paintWidget(View v2d, Graphics2D g2d) {
@@ -94,7 +94,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
+     * @see org.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {
@@ -106,7 +106,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onNorthButtonPress()
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#onNorthButtonPress()
      */
     @Override
     public void onNorthButtonPress() {
@@ -119,7 +119,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onNorthButtonReleased()
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#onNorthButtonReleased()
      */
     @Override
     public void onNorthButtonReleased() {
@@ -128,7 +128,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onSouthButtonPress()
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#onSouthButtonPress()
      */
     @Override
     public void onSouthButtonPress() {
@@ -141,7 +141,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onSouthButtonReleased()
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#onSouthButtonReleased()
      */
     @Override
     public void onSouthButtonReleased() {
@@ -150,7 +150,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onWestButtonPress()
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#onWestButtonPress()
      */
     @Override
     public void onWestButtonPress() {
@@ -163,7 +163,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onWestButtonReleased()
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#onWestButtonReleased()
      */
     @Override
     public void onWestButtonReleased() {
@@ -172,7 +172,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onEastButtonPress()
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#onEastButtonPress()
      */
     @Override
     public void onEastButtonPress() {
@@ -185,7 +185,7 @@ public class TranslatePad extends AbstractBackwardForwardPadWidget<TranslatePlug
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.pad.AbstractPadWidget#onEastButtonReleased()
+     * @see org.jensoft.core.widget.pad.AbstractPadWidget#onEastButtonReleased()
      */
     @Override
     public void onEastButtonReleased() {

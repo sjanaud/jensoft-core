@@ -140,7 +140,7 @@ public class DalleProjection implements Projection2D {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.map.projection.Projection2D#geoToPixel(com.jensoft.core.map.projection.GeoPosition)
+     * @see org.jensoft.core.map.projection.Projection2D#geoToPixel(org.jensoft.core.map.projection.GeoPosition)
      */
     @Override
     public Point2D geoToPixel(GeoPosition geoPosition) {
@@ -157,7 +157,7 @@ public class DalleProjection implements Projection2D {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.map.projection.Projection2D#latitudeToPixel(double)
+     * @see org.jensoft.core.map.projection.Projection2D#latitudeToPixel(double)
      */
     @Override
     public double latitudeToPixel(double latitude) {
@@ -171,7 +171,7 @@ public class DalleProjection implements Projection2D {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.map.projection.Projection2D#longitudeToPixel(double)
+     * @see org.jensoft.core.map.projection.Projection2D#longitudeToPixel(double)
      */
     @Override
     public double longitudeToPixel(double longitude) {
@@ -182,7 +182,7 @@ public class DalleProjection implements Projection2D {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.map.projection.Projection2D#pixelToGeo(java.awt.geom.Point2D)
+     * @see org.jensoft.core.map.projection.Projection2D#pixelToGeo(java.awt.geom.Point2D)
      */
     @Override
     public GeoPosition pixelToGeo(Point2D point) {
@@ -199,7 +199,7 @@ public class DalleProjection implements Projection2D {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.map.projection.Projection2D#pixelToLatitude(double)
+     * @see org.jensoft.core.map.projection.Projection2D#pixelToLatitude(double)
      */
     @Override
     public double pixelToLatitude(double pixelY) {
@@ -215,7 +215,7 @@ public class DalleProjection implements Projection2D {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.map.projection.Projection2D#pixelToLongitude(double)
+     * @see org.jensoft.core.map.projection.Projection2D#pixelToLongitude(double)
      */
     @Override
     public double pixelToLongitude(double pixelX) {

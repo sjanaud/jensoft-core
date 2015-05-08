@@ -341,7 +341,7 @@ public class ModeledMetricsManager extends AbstractMetricsManager {
     }
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getDeviceMetrics()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#getDeviceMetrics()
      */
     @Override
     public final List<Metrics> getDeviceMetrics() {

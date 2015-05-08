@@ -59,7 +59,7 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerListener#peakTracked(com.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerEvent)
+         * @see org.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerListener#peakTracked(org.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerEvent)
          */
         @Override
         public void peakTracked(PeakTrackerEvent event) {
@@ -77,7 +77,7 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
 
      
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerListener#sourceRegistered(com.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerEvent)
+         * @see org.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerListener#sourceRegistered(org.jensoft.core.plugin.function.tools.peaktracker.PeakTrackerEvent)
          */
         @Override
         public void sourceRegistered(PeakTrackerEvent event) {
@@ -97,7 +97,7 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
    
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.device.ContextEntry#buildContext()
+     * @see org.jensoft.core.device.ContextEntry#buildContext()
      */
     @Override
     public void buildContext() {
@@ -181,7 +181,7 @@ public class PeakTrackerDeviceContext extends ContextEntry<PeakTrackerPlugin> {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.device.ContextEntry#isCompatiblePlugin()
+     * @see org.jensoft.core.device.ContextEntry#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {

@@ -156,7 +156,7 @@ public class PieFlashAnimator extends AbstractPieAnimator {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#onEntered(com.jensoft.core.plugin.pie.PieSlice)
+     * @see org.jensoft.core.plugin.pie.animator.AbstractPieAnimator#onEntered(org.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     protected void onEntered(PieSlice slice) {
@@ -173,7 +173,7 @@ public class PieFlashAnimator extends AbstractPieAnimator {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#onExited(com.jensoft.core.plugin.pie.PieSlice)
+     * @see org.jensoft.core.plugin.pie.animator.AbstractPieAnimator#onExited(org.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     protected void onExited(PieSlice slice) {
@@ -189,7 +189,7 @@ public class PieFlashAnimator extends AbstractPieAnimator {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.pie.animator.AbstractPieAnimator#getAnimator(com.jensoft.core.plugin.pie.PieSlice)
+     * @see org.jensoft.core.plugin.pie.animator.AbstractPieAnimator#getAnimator(org.jensoft.core.plugin.pie.PieSlice)
      */
     @Override
     public Runnable getAnimator(PieSlice slice) {

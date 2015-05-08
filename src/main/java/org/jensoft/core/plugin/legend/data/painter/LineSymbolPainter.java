@@ -63,9 +63,9 @@ public class LineSymbolPainter extends AbstractDataItemSymbolPainter {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.legend.data.AbstractDataItemSymbolPainter#
+	 * @see org.jensoft.core.plugin.legend.data.AbstractDataItemSymbolPainter#
 	 * paintItemSymbol(java.awt.Graphics2D, java.awt.geom.Rectangle2D,
-	 * com.jensoft.core.plugin.legend.data.DataLegend.Item)
+	 * org.jensoft.core.plugin.legend.data.DataLegend.Item)
 	 */
 	@Override
 	public void paintItemSymbol(Graphics2D g2d, Rectangle2D symbolBound, Item item) {

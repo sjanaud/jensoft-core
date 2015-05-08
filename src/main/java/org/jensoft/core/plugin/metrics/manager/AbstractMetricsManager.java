@@ -62,7 +62,7 @@ public abstract class AbstractMetricsManager implements
 
 
 	/* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#lockMarker()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#lockMarker()
      */
     @Override
     public void lockMarker() {
@@ -71,7 +71,7 @@ public abstract class AbstractMetricsManager implements
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#unlockMarker()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#unlockMarker()
      */
     @Override
     public void unlockMarker() {
@@ -80,7 +80,7 @@ public abstract class AbstractMetricsManager implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#isLockMarker()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#isLockMarker()
      */
     @Override
     public boolean isLockMarker() {
@@ -89,7 +89,7 @@ public abstract class AbstractMetricsManager implements
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#lockLabel()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#lockLabel()
      */
     @Override
     public void lockLabel() {
@@ -98,7 +98,7 @@ public abstract class AbstractMetricsManager implements
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#unlockLabel()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#unlockLabel()
      */
     @Override
     public void unlockLabel() {
@@ -107,7 +107,7 @@ public abstract class AbstractMetricsManager implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#isLockLabel()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#isLockLabel()
      */
     @Override
     public boolean isLockLabel() {
@@ -138,7 +138,7 @@ public abstract class AbstractMetricsManager implements
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getType()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#getType()
      */
     @Override
     public MetricsType getType() {
@@ -147,7 +147,7 @@ public abstract class AbstractMetricsManager implements
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsType(com.jensoft.core.plugin.metrics.geom.Metrics.MetricsType)
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsType(org.jensoft.core.plugin.metrics.geom.Metrics.MetricsType)
      */
     @Override
     public void setMetricsType(MetricsType type) {
@@ -156,7 +156,7 @@ public abstract class AbstractMetricsManager implements
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsFormat()
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#getMetricsFormat()
      */
     @Override
     public IMetricsFormat getMetricsFormat() {
@@ -165,7 +165,7 @@ public abstract class AbstractMetricsManager implements
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsFormat(com.jensoft.core.plugin.metrics.format.IMetricsFormat)
+     * @see org.jensoft.core.plugin.metrics.manager.MetricsManager#setMetricsFormat(org.jensoft.core.plugin.metrics.format.IMetricsFormat)
      */
     @Override
     public void setMetricsFormat(IMetricsFormat metricsFormat) {

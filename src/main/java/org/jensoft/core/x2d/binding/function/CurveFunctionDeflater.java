@@ -20,7 +20,7 @@ import org.w3c.dom.Element;
 public class CurveFunctionDeflater extends AbstractX2DPluginDeflater<CurveFunction> {
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
 	public Element deflate(CurveFunction plugin) {
