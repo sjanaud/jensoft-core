@@ -52,7 +52,7 @@ public class ZoomBoxDefaultDeviceContext extends ContextEntry<ZoomBoxPlugin> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.device.ContextEntry#buildContext()
+     * @see org.jensoft.core.device.ContextEntry#buildContext()
      */
     @Override
     public void buildContext() {
@@ -182,7 +182,7 @@ public class ZoomBoxDefaultDeviceContext extends ContextEntry<ZoomBoxPlugin> {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.device.ContextEntry#isCompatiblePlugin()
+     * @see org.jensoft.core.device.ContextEntry#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {

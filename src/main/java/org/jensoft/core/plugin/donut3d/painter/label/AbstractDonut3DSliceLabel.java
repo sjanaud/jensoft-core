@@ -345,7 +345,7 @@ public abstract class AbstractDonut3DSliceLabel implements Donut3DSlicePainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut3d.painter.Donut3DSlicePainter#paintDonut3DSlice(java.awt.Graphics2D, com.jensoft.core.plugin.donut3d.Donut3D, com.jensoft.core.plugin.donut3d.Donut3DSlice)
+     * @see org.jensoft.core.plugin.donut3d.painter.Donut3DSlicePainter#paintDonut3DSlice(java.awt.Graphics2D, org.jensoft.core.plugin.donut3d.Donut3D, org.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     public final void paintDonut3DSlice(Graphics2D g2d, Donut3D donut3d,

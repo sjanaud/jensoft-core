@@ -3,7 +3,7 @@
 ############################################
 
 
-	group    : com.jensoft
+	group    : org.jensoft
 	artifact : jensoft-core
 	version  : 2.0.4
 
@@ -59,11 +59,11 @@
 		classes-rename : All  *View2D* rename to *View*
 		
 	Window2D
- 		package-rename : com.jensoft.core.window2d to com.jensoft.core.projection
+ 		package-rename : org.jensoft.core.window2d to org.jensoft.core.projection
  		classes-rename : All  *Window2D* rename to *Projection*
 
 	ZoomObjectif
-		package-rename : com.jensoft.zoom.objectif to com.jensoft.zoom.lens
+		package-rename : org.jensoft.zoom.objectif to org.jensoft.zoom.lens
 		classes-rename : All  *Objectif* rename to *Lens*
 
 	Metrics
@@ -73,7 +73,7 @@
 		
 	DataLegend : 
 		fix
-			package  : com.jensoft.core.plugin.legend.data.painter
+			package  : org.jensoft.core.plugin.legend.data.painter
 			class    : AbstractDataItemSymbolPainter
 			fix      : remove clip
 		new

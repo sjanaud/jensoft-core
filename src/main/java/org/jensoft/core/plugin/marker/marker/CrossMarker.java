@@ -129,7 +129,7 @@ public class CrossMarker extends AbstractMarker {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(com.jensoft.core.view.View, java.awt.Graphics2D)
+     * @see org.jensoft.core.plugin.marker.marker.AbstractMarker#paintMarker(org.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     public final void paintMarker(View view, Graphics2D g2d) {

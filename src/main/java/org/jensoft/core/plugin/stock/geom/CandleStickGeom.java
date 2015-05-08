@@ -36,7 +36,7 @@ public class CandleStickGeom extends StockItemGeometry {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.stock.geom.StockItemGeometry#solveGeometry()
+	 * @see org.jensoft.core.plugin.stock.geom.StockItemGeometry#solveGeometry()
 	 */
 	@Override
 	public void solveGeometry() {

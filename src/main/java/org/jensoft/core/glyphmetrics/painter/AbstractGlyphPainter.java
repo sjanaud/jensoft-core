@@ -18,7 +18,7 @@ public abstract class AbstractGlyphPainter implements GlyphMetricPainter {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.glyphmetrics.painter.GlyphMetricPainter#paintGlyphMetric(java.awt.Graphics2D, com.jensoft.core.glyphmetrics.GlyphMetric)
+     * @see org.jensoft.core.glyphmetrics.painter.GlyphMetricPainter#paintGlyphMetric(java.awt.Graphics2D, org.jensoft.core.glyphmetrics.GlyphMetric)
      */
     @Override
     public void paintGlyphMetric(Graphics2D g2d, GlyphMetric glyphMetric) {

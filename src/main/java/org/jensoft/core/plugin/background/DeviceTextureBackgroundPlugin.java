@@ -66,7 +66,7 @@ public class DeviceTextureBackgroundPlugin extends AbstractPlugin {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     * @see org.jensoft.core.plugin.AbstractPlugin#paintPlugin(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
      */
     @Override
     public void paintPlugin(View view, Graphics2D g2d, ViewPart viewPart) {

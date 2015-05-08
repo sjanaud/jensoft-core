@@ -32,7 +32,7 @@ public abstract class RayAdapter implements RayListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.RayListener#rayClicked(com.jensoft.core.plugin.ray.RayEvent)
+     * @see org.jensoft.core.plugin.ray.RayListener#rayClicked(org.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayClicked(RayEvent e) {
@@ -40,7 +40,7 @@ public abstract class RayAdapter implements RayListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.RayListener#rayPressed(com.jensoft.core.plugin.ray.RayEvent)
+     * @see org.jensoft.core.plugin.ray.RayListener#rayPressed(org.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayPressed(RayEvent e) {
@@ -48,7 +48,7 @@ public abstract class RayAdapter implements RayListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.RayListener#rayReleased(com.jensoft.core.plugin.ray.RayEvent)
+     * @see org.jensoft.core.plugin.ray.RayListener#rayReleased(org.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayReleased(RayEvent e) {
@@ -56,7 +56,7 @@ public abstract class RayAdapter implements RayListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.RayListener#rayEntered(com.jensoft.core.plugin.ray.RayEvent)
+     * @see org.jensoft.core.plugin.ray.RayListener#rayEntered(org.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayEntered(RayEvent e) {
@@ -64,7 +64,7 @@ public abstract class RayAdapter implements RayListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.RayListener#rayExited(com.jensoft.core.plugin.ray.RayEvent)
+     * @see org.jensoft.core.plugin.ray.RayListener#rayExited(org.jensoft.core.plugin.ray.RayEvent)
      */
     @Override
     public void rayExited(RayEvent e) {

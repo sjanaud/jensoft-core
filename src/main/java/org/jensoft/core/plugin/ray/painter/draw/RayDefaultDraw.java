@@ -55,7 +55,7 @@ public class RayDefaultDraw extends AbstractRayDraw {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.painter.draw.AbstractRayDraw#paintRayDraw(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray)
+     * @see org.jensoft.core.plugin.ray.painter.draw.AbstractRayDraw#paintRayDraw(java.awt.Graphics2D, org.jensoft.core.plugin.ray.Ray)
      */
     @Override
     public void paintRayDraw(Graphics2D g2d, Ray ray) {

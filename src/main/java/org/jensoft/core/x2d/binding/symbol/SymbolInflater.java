@@ -47,7 +47,7 @@ public class SymbolInflater extends AbstractX2DPluginInflater<SymbolPlugin> {
 
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public SymbolPlugin inflate(Element paramsElement) {

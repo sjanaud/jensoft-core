@@ -509,7 +509,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.window.Window2DListener#window2DBoundChanged(com.jensoft
+	 * org.jensoft.core.window.Window2DListener#window2DBoundChanged(org.jensoft
 	 * .core.window.Window2DEvent)
 	 */
 	@Override
@@ -522,21 +522,21 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.projection.ProjectionListener#projectionLockActive(com.jensoft.core.projection.ProjectionEvent)
+	 * @see org.jensoft.core.projection.ProjectionListener#projectionLockActive(org.jensoft.core.projection.ProjectionEvent)
 	 */
 	@Override
 	public void projectionLockActive(ProjectionEvent w2dEvent) {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.projection.ProjectionListener#projectionUnlockActive(com.jensoft.core.projection.ProjectionEvent)
+	 * @see org.jensoft.core.projection.ProjectionListener#projectionUnlockActive(org.jensoft.core.projection.ProjectionEvent)
 	 */
 	@Override
 	public void projectionUnlockActive(ProjectionEvent w2dEvent) {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.projection.ProjectionListener#projectionResized(com.jensoft.core.projection.ProjectionEvent)
+	 * @see org.jensoft.core.projection.ProjectionListener#projectionResized(org.jensoft.core.projection.ProjectionEvent)
 	 */
 	@Override
 	public void projectionResized(ProjectionEvent w2dEvent) {

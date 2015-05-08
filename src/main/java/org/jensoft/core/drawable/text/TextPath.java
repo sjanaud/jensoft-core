@@ -349,7 +349,7 @@ public class TextPath implements Drawable {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.drawable.Drawable#draw(java.awt.Graphics2D)
+     * @see org.jensoft.core.drawable.Drawable#draw(java.awt.Graphics2D)
      */
     @Override
     public void draw(Graphics2D g2d) {

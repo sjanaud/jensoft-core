@@ -46,7 +46,7 @@ public abstract class AbstractGridManager implements GridManager {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.grid.manager.GridManager#setProjection(com.jensoft.core.projection.Projection)
+     * @see org.jensoft.core.plugin.grid.manager.GridManager#setProjection(org.jensoft.core.projection.Projection)
      */
     @Override
     public void setProjection(Projection projection) {
@@ -54,7 +54,7 @@ public abstract class AbstractGridManager implements GridManager {
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.grid.manager.GridManager#getProjection()
+     * @see org.jensoft.core.plugin.grid.manager.GridManager#getProjection()
      */
     @Override
     public Projection getProjection() {

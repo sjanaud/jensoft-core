@@ -78,7 +78,7 @@ public class LegendInflater extends AbstractX2DPluginInflater<TitleLegendPlugin>
     }
 
     /* (non-Javadoc)
-     * @see com.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
+     * @see org.jensoft.core.x2d.inflater.AbstractX2DPluginInflater#inflate(org.w3c.dom.Element)
      */
     @Override
     public TitleLegendPlugin inflate(Element pluginElement) {

@@ -434,7 +434,7 @@ public class RayGroup extends Ray {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.ray.Ray#setRayDraw(com.jensoft.core.plugin.ray
+	 * org.jensoft.core.plugin.ray.Ray#setRayDraw(org.jensoft.core.plugin.ray
 	 * .painter.draw.AbstractRayDraw)
 	 */
 	@Override
@@ -446,7 +446,7 @@ public class RayGroup extends Ray {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.ray.Ray#setRayFill(com.jensoft.core.plugin.ray
+	 * org.jensoft.core.plugin.ray.Ray#setRayFill(org.jensoft.core.plugin.ray
 	 * .painter.fill.AbstractRayFill)
 	 */
 	@Override
@@ -458,7 +458,7 @@ public class RayGroup extends Ray {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.ray.Ray#setRayEffect(com.jensoft.core.plugin.
+	 * org.jensoft.core.plugin.ray.Ray#setRayEffect(org.jensoft.core.plugin.
 	 * ray.painter.effect.AbstractRayEffect)
 	 */
 	@Override
@@ -469,7 +469,7 @@ public class RayGroup extends Ray {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.ray.Ray#setThickness(double)
+	 * @see org.jensoft.core.plugin.ray.Ray#setThickness(double)
 	 */
 	@Override
 	public void setThickness(double thickness) {
@@ -480,7 +480,7 @@ public class RayGroup extends Ray {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.ray.Ray#setThicknessType(com.jensoft.core.plugin
+	 * org.jensoft.core.plugin.ray.Ray#setThicknessType(org.jensoft.core.plugin
 	 * .ray.Ray.ThicknessType)
 	 */
 	@Override
@@ -492,7 +492,7 @@ public class RayGroup extends Ray {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.ray.Ray#setRayNature(com.jensoft.core.plugin.
+	 * org.jensoft.core.plugin.ray.Ray#setRayNature(org.jensoft.core.plugin.
 	 * ray.Ray.RayNature)
 	 */
 	@Override
@@ -503,7 +503,7 @@ public class RayGroup extends Ray {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.ray.Ray#setRayBase(double)
+	 * @see org.jensoft.core.plugin.ray.Ray#setRayBase(double)
 	 */
 	@Override
 	public void setRayBase(double rayBase) {

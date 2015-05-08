@@ -52,7 +52,7 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+     * @see org.jensoft.core.plugin.AbstractPlugin#paintPlugin(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
      */
     @Override
     public final void paintPlugin(View view, Graphics2D g2d,
@@ -375,7 +375,7 @@ public abstract class GridPlugin<M extends AbstractGridManager> extends Abstract
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.grid.GridPlugin#paintGrids(com.jensoft.core.view.View, java.awt.Graphics2D)
+         * @see org.jensoft.core.plugin.grid.GridPlugin#paintGrids(org.jensoft.core.view.View, java.awt.Graphics2D)
          */
         @Override
         protected void paintGrids(View v2d, Graphics2D g2d) {

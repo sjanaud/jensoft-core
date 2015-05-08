@@ -56,7 +56,7 @@ public class Donut2DDivergenceAnimator extends AbstractDonut2DAnimator {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#onPressed(com.jensoft.core.plugin.donut2d.Donut2DSlice)
+     * @see org.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#onPressed(org.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     protected void onPressed(Donut2DSlice section) {
@@ -96,7 +96,7 @@ public class Donut2DDivergenceAnimator extends AbstractDonut2DAnimator {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#getAnimator(com.jensoft.core.plugin.donut2d.Donut2DSlice)
+     * @see org.jensoft.core.plugin.donut2d.animator.AbstractDonut2DAnimator#getAnimator(org.jensoft.core.plugin.donut2d.Donut2DSlice)
      */
     @Override
     public Runnable getAnimator(Donut2DSlice slice) {

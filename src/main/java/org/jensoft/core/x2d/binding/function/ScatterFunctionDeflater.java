@@ -19,7 +19,7 @@ import org.w3c.dom.Element;
 public class ScatterFunctionDeflater extends AbstractX2DPluginDeflater<ScatterFunction> {
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
 	public Element deflate(ScatterFunction plugin) {

@@ -263,7 +263,7 @@ public class Donut2DLinearEffect extends AbstractDonut2DEffect {
 
  
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut2d.painter.effect.AbstractDonut2DEffect#paintDonut2DEffect(java.awt.Graphics2D, com.jensoft.core.plugin.donut2d.Donut2D)
+     * @see org.jensoft.core.plugin.donut2d.painter.effect.AbstractDonut2DEffect#paintDonut2DEffect(java.awt.Graphics2D, org.jensoft.core.plugin.donut2d.Donut2D)
      */
     @Override
     public final void paintDonut2DEffect(Graphics2D g2d, Donut2D donut2D) {

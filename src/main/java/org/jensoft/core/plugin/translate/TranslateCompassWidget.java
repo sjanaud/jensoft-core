@@ -228,7 +228,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#onRegister()
+     * @see org.jensoft.core.widget.Widget#onRegister()
      */
     @Override
     public void onRegister() {
@@ -252,7 +252,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
            
             /* (non-Javadoc)
-             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translated(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+             * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translated(org.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translated(TranslatePluginEvent pluginEvent) {
@@ -276,7 +276,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
           
             /* (non-Javadoc)
-             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateStoped(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+             * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translateStoped(org.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translateStoped(TranslatePluginEvent pluginEvent) {
@@ -284,7 +284,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
             
             /* (non-Javadoc)
-             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateStarted(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+             * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translateStarted(org.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translateStarted(TranslatePluginEvent pluginEvent) {
@@ -292,7 +292,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
             
             /* (non-Javadoc)
-             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateL2RChanged(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+             * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translateL2RChanged(org.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translateL2RChanged(TranslatePluginEvent pluginEvent) {
@@ -300,7 +300,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
             
             /* (non-Javadoc)
-             * @see com.jensoft.core.plugin.translate.TranslatePluginListener#translateB2TChanged(com.jensoft.core.plugin.translate.TranslatePluginEvent)
+             * @see org.jensoft.core.plugin.translate.TranslatePluginListener#translateB2TChanged(org.jensoft.core.plugin.translate.TranslatePluginEvent)
              */
             @Override
             public void translateB2TChanged(TranslatePluginEvent pluginEvent) {
@@ -424,7 +424,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#paintWidget(com.jensoft.core.view.View, java.awt.Graphics2D)
+     * @see org.jensoft.core.widget.Widget#paintWidget(org.jensoft.core.view.View, java.awt.Graphics2D)
      */
     @Override
     protected void paintWidget(View view, Graphics2D g2d) {
@@ -435,7 +435,7 @@ public class TranslateCompassWidget extends Widget<TranslatePlugin> {
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.widget.Widget#isCompatiblePlugin()
+     * @see org.jensoft.core.widget.Widget#isCompatiblePlugin()
      */
     @Override
     public final boolean isCompatiblePlugin() {

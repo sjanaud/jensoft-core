@@ -42,7 +42,7 @@ public class TitleLegendDefaultFill extends AbstractTitleLegendFill {
    
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendFill#paintLegendFill(java.awt.Graphics2D, com.jensoft.core.plugin.legend.title.TitleLegend)
+     * @see org.jensoft.core.plugin.legend.title.painter.AbstractTitleLegendFill#paintLegendFill(java.awt.Graphics2D, org.jensoft.core.plugin.legend.title.TitleLegend)
      */
     @Override
     protected void paintLegendFill(Graphics2D g2d, TitleLegend legend) {

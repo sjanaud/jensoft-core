@@ -66,7 +66,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.PluginListener#pluginSelected(com.jensoft.core.plugin.PluginEvent)
+     * @see org.jensoft.core.plugin.PluginListener#pluginSelected(org.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginSelected(PluginEvent<ZoomBoxPlugin> pluginEvent) {
@@ -84,7 +84,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.PluginListener#pluginUnlockSelected(com.jensoft.core.plugin.PluginEvent)
+     * @see org.jensoft.core.plugin.PluginListener#pluginUnlockSelected(org.jensoft.core.plugin.PluginEvent)
      */
     @Override
     public void pluginUnlockSelected(PluginEvent<ZoomBoxPlugin> pluginEvent) {
@@ -102,7 +102,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomStart(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
+     * @see org.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomStart(org.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
      */
     @Override
     public void zoomStart(ZoomBoxEvent pluginEvent) {
@@ -134,7 +134,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
    
 
 	/* (non-Javadoc)
-     * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomBounded(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
+     * @see org.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomBounded(org.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
      */
     @Override
     public void zoomBounded(ZoomBoxEvent pluginEvent) {
@@ -163,7 +163,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomIn(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
+     * @see org.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomIn(org.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
      */
     @Override
     public void zoomIn(ZoomBoxEvent pluginEvent) {
@@ -182,7 +182,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomOut(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
+     * @see org.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomOut(org.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
      */
     @Override
     public void zoomOut(ZoomBoxEvent pluginEvent) {
@@ -201,7 +201,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomHistory(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
+     * @see org.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomHistory(org.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
      */
     @Override
     public void zoomHistory(ZoomBoxEvent pluginEvent) {
@@ -220,7 +220,7 @@ public class ZoomBoxSynchronizer implements ZoomBoxListener {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomClearHistory(com.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
+     * @see org.jensoft.core.plugin.zoom.box.ZoomBoxListener#zoomClearHistory(org.jensoft.core.plugin.zoom.box.ZoomBoxEvent)
      */
     @Override
     public void zoomClearHistory(ZoomBoxEvent pluginEvent) {

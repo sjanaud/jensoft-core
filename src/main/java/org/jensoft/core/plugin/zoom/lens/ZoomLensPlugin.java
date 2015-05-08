@@ -209,7 +209,7 @@ public class ZoomLensPlugin extends AbstractPlugin implements AbstractPlugin.OnR
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.AbstractPlugin#lockSelected()
+	 * @see org.jensoft.core.plugin.AbstractPlugin#lockSelected()
 	 */
 	@Override
 	public void lockSelected() {
@@ -224,7 +224,7 @@ public class ZoomLensPlugin extends AbstractPlugin implements AbstractPlugin.OnR
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.plugin.AbstractPlugin#unlockSelected()
+	 * @see org.jensoft.core.plugin.AbstractPlugin#unlockSelected()
 	 */
 	@Override
 	public void unlockSelected() {
@@ -486,7 +486,7 @@ public class ZoomLensPlugin extends AbstractPlugin implements AbstractPlugin.OnR
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.AbstractPlugin#paintPlugin(com.jensoft.core.view.View, java.awt.Graphics2D, com.jensoft.core.view.ViewPart)
+	 * @see org.jensoft.core.plugin.AbstractPlugin#paintPlugin(org.jensoft.core.view.View, java.awt.Graphics2D, org.jensoft.core.view.ViewPart)
 	 */
 	@Override
 	protected void paintPlugin(View v2d, Graphics2D g2d, ViewPart viewPart) {
@@ -494,7 +494,7 @@ public class ZoomLensPlugin extends AbstractPlugin implements AbstractPlugin.OnR
 
 	
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
+	 * @see org.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java.awt.event.MouseEvent)
 	 */
 	@Override
 	public void onRelease(MouseEvent me) {

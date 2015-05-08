@@ -32,7 +32,7 @@ public class Donut3DDeflater extends AbstractX2DPluginDeflater<Donut3DPlugin> im
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
 	public Element deflate(Donut3DPlugin plugin) {

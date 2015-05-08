@@ -27,8 +27,8 @@ public class PlotAnchorDefaultPainter extends AbstractPlotAnchorPainter {
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.plot.painter.draw.AbstractPlotDraw#drawPlot(java
-	 * .awt.Graphics2D, com.jensoft.core.plugin.plot.spline.AbstractPlot)
+	 * org.jensoft.core.plugin.plot.painter.draw.AbstractPlotDraw#drawPlot(java
+	 * .awt.Graphics2D, org.jensoft.core.plugin.plot.spline.AbstractPlot)
 	 */
 	@Override
 	public final void paintPlotAnchors(Graphics2D g2d, AbstractPlot plot) {

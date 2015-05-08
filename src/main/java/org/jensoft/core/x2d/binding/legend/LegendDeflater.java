@@ -19,7 +19,7 @@ import org.w3c.dom.Element;
 public class LegendDeflater extends AbstractX2DPluginDeflater<TitleLegendPlugin> {
 
 	/* (non-Javadoc)
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
 	public Element deflate(TitleLegendPlugin plugin) {

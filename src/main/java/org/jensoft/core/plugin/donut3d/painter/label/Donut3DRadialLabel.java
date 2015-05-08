@@ -117,7 +117,7 @@ public class Donut3DRadialLabel extends AbstractDonut3DSliceLabel {
 
     
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel#paintDonut3DSliceLabel(java.awt.Graphics2D, com.jensoft.core.plugin.donut3d.Donut3D, com.jensoft.core.plugin.donut3d.Donut3DSlice)
+     * @see org.jensoft.core.plugin.donut3d.painter.label.AbstractDonut3DSliceLabel#paintDonut3DSliceLabel(java.awt.Graphics2D, org.jensoft.core.plugin.donut3d.Donut3D, org.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     protected void paintDonut3DSliceLabel(Graphics2D g2d, Donut3D donut3D,

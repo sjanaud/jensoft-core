@@ -19,7 +19,7 @@ public abstract class AbstractRayPainter implements RayPainter {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.ray.painter.RayPainter#paintRay(java.awt.Graphics2D, com.jensoft.core.plugin.ray.Ray, com.jensoft.core.view.ViewPart)
+     * @see org.jensoft.core.plugin.ray.painter.RayPainter#paintRay(java.awt.Graphics2D, org.jensoft.core.plugin.ray.Ray, org.jensoft.core.view.ViewPart)
      */
     @Override
     public abstract void paintRay(Graphics2D g2d, Ray ray, ViewPart viewPart);

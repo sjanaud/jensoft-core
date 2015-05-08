@@ -57,7 +57,7 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#sourceTracked(com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
+         * @see org.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#sourceTracked(org.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
          */
         @Override
         public void sourceTracked(SourceTrackerEvent event) {
@@ -70,14 +70,14 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
 
        
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#sourceRegistered(com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
+         * @see org.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#sourceRegistered(org.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
          */
         @Override
         public void sourceRegistered(SourceTrackerEvent event) {
         }
 
         /* (non-Javadoc)
-         * @see com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#currentTrack(com.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
+         * @see org.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerListener#currentTrack(org.jensoft.core.plugin.function.tools.sourcetracker.SourceTrackerEvent)
          */
         @Override
         public void currentTrack(SourceTrackerEvent event) {
@@ -94,7 +94,7 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.device.ContextEntry#buildContext()
+     * @see org.jensoft.core.device.ContextEntry#buildContext()
      */
     @Override
     public void buildContext() {
@@ -171,7 +171,7 @@ public class SourceTrackerDeviceContext extends ContextEntry<SourceTrackerPlugin
 
   
     /* (non-Javadoc)
-     * @see com.jensoft.core.device.ContextEntry#isCompatiblePlugin()
+     * @see org.jensoft.core.device.ContextEntry#isCompatiblePlugin()
      */
     @Override
     public boolean isCompatiblePlugin() {

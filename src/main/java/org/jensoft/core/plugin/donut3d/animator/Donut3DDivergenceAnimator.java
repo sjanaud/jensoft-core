@@ -56,7 +56,7 @@ public class Donut3DDivergenceAnimator extends AbstractDonut3DAnimator {
 
    
     /* (non-Javadoc)
-     * @see com.jensoft.core.plugin.donut3d.animator.AbstractDonut3DAnimator#onPressed(com.jensoft.core.plugin.donut3d.Donut3DSlice)
+     * @see org.jensoft.core.plugin.donut3d.animator.AbstractDonut3DAnimator#onPressed(org.jensoft.core.plugin.donut3d.Donut3DSlice)
      */
     @Override
     protected void onPressed(Donut3DSlice section) {

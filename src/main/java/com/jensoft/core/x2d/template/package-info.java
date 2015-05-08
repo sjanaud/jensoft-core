@@ -1,7 +1,0 @@
-/**
- * Provides X2D templates
- * 
- * @author Sebastien Janaud
- * @since 1.0
- */
-package com.jensoft.core.x2d.template;

@@ -22,7 +22,7 @@ public class GridDeflater extends AbstractX2DPluginDeflater<GridPlugin> {
 	/*
 	 * (non-Javadoc)
 	 * 
-	 * @see com.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
+	 * @see org.jensoft.core.x2d.binding.AbstractX2DPluginDeflater#deflate()
 	 */
 	@Override
 	public Element deflate(GridPlugin plugin) {

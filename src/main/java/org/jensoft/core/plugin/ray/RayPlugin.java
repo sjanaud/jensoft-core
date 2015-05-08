@@ -600,7 +600,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java
+	 * org.jensoft.core.plugin.AbstractPlugin.OnReleaseListener#onRelease(java
 	 * .awt.event.MouseEvent)
 	 */
 	@Override
@@ -616,7 +616,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt
+	 * org.jensoft.core.plugin.AbstractPlugin.OnPressListener#onPress(java.awt
 	 * .event.MouseEvent)
 	 */
 	@Override
@@ -632,7 +632,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnExitListener#onExit(java.awt
+	 * org.jensoft.core.plugin.AbstractPlugin.OnExitListener#onExit(java.awt
 	 * .event.MouseEvent)
 	 */
 	@Override
@@ -643,7 +643,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnEnterListener#onEnter(java.awt
+	 * org.jensoft.core.plugin.AbstractPlugin.OnEnterListener#onEnter(java.awt
 	 * .event.MouseEvent)
 	 */
 	@Override
@@ -654,7 +654,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnClickListener#onClick(java.awt
+	 * org.jensoft.core.plugin.AbstractPlugin.OnClickListener#onClick(java.awt
 	 * .event.MouseEvent)
 	 */
 	@Override
@@ -670,7 +670,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt
+	 * org.jensoft.core.plugin.AbstractPlugin.OnMoveListener#onMove(java.awt
 	 * .event.MouseEvent)
 	 */
 	@Override
@@ -720,7 +720,7 @@ public class RayPlugin extends AbstractPlugin implements AbstractPlugin.OnClickL
 	 * (non-Javadoc)
 	 * 
 	 * @see
-	 * com.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt
+	 * org.jensoft.core.plugin.AbstractPlugin.OnDragListener#onDrag(java.awt
 	 * .event.MouseEvent)
 	 */
 	@Override
