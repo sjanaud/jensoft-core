@@ -43,8 +43,8 @@
   <!-- GitHub Software Configuration Management -->
   <scm>
     <url>https://github.com/sjanaud/jensoft-core</url>
-    <connection>scm:git:ssh://git@github.com/sjanaud/jensoft-core.git</connection>
-    <developerConnection>scm:git:ssh://git@github.com/sjanaud/jensoft-core.git</developerConnection>
+    <connection>scm:git:git@github.com:sjanaud/jensoft-core.git</connection>
+    <developerConnection>scm:git:git@github.com:sjanaud/jensoft-core.git</developerConnection>
     <tag>jensoft-core-2.0.4</tag>
   </scm>
 
