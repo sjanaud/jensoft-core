@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.jensoft</groupId>
 	<artifactId>jensoft-core</artifactId>
-	<version>2.0.4</version>
+	<version>2.0.4-SNAPSHOT</version>
 	<name>JenSoft API Core</name>
 
 	<url>https://www.jensoftapi.com</url>
@@ -43,8 +43,8 @@
   <!-- GitHub Software Configuration Management -->
   <scm>
     <url>https://github.com/sjanaud/jensoft-core</url>
-    <connection>scm:git:git@github.com:sjanaud/jensoft-core.git</connection>
-    <developerConnection>scm:git:git@github.com:sjanaud/jensoft-core.git</developerConnection>
+    <connection>scm:git:ssh://git@github.com/sjanaud/jensoft-core.git</connection>
+    <developerConnection>scm:git:ssh://git@github.com/sjanaud/jensoft-core.git</developerConnection>
     <tag>jensoft-core-2.0.4</tag>
   </scm>
 
