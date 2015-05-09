@@ -4,9 +4,10 @@
 	<artifactId>jensoft-core</artifactId>
 	<version>2.0.5-SNAPSHOT</version>
 	<name>JenSoft API Core</name>
-
-	<url>https://www.jensoftapi.com</url>
-
+        <description>Jensoft java core library</description>
+	
+        <url>https://www.jensoftapi.com</url>
+       
 	
 	
   <developers>
