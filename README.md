@@ -1,6 +1,15 @@
 # jensoft-core
 jensoft java core library. 
 
+JenSoft Core API is available on maven central:
+```xml
+<dependency>
+	<groupId>org.jensoft</groupId>
+	<artifactId>jensoft-core</artifactId>
+	<version>2.0.4</version>
+</dependency>
+```
+
 Want to learn more? [Visit JenSoft APIs site] (https://www.jensoftapi.com/site/home)
 
 <div style="float:left">
