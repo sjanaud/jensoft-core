@@ -1,5 +1,4 @@
-# jensoft-core
-jensoft java core library. 
+## Jensoft Core
 
 JenSoft Core API is available on maven central:
 ```xml
