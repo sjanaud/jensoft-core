@@ -79,10 +79,10 @@ public abstract class Projection implements PluginListener {
 		private boolean initial = true;
 		
 		/** the current scale x */
-		protected Double scaleX;
+		//protected Double scaleX;
 
 		/** the current scale y */
-		protected Double scaleY;
+		//protected Double scaleY;
 		
 		
 
@@ -163,45 +163,21 @@ public abstract class Projection implements PluginListener {
 			setMinY(miny);
 			setMaxY(maxy);
 			
-//			if(getView2D() != null && getView2D().getDevice2D() != null){
-//				this.scaleX = this.getPixelWidth() / this.getUserWidth();
-//				this.scaleY = this.getPixelHeight() / this.getUserHeight();
-//			}
-			
 			//reset scale
-			this.scaleX = null;
-			this.scaleY = null;
+			//this.scaleX = null;
+			//this.scaleY = null;
 
 			// fire listeners about this projection bound
 			super.fireProjectionBoundChanged();
 
 		}
 		
-		/**
-		 * reset scaling parameters
-		 */
-		protected void  resetScale(){
-			this.scaleX = null;
-			this.scaleY = null;
-		}
 		
-		/* (non-Javadoc)
-		 * @see org.jensoft.core.window.Window2D#onView2DRegister()
-		 */
+		
+		
 		@Override
 		public void onViewRegister() {
 			super.onViewRegister();
-			
-			getView().addViewListener(new ViewAdapter() {
-
-				/* (non-Javadoc)
-				 * @see org.jensoft.core.view.View2DAdapter#viewResized(org.jensoft.core.view.View2DEvent)
-				 */
-				@Override
-				public void viewResized(ViewEvent view2dEvent) {
-					resetScale();
-				}
-			});
 		}
 
 		/**
@@ -393,13 +369,15 @@ public abstract class Projection implements PluginListener {
 		}
 		
 		/**
-		 * get scale X, new solve if null
+		 * get scale X
 		 * @return scale x
 		 */
 		public Double getScaleX(){
-			if(this.scaleX == null)
-				this.scaleX = this.getPixelWidth() / this.getUserWidth();
-			return this.scaleX;
+//			if(this.scaleX == null)
+//				this.scaleX = this.getPixelWidth() / this.getUserWidth();
+//			return this.scaleX;
+			
+			return this.getPixelWidth() / this.getUserWidth();
 		}
 		
 		/**
@@ -407,9 +385,11 @@ public abstract class Projection implements PluginListener {
 		 * @return
 		 */
 		public Double getScaleY(){
-			if(this.scaleY == null)
-				this.scaleY = this.getPixelHeight() / this.getUserHeight();
-			return this.scaleY;
+//			if(this.scaleY == null)
+//				this.scaleY = this.getPixelHeight() / this.getUserHeight();
+//			return this.scaleY;
+			
+			return this.getPixelHeight() / this.getUserHeight();
 		}
 
 		/* (non-Javadoc)
@@ -490,9 +470,11 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public Double getScaleX() {
-			if(this.scaleX == null)
-				this.scaleX = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			return this.scaleX;
+//			if(this.scaleX == null)
+//				this.scaleX = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
+//			return this.scaleX;
+			
+			return getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
 		}
 
 		/* (non-Javadoc)
@@ -500,8 +482,6 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public double userToPixelX(double userX) {
-			//double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			//return scaleXLog * (Math.log10(userX) - Math.log10(getMinX()));
 			return getScaleX() * (Math.log10(userX) - Math.log10(getMinX()));
 		}
 
@@ -510,8 +490,6 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
-			//double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			//return Math.pow(10, pixelX / scaleXLog + Math.log10(getMinX()));
 			return Math.pow(10, pixelX / getScaleX() + Math.log10(getMinX()));
 		}
 
@@ -551,9 +529,10 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public Double getScaleY() {
-			if(this.scaleY == null)
-				this.scaleY = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
-			return this.scaleY;
+//			if(this.scaleY == null)
+//				this.scaleY = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
+//			return this.scaleY;
+			return getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
 		}
 
 		/* (non-Javadoc)
@@ -614,9 +593,10 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public Double getScaleX() {
-			if(this.scaleX == null)
-				this.scaleX = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			return this.scaleX;
+//			if(this.scaleX == null)
+//				this.scaleX = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
+//			return this.scaleX;
+			return getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
 		}
 		
 		/* (non-Javadoc)
@@ -624,9 +604,10 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public Double getScaleY() {
-			if(this.scaleY == null)
-				this.scaleY = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
-			return this.scaleY;
+//			if(this.scaleY == null)
+//				this.scaleY = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
+//			return this.scaleY;
+			return getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
 		}
 
 		/* (non-Javadoc)
@@ -634,8 +615,6 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public double userToPixelX(double userX) {
-			//double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			//return scaleXLog * (Math.log10(userX) - Math.log10(getMinX()));
 			return getScaleX() * (Math.log10(userX) - Math.log10(getMinX()));
 		}
 
@@ -644,8 +623,6 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserX(double pixelX) {
-			//double scaleXLog = getDevice2D().getDeviceWidth() / (Math.log10(getMaxX()) - Math.log10(getMinX()));
-			//return Math.pow(10, pixelX / scaleXLog + Math.log10(getMinX()));
 			return Math.pow(10, pixelX / getScaleX() + Math.log10(getMinX()));
 		}
 
@@ -654,8 +631,6 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public double userToPixelY(double userY) {
-			//double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
-			//return -scaleYLog * (Math.log10(userY) - Math.log10(getMaxY()));
 			return -getScaleY() * (Math.log10(userY) - Math.log10(getMaxY()));
 		}
 
@@ -664,8 +639,6 @@ public abstract class Projection implements PluginListener {
 		 */
 		@Override
 		public double pixelToUserY(double pixelY) {
-			//double scaleYLog = getDevice2D().getDeviceHeight() / (Math.log10(getMaxY()) - Math.log10(getMinY()));
-			//return Math.pow(10, -(pixelY / scaleYLog - Math.log10(getMaxY())));
 			return Math.pow(10, -(pixelY / getScaleY() - Math.log10(getMaxY())));
 		}
 

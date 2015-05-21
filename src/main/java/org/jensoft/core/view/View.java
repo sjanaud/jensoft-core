@@ -225,7 +225,6 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 * repaint the view
 	 */
 	public void repaintView() {
-		// device2D.repaintDevice();
 		projectionContainer.repaint();
 	}
 
@@ -377,7 +376,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	 * unregister the specified projection from this view
 	 * 
 	 * @param proj
-	 *            the proj to remove
+	 *            the projection to remove
 	 */
 	public void unregisterProjection(Projection proj) {
 		if (proj == null) {
@@ -448,7 +447,6 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 		
 		device2D.setView(this);
 
-		addViewListener(device2D);
 		projectionContainer.add(axisNorth, BorderLayout.NORTH);
 		projectionContainer.add(axisSouth, BorderLayout.SOUTH);
 		projectionContainer.add(axisEast, BorderLayout.EAST);
@@ -1078,7 +1076,7 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 
         List<Projection> projections = getProjections();
 
-        // paint all window, exlude active window
+        // paint all window, excluding active window
         for (Projection proj : projections) {
 
             if (!proj.isVisible()) {
@@ -1086,14 +1084,12 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
             }
 
             if (!proj.equals(getActiveProjection())) {
-                // System.out.println("paint NON ACTIVE window part for window :"+w2d.getName());
                 List<AbstractPlugin> plugins = proj.getPluginRegistry();
                 Collections.sort(plugins,
                                  AbstractPlugin.getPriorityComparator());
                 if (plugins != null) {
                     for (int j = 0; j < plugins.size(); j++) {
                         AbstractPlugin plugin = plugins.get(j);
-                        // System.out.println("paint non active plugin : "+plugin.getName());
                         plugin.paint(this, g2d, ViewPart.View);
                     }
                 }
@@ -1104,7 +1100,6 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
         // paint active window
         if (getActiveProjection() != null && getActiveProjection().isVisible()) {
 
-            // System.out.println("paint ACTIVE window part for window :"+v2d.getActiveWindow().getName());
             List<AbstractPlugin> plugins = getActiveProjection()
                     .getPluginRegistry();
             if (plugins != null) {
@@ -1112,7 +1107,6 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
                                  AbstractPlugin.getPriorityComparator());
                 for (int j = 0; j < plugins.size(); j++) {
                     AbstractPlugin plugin = plugins.get(j);
-                    // System.out.println("paint active plugin : "+plugin.getName());
                     plugin.paint(this, g2d, ViewPart.View);
                 }
             }
