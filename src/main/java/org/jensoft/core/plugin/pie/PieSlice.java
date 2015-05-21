@@ -314,12 +314,15 @@ public class PieSlice {
     }
 
     /**
-     * set pie value
+     * set slice value
      * 
      * @param value
-     *            the pie value to set
+     *            the slice value to set
+     * @throws IllegalArgumentException if value is strictly negative
      */
     public void setValue(double value) {
+    	if(value < 0)
+    		throw new IllegalArgumentException("Slice value should be greater than or equal to 0");
         this.value = value;
     }
 
