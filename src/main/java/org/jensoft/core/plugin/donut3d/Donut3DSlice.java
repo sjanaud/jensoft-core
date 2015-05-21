@@ -492,10 +492,11 @@ public class Donut3DSlice {
      * 
      * @param value
      *            the slice value to set
+     * @throws IllegalArgumentException when value is strictly negative 
      */
     public void setValue(double value) {
-    	if(value <=0)
-    		throw new IllegalArgumentException("Slice value should be greater than 0");
+    	if(value < 0)
+    		throw new IllegalArgumentException("Slice value should be greater than or equal to 0");
         this.value = value;
     }
 

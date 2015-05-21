@@ -389,12 +389,15 @@ public class Donut2DSlice {
     }
 
     /**
-     * set slice value
+     * set the slice value
      * 
      * @param value
      *            the slice value to set
+     * @throws IllegalArgumentException when value is strictly negative 
      */
     public void setValue(double value) {
+    	if(value < 0)
+    		throw new IllegalArgumentException("Slice value should be greater than or equal to 0");
         this.value = value;
     }
 
