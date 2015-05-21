@@ -63,6 +63,13 @@ public class ViewEmitter {
 			throw new IllegalArgumentException("view width and view height should be greater than zero");
 		}
 		
+		if(view.getPlaceHolderAxisNorth() + view.getPlaceHolderAxisSouth() > height ){
+			throw new IllegalArgumentException("height is too small, holder north("+view.getPlaceHolderAxisNorth()+") + south("+view.getPlaceHolderAxisSouth()+") size are greater than height("+height+")");
+		}
+		if(view.getPlaceHolderAxisWest() + view.getPlaceHolderAxisEast() > width ){
+			throw new IllegalArgumentException("width is too small, holder west("+view.getPlaceHolderAxisWest()+") + east("+view.getPlaceHolderAxisEast()+") size are greater than width("+width+")");
+		}
+		
 
 		// image view
 		BufferedImage viewImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
