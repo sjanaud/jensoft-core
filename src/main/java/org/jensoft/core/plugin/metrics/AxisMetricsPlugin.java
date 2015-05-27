@@ -841,8 +841,6 @@ public abstract class AxisMetricsPlugin<M extends AbstractMetricsManager> extend
 	 * @return true if the context is accessible, false otherwise
 	 */
 	protected boolean isAccessible(ViewPart viewPart) {
-		if(viewPart == ViewPart.View)
-			return true;
 		if (axis == Axis.AxisSouth && viewPart != ViewPart.South) {
 			return false;
 		}

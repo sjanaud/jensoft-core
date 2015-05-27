@@ -1049,7 +1049,6 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
 	protected void paintChildren(Graphics g) {
 		super.paintChildren(g);
 		Graphics2D g2 = (Graphics2D)g;
-		paintPlugins(g2);
 		copyright((Graphics2D)g);
 	}
 	
@@ -1066,60 +1065,6 @@ public class View extends JComponent implements ProjectionListener, ComponentLis
     }
 
    
-	/**
-     * Paint plugins
-     * 
-     * @param g2d
-     *            the graphics2D context
-     */
-    protected void paintPlugins(Graphics2D g2d) {
-
-        List<Projection> projections = getProjections();
-
-        // paint all window, excluding active window
-        for (Projection proj : projections) {
-
-            if (!proj.isVisible()) {
-                continue;
-            }
-
-            if (!proj.equals(getActiveProjection())) {
-                List<AbstractPlugin> plugins = proj.getPluginRegistry();
-                Collections.sort(plugins,
-                                 AbstractPlugin.getPriorityComparator());
-                if (plugins != null) {
-                    for (int j = 0; j < plugins.size(); j++) {
-                        AbstractPlugin plugin = plugins.get(j);
-                        plugin.paint(this, g2d, ViewPart.View);
-                    }
-                }
-            }
-
-        }
-
-        // paint active window
-        if (getActiveProjection() != null && getActiveProjection().isVisible()) {
-
-            List<AbstractPlugin> plugins = getActiveProjection()
-                    .getPluginRegistry();
-            if (plugins != null) {
-                Collections.sort(plugins,
-                                 AbstractPlugin.getPriorityComparator());
-                for (int j = 0; j < plugins.size(); j++) {
-                    AbstractPlugin plugin = plugins.get(j);
-                    plugin.paint(this, g2d, ViewPart.View);
-                }
-            }
-        }
-
-        try {
-            getWidgetPlugin().paint(this, g2d, ViewPart.View);
-        }
-        catch (Throwable e) {
-            e.printStackTrace();
-        }
-
-    }
 
 	/* (non-Javadoc)
 	 * @see javax.swing.JComponent#paintComponent(java.awt.Graphics)
